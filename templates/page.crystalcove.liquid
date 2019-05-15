@@ -1,0 +1,234 @@
+<div class="landing">
+   
+   <!-- static -->
+    <div class="jumbtron crystalcove flexVCenter">
+        <div class="tagline">
+            <h1>Take a deep breath...</h1>
+            <p class="line"><i>Introducing the Crystal Cove Yoga Collection</i></p>
+            <p><a href="#start" class="sscroll cta2 nostroke">Start exploring</a></p>
+        </div>
+    </div>
+    {%comment%}
+    <div class="jumbtron crystalcoveVideo ">
+        <div class="valueProps ">
+            <div class="copyContainer1" style="transition-delay:266ms">
+                <div class="tagline">
+                    <h1>Take a deep breath...</h1>
+                    <p class="line"><i>Introducing the Crystal Cove Yoga Collection</i></p>
+                    <p><a href="#start" class="sscroll cta2 nostroke">Start exploring</a></p>
+                </div>
+            </div>
+            <div class="videoVimeo">
+                <iframe src="https://player.vimeo.com/video/299074668?autoplay=1&loop=1&background=1&muted=1" width="640" height="480" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+    {%endcomment%}
+            <!--
+            <div class="videoWrapper2 vimeo">
+                <video playsinline autoplay loop muted poster="https://brentwood-home-36.imgix.net/cchero1920yoga.jpg" preload="none">
+                    <source src="https://s3.us-east-2.amazonaws.com/brentwoodhome/imgix/ccyoga/yogacc-herov2.mp4" type="video/mp4">
+                    <source src="https://s3.us-east-2.amazonaws.com/brentwoodhome/imgix/ccyoga/yogacc-herov2.webm" type='video/webm; codecs="vp8, vorbis"' />
+                    <img alt="" src="https://brentwood-home-36.imgix.net/cchero1920yoga.jpg">
+                </video>
+            </div>
+            -->
+    <style>
+        DIV.landing DIV.jumbtron.crystalcoveVideo{
+            margin-bottom: 0px;
+            height: auto;
+        }
+        .valueProps{
+            position: relative;
+            height: 100%;
+        }
+        .copyContainer1{
+            position: absolute;
+            z-index: 100;
+            top: calc(50% - 100px);
+            text-align: center;
+            width: 100%;
+        }
+        .videoWrapper2 {
+            position: relative;
+            /*padding-bottom: 54%;*/ /* 16:9 */
+            /*padding-top: 25px;*/
+            height: 0;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .videoWrapper2 video {
+            width: 100%    !important;
+            height: auto   !important;
+            margin-top: -18px;
+            background-color: transparent !important;
+        }
+        .videoVimeo{
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            margin: 0px;
+        }
+        .videoVimeo IFRAME{
+            position: absolute;
+            top: 0px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        P.headline-sm{
+            font-size: 21px;
+            line-height: 32px;
+            font-style: italic;
+        }
+        @media(max-width: 640px){
+            .videoWrapper2 video{
+                width: 150% !important;
+                position: relative;
+                left: -20%;
+            }
+            .videoVimeo{
+                height: 40vh;   
+            }
+            .videoVimeo IFRAME{
+                width: 150% !important;
+                left: -25%;
+                height: 100%;
+            }
+            DIV.landing DIV.jumbtron.crystalcoveVideo DIV.tagline H1{
+                /*display: none;*/
+                font-size: 32px;
+                margin: 5px 0;
+            }
+            .copyContainer1{
+                top: calc(50% - 110px);
+            }
+            DIV.landing DIV.jumbtron.crystalcoveVideo DIV.tagline P.line{
+                padding: 0 5%;
+                line-height: 25px;
+                font-size: 19px;
+                font-weight: 300;
+            }
+            .margTBLarge{
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+            DIV.landing DIV.jumbtron .cta2 {
+                padding: 15px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+    
+    
+    
+    <div id="" class="container margTBLarge">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 col-md-offset-1">
+                <!--<p class="text-center headline-sm">After receiving endless love for our best-selling Crystal Cove meditation pillow, we realized yogis were looking for even more beautiful, natural tools to add to their practice.</p>-->
+                <p class="text-center headline-sm">The Crystal Cove Yoga Collection is 100% Certified Vegan by Vegan Action. This means the products are free from animal products (like feathers, wool and down) or byproducts that have been tested on animals.  If you practice a vegan lifestyle, you can rest assured that your Crystal Cove products are aligned with your values. </p>
+                <p class="text-center"><img src="{{ 'veganlogo.svg' | asset_url}}" alt="Certified Vegan" style="max-width: 55px;"></p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="start"></div>
+<div class="rows">
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 text-center">
+                <a href="/products/crystal-cove-yoga-bolster" title="Crystal Cove bolster pillow"><img src="{{ 'lp-row-bolster.jpg' | asset_url }}" alt="Crystal Cove bolster Pillow" class=""></a>
+            </div>
+            <div class="col-xs-12 col-sm-6 odd">
+                <a href="/products/crystal-cove-yoga-bolster" title="Crystal Cove bolster pillow"><h2>The Yoga Bolster</h2></a>
+                {%comment%}<p class="promo">50% OFF during pre-sale</p> {%endcomment%}
+                <p>Our yoga bolster gives extra support where it’s needed, whether you’re in Savasana or a handstand.</p>
+                <p><a href="/products/crystal-cove-yoga-bolster" class="cta2">Start stretching</a></p>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-push-6  text-center">
+                <a href="/products/crystal-cove-pranayama-bolster" title="Crystal Cove pranayama pillow"><img src="{{ 'pranayama_0006.jpg' | asset_url }}" alt="Crystal Cove Pranayama Pillow" class=""></a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-pull-6 even">
+                <a href="/products/crystal-cove-pranayama-bolster" title="Crystal Cove pranayama pillow"><h2>The Pranayama Pillow</h2></a>
+                
+                <p>Perfect for Iyengar Yoga Pranayama practice, the Pranayama pillow assists with deep breathing exercises.</p>
+                <p><a href="/products/crystal-cove-pranayama-bolster" class="cta2">Start breathing</a></p>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 text-center">
+                <a href="/products/crystal-cove-meditation-pillow" title="Crystal Cove meditation pillow"><img src="{{ 'lp-row-meditation.jpg' | asset_url }}" alt="Crystal Cove Meditation Pillow" class=""></a>
+            </div>
+            <div class="col-xs-12 col-sm-6 odd">
+                <a href="/products/crystal-cove-meditation-pillow" title="Crystal Cove meditation pillow"><h2>The Meditation Pillow</h2></a>
+                <p>Designed by LA yoga instructor Angela Kukhahn, this pillow brings just enough height and support to your meditation practice.</p>
+                <p><a href="/products/crystal-cove-meditation-pillow" class="cta2">Start relaxing</a></p>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center">
+                <a href="/products/crystal-cove-bundle" title="Crystal Cove bundle"><img src="https://s3-brentwoodhome.imgix.net/ccyoga/yogagirl-trio.jpg?rect=0,659,4593,2567&w=570" alt="Crystal Cove bundle" class=""></a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-pull-6 even">
+                <a href="/products/crystal-cove-bundle" title="Crystal Cove bundle"><h2>The Yoga Bundle</h2></a>
+                <p class="promo">bundle & save 20%</p>
+                <p>Save when you choose the full Crystal Cove experience, including a meditation pillow, yoga bolster, and Pranayama pillow.</p>
+                <p><a href="/products/crystal-cove-bundle" class="cta2">see the complete set</a></p>
+            </div>
+        </div>
+    </section>
+</div>
+    <style>
+        div.banner{
+            position: relative;
+        }
+        div.banner .copyCenter{
+            position:absolute;
+            top:50%;
+            left:50%; 
+            text-align:center;
+            transform: translateX(-50%) translateY(-50%);
+            color: white;
+        }
+    </style>
+    <div class="container banner">
+        <img src="https://brentwood-home-products.imgix.net/CC_Details_003_0004_CC_Details_018.jpg?rect=0,659,4593,2567&ch=Width,DPR&w=1440&blend=464646&balph=20&dpr=1&fit=clip" alt="">
+        <div class="text-center copyCenter">
+            <h2 class="" style="color: white;">Discover The New Crystal Cove Mattress</h2>
+            <a href="/products/crystal-cove-mattress" class="cta2 whiteinv nostroke text-center">DUAL-SIDED & ACTIVATED CHARCOAL</a>
+        </div>
+    </div>
+    
+
+</div>
+<script>
+    mixpanel.track("Crystal Cove LP");
+    /*$(document).ready(function(){
+        $("#aboutus-continue").click(function(){
+            mixpanel.track("Clicked Continue Shopping");
+        });
+    });*/
+</script>
+<script>
+    $(document).ready(function(){
+        $('A.sscroll').bind('click', function(event) {
+            var $anchor = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $($anchor.attr('href')).offset().top - 150
+            }, 1500, 'easeInOutExpo');
+            event.preventDefault();
+        });
+    });
+</script>

@@ -1,0 +1,819 @@
+$body-text-color: #9B9B9B;
+$dark-text-color: #4a4a4a;
+$semidark-text-color: #6b6b6b;
+$blue: #454D5B;
+$palatino-stack: Palatino, 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', Georgia, serif;
+$helvetica-stack: 'Helvetica Neue', helvetica, sans-serif;
+$museo-stack: 'museo-sans', "Cabin", sans-serif; 
+
+$title-stack: "essonnes-display", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+$body-stack: AvenirLTStd-Light, "museo-sans", "Cabin", 'Helvetica Neue', helvetica, sans-serif;
+
+$titleSize : 28px;
+$subTitleSize: 16px;
+$bodySize : 15px;
+
+@mixin titleStyle($size){
+    /*font-family: $palatino-stack;
+    color: #4A4A4A;*/
+
+    line-height: $size*1.3;
+    font-size: $size;
+    font-weight: 400;
+    color: #4A4A4A;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: "essonnes-display", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+}
+@mixin subTitleStyle($size){
+    font-family: $body-stack;
+    font-size: $size;
+    line-height: $size*1.5;
+    color: $semidark-text-color;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 6px 0;
+}
+//.shopify-preview-bar { display: none }
+/*============================================================================
+
+Brentwood Home - Product Detail Page
+
+============================================================================*/
+
+
+/* /////////////////////////////////////////////////////////////////////
+//  01 - DEFAULTS
+/////////////////////////////////////////////////////////////////////*/
+
+html,
+body {
+    background-color: #fff;
+    //font-size: 16px;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////
+//  02 - HEADING & TYPOGRAPHY
+/////////////////////////////////////////////////////////////////////*/
+BODY.product-mattresses, BODY.product-abtest{
+    
+    h3,
+    h4,
+    h5 {
+        font-family: $body-stack;
+        font-weight: 100;
+        margin-bottom: 40px;
+    }
+
+    h1,h2 {
+        //font-size: 36px;
+        margin: 40px 0;
+        color: #444;
+        text-transform: uppercase;
+    }
+
+    h3 {
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    h5 {
+        font-size: 18px;
+        font-weight: 300;
+        margin-top: 1.5em;
+        margin-bottom: 1.5em;
+    }
+    .caps {
+        text-transform: uppercase!important;
+    }
+
+    H3.tagline{
+        font-size: 20px;
+        text-transform: none;
+        font-weight: 300;
+    }
+}
+
+
+/* /////////////////////////////////////////////////////////////////////
+//  03 - LAYOUT
+/////////////////////////////////////////////////////////////////////*/
+
+//.slick-wrapper {
+//    max-width: 1400px;
+//    margin: auto;
+//}
+.template-product,
+p {
+    font-family: $body-stack;
+    color: #808080;
+    font-size: 15px;
+    margin-bottom: 40px;
+    margin-bottom: 10px;
+    font-weight: 100;
+    line-height: 24px;
+}
+
+.main-content {
+    border-top: 1px solid #fff;
+}
+
+.cb {
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+.product-description {
+    margin-top: 50px;
+    //margin-bottom: 50px;
+}
+
+.easy-setup-video iframe {
+    max-width: 100%;
+}
+
+.cta {
+    margin-top: 50px;
+}
+
+.nopad {
+    padding: 0!important;
+}
+
+.pull-left {
+    float: none !important;
+}
+
+
+/*/////////////////////////////////////////////////////////////////////
+//  04 - BREADCRUMB
+/////////////////////////////////////////////////////////////////////*/
+
+.breadcrumb a:hover,
+.breadcrumb span.current-tag {
+    font-size: 18px;
+}
+
+.breadcrumb-wrap {
+    padding: 0;
+    height: 65px;
+    padding-left: 20px;
+}
+
+.breadcrumb-wrap.is-ticky {
+    position: fixed;
+    top: 0 !important;
+    left: 0;
+    filter: alpha(opacity=80);
+    -webkit-box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.176);
+    -moz-box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.176);
+    -ms-box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.176);
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.176);
+    width: 100%;
+    background: #fff;
+    z-index: 9999;
+    overflow: visible;
+}
+
+.product-meta-mobile.is-ticky {
+    position: fixed;
+    top: 0 !important;
+    filter: alpha(opacity=80);
+    -webkit-box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.176);
+    -moz-box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.176);
+    -ms-box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.176);
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.176);
+    width: 100%;
+    z-index: 9999;
+    overflow: visible;
+}
+
+.product-meta-mobile.is-ticky .price {
+    //height: 65px;
+    line-height: 30px;
+}
+
+.product-meta-mobile.is-ticky .prices {
+    height: 50px;
+}
+
+.breadcrumb {
+    padding-top: 20px;
+}
+
+.product-meta {
+    background-color: #c4cad6;
+    position: absolute;
+    right: 0;
+    padding: 0;
+}
+
+.product-meta-mobile {
+    background-color: #c4cad6;
+    padding: 0;
+    display: none;
+}
+
+.product-meta-mobile .prices {
+    padding-right: 25px!important;
+    padding-left: 25px!important;
+}
+
+.product-meta form {
+    height: inherit;
+}
+
+.product-meta .select label,
+.product-meta-mobile .select label {
+    display: none;
+}
+
+.product-meta .model .selector-wrapper,
+.product-meta-mobile .model .selector-wrapper {
+    padding-bottom: 0;
+}
+
+.product-meta .model,
+.product-meta-mobile .model {
+    margin-top: 15px;
+}
+
+.product-meta .prices {
+    height: 65px;
+    background-color: #9BA6BB;
+    color: #fff;
+    padding-top: 4px;
+    padding-right: 10px;
+    text-align: right;
+}
+
+.product-meta .prices .price {
+    font-size: 22px;
+    font-weight: 100;
+    padding-top: 10px;
+    line-height: 40px;
+}
+
+.mobile-collection-menu {
+    display: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #454d5a;
+    text-align: center;
+}
+
+.mobile-collection-menu .col-xs-12 {
+    padding: 0;
+}
+
+.mobile-collection-menu .dropdown-menu {
+    background-color: rgba(69, 77, 90, 0.9);
+    background-color: rgba(69, 77, 90, 0.9);
+    width: 100%;
+    text-align: center;
+    border-radius: 0;
+    box-shadow: none;
+    border: 0
+}
+
+.mobile-collection-menu .dropdown-menu li {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+//.mobile-collection-menu .dropdown-menu li:first-child {
+//    display: none;
+//}
+
+.mobile-collection-menu .dropdown-menu li.selected {
+    border-top: 1px solid rgba(255, 255, 255, .5);
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+}
+
+.mobile-collection-menu .dropdown-menu li a {
+    font-size: 16px;
+}
+
+.mobile-collection-menu .dropdown a {
+    color: #fff;
+}
+
+.mobile-product-meta {
+    display: none;
+}
+
+.mobile-product-meta .prices {
+    background-color: #454d5a;
+    color: #fff;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-bottom: 10px;
+}
+
+.mobile-product-meta .prices .price {
+    font-weight: 500;
+    font-size: 22px;
+    padding-right: 10px;
+}
+
+.product-meta .product,
+.mobile-product-meta .product .product-meta-mobile product {
+    margin-bottom: 0;
+}
+
+.product-meta .prices DIV.affirm A I,
+.mobile-product-meta .prices DIV.affirm A I {
+    color: #fff!important;
+}
+
+.product-meta .affirm {
+    display: block;
+    color: #fff!important;
+    width: 100%;
+    height: 25px;
+    float: none;
+    //    text-align: left!important;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+.mobile-product-meta .affirm {
+    color: #fff!important;
+    float: left;
+    text-align: left!important;
+}
+
+.mobile-product-meta .pull-left {
+    float: left!important;
+}
+
+.product-meta .add-to-cart,
+.product-meta-mobile .add-to-cart {
+    text-align: center;
+    background-color: #fda82a;
+    height: 65px;
+    transition: background-color 0.5s ease;
+}
+
+.product-meta .add-to-cart:hover,
+.product-meta-mobile .add-to-cart:hover {
+    background-color: #c77e13;
+}
+
+.product-meta .add-to-cart .btn,
+.product-meta-mobile .add-to-cart .btn {
+    background-color: transparent;
+    border: 0;
+}
+
+.product-shop .selectize-input > * {
+    font-weight: 100;
+    font-size: 18px;
+}
+
+.product-meta .product-shop .selectize-input.full,
+.product-meta-mobile .product-shop .selectize-input.full {
+    background-color: transparent!important;
+}
+
+.product-meta .product-shop .selectize-input>*,
+.product-meta-mobile .product-shop .selectize-input>* {
+    color: #fff!important;
+}
+
+.product-meta .product-shop .selectize-control.single .selectize-input:after,
+.product-meta-mobile .product-shop .selectize-control.single .selectize-input:after {
+    border-top-color: #fff!important;
+}
+
+.product-meta .product-shop .selectize-control.single .selectize-input.dropdown-active:after,
+.product-meta-mobile .product-shop .selectize-control.single .selectize-input.dropdown-active:after {
+    border-bottom-color: #fff!important;
+}
+.product-mattresses{
+    #add-to-cart-form #product-add-to-cart {
+        height: auto!important;
+        margin-top: 10px;
+        line-height: 40px;
+        text-align: center;
+        padding: 5px!important;
+        font-weight: 300;
+        font-size: 18px;
+        //background-color: #454d5a;
+        border: none;
+        width: 100%;
+    }
+}
+.product-meta h1 {
+    line-height: 55px;
+    text-align: left;
+}
+
+.prouct-meta #product-variants {
+    margin-bottom: 0;
+}
+
+.animate-pricing {
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    background-color: #c00!important;
+}
+
+/* /////////////////////////////////////////////////////////////////////
+//  PROMO
+/////////////////////////////////////////////////////////////////////*/
+
+DIV.promo{
+    padding: 20px; background-color:#454D5B;
+    P{
+        color: #FFF;
+    }
+    SPAN{
+        font-weight: 700;
+    }
+}
+
+
+
+/* /////////////////////////////////////////////////////////////////////
+//  05 - CONTENT BLOCK ROWS
+/////////////////////////////////////////////////////////////////////*/
+
+.guarantee .blue-bg,
+.surfaces .blue-bg {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #454D5B;
+    color: #fff;
+}
+
+.guarantee .blue-bg h5,
+.surfaces .blue-bg h5 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.guarantee .blue-bg H5.title,
+.surfaces .blue-bg h5.title{
+    margin-bottom: 50px;
+}
+
+.guarantee .blue-bg p,
+.surfaces .blue-bg p {
+    color: #fff;
+}
+
+.faqs .ltgrey-bg {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #f9f9f9;
+}
+
+.faqs h5 {
+    text-align: left!important;
+    margin-top: 15px;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.mattress-details .white-bg,
+.ships-free .white-bg,
+.easy-setup-video .white-bg,
+.products-pack .white-bg {
+    /*padding-top: 50px;*/
+    padding-bottom: 50px;
+    background-color: #fff;
+}
+
+.mattress-details .white-bg h5,
+.ships-free .white-bg h5,
+.easy-setup-video .white-bg h5,
+.products-pack .white-bg h5 {
+    margin-top: 15px;
+}
+
+.comfort img {
+    margin-bottom: 50px;
+}
+
+.our-gaurantee {
+    height: 600px;
+    background-image: url(https://cdn.shopify.com/s/files/1/1507/2946/files/120night-wide.jpg?9371387999109911773);
+    background-repeat: no-repeat;
+}
+
+.our-gaurantee h3 {
+    color: #4A4A4A;
+}
+
+.our-gaurantee .img-bg {
+    padding-top: 400px;
+    padding-bottom: 50px;
+}
+
+.our-gaurantee .cta {
+    margin-top: 0;
+}
+
+.slider-wrapper {
+    margin-bottom: 80px;
+    margin-top: 50px;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////
+//  06 - BUTTONS
+/////////////////////////////////////////////////////////////////////*/
+
+.btn-white-stroke {
+    border: 1px solid #fff!important;
+    color: #fff!important;
+    text-transform: none!important;
+    background-color: transparent!important;
+    font-size: 16px;
+    padding: 25px 30px;
+    line-height: 1px;
+}
+
+.btn-white-stroke:hover {
+    color: #000!important;
+    background-color: #fff!important;
+}
+
+.btn-grey-stroke {
+    border: 1px solid #454D5B!important;
+    color: #454D5B!important;
+    text-transform: none!important;
+    background-color: transparent!important;
+    font-weight: 100;
+    padding: 10px 20px;
+    line-height: 30px;
+    font-size: 16px;
+    height: auto;
+}
+
+.btn-grey-stroke:hover {
+    color: #fff!important;
+    background-color: #454D5B!important;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////
+//  08 - SLICK SLIDER OVERRIDE
+/////////////////////////////////////////////////////////////////////*/
+
+.features .slick-dots {
+    bottom: 15px!important;
+}
+
+.slick-dots {
+    bottom: 155px;
+}
+
+.slick-list{
+    background: -moz-linear-gradient(top,  rgba(232,232,232,1) 52%, rgba(255,255,255,0) 100%);
+    background: -webkit-linear-gradient(top,  rgba(232,232,232,1) 52%,rgba(255,255,255,0) 100%);
+    background: linear-gradient(to bottom,  rgba(232,232,232,1) 52%,rgba(255,255,255,0) 100%);
+}
+
+SECTION#main-product-slider .slick-list{
+    background: #FFF;
+}
+
+
+/**************************
+YOTPO
+***************************/
+.starsFloat{
+    //text-align: center;
+    position: absolute;
+    top: 55px;
+    right: 20px;
+    padding: 20px 20px;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 3px;
+    H2{
+        margin: 0 0 2px 0 !important;
+        font-size: 28px !important;
+        color: #454D5B !important;
+    }
+    .yotpo{
+        .pull-left{
+            text-align: center;
+        }
+        &.bottomLine{
+            text-align: center;
+        }
+        .text-m{
+            display: block;
+            font-size: 14px !important;
+            text-align: center;
+            margin-top: 6px;
+            color: #454D5B;
+        }
+    }
+}
+.yotpo.bottomLine .yotpo-bottomline .yotpo-icon-star,
+.yotpo.bottomLine .yotpo-bottomline .yotpo-icon-half-star,
+.yotpo.bottomLine .yotpo-bottomline .yotpo-icon-empty-star,
+.yotpo.bottomline .yotpo-bottomline .yotpo-icon-star,
+.yotpo.bottomline .yotpo-bottomline .yotpo-icon-half-star,
+.yotpo.bottomline .yotpo-bottomline .yotpo-icon-empty-star,
+.yotpo .yotpo-modal-bottom-line .yotpo-bottomline .yotpo-icon-star,
+.yotpo .yotpo-modal-bottom-line .yotpo-bottomline .yotpo-icon-half-star,
+.yotpo .yotpo-modal-bottom-line .yotpo-bottomline .yotpo-icon-empty-star{
+    font-size: 28px !important;
+    color: #fda82a;
+}
+
+#promoSierra{
+    display: none;
+}
+
+/* /////////////////////////////////////////////////////////////////////
+//  09 - MEDIA QUERIES
+/////////////////////////////////////////////////////////////////////*/
+
+@media (max-width: 1024px) {
+    .product-meta .affirm {
+        font-size: 14px;
+    }
+    .slider-wrapper {
+        margin-bottom: 80px;
+        margin-top: 40px;
+    }
+}
+
+
+/* Tablet Devices */
+
+@media (max-width: 768px) {
+    .breadcrumb a:hover,
+    .breadcrumb span.current-tag {
+        font-size: 12px;
+    }
+    .affirm {
+        white-space: nowrap;
+    }
+    .product-mattresses #add-to-cart-form #product-add-to-cart {
+        line-height: 50px;
+        padding: 0px!important;
+    }
+    .our-gaurantee {
+        background-position: -500px 0;
+    }
+}
+
+
+/* Misc + Mobile Devicess */
+
+@media (max-width: 640px) {
+    BODY.product-mattresses h2 {
+        font-size: 26px;
+        margin-bottom: 10px;
+    }
+    BODY.product-mattresses H3.tagline{
+        margin-bottom: 20px;
+    }
+    .mobile-product-meta,
+    .mobile-collection-menu,
+    .product-meta-mobile {
+        display: block;
+    }
+    .breadcrumb-wrap {
+        display: none;
+    }
+    .guarantee .col-xs-12 {
+        padding-bottom: 35px;
+    }
+    .surfaces .col-xs-12 {
+        padding-bottom: 45px;
+    }
+    .our-gaurantee {
+        background-position: -720px 0;
+    }
+    .our-gaurantee .img-bg {
+        padding-top: 300px;
+    }
+    .our-gaurantee h3 {
+        line-height: normal;
+    }
+    .product-meta-mobile .product {
+        margin: 0;
+    }
+    .mobile-product-meta .affirm {
+        float: right;
+        text-align: right!important;
+        font-size: 10px;
+    }
+    .slick-slide {
+        margin-left: 0!important;
+        margin-right: 0!important;
+    }
+    .features {
+        margin-bottom: 0!important;
+    }
+    .features .slick-dots {
+        bottom: 15px!important;
+    }
+    .product-description {
+        margin-top: 40px;
+    }
+
+    //yotpo
+    .starsFloat {
+        top: 5px;
+        right: 8px;
+        padding: 5px;
+    }
+    .starsFloat H2{
+        display: none;
+    }
+    .yotpo.bottomLine .yotpo-bottomline .yotpo-icon-star, .yotpo.bottomLine .yotpo-bottomline .yotpo-icon-half-star, .yotpo.bottomLine .yotpo-bottomline .yotpo-icon-empty-star, .yotpo.bottomline .yotpo-bottomline .yotpo-icon-star, .yotpo.bottomline .yotpo-bottomline .yotpo-icon-half-star, .yotpo.bottomline .yotpo-bottomline .yotpo-icon-empty-star, .yotpo .yotpo-modal-bottom-line .yotpo-bottomline .yotpo-icon-star, .yotpo .yotpo-modal-bottom-line .yotpo-bottomline .yotpo-icon-half-star, .yotpo .yotpo-modal-bottom-line .yotpo-bottomline .yotpo-icon-empty-star{
+        font-size: 18px !important;
+        color: #fda82a;
+    }
+    .starsFloat .yotpo .text-m {
+        font-size: 13px !important;
+        margin-top: 0px;
+    }
+}
+
+
+/* iPhone 6 Plus */
+
+@media (max-width: 414px) {
+    .breadcrumb-wrap {
+        height: 57px;
+    }
+    .product-meta-mobile,
+    .product-meta-mobile .add-to-cart {
+        height: 45px;
+        border-bottom: 1px solid #dedede;
+    }
+    .product-meta .prices {
+        display: none;
+    }
+    .product-meta .model {
+        margin-top: 10px;
+    }
+    .product-meta-mobile .model {
+        margin-top: 0!important;
+    }
+    .product-mattresses #add-to-cart-form #product-add-to-cart {
+        line-height: 25px;
+    }
+    .slider-wrapper{
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+    .slider-wrapper h5{
+        margin-bottom: 8px;
+    }
+    .cb.ships-free{
+        margin-bottom: 5px;
+    }
+    .ships-free .white-bg{
+        padding-bottom: 0;
+    }
+    .guarantee .blue-bg,
+    .surfaces .blue-bg {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .guarantee .blue-bg h5, .surfaces .blue-bg h5{
+        font-size: 14px;
+    }
+    .guarantee .blue-bg h5.title, .surfaces .blue-bg h5.title{
+        font-size: 18px;
+    }
+    .surfaces IMG{
+        max-width: 120px;
+    }
+    DIV.promo{
+        padding: 0px;
+        margin-top: 5px;
+        P{
+            font-size: 14px;
+        }
+    }
+}
+
+
+/* iPhone 6 */
+
+@media (max-width: 375px) {}
+
+
+/* iPhone 5  */
+
+@media (max-width: 320px) {
+    .product-description {
+        margin-top: 40px;
+    }
+}

@@ -1,0 +1,172 @@
+{% if settings.collection_results_per_page != blank %}
+    {% assign product_per_page = settings.collection_results_per_page %}
+{% else %}
+    {% assign product_per_page = 8 %}
+{% endif %}
+
+{% comment %}Save the variable of the current collection before it gets overwritten in the loop below{% endcomment %}
+{% assign current_collection = collection.handle %}
+
+{% include 'nowtime' %}
+
+<div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <h1 class="bhdarkgrey collectionTitle">Our Mattress Collection</h1>
+    </div>
+</div>
+
+{% include 'affirm-product' %}
+
+
+{% for mattress in collection.products %}
+    {% assign metaf = mattress.metafields.c_f %}
+    {% assign imgName = mattress.featured_image | remove: 'products/' | split:'?' | first %}
+    <div class="row {% if forloop.first == true %}first{%endif%} margTB50">
+        <div class="col-xs-12 col-sm-push-4 col-sm-8 col-lg-push-4 col-lg-8 mattressimg"><!-- add col-sm-pull-4 to reverse -->
+            <h3 class="features {{ mattress.handle }} text-center">{{metaf.collectiontag}}</h3>
+            <a href="{{mattress.url}}" class="product-grid-image" title="{{mattress.title}}">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=767&dpr=1&fit=clip">
+                    <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip">
+                    <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip" alt="{{mattress.title}}">
+                </picture>
+            </a>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-sm-pull-8 col-lg-4 col-lg-pull-8 mattress"><!-- add col-sm-push-8 to reverse -->
+            <a href="{{mattress.url}}" title="{{mattress.title}}"><h2>{{mattress.title}}</h2></a>
+            <div class="yotpo bottomLine"
+                 data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
+                 data-domain="{{ shop.permanent_domain | escape }}"
+                 data-product-id="{{ mattress.id }}"
+                 data-product-models="{{ mattress.id }}"
+                 data-name="{{ mattress.title | escape }}"
+                 data-url="{{ mattress.url }}">
+            </div>
+            <p>{{ metaf.shortdesc }}</p>
+            <p class="text-center"><a href="{{mattress.url}}" class="cta2 solid text-center" style="display:block;">FROM {{ mattress.price | money_without_trailing_zeros }}</a></p>
+            <div class="affirm">
+                <p id="learn-more" class="affirm-as-low-as" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{ mattress.price }}"> <a class="affirm-site-modal" data-promo-id="promo_set_pdp_12_standard">Learn more</a></p>
+            </div>
+            <div class="tags">
+                {% for tag in mattress.tags %}
+                    {% case tag %}
+                        {% when 'GreenGuard' %}
+                            <a data-toggle="tooltip" title="GREENGUARD Certification helps manufacturers create--and helps buyers identify--interior products and materials that have low chemical emissions, improving the quality of the air in which the products are used."><img src="{{ 'logo-greenguard-2.svg' | asset_url}}" alt="GreenGuard Certified" style="max-width: 55px;"><!--<i class="fa fa-question-circle-o" aria-hidden="true"></i>--></a>
+                        {% when 'GOTS' %}
+                            <a data-toggle="tooltip" title="The Global Organic Textile Standard (GOTS) is the world's leading textile processing standard for organic fibers, including ecological and social criteria"><img src="{{ 'gots-logo.png' | asset_url}}" alt="GOTS" style="max-width: 65px;"></a>
+                        {% when 'GOLS' %}
+                            <a data-toggle="tooltip" title="The Global Organic Latex Standard (GOLS). It is highly regarded, especially in the sleep products sector. GOLS outlines requirements for latex products made from organic raw materials, as well as for material from non-organic origins."><img src="{{ 'gols-logo.png' | asset_url}}" alt="GOLS" style="max-width: 65px;"></a>
+                        {% when 'ecoinstitute' %}
+                            <a data-toggle="tooltip" title="eco-INSTITUT offers emissions testing, content analysis, odour testing; Toxicological and ecological evaluations; Consultancy during product development and optimisation; External and quality inspection."><img src="{{ 'logo-eco-institut.png' | asset_url}}" alt="eco-Institut" style="max-width: 55px;"></a>
+                        {% when 'Oeko' %}
+                            <a data-toggle="tooltip" title="Oeko-Tex Standard 100 is an independent testing and certification system for textile products from all stages of production (fibres, yarns, fabrics, ready-to-use end products, including accessories) along the textile value chain."><img src="{{ 'logo-oeko-tex.png' | asset_url}}" alt="Oeko-Tex Standard" style="max-width: 55px;"></a>
+                        {% when 'CertiPUR-US Certified' %}
+                            <a data-toggle="tooltip" title="CertiPUR-US certified foams are: ✓ Made without ozone depleters. ✓ Made without PBDEs, TDCPP or TCEP (Tris) flame retardants. ✓ Made without mercury, lead, and other heavy metals. ✓ Made without formaldehyde."><img src="{{ 'certipur-badge.png' | asset_url}}" alt="CertiPUR-US Certified" style="max-width: 55px;"></a>
+                        {% when 'vegan' %}
+                            <a data-toggle="tooltip" title="100% Vegan, made without any animal based product like wool."><img src="{{ 'veganlogo.svg' | asset_url}}" alt="100% Vegan" style="max-width: 55px;"></a>
+                    {% endcase %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+<section class="warranties">
+    <h2 class="overlays-title">Try Our Mattresses Risk-Free</h2>
+    <div class="items row">
+        <div class="col-xs-4 col-sm-2">
+            <img src="https://brentwood-home-36.imgix.net/iconv2-1yearguarantee.svg" alt="1-year trial">
+            <p>1-Year<br>Trial</p>
+        </div>
+        <div class="col-xs-4 col-sm-2">
+            <img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Free Shipping and free return">
+            <p>Free Shipping<br>Free Return</p>
+        </div>
+        <div class="col-xs-4 col-sm-2">
+            <img src="https://brentwood-home.imgix.net/iconv2-madeincalifornia.svg" alt="Made in California">
+            <p>Made in<br>California</p>
+        </div>
+        <div class="col-xs-4 col-sm-2">
+            <img src="https://brentwood-home.imgix.net/iconv2-25yearwarranty.svg" alt="25-year warranty">
+            <p>25-year<br>Warranty</p>
+        </div>
+        <div class="col-xs-4 col-sm-2">
+            <img src="https://brentwood-home.imgix.net/iconv2-whiteglovedelivery.svg" alt="in-home delivery">
+            <p>In Home<br>Delivery*</p>
+        </div>
+        <div class="col-xs-4 col-sm-2">
+            <img src="https://brentwood-home.imgix.net/iconv2-0percent.svg" alt="0%APR financing available">
+            <p>0% APR<br>Available</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="row">
+        <div class="col-xs-12 col-md-7">
+            <p class="hidden-xs hidden-sm"><img src="{{ 'mattress-5zones.jpg' | asset_url }}" alt="5-zone coil system"></p>
+        </div>
+        <div class="col-xs-12 col-md-5">
+            <h2 class="text-left">Our hybrids use 5-zone individually wrapped coil systems</h2>
+            <p class="hidden-md hidden-lg"><img src="{{ 'mattress-5zones.jpg' | asset_url }}" alt="5-zone coil system"></p>
+            <p>Individually wrapped coils adjust independently to provide healthy spinal alignment, no matter what your sleep position. Each of our five specific comfort zones are uniquely positioned to support your back, hips and shoulders. Our coil system also provides the best edge support, so you can sleep or sit on the sides without slipping.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <h2 class="text-left">Sustainable materials meet total comfort</h2>
+            <p class="hidden-md hidden-lg"><img src="{{ 'cottonflower.jpg' | asset_url }}" alt="Cotton"></p>
+            <p>Our team of designers and product developers are always looking for the latest materials and technologies that are healthy for you, your family, and the environment.  We choose only certified non-toxic materials for all of our products. While safety is our first priority, that doesn’t mean we sacrifice comfort. You can rest easy knowing we use materials that are selected for their reliability and sleep comfort.</p>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <p class="hidden-xs hidden-sm"><img src="{{ 'cottonflower.jpg' | asset_url }}" alt="Cotton"></p>
+        </div>
+    </div>
+</section>
+<section class="boxsteps last">
+    <h2>The original pioneers of luxury-in-a-box</h2>
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div class="row">
+                <div class="col-xs-6">
+                    <p class="text-center"><img src="{{ 'icon-Unfold1.svg' | asset_url }}" alt="step 1"></p>
+                    <p class="text-center">Take mattress out of box and place onto your bed frame.</p>
+                </div>
+                <div class="col-xs-6">
+                    <p class="text-center"><img src="{{ 'icon-Unfold2.svg' | asset_url }}" alt="step 2"></p>
+                    <p class="text-center">Cut first layer of plastic to release mattress.
+                        Roll out mattress to cover bed frame.</p>
+                </div>
+                <div class="col-xs-6">
+                    <p class="text-center"><img src="{{ 'icon-Unfold3.svg' | asset_url }}" alt="step 3"></p>
+                    <p class="text-center">Cut second layer of plastic and remove.</p>
+                </div>
+                <div class="col-xs-6">
+                    <p class="text-center"><img src="{{ 'icon-Unfold4.svg' | asset_url }}" alt="step 4"></p>
+                    <p class="text-center">Your new Brentwood Home mattress will expand on its own. Enjoy!</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+           <h3 class="text-center">Watch how easy it is to open your mattress:</h3>
+            <div class="text-center videoWrapper">
+                <iframe src="https://player.vimeo.com/video/175424212" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <!--<video src="https://player.vimeo.com/external/175424212.hd.mp4?s=f0e7711b20a16ba4306826e1318122b938f20506&profile_id=119" width="640" height="360" frameborder="0" controls></video>-->
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    mixpanel.track(
+        "Mattress Collection",
+        );
+    /*$(document).ready(function () {
+        $(".product-col A").click(function () {
+            mixpanel.track("Click", { "name": "{{ product.title }}" });
+        });
+    });*/
+</script>

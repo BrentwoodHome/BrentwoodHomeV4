@@ -1,0 +1,84 @@
+{% comment %}
+When updating this page, update:
+email at https://brentwood-home.myshopify.com/admin/email_templates/order_confirmation/edit
+if line.title contains "Cedar Mattress" or line.title  contains "Ojai Mattress" or line.title  contains "Crystal Cove Mattress" 
+shipping page at https://brentwood-home.myshopify.com/admin/pages/73357635
+{% endcomment%}
+
+<style>
+    P.short-description.shippingtime{
+        border: 1px solid #aaa;
+        padding: 15px;
+        border-radius: 6px;
+        background-color: #FFFBF9;
+        margin: 20px 0 25px 0;
+    }
+</style>
+
+{% case product.title %}
+    {% when 'Cedar Mattress' %}
+        {%comment%}<p class="short-description shippingtime">Due to high demand, the handcrafting process for our <strong>{{ product.title }} King and Cal King is currently 5 to 10 business days</strong>.</p>{%endcomment%}
+    {% when 'Ojai Mattress' %}
+
+    {% when 'Crystal Cove Mattress' %}
+        {%comment%}<p class="short-description shippingtime">Due to high demand, the handcrafting process for our <strong>{{ product.title }} is currently 5 to 10 business days</strong>.</p>{%endcomment%}
+    {% else %}
+    
+{% endcase %}
+
+{% assign shipsfree = "5-7 days" %}
+{% case product.handle %}
+    {% when 'foundation' %}
+        {% assign shipsfree = "3-5 days" %}
+    {% when 'griffith-orthopedic-pet-bed' %}
+        {% assign shipsfree = "5-7 days" %}
+    {% when 'runyon-deluxe-orthopedic-pet-bed' %}
+        {% assign shipsfree = "5-7 days" %}
+    {% when 'oceano-mattress' %}
+        {% assign shipsfree = "3-5 days" %}
+    {% when 'ojai-mattress' %}
+        {% assign shipsfree = "3-5 days" %}
+    {% when 'crystal-cove-mattress' %}
+        {% assign shipsfree = "3-5 days" %}
+    {% when 'cedar-natural-luxe-mattress' %}
+        {% assign shipsfree = "3-5 days" %}
+    {% when 'cypress-bamboo-gel-mattress' %}
+        {% assign shipsfree = "3-5 days" %}
+    {% when 'crystal-cove-yoga-bolster' %}
+        {% assign shipsfree = "3-5 days" %}
+    {% when 'crystal-cove-pranayama-bolster' %}
+        {% assign shipsfree = "3-5 days" %}
+    {% when 'crystal-cove-meditation-pillow' %}
+        {% assign shipsfree = "3-5 days" %}
+    {% when 'crystal-cove-bundle' %}
+        {% assign shipsfree = "3-5 days" %}
+    {% when 'beachwood-linen-quilt' %}
+        {% assign shipsfree = "2-3 weeks" %}
+{% endcase %}
+
+
+
+{% comment %}
+
+{% case product.type %}
+    {% when 'Pet Bed' %}
+        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>5 to 10 business days</strong>.</p>
+    {% when 'Wedge Pillow' %}
+        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>5 to 10 business days</strong>.</p>
+    {% when 'Pillow' %}
+        {% case product.title %}
+            {% when 'Crystal Cove Activated Charcoal Pillow' %}
+                <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>10 to 14 business days</strong>.</p>
+            {% else %}
+                <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>5 to 10 business days</strong>.</p>
+        {% endcase %}
+    {% when 'Crib Mattress' %}
+        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>5 to 10 business days</strong>.</p>
+    {% when 'Changing Pads' %}
+        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>5 to 10 business days</strong>.</p>
+    {% when 'Lounger' %}
+        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>5 to 10 business days</strong>.</p>
+{% endcase %}
+
+
+{% endcomment %}

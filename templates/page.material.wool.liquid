@@ -1,0 +1,58 @@
+
+<div class="standardPages">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="text-center">New Zealand Wool</h1>
+            <img src="{{ 'raw-wool.jpg' | asset_url }}" alt="wool">
+        </div>
+        <div class="col-xs-12 col-md-8 col-md-offset-2 description">
+            <p class="quote">Wool is a natural fiber known for its ability to wick away moisture and regulate body temperature, keeping you cool in the summer and warm in the winter.</p>
+        </div>
+
+    </div> 
+    <div class="row">
+        <!-- Left Column -->
+        <div id="where" >
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="col-left-block-material" style="">
+                    <p class="text-center"><img src="{{'material-pin.png'|asset_url}}" alt=""></p>
+                    <h2>Where we get it</h2>
+                    <h3>New Zealand</h3>
+                    <p class="text-left">We get the wool for our liners from sheep in New Zealand, where their coats provide insulation during harsh winters and stay cool and breathable during the hot summer. 
+                    </p>
+                    <p class="text-center"><img src="{{'material-map-new-zealand.png'|asset_url}}" alt="New Zealand"></p>
+                </div> 
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-lg-9 col-md-9 col-sm-9 right-pane">
+            <h2>The material</h2>
+            <p>Wool is a completely natural, sustainable, and biodegradable material that’s collected by shearing sheep to relieve them of their winter fleece. Because they produce new coats each year, wool is a renewable fiber, and it can decompose in soil in a matter of years when it’s disposed of. Besides its many environmental benefits, wool has excellent abilities in moderating body heat in clothes and bedding for a comfortable feel in all seasons.</p>
+            <p><img src="{{'materials_wool.jpg'|asset_url}}" alt="wool"></p>
+
+            <h2>Why we use it</h2>
+            <p>New Zealand wool keeps you comfortable no matter the weather thanks to its ability to regulate temperature. It’s also naturally antimicrobial, repelling moisture from the inner layers of your mattress to keep it fresh and odor free. It also has a chemical structure that makes it naturally fire resistant, contributing to our dedication not to use any chemical flame retardants. We love the many benefits of wool so much that we choose to use it as a liner in all of our mattresses.</p>
+
+            <h2>Where we use it</h2>
+            <div class="where-we-use-products">
+                <div class="col-xs-12 col-md-4">
+                    <p><a href="/products/cedar-mattress" title="Cedar Mattress"><img src="https://brentwood-home.imgix.net/cedar-front-modelfree.jpg?w=480&fit=crop&auto=format&q=75" alt=""></a></p>
+                    <p><a href="/products/cedar-mattress" title="Cedar Mattress"><h3>Cedar Mattress</h3></a></p>
+                    <p>Made with only the finest natural and organic materials: eco-INSTITUT® certified natural latex, OEKO-TEX® certified wool, a flaxseed fiber pad, and GOTS® certified organic cotton.</p>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <p><a href="/products/crystal-cove-mattress" title="Crystal Cove Mattress"><img src="https://s3-brentwoodhome.imgix.net/crystalcove-compare.jpg?w=480&fit=crop&auto=format&q=75" alt=""></a></p>
+                    <p><a href="/products/crystal-cove-mattress" title="Crystal Cove Mattress"><h3>Crystal Cove Mattress</h3></a></p>
+                    <p>The Crystal Cove Mattress is an innovative dual-sided hybrid mattress specifically designed to promote therapeutic recovery and deep, restorative sleep.</p>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <p class="text-center" style="margin: 40px 0;"><a href="/pages/materials" title="Back to materials" class="btn">Back to materials</a></p>
+</div>       
+<script>
+    mixpanel.track("Materials Page", {
+        "name": "{{ page_title | handle }}"
+    });
+</script> 

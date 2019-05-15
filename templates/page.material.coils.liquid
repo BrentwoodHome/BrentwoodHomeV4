@@ -1,0 +1,84 @@
+{% assign cedar = all_products['cedar-mattress'] %}
+{% assign oceano = all_products['oceano-mattress'] %}
+{% assign ojai = all_products['ojai-mattress'] %}
+<div class="standardPages">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="text-center">Coils</h1>
+        </div>
+        <div class="col-xs-12 col-md-8 col-md-offset-2 description">
+            <p class="quote">Heat-treated and stress-relieved coils provide long-lasting, responsive support in the strategically positioned zones of our base coils and individually wrapped micro-coils.</p>
+        </div>
+
+    </div> 
+    <div class="row">
+        <!-- Left Column -->
+        <div id="where" >
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="col-left-block-material" style="">
+                    <p class="text-center"><img src="{{'material-pin.png'|asset_url}}" alt=""></p>
+                    <h2>Where we get it</h2>
+                    <h3>South Gate, CA</h3>
+                    <p class="text-left">Our coils are sourced from Leggett & Platt’s facility in South Gate, CA. We stand by this company for their 125 years of experience, and for their <a href="http://www.leggettgreen.com/" target="_blank" title="eco initiative">eco initiative</a> that’s committed to “reducing the use and consumption of valuable resources.”
+                    </p>
+                    <p class="text-center"><img src="{{'material-map-southgate.png'|asset_url}}" alt="California"></p>
+                </div> 
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-lg-9 col-md-9 col-sm-9 right-pane">
+            <h2>The material</h2>
+            <p>The coils we use in our spring and hybrid mattresses feature durable steel wires that are heat-treated and stress-relieved, holding their shape for an even and responsive sleep surface. We use the Combi-Zone® unit as the base in our Spring collection mattresses, which has 5 strategically positioned zones to properly support your hips, back, and shoulders. Coils are individually wrapped, which means they move one at a time instead of in large sections like an older spring mattress might. This provides more direct support, isolating motion and reducing partner disturbance.</p>
+            <p><img src="{{'materials_coils.jpg'|asset_url}}" alt="Coils"></p>
+
+            <h2>Why we use it</h2>
+            <p>Spring coils have been used in mattresses for decades, serving those who are looking for a traditional mattress feel. Encasing coils individually and thoughtfully placing in 5 zones improve this classic experience, giving distinct and precise support to different parts of the body. The Combi-Zone® base we choose complies with the supplier’s eco initiative, which focuses on conservation of resources, recyling and reusing, and efficient use of renewable energy sources.</p>
+
+            <h2>Where we use it</h2>
+            <div class="where-we-use-products">
+                <div class="col-xs-12 col-md-4">
+                    <a href="{{ cedar.url }}" class="product-grid-image" title="{{cedar.title}}">
+                        <picture>
+                            <source media="(min-width: 768px)" srcset="https://brentwood-home.imgix.net/cedar-front-modelfree.jpg?w=360&fit=crop&auto=format&q=75">
+
+                            <source media="(min-width: 320px)" srcset="https://brentwood-home.imgix.net/cedar-front-modelfree.jpg?w=414&fit=crop&auto=format&q=40&dpr=2">
+                            <img src="https://brentwood-home.imgix.net/cedar-front-modelfree.jpg?w=752&fit=crop&auto=format&q=75" alt="">
+                        </picture>
+                    </a>
+                    <p><a href="{{ cedar.url }}" title="{{cedar.title}}"><h3>{{cedar.title}}</h3></a></p>
+                    <p>Made with eco-friendly and organic materials, our Cedar mattress is the answer to your search for all natural comfort.</p>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <a href="{{ oceano.url }}" class="product-grid-image" title="">
+                        <picture>
+                            <source media="(min-width: 768px)" srcset="https://brentwood-home.imgix.net/oceano-front-modelfree.jpg?w=360&fit=crop&auto=format&q=75">
+                            <source media="(max-width: 320px)" srcset="https://brentwood-home.imgix.net/oceano-front-modelfree.jpg?w=414&fit=crop&auto=format&q=40&dpr=2">
+                            <img src="https://brentwood-home.imgix.net/oceano-front-modelfree.jpg?w=752&fit=crop&auto=format&q=75" alt="">
+                        </picture>
+                    </a>
+                    <p><a href="{{ oceano.url }}" title="{{oceano.title}}"><h3>{{oceano.title}}</h3></a></p>
+                    <p>The Oceano is where traditional craftsmanship meets new sleep technology for endless nights of luxury comfort.</p>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <a href="{{ ojai.url }}" class="product-grid-image" title="">
+                        <picture>
+                            <source media="(min-width: 768px)" srcset="https://brentwood-home.imgix.net/ojai-front-modelfree.jpg?w=360&fit=crop&auto=format&q=75">
+
+                            <source media="(min-width: 320px)" srcset="https://brentwood-home.imgix.net/ojai-front-modelfree.jpg?w=414&fit=crop&auto=format&q=40&dpr=2">
+                            <img src="https://brentwood-home.imgix.net/ojai-front-modelfree.jpg?w=752&fit=crop&auto=format&q=75" alt="">
+                        </picture>
+                    </a>
+                    <p><a href="{{ ojai.url }}" title="{{ojai.title}}"><h3>{{ojai.title}}</h3></a></p>
+                    <p>A combination of detailed craftsmanship and premium quality materials make the Ojai your foundation for everyday comfort.</p>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <p class="text-center" style="margin: 40px 0;"><a href="/pages/materials" title="Back to materials" class="btn">Back to materials</a></p>
+</div>        
+<script>
+    mixpanel.track("Materials Page", {
+        "name": "{{ page_title | handle }}"
+    });
+</script>

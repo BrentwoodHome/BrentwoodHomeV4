@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+    <head>
+        <!-- Start Visual Website Optimizer Asynchronous Code -->
+        <script type='text/javascript'>
+            var _vwo_code=(function(){
+                var account_id=350881,
+                    settings_tolerance=2000,
+                    library_tolerance=2500,
+                    use_existing_jquery=false,
+                    /* DO NOT EDIT BELOW THIS LINE */
+                    f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+        </script>
+        <!-- End Visual Website Optimizer Asynchronous Code -->
+        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+
+        <title>{{ page_title }}</title>
+
+        {{ content_for_header }}
+
+        {{ checkout_stylesheets }}
+        {{ checkout_scripts }}
+
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                                                              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                                    })(window,document,'script','dataLayer','GTM-NWLPSV');</script>
+        <!-- End Google Tag Manager -->
+
+        <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+        for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+        mixpanel.init("b2d0db1e54496b9a137db682bd10295a");</script><!-- end Mixpanel -->
+
+
+        
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/x-icon" />
+        <style>
+            .shopify-preview-bar { display: none; }
+        </style>
+    </head>
+    <body id="checkout-{{ page_title | handle }}">
+        {{ skip_to_content_link }}
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NWLPSV"
+                          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+
+        {% include 'nowtime' %}
+        {% if rightnowint > 201802150001 and rightnowint < 201802262359 %}
+                                                                       <div id="sitewidesalebanner" class="freepacificajune2017">
+        Treat yourself today. 15% off sitewide with code <strong>PRES15</strong> at checkout.
+        </div>
+    {% endif %}
+    <div class="banner" data-header>
+        <div class="wrap">
+            {{ content_for_logo }}
+        </div>
+    </div>
+
+    {{ order_summary_toggle }}
+
+    <div class="content" data-content>
+        <div class="wrap">
+
+            <div class="main" role="main">
+                <div class="main__header">
+                    {{ content_for_logo }}
+                    {{ breadcrumb }}
+                    {{ alternative_payment_methods }}
+                </div>
+                <div class="main__content">
+                    {{ content_for_layout }}
+                </div>
+                <div class="main__footer">
+                    {{ content_for_footer }}
+                </div>
+            </div>
+            <div class="sidebar" role="complementary">
+                <div class="sidebar__header">
+                    {{ content_for_logo }}
+                </div>
+                <div class="sidebar__content">
+                    {{ content_for_order_summary }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <span id="extole-zone-confirmation"></span>
+    {{ tracking_code }}
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script> 
+
+
+    <!-- MIXPANEL -->
+    <script>
+        //saves the last step in a session variable to avoid duplicate order complete events everytime someone checks the status of their order
+        if (Shopify.Checkout.step == 'payment_method'){
+            sessionStorage.setItem("followedSteps","complete");
+        }
+
+        if(typeof Shopify.checkout != 'undefined'){
+            var firstName = Shopify.checkout['billing_address']['first_name'];
+            var lastName = Shopify.checkout['billing_address']['last_name'];
+        }
+
+        //console.log ("Shopify.first_name: "+Shopify.checkout['billing_address']['first_name']);
+        //console.log ("Shopify.last_name: "+Shopify.checkout['billing_address']['last_name']);
+        console.log("current step:", Shopify.Checkout.step);
+        console.log("session storage:", sessionStorage.getItem("followedSteps"));
+
+        mixpanel.identify({{ attributes.mixpanel_id }});
+        mixpanel.people.set({
+            "$name": ""+firstName+" "+lastName+"",
+            "First Name": ""+firstName+"",
+            "Last Name": ""+lastName+"",
+            "$email": "{{ checkout.email }}",
+            "$marketing": "{{checkout.buyer_accepts_marketing}}",
+            "last_updated": new Date(),
+            "Order Num": "{{order_name|handleize}}"
+        });
+
+        if(Shopify.Checkout.step == 'thank_you' && sessionStorage.getItem("followedSteps") == null){
+            mixpanel.track("Checked Order Status");
+            console.log("3:", {{ checkout.discounts_amount | money_without_currency }});
+            console.log("4:", {% for discount in checkout.discounts %}"{{ discount.code }}: {{ discount.amount | money }}"{% endfor %});
+            console.log("5:", {{ checkout.total_price | money_without_currency }});
+            console.log("order_name:", {{order_name|handleize}});
+            console.log("order.customer:", {{ order_customer }});
+            //console.log("order.order_number:", {{ order.order_number }});
+        }
+
+        if (Shopify.Checkout.step == 'thank_you' && sessionStorage.getItem("followedSteps") == "complete"){
+            //We are on the thank you page after order is complete, do not track thank you email status check
+            //sessionStorage.clear(); 
+            sessionStorage.removeItem("followedSteps"); //delete session to avoid double display of checkout in mixpanel
+            /*mixpanel.track("Order Completed",
+                               { "Order Total": "{{ checkout.total_price | money_without_currency }}",
+                                "Ordered Items": [{% for item in checkout.line_items %}'{{ item.product.title }}',{% endfor %}],
+                                "Discount": "{% for discount in checkout.discounts %}{{discount.code}} {%endfor%}",
+                               });
+
+               mixpanel.people.track_charge({{ checkout.total_price | money_without_currency }});*/
+
+            /*console.log("3:", {{ checkout.discounts_amount | money_without_currency }});
+               console.log("4:", {% for discount in checkout.discounts %}"{{ discount.code }}: {{ discount.amount | money }}"{% endfor %});
+                console.log("5:", {{ checkout.total_price | money_without_currency }});
+               console.log("order_name:", {{order_name|handleize}});
+               console.log("order.customer:", {{ order_customer }});*/
+            //console.log("order.order_number:", {{ order.order_number }});
+
+            //pinterest
+            pintrk('track', 'checkout');
+
+        }else{
+            //Tracking checkout steps
+            mixpanel.identify({{ attributes.mixpanel_id }});
+            var current_step = Shopify.Checkout.step;
+            switch(current_step){
+                case "contact_information":
+                    mixpanel.track("CkOut Contact Info");
+
+                    break;
+                case "shipping_method":
+                    mixpanel.track("CkOut Shipping");
+                    break;
+                case "payment_method":
+                    mixpanel.track("CkOut Pay Info");
+
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+    </body>
+</html>

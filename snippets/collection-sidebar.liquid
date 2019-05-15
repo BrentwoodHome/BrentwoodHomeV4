@@ -1,0 +1,37 @@
+<div class="col-lg-12 col-left" id="filter-sidebar">
+ {%comment%}
+  {% if settings.display_sidebar_categories %}
+  <div class="widget sidebar-links">
+    <div class="block-title"><span>{{ settings.sidebar_categories_title }}</span></div>
+    <div class="widget-content">
+      <ul>
+        {% if settings.style_categories == 'style_show_all' %}
+        {% for category in collections %}
+        <li><a href="{{ category.url }}" {% if collection.handle == category.handle %} class="active" {% endif %}>{{ category.title }}</a></li>
+        {% endfor %}
+        {% else %}
+
+        {% assign items = settings.categories_items | split:"," | strip | downcase %}
+        {% for category in collections %}
+        {% assign cat = category.title | downcase %}
+        {% if items contains cat %}
+        <li><a href="{{ category.url }}" {% if collection.handle == category.handle %} class="active" {% endif %}>{{ category.title }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+  {% endif %}
+  {%endcomment%}
+  {% include 'collection-sidebar-shop-by-blocks' %}
+
+  {% if settings.enable_block_left_images %}
+  <div class="block-left">
+    <img src="{{ 'images-block-left.jpg' | asset_url }}" alt="" />
+    {% if settings.content_block_left != blank %}
+    <div class="block-left-content">{{ settings.content_block_left }}</div>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>

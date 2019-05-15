@@ -1,0 +1,48 @@
+{% comment %}
+
+  MailChimp is the go-to newsletter service for Shopify.
+  Use the link below to find your MailChimp "form action"
+  and insert it in your site settings.
+
+  MailChimp newsletter integration and requirement:
+   - http://docs.shopify.com/support/configuration/store-customization/where-do-i-get-my-mailchimp-form-action
+
+
+Stay in the know about promotions, product launches, and cozy home inspiration from Brentwood Home.
+
+Uncomment form below to use with Customize theme admin
+{% endcomment %}
+<form action="{{ settings.mailing_list_form_action }}" method="post" name="mc-embedded-subscribe-form" class="newsletter-footer input-group">
+    <input type="hidden" name="MERGE1" id="MERGE1" class="form-textbox" size="10" value="customer" data-component="first" />  
+    <input type="hidden" name="MERGE2" id="MERGE2" class="form-textbox" size="15" value="customer" data-component="last" />
+    <input type="hidden" name="MERGE3" id="MERGE3" size="5" value="00000" data-component="textbox" />
+    <input type="email" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" required data-validation-required-message="Please enter your email address." placeholder="E-MAIL"  class="input-group-field" value="Enter your email address" data-component="email" onclick="this.value=='Enter your email address'?this.value='':''" onblur="this.value==''?this.value='Enter your email address':''" /> 
+  <span class="input-group-btn">
+    <input type="submit" class="btn" value="Subscribe" name="subscribe">
+  </span>
+</form>
+
+{% comment %}
+<!-- Listrak Form -->
+<form method="post" action="https://customers.listrak.com/q/9kN2o8wKG-MxyYvMOs72l5MfjtWWKrzbaN" accept-charset="UTF-8" name="mc-embedded-subscribe-form" class="newsletter-footer input-group">
+    <input type="hidden" name="CheckBox.Source.Modal" value="off"/>
+    <input type="hidden" name="crvs" value="74GsZxDLnP1KV4uRp9xzEUyugmNAlaO-LCU3p8IRqILeTjpFfOxHpluQFnTiOVhybK_sqr-dbT7KyqlW7tvCC5GW-9plkPfq1KbhYSHDx23Zwz7fCxKJjGwHMcPBNfmihGACJj4QteZrxPgXURYvpQ">
+    <input type="email"  name="email" class="input-group-field" value="Enter your email for special offers" onclick="this.value=='Enter your email address'?this.value='':''" onblur="this.value==''?this.value='Enter your email address':''">
+    <!-- These next 3 fields are for system use, please do not remove -->
+    <input type="text" name="NameF" size="10" maxlength="10" value="" tabindex="-1" autocomplete="off" style="float: left !important; position:absolute !important; left:-9000px !important; top: -9000px !important;"/>
+    <input type="text" name="NameL" size="10" maxlength="10" value="" tabindex="-1" autocomplete="off" style="float: left !important; position:absolute !important; left:-9000px !important; top: -9000px !important;"/>
+    <input type="text" name="Comment" size="10" maxlength="10" value="" tabindex="-1" autocomplete="off" style="float: left !important; position:absolute !important; left:-9000px !important; top: -9000px !important;"/>
+    <span class="input-group-btn">
+        <input type="submit" class="btn" value="Subscribe" name="subscribe">
+    </span>
+</form>
+{% endcomment %}
+
+<!-- Listrak Form OLD
+<form method="post" action="http://enews.brentwoodhome.com/q/kczanMtlJbex66AePvGBYQeO9nAyK3_ofz" accept-charset="UTF-8" name="mc-embedded-subscribe-form" target="_blank" class="newsletter-footer input-group">
+    <input type="hidden" name="crvs" value="Wn_yJB4d3_xJRiIQPcJO66Ph9MKFYCLkUOKQ6v2YxHZlp0uEn0v6PXK2pXqwOE68NtY21UV8LWuZ5rvAJwMzODBxnsmJQyPXdqCLbCVinlQ9TgMOsdcEIXqG2K5bgjGx4Zrdg9P941vyp6zINnlv2g"/>
+    <input type="email"  name="email" class="input-group-field" value="Enter your email address" onclick="this.value=='Enter your email address'?this.value='':''" onblur="this.value==''?this.value='Enter your email address':''">
+    <span class="input-group-btn">
+        <input type="submit" class="btn" value="Subscribe" name="subscribe">
+    </span>
+</form>-->

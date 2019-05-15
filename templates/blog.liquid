@@ -1,0 +1,139 @@
+{% comment %}
+  Loop through a defined number of articles with the 'paginate' tag.
+  Don't forget to close the tag after your loop.
+{% endcomment %}
+
+{% paginate blog.articles by 9 %}
+
+{% comment %}
+  This template is also used for listing out articles of a specific tag.
+  You can change layouts or styles by checking if current_tags is true.
+{% endcomment %}
+
+<div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <h1 class="bhdarkgrey"></h1>
+    </div>
+</div>
+
+<div class="row articleRows">
+  <!-- Begin sidebar -->
+  {%comment%}{% include 'blog_sidebar' %}{%endcomment%}
+  <!-- End sidebar -->
+
+{% for article in blog.articles %}
+    {% if paginate.current_page == 1 %}
+        {% if forloop.first == true %}
+            {%comment%}Hero article{%endcomment%}
+            <div class="col-xs-12 blog-article clearfix latest">
+                <div class="gradient">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12">
+                            <!--<a href="{{ article.url }}" class="excerpt-img">{{ article.excerpt}}</a>-->
+                            {% if article.image %}
+                                {% assign imgName = article.image.src | remove: 'articles/' | split:'?' | first %}
+                                <a href="{{ article.url }}" class="excerpt-img">
+                                    <picture>
+                                        <source media="(max-width: 767px)" srcset="https://brentwood-home-blog.imgix.net/{{ imgName }}?fit=crop&w=555&ch=Width,DPR&q=55">
+                                        <source media="(min-width: 768px)" srcset="https://brentwood-home-blog.imgix.net/{{ imgName }}?fit=crop&w=1140&max-h=428">
+                                        <img src="https://brentwood-home-blog.imgix.net/{{ imgName }}?fit=crop&w=1140&max-h=428" alt="{{ article.title }}">
+                                    </picture>
+                                </a>
+                            {% endif %}
+                            <div class="row flex">
+                                <div class="col-xs-12 col-md-8">
+                                    <div class="heroArticleCopy">
+                                        <div class="content">
+                                            <p class="blog_author">
+                                                Posted <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time> | by {{ article.author}}
+                                            </p>
+                                            <h2 class="text-left"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+                                            <p>{{ article.content | strip_html | truncatewords: 18 }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-4 flexV">
+                                    <div><p class="read-more vFlex"><a href="{{ article.url }}">Continue Reading</a></p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% elsif forloop.index == 2 or forloop.index == 3 %}
+            <div class="col-xs-12 col-sm-6 blog-article second-row">
+                <div class="">
+                    {% if article.image %}
+                        {% assign imgName = article.image.src | remove: 'articles/' | split:'?' | first %}
+                        <a href="{{ article.url }}" class="excerpt-img" title="{{ article.title }}">
+                            <picture>
+                                <source media="(max-width: 767px)" srcset="https://brentwood-home-blog.imgix.net/{{ imgName }}?fit=crop&w=555&ch=Width,DPR&q=55">
+                                <source media="(min-width: 768px)" srcset="https://brentwood-home-blog.imgix.net/{{ imgName }}?fit=crop&w=555&max-h=320">
+                                <img src="https://brentwood-home-blog.imgix.net/{{ imgName }}?fit=crop&w=555&max-h=320" alt="{{ article.title }}">
+                            </picture>
+                        </a>
+                    {% endif %}
+                    <p class="blog_author text-center">
+                        Posted <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time> | by {{ article.author}}
+                    </p>
+                    <h2 class="text-center"><a href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a></h2>
+                    <p class="text-center">{{ article.content | strip_html | truncate: 180 }}</p>
+                    <p class="read-more text-center"><a href="{{ article.url }}">Continue Reading</a></p>
+                </div>
+            </div>
+            {% if forloop.index == 3 %}
+                <div class="clearfix">&nbsp;</div>
+                <hr class="margTB50" style="clear: both;margin-top:0;">
+            {% endif %}
+        {% else %}
+        {%comment%}Lower home page articles{%endcomment%}
+            <div class="col-xs-12 col-sm-6 col-md-4 blog-article">
+                {% if article.image %}
+                {% assign imgName = article.image.src | remove: 'articles/' | split:'?' | first %}
+                <a href="{{ article.url }}" class="excerpt-img">
+                    <picture>
+                        <source media="(max-width: 767px)" srcset="https://brentwood-home-blog.imgix.net/{{ imgName }}?fit=crop&w=555&ch=Width,DPR&q=55">
+                        <source media="(min-width: 768px)" srcset="https://brentwood-home-blog.imgix.net/{{ imgName }}?fit=crop&w=360">
+                        <img src="https://brentwood-home-blog.imgix.net/{{ imgName }}?fit=crop&w=360" alt="{{ article.title }}">
+                    </picture>
+                </a>
+                {% endif %}
+                <p class="blog_author text-center">
+                    Posted <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time> | by {{ article.author}}
+                </p>
+                <h2><a href="{{ article.url }}">{{ article.title | strip_html | truncate: 55 }}</a></h2>
+                <div class="content">
+                    <p class="text-center">{{ article.content | strip_html | truncate: 180 }}</p>
+                    <p class="read-more text-center"><a href="{{ article.url }}">Continue Reading</a></p>
+                </div>
+            </div>
+            {%comment%}End page 1{%endcomment%}
+        {% endif %}
+    {% else %}
+       {%comment%}Page 2 and up{%endcomment%}
+        <div class="col-xs-12 col-sm-6 col-md-4 blog-article">
+            {% if article.image %}
+            {% assign imgName = article.image.src | remove: 'articles/' | split:'?' | first %}
+            <a href="{{ article.url }}" class="excerpt-img">
+                <img src="https://brentwood-home-blog.imgix.net/{{ imgName }}?fit=crop&w=360" alt="{{ article.title }}">
+            </a>
+            {% endif %}
+            <p class="blog_author text-center">
+                Posted <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time> | by {{ article.author}}
+            </p>
+            <h2><a href="{{ article.url }}">{{ article.title | strip_html | truncate: 55 }}</a></h2>
+            <div class="">
+                <p class="text-center">{{ article.content | strip_html | truncate: 180 }}</p>
+                <p class="read-more text-center"><a href="{{ article.url }}">Continue Reading</a></p>
+            </div>
+        </div>
+    {% endif %}
+{%endfor%}
+
+</div>
+{% if paginate.pages > 1 %}
+<div class="text-center">
+    {% include 'pagination' %}
+</div>
+{% endif %}
+{% endpaginate %}

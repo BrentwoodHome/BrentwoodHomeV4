@@ -1,0 +1,30 @@
+{% if settings.enable_footer_Top %}
+	<div class="images">
+        {{ 'logo_footer_top.png' | asset_url | img_tag }}
+    </div>
+	
+    <div class="icon">
+      {{ 'footer_icon_top.png' | asset_url | img_tag }}
+    </div>
+    
+	{% if settings.footer_top_content != blank %}
+		<div class="content">
+             {{ settings.footer_top_content }}
+        </div>
+    {% endif %}
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,134 @@
+{% assign productTags = product.tags | join:',' %}
+{% assign delayTime = 200 | times : forloop.index %}
+{% if settings.collection_results_per_row != blank and settings.collection_results_per_row != '5' %}
+{% assign product_grid = 12 | divided_by: settings.collection_results_per_row %}
+{% assign columns = 12 | divided_by: product_grid %}
+{% assign lable_sale = false %}
+{% if product.compare_at_price_min > product.price_min %}
+  {% assign lable_sale = true %}
+{% endif %}
+
+<div class="grid-item product-item col-xs-12 col-sm-6 col-md-4 col-lg-4" id="product-{{ product.id }}">
+{% else %}
+<div class="grid-item product-item " id="product-{{ product.id }}">
+{% endif %}
+  {% comment %}
+    Link to your product with the 'within: collection' filter for the link to be aware of the collection.
+    This allows you to create collection-based navigation on the product page.
+
+    Results of using 'within: collection':
+    - Instead of a URL with /products/product-handle
+      you would get /collections/collection-handle/products/product-handle
+
+    For more info on navigation within a collection
+      - http://docs.shopify.com/support/your-store/collections/how-to-navigate-within-a-collection
+  {% endcomment %}
+    <div class="product-wrapper">
+        <div class="product-image" style="min-height: 275px;">
+          {% if lable_sale or lable_out %}
+            <div class="product-label">
+              {% if lable_sale %}
+                {% if product.tags contains 'preorder' %}
+                    <span>Pre-Order</span>
+                {%else%}
+                      <span>Sale</span>
+                {%endif%}
+              {% endif %}
+              {% if lable_out %}
+              <span>out of stock</span>
+              {% endif %}
+            </div>
+          {% endif %}
+          <a href="{{ product.url }}" class="product-grid-image">
+            <img src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+            {% if settings.product_image_hover %}
+              <span class="product-image-hover" data-idproduct="{{ product.id }}">
+                  {% for image in product.images %}
+                      {% if forloop.first != true %}
+                          <img alt="{{ product.title | truncate: 4}}" src="{{ image.src | product_img_url: 'large' }}">
+                          {% break %}
+                      {% endif %}
+                  {% endfor %}
+              </span>
+           {% endif %}
+          </a>
+          {% if settings.enable_quick_view %}
+            <div class="sca-qv-button-wrap">
+              <a class="sca-qv-button" handle="{{product.handle}}" href="#sca-qv-showqv" style=""></a>
+            </div>
+            {% endif %}
+        </div>
+        <div class="product-bottom">
+        <h2><a class="" href="{{ product.url }}">{{ product.title }}</a></h2>
+
+            {% if product.metafields.bhsite.mattressfeel %}<p class="feel-description">{{product.metafields.bhsite.mattressfeel}}</p>{% endif %}
+
+
+
+
+       <div style="height:25px" class="yotpo bottomLine"
+             data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
+             data-domain="{{ shop.permanent_domain | escape }}"
+             data-product-id="{{ product.id }}"
+             data-product-models="{{ product.id }}"
+             data-name="{{ product.title | escape }}"
+             data-url="{{ shop.url }}{{ product.url }}">
+        </div>
+
+
+
+        {% if settings.display_product_reviews %}
+<!--        <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>-->
+        {% endif %}
+         <div class="price-box">
+{% comment %}
+          {% if lable_sale %}
+             <p class="regular-product"></p>
+          {% else %}
+          <p class="regular-product">
+            
+              You can show a leading 'from' or 'up to' by checking 'product.price_varies'
+              if your variants have different prices.
+            
+
+             </p>
+          {% endif %}
+{% endcomment %}
+             
+             {% if productTags contains 'amazon' %}
+             <a class="cta2 solid text-center" href="{{ product.url }}">
+                     SEE IT
+                 </a>
+             {%else%}
+             <a class="cta2 solid text-center" href="{{ product.url }}">
+                     {% if product.price_varies %}from{% endif %} {{ product.price | money }}
+                 </a>
+             {%endif%}
+           
+            
+        </div>
+        {%comment%}
+        <div class="product-button">
+          <div class="action">
+            {% assign variantCount = product.variants | size %}
+            <form action="/cart/add" method="post" class="variants" id="product-actions-{{ product.id }}" enctype="multipart/form-data" style="padding:0px;">
+              {% if sold_out %}
+              <input class="btn add-to-cart-btn" type="submit" value="Unavailable" disabled="disabled" />
+              {% else %}
+              {% if variantCount > 1 %}
+              <input class="btn add-to-cart-btn" type="button" onclick="window.location.href='{{product.url}}'" value="Select" />
+              {% else %}
+              <input type="hidden" name="id" value="{{ product.variants[0].id }}" />
+              <input class="btn add-to-cart-btn" type="submit" value="Add to Cart" />
+              {% endif %}
+              {% endif %}
+            </form>
+          </div>
+          <div class="add-to-link">
+            {% include 'wishlist-product' %}
+          </div>
+        </div>
+        {%endcomment%}
+      </div>
+    </div>
+</div>

@@ -1,0 +1,326 @@
+<style>
+    .template-page .standardPages h2, .template-page .standardPages h3{
+        text-align: left;
+    }
+    .standardPages>.row{
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+    .template-page .standardPages h2{
+        margin-top: 0;
+    }
+    I.fa.affirm{
+        color: #00c9e5;
+    }
+    UL LI{
+        line-height: 40px;
+    }
+    OL LI{
+        line-height: 27px;
+        padding-bottom: 10px;
+    }
+    strong{
+        color: #666;
+    }
+    .text-small{
+        line-height: 20px !important;
+    }
+    .underline{
+        text-decoration: underline;
+    }
+    .underline:HOVER{
+        text-decoration: none;
+    }
+    .flexV div{
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    /* The hero image */
+    .hero-image {
+        /* The image used */
+        background-image: url("https://s3-brentwoodhome.imgix.net/pagehero-sustainability.jpg?w=1920&gam=16");
+
+        /* Set a specific height */
+        height: 62vh;
+
+        /* Position and center the image to scale nicely on all screens */
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+
+    /* Place text in the middle of the image */
+    .hero-text {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 30%;
+        transform: translate(-20%, -50%);
+        color: white;
+    }
+    .hero-text H1{
+        color: white;
+        font-size: 70px !important;
+        margin-bottom: 20px !important;
+    }
+    .hero-text H3{
+        color: white;
+        font-size: 20px !important;
+        font-style: normal !important;
+    }
+    H2.sectiontitle{
+        text-align: center !important;
+        font-size: 36px;
+    }
+    Div.quote h2{
+        font-size: 24px !important;
+        font-style: italic !important;
+        text-align: center !important;
+        line-height: 40px;
+        font-weight: 700;
+        margin-bottom: 15px !important;
+    }
+    Div.quote{
+        font-size: 24px;
+        font-style: italic;
+        text-align: center !important;
+        margin: 0px 0 0 0;
+    }
+    Div.quote P{
+        font-style: italic;
+    }
+    .missionLogos{
+        margin: 20px 0 50px;
+    }
+    .margTBLarge{
+        margin-top: 120px;
+        margin-bottom: 120px;
+    }
+    .sectionHighlight{
+        background-color: #F9F4F4;
+        padding: 150px 0;
+    }
+    P.reliefLogo IMG{
+        max-width: 80%;
+    }
+    /*.container.section{
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .container.section.margTBLarge{
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }*/
+    @media screen and (max-width:768px) {
+        .flex{
+            display: block;
+        }
+        .hero-text {
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 20%;
+            transform: translate(-10%, -50%);
+            color: white;
+        }
+        .hero-text H1{
+            color: white;
+            font-size: 36px !important;
+            margin-bottom: 20px !important;
+        }
+        .standardPages>.row{
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .template-page .standardPages .section h2{
+            margin-top: 40px;
+        }
+        .margTBLarge{
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+        .breadcrumb-wrap{
+            display: none;
+        }
+        .sectionHighlight{
+            margin-top: 40px;
+            margin-bottom: 40px;
+            padding: 60px 0;
+        }
+        .hero-image{
+            height: 42vh;
+        }
+        P.reliefLogo IMG{
+            max-width: 40%;
+            margin: 20px auto;
+        }
+    }
+</style>
+
+<div class="rte standardPages">
+    <div class="hero-image">
+        <div class="hero-text">
+            <h1 class="">Sustainability Certifications & Partnerships</h1>
+        </div>
+    </div>
+
+    <div class="container section margTBLarge">
+        <div class="row">
+            <div class="col-xs-12 col-md-offset-2 col-md-8">
+                <h2 class="text-center sectiontitle">Our Corporate Partnerships</h2>
+                <p class="text-center">The following organizations are an active part of our environmental and social responsibility initiatives:</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container section">
+        <div class="row flex">
+            <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/carbonfreefactory.jpg?rect=0,455,2880,2880&w=555&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/carbonfreefactory.jpg?w=555">
+                    <img src="https://s3-brentwoodhome.imgix.net/carbonfreefactory.jpg?w=555" alt="">
+                </picture>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV">
+                <div>
+                    <h2>Carbon Neutral Factory &amp; Shipping</h2>
+                    <p>Brentwood Home is reducing our carbon footprint through forward-thinking energy reductions and efficiencies, combined with cost-effective carbon offsets, to eliminate our overall carbon footprint. To achieve this goal, we’ve partnered with <a href="https://carbonfund.org/partners/brentwood-home-llc"  target="_blank" class="underline">Carbonfund</a>. We’ve offset our carbon footprint for our entire factory AND offset one full year of product shipments to support reforestation projects globally.</p>
+                    <p class="text-center"><img src="{{ 'logo_carbonfree_small.png' | asset_url }}" alt="Carbon Free logo" style="max-width: 130px; width: 130px;margin-top: 30px;" ></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container section margTBMedium">
+        <div class="row flex">
+            <div class="col-xs-12 col-sm-6 text-center">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,998,998&w=480&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,701,998&w=920">
+                    <img src="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,701,998&w=920" alt="">
+                </picture>
+            </div>
+            <div class="col-xs-12 col-sm-6 flexV">
+                <div>
+                    <h2>Planting 3 Trees for Every Mattress Sold</h2>
+                    <p>Our forests are in peril and need our help. So for every mattress sold on our website, we also make a donation to the <a href="https://carbonfund.org/partners/brentwood-home-llc"  target="_blank" class="underline">National Forest Foundation</a> to plant three trees. It’s part of our ambitious effort to help stem the impact of climate change and help replant America’s forests.</p>
+                    <p class="text-center"><img src="{{ 'logo-nationalforest.jpg' | asset_url }}" alt="National Forest Foundation logo" style="max-width: 160px; width: 160px;margin-top: 30px;" ></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container section">
+        <div class="row flex">
+            <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=830,690,1737,2403&w=555&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=830,0,1737,2403&w=555">
+                    <img src="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=830,0,1737,2403&w=555" alt="">
+                </picture>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV">
+                <div>
+                    <h2>Building Relief Beds for Charity</h2>
+                    <p><a href="https://reliefbed.com"  target="_blank" class="underline">Relief Beds</a> are strategically built beds that are innovatively crafted to meet the needs of impoverished people and disaster victims. They feature a tri-fold design that is easily transported and stored; a durable, waterproof, easily-cleaned outer shell and a high-density foam core. <a href="https://www.brentwoodhome.com/pages/relief-bed" class="underline">Learn more about our partnership</a>.</p>
+                    <p class="text-center"><img src="https://s3-brentwoodhome.imgix.net/reliefbed-logo-vertical.jpg" alt="Relief Bed logo" style="max-width: 130px; width: 130px;margin-top: 30px;" ></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container section margTBLarge">
+        <div class="row">
+            <div class="col-xs-12 col-md-offset-2 col-md-8">
+                <h2 class="text-center sectiontitle">Our Product Certifications</h2>
+                <p class="text-center">To ensure that our mattresses and pillows are non-toxic, eco-friendly and produced in a sustainable manner, we make sure that our products and source materials meet the highest standards. Our goal is to foster healthy indoor environments and promote sustainability. To this end, below is transparent information on our material certifications, supply chain partners and corporate associations that support this urgent mission.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container section">
+        <div class="row flex">
+            <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="https://brentwood-home.imgix.net/hp-restore-wide.jpg?w=555&ch=Width,DPR&q=55&rect=595,0,595,595&flip=h">
+                    <source media="(min-width: 768px)" srcset="https://brentwood-home.imgix.net/hp-restore-wide.jpg?rect=595,0,499,690&w=555&flip=h">
+                    <img src="https://brentwood-home.imgix.net/hp-restore-wide.jpg?rect=595,0,499,690&w=555&flip=h" alt="">
+                </picture>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV">
+                <div>
+                    <h2>Greenguard Gold Certified Non-Toxic Mattresses</h2>
+                    <p>Our <a href="/products/cedar-natural-luxe-mattress" class="underline">Cedar Natural Luxe</a>, <a href="/products/oceano-mattress" class="underline">Oceano</a>, <a href="/products/crystal-cove-mattress" class="underline">Crystal Cove</a>, and <a href="/products/cypress-bamboo-gel-mattress" class="underline">Cypress</a> mattresses are completely GREENGUARD Gold Certified by UL Environment. It means that it has been scientifically tested in environmental chambers to meet some of the world’s most rigorous, third-party emissions standards for prolonged chemical exposure and pollutants, such as volatile organic compounds (VOCs), formaldehyde and phthalates. <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/health-safety-and-sustainability/what-is-greenguard-gold-certification-and-why-does-it-matter" class="underline" target="_blank">Learn more</a>.</p>
+                    <p class="text-center"><img src="{{ 'logo-greenguard-2.svg' | asset_url }}" alt="Green Guard Certified logo" style="max-width: 110px; width: 110px;margin-top: 30px;" ></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container section margTBMedium">
+        <div class="row flex">
+            <div class="col-xs-12 col-sm-6 text-center">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/factory_Process_gotsgols15.jpg?w=480&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/factory_Process_gotsgols15.jpg?w=555">
+                    <img src="https://s3-brentwoodhome.imgix.net/factory_Process_gotsgols15.jpg?&w=555" alt="">
+                </picture>
+            </div>
+            <div class="col-xs-12 col-sm-6 flexV">
+                <div>
+                    <h2>GOTS & GOLS Certified Factory</h2>
+                    <p>The Global Organic Latex Standard (GOLS) ensures that products contain more than 95% of certified organic raw material based on total weight. The GOLS standard features permissible limits for harmful substances, emission test requirements and polymer and filler percentages. Our factory in Los Angeles is a GOLS certified facility.</p>
+                    <p class="text-center"><img src="{{ 'gots-gols.png' | asset_url }}" alt="GOTS & GOLS Certified Factory" style="max-width: 210px; width: 210px;margin-top: 30px;" ></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container section margTBMedium">
+        <div class="row flex">
+            <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/vegan_yoga_beach.jpg?rect=2760,0,3550,3550&w=480&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/vegan_yoga_beach.jpg?rect=2760,0,3550,4912&w=555&flip=h">
+                    <img src="https://s3-brentwoodhome.imgix.net/vegan_yoga_beach.jpg?rect=2760,0,3550,4912&w=555&flip=h" alt="">
+                </picture>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV">
+                <div>
+                    <h2>Certified Vegan</h2>
+                    <p>The <a href="https://www.brentwoodhome.com/products/crystal-cove-mattress" class="underline">Crystal Cove Mattress</a> and <a href="https://www.brentwoodhome.com/pages/crystal-cove-collection" class="underline">Yoga Collection</a> are 100% Certified Vegan by Vegan Action. This means the products are free from animal products (like feathers, wool and down) or byproducts that have been tested on animals. In addition, although we do manufacture some items that do use natural animal products like wool, we have stringent requirements in place for cleaning the machines in-between use, so cross-contamination will not occur. If you practice a vegan lifestyle, you can rest assured that your Crystal Cove products are aligned with your values.</p>
+                    <p class="text-center"><img src="{{ 'veganlogo.svg' | asset_url }}" alt="Certified Vegan logo" style="max-width: 105px; width: 105px;margin-top: 30px;" ></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container section">
+        <div class="row flex">
+            <div class="col-xs-12 col-sm-6 text-center">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/natural-nontoxxic.jpg?rect=2700,0,2662,2662&w=555&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/natural-nontoxxic.jpg?rect=2700,0,2662,3684&w=555">
+                    <img src="https://s3-brentwoodhome.imgix.net/natural-nontoxxic.jpg?rect=2700,0,2662,3684&w=555" alt="">
+                </picture>
+            </div>
+            <div class="col-xs-12 col-sm-6 flexV">
+                <div>
+                    <h2>Sleep Wellness</h2>
+                    <p>Our “California ethos” truly defines us. We use only the finest natural elements, certified non-toxic materials and responsible manufacturing methods in order to promote healthier lifestyles and greater wellbeing.</p>
+                    <p class="text-center"><img src="{{ 'certipur-badge.png' | asset_url }}" alt="CertiPur-US logo" style="max-width: 105px; width: 105px;margin-top: 30px;" >&nbsp;&nbsp;&nbsp;<img src="{{ 'logo-eco-institut.png' | asset_url }}" alt="EcoInstitut logo" style="max-width: 105px; width: 105px;margin-top: 30px;" ></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="text-center" style="margin: 50px 0;"><a href="/collections/mattresses" class="cta2 solid text-center">shop mattresses</a></p>
+
+
+</div>
+<script>
+    mixpanel.track("Certifications", {
+        "name": "{{ page_title | handle }}"
+    });
+</script>

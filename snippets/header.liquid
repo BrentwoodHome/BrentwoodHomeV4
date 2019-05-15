@@ -1,0 +1,201 @@
+{% unless template == 'index' %}
+   <div class="hidden-xs">
+        {% if rightnowint <= currentPromoEnd %}
+            <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowCurrent}} <i class="fa fa-angle-double-right"></i></a>
+        {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
+            <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowNew}} <i class="fa fa-angle-double-right"></i></a>
+        {% endif %}
+    </div>
+    <div class="visible-xs-block">
+        {% if rightnowint <= currentPromoEnd %}
+            <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowCurrentMobile}}  <i class="fa fa-angle-double-right"></i></a>
+        {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
+            <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowNewMobile}} <i class="fa fa-angle-double-right"></i></a>
+        {% endif %}
+    </div>
+{% endunless %}
+
+<script>
+    /*mixpanel.track_links("a.freepacificajune2017", "freepacificajune2017",{
+          "referrer": document.referrer
+      });*/
+</script>
+
+<header id="header-content">
+    {%if template == 'index'%}
+    <div class="hidden-xs">
+        {% if rightnowint <= currentPromoEnd %}
+            <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowCurrent}} <i class="fa fa-angle-double-right"></i></a>
+        {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
+            <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowNew}} <i class="fa fa-angle-double-right"></i></a>
+        {% endif %}
+    </div>
+    <div class="visible-xs-block">
+        {% if rightnowint <= currentPromoEnd %}
+            <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowCurrentMobile}}  <i class="fa fa-angle-double-right"></i></a>
+        {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
+            <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowNewMobile}}  <i class="fa fa-angle-double-right"></i></a>
+        {% endif %}
+    </div>
+    {% endif %}
+    <div class="header">
+        <div class="header-inner">
+            <div class="row">
+                <div class="logo col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    {% if settings.use_logo %}
+                        <a href="/">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="{{ 'logo-bh-new-desktop-dark260.svg' | asset_url }}">
+                                <source media="(min-width: 375px)" srcset="{{ 'logo-bh-new-desktop-dark260.svg' | asset_url }}">
+                                <source media="(min-width: 320px)" srcset="{{ 'logo-bh-new-tiny.svg' | asset_url }}">
+                                <img src="{{ 'logo-bh-new-desktop-dark260.svg' | asset_url }}" alt="{{ shop.name }}">
+                            </picture>
+                        </a>
+                    {% endif %}
+                </div>
+                <!--<div class="logo-sticky col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    {% if settings.use_logo_sticky %}
+                    <a href="/"><img src="{{ 'logo-sticky.png' | asset_url }}" alt="{{ shop.name }}" /></a>
+                    {% endif %}
+                </div>-->
+                <div class="menu-top text-right col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                    <div class="header-tool" style="">
+
+                        <span id="extole_zone_global_header" style=""></span>
+                        <script type="text/javascript">
+                            /* Start Extole */
+                            (function(c,e,k,l,a){c[e]=c[e]||{};for(c[e].q=c[e].q||[];a<l.length;)k(l[a++],c[e])})(window,"extole",function(c,e){e[c]=e[c]||function(){e.q.push([c,arguments])}},["createZone"],0);
+                            /* End Extole */
+
+                            extole.createZone({
+                                name: 'global_header',
+                                element_id: 'extole_zone_global_header'
+                            });
+                        </script>
+
+                        <div class="top-currency hidden-xs">
+                            <!--<span class="dropdown-icon">
+<i class="icon_cog"></i>
+</span>-->
+                            <div class="wrap-tool">
+                                <div class="top-bar-dropdown">
+                                    {% include 'currencies-mobile' %}
+                                    <div class="cusstom-link">
+                                        {% if shop.customer_accounts_enabled %}
+                                        {% if customer %}
+                                        <ul class="customer-links">
+                                            {% if settings.enable_wishlist %}
+                                            <li class="wishlist">
+                                                <i class="icon_heart" arihttps://soulx-01.myshopify.com/admin/themes/82552071?key=snippets%2Fcurrencies-mobile.liquida-hidden="true"></i>
+                                                <a href="/pages/wish-list" title="My Wishlist">My Wishlist</a>
+                                            </li>
+                                            {% endif %}
+                                            <li><i class="icon_check_alt" aria-hidden="true"></i><a href="/checkout"><span>Checkout</span></a></li>
+                                            <li>
+                                                {{ 'Logout' | customer_logout_link }}
+                                                <a href="/account">My Account</a>
+                                            </li>
+                                        </ul>
+                                        {% else %}
+                                        <ul class="customer-links">
+                                            {% if settings.enable_wishlist %}
+                                            <li class="wishlist">
+                                                <i class="icon_heart" aria-hidden="true"></i>
+                                                <a href="/pages/wish-list" title="My Wishlist">My Wishlist</a>
+                                            </li>
+                                            {% endif %}
+                                            <li><i class="icon_check_alt" aria-hidden="true"></i><a href="/checkout"><span>Checkout</span></a></li>
+                                            <li><i class="icon_lock-open" aria-hidden="true"></i>
+                                                {{ 'Sign In' | customer_login_link }}
+                                            </li>
+                                            <li><i class="icon_profile" aria-hidden="true"></i>
+                                                {% if shop.customer_accounts_optional %}
+                                                {{ 'Register' | customer_register_link }}
+                                                {% endif %}
+                                            </li>
+                                        </ul>
+                                        {% endif %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="header-cart">
+                            <!--%include 'customer_links' %-->
+                            <div class="top-cart">
+                                <p class="top-cart">
+                                    <a href="/cart" id="cartToggle">
+                                        <span class="icon top-icon-cart"><i class="fa fa-shopping-cart"></i></span>
+                                        {% if cart.item_count > 0 %}
+                                            <span id="cart-count">{{ cart.item_count }}</span>
+                                        {% endif %}
+                                    </a>
+                                </p>
+                                <div id="dropdown-cart-hide" style="display:none">
+                                    <div class="cart-empty">
+                                        <p>You have no items in your shopping cart.</p>
+                                    </div>
+                                    <div class="mini_cart_header">
+                                        <ol class="cart-list">
+                                            {% for item in cart.items %}
+                                                {% unless item.product.handle == "cedar-natural-luxe-topper" %}
+                                                    <li class="item" id="cart-item-{{item.id}}">
+                                                        <a href="{{item.url}}" title="{{item.title}}" class="product-image"><img src="{{ item.image | product_img_url: 'small' }}" alt="{{item.title}}"></a>
+                                                        <div class="product-inner">
+                                                            <p class="product-name"><a href="{{item.url}}">{{ item.product.title }}</a></p>
+                                                            <div class="option">
+                                                                {% if item.product.variants.size != 0 %}
+                                                                {% unless item.variant.title contains 'Default' %}
+                                                                <small>{{ item.variant.title }}</small>
+                                                                {% endunless %}
+                                                                {% endif %}
+                                                            </div>
+                                                            <div class="cart-collateral"><span class="price">{{item.price | money}}</span> (x {{item.quantity}})</div>
+                                                            <a href="javascript:void(0)" title="Remove Item" class="btn-remove">x</a>
+                                                        </div>
+                                                    </li>
+                                                {% endunless %}
+                                            {% endfor %}
+                                        </ol>
+                                        <div class="summary">
+                                            <p class="total">
+                                                <span class="label" style="color:#000">Total:</span>
+                                                <span class="price">{{cart.total_price | money}}</span>
+                                            </p>
+                                        </div>
+                                        <div class="actions">
+                                            <div class="view-cart"><a href="/cart">View Cart</a></div>
+                                            <button class="btn" onclick="window.location='/checkout'">Checkout</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% comment %}
+                                If customer accounts are enabled, provide login and create account links
+                                {% endcomment %}
+                            </div> <!-- End Top Header -->
+                        </div>
+                        <div id="search-top" class="hiden-sx">
+                            <div class="icon-search"><i class="icon_search"> </i></div>
+                            <div class="wrap-show-search">
+                                <div class="search-form" style="">
+                                    <div class="search-close">
+                                        <i class="icon_close"></i>
+                                    </div>
+                                    {% include 'search-bar' %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="toggle-menu">
+                        <button class="navbar-toggle btn-menu-canvas" data-toggle="offcanvas" data-target="#off-canvas-nav">
+                            <i class="icon_menu"></i>
+                        </button>
+                    </div>
+                    <div class="menu-action">{% include 'site-nav' %}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+

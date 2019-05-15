@@ -1,0 +1,45 @@
+
+<div class="standardPages">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="text-center">Silk</h1>
+            <img src="{{ 'raw-silk.jpg' | asset_url }}" alt="Silk">
+        </div>
+        <div class="col-xs-12 col-md-8 col-md-offset-2 description">
+            <p class="quote">A natural protein fiber with a smooth, sleek texture, silk adds the perfect touch of softness to the quilted fill of our mattresses.</p>
+        </div>
+
+    </div> 
+    <div class="row">
+        <!-- Left Column -->
+        <div id="where" >
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="col-left-block-material" style="">
+                    <p class="text-center"><img src="{{'material-pin.png'|asset_url}}" alt=""></p>
+                    <h2>Where we get it</h2>
+                    <h3>China</h3>
+                    <p class="text-left">We get our silk from China, where the production process for silk fabric was first developed. To reduce waste, we also make use of surplus silk pieces that we incorporate into the fiber layer in the quilted fill of our mattresses. </p>
+                    <p class="text-center"><img src="{{'material-map-china.png'|asset_url}}" alt="China"></p>
+                </div> 
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-lg-9 col-md-9 col-sm-9 right-pane">
+            <h2>The material</h2>
+            <p>Silk is a natural protein fiber cultivated from the cocoons of silkworms. Filaments of silk are reeled from the softened cocoons, washed, then twisted intro strands to be used for weaving or knitting. The individual filaments are very fine at only 10 nanometers in diameter, but silk is still the world’s strongest natural fiber. Soft but durable, this natural material is so coveted for its versatility - uses range from the most luxurious set of pajamas to infallible parachutes. </p>
+            <p><img src="{{'materials_silk.jpg'|asset_url}}" alt="Silk"></p>
+
+            <h2>Why we use it</h2>
+            <p>Silk is ultra-soft and smooth to the touch while being one of the strongest natural fibers, holding up over long-term use in our mattresses. Though it looks and feels delicate, the material is resilient, resisting dirt, oils, and odors. Because of its natural protein structure, silk is hypoallergenic and safe for the home - perhaps the most important feature of all. 
+            </p>
+
+        </div>
+    </div> 
+    <p class="text-center" style="margin: 40px 0;"><a href="/pages/materials" title="Back to materials" class="btn">Back to materials</a></p>
+</div>        
+<script>
+    mixpanel.track("Materials Page", {
+        "name": "{{ page_title | handle }}"
+    });
+</script>

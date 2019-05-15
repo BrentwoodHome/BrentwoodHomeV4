@@ -1,0 +1,219 @@
+
+{{ 'jquery-cookie.min.js' | asset_url | script_tag }}
+{{ 'selectize.min.js' | asset_url | script_tag }}
+<script async src="https://use.fontawesome.com/b04c5bfc50.js"></script>
+
+
+<!-- Footer scripts -->
+{{ 'bootstrap.min.js' | asset_url | script_tag }}
+{{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+
+<script async src="https://origin.extole.io/brentwood-home/core.js"></script>
+
+
+{% if template contains 'product'%}
+<!-- FlexSlider -->
+{{ 'jquery.flexslider.271.js' | asset_url | script_tag }}
+<script type="text/javascript">
+    $(window).load(function(){
+        if (Modernizr.touchevents){ //hide thumbnails if touchscreen
+            $('.flexslider').flexslider({
+                animation: "slide",
+                start: function(slider){
+                    //$('body').removeClass('loading');
+                },
+                slideshow: false,
+                directionNav: false,
+                controlsContainer: $(".custom-controls-container"),
+                customDirectionNav: $(".custom-navigation a"),
+                prevText: '',
+                nextText: ''
+            });
+        }else{
+            $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails",
+                thumbCaptions: true,
+                start: function(slider){
+                    //$('body').removeClass('loading');
+                },
+                slideshow: false,
+                controlsContainer: $(".custom-controls-container"),
+                customDirectionNav: $(".custom-navigation a"),
+                prevText: '',
+                nextText: ''
+            });
+        }
+    });
+    /*var evenSliderHeight = function(slideContainer, slideItem) {
+        var slider_height = 0;
+        var $slider_slide = $(slideContainer).find(slideItem);
+        $slider_slide.each(function() {
+            var __height = $(this).outerHeight(true);
+            if ( slider_height < __height ) {
+                slider_height = __height;
+            }
+        });
+        $slider_slide.css('min-height', slider_height);
+    };
+    evenSliderHeight('.flexslider', '.slide');*/
+</script>
+   
+    {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+    {{ 'jquery.jcarousel.latest.min.js' | asset_url | script_tag }}
+    {{ 'jquery.elevateZoom-3.0.8.min.js' | asset_url | script_tag }}
+    {{ 'jquery.fancybox.pack.js' | asset_url | script_tag }}
+    {{ 'jquery.fakecrop.js' | asset_url | script_tag }}
+{%endif%}
+
+{{ 'owl.carousel.min.234.js' | asset_url | script_tag }}
+
+{%  include 'new-currency' %}
+{{ 'jquery.history.js' | asset_url | script_tag }}
+{{ 'gosh-scrip.js' | asset_url | script_tag }}
+{{ 'classie.js' | asset_url | script_tag }}
+{%comment%}
+{{ 'ga-linktracking.js' | asset_url | script_tag }}
+{%endcomment%}
+{{ 'jquery.easing.min.js' | asset_url | script_tag }}
+
+{% unless template contains 'collections' %}
+<!-- YOTPO -->
+<script type="text/javascript">
+    (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+</script>
+{%endunless%}
+
+{% if template contains 'index' %}
+<script>
+    $('.carousel').carousel({
+        pause: "hover",
+        interval: false
+    })
+</script>
+{%endif%}
+<script>
+  jQuery('.header-top a.close').bind('click',function(){
+    jQuery('.header-top a.close').attr('href','javascript:void(0)');
+    jQuery('.header-top').toggle();
+  });
+</script>
+{%comment%}
+{% if template contains 'product' %}
+   
+    
+    <script>
+        /*jQuery(document).ready(function($){
+
+
+            jQuery("a.zoom").fancybox({
+                padding:0,
+                'titleShow': false,
+                overlayColor: '#000000',
+                overlayOpacity: 0.2
+            });
+
+            /* Update main product image when a thumbnail is clicked. 
+            
+            jQuery('#product .thumbs a').on('click', function(e) {
+                e.preventDefault();
+                switchImage(jQuery(this).attr('href'), null, jQuery('.featured img')[0]);
+            } );
+
+
+            /* Initialize zoom on main product image 
+            var mainProductImage = jQuery('.featured img');
+            if (mainProductImage.size()) {
+                if (jQuery(window).width() > 782) {
+                    var zoomedSrc = $('.featured img').attr('src').replace('_master', '');
+                    $('.featured img')
+                        .wrap('<span style="display:inline-block; max-width: 100%;"></span>')
+                        .css('display', 'block')
+                        .parent()
+                        .zoom( { url: zoomedSrc } );
+                }
+            }
+            $(window).load(function() {
+
+                $('#loading').hide();
+            });
+        });*/
+        var switchImage = function(newImageSrc, newImage, mainImageDomEl) {
+            jQuery(mainImageDomEl).attr('src', newImageSrc);
+            if ($(window).width() > 782) {jQuery(mainImageDomEl).parent().trigger('zoom.destroy').zoom( { url: newImageSrc.replace('_master', '') } );}
+            $(mainImageDomEl).parents('a').attr('href', newImageSrc);
+        };
+    </script>
+{%endif%}
+
+
+{% if template.suffix contains '3_0_0' %}
+{{ 'jquery.sticky.js' | asset_url | script_tag }}
+<script>
+    $(document).ready(function(){
+        $(window).scroll(function () {
+            //console.log($(window).scrollTop());
+            if (window.innerWidth > 414) {
+                if ($(window).scrollTop() > 500) {
+                    $("#followMeBar").sticky({
+                        topSpacing:0,
+                        zIndex: 10000
+                    });
+                    $('#followMeBar').removeClass('stickybuy-invisible');
+                    $('#followMeBar-sticky-wrapper').removeClass('stickybuy-invisible');
+                    //$('#followMeBar').addClass('stickybuy-visible');
+                }
+                if ($(window).scrollTop() < 501) {
+                    $('#followMeBar').addClass('stickybuy-invisible');
+                    $('#followMeBar-sticky-wrapper').addClass('stickybuy-invisible');
+                }
+            }else{
+                if ($(window).scrollTop() > 1050) {
+                    $("#followMeBar").sticky({
+                        topSpacing:0,
+                        zIndex: 10000
+                    });
+                    $('#followMeBar').removeClass('stickybuy-invisible');
+                    $('#followMeBar-sticky-wrapper').removeClass('stickybuy-invisible');
+                }
+                if ($(window).scrollTop() < 1051) {
+                    $('#followMeBar').addClass('stickybuy-invisible');
+                    $('#followMeBar-sticky-wrapper').addClass('stickybuy-invisible');
+                }
+            }
+        });
+        //scroll back to CTA
+        $('A.sscroll').bind('click', function(event) {
+            var $anchor = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $($anchor.attr('href')).offset().top - 150
+            }, 1500, 'easeInOutExpo');
+            event.preventDefault();
+        });
+    });
+</script>
+
+{%endif%}
+{%endcomment%}
+
+{% if template.suffix contains '3_1_bamboo' or template.suffix contains '3_1_cedarluxe' %}
+    {{ 'animate.min.css' | asset_url | stylesheet_tag }}
+    {{ 'wow.min.js' | asset_url | script_tag }}
+    <script>
+        var wow = new WOW(
+            {
+                boxClass:     'wow',      // animated element css class (default is wow)
+                animateClass: 'animated', // animation css class (default is animated)
+                offset:       0,          // distance to the element when triggering the animation (default is 0)
+                mobile:       false,       // trigger animations on mobile devices (default is true)
+                live:         true,       // act on asynchronously loaded content (default is true)
+                callback:     function(box) {
+                    // the callback is fired every time an animation is started
+                    // the argument that is passed in is the DOM node being animated
+                },
+                scrollContainer: null // optional scroll container selector, otherwise use window
+            }
+        );
+        wow.init();
+    </script>
+{%endif%}

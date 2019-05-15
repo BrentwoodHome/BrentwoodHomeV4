@@ -1,0 +1,122 @@
+{% comment %}
+  This page represents the /collections and /products pages.
+  It is an optional, but highly recommended, template for your theme.
+
+  More info:
+    - http://docs.shopify.com/manual/configuration/store-customization/taking-control-of-collections-listing
+{% endcomment %}
+
+
+<header class="" style="margin-top: 40px;">
+  <h1 style="margin-bottom: 40px;">Collections</h1>
+</header>
+
+<div class="list-category row">
+  {% comment %}
+    Loop through each collection, except 'frontpage'
+  {% endcomment %}
+  
+  {%comment%}
+   {% for collection in collections %}
+    {% unless collection.handle == 'frontpage' %}
+      {% include 'collection-grid-item' %}
+    {% endunless %}
+  {% endfor %}
+  
+    {% for collection in collections %}
+        {% if collection.handle == 'all' %}
+            {% elsif collection.handle == 'frontpage'%}
+            {% elsif collection.handle == 'draperies'%}
+            {% elsif collection.handle == 'pillow-candle-bundle-special-offer'%}
+        {% else %}
+            {% include 'collection-grid-item' %}
+        {% endif %}
+    {% endfor %}
+    
+    {%endcomment%}
+    <div class="col-xs-12 col-md-4 col-sm-6 text-center">
+        <div class="product-top">
+            <a href="/collections/mattresses" title="Our mattresses">
+                <img src="https://brentwood-home.imgix.net/collections-all-mattresses.jpg?w=360" alt="Mattresses" />
+            </a>
+        </div>
+        <div class="collection-title-wrapper">
+            <div class="collection-title">
+                <h2 class="">
+                    <a href="/collections/mattresses" title="Browse our Spring collection">Mattresses</a>
+                </h2>
+                <p class="desc">Hybrid mattresses delivered to your door. Enjoy the comfort...</p>
+                <p><a href="/collections/mattresses" title="Shop The Collection" class="ctaStd">Shop mattresses</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-xs-12 col-md-4 col-sm-6 text-center">
+        <div class="product-top">
+            <a href="/pages/crystal-cove-collection" title="Crystal Cove Yoga Collection">
+                <img src="https://brentwood-home.imgix.net/collection-all-crystalcove.jpg?w=360" alt="Crystal Cove Yoga Collection" />
+            </a>
+        </div>
+        <div class="collection-title-wrapper">
+            <div class="collection-title">
+                <h2 class="">
+                    <a href="/pages/crystal-cove-collection" title="Crystal Cove">Crystal Cove Yoga</a>
+                </h2>
+                <p class="desc">Relaxing, meditation, we offer the most natural yoga pillows for all your needs...</p>
+                <p><a href="/pages/crystal-cove-collection" title="Shop The Collection" class="ctaStd">Shop crystal cove</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-xs-12 col-md-4 col-sm-6 text-center">
+        <div class="product-top">
+            <a href="/collections/bedding" title="Bedding">
+                <img src="https://brentwood-home.imgix.net/collections-all-bedding.jpg?w=360" alt="Bedding" />
+            </a>
+        </div>
+        <div class="collection-title-wrapper">
+            <div class="collection-title">
+                <h2 class="">
+                    <a href="/collections/bedding" title="Browse our Bedding collection">Bedding</a>
+                </h2>
+                <p class="desc">Complete your bed with our selection of natural pillows and linen quilts....</p>
+                <p><a href="/collections/bedding" title="Shop The Collection" class="ctaStd">Shop bedding</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-xs-12 col-md-4 col-sm-6 text-center">
+        <div class="product-top">
+            <a href="/collections/baby-kids" title="Babies &amp; Kids">
+                <img src="https://brentwood-home.imgix.net/collections-all-kids.jpg?w=360" alt="Babies & Kids" />
+            </a>
+        </div>
+        <div class="collection-title-wrapper">
+            <div class="collection-title">
+                <h2 class="">
+                    <a href="/collections/baby-kids" title="Browse our Babies & Kids collection">Babies & Kids</a>
+                </h2>
+                <p class="desc">A Safer Night’s Sleep We keep the health and well-being of your baby in...</p>
+                <p><a href="/collections/baby-kids" title="Shop The Collection" class="ctaStd">Shop Babies & Kids</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-4 col-sm-6 text-center">
+        <div class="product-top">
+            <a href="/collections/pets" title="Pets">
+                <img src="https://brentwood-home.imgix.net/collections-all-pet.jpg?w=360" alt="Pets" />
+            </a>
+        </div>
+        <div class="collection-title-wrapper">
+            <div class="collection-title">
+                <h2 class="">
+                    <a href="/collections/pets" title="Browse our Pets collection">Pets</a>
+                </h2>
+                <p class="desc">Your pet is a part of your family, so it’s no wonder you want a better bed for them...</p>
+                <p><a href="/collections/pets" title="Shop The Collection" class="ctaStd">Shop pets</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>mixpanel.track("Collections All");</script>

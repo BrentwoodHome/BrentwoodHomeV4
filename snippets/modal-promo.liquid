@@ -1,0 +1,90 @@
+<div class="modal fade" id="myModalSale" tabindex="-1" role="dialog" aria-labelledby="modal-dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-4 img">
+                        <img src="{{ 'popup-promo-200x500.jpg' | asset_url }}" alt="Sale">
+                    </div>
+                    <div class="col-sm-8 text-center copy">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>                    
+                        {% if rightnowint <= currentPromoEnd %}
+                            <h2>Sale</h2>
+                            <h3>$175 OFF SELECT MATTRESSES and 20% off yoga pillows and pet beds</h3>
+                            <p><a href="/pages/sale" class="cta2">Get your code</a></p>
+                        {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
+                            <h2>Memorial Day Sale</h2>
+                            <h3>Up to $400 OFF SELECT MATTRESSES and 20% off yoga pillows and pet beds</h3>
+                            <p><a href="/pages/sale" class="cta2">Get your code</a></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<style>
+    .modal-open .modal{
+        background-color: rgba(0,0,0,0.5);
+    }
+    .copy h3{
+        text-transform: uppercase;
+    }
+    @media screen and (max-width: 414px) {
+        #myModalSale{
+            /*display: none !important;*/
+        }
+    }
+</style>
+<script>
+    $ (document).ready(function() { 
+        if (!getCookie("popup_bh_promo")) {
+            setCookie("popup_bh_promo", "flashsale", 1); //creates cookie called popup_bh_promo containing flashsale expiring in 1 day
+            var width = $(window).width(); 
+            if(width > 414){
+                //hide popup on mobile
+                setTimeout(function(){
+                    $('#myModalSale').modal({
+                        backdrop: true
+                    });
+                }, 5000);
+            }
+        }
+        //eraseCookie('popup_bh_promo');
+        console.log("cookie: "+getCookie("popup_bh_promo"));
+    });
+    /*$('#myModalSale').on('shown.bs.modal', function () {
+        var width = $(window).width();  
+        if(width < 414){
+            $(this).modal('hide');
+        }
+    });*/
+</script>
+
+<script>
+    function setCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {   
+        document.cookie = name+'=; Max-Age=-99999999; path=/';  
+    }
+</script>

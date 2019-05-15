@@ -1,0 +1,391 @@
+{% include 'nowtime' %}
+{% assign reliefbed = "false" %}
+
+<style>
+    label{
+        color: #414a5b;
+        font-weight: normal;
+        margin-top: 12px;
+        font-size: 13px;
+    }
+    #cart #cartSpecialInstructions{
+        min-height: 70px;
+    }
+    h2.overlays-title{
+        font-size: 20px;
+        margin-bottom: 20px;
+        font-family: AvenirLTStd-Light, 'Helvetica Neue', helvetica, sans-serif;
+    }
+    table A{
+        text-decoration: none;
+    }
+    table A:hover{
+        text-decoration: underline;
+    }
+</style>
+
+<div id="cart">
+
+    <!-- Begin empty cart -->
+    {% if cart.item_count == 0 %}
+    <div class="row">
+        <div class="col-lg-12 expanded-message">
+            <br>
+            <br>
+            <h2 class="tc">Your cart is empty!</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <br><br><br>
+            <p class="text-center"><a href="/collections" title="Shop" class="cta2 solid">CONTINUE SHOPPING</a></p>
+        </div>
+    </div>
+    <!-- End empty cart -->
+
+    <!-- Begin cart -->
+    {% else %}
+    <div class="row">
+        <div class="col-lg-12">
+            <!--h1>Your cart</h1-->
+            <form action="/cart" method="post" id="cartform">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="image hidden-xs">&nbsp;</th>
+                            <th class="item">Product</th>
+                            <th class="qty">Qty</th>
+                            <th class="price">Price</th>
+                            <th class="remove">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% assign productType = "none" %}
+
+                        {% for item in cart.items %}
+                        {%comment%}Set Relief Bed variable{%endcomment%}
+
+                        {% if item.product.handle == "oceano-mattress" or item.product.handle == "crystal-cove-mattress" or item.product.handle == "ojai-mattress" or item.product.handle == "cedar-mattress" %}
+                        {% assign reliefbed = "true" %}
+                        {% endif %}
+
+                        {% if item.product.type == "Mattress" or item.product.type == "Crib Mattress"%}
+                        {% assign productType = "Mattress" %}
+                        {% endif %}
+                        <script>console.log("{{item.product.handle}}");</script>
+                        <tr>
+                            <td class="image hidden-xs">
+                                <div class="product_image">
+                                    {% if item.product.tags contains "addon" %}
+                                    <img src="{{ item | img_url: 'compact' }}"  alt="{{ item.product.title }}" />
+                                    {% else %}
+                                    <a href="{{ item.url }}" title="{{ item.product.title }}">
+                                        <img src="{{ item | img_url: 'compact' }}"  alt="{{ item.product.title }}" />
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            </td>
+                            <td class="item">
+                                {% if item.product.tags contains "addon" %}
+                                <p class="hidden-sm hidden-md hidden-lg">
+                                    <img src="{{ item | img_url: 'compact' }}"  alt="{{ item.product.title }}" />
+                                </p>
+                                <a class="cart-title">
+                                    <strong>{{ item.product.title }}</strong>
+                                </a>
+                                {% else %}
+                                <p class="hidden-sm hidden-md hidden-lg">
+                                    <a href="{{ item.url }}" title="{{ item.product.title }}">
+                                        <img src="{{ item | img_url: 'compact' }}"  alt="{{ item.product.title }}" />
+                                    </a>
+                                </p>
+                                <a href="{{ item.url }}" class="cart-title" title="{{ item.product.title }}">
+                                    <strong>{{ item.product.title }}</strong>
+                                </a>
+                                {% endif %}
+
+                                {% if item.product.variants.size > 1 and item.product.handle != "donate" %}
+                                <span class="variant_title">Size: {{ item.variant.title }}</span>
+                                {% endif %}
+                                {%comment%}{% assign property = item.preorder %}
+                                {% if property > 0 %}
+                                {% for p in item.preorder %}
+                                {% unless p.last == blank %}
+                                {{ p.first }}:
+                                {{ p.last }}
+                                <br>
+                                <script>console.log("test", {{p.first}});</script>
+                                {% endunless %}
+                                {% endfor %}
+                                {% endif %}
+                                {%endcomment%}
+
+                                {% for p in item.properties %} 
+                                {% unless p.last == blank %} 
+                                {{ p.last }}<br /> 
+                                {% endunless %}
+                                {% endfor %}
+                            </td>
+                            <td class="qty">
+                                {% unless item.product.tags contains "addon" %}
+                                <input
+                                       type="text"
+                                       data-id="{{ item.id }}"
+                                       size="4"
+                                       name="updates[]"
+                                       id="updates_{{ item.id }}"
+                                       value="{{ item.quantity }}"
+                                       onfocus="this.select();"
+                                       class="tc item-quantity"
+                                       {{ bold_qty_attr }}
+                                       />
+                                {% endunless %}
+                            </td>
+                            <td class="price">
+                                {% unless item.product.tags contains "addon" %}
+                                {{ item.line_price | money }}
+                                {% endunless %}
+                            </td>
+                            <td class="remove">
+                                {% unless item.product.tags contains "addon" %}
+                                <a class="cart remove-item" data-id="{{ item.id }}" style="cursor:pointer">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </a>
+                                {% endunless %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                        {% if rightnowint > 201801180001 and rightnowint < 201801290001 %}
+                                                                                       {% if productType == "Mattress"%}
+                                                                                       {% assign product = all_products['natural-aromatherapy-candle'] %}
+                                                                                       <tr>
+                        <td class="image hidden-xs">
+                            <div class="product_image">
+                                <img src="{{ product | img_url: 'compact' }}"  alt="" />
+                            </div>
+                        </td>
+                        <td class="item">
+                            <p class="hidden-sm hidden-md hidden-lg">
+                                <img src="{{ product | img_url: 'compact' }}"  alt="{{ product.title }}" />
+                            </p>
+                            <a href="#!" class="cart-title" title="{{ item.product.title }}">
+                                <strong>Natural Aromatherapy Candle</strong>
+                            </a>
+                        </td>
+                        <td class="qty">
+                            <input type="text" size="4" name="updates[]" id="updates_{{ product.id }}" value="1" readonly class="tc item-quantity" />
+                        </td>
+                        <td class="price">FREE</td>
+                        <td class="remove"></td>
+                    </tr>
+                {%endif%}
+                {%endif%}
+                </tbody>
+            </table>
+
+        {%comment%}Reliefbed donation active or not active{%endcomment%}
+        <script>console.log("Relief Bed Active: {{reliefbed}}");</script>
+        {% if reliefbed == "true" %}
+        <table id="donation"><tr><td>{% include 'donation' %}</td></tr></table>
+        {%endif%}
+
+        <table>
+            <tr class="summary">
+                <td class="price">
+                    <p class="copy">SUBTOTAL:</p>
+                    <span class="total"><span id="bk-cart-subtotal-price">{{ cart.total_price | money }}</span></span>
+                    <p><a id="learn-more" style="visibility:hidden" href="#"></a></p>
+
+                    <p class="affirm-as-low-as" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{ cart.total_price }}"></p>
+                    <p>
+                        <script>
+                            _affirm_config = {
+                                public_api_key:  "HVHTFP3GXV9X8ZBN",
+                                script:          "https://cdn1.affirm.com/js/v2/affirm.js"
+                            };
+                            (function(l,g,m,e,a,f,b){var d,c=l[m]||{},h=document.createElement(f),n=document.getElementsByTagName(f)[0],k=function(a,b,c){return function(){a[b]._.push([c,arguments])}};c[e]=k(c,e,"set");d=c[e];c[a]={};c[a]._=[];d._=[];c[a][b]=k(c,a,b);a=0;for(b="set add save post open empty reset on off trigger ready setProduct".split(" ");a<b.length;a++)d[b[a]]=k(c,e,b[a]);a=0;for(b=["get","token","url","items"];a<b.length;a++)d[b[a]]=function(){};h.async=!0;h.src=g[f];n.parentNode.insertBefore(h,n);delete g[f];d(g);l[m]=c})(window,_affirm_config,"affirm","checkout","ui","script","ready");
+                            // Use your live public API Key and https://cdn1.affirm.com/js/v2/affirm.js script to point to Affirm production environment.
+                        </script>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <div class="row">{%comment%}
+            <div class="col-md-6 col-sm-6 hidden-xs">
+                {% if settings.cart_notes %}
+
+                <h3 class="add-comments">Note Additional comments</h3>
+                <textarea name="note" class="input-full" id="cartSpecialInstructions">{{ cart.note }}</textarea>
+
+                {% endif %}
+
+
+                If notes are used, adjust the column width
+
+
+
+                name="checkout" is required for the update button to work
+
+
+            </div>
+            {% endcomment %}
+            <div class="col-xs-12 span6 inner-right inner-left text-right">
+                <input type="button" id="update-cart" class="cta2 whiteinv" style="padding: 10px" name="update" value="{{ 'Update Cart'}}" />
+                <input type="submit" id="checkout" class="cta2" name="checkout" value="{{ 'Check Out'}}" />
+                <input type="hidden" id="mixpanel_id" name="attributes[mixpanel_id]" value="" />
+            </div>
+        </div>
+        </form>
+</div>
+<div class="clearfix"></div>
+<div id="recommendationApp">
+
+</div>
+<div class="container section warranties" style="margin-top: 120px;">
+    <h2 class="text-center" style="font-size: 26px;">Try Our Mattresses Risk-Free</h2>
+    <div class="row">
+        <div class="col-xs-4 col-sm-2">
+            <img src="https://brentwood-home-36.imgix.net/iconv2-1yearguarantee.svg" alt="">
+            <p>1-Year<br>Trial</p>
+        </div>
+        <div class="col-xs-4 col-sm-2">
+            <img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="">
+            <p>Free Shipping<br>Free Return</p>
+        </div>
+        <div class="col-xs-4 col-sm-2">
+            <img src="https://brentwood-home.imgix.net/iconv2-madeincalifornia.svg" alt="">
+            <p>Made in<br>California</p>
+        </div>
+        <div class="col-xs-4 col-sm-2">
+            <img src="https://brentwood-home.imgix.net/iconv2-25yearwarranty.svg" alt="">
+            <p>25-year<br>Warranty</p>
+        </div>
+        <div class="col-xs-4 col-sm-2">
+            <img src="https://brentwood-home.imgix.net/iconv2-whiteglovedelivery.svg" alt="">
+            <p>In Home<br>Delivery</p>
+        </div>
+        <div class="col-xs-4 col-sm-2">
+            <img src="https://brentwood-home.imgix.net/iconv2-0percent.svg" alt="">
+            <p>0% Financing<br>Available</p>
+        </div>
+    </div>
+</div>
+</div>
+{% endif %}
+
+<!-- End cart -->
+</div>
+
+<script>
+    mixpanel.init('b2d0db1e54496b9a137db682bd10295a', {
+        loaded: function(mixpanel) {
+            if (document.getElementById("mixpanel_id") != null){
+                document.getElementById("mixpanel_id").value = mixpanel.get_distinct_id();
+            }
+        }
+    });
+
+    mixpanel.track("Viewed Cart",
+                   {"cart items": "{% for item in cart.items %}{{ item.product.title }} , {%endfor%}",
+                    "cart number items": {{cart.item_count}},
+                   "cart total": {{ cart.total_price | divided_by: 100 }}
+                   });
+</script>
+<script>
+    var variants = {
+        18602823614526: 18665794601022,
+        18602823647294: 18665794633790,
+        18602823680062: 18665794666558
+    }
+
+    $(document).ready(function(){
+        /*$(".cart").click(function(){
+            mixpanel.track(
+                "Remove from Cart", {"name": "{% for item in cart.items %}{{ item.product.title }} , {%endfor%}"});
+        });*/
+
+        $('#update-cart').click(function() {
+            $('.item-quantity').each(function(i, obj) {
+                var id = $(obj).data('id')
+                var updates = {}
+                if (id) {
+                    var qty = parseInt($(obj).val());
+                    updates[id] = qty;
+
+                    if (variants[id]) {
+                        updates[variants[id]] = qty;
+                    }
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/cart/update.js',
+                    data: {updates: updates},
+                    dataType: 'json',
+                    success: function() {
+                        location.href = '/cart'
+                    },
+                    error: function(error) {
+                        console.log('error', error);
+                    }
+                });
+            })
+        })
+
+        $('.remove-item').click(function() {
+            var id = $(this).data('id');
+
+            var queue = [{
+                id: id,
+                quantity: 0
+            }]
+
+            if (variants[id]) {
+                queue.push({
+                    id: variants[id],
+                    quantity: 0
+                })
+            }
+
+            function moveAlong(){
+                if (queue.length) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/cart/change.js',
+                        data: queue.shift(),
+                        dataType: 'json',
+                        success: function() {
+                            moveAlong();
+                        },
+                        error: function(error) {
+                            console.log('error', error);
+                        }
+                    });
+                } else {
+                    location.href = '/cart';
+                }
+            };
+
+            moveAlong()
+        })
+    });
+</script>
+
+<script>
+    /*$(document).ready(function(){
+        $("A#cartToggle").click(function(){
+            mixpanel.track(
+                "Viewed Cart", {"name": "Clicked Cart Icon main nav"});
+        });
+    });*/
+</script>
+
+
+<!-- PIXEL KNOWLEDGE -->
+<script>
+    (function(d,t,u,p,e,f){e=d.createElement(t);f=d.getElementsByTagName(t)[0];
+                           e.async=1;e.src=u+'?'+p+'&'+Math.floor(Math.random()*999999);f.parentNode.insertBefore(e,f);
+                          })(document,'script','//upx.provenpixel.com/ujs.php', 'upx=10698');
+</script>
+

@@ -1,0 +1,166 @@
+<section class="container-fluid margTBLarge" id="instaFeed">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="">Get Inspired, Follow Us</h2>
+        </div>
+        <h3>#BRENTWOODHOME</h3>
+        <div id="insta-feed"></div>
+        {%comment%}{% include 'instagram' %}{%endcomment%}
+    </div>
+</section>
+<div id="findusbanner">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3 contact first">
+                <div class="contact title">
+                   <h2>Questions?</h2>
+                   <h3>We can help:</h3>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 contact">
+                <div class="chat">
+                    <p><a class="open_intercom" href="mailto:gnkl0uyl@brentwood-home-d2962b2761e8.intercom-mail.com"><img src="https://brentwood-home-36.imgix.net/ico-livechat-banner.svg" alt="Live Chat"></a></p>
+                    <h3><a class="open_intercom" href="mailto:gnkl0uyl@brentwood-home-d2962b2761e8.intercom-mail.com">Live Chat</a></h3>
+                    <p>Monday - Friday<br>5:00AM - 5:00PM PST<br>-<br>Saturday &amp; Sunday<br>6:00AM - 5:00PM PST</p> 
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 contact middle">
+                <div class="email">
+                    <p><img src="https://brentwood-home-36.imgix.net/ico-email-banner.svg" alt="Email"></p>
+                    <h3>E-mail</h3>
+                    <p>Send us an e-mail:
+                        <a href="mailto:support@brentwoodhome.com">support@brentwoodhome.com</a>
+                        or visit our <br>
+                        <a href="/pages/contact-us">contact page</a></p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 contact">
+                <div class="helpcenter">
+                    <p><img src="https://brentwood-home-36.imgix.net/ico-faq-banner.svg" alt="FAQ"></p>
+                    <h3>Help Center</h3>
+                    <p>Our help center can answer<br>most of the questions you may have.
+                        <a href="https://intercom.help/brentwood-home-b4d83ef0a14f" target="_blank">Visit our help center</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer-container">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-3 col-sx-12">
+          <div class="footer-logo text-center"><img src="{{ 'footer-logo.png' | asset_url }}" alt="Brentwood Home" /></div>
+          {% if settings.footer_logo_content != blank %}
+          <div class="footer-col-content">
+              <p style="line-height: 20px;">{{ settings.footer_logo_content }}</p>
+          </div>
+          {% endif %}
+          <div class="footer-icon-share">
+            <ul>
+              <li><a href="{{ settings.footer_column_4_icon_link_1 }}" target="_blank"><i class="{{ settings.footer_column_4_icon_1 }}"></i>&nbsp;Facebook</a></li>
+                <li><a href="{{ settings.footer_column_4_icon_link_2 }}" target="_blank"><i class="{{ settings.footer_column_4_icon_2 }}"></i>&nbsp;Twitter</a></li>
+                <li><a href="{{ settings.footer_column_4_icon_link_3 }}" target="_blank"><i class="{{ settings.footer_column_4_icon_3 }}"></i>&nbsp;Pinterest</a></li>
+                <li><a href="{{ settings.footer_column_4_icon_link_4 }}" target="_blank"><i class="{{ settings.footer_column_4_icon_4 }}"></i>&nbsp;Instagram</a></li>
+              {%comment%}<li><a href="{{ settings.footer_column_4_icon_link_5 }}"><i class="{{ settings.footer_column_4_icon_5 }}"></i></a></li>{%endcomment%}
+            </ul>
+          </div>
+        </div>
+        {% if settings.footer_column_1_title != blank %}
+        <div class="col-md-2 col-sm-2 col-xs-12">
+          <h3 class="module-title">{{ settings.footer_column_1_title }}</h3>
+          <ul class="content">
+            {% assign footerCol1 = settings.footer_column_1_title | handleize %}
+            {% for link in linklists.[footerCol1].links %}
+            <li>{{ link.title | link_to: link.url }}</li>
+            {% endfor %}
+              <li><a href="/products/gift-card">Gift Cards</a></li>
+          </ul>
+        </div>
+        {% endif %}
+        {% if settings.footer_column_2_title != blank %}
+        <div class="col-md-2 col-sm-2 col-xs-12">
+          <h3 class="module-title">{{ settings.footer_column_2_title }}</h3>
+          <ul class="content">
+            {% assign footerCol2 = settings.footer_column_2_title | handleize %}
+            {% for link in linklists.[footerCol2].links %}
+              {% if link.type == "http_link" %}
+              <li><a href="{{link.url}}" target="_blank">{{link.title}}</a></li>
+            {% else %}
+                  <li>{{ link.title | link_to: link.url }}</li>
+              {%endif%}
+            {% endfor %}
+            <li>
+                <span id="extole_zone_global_footer"></span>
+                <script type="text/javascript">
+                    /* Start Extole */
+                    (function(c,e,k,l,a){c[e]=c[e]||{};for(c[e].q=c[e].q||[];a<l.length;)k(l[a++],c[e])})(window,"extole",function(c,e){e[c]=e[c]||function(){e.q.push([c,arguments])}},["createZone"],0);
+                    /* End Extole */
+
+                    extole.createZone({
+                        name: 'global_footer',
+                        element_id: 'extole_zone_global_footer'
+                    });
+                </script>
+            </li>
+          </ul>
+        </div>
+        {% endif %}
+        {% if settings.footer_column_3_title != blank %}
+        <div class="col-md-2 col-sm-2 col-xs-12">
+          <h3 class="module-title">{{ settings.footer_column_3_title }}</h3>
+          <ul class="content">
+            {% assign footerCol3 = settings.footer_column_3_title | handleize %}
+            {% for link in linklists.[footerCol3].links %}
+            <li>{{ link.title | link_to: link.url }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+          <div class="col-md-3 col-sm-3 col-xs-12">
+              <h3 class="module-title">Guides</h3>
+              <ul class="content">
+                  <li><a href="/pages/reviews-all">Customer Reviews</a></li>
+                  <li><a href="/pages/materials">Materials We Use</a></li>
+                  <li><a href="/pages/bed-in-a-box">Mattress-in-a-Box</a></li>
+                  <li><a href="/pages/non-toxic-mattress">Non-Toxic Mattress</a></li>
+                  <li><a href="/pages/natural-latex-mattress">Natural Latex Mattress</a></li>
+              </ul>
+          </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          {% if settings.display_footer_address %}
+          <address>
+            {% if settings.footer_address_code %}
+            {{ settings.footer_address_code }}
+            {% endif%}
+          </address>
+          {% endif %}
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          {% if settings.display_paypal %}
+          <div class="paypal-images">
+            <ul>
+              <li><img src="{{ 'footer-paypal-1.png' | asset_url }}" alt="" /></li>
+              <li><img src="{{ 'footer-paypal-2.png' | asset_url }}" alt="" /></li>
+              <li><img src="{{ 'footer-paypal-3.png' | asset_url }}" alt="" /></li>
+              <li><img src="{{ 'footer-paypal-4.png' | asset_url }}" alt="" /></li>
+            </ul>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+{%comment%}
+{% include 'message-modal' %}
+{%endcomment%}
+

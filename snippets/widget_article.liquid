@@ -1,0 +1,35 @@
+{% comment %}
+<div class="widget widget-recent-articles">
+  <div class="widget-title">
+ 	 <h3><span>Recent Articles</span></h3>
+  </div>
+  <div class="widget-content">
+    <ul style="margin-left: 0">
+        {% for article in blog.articles limit:10 %}
+          <li class="article clearfix">
+              {% if article.image %}<a href="{{ article.url }}" title="{{ article.title | escape}}" class="thumb"><img src="{{ article | img_url: 'thumb' }}" alt="{{ article.title | escape}}" style=""></a>{% endif %}
+              <p style="margin-left: 60px;"><a href="{{ article.url }}" alt="{{ article.title | escape}}">{{ article.title }}</a> <em style="font-size: 12px;"> {{ article.published_at | date: "%B %d, %Y" }}</em></p>
+          </li>
+        {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endcomment %}
+
+<div class="row">
+    <div class="widget-title">
+        <h3><span>Recent Articles</span></h3>
+    </div>
+    {% for article in blog.articles limit:4 %}
+        {% assign imgName = article.image.src | remove: 'articles/' | split:'?' | first %}
+        <div class="col-xs-6 col-md-3 text-center">
+            {% if article.image %}
+                <a href="{{ article.url }}" title="{{ article.title | escape}}" class="thumb">
+                    <img src="https://brentwood-home-blog.imgix.net/{{ imgName }}?fit=crop&w=360" alt="{{ article.title }}">
+                </a>
+            {% endif %}
+            <p><em style="font-size: 12px;">{{ article.published_at | date: "%B %d, %Y" }}</em></p>
+            <p><a href="{{ article.url }}" alt="{{ article.title | escape}}">{{ article.title }}</a></p>
+        </div>
+    {% endfor %}
+</div>

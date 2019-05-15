@@ -1,0 +1,828 @@
+{% assign productTags = product.tags | join:',' %}
+
+<div class="container-fluid" id="product">
+    <div itemscope itemtype="http://schema.org/Product" class="product">
+        <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+        <meta itemprop="name" content="{{ product.title }}">
+        <meta itemprop="image" content="https:{{ product | img_url: '1024x' }}">
+        <meta itemprop="itemCondition" content="http://schema.org/NewCondition" />
+
+        <div class="row">
+            {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+            <style>
+                .flexslider .slides > li{
+                    background-color: #f9f9f9;
+                }
+                .embed-container { 
+                    position: relative;
+                    left: 0; 
+                    right: 0;
+                    top: 50%;
+                    /* video height / video width */
+                    padding-bottom: 66.2%;
+                    /* the above value * 0.5 */
+                    /*margin-top: -28.1%;*/
+                    height: 0;
+                    overflow: hidden;
+                } 
+                .embed-container iframe, .embed-container object, .embed-container embed { 
+                    position: absolute; 
+                    top: 0; 
+                    left: 0; 
+                    width: 100%; 
+                    height: 100%; 
+                }
+            </style>
+            
+            <!-- FLEXSLIDER -->
+            <div class="col-xs-12 col-md-7" id="product-image-main">
+                <section class="slider">
+                    <div class="flexslider">
+                        <ul class="slides">
+                            {% for image in product.images %}
+                                {% assign videotag = image.alt | escape %}
+                                {% assign imgName = image | remove: 'products/' | split:'?' | first %}
+                                <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=100&dpr=1&fit=clip" class="slide">
+                                    {% if videotag contains 'vimeo' %}
+                                        <div class='embed-container '>
+                                            <!--https://player.vimeo.com/video/###-->
+                                            <iframe src="{{ image.alt }}?title=0&byline=0&portrait=0" width="640" height="360" id="video_1" frameborder="0"></iframe>
+                                        </div>
+                                    {% else %}
+                                        <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=960&dpr=1&fit=clip" alt="{{ image.alt | escape }}">
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            {%comment%}
+            to remove the pull-left for single products
+            {%endcomment%}
+            {% assign multi_prd = true %}
+            {% if collection.products_count <= 1 %}
+                                               {% assign multi_prd = false %}
+                                               {% endif %}
+                                               <div class="col-xs-12 col-md-5 product-shop">
+            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                <header class="product-title {% if collection.previous_product or collection.next_product and settings.display_prev_next_product and collection %}has-btn{% endif %}">
+                    <h1 {% if settings.display_prev_next_product and collection and multi_prd%}class="pull-left"{%endif%}>{{ product.title }}</h1>
+
+                    {% if settings.display_prev_next_product and collection %}
+                    <div class="product-step">
+                        {% if collection.previous_product %}
+                        <a class="prev-p" href="{{ collection.next_product }}" title="Prev"><span class="fa fa-angle-left"></span>Previous</a>
+                        {% endif %}
+                        {% if collection.next_product %}
+                        <a class="next-p" href="{{ collection.next_product }}" title="Next">Next<span class=" fa fa-angle-right"></span></a>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+
+                </header>
+                <div class="yotpo bottomLine"
+                     data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
+                     data-domain="{{ shop.permanent_domain | escape }}"
+                     data-product-id="{{ product.id }}"
+                     data-product-models="{{ product.id }}"
+                     data-name="{{ product.title | escape }}"
+                     data-url="{{ shop.url }}{{ product.url }}"
+                     data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+                     data-description="{{ product.description | escape }}"
+                     data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+                </div>
+
+                {% if settings.display_product_reviews %}
+                <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+                {% endif %}
+
+                {% if settings.display_availability or settings.display_product_type or settings.display_vendor %}
+
+                {% if settings.display_availability %}
+                <div class="availability">
+                    <p class="product-inventory"> <label>Availability</label><span>{% if product.selected_or_first_available_variant.inventory_management %}{% assign first_inventory = product.selected_or_first_available_variant.inventory_quantity %}{% if first_inventory > 0 %}{{first_inventory}} in stock{% else %}Out of stock{% endif %}{% else %}Many in stock{% endif %}
+                        </span></p>
+                </div>
+                {% endif %}
+
+
+                {% endif %}
+
+                {% if product.available %}
+                <link itemprop="availability" href="http://schema.org/InStock">
+                {% else %}
+                <link itemprop="availability" href="http://schema.org/OutOfStock">
+                {% endif %}
+
+                <h3 class="text-left">{{product.metafields.bhsite.feel}}</h3>
+                <p class="short-description">{{product.metafields.bhsite.shortdesc}}</p>
+                {% include 'shippingtime' %}
+                {% if productTags contains 'amazon' %}
+                    <p><img src="{{ 'exclusiveAmz.png' | asset_url }}" alt="" style="max-width: 150px;"></p>
+                {%endif%}
+                <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
+                    <div id="product-variants">
+                        {% assign variantCount = product.variants | size %}
+                        {% if product.available %}
+                        {% if variantCount > 1 %}
+                        <select id="product-selectors" name="id" style="display:none">
+                            {% for variant in product.variants %}
+                            <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                            {% endfor %}
+                        </select>
+
+                        {% if settings.use_color_swatch %}
+                        {% for option in product.options %}
+                        {% include 'swatch' with option %}
+                        {% endfor %}
+                        {% endif %}
+                        {% else %}
+                        <input type="hidden" name="id" value="{{ product.variants[0].id }}" />
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                    
+                    {% if product.available %}
+                        <div class="clearfix" {% if productTags contains 'amazon' %} style="display:none;"{%endif%}>
+                            <div id="qt">QTY: <input type="text" id="quantity" name="quantity" value="1"></div>
+                            <!-- PRICE -->
+                            <div class="prices" style="float: right;">
+                                {% if product.compare_at_price > product.price %}
+                                <span class="compare-price">{{ product.compare_at_price_max | money }}</span>
+                                <span class="price on-sale" itemprop="price">{{ product.price | money }}</span>
+                                {% else %}
+                                <span itemprop="priceCurrency" content="{{ shop.currency }}"></span>
+                                <span class="price" itemprop="price" content="{{ product.price | money_without_currency }}">{{ product.price | money_without_trailing_zeros }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    
+                        {% if productTags contains 'amazon' %}
+                            <a href="{{product.metafields.bhsite.amazonlink}}" class="cta4amz" target="_blank" title="See it on Amazon">BUY IT</a>
+                        {% elsif productTags contains 'Costco' %}
+                           <h3>OUT OF STOCK</h3>
+                        {% else %}
+                            
+                                
+                                {% if productTags contains 'preorder' %}
+                                    <div class="out-of-stock">
+                                        <span class="left"></span>
+                                        <p class="product-inventory">
+                                            This item is currently available for pre-order.<br>It will ship end of May.
+                                        </p>
+                                        <span class="right"></span>
+                                    </div>
+                                    <input type="submit" name="add" class="btn" id="product-add-to-cart" value="PRE-ORDER">
+                                {% else if %}
+                                    <input type="submit" name="add" class="cta2" id="product-add-to-cart" value="Add to Cart">
+                                    {% include 'shippingtime' %}
+                                    <p id="add2cart_shipping"><img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Ships free in {{ shipsfree }}">Ships free in {{ shipsfree }}</p>
+                                    {% if product.type == 'Mattress' %}
+                                        {% include 'affirm-product' %}
+                                        <style>
+                                            DIV.affirm{
+                                                font-size: 12px;
+                                            }
+                                            DIV.affirm A#learn-more{
+                                                margin-bottom: 0px;
+                                            }
+                                            DIV.affirm A.affirm-prequal-text{
+                                                cursor: pointer;
+                                                display: inline-block;
+                                                /*background-color: #00c8e5;*/
+                                                color: #00c8e5;
+
+                                                padding: 0;
+                                                border-radius: 5px;
+                                                line-height: 24px;
+                                            }
+                                            DIV.affirm A.affirm-prequal-text:HOVER{
+                                                text-decoration: none;
+                                                background-color: #00d9f6;
+                                                color: white;
+                                                padding: 2px 9px;
+                                            }
+                                            #add-to-cart-form .affirm #learn-more a {
+                                                display: inline-block;
+                                            }
+                                        </style>
+                                        <div class="affirm">
+                                            <a id="learn-more" class="affirm-as-low-as affirm-site-modal" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{variant.price}}"></a> or <a class="affirm-prequal-text" data-promo-id="prequal_text_brentwood" style="cursor: pointer;"></a>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                            
+                            
+                        {%endif%}
+                    {% else %}
+                            {% if product.tags contains "korea" %}
+                                <input type="submit" name="add" class="btn" id="product-add-to-cart" disabled value="For Korea Market Only">
+                            {% else %}
+                                <input type="submit" name="add" class="btn" id="product-add-to-cart" disabled value="Out of stock">
+                            {% endif %}
+                    {% endif %}
+                    {%comment%}Passing pre-order as line item for tracking
+                    <input type="hidden" id="preorder" name="properties[preorder]" value="true">{%endcomment%}
+                </form>
+                {% assign current_variant = product.selected_or_first_available_variant %}
+                
+            </div>
+        </div>
+    </div>
+</div><!-- End Row -->
+</div><!-- End Container -->
+
+
+
+<div class="product-tabs ">
+    {% if product.metafields.bhsite.tagline != "0" %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 col-md-offset-1 text-center">
+                <h2 class="product-tagline">{{product.metafields.bhsite.tagline}}</h2>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% if product.type == 'Pillow' %}{%comment%}
+        <div class="container section warranties" style="margin: 100px auto;">
+            <h2 class="text-center">Try the {{ product.title }} Risk-Free</h2>
+            <div class="row">
+                <div class="col-xs-3 col-sm-3">
+                    <img src="https://brentwood-home-36.imgix.net/iconv2-1yearguarantee.svg" alt="">
+                    <p>30-day<br>Trial</p>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="">
+                    <p>Free Shipping<br>Free Return</p>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <img src="https://brentwood-home.imgix.net/iconv2-madeincalifornia.svg" alt="">
+                    <p>Made in<br>California</p>
+                </div>
+                <div class="col-xs-3 col-sm-3">
+                    <img src="https://brentwood-home.imgix.net/iconv2-3yearwarranty.svg" alt="">
+                    <p>1-year<br>Limited Warranty</p>
+                </div>
+            </div>
+    </div>{%endcomment%}
+    {% endif %}
+    {% if product.type == 'Mattress' %}
+       <style>
+           .product-tabs .overlays-1 {
+               padding: 40px 30px;
+               display: table;
+               width: 100vw;
+               height: 320px;
+               background: center no-repeat;
+               background-size: cover;
+           }
+           .product-tabs .overlays-1 .items .item label {
+               margin-top: 10px;
+               text-align: center;
+               font-size: 15px;
+               color: #454D5B;
+               letter-spacing: 0.14px;
+           }
+           .product-tabs .overlays-1 .items .item {
+               vertical-align: top;
+               display: inline-block;
+               text-align: center;
+           }
+    </style>
+    {% if product.tags contains "korea" %}
+        <div class="overlays overlays-1" style="background-image: url({{ 'overlays-1-bg.jpg' | asset_url }})">
+            <h2 class="overlays-title">Sleep with peace of mind</h2>
+            <div class="items row">
+                <div class="item col-xs-6 col-md-3">
+                    <img src="https://brentwood-home.imgix.net/icon-CertiPUR-US.svg"/>
+                    <br/>
+                    <label>CertiPUR-US&reg; Certified</label>
+                </div>
+                <div class="item col-xs-6 col-md-3">
+                    <img src="https://brentwood-home.imgix.net/icon-NoFRChemicals.svg"/>
+                    <br/>
+                    <label>No Flame Retardant Chemicals</label>
+                </div>
+                <div class="item col-xs-6 col-md-3">
+                    <img src="https://brentwood-home.imgix.net/icon-Wool.svg"/>
+                    <br/>
+                    <label>New Zealand Wool</label>
+                </div>
+                <div class="item col-xs-6 col-md-3">
+                    <img src="{{ 'icon-California.svg' | asset_url }}"/>
+                    <br/>
+                    <label>Made in California</label>
+                </div>
+            </div>
+        </div>
+        {% else %}
+            <div class="overlays overlays-1" style="background-image: url({{ 'overlays-1-bg.jpg' | asset_url }})">
+                <h2 class="overlays-title">Sleep with peace of mind</h2>
+                <div class="items row">
+                    <div class="item col-xs-6 col-md-2 col-md-offset-1">
+                        <img src="https://brentwood-home-36.imgix.net/iconv2-1yearguarantee.svg"/>
+                        <br/>
+                        <label>1-Year Trial</label>
+                    </div>
+                    <div class="item col-xs-6 col-md-2">
+                        <img src="{{ 'icon-FreeShipping2.svg' | asset_url }}"/>
+                        <br/>
+                        <label>Free Shipping</label>
+                    </div>
+                    <div class="item col-xs-6 col-md-2">
+                        <img src="{{ 'icon-FreeReturns.svg' | asset_url }}"/>
+                        <br/>
+                        <label>Free Returns</label>
+                    </div>
+                    <div class="item col-xs-6 col-md-2">
+                        <img src="{{ 'icon-California.svg' | asset_url }}"/>
+                        <br/>
+                        <label>Made in California</label>
+                    </div>
+                    <div class="item col-xs-12 col-md-2">
+                        <img src="{{ 'icon-25YearWarranty.svg' | asset_url }}"/>
+                        <br/>
+                        <label>25-year Warranty</label>
+                    </div>
+                </div>
+            </div>
+    {% endif %}
+    {% elsif product.type == 'Mattress Topper' %}
+       
+    <div class="container section warranties">
+        <h2 class="text-center">Try the {{ product.title }} Risk-Free</h2>
+        <div class="row">
+            <div class="col-xs-4 col-sm-2">
+                <img src="https://brentwood-home-36.imgix.net/iconv2-30nightguarantee.svg" alt="">
+                <p>30-night<br>Trial</p>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="">
+                <p>Free Shipping<br>Free Return</p>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <img src="https://brentwood-home.imgix.net/iconv2-madeincalifornia.svg" alt="">
+                <p>Made in<br>California</p>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <img src="https://brentwood-home.imgix.net/iconv2-ecofriendly.svg" alt="">
+                <p>Non<br>Toxic</p>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <img src="{{ 'iconv2-temperatureregulation.svg' | asset_url }}" alt="">
+                <p>Temperature<br>Regulation</p>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <img src="https://brentwood-home.imgix.net/iconv2-pressurerelieving.svg" alt="">
+                <p>Pressure<br>Relieving</p>
+            </div>
+        </div>
+    </div>
+    
+    {% endif %}
+
+    <div class="" id="description">
+        {% if product.metafields.bhsite.outside %}
+            <div class="row flexVCenter" style="background-color: #4a4a4a;">
+                <div class="col-xs-12 col-md-6" style="background-color: #fff;padding-right:0px;padding-bottom:0;">
+                    
+                    <img src="https://brentwood-home-36.imgix.net/{{product.metafields.bhsite.outsideimg }}?w=1024" alt="{{product.title}}">
+                </div>
+                <div class="col-xs-12 col-md-6" style="padding-left: 0px;padding-bottom:0;">
+                    <div class="" id="description-outside">
+                        {{product.metafields.bhsite.outside}}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if product.metafields.bhsite.inside %}
+        <div class="row flexVCenter" style="background-color: #9b9b9b;">
+            <div class="col-xs-12 col-md-6 col-md-push-6" style="background-color: #fff;padding-left:0px;padding-top:0;">
+                <img src="https://brentwood-home-36.imgix.net/{{product.metafields.bhsite.insideimg }}?w=1024" class="" alt="{{product.title}}">
+            </div>
+            <div class="col-xs-12 col-md-6 col-md-pull-6" style="padding-right:0px;">
+                <div id="description-inside">
+                    {{product.metafields.bhsite.inside}}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if product.metafields.bhsite.feature3 %}
+        <div class="row flexVCenter" style="margin-top: 20px; background-color: #4a4a4a;">
+            <div class="col-xs-12 col-md-6" style="background-color: #fff;padding-top:0;">
+                <img src="{{product.metafields.bhsite.feature3b | asset_url}}" alt="{{product.title}}">
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="" id="description-outside">
+                    {{product.metafields.bhsite.feature3}}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if product.tags contains "yoga" %}
+        <div class="row flexVCenter" style="background-color: #4a4a4a;">
+            <div class="col-xs-12 col-md-6" style="background-color: #fff;padding-right:0px;padding-bottom:0;">
+                <img src="https://s3-brentwoodhome.imgix.net/ccyoga/yogagirl-trio.jpg?rect=305,0,3972,3972&w=1024" alt="{{product.title}} Vegan Certified">
+            </div>
+            <div class="col-xs-12 col-md-6" style="padding-left: 0px;padding-bottom:0;">
+                <div class="" id="description-outside">
+                   <h4>VEGAN CERTIFIED</h4>
+                    <p>The {{product.title}} is 100% Certified Vegan by Vegan Action. This means it is free from animal products (like feathers, wool and down) or byproducts that have been tested on animals. In addition, although we do manufacture some items that do use natural animal products like wool, we have stringent requirements in place for cleaning the machines in-between use, so cross-contamination will not occur. If you practice a vegan lifestyle, you can rest assured that your Crystal Cove products are aligned with your values.</p>
+                    <p class="text-center"><img src="{{ 'veganlogo.svg' | asset_url}}" alt="Certified Vegan" style="max-width: 75px;background-color: white;border-radius: 38px;padding: 2px;"></p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <br><br>
+    
+    {% if product.metafields.bhsite.section1 %}
+        
+    
+    <div class="container section" style="margin-top: 60px;margin-bottom:60px;">
+        <div class="row flex">
+            <div class="col-xs-12 col-sm-6">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/caleyalyssa3.jpg?w=480&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/caleyalyssa3.jpg?w=920">
+                    <img src="https://s3-brentwoodhome.imgix.net/caleyalyssa3.jpg?w=920" alt="">
+                </picture>
+            </div>
+            <div class="col-xs-12 col-sm-6 flexV">
+                <div>
+                    <h2>Greenguard Gold Certified Non-Toxic</h2>
+                    <p>The Crystal Cove pillow is completely <strong>GREENGUARD Gold Certified</strong> by UL Environment. It means that it has been scientifically tested in environmental chambers to meet some of the world’s most rigorous, third-party emissions standards for prolonged chemical exposure and pollutants, such as volatile organic compounds (VOCs), formaldehyde and phthalates. <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/health-safety-and-sustainability/are-your-mattresses-pillows-greenguard-gold-certified" title="Greenguard Gold Certified">View Certificate.</a></p>
+                    <p class="text-center"><img src="https://cdn.shopify.com/s/files/1/0911/6592/t/36/assets/logo-greenguard-2.svg?5939485025052037174" alt="" style="max-width: 100px; width: 100px;margin-top: 30px;" ></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endif %}
+   
+    {% if product.tags contains "GreenGuard" and product.type == "Mattress Topper" %}
+    <div class="container section margTBLarge">
+        <div class="row flex">
+            <div class="col-xs-12 col-sm-6 text-center">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/naturel-ul.jpg?rect=796,235,1218,1686&w=480&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/naturel-ul.jpg?rect=796,235,1218,1686&w=555">
+                    <img src="https://s3-brentwoodhome.imgix.net/products/naturel-ul.jpg?w=555" alt="Greenguard Gold Certified">
+                </picture>
+            </div>
+            <div class="col-xs-12 col-sm-6 flexV">
+                <div>
+                    <h2>Greenguard Gold Certified</h2>
+                    <p>According to the <a href="https://www.epa.gov/report-environment" target="_blank">EPA</a>, Indoor air quality is 5 times more polluted than outside air. And since we spend <a href="https://www.epa.gov/report-environment/indoor-air-quality" target="_blank">90% of our time</a> living, working, and playing indoors, indoor air quality is an important consideration.
+                    </p>
+                    <p>That’s why the {{product.title}} is <strong>GREENGUARD Gold Certified by UL Environment for Low Emissions</strong>. It means that it has been scientifically tested in environmental chambers to meet the most rigorous emissions standards for chemical exposure and pollutants, such as Volatile Organic Compounds (VOCs), formaldehyde and phthalates. <a href="https://spot.ul.com/main-app/products/catalog/?keywords=brentwood+home" target="_blank" title="Greenguard Gold Certified">View Profile</a>.</p>
+                    <p class="text-center"><img src="{{ 'greenguard-logo-full.svg' | asset_url }}" alt="Greenguard Gold Certified" style="max-width: 100px; width: 100px;margin-top: 30px;" ></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    <div class="container description">
+        <div class="row">
+           <div class="col-xs-12">
+               <h2>Description</h2>
+           </div>
+            <div class="col-md-offset-2 col-md-8">
+                {{product.description}}
+                {% include 'shippingtime' %}
+            </div>
+        </div>
+    </div>
+    <br>
+    
+    
+    <div id="recommendationApp">
+
+    </div>
+    
+    
+    {%comment%}
+    <ul class="nav nav-tabs" id="myTab">
+        {% if settings.display_product_detail_description %}
+        <li class="active"><a data-toggle="tab" href="#collapse-tab1">{{ settings.product_description_title }}</a></li>
+        {% endif %}
+        {% if settings.display_product_reviews %}
+        <li><a data-toggle="tab" href="#collapse-tab2">{{ settings.product_review_title }}</a></li>
+        {% endif %}
+    </ul>
+
+    <div id="myTabContent" class="tab-content">
+        {% if settings.display_product_detail_description %}
+        <div id="collapse-tab1" class="tab-pane fade in active">
+            {{ product.description }}
+        </div>
+        {% endif %}
+
+
+
+        {% if settings.display_product_reviews %}
+        <div id="collapse-tab2" class="tab-pane fade">
+            {% comment %}
+            Add product review widget, must install Product Review App:
+            https://apps.shopify.com/product-reviews
+            {% endcomment %}
+            <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+        </div>
+        {% endif %}
+    </div>
+    {%endcomment%}
+</div>
+
+<br><br>
+
+
+{% if productTags contains "korea" %}
+{% else %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>REVIEWS</h2>
+        </div>
+        <div class="col-xs-12">
+            <div class="yotpo yotpo-main-widget"
+                 data-product-id="{{ product.id }}"
+                 data-name="{{ product.title | escape }}"
+                 data-url="{{ shop.url }}{{ product.url }}"
+                 data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}"
+                 data-description="{{ product.description | escape }}">
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<script>
+    jQuery('#myTab a').click(function (e) {
+        e.preventDefault();
+        jQuery(this).tab('show');
+    })
+</script>
+
+
+
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+
+</div>
+{% include 'block-productdetail-right' %}
+</div>
+
+<script>
+    jQuery(document).ready(function(){
+        
+        jQuery("#zt_list_product").owlCarousel({
+
+            itemsCustom : [
+                [600, 3]
+            ],
+            navigation : true,
+            navigationText : ['<i class="fa icon-left"></i>','<i class="fa icon-right"></i>']
+        });
+    });
+    //Shopify.Image.preload({{ product.images | json }}, 'grande');
+
+    {% if settings.display_subtotal and product.available %}
+    //update price when changing quantity
+    function updatePricing() {
+        //try pattern one before pattern 2
+        var regex = /([0-9]+[.|,][0-9]+[.|,][0-9]+)/g;
+        var unitPriceTextMatch = jQuery('.product .price').text().match(regex);
+
+        if (!unitPriceTextMatch) {
+            regex = /([0-9]+[.|,][0-9]+)/g;
+            unitPriceTextMatch = jQuery('.product .price').text().match(regex);
+        }
+
+        if (unitPriceTextMatch) {
+            var unitPriceText = unitPriceTextMatch[0];
+            var unitPrice = unitPriceText.replace(/[.|,]/g,'');
+            var quantity = parseInt(jQuery('#quantity').val());
+            var totalPrice = unitPrice * quantity;
+
+            var totalPriceText = Shopify.formatMoney(totalPrice, window.money_format);
+
+            totalPriceText = totalPriceText.match(regex)[0];
+
+            var regInput = new RegExp(unitPriceText, "g");
+            var totalPriceHtml = jQuery('.product .price').html().replace(regInput ,totalPriceText);
+
+            jQuery('.product .total-price span').html(totalPriceHtml);
+        }
+    }
+     jQuery('#quantity').on('change', updatePricing);
+     {% endif %}
+
+     var selectCallback = function(variant, selector) {
+
+         var addToCart = jQuery('#product-add-to-cart'),
+             productPrice = jQuery('.product .price'),
+             comparePrice = jQuery('.product .compare-price');
+
+         if (variant) {
+             if (variant.available) {
+                 // We have a valid product variant, so enable the submit button
+                 addToCart.removeClass('disabled').removeAttr('disabled').val('Add to Cart');
+
+             } else {
+                 // Variant is sold out, disable the submit button
+                 addToCart.val('Sold Out').addClass('disabled').attr('disabled', 'disabled');
+             }
+
+             // Regardless of stock, update the product price
+             productPrice.html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}"));
+
+             // Also update and show the product's compare price if necessary
+             if ( variant.compare_at_price > variant.price ) {
+                 productPrice.addClass("on-sale")
+                 comparePrice
+                     .html(Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}"))
+                     .show();
+             } else {
+                 comparePrice.hide();
+                 productPrice.removeClass("on-sale");
+             }
+             {% if settings.use_color_swatch %}
+             // BEGIN SWATCHES
+             var form = jQuery('#' + selector.domIdPrefix).closest('form');
+              for (var i=0,length=variant.options.length; i<length; i++) {
+                  var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]');
+                  if (radioButton.size()) {
+                      radioButton.get(0).checked = true;
+                  }
+              }
+              // END SWATCHES
+              {% endif %}
+
+              {% if settings.display_subtotal and product.available %}
+              updatePricing();
+               {% endif %}
+
+
+               } else {
+                   // The variant doesn't exist. Just a safeguard for errors, but disable the submit button anyway
+                   addToCart.val('Unavailable').addClass('disabled').attr('disabled', 'disabled');
+               }
+
+               //update variant inventory
+               {% if settings.display_availability %}
+               if (variant.available) {
+                   if (variant.inventory_management!=null) {
+                       jQuery(".product-inventory span").text(variant.inventory_quantity + " in stock");
+                   } else {
+                       jQuery(".product-inventory span").text("Many in stock");
+                   }
+               } else {
+                   jQuery(".product-inventory span").text("Out of stock");
+               }
+                {% endif %}
+
+                /*begin variant image*/
+                if (variant && variant.featured_image) {
+                    var originalImage = jQuery("#product-featured-image");
+                    var newImage = variant.featured_image;
+                    var element = originalImage[0];
+                    Shopify.Image.switchImage(newImage, element, function (newImageSizedSrc, newImage, element) {
+                        jQuery('#zt_list_product img').each(function() {
+                            var grandSize = jQuery(this).attr('src');
+                            grandSize = grandSize.replace('compact','grande');
+                            if (grandSize == newImageSizedSrc) {
+                                console.log(newImageSizedSrc);
+                                jQuery(this).parent().trigger('click');
+                                return false;
+                            }
+                        });
+                    });
+                }
+                     /*AFFIRM*/
+                     {% if product.type == 'Mattress' %}
+                     $('.affirm-as-low-as').attr('data-amount',variant.price);
+                     affirm.ui.ready(function(){
+                         affirm.ui.refresh(); 
+                     });
+                      {% endif %}
+                };
+
+                jQuery(function($) {
+                    {% if product.available and product.variants.size > 1 %}
+                    new Shopify.OptionSelectors('product-selectors', {
+                        product: {{ product | json }},
+                                                onVariantSelected: selectCallback,
+                                                enableHistoryState: true
+                                                });
+
+                     {% comment %}
+                     Use color swatch and linked options (copyright by @carolineschnapp)
+                     {% endcomment %}
+                     {% if settings.use_color_swatch and product.available and product.options.size > 1 %}
+                     Shopify.linkOptionSelectors({{ product | json }});
+                      {% endif %}
+
+                      {% if settings.use_color_swatch != true %}
+                      jQuery('.single-option-selector').selectize();
+                       jQuery('.selectize-input input').attr("disabled","disabled");
+                       {% endif %}
+
+                       {% endif %}
+
+                       // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
+                       {% if product.options.size == 1 and product.options.first != 'Title' %}
+                       $('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first }}</label>');
+                        {% endif %}
+
+                        // Hide selectors if we only have 1 variant and its title contains 'Default'.
+                        {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+                        $('.selector-wrapper').hide();
+                         {% endif %}
+
+                         // Auto-select first available variant on page load. Otherwise the product looks sold out.
+                         {% assign found_one_in_stock = false %}
+                         {% for variant in product.variants %}
+                         {% if variant.available and found_one_in_stock == false %}
+                         {% assign found_one_in_stock = true %}
+                         {% for option in product.options %}
+                         $('.single-option-selector:eq({{ forloop.index0 }})').val({{ variant.options[forloop.index0] | json }}).trigger('change');
+                          {% endfor %}
+                          {% endif %}
+                          {% endfor %}
+
+                          {% if settings.display_product_reviews %}
+                          var reviewsTimeout = setInterval(function() {
+                              if (jQuery(".spr-badge-caption").length>0) {
+                                  jQuery(".spr-badge-caption").on('click', function() {
+                                      jQuery('html,body').animate({
+                                          scrollTop: jQuery(".panel:last").offset().top},
+                                                                  '400');
+                                      jQuery("#collapse-tab4").collapse('show');
+                                  });
+                                  clearInterval(reviewsTimeout);
+                              }
+                          },1000);
+
+                           {% endif %}
+
+                           });
+
+</script>
+
+<script>
+    mixpanel.track(
+        "Product Viewed",
+        {"name": "{{product.title}}",
+         "price": "{{ product.price | money_without_currency }}",
+         "brand": "{{product.vendor}}",
+         "category": "{{ collection.title }}",
+         "variant": "{% for variant in product.variants %}{{ variant.sku }}{% endfor %}"
+        });
+</script>
+<script>
+    $(document).ready(function(){
+        $("#product-add-to-cart").click(function(){
+            mixpanel.track(
+                "Added to Cart", {"name": "{{product.title}}"});
+
+            pintrk('track', 'addtocart', {
+                value: '{{ product.price | money_without_currency }}',
+                currency: 'USD',
+                line_items: [
+                    {
+                        product_name: '{{product.title}}',
+                        product_category: '{{ collection.title }}',
+                        product_variant_id: '{% for variant in product.variants %}{{ variant.sku }}{% endfor %}',
+                        product_price: '{{ product.price | money_without_currency }}',
+                        product_quantity: 1,
+                        product_brand: '{{product.vendor}}'
+                    }
+                ]
+            });
+        });
+    });
+</script>
+
+
+
+{% if settings.display_related_products %}
+{% if settings.related_products_type == "tags" %}
+{% include 'related-products-by-tags' %}
+{% else %}
+<div class="container">{% include 'related-products' %}</div>
+{% endif %}
+{% endif %}
+
+<span id="extole-zone-product_page"></span>
+<script type="text/javascript">
+    (function(c,b,f,k,a){c[b]=c[b]||{};for(c[b].q=c[b].q||[];a<k.length;)f(k[a++],c[b])})(window,"extole",function (c,b){b[c]=b[c]||function (){b.q.push([c,arguments])}},["createZone"],0);
+    extole.createZone({
+        name: "product_page",
+        element_id: "extole-zone-product_page",
+        parameters: {
+
+        }
+    });
+</script>

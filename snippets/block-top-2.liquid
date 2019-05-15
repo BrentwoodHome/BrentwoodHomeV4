@@ -1,0 +1,295 @@
+{% if settings.enable_block_carousel %}	
+<div id="carousel-top">
+    {% if settings.enable_slide_image_9 %}
+    <div  class=" block-top-5" style="margin-top: 0;">
+        <div class="col-md-4 col-sm-4 col-xs-12 block-item">
+
+            <div class="slide-carousel">
+                <div class="content-slider">
+                    {% if settings.block_slide_content_9 != blank %}
+                    {{ settings.block_slide_content_9 }}
+                    {% endif %}
+                </div>
+                   {%comment%}
+                   <div class="images hidden-xs">
+                    {{ 'block_slide9.jpg' | asset_url | img_tag }}
+                </div>
+                {%endcomment%}
+                <div class="content-bottom">
+                    {% if settings.block_price_9 != blank %}
+                    <div class="price">{{ settings.block_price_9 }}</div>
+                    {% endif %}
+                    {%comment%}{% if settings.block_text_link_9 != blank %}
+                    <div class="view-more"><a href="{{ settings.block_link_9 }}">{{ settings.block_text_link_9}} </a> </div>
+                    {% endif %}{%endcomment%}
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12 block-item">
+
+            <div class="slide-carousel">
+                <div class="content-slider">
+                    {% if settings.block_slide_content_10 != blank %}
+                    {{ settings.block_slide_content_10 }}
+                    {% endif %}
+                </div>
+                {%comment%}<div class="images hidden-xs">
+                    {{ 'block_slide10.jpg' | asset_url | img_tag }}
+                </div>{%endcomment%}
+                <div class="content-bottom">
+                    {% if settings.block_price_10 != blank %}
+                    <div class="price">{{ settings.block_price_10 }}</div>
+                    {% endif %}
+                    {%comment%}{% if settings.block_text_link_10 != blank %}
+                    <div class="view-more"><a href="{{ settings.block_link_10 }}">{{ settings.block_text_link_10}} </a> </div>
+                    {% endif %}{%endcomment%}
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12 block-item">
+
+            <div class="slide-carousel">
+                <div class="content-slider">
+                    {% if settings.block_slide_content_11 != blank %}
+                    {{ settings.block_slide_content_11 }}
+                    {% endif %}
+                </div>
+                {%comment%}<div class="images hidden-xs">
+                    {{ 'block_slide11.jpg' | asset_url | img_tag }}
+                </div>{%endcomment%}
+                <div class="content-bottom">
+                    {% if settings.block_price_11 != blank %}
+                    <div class="price">{{ settings.block_price_11 }}</div>
+                    {% endif %}
+                    {%comment%}{% if settings.block_text_link_11 != blank %}
+                    <div class="view-more"><a href="{{ settings.block_link_11 }}">{{ settings.block_text_link_11}} </a> </div>
+                    {% endif %}{%endcomment%}
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endif %}
+<div id="autoheight">{%comment%}See gosh-scrip.js line 684{%endcomment%}
+    {% if settings.enable_slide_image_1 %}
+    <div  class=" block-top-1">
+        <div class="col-md-6 col-sm-6 col-xs-12 block-1 block-item">
+
+            <div class="slide-carousel">
+                <div class="content-slider">
+                    {% if settings.block_slide_content_1 != blank %}
+                    {{ settings.block_slide_content_1 }}
+                    {% endif %}
+                </div>
+                <div class="images">
+                    {{ 'block_slide1.jpg' | asset_url | img_tag }}
+                </div>
+                <div class="content-bottom">
+                    {% if settings.block_price_1 != blank %}
+                    <div class="price">{{ settings.block_price_1 }}</div>
+                    {% endif %}
+                    {% if settings.block_text_link_1 != blank %}
+                    <div class="view-more"><a href="{{ settings.block_link_1 }}">{{ settings.block_text_link_1}} </a> </div>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div> 
+        <div class="col-md-6 col-sm-6 col-xs-12 block-2 block-item hidden-xs">
+            <div class="images" style="height:100%;background:url({{ 'block_slide2.jpg' | asset_url }}) no-repeat center center;background-size:cover;">
+
+            </div>
+
+            {% if settings.block_slide_content_2 != blank %}
+            <div class="content-slider">
+                {{ settings.block_slide_content_2 }}
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+    {% endif %}
+
+    {% if settings.enable_slide_image_2 %}
+    <div  class=" block-top-2">
+        <div class="col-md-6 col-sm-6 col-xs-12 block-2 block-item hidden-xs">
+            <div class="images" style="height:100%;background:url({{ 'block_slide3.jpg' | asset_url }}) no-repeat bottom center;background-size:cover;">
+
+            </div>
+
+            {% if settings.block_slide_content_3 != blank %}
+            <div class="content-slider">
+                {{ settings.block_slide_content_3 }}
+            </div>
+            {% endif %}
+
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 block-1 block-item">
+
+            <div class="slide-carousel">
+                <div class="content-slider">
+                    {% if settings.block_slide_content_4 != blank %}
+                    {{ settings.block_slide_content_4 }}
+                    {% endif %}
+                </div>
+                <div class="images">
+                    {{ 'block_slide4.jpg' | asset_url | img_tag }}
+                </div>
+                <div class="content-bottom">
+                    {% if settings.block_price_4 != blank %}
+                    <div class="price">{{ settings.block_price_4 }}</div>
+                    {% endif %}
+                    {% if settings.block_text_link_4 != blank %}
+                    <div class="view-more"><a href="{{ settings.block_link_4 }}">{{ settings.block_text_link_4}} </a> </div>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+    {% if settings.enable_slide_image_5 %}
+    <div  class=" block-top-3">
+        <div class="col-md-6 col-sm-6 col-xs-12  block-1 block-item">
+
+            <div class="slide-carousel">
+                <div class="content-slider">
+                    {% if settings.block_slide_content_5 != blank %}
+                    {{ settings.block_slide_content_5 }}
+                    {% endif %}
+                </div>
+                <div class="images">
+                    {{ 'block_slide5.jpg' | asset_url | img_tag }}
+                </div>
+                <div class="content-bottom">
+                    {% if settings.block_price_5 != blank %}
+                    <div class="price">{{ settings.block_price_5 }}</div>
+                    {% endif %}
+                    {% if settings.block_text_link_5 != blank %}
+                    <div class="view-more"><a href="{{ settings.block_link_5 }}">{{ settings.block_text_link_5}} </a> </div>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12  block-2 block-item">
+            <div class="images" style="height:100%;background:url({{ 'block_slide6.jpg' | asset_url }}) no-repeat center center;background-size:cover;">
+
+            </div>
+
+            {% if settings.block_slide_content_6 != blank %}
+            <div class="content-slider">
+                {{ settings.block_slide_content_6 }}
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+    {% endif %}
+
+    {% if settings.enable_slide_image_7 %}
+    <div  class=" block-top-4">
+        <div class="col-md-6 col-sm-6 col-xs-12 block-2 block-item">
+            <div class="images"  style="height:100%;background:url({{ 'block_slide7.jpg' | asset_url }}) no-repeat bottom center;background-size:cover;">
+
+            </div>
+
+            {% if settings.block_slide_content_7 != blank %}
+            <div class="content-slider">
+                {{ settings.block_slide_content_7 }}
+            </div>
+            {% endif %}
+
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 block-1 block-item">
+
+            <div class="slide-carousel">
+                <div class="content-slider">
+                    {% if settings.block_slide_content_8 != blank %}
+                    {{ settings.block_slide_content_8 }}
+                    {% endif %}
+                </div>
+                <div class="images" >
+                    {{ 'block_slide8.jpg' | asset_url | img_tag }}
+                </div>
+                <div class="content-bottom">
+                    {% if settings.block_price_8 != blank %}
+                    <div class="price">{{ settings.block_price_8 }}</div>
+                    {% endif %}
+                    {% if settings.block_text_link_8 != blank %}
+                    <div class="view-more"><a href="{{ settings.block_link_8 }}">{{ settings.block_text_link_8}} </a> </div>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+
+    {% if settings.enable_slide_image_12 %}
+    <div  class=" block-top-6 ">
+        <div class="col-md-12 col-sm-12 col-xs-12 block-item">
+
+            <div class="slide-carousel">
+                <div class="content-slider">
+                    {% if settings.block_slide_content_12 != blank %}
+                    {{ settings.block_slide_content_12 }}
+                    {% endif %}
+                </div>
+                <div class="images">
+                    {{ 'block_slide12.jpg' | asset_url | img_tag }}
+                </div>
+                <div class="content-bottom">
+                    {% if settings.block_price_12 != blank %}
+                    <div class="price">{{ settings.block_price_12 }}</div>
+                    {% endif %}
+                    {% if settings.block_text_link_12 != blank %}
+                    <div class="view-more"><a href="{{ settings.block_link_12 }}">{{ settings.block_text_link_12 }} </a> </div>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    {% endif %}
+
+
+    </div><!-- END autoheight -->
+</div>
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

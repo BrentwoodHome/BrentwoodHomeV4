@@ -1,0 +1,212 @@
+{%comment%}
+<header class="page-header">
+    <h2>{{ page.title }}</h2>
+</header>
+{%endcomment%}
+<div class="margB40 hidden-xs">
+    <h3 class="tagline-top text-center">Meet our Brentwood Home mattress collections</h3>
+    <p class="tagline-top text-center">Each mattress is handcrafted, using natural, nontoxic materials, free of harmful fire retardants.</p>
+</div>
+
+{% include 'brentwoodfeatures-ico' %}
+
+{%comment%}
+ - Loops through all the mattresses collection and display its products
+ - Add/remove and re-order collections by editing Navigation>Mattresses Collection List menu
+{%endcomment%}
+
+{% for link in linklists.mattresses-collection-list.links %}
+    {% assign collection = link.object %}
+    
+    {% if collection.handle contains 'classics'%}
+    <!--<div class="container" style="margin: 15px 0">
+        <div class="row">
+            <div class="col-xs-12"><hr>
+                <h2 class="text-center">Signature Collection</h2><hr>
+            </div>
+        </div>
+    </div>-->
+    {% endif %}
+   
+    <div class="collection-list {{collection.handle}}-color">
+        <div class="row">
+            <div class="col-xs-12 col-md-8 {% cycle '', 'col-md-push-4' %}">
+                <a href="{{ collection.url }}" title="{{ collection.title | escape }}"><img src="{{ collection.image.src | collection_img_url: 'master'}}" class="img-responsive" alt=""></a>
+            </div>
+            <div class="col-xs-12 col-md-4 text-center {% cycle '', 'col-md-pull-8' %}">
+                <div class="collections-block-padding">
+                    <h2>{{ collection.title }}</h2>
+                    {{ collection.description }}
+                    <p class="features visible-md visible-lg"><img src="{{'memoryfoam-featico.png' | asset_url}}" alt=""></p>
+                    <p><a href="#{{collection.handle}}" data-toggle="collapse" aria-expanded="false" aria-controls="{{collection.handle}}" title="{{ collection.title | escape }}" class="btn btn-primary seeML">See More</a></p>
+                </div>
+            </div>
+        </div>
+        {%comment%}
+            - Display products within that collection
+            - Use metafields app to get features and short description
+        {%endcomment%}
+        <div class="collapse product-list-container" id="{{collection.handle}}">
+            {% if collection.products_count > 0 %}
+                {% for product in collection.products %}
+                    <div class="row product-list">
+                        <div class="col-xs-12 col-md-8 text-center prd-img">
+                            <a href="{{ product.url }}" title="{{product.title | escape }}"><img src="{{ product.id | append:'.jpg' | asset_url }}" alt="{{product.title | escape }}"></a>
+                        </div>
+                        <div class="col-xs-12 col-md-4 text-center">
+                            <h2><a href="{{ product.url }}" title="{{product.title | escape }}">{{product.title}}</a></h2>
+                            <p class="text-uppercase">{{product.metafields.bhsite.feel}}</p>
+                            <p>{{product.metafields.bhsite.shortdesc}}</p>
+                            <p><a href="{{ product.url }}" title="{{product.title | escape }}" class="btn btn-primary">
+                                {%comment%}{% for variant in product.variants %}
+                                    {% if variant.title contains 'Queen' %}
+                                        <span class="cta-caption">Queen from</span> {{ variant.price | money }}
+                                        {% break %}
+                                    {% endif %}
+                                {% endfor %}{%endcomment%}
+                                <span class="cta-caption">from</span> {{ product.price | money }}
+                            </a></p>
+                        </div>
+                      {% include 'bold-product' with product, hide_action: 'skip' %}
+                    </div>
+          			{% if forloop.last != true %}<hr class="hrlist" style="">{% endif %}
+                {% endfor%}
+            {% else %}
+                <p class="noproducts"><b>There are no products in this collection.</b></p>
+            {% endif %}
+        </div>
+        
+    </div>
+{% endfor %}
+
+<script>
+    jQuery(document).ready(function($){
+        $('.btn.seeML').click(function(){
+            var $this = $(this);
+            $this.toggleClass('open');
+            if($this.hasClass('open')){
+                $this.text('See Less');         
+            } else {
+                $this.text('See More');
+            }
+        });
+    });
+</script>
+
+{% comment %}
+<!-- MEMORY FOAM -->
+<div class="container collection-list">
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+            <a href="#"><img src="{{'collection-memoryfoam.jpg' | asset_url}}" class="img-responsive" alt=""></a>
+        </div>
+        <div class="col-xs-12 col-md-4 text-center">
+            <div class="collections-block-padding memoryfoam-color">
+                <h2>Memory Foam</h2>
+                <span class="style2">for</span>
+                <h3>CONTOURING</h3>
+                <p>Beautifully crafted, the Brentwood Home Memory Foam Collection offers ultimate comfort and quality. The attention to detail makes all the difference.</p>
+                <p class="features"><img src="{{'memoryfoam-featico.png' | asset_url}}" alt=""></p>
+                <p><a href="/collections/memoryfoam" class="btn btn-primary">See All</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- mattress #1 -->
+    <div class="row product-list">
+        <div class="col-xs-12 col-md-8 text-center">
+            <a href=""><img class="" src="{{'sequoia-front-clear.png' | asset_url}}" alt=""></a>
+        </div>
+        <div class="col-xs-12 col-md-4 text-center">
+            <h2>Sequoia</h2>
+            <p class="text-uppercase">Gel Memory foam, latex, wool, Belgian knit</p>
+            <p>A short description of this mattress. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid.</p>
+            <p><a href="/collections/products/sequoia-mattress" class="btn btn-primary"><span class="cta-caption">Queen from</span> $1000</a></p>
+        </div>
+    </div>
+    <!-- mattress #2 -->
+    <div class="row product-list">
+        <div class="col-xs-12 col-md-8 text-center">
+            <a href=""><img class="" src="{{'corronado-front-clear.png' | asset_url}}" alt=""></a>
+        </div>
+        <div class="col-xs-12 col-md-4 text-center">
+            <h2>Coronado</h2>
+            <p class="text-uppercase">Gel Memory foam, latex, wool, Belgian knit</p>
+            <p>A short description of this mattress. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid.</p>
+            <p><a href="/collections/products/coronado-mattress" class="btn btn-primary"><span class="cta-caption">Queen from</span> $800</a></p>
+        </div>
+    </div>
+    <!-- mattress #3 -->
+    <div class="row product-list">
+        <div class="col-xs-12 col-md-8 text-center">
+            <a href=""><img class="" src="{{'sierra-front-clear.png' | asset_url}}" alt=""></a>
+        </div>
+        <div class="col-xs-12 col-md-4 text-center">
+            <h2>Sierra</h2>
+            <p class="text-uppercase">Gel Memory foam, latex, wool, Belgian knit</p>
+            <p>A short description of this mattress. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid.</p>
+            <p><a href="/collections/products/sierra-mattress" class="btn btn-primary"><span class="cta-caption">Queen from</span> $500</a></p>
+        </div>
+    </div>
+</div>
+<!-- LATEX -->
+<div class="container collection-list">
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-push-4">
+            <a href="#"><img src="{{'collection-latex.jpg' | asset_url}}" class="img-responsive" alt=""></a>
+        </div>
+        <div class="col-xs-12 col-md-4 text-center col-md-pull-8">
+            <div class="collections-block-padding latex-color">
+                <h2>Natural Latex</h2>
+                <span class="style2">for</span>
+                <h3>RESILIENCE</h3>
+                <p>Short description about the collection and what latex is or does. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p class="features"><img src="{{'memoryfoam-featico.png' | asset_url}}" alt=""></p>
+                <p><a href="/collections/latex" class="btn btn-primary">See them</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- SPRINGS -->
+<div class="container collection-list">
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+            <a href="#"><img src="{{'collection-springs.jpg' | asset_url}}" class="img-responsive" alt=""></a>
+        </div>
+        <div class="col-xs-12 col-md-4 text-center">
+            <div class="collections-block-padding springs-color">
+                <h2>Springs</h2>
+                <span class="style2">for</span>
+                <h3>SUPPORT</h3>
+                <p class="margTB10">Short description about the collection and what latex is or does. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p class="features"><img src="{{'memoryfoam-featico.png' | asset_url}}" alt=""></p>
+                <p><a href="/collections/springs" class="btn btn-primary">See them</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="margin: 15px 0">
+    <div class="row">
+        <div class="col-xs-12"><hr>
+            <h2 class="text-center">Signature Collection</h2><hr>
+        </div>
+    </div>
+</div>
+
+<!-- CLASSICS -->
+<div class="container collection-list">
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+            <a href="#"><img src="{{'collection-classics.jpg' | asset_url}}" class="img-responsive" alt=""></a>
+        </div>
+        <div class="col-xs-12 col-md-4 text-center">
+            <div class="collections-block-padding classics-color">
+                <h2>Classics</h2>
+                <p class="margTB10">Short description about the collection and what latex is or does. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p class="features"><img src="{{'memoryfoam-featico.png' | asset_url}}" alt=""></p>
+                <p><a href="/collections/classics" class="btn btn-primary">See them</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{%endcomment%}

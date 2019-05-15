@@ -1,0 +1,21 @@
+{% if settings.display_product_icon_share %}
+<div class="mt-social-links social-icons share-row">
+  {% if settings.product_icon_share_1 != blank %}              
+    <a href="{{ settings.product_icon_share_link_1 }}{{shop.secure_url}}{{product.url}}" class="icon icon_facebook tip-top tooltipstered"><span class="{{ settings.product_icon_share_1 }}"></span></a>     
+  {% endif %}
+  {% if settings.product_icon_share_2 != blank %} 
+    <a href="{{ settings.product_icon_share_link_2 }}{{shop.secure_url}}{{product.url}}" class="icon icon_twitter tip-top tooltipstered"><span class="{{ settings.product_icon_share_2 }}"></span></a>  
+  {% endif %}
+  {% if settings.product_icon_share_3 != blank %} 
+    <a href="{{ settings.product_icon_share_link_3 }}{{shop.secure_url}}{{product.url}}" class="icon icon_email tip-top tooltipstered"><span class="{{ settings.product_icon_share_3 }}"></span></a>    
+  {% endif %}
+  {% if settings.product_icon_share_4 != blank %} 
+    <a href="{{ settings.product_icon_share_link_4 }}{{shop.secure_url}}{{product.url}}" class="icon icon_pintrest tip-top tooltipstered"><span class="{{ settings.product_icon_share_4 }}"></span></a>   
+  {% endif %}
+  {% if settings.product_icon_share_5 != blank %} 
+    <a href="{{ settings.product_icon_share_link_5 }}{{shop.secure_url}}{{product.url}}" class="icon icon_googleplus tip-top tooltipstered" ><span class="{{ settings.product_icon_share_5 }}"></span></a>     
+  {% endif %}
+
+</div>
+
+{% endif %}

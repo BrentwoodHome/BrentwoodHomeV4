@@ -1,0 +1,42 @@
+
+<div class="standardPages">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="text-center">Cashmere</h1>
+            <img src="{{ 'raw-cashmere.jpg' | asset_url }}" alt="cashmere">
+        </div>
+        <div class="col-xs-12 col-md-8 col-md-offset-2 description">
+            <p class="quote">Cashmere, made from the fine undercoat of wool, is a highly sought after fiber that’s a great insulator while being ultrasoft and lightweight.</p>
+        </div>
+
+    </div> 
+    <div class="row">
+        <!-- Left Column -->
+        <div id="where" >
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="col-left-block-material" style="">
+                    <p class="text-center"><img src="{{'material-pin.png'|asset_url}}" alt=""></p>
+                    <h2>Where we get it</h2>
+                    <h3>Mongolia</h3>
+                    <p class="text-left">Cashmere goats are named after Kashmir, the region of South Asia that they originated from. Because of the harsh climates, they developed this double layer of fleece: a tougher, outer layer to protect from wind and moisture, and a super soft and fine inner layer that provides insulation. Cashmere comes from this fine inner layer, and the cashmere we use comes from Mongolia.</p>
+                    <p class="text-center"><img src="{{'material-map-mongolia.png'|asset_url}}" alt="Mongolia"></p>
+                </div> 
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-lg-9 col-md-9 col-sm-9 right-pane">
+            <h2>The material</h2>
+            <p>Cashmere is a highly coveted material that can get expensive due to its long production time and high demand, not to mention its exceptionally soft and luxurious feel. By combing the undercoat of cashmere goats, this fine fiber is collected and spun into yarns used widely in sweaters, jackets, scarves, and home goods. It’s a natural textile that’s renewable and biodegradable, healthy for your home and for the planet. </p>
+            <p><img src="{{'materials_cashmere.jpg'|asset_url}}" alt="cashmere"></p>
+            <h2>Why we use it</h2>
+            <p>We love Cashmere for its softness, its lightness, and its durability for long-term use. It has a great capacity for insulation, helping to maintain body temperature. This natural material is soft to the touch and healthy for the bedroom, making it perfect for many high-end bedding products.</p>
+        </div>
+    </div> 
+    <p class="text-center" style="margin: 40px 0;"><a href="/pages/materials" title="Back to materials" class="btn">Back to materials</a></p>
+</div>        
+<script>
+    mixpanel.track("Materials Page", {
+        "name": "{{ page_title | handle }}"
+    });
+</script>

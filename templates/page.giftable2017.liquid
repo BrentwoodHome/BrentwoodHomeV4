@@ -1,0 +1,101 @@
+<div class="landing">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <a href="#start">
+                    <picture>
+                        <source media="(max-width: 414px)" srcset="https://brentwood-home.imgix.net/lp-giftables-hero-mobile2.jpg">
+                        <source media="(min-width: 415px)" srcset="https://brentwood-home.imgix.net/lp-giftables-hero-desktop2.jpg?w=1600&fit=clip&auto=format&q=55">
+                        <img src="https://brentwood-home.imgix.net/lp-giftables-hero-desktop2.jpg?w=1920&fit=clip&auto=format&q=55" alt="">
+                    </picture>
+                    <!--<div class="carousel-caption">
+                        <h2></h2>
+                        <div class="centerCTA"><a href="/products/cedar-mattress" class="homeCtaSlider"><span>View the Cedar</span></a></div>
+                    </div>-->
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="start"></div>
+    <div id="" class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <h2 class="text-center"></h2>
+            </div>
+        </div>
+    </div>
+
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 ">
+                <a href="/collections/pets" title="Pet Beds"><img src="{{ 'giftguide17-pets.jpg' | asset_url }}" alt="Pet Beds" class="img-responsive"></a>
+            </div>
+            <div class="col-xs-12 col-sm-6 even">
+                <a href="/collections/baby-kids" title="Babies & Kids Product"><h2>Pet Beds</h2></a>
+                <p>For the pet lover in your life (or if you’d like to spoil your own), this handcrafted bed provides the comfort they need for years, and a stylish look in any room.</p>
+                <p><a href="/collections/pets" class="track ctaStd green">SHOP PET BEDS</a></p>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                <a href="/pages/crystal-cove-collection" title="Crystal Cove Collection"><img src="{{ 'giftguide17-crystalcove.jpg' | asset_url }}" alt="Crystal Cove Collection" class="img-responsive"></a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-pull-6 even">
+                <a href="/pages/crystal-cove-collection" title="Crystal Cove Collection"><h2>Crystal Cove Collection</h2></a>
+                <p>Our collection of yoga and meditation props is perfect for those who practice, and a natural buckwheat hull fill makes it eco-friendly, too.</p>
+                <p><a href="/pages/crystal-cove-collection" class="track ctaStd green">SHOP CRYSTAL COVE</a></p>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 ">
+                <a href="/products/venice-lounger" title="Venice Lounger"><img src="{{ 'venicelounger-547x360-2.jpg' | asset_url }}" alt="Venice Lounger" class="img-responsive"></a>
+            </div>
+            <div class="col-xs-12 col-sm-6 even">
+                <a href="/products/venice-lounger" title="Venice Lounger"><h2>Venice Lounger</h2></a>
+                <p>Little ones will love a cozy corner that they can call their own. Our Venice Lounger is the comfiest place to read, watch movies, and play this holiday.</p>
+                <p><a href="/products/venice-lounger" class="track ctaStd green">SHOP VENICE LOUNGER</a></p>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                <a href="/products/natural-aromatherapy-candle" title="Aromatherapy Candle"><img src="{{ 'candle-547x360-2.jpg' | asset_url }}" alt="Aromatherapy Candle" class="img-responsive"></a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-pull-6 even">
+                <a href="/products/natural-aromatherapy-candle" title="Aromatherapy Candle"><h2>Aromatherapy Candles</h2></a>
+                <p>Know someone that loves to entertain? Help them make their space even more inviting with our new aromatherapy candles, with California-inspired scents like Farmer’s Market and Redwood.</p>
+                <p><a href="/products/natural-aromatherapy-candle" class="track ctaStd green">SHOP CANDLES</a></p>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+    //mixpanel.track("Gift Guide");
+    $(document).ready(function(){
+        $("a.lp-cta.track").click(function(){
+            mixpanel.track("CTA click");
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        $('A.sscroll').bind('click', function(event) {
+            var $anchor = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $($anchor.attr('href')).offset().top - 150
+            }, 1500, 'easeInOutExpo');
+            event.preventDefault();
+        });
+    });
+</script>

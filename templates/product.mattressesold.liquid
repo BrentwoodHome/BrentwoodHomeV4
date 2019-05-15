@@ -1,0 +1,595 @@
+{% include 'bold-product' with product, hide_action: 'break' %}{% if bold_hidden_product %}{% break %}{%endif %}
+
+<div class="container-fluid" id="product">
+    <div itemscope itemtype="http://schema.org/Product" class="product">
+      <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+      <meta itemprop="image" content="{{ product.featured_image.src | product_img_url: 'grande' }}">
+      <meta itemprop="shop-currency" content="{{ shop.currency }}">
+
+      <div class="row">
+          {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+          {%comment%}
+          <div class="col-xs-12 col-md-7">
+              <!-- Swiper -->
+              <div class="swiper-container gallery-top">
+                  <div class="swiper-wrapper">
+                      {% for image in product.images %}
+                          <div class="swiper-slide">
+                              <img src="{{ image.src | product_img_url: 'grande' }}" alt="{{ image.alt | escape }}">
+                          </div>
+                      {% endfor %}
+                  </div>
+                  <!-- pagination -->
+                  <div class="swiper-pagination visible-xs"></div>
+                  <!-- Add Arrows -->
+                  <div class="swiper-button-next swiper-button-black hidden-xs"></div>
+                  <div class="swiper-button-prev swiper-button-black hidden-xs"></div>
+              </div>
+              {% if product.images.size > 1 %}
+              <!--<div class="swiper-container gallery-thumbs">
+                  <div class="swiper-wrapper">
+                      {% for image in product.images %}
+                      <div class="swiper-slide">
+                          <img src="{{ image.src | product_img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+                      </div>
+                      {% endfor %}
+                  </div>
+              </div>-->
+              {% endif %}
+          </div>
+            {%endcomment%}
+            <!-- FLEXSLIDER -->
+          <div class="col-xs-12 col-md-7" id="product-image-main">
+              <section class="slider">
+                  <div class="flexslider">
+                      <ul class="slides">
+                          {% for image in product.images %}
+                          <li data-thumb="{{ image.src | product_img_url: 'small' }}">
+                              <img src="{{ image.src | product_img_url: '1024x1024' }}" alt="{{ image.alt | escape }}">
+                          </li>
+                          {% endfor %}
+                      </ul>
+                  </div>
+                  
+              </section>
+          </div>
+          {%comment%}
+          to remove the pull-left for single products
+          {%endcomment%}
+          {% assign multi_prd = true %}
+          {% if collection.products_count <= 1 %}
+         {% assign multi_prd = false %}
+         {% endif %}
+        <div class="col-xs-12 col-md-5 product-shop">
+          <div itemprop="offers" itemtype="http://schema.org/Offer">
+            <header class="product-title {% if collection.previous_product or collection.next_product and settings.display_prev_next_product and collection %}has-btn{% endif %}">
+                <h1 {% if settings.display_prev_next_product and collection and multi_prd%}class="pull-left"{%endif%} itemprop="name">{{ product.title }}</h1>
+                
+                {% if settings.display_prev_next_product and collection %}
+                    <div class="product-step">
+                    {% if collection.previous_product %}
+                        <a class="prev-p" href="{{ collection.next_product }}" title="Prev"><span class="fa fa-angle-left"></span>Previous</a>
+                    {% endif %}
+                    {% if collection.next_product %}
+                        <a class="next-p" href="{{ collection.next_product }}" title="Next">Next<span class=" fa fa-angle-right"></span></a>
+                    {% endif %}
+                    </div>
+                {% endif %}
+                
+            </header>
+            
+            {% if settings.display_product_reviews %}       
+            <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+            {% endif %}
+            
+            {% if settings.display_availability or settings.display_product_type or settings.display_vendor %}
+            
+              {% if settings.display_availability %}
+              <div class="availability">
+              <p class="product-inventory"> <label>Availability</label><span>{% if product.selected_or_first_available_variant.inventory_management %}{% assign first_inventory = product.selected_or_first_available_variant.inventory_quantity %}{% if first_inventory > 0 %}{{first_inventory}} in stock{% else %}Out of stock{% endif %}{% else %}Many in stock{% endif %}
+                </span></p>
+              </div>
+              {% endif %}
+    
+            
+            {% endif %}
+            
+            {% if product.available %}
+            <link itemprop="availability" href="http://schema.org/InStock">
+            {% else %}
+            <link itemprop="availability" href="http://schema.org/OutOfStock">
+            {% endif %}
+			
+              <h3 class="text-left">{{product.metafields.bhsite.feel}}</h3>
+            <p class="short-description">{{product.metafields.bhsite.shortdesc}}</p>
+            
+            <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
+              <div id="product-variants">
+                {% assign variantCount = product.variants | size %}
+                {% if product.available %} 
+                {% if variantCount > 1 %}	
+                <select id="product-selectors" name="id" style="display:none">
+                  {% for variant in product.variants %}
+                  <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                  {% endfor %}
+                </select>
+                
+                {% if settings.use_color_swatch %}
+                {% for option in product.options %}
+                {% include 'swatch' with option %}
+                {% endfor %}
+                {% endif %}
+                {% else %}
+                <input type="hidden" name="id" value="{{ product.variants[0].id }}" />
+                {% endif %}
+                {% endif %}
+              </div>
+              
+              
+              
+                {% if product.available %} 
+                    <div class="clearfix">
+                        <div id="qt">QTY: <input type="text" id="quantity" name="quantity" value="1"></div>
+                        <!-- PRICE -->
+                        <div class="prices" style="float: right;">
+                            {% if product.compare_at_price > product.price %}
+                                <span class="compare-price">{{ product.compare_at_price_max | money }}</span>
+                                <span class="price on-sale" itemprop="price">{{ product.price | money }}</span>
+                            {% else %}
+                                <span class="price" itemprop="price">{{ product.price | money }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="affirm"><p id="learn-more" style="visibility:hidden"></p></div>
+                    <input type="submit" name="add" class="btn" id="product-add-to-cart" value="Add to Cart">          
+                {% else %} 
+                    <input type="submit" name="add" class="btn" id="product-add-to-cart" disabled value="Unavailable">
+                {% endif %}
+                
+            </form>
+            
+			{% include 'wishlist-product' %}
+     		{% include 'product-share' %}
+			
+            
+          </div>
+        </div>
+      </div>
+    </div><!-- End Row -->
+</div><!-- End Container -->
+      
+         {% include 'brentwoodfeatures-ico' %}
+         
+    <div class="product-tabs ">
+       
+        <div class="container margB40">
+            <div class="row">
+                <div class="col-xs-12"><img src="{{'120nights-billboard2.jpg' | asset_url}}" alt="120-Night Guarantee - Free Return"></div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-10 col-md-offset-1 text-center">
+                    <h2 class="product-tagline">{{product.metafields.bhsite.tagline}}</h2>
+                </div>
+            </div>
+        </div>
+        
+        <div class="" id="description">
+            <div class="row" style="background-color: #4a4a4a;">
+                <div class="col-md-6" style="background-color: #fff;">
+                    <img src="{{product.metafields.bhsite.outsideimg | asset_url}}" class="wow slideInLeft" alt="{{product.title}} outside">
+                </div>
+                <div class="col-md-6">
+                    <div id="description-outside">
+                      <h4>THE EXTERIOR</h4><br>
+                        {%comment%}
+ 
+                        <h3>NEW ZEALAND WOOL</h3>
+                        <p>The benefits of wool are endless—it wicks away moisture, keeps your mattress smelling fresh, and acts as a natural fire barrier. That’s why we sew a layer of New Zealand wool into the lining of all our Brentwood Home mattresses.</p>
+                        <hr>
+                        <h3>SOFT BELGIAN KNIT</h3>
+                        <p>A Belgiant knit is beautiful, but it’s also extremely soft and offers a 4-way stretch that allows your body to rest easily into the comfort of your mattress, instead of giving resistance like a traditional weave might. Believe us—you’ll feel the difference.</p>
+                        <hr>
+                        <h3>CUSTOM HANDLES</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas omnis voluptates et cupiditate eius distinctio at praesentium tempora, hic assumenda. Officiis illo, natus, facilis nisi reiciendis voluptatem dolore ad dignissimos rerum animi quos consequatur, inventore eius modi, aut perspiciatis facere.</p>
+                        <hr>
+                        <h3>TUFTING</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic minima illum ullam magni molestiae, numquam beatae saepe nobis soluta nulla maiores fuga aperiam nesciunt, voluptate error repellat explicabo in ab.</p>
+                        {%endcomment%}
+                        {{product.metafields.bhsite.outside}}
+                   </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px; background-color: #9b9b9b;">
+                <div class="col-md-6 col-md-push-6" style="background-color: #fff;">
+                    <img src="{{product.metafields.bhsite.insideimg | asset_url}}" class="wow slideInLeft" alt="{{product.title}} layers of support">
+                </div>
+                <div class="col-md-6  col-md-pull-6">
+                    <div id="description-inside">
+                      <h4>LAYERS OF SUPPORT</h4><br>
+                      {%comment%}
+                        
+                        <h3>Gel Memory Foam</h3>
+                        <p>2 inches of Gel Memory foam to improve comfort while keeping you cool.</p>
+                        <hr>
+                        <h3>Natural Latex</h3>
+                        <p>2 inches of Natural Latex foam to add light bounciness and improve support.</p>
+                        <hr>
+                        <h3>Airlux Ventilated Foam</h3>
+                        <p>2 inches of Airlux Ventilated foam to allow your mattress to breathe.</p>
+                        <hr>
+                        <h3>Therapeutic Support Base</h3>
+                        <p>6 inches of Therapeutic Support Base foam to make your mattress sturdy and stay good for many years to come.</p>
+                      {%endcomment%}
+                      {{product.metafields.bhsite.inside}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        {%comment%}
+        <div class="">
+            <div class="row">
+                <div class="col-xs-12">
+                    <img src="{{'sequoia-front-wide.png' | asset_url}}" class="wow fadeIn" alt="">
+                </div>
+            </div>
+        </div>
+        {%endcomment%}
+        
+        <h3 class="text-center">Easy to ship, easy to open.</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>
+                        <img src="{{'shippingbox-outside.jpg' | asset_url}}" alt="">
+                    </p>
+                    <p class="text-center">All our mattresses are compressed and shipped directly to your doorstep, in an easy-to-open box with some simple, helpful setup instructions.</p>
+                </div>
+                {%comment%}Insert box weight and dimensions if available
+                EXAMPLE:
+                <div class="col-xs-12" style="margin-top: 20px;">
+                    <p class="text-center"><b>Box specifications:</b>
+                    </p>
+                    <table width="100%" class="text-center">
+                        <tr>
+                            <td>
+                                <p>TWIN</p>
+                                <p>20"x20"x20"</p>
+                                <p>50 Lbs</p>
+                            </td>
+                            <td>
+                                <p>FULL</p>
+                                <p>20"x20"x20"</p>
+                                <p>50 Lbs</p>
+                            </td>
+                            <td>
+                                <p>QUEEN</p>
+                                <p>20"x20"x20"</p>
+                                <p>50 Lbs</p>
+                            </td>
+                            <td>
+                                <p>KING</p>
+                                <p>20"x20"x20"</p>
+                                <p>50 Lbs</p>
+                            </td>
+                            <td>
+                                <p>CA KING</p>
+                                <p>20"x20"x20"</p>
+                                <p>50 Lbs</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+                
+                {{product.metafields.bhsite.box}}{%endcomment%}
+            </div>
+        </div>
+        <br><br>
+        
+        {% include 'mattress-platforms' %}
+        
+        <br><br>
+        <h3>Description</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                    {{product.description}}
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      {%comment%}
+        <ul class="nav nav-tabs" id="myTab">
+            {% if settings.display_product_detail_description %}
+            <li class="active"><a data-toggle="tab" href="#collapse-tab1">{{ settings.product_description_title }}</a></li>
+            {% endif %}
+            {% if settings.display_product_reviews %}       
+            <li><a data-toggle="tab" href="#collapse-tab2">{{ settings.product_review_title }}</a></li>
+            {% endif %}
+        </ul>
+
+        <div id="myTabContent" class="tab-content">
+            {% if settings.display_product_detail_description %}
+            <div id="collapse-tab1" class="tab-pane fade in active">
+            {{ product.description }}
+            </div>
+            {% endif %}
+
+
+
+            {% if settings.display_product_reviews %}       
+            <div id="collapse-tab2" class="tab-pane fade">
+              {% comment %}
+                Add product review widget, must install Product Review App:
+                https://apps.shopify.com/product-reviews
+              {% endcomment %}
+              <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+            </div>
+            {% endif %}
+          </div>
+        {%endcomment%}
+    </div>
+    <script>
+    jQuery('#myTab a').click(function (e) {
+      e.preventDefault();
+      jQuery(this).tab('show');
+    })
+    </script>
+    
+ 
+
+    {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+    
+  </div>
+  {% include 'block-productdetail-right' %}
+</div>
+
+<script>
+  jQuery(document).ready(function(){
+ jQuery("#zt_list_product").owlCarousel({
+   
+        itemsCustom : [
+        [600, 3]
+      ],
+        navigation : true,
+      navigationText : ['<i class="fa icon-left"></i>','<i class="fa icon-right"></i>']
+    });
+});
+  //Shopify.Image.preload({{ product.images | json }}, 'grande');
+
+   {% if settings.display_subtotal and product.available %} 
+  //update price when changing quantity
+  function updatePricing() {
+    //try pattern one before pattern 2
+    var regex = /([0-9]+[.|,][0-9]+[.|,][0-9]+)/g;
+    var unitPriceTextMatch = jQuery('.product .price').text().match(regex);
+    
+    if (!unitPriceTextMatch) {
+      regex = /([0-9]+[.|,][0-9]+)/g;
+      unitPriceTextMatch = jQuery('.product .price').text().match(regex);      
+    }
+    
+    if (unitPriceTextMatch) {
+      var unitPriceText = unitPriceTextMatch[0];      
+      var unitPrice = unitPriceText.replace(/[.|,]/g,'');
+      var quantity = parseInt(jQuery('#quantity').val());
+      var totalPrice = unitPrice * quantity;
+
+      var totalPriceText = Shopify.formatMoney(totalPrice, window.money_format);
+      
+      totalPriceText = totalPriceText.match(regex)[0];
+
+      var regInput = new RegExp(unitPriceText, "g");  
+      var totalPriceHtml = jQuery('.product .price').html().replace(regInput ,totalPriceText); 
+
+      jQuery('.product .total-price span').html(totalPriceHtml);      
+    }
+  }
+  jQuery('#quantity').on('change', updatePricing);
+  {% endif %}
+  
+var selectCallback = function(variant, selector) {
+
+  var addToCart = jQuery('#product-add-to-cart'),
+      productPrice = jQuery('.product .price'),
+      comparePrice = jQuery('.product .compare-price');  
+   
+  if (variant) {
+    if (variant.available) {
+      // We have a valid product variant, so enable the submit button
+      addToCart.removeClass('disabled').removeAttr('disabled').val('Add to Cart');
+
+    } else {
+      // Variant is sold out, disable the submit button
+      addToCart.val('Sold Out').addClass('disabled').attr('disabled', 'disabled');
+    }
+
+    // Regardless of stock, update the product price
+    productPrice.html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}"));
+
+    // Also update and show the product's compare price if necessary
+    if ( variant.compare_at_price > variant.price ) {
+      productPrice.addClass("on-sale")
+      comparePrice
+        .html(Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}"))
+        .show();
+    } else {
+      comparePrice.hide();
+      productPrice.removeClass("on-sale");
+    }
+    {% if settings.use_color_swatch %}
+    // BEGIN SWATCHES
+      var form = jQuery('#' + selector.domIdPrefix).closest('form');
+      for (var i=0,length=variant.options.length; i<length; i++) {
+        var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]');
+        if (radioButton.size()) {
+          radioButton.get(0).checked = true;
+        }
+      }
+     // END SWATCHES
+     {% endif %}
+  
+  	{% if settings.display_subtotal and product.available %}  
+     updatePricing();
+  	 {% endif %}
+
+          
+  } else {
+    // The variant doesn't exist. Just a safeguard for errors, but disable the submit button anyway
+    addToCart.val('Unavailable').addClass('disabled').attr('disabled', 'disabled');
+  }
+
+  //update variant inventory
+  {% if settings.display_availability %}
+  if (variant.available) {
+    if (variant.inventory_management!=null) {
+      jQuery(".product-inventory span").text(variant.inventory_quantity + " in stock");
+    } else {
+      jQuery(".product-inventory span").text("Many in stock");
+    }
+  } else {
+    jQuery(".product-inventory span").text("Out of stock");
+  }
+  {% endif %}
+  
+    /*begin variant image*/
+      if (variant && variant.featured_image) {
+        var originalImage = jQuery("#product-featured-image");
+        var newImage = variant.featured_image;
+        var element = originalImage[0];
+        Shopify.Image.switchImage(newImage, element, function (newImageSizedSrc, newImage, element) {
+          jQuery('#zt_list_product img').each(function() {
+            var grandSize = jQuery(this).attr('src');
+            grandSize = grandSize.replace('compact','grande');
+            if (grandSize == newImageSizedSrc) {
+              console.log(newImageSizedSrc);
+              jQuery(this).parent().trigger('click'); 
+              return false;
+            }
+          });
+        });        
+    }
+    /*end of variant image*/
+   updateAffirmAsLowAs( variant.price ); //Update affirm price
+};
+
+jQuery(function($) {
+  {% if product.available and product.variants.size > 1 %}
+    new Shopify.OptionSelectors('product-selectors', {
+      product: {{ product | json }},
+      onVariantSelected: selectCallback, 
+	  enableHistoryState: true
+    });   
+     
+     {% comment %}
+     Use color swatch and linked options (copyright by @carolineschnapp)
+     {% endcomment %}
+     {% if settings.use_color_swatch and product.available and product.options.size > 1 %}
+     Shopify.linkOptionSelectors({{ product | json }});
+     {% endif %} 
+     
+     {% if settings.use_color_swatch != true %}
+      jQuery('.single-option-selector').selectize();
+      jQuery('.selectize-input input').attr("disabled","disabled");
+     {% endif %}
+
+   {% endif %}
+  
+  // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
+  {% if product.options.size == 1 and product.options.first != 'Title' %}
+    $('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first }}</label>');
+  {% endif %}
+
+  // Hide selectors if we only have 1 variant and its title contains 'Default'.
+  {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+    $('.selector-wrapper').hide();
+  {% endif %}
+
+  // Auto-select first available variant on page load. Otherwise the product looks sold out.
+  {% assign found_one_in_stock = false %}
+  {% for variant in product.variants %}
+    {% if variant.available and found_one_in_stock == false %}
+      {% assign found_one_in_stock = true %}
+      {% for option in product.options %}
+      $('.single-option-selector:eq({{ forloop.index0 }})').val({{ variant.options[forloop.index0] | json }}).trigger('change');
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+  
+  {% if settings.display_product_reviews %}  
+    var reviewsTimeout = setInterval(function() {
+      if (jQuery(".spr-badge-caption").length>0) {
+		jQuery(".spr-badge-caption").on('click', function() {
+          jQuery('html,body').animate({
+            scrollTop: jQuery(".panel:last").offset().top},
+              '400');
+          jQuery("#collapse-tab4").collapse('show');
+        });
+        clearInterval(reviewsTimeout);
+      }
+    },1000);
+    
+  {% endif %}
+ 
+});
+  
+</script>
+
+<script>
+    mixpanel.track(
+        "Product Viewed",
+        {"name": "{{product.title}}",
+        "price": "{{ product.price | money_without_currency }}",
+        "brand": "{{product.vendor}}",
+        "category": "{{ collection.title }}",
+        "variant": "{% for variant in product.variants %}{{ variant.sku }}{% endfor %}"
+        });
+    //pintrk('track', 'pagevisit');
+</script>
+<script>
+    $(document).ready(function(){
+        $("#product-add-to-cart").click(function(){
+          mixpanel.track(
+              "Added to Cart", {"name": "{{product.title}}"});
+            
+          pintrk('track', 'addtocart', {
+                value: '{{ product.price | money_without_currency }}',
+                currency: 'USD',
+                line_items: [
+                    {
+                        product_name: '{{product.title}}',
+                        product_category: '{{ collection.title }}',
+                        product_variant_id: '{% for variant in product.variants %}{{ variant.sku }}{% endfor %}',
+                        product_price: '{{ product.price | money_without_currency }}',
+                        product_quantity: 1,
+                        product_brand: '{{product.vendor}}'
+                    }
+                ]
+            });
+        });
+    });
+</script>
+  
+   {% if settings.display_related_products %} 
+    {% if settings.related_products_type == "tags" %}
+    {% include 'related-products-by-tags' %}
+    {% else %}
+  <div class="container">{% include 'related-products' %}</div>
+    {% endif %}
+    {% endif %}
+    
+{% include 'affirm-product' %}

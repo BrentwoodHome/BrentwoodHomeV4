@@ -1,0 +1,71 @@
+<div class="landing">
+    <div class="jumbtron pets flexVCenter">
+        <div class="tagline">
+            <h1>Stylish support that’s best for your companion.</h1>
+            <p class="hidden-xs line"><i>Using high quality, non-toxic materials, our Pet Bed’s are the perfect place for your furry friend to rest and be comfortable.</i></p>
+            <p><a href="#start" class="sscroll lp-cta">Start exploring</a></p>
+        </div>
+    </div>
+    <div id="start"></div>
+    <div id="" class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <p class="text-center"></p>
+            </div>
+        </div>
+    </div>
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 ">
+                <a href="/products/runyon-deluxe-orthopedic-pet-bed" title="Runyon Deluxe Pet Bed"><img src="{{ 'collection-pets-runyon.jpg' | asset_url }}" alt="Runyon Deluxe Pet Bed" class="img-responsive"></a>
+            </div>
+            <div class="col-xs-12 col-sm-6 odd">
+                <a href="/products/runyon-deluxe-orthopedic-pet-bed" title="Runyon Deluxe Pet Bed"><h2>Runyon Deluxe Pet Bed</h2></a>
+                {%comment%}<p class="promo">50% OFF during pre-sale</p> {%endcomment%}
+                <p>Designed for orthopedic support, easy maintenance, and classic style, our Runyon checks all of the
+                    boxes for the perfect pet bed. No matter if you’ve got a Yorkie or a Saint Bernard (or even one of each),
+                    the Runyon will give them the support they need, and a sturdy place to rest their head and paws.</p>
+                <p><a href="/products/runyon-deluxe-orthopedic-pet-bed" class="lp-cta tack">LEARN MORE</a></p>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                <a href="/products/griffith-orthopedic-pet-bed" title="Griffith Pet Bed"><img src="{{ 'collection-pets-griffith.jpg' | asset_url }}" alt="Griffith Pet Bed" class="img-responsive"></a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-pull-6 even">
+                <a href="/products/griffith-orthopedic-pet-bed" title="Griffith Pet Bed"><h2>Griffith Pet Bed</h2></a>
+                <p>Our pets deserve a space to rest comfortably, and we know it can be hard to find the perfect bed that works for their size and your space. Our pet beds were designed to fit that need. From young, spritely pets to our older companions who need a bit of a boost, our Griffith Pet Bed will give them the support they need and plenty of room to sprawl out and rest their paws.</p>
+                <p><a href="/products/griffith-orthopedic-pet-bed" class="lp-cta track">LEARN MORE</a></p>
+            </div>
+        </div>
+    </section>
+    <section class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="">Join our pet lover followers</h2>
+            </div>
+            {% include 'instagram' %}
+        </div>
+    </section>
+</div>
+<script>
+    mixpanel.track("Pet Beds LP");
+    $(document).ready(function(){
+        $("a.lp-cta.track").click(function(){
+            mixpanel.track("CTA click");
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        $('A.sscroll').bind('click', function(event) {
+            var $anchor = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $($anchor.attr('href')).offset().top - 150
+            }, 1500, 'easeInOutExpo');
+            event.preventDefault();
+        });
+    });
+</script>

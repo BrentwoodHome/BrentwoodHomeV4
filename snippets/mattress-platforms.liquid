@@ -1,0 +1,49 @@
+{% if product.type == 'Mattress' %}
+    <div id="mattress-base">
+        {% if product.tags contains 'innerspring' %}
+            <h3>This mattress works on most flat surfaces</h3><br><br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-4 text-center">
+                        <p><img src="{{ 'base-slatted.svg' | asset_url }}" class="wow fadeIn" alt=""></p>
+                        <h3 class="base">Slatted Base</h3>
+                    </div>
+                    <div class="col-xs-4 text-center">
+                        <p><img src="{{ 'base-flat.svg' | asset_url }}" class="wow fadeIn" alt=""></p>
+                        <h3 class="base">Flat Platform</h3>
+                    </div>
+                    <div class="col-xs-4 text-center">
+                        <p><img src="{{ 'base-boxspring.svg' | asset_url }}" class="wow fadeIn" alt=""></p>
+                        <h3 class="base">Box Spring &amp; Foundation</h3>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+
+        {% else %}
+
+            <h3>This mattress works on any flat surface</h3><br><br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-3 text-center">
+                        <p><img src="{{ 'base-slatted.svg' | asset_url }}" class="wow fadeIn" alt=""></p>
+                        <h3 class="base">Slatted Base</h3>
+                    </div>
+                    <div class="col-xs-3 text-center">
+                        <p><img src="{{ 'base-flat.svg' | asset_url }}" class="wow fadeIn" alt=""></p>
+                        <h3 class="base">Flat Platform</h3>
+                    </div>
+                    <div class="col-xs-3 text-center">
+                        <p><img src="{{ 'base-boxspring.svg' | asset_url }}" class="wow fadeIn" alt=""></p>
+                        <h3 class="base">Box Spring &amp; Foundation</h3>
+                    </div>
+                    <div class="col-xs-3 text-center">
+                        <p><img src="{{ 'base-adjustable.svg' | asset_url }}" class="wow fadeIn" alt=""></p>
+                        <h3 class="base">Adjustable Base</h3>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+        {% endif %}
+    </div>
+{% endif %}

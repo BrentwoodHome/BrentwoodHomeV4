@@ -1,0 +1,74 @@
+{%comment%}
+<script>
+    
+    jQuery(document).ready(function(){
+        if (window.variation1) {
+            //document.getElementById("add2cartAB").innerHTML ='<div class="product-meta col-lg-5 col-md-7 col-sm-7 col-xs-12 abtest-var1">\n<form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">\n<div class="model col-lg-4 col-md-3 col-sm-3 col-xs-6 product-shop">\n<div class="select">\n{% assign variantCount = product.variants | size %}\n{% if product.available %}\n{% if variantCount > 1 %}\n<select id="product-selectors" name="id" style="display:none">\n{% for variant in product.variants %}\n<option {% if variant==product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>\n{% endfor %}\n</select>\n{% endif %}\n{% endif %}\n</div>\n</div>\n<div class="prices product col-lg-3 col-md-5 col-sm-4 col-xs-5">\n{% if product.available %}\n<div class="text-center">\n<div class="price">\n{% if product.compare_at_price > product.price %}\n<span class="compare-price">{{ product.compare_at_price_max | money_without_currency | remove: \'.00\' }}</span>\n<span class="price on-sale" itemprop="price">{{ product.price | money_without_currency | remove: \'.00\' }}</span>\n{% else %}\n<span class="price" itemprop="price">{{ product.price | money_without_currency | remove: \'.00\' }}</span>\n{% endif %}\n</div>\n{% endif %}\n</div>\n<div class="affirm">\n<span id="learn-more" style="visibility:hidden"></span>\n</div>\n</div>\n<div class="add-to-cart col-lg-5 col-md-4 col-sm-5 col-xs-6">\n{% if product.available %}\n<input type="submit" name="add" class="btn" id="product-add-to-cart" value="Add to Cart">\n{% else %}\n<input type="submit" name="add" class="btn" id="product-add-to-cart" disabled value="Unavailable">\n{% endif %}\n</div>\n<input type="text" id="quantity" name="quantity" value="1" hidden="">\n</form>\n</div>';
+            //document.getElementById("add2cartAB").innerHTML ='TESTING';
+        }
+    });
+    window.myInterval = setInterval(function() {
+        if (window.optimizely != 'undefined' && window.optimizely.activeExperiments.length > 0 && window.variation1 != 'undefined') {
+            // Run custom code
+            //window['optimizely'].data.state.activeExperiments
+            console.log("Variation1 - Loading add2cart = "+window.variation1);
+            //console.log("Experiment Name = "+window.optimizely.variations.name);
+            //console.log("Experiment Name 2= "+window.optimizely.experiments[8239168920].name);
+            if (window.variation1 == true) {
+                document.getElementById("add2cartAB").innerHTML ='<div class="product-meta col-lg-5 col-md-7 col-sm-7 col-xs-12 abtest-var1">\n<form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">\n<div class="model col-lg-4 col-md-3 col-sm-3 col-xs-6 product-shop">\n<div class="select">\n{% assign variantCount = product.variants | size %}\n{% if product.available %}\n{% if variantCount > 1 %}\n<select id="product-selectors" name="id" style="display:none">\n{% for variant in product.variants %}\n<option {% if variant==product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>\n{% endfor %}\n</select>\n{% endif %}\n{% endif %}\n</div>\n</div>\n<div class="prices product col-lg-3 col-md-5 col-sm-4 col-xs-5">\n{% if product.available %}\n<div class="text-center">\n<div class="price">\n{% if product.compare_at_price > product.price %}\n<span class="compare-price">{{ product.compare_at_price_max | money_without_currency | remove: \'.00\' }}</span>\n<span class="price on-sale" itemprop="price">{{ product.price | money_without_currency | remove: \'.00\' }}</span>\n{% else %}\n<span class="price" itemprop="price">{{ product.price | money_without_currency | remove: \'.00\' }}</span>\n{% endif %}\n</div>\n{% endif %}\n</div>\n<div class="affirm">\n<span id="learn-more" style="visibility:hidden"></span>\n</div>\n</div>\n<div class="add-to-cart col-lg-5 col-md-4 col-sm-5 col-xs-6">\n{% if product.available %}\n<input type="submit" name="add" class="btn" id="product-add-to-cart" value="Add to Cart">\n{% else %}\n<input type="submit" name="add" class="btn" id="product-add-to-cart" disabled value="Unavailable">\n{% endif %}\n</div>\n<input type="text" id="quantity" name="quantity" value="1" hidden="">\n</form>\n</div>';
+            }else{
+                document.getElementById("add2cartAB").innerHTML ='OLD DESIGN';
+            }
+            clearInterval(window.myInterval);
+        }
+    }, 50);
+</script>
+{%endcomment%}
+
+
+{%comment%}
+<div class="product-meta col-lg-5 col-md-7 col-sm-7 col-xs-12 abtest-var1">
+    <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
+        <div class="model col-lg-4 col-md-3 col-sm-3 col-xs-6 product-shop">
+            <div class="select">
+                {% assign variantCount = product.variants | size %}
+                {% if product.available %}
+                {% if variantCount > 1 %}
+                <select id="product-selectors" name="id" style="display:none">
+                    {% for variant in product.variants %}
+                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                    {% endfor %}
+                </select>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="prices product col-lg-3 col-md-5 col-sm-4 col-xs-5">
+            {% if product.available %}
+            <div class="text-center">
+                <!-- PRICE -->
+                <div class="price">
+                    {% if product.compare_at_price > product.price %}
+                    <span class="compare-price">{{ product.compare_at_price_max | money_without_currency | remove: '.00' }}</span>
+                    <span class="price on-sale" itemprop="price">{{ product.price | money_without_currency | remove: '.00' }}</span>
+                    {% else %}
+                    <span class="price" itemprop="price">{{ product.price | money_without_currency | remove: '.00' }}</span>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="affirm">
+                <span id="learn-more" style="visibility:hidden"></span>
+            </div>
+        </div>
+        <div class="add-to-cart col-lg-5 col-md-4 col-sm-5 col-xs-6">
+            {% if product.available %}
+            <input type="submit" name="add" class="btn" id="product-add-to-cart" value="Add to Cart">
+            {% else %}
+            <input type="submit" name="add" class="btn" id="product-add-to-cart" disabled value="Unavailable">
+            {% endif %}
+        </div>
+        <input type="text" id="quantity" name="quantity" value="1" hidden="">
+    </form>
+</div>
+{%endcomment%}

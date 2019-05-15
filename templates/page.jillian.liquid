@@ -1,0 +1,95 @@
+<div class="landing">
+    <div class="jumbtron crystalcove flexVCenter">
+        <div class="tagline">
+            <h1>Take 15% off your next purchase</h1>
+            <p class="line"><i>Use code: Jillian15</i></p>
+            <p><a href="#start" class="sscroll lp-cta">Start exploring</a></p>
+        </div>
+    </div>
+    <div id="start"></div>
+    <div id="" class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <p class="text-center">After receiving endless love for our best-selling Crystal Cove meditation pillow, we realized yogis were looking for even more beautiful, natural tools to add to their practice.</p>
+            </div>
+        </div>
+    </div>
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 ">
+                <a href="/products/crystal-cove-yoga-bolster" title="Crystal Cove bolster pillow"><img src="{{ 'lp-row-bolster.jpg' | asset_url }}" alt="Crystal Cove bolster Pillow" class="img-responsive"></a>
+            </div>
+            <div class="col-xs-12 col-sm-6 odd">
+                <a href="/products/crystal-cove-yoga-bolster" title="Crystal Cove bolster pillow"><h2>The yoga bolster</h2></a>
+                {%comment%}<p class="promo">50% OFF during pre-sale</p> {%endcomment%}
+                <p>Our yoga bolster gives extra support where it’s needed, whether you’re in Savasana or a handstand.</p>
+                <p><a href="/products/crystal-cove-yoga-bolster" class="lp-cta">Start stretching</a></p>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                <a href="/products/crystal-cove-pranayama-bolster" title="Crystal Cove pranayama pillow"><img src="{{ 'lp-row-pranayama.jpg' | asset_url }}" alt="Crystal Cove Pranayama Pillow" class="img-responsive"></a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-pull-6 even">
+                <a href="/products/crystal-cove-pranayama-bolster" title="Crystal Cove pranayama pillow"><h2>The Pranayama Pillow</h2></a>
+
+                <p>Perfect for Iyengar Yoga Pranayama practice, the Pranayama pillow assists with deep breathing exercises.</p>
+                <p><a href="/products/crystal-cove-pranayama-bolster" class="lp-cta">Start breathing</a></p>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <a href="/products/crystal-cove-meditation-pillow" title="Crystal Cove meditation pillow"><img src="{{ 'lp-row-meditation.jpg' | asset_url }}" alt="Crystal Cove Meditation Pillow" class="img-responsive"></a>
+            </div>
+            <div class="col-xs-12 col-sm-6 odd">
+                <a href="/products/crystal-cove-meditation-pillow" title="Crystal Cove meditation pillow"><h2>The meditation pillow</h2></a>
+                <p>Designed by LA yoga instructor Angela Kukhahn, this pillow brings just enough height and support to your meditation practice.</p>
+                <p><a href="/products/crystal-cove-meditation-pillow" class="lp-cta">Start relaxing</a></p>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                <a href="/products/crystal-cove-bundle" title="Crystal Cove bundle"><img src="{{ 'lp-row-combo.jpg' | asset_url }}" alt="Crystal Cove bundle" class="img-responsive"></a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-pull-6 even">
+                <a href="/products/crystal-cove-bundle" title="Crystal Cove bundle"><h2>The yoga bundle</h2></a>
+                <p class="promo">bundle & save</p>
+                <p>Save when you choose the full Crystal Cove experience, including a meditation pillow, yoga bolster, and Pranayama pillow.</p>
+                <p><a href="/products/crystal-cove-bundle" class="lp-cta">see complete set</a></p>
+            </div>
+        </div>
+    </section>
+    <section class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="">Join our yogi followers</h2>
+            </div>
+            {% include 'instagram' %}
+        </div>
+    </section>
+</div>
+<script>
+    mixpanel.track("Jillian LP");
+    /*$(document).ready(function(){
+        $("#aboutus-continue").click(function(){
+            mixpanel.track("Clicked Continue Shopping");
+        });
+    });*/
+</script>
+<script>
+    $(document).ready(function(){
+        $('A.sscroll').bind('click', function(event) {
+            var $anchor = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $($anchor.attr('href')).offset().top - 150
+            }, 1500, 'easeInOutExpo');
+            event.preventDefault();
+        });
+    });
+</script>

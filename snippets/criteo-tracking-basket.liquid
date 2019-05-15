@@ -1,0 +1,19 @@
+<!-- CRITEO START-->
+<script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
+<script type="text/javascript">
+    var criteo_items = [];
+    {% for item in checkout.line_items %}
+        criteo_items.push({
+            id: "{{ item.product_id }}",
+            price: {{item.price | money_without_currency | remove: ','}},
+          quantity: {{item.quantity}}
+        });
+    {% endfor %}
+    var deviceType = /iPad/.test(navigator.userAgent) ? "t" : /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent) ? "m" : "d";
+    window.criteo_q = window.criteo_q || [];
+    window.criteo_q.push(
+        { event: "setAccount", account: 37164},
+        { event: "setSiteType", type: deviceType },
+        { event: "viewBasket", product: criteo_items });
+</script>
+<!-- CRITEO END -->

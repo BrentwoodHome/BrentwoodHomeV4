@@ -1,0 +1,75 @@
+{% if settings.enable_tabs %}	
+{% if settings.tabs_title_block != blank %}
+
+<div class="block-title"><h2> <span>{{ settings.tabs_title_block }}</span></h2></div>
+{% endif %}
+{% if settings.tabs_sub_title_top != blank %}
+<div class="sub-title">{{ settings.tabs_sub_title_top }}</div>
+{% endif %}
+<div class="tabs-product">
+
+  <ul class="nav nav-tabs" role="tablist">
+    {% if settings.enable_tabnew and settings.tabnew_collection != blank %}
+    <li role="presentation" class="active"><a href="#tabnew_collection" aria-controls="home" role="tab" data-toggle="tab">{{ settings.items_tab_1 }}</a></li>
+    {% endif %}
+    {% if settings.enable_tabfeatured and settings.tabfeatured_collection != blank %}
+    <li role="presentation"><a href="#tabfeatured_collection" aria-controls="profile" role="tab" data-toggle="tab">{{ settings.items_tab_2 }}</a></li>
+    {% endif %}
+    {% if settings.enable_tabsale and settings.tabsale_collection != blank %}
+    <li role="presentation"><a href="#tabsale_collection" aria-controls="messages" role="tab" data-toggle="tab">{{ settings.items_tab_3 }}</a></li>
+    {% endif %}
+    {% if settings.enable_tabs4 and settings.tabs4_collection != blank %}
+    <li role="presentation"><a href="#tabs4_collection" aria-controls="messages" role="tab" data-toggle="tab">{{ settings.items_tab_4 }}</a></li>
+    {% endif %}
+  </ul>
+
+  <div class="tab-content">
+
+    {% if settings.enable_tabnew and settings.tabnew_collection != blank %}
+    <div class="tab-pane tabs-content fade in active" id="tabnew_collection">
+
+      {% assign tabnew_collection = settings.tabnew_collection %}
+
+      {% include 'load-more-product' %}
+
+
+    </div>
+    {% endif %}
+    {% if settings.enable_tabfeatured and settings.tabfeatured_collection != blank %}
+    <div class="tab-pane tabs-content" id="tabfeatured_collection">
+      {% assign tabnew_collection = settings.tabfeatured_collection %}
+
+      {% include 'load-more-product' %}
+
+    </div>
+    {% endif %}
+    {% if settings.enable_tabsale and settings.tabsale_collection != blank %}
+    <div class="tab-pane tabs-content" id="tabsale_collection">
+      {% assign tabnew_collection = settings.tabsale_collection %}
+
+      {% include 'load-more-product' %}
+
+    </div>
+    {% endif %}
+    {% if settings.enable_tabs4 and settings.tabs4_collection != blank %}
+    <div class="tab-pane tabs-content" id="tabs4_collection">
+      {% assign tabnew_collection = settings.tabs4_collection %}
+
+      {% include 'load-more-product' %}
+
+    </div>
+    {% endif %}
+
+
+
+  </div>
+
+  <script type="text/javascript" >
+    $('.tabs-product .nav-tabs a').click(function (e) {
+      e.preventDefault()
+      $(this).tab('show')
+    })
+  </script>
+
+</div>
+{% endif %}

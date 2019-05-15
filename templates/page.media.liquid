@@ -1,0 +1,125 @@
+<div class="rte text-left">  
+    <div class="standardPages">
+        <div class="row">
+            <div class="col-xs-12">
+                <picture>
+                    <source media="(max-width: 414px)" srcset="https://s3-brentwoodhome.imgix.net/media-hero2.jpg?txtalign=middle,center&txtfont=Didot,Italic&txt=Media&txtclr=FFFFFF&txtsize=48&w=414&ch=Width,DPR">
+                    <source media="(min-width: 415px) and (max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/media-hero2.jpg?txtalign=middle,center&txtfont=Didot,Italic&txt=Media&txtclr=FFFFFF&txtsize=48&w=768&ch=Width,DPR">
+                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/media-hero2.jpg?txtalign=middle,center&txtfont=Didot,Italic&txt=Media&txtclr=FFFFFF&txtsize=75&w=1140">
+                    <img src="https://s3-brentwoodhome.imgix.net/media-hero2.jpg?txtalign=middle,center&txtfont=Media,Italic&txt=Sale&txtclr=FFFFFF&txtsize=75&w=1140" alt="">
+                </picture>
+            </div>
+        </div> {%comment%}
+    <h2 class="text-center">Brentwood Home Logo</h2>
+    <p class="text-center"><a href="">Download</a> the Brentwood Home logo assets (50MB). A mini style guide and supporting logos are included.</p>
+        {%endcomment%}
+    <h2 class="text-center" style="text-align: center;">Product Lifestyle</h2>
+    <p class="text-center">All images © 2019 Brentwood Home. All rights reserved.<br>
+        Thumbnails link to high-resolution images suitable for use by authorized media and affiliate use. (Image sizes between 5 and 20MB each).</p>
+        <br>
+      <div class="grid">  
+    {% for i in (0..237) %}
+        {% if i < 10 %}
+            {% assign zeros = "0000" %}
+        {% elsif i > 9 and i < 100 %}
+            {% assign zeros = "000" %}
+        {% elsif i > 99 and i < 1000 %}
+            {% assign zeros = "00" %}
+        {% endif %}
+        
+        <a href="https://s3.us-east-2.amazonaws.com/brentwoodhome/imgix/media/BWH{{zeros}}{{i}}.jpg" class="img" target="_blank"><img src="{{ 'spinner-1s-200px.gif' | asset_url }}" class="lazy" data-src="https://s3-brentwoodhome.imgix.net/media/BWH{{zeros}}{{i}}.jpg?w=240&auto=compress&q=75" width="240" height="240"></a>
+        
+    {% endfor %}
+          </div>
+</div>
+        <!--<a href="https://s3.us-east-2.amazonaws.com/brentwoodhome/imgix/media/BWH{{zeros}}{{i}}.jpg" target="_blank"><img src="https://s3.us-east-2.amazonaws.com/brentwoodhome/imgix/media/BWH{{zeros}}{{i}}.jpg" alt=""></a>-->
+        
+        {%comment%}BWH{{zeros}}{{i}}.jpg | 
+        <a href="https://s3.us-east-2.amazonaws.com/brentwoodhome/imgix/media/BWH{{zeros}}{{i}}.jpg" target="_blank"><img src="https://s3.us-east-2.amazonaws.com/brentwoodhome/imgix/media/BWH{{zeros}}{{i}}.jpg" alt="" style="max-width: 100px; margin: 10px;"></a>{%endcomment%}
+        
+
+        
+      <script>
+
+          
+          /* lazyload.js (c) Lorenzo Giuliani
+ * MIT License (http://www.opensource.org/licenses/mit-license.html)
+ *
+ * expects a list of:  
+ * `<img src="blank.gif" data-src="my_image.png" width="600" height="400" class="lazy">`
+ */
+
+          !function(window){
+              var $q = function(q, res){
+                  if (document.querySelectorAll) {
+                      res = document.querySelectorAll(q);
+                  } else {
+                      var d=document
+                      , a=d.styleSheets[0] || d.createStyleSheet();
+                      a.addRule(q,'f:b');
+                      for(var l=d.all,b=0,c=[],f=l.length;b<f;b++)
+                          l[b].currentStyle.f && c.push(l[b]);
+
+                      a.removeRule(0);
+                      res = c;
+                  }
+                  return res;
+              }
+              , addEventListener = function(evt, fn){
+                  window.addEventListener
+                      ? this.addEventListener(evt, fn, false)
+                  : (window.attachEvent)
+                      ? this.attachEvent('on' + evt, fn)
+                  : this['on' + evt] = fn;
+              }
+              , _has = function(obj, key) {
+                  return Object.prototype.hasOwnProperty.call(obj, key);
+              }
+              ;
+
+              function loadImage (el, fn) {
+                  var img = new Image()
+                  , src = el.getAttribute('data-src');
+                  img.onload = function() {
+                      if (!! el.parent)
+                          el.parent.replaceChild(img, el)
+                      else
+                          el.src = src;
+
+                      fn? fn() : null;
+                  }
+                  img.src = src;
+              }
+
+              function elementInViewport(el) {
+                  var rect = el.getBoundingClientRect()
+
+                  return (
+                      rect.top    >= 0
+                      && rect.left   >= 0
+                      && rect.top <= (window.innerHeight || document.documentElement.clientHeight)
+                  )
+              }
+
+              var images = new Array()
+              , query = $q('img.lazy')
+              , processScroll = function(){
+                  for (var i = 0; i < images.length; i++) {
+                      if (elementInViewport(images[i])) {
+                          loadImage(images[i], function () {
+                              images.splice(i, i);
+                          });
+                      }
+                  };
+              }
+              ;
+              // Array.prototype.slice.call is not callable under our lovely IE8 
+              for (var i = 0; i < query.length; i++) {
+                  images.push(query[i]);
+              };
+
+              processScroll();
+              addEventListener('scroll',processScroll);
+
+          }(this);
+        </script>

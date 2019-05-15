@@ -1,0 +1,31 @@
+{%comment%}
+Gets date and time and converts it into in int
+Tobe used for banners/tickers ect...
+
+    {% if rightnowint <= currentPromoEnd %}
+        <!-- CYBER HOLIDAY 11/19 - 12/03 -->
+        <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">Black Friday &amp; Cyber Week Sale: Save $200 on select mattresses and more</a>
+    {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
+        <!-- HOLIDAY SALE 12/04 - 01/07 -->
+        <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">Holiday Sale: Save $175 on select mattresses and more</a>
+    {% endif %}
+{%endcomment%}
+
+{% assign rightnow = 'now' | date: '%Y%m%d%H%M' %}
+{% assign rightnowint = rightnow | times: 1 %}
+
+{% assign currentPromoEnd = 201905132359 %}
+{% assign newPromoEnd = 201906182359 %}
+
+
+
+<!-- EYEBROW -->
+{% assign eyebrowCurrent = "Spring Sale: Save $175 on select mattresses and more" %}
+{% assign eyebrowCurrentMobile = "Save $175 on select mattresses and more" %}
+{% assign eyebrowNew = "Memorial Day Sale: Save up to $400 on select mattresses and more" %}
+{% assign eyebrowNewMobile = "Memorial Day Sale! Up to $400 off" %}
+
+<!-- MODAL -->
+
+
+<!-- SALE PAGE -->

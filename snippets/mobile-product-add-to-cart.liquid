@@ -1,0 +1,113 @@
+<div class="row product-meta-mobile abtest-var1">
+    <div class="col-xs-12 nopad">
+        <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
+           
+            {% assign bamboohandle = product.handle %}
+            {% if bamboohandle contains 'exitthis' %} {%comment%}bamboo-gel{%endcomment%}
+                <style>
+                    A.amz{
+                        padding: 0;
+                        line-height: 66px;
+                        height: auto;
+                        font-size: 16px;
+                    }
+                    A.amz.mob{
+                        line-height: 47px;
+                    }
+                    A.amz:focus{
+                        color: white;
+                    }
+                    .product-meta{
+                        background-color: white;
+                    }
+                    .selector-wrapper{
+                        display: none;
+                    }
+                </style>
+                {% assign variantCount = product.variants | size %}
+                {% if product.available %}
+                    {% if variantCount > 1 %}
+                        <select id="product-selectors-mobile" name="id" style="display:none;visibility: hidden;">
+                            {% for variant in product.variants %}
+                                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                            {% endfor %}
+                        </select>
+                    {% endif %}
+                {% endif %}
+                <div class="model col-lg-6 col-md-6 col-sm-6 col-xs-6 product-shop text-center" style="background-color: white;">
+                    <img src="{{ 'exclusiveAmz.png' | asset_url }}" alt="" style="max-width: 112px;">
+                </div>
+                <div class="add-to-cart col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    {% case bamboohandle %}
+                        {% when 'bamboo-gel-13' %}
+                            <!--<a href="https://www.amazon.com/s/ref=nb_sb_noss?url=srs%3D9877898011%26search-alias%3Dspecialty-aps&field-keywords=gel+memory+foam+mattress+13" target="_blank" class="btn amz mob">BUY IT</a>-->
+                            <a href="https://www.amazon.com/Brentwood-Home-Bamboo-Mattress-13-Inch/dp/B00JJZ18PS/" target="_blank" class="btn amz mob">BUY IT</a>
+                        {% when 'bamboo-gel-11' %}
+                            <!--<a href="https://www.amazon.com/s/ref=nb_sb_noss?url=srs%3D9877898011%26search-alias%3Dspecialty-aps&field-keywords=bamboo+gel+memory+foam+mattress+11" target="_blank" class="btn amz mob">BUY IT</a>-->
+                            <a href="https://www.amazon.com/Brentwood-Home-Bamboo-Mattress-11-Inch/dp/B00J0I8RQ2/" target="_blank" class="btn amz mob">BUY IT</a>
+                        {% when 'bamboo-gel-10' %}
+                            <!--<a href="https://www.amazon.com/s/ref=nb_sb_noss?url=srs%3D9877898011%26search-alias%3Dspecialty-aps&field-keywords=bamboo+gel+memory+foam+mattress+10+inch" target="_blank" class="btn amz mob">BUY IT</a>-->
+                            <a href="https://www.amazon.com/Brentwood-Home-Bamboo-Mattress-10-Inch/dp/B00F7S6G44/" target="_blank" class="btn amz mob">BUY IT</a>
+                        {% when 'bamboo-gel-9' %}
+                            <!--<a href="https://www.amazon.com/s/ref=nb_sb_noss?url=srs%3D9877898011%26search-alias%3Dspecialty-aps&field-keywords=bamboo+gel+memory+foam+mattress+9" target="_blank" class="btn amz mob">BUY IT</a>-->
+                            <a href="https://www.amazon.com/Brentwood-Home-Bamboo-Mattress-Memory/dp/B00J0HD786/" target="_blank" class="btn amz mob">BUY IT</a>
+                    {% endcase %} 
+                </div>
+            {%else%}
+                <div class="model col-lg-6 col-md-6 col-sm-6 col-xs-6 product-shop">
+                    <div class="select">
+                        {% assign variantCount = product.variants | size %}
+                        {% if product.available %}
+                            {% if variantCount > 1 %}
+                            <select id="product-selectors-mobile" name="id" style="display:none">
+                                {% for variant in product.variants %}
+                                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                                {% endfor %}
+                            </select>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="add-to-cart col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    {% if product.available %}
+                        <input type="submit" name="add" class="btn" id="product-add-to-cart" value="Add to Cart">
+                        <link itemprop="availability" href="http://schema.org/InStock" />
+                    {% else %}
+                        <input type="submit" name="add" class="btn" id="product-add-to-cart" disabled value="Unavailable">
+                        <link itemprop="availability" href="http://schema.org/OutOfStock" />
+                    {% endif %}
+                </div>
+            {%endif%}
+            <input type="text" id="quantity" name="quantity" value="1" hidden="">
+        </form>
+    </div>
+        {% if bamboohandle contains 'bamboo-gel' %}
+        {%else%}
+            <!-- Price + Affirm Component for mobile -->
+            <div class="row mobile-product-meta">
+                <div class="prices product col-xs-12">
+                    {% if product.available %}
+                    <div class="price text-center" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+                        {% if product.compare_at_price > product.price %}
+                        <span class="compare-price">{{ product.compare_at_price_max | money_without_currency | remove: '.00' }}</span>
+                        <span class="price on-sale" itemprop="price" content="{{ product.price | money_without_currency | remove: ',' }}">{{ product.price | money_without_currency | remove: '.00' }}</span> {% else %}
+                        <span class="price" itemprop="price" content="{{ product.price | money_without_currency | remove: ',' }}">{{ product.price | money_without_currency | remove: '.00' }}</span> {% endif %}
+                    </div>
+                    {% endif %}
+                    <div class="affirm">
+                        <span id="learn-more-mobile" style="visibility:hidden"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- Price + Affirm Component for mobile -->
+        {%endif%}
+    </div>
+
+{% if product.metafields.yotpo.reviews_count and product.metafields.yotpo.reviews_count != "0" %}
+<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+    <meta itemprop="itemReviewed" content="{{ product.title }}">
+    <meta itemprop="ratingValue" content="{{ product.metafields.yotpo.reviews_average }}"> 
+    <meta itemprop="ratingCount" content="{{ product.metafields.yotpo.reviews_count }}">
+</div>
+{% endif %}

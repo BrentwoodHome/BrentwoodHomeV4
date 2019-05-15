@@ -1,0 +1,378 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1 class="">Compare our natural pillows</h1>
+        </div>
+    </div>
+</div>
+{% include 'nowtime' %}
+
+{% assign crystalcove = all_products['crystal-cove-pillow'] %}
+{% assign ojai = all_products['ojai-pillow'] %}
+{% assign pacifica = all_products['pacifica-pillow'] %}
+{% assign helena = all_products['helena-pillow'] %}
+{% assign oceano = all_products['oceano-pillow'] %}
+
+{% for variant in helena.variants %}
+{% if variant.title == "Standard" %}
+{% assign helenaPrice = variant.price %}
+{% endif %}
+{% endfor %}
+
+{% for variant in oceano.variants %}
+{% if variant.title == "Standard" %}
+{% assign ocenaoPrice = variant.price %}
+{% endif %}
+{% endfor %}
+
+{% for variant in ojai.variants %}
+{% if variant.title == "Standard" %}
+{% assign ojaiPrice = variant.price %}
+{% endif %}
+{% endfor %}
+
+{% for variant in crystalcove.variants %}
+{% if variant.title == "Standard" %}
+{% assign crystalcovePrice = variant.price %}
+{% endif %}
+{% endfor %}
+
+{% for variant in pacifica.variants %}
+{% if variant.title == "Standard" %}
+{% assign pacificaPrice = variant.price %}
+{% endif %}
+{% endfor %}
+
+
+<div class="container-fluid">
+    <div class="row"><!--row-eq-height-->
+        <div id="compare-mattresses-wrap" class=" owl-carousel owl-theme">
+           
+            <div class="item">
+                <div class="product-col oceano text-center">
+                    <div class="colorwrap">
+                        <a href="{{oceano.url}}" class="col-header">
+                            <!--<span>Our best seller</span>-->
+                            <h2>{{oceano.title}}</h2>
+                            <h3>Cool &amp; Adjustable</h3>
+                        </a>
+                        <a href="{{ oceano.url }}" class="product-grid-image" title="">
+                            {% assign imgName = oceano.featured_image | remove: 'products/' | split:'?' | first %}
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=480">
+                                <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=750">
+                                <img src="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=750" alt="">
+                            </picture>
+                        </a>
+                        <div class="margTB10">No Reviews Yet</div>
+                        <div class="paddingwrap">
+                            <div class="yotpo bottomLine"
+                                 data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
+                                 data-domain="{{ shop.permanent_domain | escape }}"
+                                 data-product-id="{{ oceano.id }}"
+                                 data-product-models="{{ oceano.id }}"
+                                 data-name="{{ oceano.title | escape }}"
+                                 data-url="{{ shop.url }}{{ oceano.url }}">
+                            </div>
+                            <p><a href="{{oceano.url}}" class="cta2 solid text-center marg0">from {{ocenaoPrice | money }}</a></p>
+                              <ul class="featList text-left">
+                                  <li class="ico fabric">Tencel stretch-knit cover</li>
+                                  <li class="ico gel">Gel Memory Foam + Polyester Blended Fill</li>
+                                  <li class="ico zone5">Adjustable feel</li>
+                            </ul>
+                            <p class="description">
+                                Our Oceano pillow is cooler than silk and more breathable than linen to keep you comfortably cool while you rest. An inner zippered chamber allows you to add or remove fill so you can adjust to your liking.
+                            </p>
+                            <div class="otherFeatures">
+                                <p><strong>Other Features</strong></p>
+                                <ul class="otherfeatures text-left">
+                                    <li>Free of flame retardants</li>
+                                    <li>CertiPUR-US® Certified Foam</li>
+                                    <li>Zipper</li>
+                                    <li>Made in USA</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-col crystalcove text-center">
+                    <div class="colorwrap">
+                        <a href="{{crystalcove.url}}" class="col-header">
+                            <h2>{{crystalcove.title}}</h2>
+                            <h3>Naturally Cooling</h3>
+                        </a>
+                        <a href="{{ crystalcove.url }}" class="product-grid-image" title="">
+                            {% assign imgName = crystalcove.featured_image | remove: 'products/' | split:'?' | first %}
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=480">
+                                <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=750">
+                                <img src="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=750" alt="">
+                            </picture>
+                        </a>
+                        <div class="paddingwrap">
+                            <div class="yotpo bottomLine"
+                                 data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
+                                 data-domain="{{ shop.permanent_domain | escape }}"
+                                 data-product-id="{{ crystalcove.id }}"
+                                 data-product-models="{{ crystalcove.id }}"
+                                 data-name="{{ crystalcove.title | escape }}"
+                                 data-url="{{ shop.url }}{{ crystalcove.url }}">
+                            </div>
+                            <!--<p class="price"><i>Starting at</i> <a href="{{ crystalcove.url }}" title="{{ crystalcove.title }}">{{crystalcovePrice | money }}</a></p>-->
+                            <p><a href="{{crystalcove.url}}" class="cta2 solid text-center marg0">From {{crystalcovePrice | money }}</a></p>
+
+                            <ul class="featList text-left">
+                                <li class="ico fabric">Bamboo Derived Rayon Cover</li>
+                                <li class="ico gel">Cooling activated charcoal-infused memory foam</li>
+                                <li class="ico zone5">Adjustable feel</li>
+                            </ul>
+                            <p class="description">
+                                Mindfully designed for the ultimate night of healing sleep, our Crystal Cove Pillows feature activated charcoal-infused memory foam for a luxury plush feel that is naturally cooling.
+                            </p>
+                            <div class="otherFeatures">
+                                <p><strong>Other Features</strong></p>
+                                <ul class="otherfeatures text-left">
+                                    <li>Free of flame retardants</li>
+                                    <li>CertiPUR-US® Certified Foam</li>
+                                    <li>Zipper</li>
+                                    <li>Made in USA</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-col ojai text-center">
+                    <div class="colorwrap">
+                        <a href="{{ojai.url}}" class="col-header">
+                            <h2>{{ojai.title}}</h2>
+                            <h3>Luxurious Feel</h3>
+                        </a>
+                        <a href="{{ ojai.url }}" class="product-grid-image" title="">
+                            {% assign imgName = ojai.featured_image | remove: 'products/' | split:'?' | first %}
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=480">
+                                <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=750">
+                                <img src="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=750" alt="">
+                            </picture>
+                        </a>
+                        <div class="margTB10">No Reviews Yet</div>
+                        <div class="paddingwrap">
+                            <div class="yotpo bottomLine"
+                                 data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
+                                 data-domain="{{ shop.permanent_domain | escape }}"
+                                 data-product-id="{{ ojai.id }}"
+                                 data-product-models="{{ ojai.id }}"
+                                 data-name="{{ ojai.title | escape }}"
+                                 data-url="{{ shop.url }}{{ ojai.url }}">
+                            </div>
+                            <!--<p class="price"><i>Starting at</i> <a href="{{ ojai.url }}" title="{{ ojai.title }}">{{ojaiPrice | money }}</a></p>-->
+                            <p><a href="{{ojai.url}}" class="cta2 solid text-center marg0">From {{ojaiPrice | money }}</a></p>
+
+                            <ul class="featList text-left">
+                                <li class="ico fabric">Tencel stretch-knit cover</li>
+                                <li class="ico gel">Gel Memory Foam + Polyester Blended Fill</li>
+                                <li class="ico zone5">Adjustable feel</li>
+                            </ul>
+                            <p class="description">
+                                Our Ojai Pillows pair perfectly with our Ojai Mattress for an affordable night of luxurious sleep. The Ojai Pillows are crafted with the same attention to detail and quality as all of our natural and non-toxic products.
+                            </p>
+                            <div class="otherFeatures">
+                                <p><strong>Other Features</strong></p>
+                                <ul class="otherfeatures text-left">
+                                    <li>Free of flame retardants</li>
+                                    <li>CertiPUR-US® Certified Foam</li>
+                                    <li>Zipper</li>
+                                    <li>Made in USA</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="item">
+                <div class="product-col cedar text-center">
+                    <div class="colorwrap">
+                        <a href="{{pacifica.url}}" class="col-header">
+                            <h2>{{pacifica.title}}</h2>
+                            <h3>Organic Cotton</h3>
+                        </a>
+                        <a href="{{ pacifica.url }}" class="product-grid-image" title="{{pacifica.title}}">
+                            {% assign imgName = pacifica.featured_image | remove: 'products/' | split:'?' | first %}
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=480">
+                                <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=750">
+                                <img src="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=750" alt="">
+                            </picture>
+                        </a>
+
+                        <div class="paddingwrap">
+                            <div class="yotpo bottomLine"
+                                 data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
+                                 data-domain="{{ shop.permanent_domain | escape }}"
+                                 data-product-id="{{ pacifica.id }}"
+                                 data-product-models="{{ pacifica.id }}"
+                                 data-name="{{ pacifica.title | escape }}"
+                                 data-url="{{ shop.url }}{{ pacifica.url }}">
+                            </div>
+                            <!--<p class="price"><i>Starting at</i> <a href="{{ pacifica.url }}" title="{{ pacifica.title }}">{{pacificaPrice | money }}</a></p>-->
+                            <p><a href="{{pacifica.url}}" class="cta2 solid text-center marg0">From {{pacificaPrice | money }}</a></p>
+
+                            <ul class="featList text-left">
+                                <li class="ico fabric">100% Organic Cotton Cover</li>
+                                <li class="ico gel">Gel Memory Foam + Down Alternative Blended Fill</li>
+                                <li class="ico zone5">Adjustable feel</li>
+                            </ul>
+                            <p class="description">
+                                An incredibly soft combination of gel memory foam ribbons and down alternative fill create the perfect sleep surface that gently cradles your neck and head.
+                            </p>
+                            <div class="otherFeatures">
+                                <p><strong>Other Features</strong></p>
+                                <ul class="otherfeatures text-left">
+                                    <li>Free of flame retardants</li>
+                                    <li>CertiPUR-US® Certified Foam</li>
+                                    <li>Zipper</li>
+                                    <li>Made in USA</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-col cedar text-center">
+                    <div class="colorwrap">
+                        <a href="{{helena.url}}" class="col-header">
+                            <h2>{{helena.title}}</h2>
+                            <h3>The Most Natural</h3>
+                        </a>
+                        <a href="{{ helena.url }}" class="product-grid-image" title="">
+                            {% assign imgName = helena.featured_image | remove: 'products/' | split:'?' | first %}
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=480">
+                                <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=750">
+                                <img src="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=750" alt="">
+                            </picture>
+                        </a>
+                        <div class="paddingwrap">
+                            <div class="yotpo bottomLine"
+                                 data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
+                                 data-domain="{{ shop.permanent_domain | escape }}"
+                                 data-product-id="{{ helena.id }}"
+                                 data-product-models="{{ helena.id }}"
+                                 data-name="{{ helena.title | escape }}"
+                                 data-url="{{ shop.url }}{{ helena.url }}">
+                            </div>
+                            <p><a href="{{helena.url}}" class="cta2 solid text-center marg0">From {{helenaPrice | money }}</a></p>
+                            <ul class="featList text-left">
+                                <li class="ico fabric">100% Organic Cotton Cover</li>
+                                <li class="ico gel">All Natural Kapok + Latex Blended Fill </li>
+                                <li class="ico zone5">Adjustable feel</li>
+                            </ul>
+                            <p class="description">
+                                Fluffy and supportive, our Helena pillow was designed for the eco-friendly among us, with a fill of 100% natural latex ribbons and sustainable natural kapok fibers.
+                            </p>
+                            <div class="otherFeatures">
+                                <p><strong>Other Features</strong></p>
+                                <ul class="otherfeatures text-left">
+                                    <li>Free of flame retardants</li>
+                                    <li>CertiPUR-US® Certified Foam</li>
+                                    <li>Zipper</li>
+                                    <li>Made in USA</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div><!-- end row-eq-->
+</div><!-- end containe-fluid-->
+
+<script>
+    $(document).ready(function() {
+        $('#compare-mattresses-wrap').owlCarousel({
+            loop:false,
+            responsiveClass:true,
+            navText: ['<i class="fa fa-chevron-left" aria-hidden="true"></i>','<i class="fa fa-chevron-right" aria-hidden="true"></i>'],
+            responsive:{
+                0:{
+                    items:1,
+                    nav:true
+                },
+                768:{
+                    items:2,
+                    nav:true
+                },
+                1024:{
+                    items:3,
+                    nav:true
+                },
+                1480:{
+                    items:4,
+                    nav:true
+                },
+                1620:{
+                    items:5,
+                    nav:false
+                }
+            }
+        });
+    });
+</script>
+
+<div class="container">
+    <section class="warranties">
+        <h2 class="overlays-title">Try Our Pillows Risk-Free</h2>
+        <div class="items row">
+            <div class="col-xs-6 col-sm-3">
+                <img src="https://brentwood-home.imgix.net/iconv2-120nightguarantee.svg" alt="">
+                <p>30-night<br>Trial</p>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="">
+                <p>Free Shipping<br>Free Return</p>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <img src="https://brentwood-home.imgix.net/iconv2-madeincalifornia.svg" alt="">
+                <p>Made in<br>California</p>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <img src="https://brentwood-home.imgix.net/iconv2-3yearwarranty.svg" alt="">
+                <p>3-year<br>Warranty</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <h2 class="section-title-left">Sustainable materials meet total comfort</h2>
+                <p class="hidden-md hidden-lg"><img src="{{ 'cottonflower.jpg' | asset_url }}" alt=""></p>
+                <p>Our team of designers and product developers are always looking for the latest materials and technologies that are healthy for you, your family, and the environment.  We choose only certified non-toxic materials for all of our products. While safety is our first priority, that doesn’t mean we sacrifice comfort. You can rest easy knowing we use materials that are selected for their reliability and sleep comfort.</p>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <p class="hidden-xs hidden-sm"><img src="{{ 'cottonflower.jpg' | asset_url }}" alt=""></p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    /*mixpanel.track(
+        "Mattress Comparison",
+    );*/
+    /*$(document).ready(function () {
+        $(".product-col A").click(function () {
+            mixpanel.track("Click", { "name": "{{ product.title }}" });
+        });
+    });*/
+</script>

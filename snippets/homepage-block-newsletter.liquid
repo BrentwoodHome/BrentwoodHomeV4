@@ -1,0 +1,24 @@
+{% if settings.footer_display_newsletter %}
+<div class="newsletter">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      {% if settings.footer_newsletter_title != blank %}
+      <h3 class="module-title"><span>{{ settings.footer_newsletter_title }}</span></h3>
+      {% endif %}
+
+
+      <div class="content">
+        {% if settings.footer_newsletter_content != blank %}
+        <div class="small-title" >{{ settings.footer_newsletter_content }}</div>
+        {% endif %}
+        {% include 'newsletter-form' %}
+      </div>
+    </div>
+    <!--<div class="col-md-5 col-sm-5 col-xs-12">
+      {% if settings.footer_newsletter_content_right != blank %}
+      <div class="content-right">{{ settings.footer_newsletter_content_right }}</div>
+      {% endif %}
+    </div>-->
+  </div>
+</div>
+{% endif %}

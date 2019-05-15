@@ -1,0 +1,13 @@
+<div class="row mobile-collection-menu">
+    <div class="col-xs-12">
+        <div class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle caps">{{ product.title }} <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            {% for link in linklists.mobile-collection-menu.links %}
+                <li><a class="caps" href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+            <li><a href="javscript:void(0);"><i class="fa fa-times-circle-o" aria-hidden="true"></i> Close</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="landing">
+    <div class="jumbtron pillow-collec flexVCenter">
+        <div class="tagline">
+            <h1>Healthy sleep starts here</h1>
+            <p class="line"><i>Explore our new and improved pillows, made with eco-friendly materials like organic cotton and natural latex.</i></p>
+            <p><a href="#start" class="sscroll lp-cta">Discover the sleep of your dreams</a></p>
+        </div>
+    </div>
+    <div id="start"></div>
+    <div id="" class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <p class="text-center">Refresh your bedding with our impossibly soft, supportive pillows, newly designed for comfort in any sleep position. Choose your favorite, or mix and match the different feels.</p>
+            </div>
+        </div>
+    </div>
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 ">
+                <a href="/products/helena-pillow?variant=30536384844" title="Helena pillow"><img src="{{ 'lp-row-helena.jpg' | asset_url }}" alt="Helena Pillow" class="img-responsive"></a>
+            </div>
+            <div class="col-xs-12 col-sm-6 odd">
+                <a href="/products/helena-pillow?variant=30536384844" title="Crystal Cove bolster pillow"><h2>Helena Latex Filled Pillow</h2></a>
+                <p>For our friends that like to keep it green, meet the Helena. It’s filled with 100% natural latex ribbons and silky-smooth organic cotton fibers, plus an organic cotton cover for sweet, eco-friendly dreams. </p>
+                <p><a href="/products/helena-pillow?variant=30536384844" class="lp-cta">from $79</a></p>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                <a href="/products/pacifica-pillow?variant=30536305932" title="Pacifica pillow"><img src="{{ 'lp-row-pacifica.jpg' | asset_url }}" alt="Pacifica Pillow" class="img-responsive"></a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-pull-6 even">
+                <a href="/products/pacifica-pillow?variant=30536305932" title="Crystal Cove pranayama pillow"><h2>Pacifica Gel Memory Foam Pillow</h2></a>
+                <p>You can’t go wrong with classic memory foam comfort. A combination of gel memory foam ribbons and down alternative blend will conform to your neck and head, allowing you to rest gently into the hugging sensation. 
+                </p>
+                <p><a href="/products/pacifica-pillow?variant=30536305932" class="lp-cta">from $59</a></p>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 ">
+                <a href="/products/crystal-cove-pillow" title="Crystal Cove pillow"><img src="{{ 'lp-row-cc.jpg' | asset_url }}" alt="Crystal Cove Pillow" class="img-responsive"></a>
+            </div>
+            <div class="col-xs-12 col-sm-6 odd">
+                <a href="/products/crystal-cove-pillow" title="Crystal Cove pillow"><h2>Crystal Cove Pillow</h2></a>
+                <p>Mindfully designed for the ultimate night of healing sleep, our Crystal Cove Pillows feature activated charcoal-infused memory foam for a luxury plush feel that is naturally cooling.</p>
+                <p><a href="/products/crystal-cove-pillow" class="lp-cta">from $89</a></p>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+    //mixpanel.track("Crystal Cove LP");
+    /*$(document).ready(function(){
+        $("#aboutus-continue").click(function(){
+            mixpanel.track("Clicked Continue Shopping");
+        });
+    });*/
+</script>
+<script>
+    $(document).ready(function(){
+        $('A.sscroll').bind('click', function(event) {
+            var $anchor = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $($anchor.attr('href')).offset().top - 150
+            }, 1500, 'easeInOutExpo');
+            event.preventDefault();
+        });
+    });
+</script>

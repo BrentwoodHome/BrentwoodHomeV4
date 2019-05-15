@@ -1,0 +1,682 @@
+{% include 'bold-product' with product, hide_action: 'break' %}{% if bold_hidden_product %}{% break %}{%endif %}
+<div class="container-fluid" id="product">
+    <div itemscope itemtype="http://schema.org/Product" class="product">
+        <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+        <meta itemprop="image" content="{{ product.featured_image.src | product_img_url: 'grande' }}">
+        <meta itemprop="itemCondition" content="http://schema.org/NewCondition" />
+        
+        <div class="row">
+            <div class="row slick-wrapper">
+                {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+                <section id="main-product-slider" class="features product-feature slider">
+                    {% for image in product.images %}
+                    <div style="position: relative;">
+                       {% if forloop.first %}
+                        <div class="starsFloat">
+                           <h2 itemprop="name">{{ product.title | escape }}</h2>
+                            <div class="yotpo bottomLine"
+                                 data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
+                                 data-domain="{{ shop.permanent_domain | escape }}"
+                                 data-product-id="{{ product.id }}"
+                                 data-product-models="{{ product.id }}"
+                                 data-name="{{ product.title | escape }}"
+                                 data-url="{{ shop.url }}{{ product.url }}"
+                                 data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+                                 data-description="{{ product.description | escape }}"
+                                 data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+                            </div> 
+                        </div>
+                       {% endif %}
+                        <img src="{{ image.src | product_img_url: 'master' }}" alt="{{ image.alt | escape }}" itemprop="image">
+                    </div>
+                    {% endfor %}
+                </section>
+            </div>
+        </div>
+
+        {% include 'mobile-product-add-to-cart' %}
+        
+        {% if product.metafields.bhsite.promo %}
+            <div class="promo" style="">
+                {%comment%}
+                    {% capture day %}{{ 'now' | date: '%A' }}{% endcapture %}
+                    {% case day %}
+                        {% when 'Sunday' %}
+                            <p class="text-center" style="">{{product.metafields.bhsite.promo}}</p>
+                        {% when 'Monday' %}
+                            <p class="text-center" style="">{{product.metafields.bhsite.promo}}</p>
+                        {% when 'Thursday' %}
+                            <p class="text-center" style="">{{product.metafields.bhsite.promo}}</p>
+                        {% when 'Friday' %}
+                            <p class="text-center" style="">{{product.metafields.bhsite.promo}}</p>
+                        {% when 'Saturday' %}
+                            <p class="text-center" style="">{{product.metafields.bhsite.promo}}</p>
+                    {% endcase %}
+                {%endcomment%}
+                <p class="text-center" style="background-color: #454D5B; color: white;padding: 20px;">{{product.metafields.bhsite.promo}}</p>
+            </div>
+        {% endif %}
+        {%comment%}
+            {% if product.handle contains "bamboo-gel" %}
+                <div class="promo" style="">
+                    <p class="text-center" style="background-color: #454D5B; padding: 20px;"><a href="/products/pacifica-pillow?variant=30536383756" style="color: white;font-size: 18px;" >Free Pacifica Pillow with any purchase! Add one to your cart and use code <strong>PILLOWPARTY</strong> at checkout.</a></p>
+                </div>
+            {% elsif product.handle contains "sierra"%}
+                <div class="promo" id="promoSierra">
+                    <p class="text-center" style="background-color: #454D5B; padding: 20px; color: #fff; font-size: 18px;">Exclusive offer: Use code SIERRA25 to save 25% on this model</p>
+                </div>
+            {% endif %}
+        {%endcomment%}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3 text-center product-description">
+                    {% if product.metafields.bhsite.tagline %}
+                    <h3 class="tagline">
+                         {{ product.metafields.bhsite.tagline }}
+                    </h3>
+                    {% endif %}
+                </div>
+            </div>
+            {% if product.metafields.bhsite.comfort_support_one %}
+            <div class="cb comfort">
+                <div class="col-lg-12 text-center">
+                    <h2 class="title">Comfort &amp; Support</h2>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 col-xs-12 text-center">
+                        {{ product.metafields.bhsite.comfort_support_one }}
+                        
+                        
+                    </div>
+                </div>
+                {%comment%}
+                <div class="row">
+                    <div class="col-sm-8 col-xs-12 text-center">
+                        <h5 style="text-transform: uppercase">SUPPORT</h5>
+                        {{ product.metafields.bhsite.comfort_support_one }}
+                    </div>
+                    <div class="col-sm-4 col-xs-12 text-center">
+                        <h5 style="text-transform: uppercase">ABOUT OUR
+                            {% for collection in product.collections %}
+                            {% assign col = collection.title %}
+                            {% endfor %}
+                            {{ col }}
+                        </h5>
+                        {{ product.metafields.bhsite.comfort_support_two }}
+                    </div>
+                </div>
+                {%endcomment%}
+            </div>
+        </div>
+
+        {% endif %}
+        
+        {% assign bamboohandle = product.handle %}
+        
+        <div class="row">
+            <div class="cb guarantee">
+                <div class="blue-bg">
+                    <div class="col-xs-12 text-center">
+                        <h5 class="title">OUR GUARANTEES</h5>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center">
+                        <img src="{{ '120nightsguarantee.svg' | asset_url}}" alt="120-Night Guarantee" />
+                        <h5>1-Year Guarantee</h5>
+                        <p class="hidden-xs">Sleep on your mattress for up to 120 nights. If you don’t love it, return it for a full refund.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center">
+                        <img src="{{'freeshipping.svg' | asset_url}}" alt="Free Shipping & Return" />
+                        <h5>Free Shipping & Returns</h5>
+                        <p class="hidden-xs">This mattress ships for free with free pickups on returns.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center">
+                        <img src="{{ 'madeincali.svg' | asset_url }}" alt="Made in California" />
+                        <h5>Made in California</h5>
+                        <p class="hidden-xs">We design, develop, and handcraft all of our mattresses here in Los Angeles, CA.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center">
+                        <img src="{{ '25year.svg' | asset_url }}" alt="25-Year Warranty" />
+                        <h5>25 Year Limited Warranty</h5>
+                        <p class="hidden-xs">We’re proud of our quality, so we back our mattresses with a 25 year warranty.</p>
+                    </div>
+                    <div class="container">
+                        <div class="col-xs-12 text-center">
+                            <div class="cta text-center">
+                                {%comment%}<a class="btn btn-white-stroke">Learn More</a>{%endcomment%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {% if product.metafields.bhsite.features_slider %}
+        <div class="row slider-wrapper">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12 text-center">
+                <h2>Main Features</h2>
+            </div>
+            <div class="row">
+                <section class="product-feature slider slick-wrapper">
+                    {{ product.metafields.bhsite.features_slider }}
+                </section>
+            </div>
+        </div>
+        {%endif%}
+        {% if product.metafields.bhsite.materials_slider %}
+        <div class="row slider-wrapper">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12 text-center">
+                <h2>Key Materials</h2>
+            </div>
+            <div class="row">
+                <section class="product-feature slider slick-wrapper">
+                    {{ product.metafields.bhsite.materials_slider }}
+                </section>
+            </div>
+        </div>
+        {% endif %} 
+        {% if product.metafields.bhsite.materials_grid %}
+        <div class="row">
+            <div class="cb mattress-details">
+                <div class="white-bg">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12">
+                        <h2 style="margin-bottom: 50px;">{{ product.title}} Details</h2>
+                    </div>
+                    {{ product.metafields.bhsite.materials_grid }}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 text-left collapse" id="collapseDetails">
+                    {{ product.description }}
+                </div>
+                <div class="col-xs-12 text-center">
+                    <button class="btn btn-grey-stroke" id="detailsBtn" type="button" data-toggle="collapse" data-target="#collapseDetails" aria-expanded="false" aria-controls="collapseExample">More Details</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('button#detailsBtn').click(function() {
+                if ( $('div#collapseDetails').hasClass('in') ) {
+                    $(this).text('More Details');
+                } else {
+                    $(this).text('Less Details');
+                }
+            });
+        </script>
+        {% endif %}
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="cb surfaces">
+                <div class="blue-bg">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12 text-center">
+                        <h5 class="title">WORKS ON MOST SURFACES</h5>
+                    </div>
+                    {% include 'works-on-most-surfaces' %}
+                    <div class="container">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                            <div class="cta text-center">
+                                {%comment%}<a class="btn btn-white-stroke">Learn More</a>{%endcomment%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cb ships-free">
+                <div class="white-bg">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12 text-center">
+                        <h2>Ships Free In A Box</h2>
+                    </div>
+                    <div class="col-lg-8 col-lg-offset-2 text-center product-description">
+                        <img src="https://cdn.shopify.com/s/files/1/1507/2946/files/brentwood-home-box.jpg?12165955255194111259" alt="Brentwood Home Mattress Box" />
+                    </div>
+                    <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 text-center">
+                        <p>Our mattresses are handcrafted in 5-10 business days. Standard shipping takes an additional 1-5  days.</p>
+                        {% assign productTags = product.tags | join:',' %}
+                        {% if productTags contains 'White Glove Delivery' %}
+                        <p><strong>The {{product.title}} size King and California King will use a premium In Home Delivery service, free of charge.</strong> See our <a href="/pages/faq">Shipping & Return FAQ</a></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cb easy-setup-video">
+                <div class="white-bg">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12 text-center">
+                        <h2>Easy Setup</h2>
+                    </div>
+                    <div class="col-md-offset-2 col-md-8 col-sm-12 col-sx-12 text-center">
+                        <div class="videoWrapper text-center">
+                            <iframe src="https://player.vimeo.com/video/175424212" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if bamboohandle contains 'bamboo-gel' %}
+        {%else%}
+        <div class="row hidden-xs">
+            <div class="cb our-gaurantee">
+                <div class="container img-bg">
+                    <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 text-center">
+                        <h3 class="caps" style="margin-bottom: 15px; font-size: 40px;">120-Night Guarantee</h3>
+                        <p style="font-weight: 300; color: #444;">Sleep on your mattress for up to 120 nights. If you don’t love it, we’ll give you a full refund and pick it up for free.</p>
+                        <div class="cta">
+                            <a class="btn btn-grey-stroke" href="/pages/returns">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%endif%}
+        <div class="row">
+            <div class="cb faqs">
+                <div class="ltgrey-bg">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12 text-center">
+                        <h2>F.A.Q.</h2>
+                    </div>
+                    <div class="container">
+                        <div class="col-lg-6 text-left">
+                            {% if bamboohandle contains 'bamboo-gel' %}
+                                <h5 class="caps">Q: When can I sleep on my new mattress?</h5>
+                                <p>A: Your mattress might take up to 5 days to recover from being compressed in its box, but you can sleep on it right away with no problem. Just give it a few days before you make any decisions. </p>
+                            {%else%}
+                                <h5 class="caps">Q: What does the 120-night guarantee cover?</h5>
+                                <p>A: When you get your new mattress, you’ll want to give your body at least 30 nights to adjust to your new mattress. Your body might not be used to such contouring support right away. But if you give it some time, and the mattress just isn’t your style, you can contact us within the first 120 days of your purchase, and we’ll arrange for a pickup of your mattress to be donated to a local charity or shelter, free of charge. Please note there is a limit of 2 items per year per household. Standard shipping costs will apply after that.</p>
+                            {%endif%}
+                        </div>
+                        <div class="col-lg-6 text-left">
+                            <h5 class="caps">Q: How is it possible that you don’t use chemical fire retardants? Doesn’t every mattress have to use them?</h5>
+                            <p>A: Fortunately, it’s totally possible to avoid using chemical fire retardants with a hydrated-silica sand. Hydrated silica is basically crushed quartz and opal gemstones. We also line our mattresses with New Zealand wool, which is another natural fire barrier.</p>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="col-lg-12">
+                            <div class="cta text-center">
+                                <a class="btn btn-grey-stroke" href="/pages/faq">More Answers</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="yotpoReviews" class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12 text-center">
+                    <h2>Reviews</h2>
+                </div>
+                <div class="col-xs-12">
+                    <div class="yotpo yotpo-main-widget"
+                         data-product-id="{{ product.id }}"
+                         data-name="{{ product.title | escape }}"
+                         data-url="{{ shop.url }}{{ product.url }}"
+                         data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}"
+                         data-description="{{ product.description | escape }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if settings.display_related_products %}
+            {% if settings.related_products_type == "tags" %}
+                {% include 'related-products-by-tags' %}
+            {% else %}
+                <div class="container">{% include 'related-products' %}</div>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+
+<!--{% include 'affirm-product' %}-->
+
+<!--- Slick Carousel --->
+{{ 'slick.js' | asset_url | script_tag }}
+{{ 'slick.scss' | asset_url | stylesheet_tag }}
+{{ 'slick-theme.css' | asset_url | stylesheet_tag }}
+<script type="text/javascript">
+$(document).on('ready', function() {
+    $('.product-feature').slick({
+      centerMode: true,
+      centerPadding: '180px',
+      slidesToShow: 1,
+      dots: true,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            centerMode: true,
+            centerPadding: '10px',
+            slidesToShow: 1
+          }
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            centerMode: true,
+            centerPadding: '10px',
+            slidesToShow: 1
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            centerMode: true,
+            centerPadding: '10px',
+            slidesToShow: 1
+          }
+        }
+      ]
+    });
+});
+</script>
+
+{% if template == 'product.mattresses' %}
+<script>
+$(document).ready(function() {
+    function checkWidth() {
+        var windowSize = $(window).width();
+        if (windowSize < 680) {
+              jQuery(window).scroll(function() {
+                var scroll = jQuery(window).scrollTop();
+                if (scroll > 320) {
+                    jQuery(".product-meta-mobile").addClass("is-ticky");
+                }else{
+                  jQuery(".product-meta-mobile").removeClass("is-ticky");
+                }
+            });
+        }
+        else {
+              jQuery(window).scroll(function() {
+                var scroll = jQuery(window).scrollTop();
+                if (scroll > 0) {
+                    jQuery(".breadcrumb-wrap").addClass("is-ticky");
+                }else{
+                  jQuery(".breadcrumb-wrap").removeClass("is-ticky");
+                }
+            });
+        }
+    }
+    // Execute on load
+    checkWidth();
+    // Bind event listener
+    $(window).resize(checkWidth);
+});
+</script>
+{% endif %}
+
+
+<script>
+  jQuery(document).ready(function(){
+
+  });
+  //Shopify.Image.preload({{ product.images | json }}, 'grande');
+
+   {% if settings.display_subtotal and product.available %}
+  //update price when changing quantity
+  function updatePricing() {
+    //try pattern one before pattern 2
+    var regex = /([0-9]+[.|,][0-9]+[.|,][0-9]+)/g;
+    var unitPriceTextMatch = jQuery('.product .price').text().match(regex);
+
+    if (!unitPriceTextMatch) {
+      regex = /([0-9]+[.|,][0-9]+)/g;
+      unitPriceTextMatch = jQuery('.product .price').text().match(regex);
+    }
+
+    if (unitPriceTextMatch) {
+      var unitPriceText = unitPriceTextMatch[0];
+      var unitPrice = unitPriceText.replace(/[.|,]/g,'');
+      var quantity = parseInt(jQuery('#quantity').val());
+      var totalPrice = unitPrice * quantity;
+
+      var totalPriceText = Shopify.formatMoney(totalPrice, window.money_format);
+
+      totalPriceText = totalPriceText.match(regex)[0];
+
+      var regInput = new RegExp(unitPriceText, "g");
+      var totalPriceHtml = jQuery('.product .price').html().replace(regInput ,totalPriceText);
+
+      jQuery('.product .total-price span').html(totalPriceHtml);
+    }
+  }
+  jQuery('#quantity').on('change', updatePricing);
+  {% endif %}
+
+var selectCallback = function(variant, selector) {
+
+  var addToCart = jQuery('#product-add-to-cart'),
+      productPrice = jQuery('.product .price'),
+      comparePrice = jQuery('.product .compare-price');
+
+  if (variant) {
+    if (variant.available) {
+      // We have a valid product variant, so enable the submit button
+      addToCart.removeClass('disabled').removeAttr('disabled').val('Add to Cart');
+
+    } else {
+      // Variant is sold out, disable the submit button
+      addToCart.val('Sold Out').addClass('disabled').attr('disabled', 'disabled');
+    }
+
+    // Regardless of stock, update the product price
+    productPrice.html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}"));
+
+    // Also update and show the product's compare price if necessary
+    if ( variant.compare_at_price > variant.price ) {
+      productPrice.addClass("on-sale")
+      comparePrice
+        .html(Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}"))
+        .show();
+    } else {
+      comparePrice.hide();
+      productPrice.removeClass("on-sale");
+    }
+    {% if settings.use_color_swatch %}
+    // BEGIN SWATCHES
+      var form = jQuery('#' + selector.domIdPrefix).closest('form');
+      for (var i=0,length=variant.options.length; i<length; i++) {
+        var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]');
+        if (radioButton.size()) {
+          radioButton.get(0).checked = true;
+        }
+      }
+     // END SWATCHES
+     {% endif %}
+
+  	{% if settings.display_subtotal and product.available %}
+     updatePricing();
+  	 {% endif %}
+
+
+  } else {
+    // The variant doesn't exist. Just a safeguard for errors, but disable the submit button anyway
+    addToCart.val('Unavailable').addClass('disabled').attr('disabled', 'disabled');
+  }
+
+  //update variant inventory
+  {% if settings.display_availability %}
+  if (variant.available) {
+    if (variant.inventory_management!=null) {
+      jQuery(".product-inventory span").text(variant.inventory_quantity + " in stock");
+    } else {
+      jQuery(".product-inventory span").text("Many in stock");
+    }
+  } else {
+    jQuery(".product-inventory span").text("Out of stock");
+  }
+  {% endif %}
+
+  //display message for sheets and quilts when out of stock
+  if (variant.available) {
+      if (variant.inventory_management!=null) {
+          if(variant.inventory_quantity<1){
+              jQuery(".out-of-stock").show();
+              jQuery(".out-of-stock p").html("We’re currently making this item to order.<br> Please allow <b>up to 3 weeks</b> for crafting and shipping.");
+          }else{
+              jQuery(".out-of-stock").hide();
+          }
+      }
+  } else {
+      jQuery(".out-of-stock p").text("Out of stock");
+  }
+
+    /*begin variant image*/
+      if (variant && variant.featured_image) {
+        var originalImage = jQuery("#product-featured-image");
+        var newImage = variant.featured_image;
+        var element = originalImage[0];
+        Shopify.Image.switchImage(newImage, element, function (newImageSizedSrc, newImage, element) {
+          jQuery('#zt_list_product img').each(function() {
+            var grandSize = jQuery(this).attr('src');
+            grandSize = grandSize.replace('compact','grande');
+            if (grandSize == newImageSizedSrc) {
+              console.log(newImageSizedSrc);
+              jQuery(this).parent().trigger('click');
+              return false;
+            }
+          });
+        });
+    }
+    /*end of variant image*/
+   //updateAffirmAsLowAs( variant.price ); //Update affirm price
+};
+
+jQuery(function($) {
+  {% if product.available and product.variants.size > 1 %}
+    new Shopify.OptionSelectors('product-selectors', {
+      product: {{ product | json }},
+      onVariantSelected: selectCallback,
+	  enableHistoryState: true
+    });
+    new Shopify.OptionSelectors('product-selectors-mobile', {
+      product: {{ product | json }},
+      onVariantSelected: selectCallback,
+	  enableHistoryState: true
+    });
+
+     {% comment %}
+     Use color swatch and linked options (copyright by @carolineschnapp)
+     {% endcomment %}
+     {% if settings.use_color_swatch and product.available and product.options.size > 1 %}
+     Shopify.linkOptionSelectors({{ product | json }});
+     {% endif %}
+
+     {% if settings.use_color_swatch != true %}
+      jQuery('.single-option-selector').selectize();
+      jQuery('.selectize-input input').attr("disabled","disabled");
+     {% endif %}
+
+   {% endif %}
+
+  // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
+  {% if product.options.size == 1 and product.options.first != 'Title' %}
+    $('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first }}</label>');
+  {% endif %}
+
+  // Hide selectors if we only have 1 variant and its title contains 'Default'.
+  {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+    $('.selector-wrapper').hide();
+  {% endif %}
+
+  // Auto-select first available variant on page load. Otherwise the product looks sold out.
+  {% assign found_one_in_stock = false %}
+  {% for variant in product.variants %}
+    {% if variant.available and found_one_in_stock == false %}
+      {% assign found_one_in_stock = true %}
+      {% for option in product.options %}
+      $('.single-option-selector:eq({{ forloop.index0 }})').val({{ variant.options[forloop.index0] | json }}).trigger('change');
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+
+});
+</script>
+
+
+<!--
+<script>
+$(function() {
+  $(".product-meta .model").on("click", function(e) {
+    $(".prices").addClass("animate-pricing");
+    e.stopPropagation()
+  });
+  $(document).on("click", function(e) {
+    if ($(e.target).is(".prices") === false) {
+      $(".prices").removeClass("animate-pricing");
+    }
+  });
+});
+</script>
+-->
+<script>
+    mixpanel.track(
+        "Product Viewed",
+        {"name": "{{product.title}}",
+         "price": "{{ product.price | money_without_currency }}",
+         "brand": "{{product.vendor}}",
+         "category": "{{ collection.title }}",
+         "variant": "{% for variant in product.variants %}{{ variant.sku }}{% endfor %}"
+        });
+    //pintrk('track', 'pagevisit');
+</script>
+{% assign current_variant = product.selected_or_first_available_variant %}
+<script>
+    $(document).ready(function(){
+        $("A.amz").click(function(){
+            mixpanel.track(
+                "Go to Amazon", {"name": "{{product.title}}"});
+        });
+        
+        $("#product-add-to-cart").click(function(){
+            mixpanel.track(
+                "Added to Cart", {"name": "{{product.title}}"});
+
+            pintrk('track', 'addtocart', {
+                value: '{{ product.price | money_without_currency }}',
+                currency: 'USD',
+                line_items: [
+                    {
+                        product_name: '{{product.title}}',
+                        product_category: '{{ collection.title }}',
+                        product_variant_id: '{% for variant in product.variants %}{{ variant.sku }}{% endfor %}',
+                        product_price: '{{ product.price | money_without_currency }}',
+                        product_quantity: 1,
+                        product_brand: '{{product.vendor}}'
+                    }
+                ]
+            });
+            
+
+
+        });
+    });
+    
+</script>
+
+
+<span id="extole-zone-product_page"></span>
+<script type="text/javascript">
+    (function(c,b,f,k,a){c[b]=c[b]||{};for(c[b].q=c[b].q||[];a<k.length;)f(k[a++],c[b])})(window,"extole",function (c,b){b[c]=b[c]||function (){b.q.push([c,arguments])}},["createZone"],0);
+    extole.createZone({
+        name: "product_page",
+        element_id: "extole-zone-product_page",
+        parameters: {
+            
+        }
+    });
+</script>
+
+<script>
+    if (sessionStorage.getItem("page") == "SierraLP"){
+        //$(document).ready(function(){
+            $("#promoSierra").css({display: "block"});
+        //});
+    }
+    //sessionStorage.clear();
+    console.log("sessions : ", sessionStorage.getItem("page"));
+</script>
+

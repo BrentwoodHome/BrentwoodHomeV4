@@ -1,0 +1,103 @@
+<style>
+    .template-page .standardPages h2, .template-page .standardPages h3{
+        text-align: center;
+    }
+    I.fa.affirm{
+        color: #00c9e5;
+    }
+    UL LI{
+        line-height: 40px;
+    }
+    .text-small{
+        line-height: 20px !important;
+    }
+    .underline{
+        text-decoration: underline;
+    }
+    .underline:HOVER{
+        text-decoration: none;
+    }
+    
+    /* The hero image */
+    .hero-image {
+        /* The image used */
+        background-image: url("https://brentwood-home.imgix.net/hero-finance.jpg");
+
+        /* Set a specific height */
+        height: 550px;
+
+        /* Position and center the image to scale nicely on all screens */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+
+    /* Place text in the middle of the image */
+    .hero-text {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+    }
+    .hero-text H1{
+        color: white;
+        font-size: 70px !important;
+        margin-bottom: 20px !important;
+    }
+    .hero-text H3{
+        color: white;
+        font-size: 20px !important;
+        font-style: normal !important;
+    }
+</style>
+{% include 'affirm-product' %}
+<div class="rte standardPages">
+    <div class="hero-image">
+        <div class="hero-text">
+            <h1 class="">Easy Financing</h1>
+            <h3 class="caption">AS LOW AS 0% APR WITH AFFIRM<sup>&reg;</sup></h3>
+            <p class="text-center"><a data-promo-id="promo_set_button" class="affirm-site-modal cta2 solid text-center">See if you qualify</a></p>
+        </div>
+    </div>
+    
+    <div class="row" style="margin-top: 50px; margin-bottom: 100px;">
+       <div class="col-xs-12 col-sm-4 col-sm-offset-1">
+           <h2 class="text-center">Why use Affirm?</h2>
+           <p class="text-center"><i class="affirm fa fa-clock-o fa-3x" aria-hidden="true"></i></p>
+           <p class="text-center"><strong>Quick and Easy</strong></p>
+           <p class="text-center">Enter a few pieces of information for a real-time decision. Checking your eligibility won't affect your credit score.</p>
+           <br>
+           <p class="text-center"><i class="affirm fa fa-money fa-3x" aria-hidden="true"></i></p>
+           <p class="text-center"><strong>No Hidden Fees</strong></p>
+           <p class="text-center">Know up front exactly what you'll owe, with no hidden costs and no surprises.</p>
+       </div>
+        <div class="col-xs-12 col-sm-5 col-sm-offset-1"><br><br>
+            <p class="text-center"><img src="{{ 'affirmBH.png' | asset_url }}" alt=""></p>
+           <p>Brentwood Home and Affirm have teamed up to provide a range of financing options on your order.</p>
+           <ul>
+               <li>PAY OVER <strong>6, 12 or 18</strong> MONTHLY PAYMENTS</li>
+               <li>RATES <strong>AS LOW AS 0%</strong> APR</li>
+               <li><strong>QUICK & SIMPLE</strong> APPLICATION</li>
+               <li>REAL-TIME CREDIT DECISION</li>
+               <li>FINANCING A MATTRESS WITH A PAYMENT PLAN THAT FITS YOUR BUDGET</li>
+           </ul>
+       </div>
+    </div>
+    <h2 class="text-center">Still have questions? Check our <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/financing" class="underline">FAQ</a></h2>
+    <p class="text-center" style="margin: 50px 0;"><a data-promo-id="promo_set_button" class="affirm-site-modal cta2 solid text-center">Get Started</a></p>
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <p class="text-center text-small">
+                Subject to credit check and approval. Down payment may be required. For purchases under $100, limited payment options are available. Estimated payment amount excludes taxes and shipping fees. Affirm loans are made by Cross River Bank, a New Jersey State Chartered Commercial Bank, Member FDIC. See <a href="http://www.affirm.com/faqs" target="_blank">www.affirm.com/faqs</a> for details. 
+            </p>
+        </div>
+    </div>
+</div>
+<script>
+    mixpanel.track("Financing Page", {
+        "name": "{{ page_title | handle }}"
+    });
+</script>

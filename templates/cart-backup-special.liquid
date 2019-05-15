@@ -1,0 +1,235 @@
+{% if cart.item_count > 0 %}
+
+{% endif %}
+
+<style>
+    label{
+        color: #414a5b;
+        font-weight: normal;
+        margin-top: 12px;
+        font-size: 13px;
+    }
+    #cart #cartSpecialInstructions{
+        min-height: 70px;
+    }
+    h2.overlays-title{
+        font-size: 20px;
+        margin-bottom: 20px;
+        font-family: AvenirLTStd-Light, 'Helvetica Neue', helvetica, sans-serif;
+    }
+</style>
+
+<div id="cart">
+
+  <!-- Begin empty cart -->
+  {% if cart.item_count == 0 %}
+  <div class="row">
+    <div class="col-lg-12 expanded-message">
+      <br>
+      <br>
+      <h2 class="tc">Your cart is empty!</h2>
+    </div>
+  </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <br><br><br>
+            <p class="text-center"><a href="/collections" title="Shop" class="btn btn-primary">CONTINUE SHOPPING</a></p>
+        </div>
+    </div>
+  <!-- End empty cart -->
+
+  <!-- Begin cart -->
+  {% else %}
+  <div class="row">
+    <div class="col-lg-12">
+      <!--h1>Your cart</h1-->
+      <form action="/cart" method="post" id="cartform">
+        <table>
+          <thead>
+            <tr>
+                <th class="image hidden-xs">&nbsp;</th>
+              <th class="item">Product</th>
+              <th class="qty">Qty</th>
+              <th class="price">Price</th>
+              <th class="remove">&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in cart.items %}
+            <tr>
+                <td class="image hidden-xs">
+                <div class="product_image">
+                    <a href="{{ item.url }}" title="{{ item.product.title }}">
+                    <img src="{{ item | img_url: 'compact' }}"  alt="{{ item.product.title }}" />
+                  </a>
+                </div>
+              </td>
+              <td class="item">
+                    <p class="hidden-sm hidden-md hidden-lg">
+                        <a href="{{ item.url }}" title="{{ item.product.title }}">
+                      <img src="{{ item | img_url: 'compact' }}"  alt="{{ item.product.title }}" />
+                      </a>
+                    </p>
+                  <a href="{{ item.url }}" class="cart-title" title="{{ item.product.title }}">
+                  <strong>{{ item.product.title }}</strong>
+                  {% if item.product.variants.size > 1 %}
+                  <span class="variant_title">Size: {{ item.variant.title }}</span>
+                  {% endif %}
+                </a>
+                  {%comment%}{% assign property = item.preorder %}
+                  {% if property > 0 %}
+                      {% for p in item.preorder %}
+                          {% unless p.last == blank %}
+                          {{ p.first }}:
+                          {{ p.last }}
+                          <br>
+                  <script>console.log("test", {{p.first}});</script>
+                          {% endunless %}
+                      {% endfor %}
+                  {% endif %}
+                  {%endcomment%}
+                  
+                  {% for p in item.properties %} 
+                  {% unless p.last == blank %} 
+                  {{ p.last }}<br /> 
+                  {% endunless %}
+                  {% endfor %}
+              </td>
+              <td class="qty">
+                <input type="text" size="4" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" onfocus="this.select();" class="tc item-quantity" {{ bold_qty_attr }} />
+              </td>
+              <td class="price">{{ item.line_price | money }}</td>
+                <td class="remove"><a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cart"><i class="fa fa-times" aria-hidden="true"></i></a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <table>
+            <tr class="summary">
+
+                <td class="price">
+                    <p class="copy">TOTAL PRICE:</p>
+                    <span class="total">{{ cart.total_price | money }}</span>
+                    <p><a id="learn-more" style="visibility:hidden" href="#"></a></p>
+                    
+                    <p class="affirm-as-low-as" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{ cart.total_price }}"></p>
+                    <p>
+                        <script>
+                            _affirm_config = {
+                                public_api_key:  "HVHTFP3GXV9X8ZBN",
+                                script:          "https://cdn1.affirm.com/js/v2/affirm.js"
+                            };
+                            (function(l,g,m,e,a,f,b){var d,c=l[m]||{},h=document.createElement(f),n=document.getElementsByTagName(f)[0],k=function(a,b,c){return function(){a[b]._.push([c,arguments])}};c[e]=k(c,e,"set");d=c[e];c[a]={};c[a]._=[];d._=[];c[a][b]=k(c,a,b);a=0;for(b="set add save post open empty reset on off trigger ready setProduct".split(" ");a<b.length;a++)d[b[a]]=k(c,e,b[a]);a=0;for(b=["get","token","url","items"];a<b.length;a++)d[b[a]]=function(){};h.async=!0;h.src=g[f];n.parentNode.insertBefore(h,n);delete g[f];d(g);l[m]=c})(window,_affirm_config,"affirm","checkout","ui","script","ready");
+                            // Use your live public API Key and https://cdn1.affirm.com/js/v2/affirm.js script to point to Affirm production environment.
+                        </script>
+                    </p>
+                </td>
+            </tr>
+        </table>
+  <div class="row">
+        <div class="col-md-6 col-sm-6 hidden-xs">
+         {% if settings.cart_notes %}
+         {%comment%}
+          <h3 class="add-comments">Note Additional comments</h3>
+          <textarea name="note" class="input-full" id="cartSpecialInstructions">{{ cart.note }}</textarea>
+          {%endcomment%}
+          {% endif %}
+
+          {% comment %}
+            If notes are used, adjust the column width
+          {% endcomment %}
+
+          {% comment %}
+            name="checkout" is required for the update button to work
+          {% endcomment %}
+
+        </div>
+
+          <div class="col-md-6 col-sm-6 span6 cart-buttons inner-right inner-left">
+              <input type="submit" id="update-cart" class="btn update-cart" name="update" value="{{ 'Update Cart'}}" />
+              <input type="submit" id="checkout" class="btn" name="checkout" value="{{ 'Check Out'}}" />
+              <input type="hidden" id="mixpanel_id" name="attributes[mixpanel_id]" value="" />
+          </div>
+    </div>
+      </form>
+    </div>
+    <div class="clearfix"></div>
+      <div class="overlays overlays-1 text-center">
+          <h2 class="overlays-title">Sleep with peace of mind</h2>
+          <div class="items row">
+              <div class="item col-xs-6 col-md-2 col-md-offset-1">
+                  <img src="{{ 'icon-120nights.svg' | asset_url }}"/>
+                  <br/>
+                  <label>120-Night Guarantee*</label>
+              </div>
+              <div class="item col-xs-6 col-md-2">
+                  <img src="{{ 'icon-FreeShipping2.svg' | asset_url }}"/>
+                  <br/>
+                  <label>Free Shipping</label>
+              </div>
+              <div class="item col-xs-6 col-md-2">
+                  <img src="{{ 'icon-FreeReturns.svg' | asset_url }}"/>
+                  <br/>
+                  <label>Free Returns</label>
+              </div>
+              <div class="item col-xs-6 col-md-2">
+                  <img src="{{ 'icon-California.svg' | asset_url }}"/>
+                  <br/>
+                  <label>Made in California</label>
+              </div>
+              <div class="item col-xs-12 col-md-2">
+                  <img src="{{ 'icon-25YearWarranty.svg' | asset_url }}"/>
+                  <br/>
+                  <label>25-year Warranty*</label>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  {% endif %}
+
+  <!-- End cart -->
+
+</div>
+
+<script>
+
+    mixpanel.init('b2d0db1e54496b9a137db682bd10295a', {
+        loaded: function(mixpanel) {
+            if (document.getElementById("mixpanel_id") != null){
+                document.getElementById("mixpanel_id").value = mixpanel.get_distinct_id();
+            }
+        }
+    });
+
+    mixpanel.track("Viewed Cart",
+                   {"cart items": "{% for item in cart.items %}{{ item.product.title }} , {%endfor%}",
+                   "cart number items": {{cart.item_count}},
+                   "cart total": {{ cart.total_price | divided_by: 100 }}
+                   });
+</script>
+<script>
+    $(document).ready(function(){
+        $(".cart").click(function(){
+            mixpanel.track(
+                "Remove from Cart", {"name": "{% for item in cart.items %}{{ item.product.title }} , {%endfor%}"});
+        });
+    });
+</script>
+
+<script>
+    /*$(document).ready(function(){
+        $("A#cartToggle").click(function(){
+            mixpanel.track(
+                "Viewed Cart", {"name": "Clicked Cart Icon main nav"});
+        });
+    });*/
+</script>
+
+
+<!-- PIXEL KNOWLEDGE -->
+<script>
+    (function(d,t,u,p,e,f){e=d.createElement(t);f=d.getElementsByTagName(t)[0];
+                           e.async=1;e.src=u+'?'+p+'&'+Math.floor(Math.random()*999999);f.parentNode.insertBefore(e,f);
+                          })(document,'script','//upx.provenpixel.com/ujs.php', 'upx=10698');
+</script>

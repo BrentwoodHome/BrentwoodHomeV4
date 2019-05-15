@@ -1,0 +1,176 @@
+{% assign collection = collections['all'] %}
+<div class="landing">
+    <div class="jumbtron choosebed flexVCenter">
+        <div class="tagline">
+            <h1>How to choose your mattress</h1>
+            <p class="line text-center" style="color: #4a4a4a;">Find your best night’s sleep with our premium quality mattresses, handcrafted to order in Los Angeles with healthy, natural materials.</p>
+            <p><a href="#start" class="sscroll lp-cta">discover the sleep of your dreams</a></p>
+        </div>
+    </div>
+    <div id="start"></div>
+    <div id="" class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 col-md-offset-1">
+                <p class="text-center">When it comes to an investment like a new mattress, there’s no one-size-fits-all solution. That’s why we’ve developed our mattress collections to meet a range of needs, from sleep position to price point.</p>
+            </div>
+        </div>
+    </div>
+    <section class="container products-grid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                <a href="/collections/mattresses?view=grid&constraint=memory-foam" title="Mattresses for couples"><h2>Couples</h2></a>
+                <p class="text-center copy">If you and your partner differ in sleep preferences, meet in the middle with a <strong>Medium mattress</strong>. Couples also tend to love the feel of our plant-based memory foam, as it <strong>limits motion transfer</strong> and the likelihood of waking your partner through the night. </p>
+                <p class="text-center"><a href="/collections/mattresses?view=grid&constraint=memory-foam" class="lp-cta">see the full collection</a></p>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <div class="row">
+                    {% for product in collection.products %}
+                    {% if product.handle contains "sierra" %}
+                    <div class="col-xs-6 grid-item">
+                        {% include 'standaloneproductgrid' %}
+                    </div>
+                    {% elsif product.handle contains "coronado" %}
+                    <div class="col-xs-6 grid-item">
+                        {% include 'standaloneproductgrid' %}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container products-grid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 ">
+                <a href="/collections/mattresses?view=grid&constraint=side" title="Mattresses for Side Sleepers"><h2>Side Sleepers</h2></a>
+                <p class="text-center copy">If you sleep on your side, you may need <strong>extra cushion</strong> to avoid pressure in your hips and shoulders. We craft our <strong>plush mattresses</strong> with materials meant to cradle delicate joints, so side sleepers can get the hugging sensation and support they need.</p>
+                <p class="text-center"><a href="/collections/mattresses?view=grid&constraint=side" class="lp-cta">see the full collection</a></p>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <div class="row">
+                    {% for product in collection.products %}
+                        {% if product.handle contains "mirador" %}
+                            <div class="col-xs-6 grid-item">
+                                {% include 'standaloneproductgrid' %}
+                            </div>
+                        {% elsif product.handle contains "oceano" %}
+                        <div class="col-xs-6 grid-item">
+                                {% include 'standaloneproductgrid' %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container products-grid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                <a href="/collections/mattresses?view=grid&constraint=back+stomach" title="Mattresses for Back and Stomach Sleepers"><h2>Back and Stomach Sleepers</h2></a>
+                <p class="text-center copy">If you sleep on your back or stomach, you’ll need <strong>additional support</strong> to keep your lumbar area from sinking too far into the mattress. One of our <strong>firmer mattresses</strong> will suit you well, with healthy materials chosen to provide uplifting support. </p>
+                <p class="text-center"><a href="/collections/mattresses?view=grid&constraint=back+stomach" class="lp-cta">see the full collection</a></p>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <div class="row">
+                    {% for product in collection.products %}
+                        {% if product.handle contains "sequoia" %}
+                        <div class="col-xs-6 grid-item">
+                            {% include 'standaloneproductgrid' %}
+                        </div>
+                        {% elsif product.handle contains "palmetto" %}
+                        <div class="col-xs-6 grid-item">
+                            {% include 'standaloneproductgrid' %}
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container sectionMarg">
+        <div id="home-reviews" class=" owl-carousel owl-theme">
+            <div class="item text-center">
+                <h4>Comfy for side sleepers</h4>
+                <p class="text-center">
+                    <i>"Have only slept several nights on bed, but noticeably more comfortable sleeping on my side than my old bed. Customer service was great. Delivery, unpacking and setup were easy."</i>
+                </p>
+                <p class="author">
+                    - Jose S. 11/09/16
+                    <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>
+                </p>
+            </div>
+            <div class="item text-center">
+                <h4>Coronado mattress queen</h4>
+                <p class="text-center">
+                    <i>"Great mattress. I sleep better now than I have in years. My body feels good when I wake up and the aches I used to feel in the morning are gone. Also, I can turnover and not wake my wife! I just wish I had bought a king size!"</i>
+                </p>
+                <p class="author">
+                    - Karen B. 11/10/16
+                    <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>
+                </p>
+            </div>
+            <div class="item text-center">
+                <h4>Love!</h4>
+                <p class="text-center">
+                    <i>"Husband and wife and we both LOVE it! He sleeps on his back and stomach and sleeps hot. She sleeps on her side and stomach and is always cold. So glad we did it!!"</i>
+                </p>
+                <p class="author">
+                    - Sarah W. 2/14/17
+                    <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $("#home-reviews").owlCarousel({
+                loop:false,
+                margin:10,
+                responsiveClass:true,
+                responsive:{
+                    0:{
+                        items:1,
+                        //nav:true
+                    },
+                    768:{
+                        items:2,
+                        //nav:true
+                    },
+                    1024:{
+                        items:3,
+                        //nav:true
+                    }
+                },
+                nav : false
+            });
+        });
+    </script>
+    <section class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class=""></h2>
+            </div>
+            {% include 'instagram' %}
+        </div>
+    </section>
+</div>
+<script>
+    mixpanel.track("Choosing a mattress LP");
+    /*$(document).ready(function(){
+        $("#aboutus-continue").click(function(){
+            mixpanel.track("Clicked Continue Shopping");
+        });
+    });*/
+</script>
+<script>
+    $(document).ready(function(){
+        $('A.sscroll').bind('click', function(event) {
+            var $anchor = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $($anchor.attr('href')).offset().top - 150
+            }, 1500, 'easeInOutExpo');
+            event.preventDefault();
+        });
+    });
+</script>

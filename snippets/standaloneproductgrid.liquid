@@ -1,0 +1,89 @@
+<style>
+    .grid-item .product-title{
+        font-size: 21px;
+        margin-top: 20px;
+        display: block;
+        text-align: center;
+    }
+    .product-wrapper A.btn{
+        padding: 10px 20px;
+        height: auto;
+        border-color: white;
+    }
+</style>
+<div class="product-wrapper">
+    <div class="product-image">
+       {%comment%}Specify a size for mattresses different than other products{%endcomment%}
+        {% if product.type == 'Mattress' and product.handle != "juniper"  %}
+            <a href="{{ product.url }}" class="product-grid-image">
+                <img src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+                {% if settings.product_image_hover %}
+                <span class="product-image-hover" data-idproduct="{{ product.id }}">
+                    {% for image in product.images %}
+                    {% if forloop.first != true %}
+                    <img alt="{{ product.title | truncate: 4}}" src="{{ image.src | product_img_url: 'large' }}">
+                    {% break %}
+                    {% endif %}
+                    {% endfor %}
+                </span>
+                {% endif %}
+            </a>
+        {%else%}
+            <a href="{{ product.url }}" class="product-grid-image">
+                <img src="{{ product.featured_image | img_url: '800x610', crop: 'center' }}" alt="{{ product.featured_image.alt | escape }}">
+                {% if settings.product_image_hover %}
+                <span class="product-image-hover" data-idproduct="{{ product.id }}">
+                    {% for image in product.images %}
+                    {% if forloop.first != true %}
+                    <img alt="{{ product.title | truncate: 4}}" src="{{ image.src | img_url: '800x610', crop: 'center' }}">
+                    {% break %}
+                    {% endif %}
+                    {% endfor %}
+                </span>
+                {% endif %}
+            </a>
+        {%endif%}
+        
+        {% if settings.enable_quick_view %}
+        <div class="sca-qv-button-wrap">
+            <a class="sca-qv-button" handle="{{product.handle}}" href="#sca-qv-showqv" style=""></a>
+        </div>
+        {% endif %}
+    </div>
+    <div class="product-bottom">
+        <h3><a class="product-title" href="{{ product.url }}">{{ product.title | truncatewords: 4}}</a></h3>
+        <p class="feel-description">{{product.metafields.bhsite.mattressfeel}}</p>
+        <div class="yotpo bottomLine"
+             data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
+             data-domain="{{ shop.permanent_domain | escape }}"
+             data-product-id="{{ product.id }}"
+             data-product-models="{{ product.id }}"
+             data-name="{{ product.title | escape }}"
+             data-url="{{ shop.url }}{{ product.url }}">
+        </div>
+        {% if settings.display_product_reviews %}
+        <!--        <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>-->
+        {% endif %}
+        <div class="price-box">
+            {% if lable_sale %}
+            <p class="regular-product"></p>
+            {% else %}
+            <p class="regular-product">
+                {% comment %}
+                You can show a leading 'from' or 'up to' by checking 'product.price_varies'
+                if your variants have different prices.
+                {% endcomment %}
+
+            </p>
+            {% endif %}
+            <a class="btn" href="{{ product.url }}">
+                <span>{% if product.price_varies %}from{% endif %} {{ product.price | money }}</span>
+            </a>
+            {% if product.type == 'Mattress' and product.handle != "juniper"  %}
+            <div class="affirm">
+                <a class="affirm-as-low-as" data-amount="{{ product.price }}" data-affirm-color="blue"></a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

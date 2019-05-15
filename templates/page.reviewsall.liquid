@@ -1,0 +1,48 @@
+<div id="reviewTab" class="container">
+   <h1>Real reviews from real customers</h1><br>
+    <p><img src="{{ 'review-header.jpg' | asset_url }}" alt="" class="img-responsive"></p>
+    <div class="row">
+        <div class="col-xs-12">
+            <script type="text/javascript"> (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=!0, e.src="//staticw2.yotpo.com/MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ/widget.js";var t=document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e,t)})(); </script>
+            <div id='yotpo-testimonials-custom-tab'></div> 
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .yotpo .yotpo-modal-bottom-line .yotpo-bottomline .yotpo-icon-star{
+        font-size: 28px !important;
+        color: #454d5b;
+    }
+    .yotpo .text-m{
+        font-size: 22px;
+    }
+    .yotpo .pull-left{
+        text-align: center;
+    }
+    .yotpo .yotpo-popup-box-medium{
+        text-align: center;
+    }
+    .yotpo .primary-color-btn.pull-right, .yotpo input.primary-color-btn.pull-right{
+        text-align: center;
+        float: none !important;
+        margin: 15px 0;
+    }
+    .yotpo .yotpo-hidden.only-invisible{
+        margin: 0;
+    }
+    .yotpo .yotpo-review .yotpo-header .yotpo-header-element.yotpo-header-actions .y-label{
+        font-size: 14px;
+        color: #454D5A;
+    }
+    .yotpo .primary-color-btn.pull-right.yotpo-hidden, .yotpo input.primary-color-btn.pull-right.yotpo-hidden{
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+</style>
+<script>
+    mixpanel.track("Reviews", {
+        "name": "{{ page_title | handle }}"
+    });
+</script>

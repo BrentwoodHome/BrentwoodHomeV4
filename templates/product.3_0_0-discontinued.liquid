@@ -1,0 +1,723 @@
+{% include 'bold-product' with product, hide_action: 'break' %}{% if bold_hidden_product %}{% break %}{% endif %}
+{% assign metaf = product.metafields.c_f %}
+<div id="page_product">
+    <div class="container-fluid" id="product">
+        <div itemscope itemtype="http://schema.org/Product" class="product">
+            <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+            <meta itemprop="image"
+                  src="{{ product.featured_image.src | product_img_url: 'grande' }}"
+                  alt="{{ product.title | escape }}
+                       ">
+            <meta itemprop="itemCondition" content="http://schema.org/NewCondition"/>
+            <div class="row">
+                {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+
+                <!-- FLEXSLIDER -->
+                <div class="col-xs-12 col-md-8" id="product-image-main">
+                    <section class="slider">
+                        <div class="flexslider">
+                            <ul class="slides">
+                                {% for image in product.images %}
+                                <li data-thumb="{{ image.src | product_img_url: 'small' }}">
+                                    <img src="{{ image.src | product_img_url: '1024x1024' }}"
+                                         alt="{{ image.alt | escape }}">
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+                {% assign multi_prd = true %}
+                {% if collection.products_count <= 1 %}
+                                                   {% assign multi_prd = false %}
+                                                   {% endif %}
+                                                   <div class="col-xs-12 col-md-4 product-shop">
+                <div>
+                    <header class="product-title {% if collection.previous_product or collection.next_product and settings.display_prev_next_product and collection %}has-btn{% endif %}">
+                        <h1 {% if settings.display_prev_next_product and collection and multi_prd %}class="pull-left"{% endif %}
+                            itemprop="name">{{ product.title }}</h1>
+
+                        {% if settings.display_prev_next_product and collection and multi_prd %}
+                        <div class="product-step">
+                            {% if collection.previous_product %}
+                            <a class="prev-p" href="{{ collection.next_product }}"
+                               title="Prev"><span
+                                                  class="fa fa-angle-left"></span>Previous</a>
+                            {% endif %}
+                            {% if collection.next_product %}
+                            <a class="next-p" href="{{ collection.next_product }}"
+                               title="Next">Next<span
+                                                      class=" fa fa-angle-right"></span></a>
+                            {% endif %}
+                        </div>
+                        {% else %}
+                        <div class="clearfix"></div>
+                        {% endif %}
+                    </header>
+                    <p class="short-description">{{ metaf.shortdesc }}</p>
+
+                    <div class="mob-dark">
+                        {% if settings.display_product_reviews %}
+                        <span class="shopify-product-reviews-badge"
+                              data-id="{{ product.id }}"></span>
+                        {% endif %}
+                        {% if settings.display_availability or settings.display_product_type or settings.display_vendor %}
+                        {% if settings.display_availability %}
+                        <div class="availability">
+                            <p class="product-inventory">
+                                <label>Availability</label><span>
+                                {% if product.selected_or_first_available_variant.inventory_management %}
+                                {% assign first_inventory = product.selected_or_first_available_variant.inventory_quantity %}
+                                {% if first_inventory > 0 %}
+                                {{ first_inventory }} in stock
+                                {% else %}
+                                Out of stock
+                                {% endif %}
+                                {% else %}
+                                Many in stock
+                                {% endif %}
+                                </span></p>
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                        <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
+                            <div id="product-variants">
+                                {% assign variantCount = product.variants | size %}
+                                {% if product.available %}
+                                    {% if variantCount > 1 %}
+                                        <select id="product-selectors" name="id" style="display:none">
+                                            {% for variant in product.variants %}
+                                            <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
+                                                    value="{{ variant.id }}">{{ variant.title }}
+                                                - {{ variant.price | money }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        {% if settings.use_color_swatch %}
+                                            {% for option in product.options %}
+                                                {% include 'swatch' with option %}
+                                        {% endfor %}
+                                    {% endif %}
+                                {% else %}
+                                    <input type="hidden" name="id" value="{{ product.variants[0].id }}"/>
+                                {% endif %}
+                                {% endif %}
+                            </div>
+                            {% if product.available %}
+                                <div class="cta-module clearfix">
+                                    <div class="prices" itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="float: left;">
+                                        <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+                                        {% if product.compare_at_price > product.price %}
+                                        <span class="compare-price">{{ product.compare_at_price_max | money }}</span>
+                                        <span class="price on-sale" itemprop="price"
+                                              content="{{ product.price | money_without_currency | remove: ',' }}">{{ product.price | money }}</span>
+                                        {% else %}
+                                        <span class="price" itemprop="price"
+                                              content="{{ product.price | money_without_currency | remove: ',' }}">{{ product.price | money }}</span>
+                                        {% endif %}
+                                        {% if product.available %}
+                                            <link itemprop="availability" href="http://schema.org/InStock">
+                                        {% else %}
+                                            <link itemprop="availability" href="http://schema.org/OutOfStock">
+                                        {% endif %}
+                                    </div>
+                                    <div class="yotpo bottomLine"
+                                         data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
+                                         data-domain="{{ shop.permanent_domain | escape }}"
+                                         data-product-id="{{ product.id }}"
+                                         data-product-models="{{ product.id }}"
+                                         data-name="{{ product.title | escape }}"
+                                         data-url="{{ shop.url }}{{ product.url }}"
+                                         data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26' }}"
+                                         data-description="{{ product.description | escape }}"
+                                         data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+                                    </div>
+                                    <div id="qt" style="display: none">
+                                        QTY: <input type="text" id="quantity" name="quantity" value="1">
+                                    </div>
+                                </div>
+                                {% if product.metafields.yotpo.reviews_count and product.metafields.yotpo.reviews_count != "0" %}
+                                    <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"                                     style="display: inline-block;"
+                                         >
+                                        <meta itemprop="itemReviewed"
+                                              content="{{ product.title }}">
+                                        <meta itemprop="ratingValue"
+                                              content="{{ product.metafields.yotpo.reviews_average }}">
+                                        <meta itemprop="ratingCount"
+                                              content="{{ product.metafields.yotpo.reviews_count }}">
+                                    </div>
+                                {% endif %}
+                                {% if product.selected_or_first_available_variant.inventory_management %}
+                                    {% assign first_inventory = product.selected_or_first_available_variant.inventory_quantity %}
+                                        {% if first_inventory < 1 %}
+                                            <div class="out-of-stock">
+                                                <span class="left"></span>
+                                                <p class="product-inventory">
+                                                    We’re currently making this item to order.<br>
+                                                    Please
+                                                    allow <b>up to 3 weeks</b> for crafting and
+                                                    shipping.
+                                                </p>
+                                                <span class="right"></span>
+                                            </div> 
+                                        {% endif %}
+                                {% endif %}
+
+                            <button type="submit" name="add" class="btn" id="product-add-to-cart">
+                                <img src="{{ 'icon-add2cart.png' | asset_url }}"> Add to Cart
+                            </button>
+                        {% else %}
+                            {% assign productTags = product.tags | join:',' | downcase %}
+                            {% if productTags contains 'costco' %}
+                                <span class="cta2 grayedout nostroke w100" id="">Out of Stock</span>
+                            {% elsif productTags contains 'amazon' %}
+                                <img src="{{'discontinued-01-03.png' | asset_url }}" alt="">
+                                <a href="/products/ojai-mattress" style="line-height: 65px;" class="btn cta4amz" id="">UPGRADE TO THE OJAI</a>
+                            {% elsif productTags contains 'discontinued' %}
+                                <div style="background-color: #efefef;border:1px solid #dedede;padding: 15px;text-align: center;"><img src="{{'discontinued-01-03.png' | asset_url }}" alt=""></div>
+                                <a href="/collections/mattresses" target="_blank" style="line-height: 65px;" class="btn cta4amz" id="">SEE OTHER MATTRESSES</a>
+                            {%endif%}
+                        {% endif %}
+                        <div class="affirm">
+                            <p id="learn-more" style="visibility:hidden"></p>
+                        </div>
+                        {% assign current_variant = product.selected_or_first_available_variant %}
+                        </form>
+                    {% include 'wishlist-product' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- End Row --> 
+</div><!-- End Container for top part (img+buy) -->
+<div class="product-tabs container">
+
+    <div class="overlays overlays-2">
+        {% if metaf.product_tagline %}
+        <div class="row">
+            <div class="content col-xs-12 col-sm-8 col-sm-offset-2">
+                <h4 class="overlays-title" style="font-size: 25px;">
+                    {{ metaf.product_tagline }}
+                </h4>
+            </div>
+        </div>
+        {%endif%}
+        <div class="row">
+            <div class="content col-xs-12 col-sm-10 col-sm-offset-1">
+                <div class="text-center">
+                    {{ metaf.story }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if metaf.feature1_title %}
+    <section class="overlays overlays-4 container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <h2 class="overlays-title text-center">{{metaf.feature1_title}}</h2>
+                {{metaf.feature1}}
+                <div class="row">
+                    {{ metaf.feature1_icons }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <img src="{{ metaf.feature1_img | asset_url }}" alt="{{ product.title | escape }} internal" class="feature-img img-responsive img">
+            </div>
+        </div>
+    </section>
+    {% endif %}
+    {% if metaf.feature2_title %}
+    <section class="overlays overlays-5 container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                <h2 class="overlays-title text-center">{{metaf.feature2_title}}</h2>
+                {{metaf.feature2}}
+                <div class="row">
+                    {{ metaf.feature2_icon }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-pull-6">
+                <img src="{{ metaf.feature2_img | asset_url }}" alt="{{ product.title | escape }} {{metaf.feature2_title | escape }}" class="feature-img img-responsive img">
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if metaf.feature3_title %}
+    <section class="overlays overlays-6 container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <h2 class="overlays-title text-center">{{metaf.feature3_title}}</h2>
+                {{metaf.feature3}}
+                <div class="row">
+                    {{ metaf.feature3_icons }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <img src="{{ metaf.feature3_img | asset_url }}" alt="{{ product.title | escape }} {{metaf.feature3_title | escape }}" class="feature-img img-responsive img">
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if metaf.feature4_title %}
+    <section class="overlays overlays-5 container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                <h2 class="overlays-title text-center">{{metaf.feature4_title}}</h2>
+                {{metaf.feature4}}
+                <div class="row">
+                    {{ metaf.feature4_icons }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-pull-6">
+                <img src="{{ metaf.feature4_img | asset_url }}" alt="{{ product.title | escape }} {{metaf.feature4_title | escape }}" class="feature-img img-responsive img">
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if metaf.feature5_title %}
+    <section class="overlays overlays-5 container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <h2 class="overlays-title text-center">{{metaf.feature5_title}}</h2>
+                {{metaf.feature5}}
+                <div class="row">
+                    {{ metaf.feature5_icons }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <img src="{{ metaf.feature5_img | asset_url }}" alt="{{ product.title | escape }} {{metaf.feature5_title | escape }}" class="feature-img img-responsive img">
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <section class="overlays overlays-7 only-desktop">
+        <img class="col-xs-12" src="{{ metaf.ecommimage | asset_url }}"/>
+        <p>
+            {{ metaf.ecommimage_tagline }}
+        </p>
+    </section>
+    <section class="container overlays overlays-8">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <div>
+                <h2 class="overlays-title">Comfort &amp; Support</h2>
+                <p class="text-center"><img src="{{ 'icon-Feather-medplush.svg' | asset_url }}" alt=""></p>
+                <h4 style="font-size: 28px;" class="text-center">{{ metaf.comfort }}</h4><br>
+                <p class="text-center">
+                    {{ metaf.comfort-description }}
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="overlays overlays-9">
+        <h2 class="overlays-title">
+            Works on all surfaces
+        </h2>
+        <div class="left col-md-6 only-desktop">
+            {% include 'overlays-9-1' %}
+        </div>
+        <div class="right col-md-6 only-desktop">
+            {% include 'overlays-9-2' %}
+        </div>
+        <div class="center col-xs-12  only-mobile">
+            {% include 'overlays-9-3' %}
+        </div>
+    </section>
+    <section class="overlays overlays-11">
+        <h2 class="overlays-title">
+            What people say about us
+        </h2>
+        <div class="container sectionMarg">
+            <div id="home-reviews" class=" owl-carousel owl-theme">
+                <div class="item text-center">
+                    <p class="text-center">
+                        <i>“I'm definitely going to purchase again from Brentwood Home when it's time to replace my king size bed and my son's full size bec!. The customer service is great and the delivery was fast. It was super easy to open and no fumes or smell at all. ”</i>
+                    </p>
+                    <p class="author">
+                        - Patricia P.
+                        <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>
+                    </p>
+                </div>
+                <div class="item text-center">
+                    <p class="text-center">
+                        <i>“It cradles all of my pressure points but doesn't allow my entire body to sink in and get hot. I researched quite a few different mattresses and spent many hours reading reviews and after all of my research I settled on Brentwood Home.”</i>
+                    </p>
+                    <p class="author">
+                        - Anthony R.
+                        <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>
+                    </p>
+                </div>
+                <div class="item text-center">
+                    <p class="text-center">
+                        <i>“I worked in the mattress industry for almost two years in customer service. Having sold upscale beds, I know quality. These are, without a doubt, QUALITY beds that are made in an affordable price range. Thank you, Brentwood Home, for making a quality mattress that is affordable for the every day person. Cheers!”</i>
+                    </p>
+                    <p class="author">
+                        - Monica H.
+                        <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        $(document).ready(function() {
+            $("#home-reviews").owlCarousel({
+                loop:false,
+                margin:10,
+                responsiveClass:true,
+                responsive:{
+                    0:{
+                        items:1,
+                        //nav:true
+                    },
+                    768:{
+                        items:2,
+                        //nav:true
+                    },
+                    1024:{
+                        items:3,
+                        //nav:true
+                    }
+                },
+                nav : false
+
+            });
+        });
+    </script>
+
+    <section class="overlays overlays-13">
+        <h2 class="overlays-title">Details</h2>
+        <div id="exTab1" class="container">
+            <ul class="nav nav-pills">
+                <li class="active">
+                    <a href="#1a" data-toggle="tab">Features</a>
+                </li>
+                <li>
+                    <a href="#2a" data-toggle="tab">Technical Specs</a>
+                </li>
+                <li>
+                    <a href="#3a" data-toggle="tab">Sizes</a>
+                </li>
+            </ul>
+            <div class="tab-content clearfix">
+                <div class="tab-pane active" id="1a">
+                    <div class="description text-left">
+                        {{ product.description }}
+                    </div>
+                </div>
+                <div class="tab-pane" id="2a">
+                    <div class="description text-left">
+                        {{ metaf.details_materials }}
+                    </div>
+                </div>
+                <div class="tab-pane" id="3a">
+                    <div class="description text-left">
+                        <div class="container">
+                            <div class="row">
+                                {{ metaf.details_sizes }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+</div>
+<script>
+    jQuery('#myTab a').click(function (e) {
+        e.preventDefault();
+        jQuery(this).tab('show');
+    })
+</script>
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+{% include 'block-productdetail-right' %}
+<script>
+    jQuery(document).ready(function () {
+        jQuery("#zt_list_product").owlCarousel({
+
+            itemsCustom: [
+                [600, 3]
+            ],
+            navigation: true,
+            navigationText: ['<i class="fa icon-left"></i>', '<i class="fa icon-right"></i>']
+        });
+    });
+    //Shopify.Image.preload({{ product.images | json }}, 'grande');
+
+    {% if settings.display_subtotal and product.available %}
+    //update price when changing quantity
+    function updatePricing() {
+        //try pattern one before pattern 2
+        var regex = /([0-9]+[.|,][0-9]+[.|,][0-9]+)/g;
+        var unitPriceTextMatch = jQuery('.product .price').text().match(regex);
+
+        if (!unitPriceTextMatch) {
+            regex = /([0-9]+[.|,][0-9]+)/g;
+            unitPriceTextMatch = jQuery('.product .price').text().match(regex);
+        }
+
+        if (unitPriceTextMatch) {
+            var unitPriceText = unitPriceTextMatch[0];
+            var unitPrice = unitPriceText.replace(/[.|,]/g, '');
+            var quantity = parseInt(jQuery('#quantity').val());
+            var totalPrice = unitPrice * quantity;
+
+            var totalPriceText = Shopify.formatMoney(totalPrice, window.money_format);
+
+            totalPriceText = totalPriceText.match(regex)[0];
+
+            var regInput = new RegExp(unitPriceText, "g");
+            var totalPriceHtml = jQuery('.product .price').html().replace(regInput, totalPriceText);
+
+            jQuery('.product .total-price span').html(totalPriceHtml);
+        }
+    }
+
+     jQuery('#quantity').on('change', updatePricing);
+     {% endif %}
+
+     var selectCallback = function (variant, selector) {
+
+         var addToCart = jQuery('#product-add-to-cart'),
+             productPrice = jQuery('.product .price'),
+             comparePrice = jQuery('.product .compare-price');
+
+         if (variant) {
+             if (variant.available) {
+                 // We have a valid product variant, so enable the submit button
+                 addToCart.removeClass('disabled').removeAttr('disabled').val('Add to Cart');
+
+             } else {
+                 // Variant is sold out, disable the submit button
+                 addToCart.val('Sold Out').addClass('disabled').attr('disabled', 'disabled');
+             }
+
+             // Regardless of stock, update the product price
+             productPrice.html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}"));
+
+             // Also update and show the product's compare price if necessary
+             if (variant.compare_at_price > variant.price) {
+                 productPrice.addClass("on-sale")
+                 comparePrice
+                     .html(Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}"))
+                     .show();
+             } else {
+                 comparePrice.hide();
+                 productPrice.removeClass("on-sale");
+             }
+             {% if settings.use_color_swatch %}
+             // BEGIN SWATCHES
+             var form = jQuery('#' + selector.domIdPrefix).closest('form');
+              for (var i = 0, length = variant.options.length; i < length; i++) {
+                  var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] + '"]');
+                  if (radioButton.size()) {
+                      radioButton.get(0).checked = true;
+                  }
+              }
+              // END SWATCHES
+              {% endif %}
+
+              {% if settings.display_subtotal and product.available %}
+              updatePricing();
+               {% endif %}
+
+
+               } else {
+                   // The variant doesn't exist. Just a safeguard for errors, but disable the submit button anyway
+                   addToCart.val('Unavailable').addClass('disabled').attr('disabled', 'disabled');
+               }
+
+               //update variant inventory
+               {% if settings.display_availability %}
+               if (variant.available) {
+                   if (variant.inventory_management != null) {
+                       jQuery(".product-inventory span").text(variant.inventory_quantity + " in stock");
+                   } else {
+                       jQuery(".product-inventory span").text("Many in stock");
+                   }
+               } else {
+                   jQuery(".product-inventory span").text("Out of stock");
+               }
+                {% endif %}
+
+                //display message for sheets and quilts when out of stock
+                if (variant.available) {
+                    if (variant.inventory_management != null) {
+                        if (variant.inventory_quantity < 1) {
+                            jQuery(".out-of-stock").show();
+                            jQuery(".out-of-stock p").html("We’re currently making this item to order.<br> Please allow <b>up to 3 weeks</b> for crafting and shipping.");
+                        } else {
+                            jQuery(".out-of-stock").hide();
+                        }
+                    }
+                } else {
+                    jQuery(".out-of-stock p").text("Out of stock");
+                }
+
+                 /*begin variant image*/
+                 if (variant && variant.featured_image) {
+                     var originalImage = jQuery("#product-featured-image");
+                     var newImage = variant.featured_image;
+                     var element = originalImage[0];
+                     Shopify.Image.switchImage(newImage, element, function (newImageSizedSrc, newImage, element) {
+                         jQuery('#zt_list_product img').each(function () {
+                             var grandSize = jQuery(this).attr('src');
+                             grandSize = grandSize.replace('compact', 'grande');
+                             if (grandSize == newImageSizedSrc) {
+                                 console.log(newImageSizedSrc);
+                                 jQuery(this).parent().trigger('click');
+                                 return false;
+                             }
+                         });
+                     });
+                 }
+                 /*end of variant image*/
+                 updateAffirmAsLowAs(variant.price); //Update affirm price
+                };
+
+                jQuery(function ($) {
+                    {% if product.available and product.variants.size > 1 %}
+                    new Shopify.OptionSelectors('product-selectors', {
+                        product: {{ product | json }},
+                                                onVariantSelected: selectCallback,
+                                                enableHistoryState: true
+                                                });
+
+                     {% comment %}
+                     Use
+                     color
+                     swatch
+                     and
+                     linked
+                     options(copyright
+                             by
+                             @carolineschnapp)
+                      {% endcomment %}
+                      {% if settings.use_color_swatch and product.available and product.options.size > 1 %}
+                      Shopify.linkOptionSelectors({{ product | json }});
+                       {% endif %}
+
+                       {% if settings.use_color_swatch != true %}
+                       jQuery('.single-option-selector').selectize();
+                        jQuery('.selectize-input input').attr("disabled", "disabled");
+                        {% endif %}
+
+                        {% endif %}
+
+                        // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
+                        {% if product.options.size == 1 and product.options.first != 'Title' %}
+                        $('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first }}</label>');
+                         {% endif %}
+
+                         // Hide selectors if we only have 1 variant and its title contains 'Default'.
+                         {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+                         $('.selector-wrapper').hide();
+                          {% endif %}
+
+                          // Auto-select first available variant on page load. Otherwise the product looks sold out.
+                          {% assign found_one_in_stock = false %}
+                          {% for variant in product.variants %}
+                          {% if variant.available and found_one_in_stock == false %}
+                          {% assign found_one_in_stock = true %}
+                          {% for option in product.options %}
+                          $('.single-option-selector:eq({{ forloop.index0 }})').val({{ variant.options[forloop.index0] | json }}).trigger('change');
+                           {% endfor %}
+                           {% endif %}
+                           {% endfor %}
+
+                           {% if settings.display_product_reviews %}
+                           var reviewsTimeout = setInterval(function () {
+                               if (jQuery(".spr-badge-caption").length > 0) {
+                                   jQuery(".spr-badge-caption").on('click', function () {
+                                       jQuery('html,body').animate({
+                                           scrollTop: jQuery(".panel:last").offset().top
+                                       },
+                                                                   '400');
+                                       jQuery("#collapse-tab4").collapse('show');
+                                   });
+                                   clearInterval(reviewsTimeout);
+                               }
+                           }, 1000);
+
+                            {% endif %}
+
+                            });
+
+</script>
+<div id="yotpoReviews" class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12 text-center">
+            <h2 class="overlays-title" style="font-size: 36px;">Reviews</h2>
+        </div>
+        <div class="col-xs-12">
+            <div class="yotpo yotpo-main-widget"
+                 data-product-id="{{ product.id }}"
+                 data-name="{{ product.title | escape }}"
+                 data-url="{{ shop.url }}{{ product.url }}"
+                 data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}"
+                 data-description="{{ product.description | escape }}">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    {% if settings.display_related_products %}
+    {% if settings.related_products_type == "tags" %}
+    {% include 'related-products-by-tags' %}
+    {% else %}
+    {% include 'related-products' %}
+    {% endif %}
+    {% endif %}
+</div>
+{% include 'affirm-product' %}
+<span id="extole-zone-product_page"></span>
+<script type="text/javascript">
+    /*function swatchTrigger(e) {
+            if (e.target.parentNode) e.target.parentNode.classList.toggle('active');
+            if (e.target.id === 'swatch-1-firm') {
+                const btn = document.getElementById('swatch-1-medium');
+                if (btn && btn.parentNode) btn.parentNode.classList.remove('active');
+            } else {
+                const btn = document.getElementById('swatch-1-firm');
+                if (btn && btn.parentNode) btn.parentNode.classList.remove('active');
+            }
+        }
+        document.getElementById('swatch-1-firm').addEventListener('click', swatchTrigger);
+        document.getElementById('swatch-1-medium').addEventListener('click', swatchTrigger);*/
+
+    (function (c, b, f, k, a) {
+        c[b] = c[b] || {};
+        for (c[b].q = c[b].q || []; a < k.length;) f(k[a++], c[b])
+    })(window, "extole", function (c, b) {
+        b[c] = b[c] || function () {
+            b.q.push([c, arguments])
+        }
+    }, ["createZone"], 0);
+    extole.createZone({
+        name: "product_page",
+        element_id: "extole-zone-product_page",
+        parameters: {}
+    });
+</script>
+</div>
+<script>
+    mixpanel.track(
+        "Product Viewed",
+        {
+            "name": "{{ product.title }}",
+            "price": "{{ product.price | money_without_currency }}",
+            "brand": "{{ product.vendor }}",
+            "category": "{{ collection.title }}",
+            "variant": "{% for variant in product.variants %}{{ variant.sku }}{% endfor %}"
+        });
+    $(document).ready(function () {
+        $("#product-add-to-cart").click(function () {
+            mixpanel.track("Added to Cart", { "name": "{{ product.title }}" });
+        });
+    });
+</script>

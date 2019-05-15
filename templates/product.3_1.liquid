@@ -1,0 +1,770 @@
+{% assign metaf = product.metafields.c_f %}
+<style>
+    @media all and (max-width: 480px){
+        .breadcrumb-wrap{
+            display: none;
+        }
+        .product-shop .product-title h1{
+            font-size: 32px;
+            line-height: 40px;
+            margin-bottom: 25px;
+            margin-top: 25px;
+            text-align: center !important;
+            /*font-weight: 700;*/
+        }
+        .owl-carousel .owl-item img{
+            display: inline-block;
+        }
+    }
+</style>
+<div id="page_product">
+    <div class="container-fluid" id="product">
+        <div itemscope itemtype="http://schema.org/Product" class="product">
+            <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+            <meta itemprop="image"
+                  src="{{ product.featured_image.src | product_img_url: 'grande' }}"
+                  alt="{{ product.title | escape }}
+                       ">
+            <meta itemprop="itemCondition" content="http://schema.org/NewCondition"/>
+            <div class="row">
+                {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+
+                <!-- FLEXSLIDER -->
+                <div class="col-xs-12 col-md-8" id="product-image-main">
+                    <section class="slider">
+                        <div class="flexslider">
+                            <ul class="slides">
+                                {% for image in product.images %}
+                                {% assign videotag = image.alt | escape %}
+                                {% assign imgName = image | remove: 'products/' | split:'?' | first %}
+                                <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=150&h=150">
+                                    {% if videotag contains 'vimeo' %}
+                                    <div class="embed-container">
+                                        <iframe src="{{ image.alt }}?title=0&byline=0&portrait=0" width="640" height="360" id="video_1" frameborder="0"></iframe>
+                                    </div>
+                                    {% else %}
+                                    <picture>
+                                        <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024 1x,
+                                                                                   https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=40&dpr=2 2x,
+                                                                                   https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=20&dpr3 3x">
+                                        <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024 1x,
+                                                                                   https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=40&dpr=2 2x,
+                                                                                   https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3 3x">
+                                        <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024" alt="">
+                                    </picture>     
+                                    {% endif %}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+                {% assign multi_prd = true %}
+                {% if collection.products_count <= 1 %}
+                                                   {% assign multi_prd = false %}
+                                                   {% endif %}
+                                                   <div class="col-xs-12 col-md-4 product-shop">
+                <div>
+                    {% if settings.display_prev_next_product and collection and multi_prd %}
+                    <div class="product-step">
+                        {% if collection.previous_product %}
+                        <a class="prev-p" href="{{ collection.next_product }}"
+                           title="Prev"><span
+                                              class="fa fa-angle-left"></span>Previous</a>
+                        {% endif %}
+                        {% if collection.next_product %}
+                        <a class="next-p" href="{{ collection.next_product }}"
+                           title="Next">Next<span
+                                                  class=" fa fa-angle-right"></span></a>
+                        {% endif %}
+                    </div>
+                    {% else %}
+                    <div class="clearfix"></div>
+                    {% endif %}
+                    <header class="product-title {% if collection.previous_product or collection.next_product and settings.display_prev_next_product and collection %}has-btn{% endif %}">
+
+                        <h1 {% if settings.display_prev_next_product and collection and multi_prd %}class="pull-left"{% endif %}
+                            itemprop="name">{{ product.title }}</h1>
+
+                    </header>
+
+                    <div class="yotpo bottomLine"
+                         data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
+                         data-domain="{{ shop.permanent_domain | escape }}"
+                         data-product-id="{{ product.id }}"
+                         data-product-models="{{ product.id }}"
+                         data-name="{{ product.title | escape }}"
+                         data-url="{{ shop.url }}{{ product.url }}"
+                         data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26' }}"
+                         data-description="{{ product.description | escape }}"
+                         data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                        <meta itemprop="itemReviewed"
+                              content="{{ product.title }}">
+                        <meta itemprop="ratingValue"
+                              content="{{ product.metafields.yotpo.reviews_average }}">
+                        <meta itemprop="ratingCount"
+                              content="{{ product.metafields.yotpo.reviews_count }}">
+                    </div>
+
+                    {% include 'nowtime' %}
+
+                    <p class="short-description">
+                        {{ metaf.shortdesc }}
+                    </p>
+
+                    <div class="mob-dark">
+                        {% if settings.display_product_reviews %}
+                        <span class="shopify-product-reviews-badge"
+                              data-id="{{ product.id }}"></span>
+                        {% endif %}
+                        {% if settings.display_availability or settings.display_product_type or settings.display_vendor %}
+                        {% if settings.display_availability %}
+                        <div class="availability">
+                            <p class="product-inventory">
+                                <label>Availability</label><span>
+                                {% if product.selected_or_first_available_variant.inventory_management %}
+                                {% assign first_inventory = product.selected_or_first_available_variant.inventory_quantity %}
+                                {% if first_inventory > 0 %}
+                                {{ first_inventory }} in stock
+                                {% else %}
+                                Out of stock
+                                {% endif %}
+                                {% else %}
+                                Many in stock
+                                {% endif %}
+                                </span></p>
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                        <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
+                            <label for="product-selectors" class="selectLabel">Size</label>
+                            <div id="product-variants">
+                                {% assign variantCount = product.variants | size %}
+                                {% if product.available %}
+                                {% if variantCount > 1 %}
+                                <select id="product-selectors" name="id" style="display:none">
+                                    {% for variant in product.variants %}
+                                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
+                                            value="{{ variant.id }}">{{ variant.title }}
+                                        - {{ variant.price | money }}</option>
+                                    {% endfor %}
+                                </select>
+                                {% if settings.use_color_swatch %}
+                                {% for option in product.options %}
+                                {% include 'swatch' with option %}
+                                {% endfor %}
+                                {% endif %}
+                                {% else %}
+                                <input type="hidden" name="id" value="{{ product.variants[0].id }}"/>
+                                {% endif %}
+                                {% endif %}
+
+                                {% include 'productbundles-widget' %}
+
+                            </div>
+                            {% if product.available %}
+                            <div class="cta-module clearfix">
+                                <div class="prices" itemprop="offers" itemscope
+                                     itemtype="http://schema.org/Offer"
+                                     style="float: left;">
+                                    <meta itemprop="priceCurrency"
+                                          content="{{ shop.currency }}">
+                                    {% if product.compare_at_price > product.price %}
+                                    <span class="compare-price">{{ product.compare_at_price_max | money_without_trailing_zeros}}</span>
+                                    <span class="price on-sale" itemprop="price"
+                                          content="{{ product.price | money_without_currency | remove: ',' }}">{{ product.price | money_without_trailing_zeros}}</span>
+                                    {% else %}
+                                    <span class="price" itemprop="price"
+                                          content="{{ product.price | money_without_currency | remove: ',' }}">{{ product.price | money_without_trailing_zeros }}</span>
+                                    {% endif %}
+                                    {% if product.available %}
+                                    <link itemprop="availability"
+                                          href="http://schema.org/InStock">
+                                    {% else %}
+                                    <link itemprop="availability"
+                                          href="http://schema.org/OutOfStock">
+                                    {% endif %}
+                                </div>
+
+                                {% include 'affirm-product' %}
+                                <style>
+                                    DIV.cta-module{
+                                        margin: 40px 0 10px 0;
+                                    }
+                                    DIV.product-shop .prices{
+                                        width: 49%;
+                                        text-align: center;
+                                        padding-top: 14px;
+                                        border-right: 1px solid black;
+                                    }
+                                    DIV.prices SPAN.price{
+                                        font-size: 32px;
+                                        display: block;
+                                    }
+                                    DIV.affirmWrap{
+                                        float: right;
+                                        width: 49%;
+                                        text-align: center;
+                                        padding: 0 38px;
+                                    }
+                                    DIV.affirm{
+                                        font-size: 12px;
+                                        text-align: center;
+                                    }
+                                    DIV.affirm A#learn-more{
+                                        margin-bottom: 0px;
+                                        line-height: 18px;
+                                    }
+                                    DIV.affirm A.affirm-prequal-text{
+                                        cursor: pointer;
+                                        display: inline-block;
+                                        text-decoration: none;
+                                        background-color: #0FA0EA;
+                                        color: white;
+                                        padding: 5px 9px;
+                                        border-radius: 5px;
+                                        line-height: 14px;
+                                        text-transform: capitalize;
+                                    }
+                                    DIV.affirm A.affirm-prequal-text:HOVER{
+                                        text-decoration: none;
+                                        background-color: transparent;
+                                        color: #0FA0EA;
+
+                                    }
+                                </style>
+                                <div class="affirmWrap">
+                                    <div class="affirm" style="">
+                                        <a id="learn-more" class="affirm-as-low-as" data-learnmore-show="false" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{variant.price}}"></a> <a class="affirm-prequal-text" data-promo-id="prequal_text_brentwood" style="cursor: pointer;"></a>
+                                    </div>
+                                </div>
+
+                                <div id="qt" style="display: none">
+                                    QTY: <input type="text"
+                                                id="quantity"
+                                                name="quantity"
+                                                value="1"
+                                                >
+                                </div>
+                            </div>
+                            {% if product.selected_or_first_available_variant.inventory_management %}
+                            {% assign first_inventory = product.selected_or_first_available_variant.inventory_quantity %}
+                            {% if first_inventory < 1 %}
+                                                     <div class="out-of-stock">
+                            <span class="left"></span>
+                            <p class="product-inventory">
+                                We’re currently making this item to order.<br>
+                                Please
+                                allow <b>up to 3 weeks</b> for crafting and
+                                shipping.
+                            </p>
+                            <span class="right"></span>
+                            </div> 
+                        {% endif %}
+                        {% endif %}
+
+
+
+                        {% else %}
+                        <button type="button" class="btn" id="product-add-to-cart" disabled>Unavailable</button>
+                        {% endif %}
+
+                        {% assign current_variant = product.selected_or_first_available_variant %}
+                        </form>
+                    <button type="button" class="cta2" style="width: 100%;" id="product-add-to-cart">Add to Cart</button>
+                    {% include 'shippingtime' %}
+                    <p id="add2cart_shipping"><img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Ships free in {{ shipsfree }}">Ships free in {{ shipsfree }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- End Row --> 
+</div><!-- End Container for top part (img+buy) -->
+
+  <div class="container section warranties">
+     <h2 class="text-center">Try the {{ product.title }} Risk-Free</h2>
+      <div class="row">
+          <div class="col-xs-4 col-sm-2">
+              <img src="https://brentwood-home-36.imgix.net/iconv2-1yearguarantee.svg" alt="1-year trial">
+              <p>1-Year<br>Trial</p>
+          </div>
+          <div class="col-xs-4 col-sm-2">
+              <img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Free shipping and free return">
+              <p>Free Shipping<br>Free Return</p>
+          </div>
+          <div class="col-xs-4 col-sm-2">
+              <img src="https://brentwood-home.imgix.net/iconv2-madeincalifornia.svg" alt="Made in California">
+              <p>Made in<br>California</p>
+          </div>
+          <div class="col-xs-4 col-sm-2">
+              <img src="https://brentwood-home.imgix.net/iconv2-25yearwarranty.svg" alt="25-year warranty">
+              <p>25-year<br>Warranty</p>
+          </div>
+          <div class="col-xs-4 col-sm-2">
+              <img src="https://brentwood-home.imgix.net/iconv2-whiteglovedelivery.svg" alt="In home delivery available">
+              <p>In Home<br>Delivery*</p>
+          </div>
+          <div class="col-xs-4 col-sm-2">
+              <img src="https://brentwood-home.imgix.net/iconv2-0percent.svg" alt="0% financing available">
+              <p>0% Financing<br>Available</p>
+          </div>
+      </div>
+  </div>
+   <div class="container section">
+       <div class="row flex">
+           <div class="col-xs-12 col-sm-6 text-center">
+               <picture>
+                   <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_83668.jpg?rect=3000,400,3700,4310&w=480&ch=Width,DPR&q=55">
+                   <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_83668.jpg?rect=3000,400,3700,4310&w=555">
+                   <img src="https://s3-brentwoodhome.imgix.net/CrystalCove_83668.jpg?rect=3000,400,3700,4310&w=555" alt="Mindfully designed for active lifestyles">
+               </picture>
+           </div>
+           <div class="col-xs-12 col-sm-6 flexV">
+               <div>
+                   <h2>Mindfully designed for active lifestyles</h2>
+                   <p>The Crystal Cove mattress balances the latest in sleep technology — activated charcoal-infused memory foam and precision-tuned coils — with essential natural elements, such as 100% natural Dunlop latex. With its luxe stitched gray cover, the Crystal Cove mattress perfectly complements our best-selling yoga and meditation pillows; as well any healthy, California-inspired lifestyle.</p>
+               </div>
+           </div>
+       </div>
+   </div>
+   
+    <div class="container section">
+        <div class="row flex">
+            <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_83510.jpg?rect=1090,0,4684,4684&w=480&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_83510.jpg?rect=4000,220,3000,4310&w=555">
+                    <img src="https://s3-brentwoodhome.imgix.net/CrystalCove_83510.jpg?rect=4000,220,3000,4310&w=555" alt="One Mattress, two comfort options">
+                </picture>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV">
+                <div>
+                    <h2>One Mattress, <br>two comfort options</h2>
+                    <p>The Crystal Cove mattress features a unique dual-sided design for a customizable, ultra-luxurious sleeping experience. To change your preference, simply flip the mattress.</p>
+                    <p>For active recovery, choose the naturally cool activated charcoal-infused plush memory foam side. For more supportive experience, opt for the gentle-firm natural latex side.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <div class="container section">
+       <span class="text-center margTB7050"></span>
+       <div class="inside">
+          <div class="matTip charcoal">
+              <img src="https://s3-brentwoodhome.imgix.net/activatedcharcoal.png?w=80&h=80" alt="Activated Charcoal" class="rdthumb">
+              <p><strong>Luxury-Plush Side</strong><span>Activated charcoal-infused memory foam for cooling and purifying the body, plus a layer of flow foam for pressure relief.</span><span class="mobile">Activated charcoal-infused memory foam.</span></p>
+              <div class="arrow">
+                  <div class="pointer"></div>
+              </div>
+          </div>
+           <div class="matTip latex">
+               <img src="https://s3-brentwoodhome.imgix.net/latex-closeup.png?w=80&h=80" alt="100% natural latex" class="rdthumb">
+               <p><strong>Gentle-Firm Side</strong><span>100% natural Dunlop latex for uplighting and highly-responsive support.</span><span class="mobile">100% natural Dunlop latex.</span></p>
+               <div class="arrow">
+                   <div class="pointer"></div>
+               </div>
+           </div>
+           <div class="matTip springs">
+               <img src="https://s3-brentwoodhome.imgix.net/rd-spring-closeup.png?w=80&h=80" alt="Activated Charcoal" class="rdthumb">
+               <p><strong>5-Zone Support Core</strong><span>Up to 1,414 zoned springs to relieve shoulders and hips pressure.</span></p>
+               <div class="arrow">
+                   <div class="pointer"></div>
+               </div>
+           </div>
+           <picture>
+               <source media="(max-width: 480px)" srcset="https://s3-brentwoodhome.imgix.net/products/crystalcove/crystalcove-cutout-nozip.jpg?rect=611,0,1078,611&w=480&ch=Width,DPR">
+               <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/crystalcove/crystalcove-cutout-nozip.jpg?w=1170">
+               <img src="https://s3-brentwoodhome.imgix.net/products/crystalcove/crystalcove-cutout-nozip.jpg?w=1170" alt="Crystal Cove mattress">
+           </picture>
+       </div>
+   </div>
+    <div class="container section">
+        <h2 class="text-center margTB7050">Choose your side:</h2>
+        <div class="row row-eq-height">
+            <div class="col-xs-12 col-sm-6">
+                <div class="side charcoal">
+                   <div class="top">
+                       <h3>Luxury-Plush Side</h3>
+                       <h4>Active Recovery</h4>
+                       <div class="thumb">
+                           <img src="https://s3-brentwoodhome.imgix.net/activatedcharcoal.png?w=240&h=240" alt="Activated Charcoal" class="rdthumb">
+                       </div>
+                   </div>
+                    <div class="content">
+                        <h4><i>Activated Charcoal-Infused Memory Foam</i></h4>
+                        <p class="text-left">
+                            Activated charcoal is one of the most effective cooling and purifying minerals. Its many healing properties include trapping toxins and chemicals in the body, allowing them to be flushed out and preventing reabsorption. Our unique foam has been specifically designed to energize in response to body heat, which is the key to providing highly adaptive comfort and excellent pressure-relief.
+                        </p>
+                        <div class="row warranties margTB30">
+                            <div class="col-xs-4">
+                                <img src="https://brentwood-home.imgix.net/iconv2-gelmemoryfoam.svg" alt="Charcoal Memory Foam">
+                                <p>Charcoal<br>Memory Foam</p>
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="https://brentwood-home.imgix.net/iconv2-motionisolation.svg" alt="Motion Isolation">
+                                <p>Motion<br>Isolation</p>
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="https://brentwood-home.imgix.net/iconv2-certipurus.svg" alt="CertiPUR-US&reg; Foam">
+                                <p>CertiPUR-US&reg;<br>Foam</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="side latex">
+                    <div class="top">
+                        <h3>Gentle-Firm Side</h3>
+                        <h4>Responsive Support</h4>
+                        <div class="thumb">
+                            <img src="https://s3-brentwoodhome.imgix.net/latex-closeup.png?w=240&h=240" alt="100% natural latex" class="rdthumb">
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4><i>100% Natural<br> Dunlop Latex</i></h4>
+                        <p class="text-left">
+                            Our 100% natural Dunlop latex is breathable, durable, naturally responsive, non-toxic, anti-microbial and eco-INSTITUT® certified. Rest easy knowing this premium, natural material is eco-friendly and healthy. Our sustainably-farmed latex provides support where you need it, for a gentle-firm night of zoned pressure-point relief.
+                        </p>
+                        <div class="row warranties margTB30">
+                            <div class="col-xs-4">
+                                <img src="https://brentwood-home.imgix.net/iconv2-naturallatex.svg" alt="Natural Latex">
+                                <p>Natural<br>Latex</p>
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="https://brentwood-home.imgix.net/iconv2-pressurerelieving.svg" alt="Pressure Relieving">
+                                <p>Pressure<br>Relieving</p>
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="https://brentwood-home.imgix.net/iconv2-ecofriendly.svg" alt="Eco-friendly">
+                                <p>Eco-friendly</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h2 class="text-center margTB7050">At the core, precision support</h2>
+    <div class="container section cc_coils">
+        <div class="image">
+            <div class="row flex">
+                <div class="col-xs-12 col-sm-5 flexV">
+                    <div class="drop hidden-xs">
+                        <h3>5 Strategic Zones</h3>
+                        <p>Precision crafted, pocketed coils — made in the US from recycled, single-tempered steel — effortlessly distribute your body’s weight and relieve aching pressure points. Made of up to 1,414 individually pocketed coils, they also provide critical zoned support for your hips and shoulders, while structurally reinforcing the perimeter to eliminate that “roll-off-the-edge” feeling.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="visible-xs-block">
+            <h2>5 Strategic Zones</h2>
+            <p>Precision crafted, pocketed coils — made in the US from recycled, single-tempered steel — effortlessly distribute your body’s weight and relieve aching pressure points. Made of up to 1,414 individually pocketed coils, they also provide critical zoned support for your hips and shoulders, while structurally reinforcing the perimeter to eliminate that “roll-off-the-edge” feeling.</p>
+        </div>
+    </div>
+  
+    <div class="container section text-center">
+        <picture>
+            <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_83551.jpg?rect=783,0,4600,4600&h=480&ch=Width,DPR&q=55">
+            <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_83551.jpg?rect=0,582,7000,3000&w=1140">
+            <img src="https://s3-brentwoodhome.imgix.net/CrystalCove_83551.jpg?rect=0,582,7000,3000&w=1140" alt="Crystal Cove mattress">
+        </picture>
+    </div>
+    
+    <div class="container section text-center">
+        <picture>
+            <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/crystalcove/crystalcove-sideview2.jpg?h=480&ch=Width,DPR&q=55">
+            <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/crystalcove/crystalcove-sideview2.jpg?w=1140">
+            <img src="https://s3-brentwoodhome.imgix.net/products/crystalcove/crystalcove-sideview2.jpg?w=1140" alt="Crystal Cove mattress side view">
+        </picture>
+    </div>
+   
+    <div class="container section margTB120">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-sm-offset-2">
+                <div>
+                    <h2>Details that matter</h2>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <p>Our four upholstered, high-quality handles elegantly frame all sides of the mattress, seamlessly blending into the border and ensuring ease-of-use when flipping your mattress. The luxe gray mattress cover matches style with function, and is designed in the style of our Crystal Cove Yoga Collection. </p>
+            </div>
+        </div>
+    </div>
+  
+    <div class="container section">
+        <div class="row flex">
+            <div class="col-xs-12 col-sm-6 text-center">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/factory2.jpg?w=480&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/factory2.jpg?&w=555&q=55">
+                    <img src="https://s3-brentwoodhome.imgix.net/factory2.jpg?w=555&q=55" alt="Handcrafted in Southern California">
+                </picture>
+            </div>
+            <div class="col-xs-12 col-sm-6 flexV">
+                <div>
+                    <h2>Handcrafted in Southern California</h2>
+                    <p>All Brentwood Home products are inspired by a passion for California living, the state’s unparalleled natural beauty and strict quality standards for manufacturing with respect to impact on health and the environment. This passion comes through in every detail of each product. All of our mattresses are handcrafted in our factory located just outside of Los Angeles.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="container section">
+        <div class="row flex">
+            <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/RubberTreeForest72dpi.jpg?rect=1200,440,3500,4310&w=480&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/RubberTreeForest72dpi.jpg?rect=2768,0,2352,3413&w=555">
+                    <img src="https://s3-brentwoodhome.imgix.net/RubberTreeForest72dpi.jpg?rect=2768,0,2352,3413&w=555" alt="Natural &amp; Non-Toxic">
+                </picture>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV">
+                <div>
+                    
+                    <h2>Natural &amp; Non-Toxic</h2>
+                    <p>All of our mattresses are made with a combination of natural and non-toxic materials. We use only Certi-PUR-US® certified memory foams, eco-INSTITUT® certified natural latex, and a flame-retardant barrier made from natural silica quartz — completely free from chemical flame retardants.</p>
+                    <p class="text-center"><img src="{{ 'certipur-badge.png' | asset_url }}" alt="CertiPUR-US" style="max-width: 75px; width: 75px;margin-top: 30px;" >&nbsp;&nbsp;<img src="{{ 'logo-eco-institut.png' | asset_url }}" alt="Eco-institut logo" style="max-width: 75px; width: 75px;margin-top: 30px;" ></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container section">
+        <div class="row flex">
+            <div class="col-xs-12 col-sm-6 text-center">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_83092.jpg?rect=1200,440,3500,4310&w=480&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_83092.jpg?rect=1580,0,2727,4802&w=555">
+                    <img src="https://s3-brentwoodhome.imgix.net/CrystalCove_83092.jpg?rect=1580,0,2727,4802&w=555" alt="Greenguard Gold Certified Non-Toxic Mattress">
+                </picture>
+            </div>
+            <div class="col-xs-12 col-sm-6 flexV">
+                <div>
+                    <h2>Greenguard Gold Certified Non-Toxic Mattress</h2>
+                    <p>The Crystal Cove mattress is completely <strong>GREENGUARD Gold Certified</strong> by UL Environment. It means that it has been scientifically tested in environmental chambers to meet some of the world’s most rigorous, third-party emissions standards for prolonged chemical exposure and pollutants, such as volatile organic compounds (VOCs), formaldehyde and phthalates. <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/health-safety-and-sustainability/are-your-mattresses-greenguard-gold-certified" title="Greenguard Gold Certified">View Certificate</a>.</p>
+                    <p class="text-center"><img src="{{ 'logo-greenguard-2.svg' | asset_url }}" alt="Greenguard Gold Certified Non-Toxic Mattress" style="max-width: 100px; width: 100px;margin-top: 30px;" ></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<div class="container section">
+    <div class="row flex">
+        <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center">
+            <picture>
+                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_83723.jpg?rect=1200,440,3500,4310&w=480&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_83723.jpg?rect=1580,0,2727,4802&w=555">
+                <img src="https://s3-brentwoodhome.imgix.net/CrystalCove_83723.jpg?rect=1580,0,2727,4802&w=555" alt="Vegan Certified">
+            </picture>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV">
+            <div>
+                <h2>Certified Vegan</h2>
+                <p>The Crystal Cove mattress is 100% Certified Vegan by Vegan Action. This means the mattress is free from animal products (like feathers, wool and down) or byproducts that have been tested on animals. In addition, although we do manufacture some items that do use natural animal products like wool, we have stringent requirements in place for cleaning the machines in-between use, so cross-contamination will not occur. If you practice a vegan lifestyle, you can rest assured that your Crystal Cove mattress is aligned with your values. </p>
+                <p class="text-center"><img src="{{ 'veganlogo.svg' | asset_url }}" alt="Vegan Certified" style="max-width: 100px; width: 100px;margin-top: 30px;" ></p>
+            </div>
+        </div>
+    </div>
+</div>
+   
+<div class="container section">
+    <div class="row flex">
+        <div class="col-xs-12 col-sm-6 text-center">
+            <picture>
+                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_82688.jpg?w=480&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_82688.jpg?rect=1960,0,2686,4446&w=555">
+                <img src="https://s3-brentwoodhome.imgix.net/CrystalCove_82688.jpg?rect=1960,0,2686,4446&w=555" alt="Start Your 1-Year Sleep Trial">
+            </picture>
+        </div>
+        <div class="col-xs-12 col-sm-6 flexV">
+            <div>
+                <h2>Start Your 1-Year Sleep Trial</h2>
+                <p>Experiencing is believing, especially when it comes to our top-rated {{ product.title }}. <strong>Try our mattress for 365 days, risk-free,</strong> in the comfort of your home. Learn more about our amazing <a href="https://www.brentwoodhome.com/pages/1-year-risk-free-mattress-trial">1-Year Sleep Trial Policy</a> for mattresses sold on our website.</p>
+            </div>
+        </div>
+    </div>
+</div>
+   
+    <div class="container section cc_yoga" style="margin-bottom:1px;">
+        <div class="image">
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+                    <div>
+                        <h3>The Essential</h3>
+                        <h3>Crystal Cove Collection</h3><br>
+                        <p>The Crystal Cove Yoga collection was inspired by our thriving local wellness community in Los Angeles and is beloved by yoga, meditation and wellness-seekers around the country. We wanted to create a mattress just for you, both luxurious and restorative, to meet the unique needs of an active lifestyle without sacrificing style. <a href="/pages/crystal-cove-collection">Complete your set</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 onePxR text-center">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/CC_Details_025.jpg?rect=1767,698,4214,4214&w=480&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/CC_Details_025.jpg?rect=1767,0,4200,4800&w=620">
+                    <img src="https://s3-brentwoodhome.imgix.net/CC_Details_025.jpg?rect=1767,0,4200,4800&w=620" alt="Crystal Cove pillows">
+                </picture>
+            </div>
+            <div class="col-xs-12 col-sm-6 onePxL text-center">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_83970.jpg?rect=2108,590,4212,4212&w=480&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_83970.jpg?rect=2108,0,4200,4800&w=620">
+                    <img src="https://s3-brentwoodhome.imgix.net/CrystalCove_83970.jpg?rect=2108,0,4200,4800&w=620" alt="Crystal Cove Yoga pillow">
+                </picture>
+            </div>
+        </div>
+    </div>
+   
+<div id="recommendationApp">
+
+</div>
+   
+   
+    <div class="container section margTB120">
+        <h2 class="text-center">{{ product.title }} Specifications</h2>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#materials" aria-controls="materials" role="tab" data-toggle="tab">Materials</a></li>
+            <li role="presentation"><a href="#sizes" aria-controls="sizes" role="tab" data-toggle="tab">Sizes</a></li>
+            <li role="presentation"><a href="#shipping" aria-controls="shipping" role="tab" data-toggle="tab">Shipping & Returns</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="materials">
+                <div class="">
+                    {{ metaf.details_materials }}
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="sizes">
+                <div class="row">
+                    {{ metaf.details_sizes }}
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="shipping">
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-4">
+                        <p><strong>Free Standard Shipping:</strong><br>
+                            The handcrafting process usually takes 3–5 days to complete.{% include 'shippingtime' %} Delivery times vary depending on your distance from our Los Angeles factory. Most mattresses ship via FedEx, however, for select larger mattresses (our King and California King sized Crystal Cove, Oceano, Ojai and Cedar Mattresses) we offer free Curbside Delivery through our partner AGS.
+                            <br>
+                            In general, you can expect to receive your mattress within 1-3 weeks from the date of order. Once your purchase ships, we’ll send you an email with tracking information so you can follow your shipment and plan for delivery.</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <p><strong>Optional White Glove Delivery:</strong><br>
+                            For an additional $199 per mattress, you can select our Premium White Glove Service through our delivery partner, AGS. This includes in-home delivery.
+                            <br>
+
+                            If you’d like to add removal of your old mattress to your Premium White Glove delivery, this is an additional $275 per mattress.<br>
+
+                            For most White Glove deliveries, you can expect to receive your mattress within 2-3 weeks from the date of order.
+                            <br>
+
+                            For Local White Glove deliveries in/around the Los Angeles and San Diego, California areas, you can expect to receive your mattress within 1-3 weeks from the date of order.
+
+                            <br>
+
+                            Once your order is ready to be delivered, AGS will contact you to schedule a day and time that is convenient for you.
+
+                        </p>
+
+                        <p>Visit our <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/shipping-and-delivery">Help center</a> for more information</p>
+
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <p><strong>Returns:</strong><br>
+                            We offer a 1-year sleep guarantee with our mattresses. Sleep on your new mattress for at least 30 nights to allow your body time to adjust to the comfort and support of your new Brentwood Home mattress. If you decide the mattress isn’t the right one for you, then we will schedule a pick up and provide a full refund.
+                        </p>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="container section">
+        <div class="row flex">
+            <div class="col-xs-12 col-sm-6 text-center">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,998,998&w=480&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,701,998&w=555">
+                    <img src="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,701,998&w=555" alt="Supporting the National Forest Foundation">
+                </picture>
+            </div>
+            <div class="col-xs-12 col-sm-6 flexV">
+                <div>
+                    <h2>Supporting the National Forest Foundation</h2>
+                    <p>Our forests are in peril and need our help. So for every mattress sold on our website, we also make a donation to the <a href="https://www.nationalforests.org/" title="National Forest Foundation" target="_blank">National Forest Foundation</a> to plant three trees. It’s part of our ambitious effort to help stem the impact of climate change and help replant America’s forests.</p>
+                    <p class="text-center"><img src="{{ 'logo-nationalforest.jpg' | asset_url }}" alt="National Forest" style="max-width: 140px; width: 140px;margin-top: 30px;" ></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<div class="container section">
+    <div class="row flex">
+        <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center">
+            <picture>
+                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/reliefbed.jpg?rect=1150,0,3056,2734&w=480&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/reliefbed.jpg?rect=1432,266,1500,2731&w=555">
+                <img src="https://s3-brentwoodhome.imgix.net/reliefbed.jpg?rect=1432,266,1500,2731&w=555" alt="Relief Bed">
+            </picture>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV">
+            <div>
+                <h2>Buy One, Give One, Change a Life!</h2>
+                <p>We proudly support the urgent mission and vision of ReliefBed, a 501(c)(3) nonprofit. <strong>For every Crystal Cove mattress sold on our website, we will build one <a href="https://reliefbed.com" title="ReliefBed" target="_blank">ReliefBed</a> for charity.</strong> ReliefBeds are an innovative and strategically-built mattresses designed to meet the practical needs of the homeless, impoverished, shelter residents, and victims of natural disaster. It is tangible way we can help the members of our community in their time of need. <a href="/pages/relief-bed" title="Relief Bed">Learn more about our partnership</a>.</p>
+                <!--<p class="text-center"><img src="{{ 'logo-reliefbed.png' | asset_url }}" alt="" style="max-width: 140px; width: 140px;margin-top: 30px;" ></p>-->
+                <p class="text-center"><img src="https://s3-brentwoodhome.imgix.net/reliefbed-logo-vertical.jpg" style="max-width: 140px; width: 140px;margin-top: 30px;" alt="Relief Bed"></p>
+            </div>
+        </div>
+    </div>
+</div>
+   
+    <div id="yotpoReviews" class="container margTB120">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12 text-center">
+                <h2 class="text-center">Reviews</h2>
+            </div>
+            <div class="col-xs-12">
+                <div class="yotpo yotpo-main-widget"
+                     data-product-id="{{ product.id }}"
+                     data-name="{{ product.title | escape }}"
+                     data-url="{{ shop.url }}{{ product.url }}"
+                     data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}"
+                     data-description="{{ product.description | escape }}">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+<span id="extole-zone-product_page"></span>
+<script type="text/javascript">
+    (function (c, b, f, k, a) {
+        c[b] = c[b] || {};
+        for (c[b].q = c[b].q || []; a < k.length;) f(k[a++], c[b])
+    })(window, "extole", function (c, b) {
+        b[c] = b[c] || function () {
+            b.q.push([c, arguments])
+        }
+    }, ["createZone"], 0);
+    extole.createZone({
+        name: "product_page",
+        element_id: "extole-zone-product_page",
+        parameters: {}
+    });
+</script>
+    
+{% include 'productbundles' %}
+
+</div>

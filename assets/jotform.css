@@ -1,0 +1,123 @@
+.form-label-left{
+    width:150px !important;
+}
+.form-line{
+    padding-top:12px;
+    padding-bottom:12px;
+}
+.form-label-right{
+    width:150px !important;
+}
+.form-all{
+    /*width:650px;
+    width:425px;*/
+    width: auto;
+    color:#555 !important;
+    font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, sans-serif;
+    font-size:14px;
+}
+DIV#background-opt {
+    background-image: url(warranty-bckg.jpg);
+    background-position: bottom center;
+    background-size: cover;
+}
+DIV#warranty-container {
+  padding:  0 0 0 0;
+}
+DIV#warranty-container P.tagline{
+    text-align: center;
+}
+DIV#warranty-container H1 {
+  text-align: center;
+}
+DIV#warranty-container #warranty-center {
+  width: 440px;
+  margin: 45px auto;
+  padding: 0px;
+  text-align: left;
+}
+DIV#warranty-container .form-label-left {
+  width: auto !important;
+  float: none;
+  display: block;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #7e7e7e;
+  margin: 0 0 5px 0;
+  padding: 0;
+}
+DIV#warranty-container .form-line-error {
+  background-color: transparent;
+}
+DIV#warranty-container .form-line-error .form-error-message {
+  border-radius: 0;
+  background-color: burlywood;
+}
+DIV#warranty-container .form-line-error .form-error-arrow {
+  border-bottom-color: burlywood;
+}
+DIV#warranty-container .form-line-active {
+  background-color: transparent;
+}
+DIV#warranty-container .form-textbox {
+  border: none;
+  border-bottom: 1px solid #aeaeae;
+  background-color: transparent;
+  width: 350px;
+  padding: 0 0 0px 0;
+  color: #a4a2a2;
+  box-shadow: none;
+}
+DIV#warranty-container .form-checkbox-item label {
+  color: #7e7e7e;
+}
+DIV#warranty-container DIV.form-cal .form-textbox {
+  width: 90px;
+  text-align: center;
+}
+DIV#warranty-container BUTTON.form-submit-button {
+  box-shadow: none;
+  background: transparent;
+  background-color: #444;
+  text-shadow: none;
+  font-size: 14px;
+  color: #FFF;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  border: none;
+}
+DIV#warranty-container SELECT.form-dropdown{
+    width: 190px;
+    background-color: white;
+}
+
+@media only screen and (max-width: 509px){
+    DIV#warranty-container .form-textbox {
+        width: 220px;
+        width: 100%;
+    }
+    DIV#warranty-container #warranty-center{
+        width: 98%;
+    }
+    DIV#warranty-container #warranty-center{
+        margin-top: 10px;
+    }
+    DIV#warranty-container DIV.form-cal .form-textbox {
+        width: 60px;
+    }
+    .form-line{
+        padding: 6px 0;
+    }
+    .form-all{
+        width: auto;
+    }
+    .form-input{
+        display: block;
+    }
+    DIV#warranty-container{
+        padding-bottom: 20px;
+    }
+    DIV#warranty-container P.tagline{
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,36 @@
+{% assign surface1 = 'adjustable' %}
+{% assign surface2 = 'box' %}
+{% assign surface3 = 'slated' %}
+{% assign surface4 = 'flat' %}
+
+{% if surface1 == 'adjustable' %}
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center">
+    <img src="https://cdn.shopify.com/s/files/1/1507/2946/t/2/assets/base-adjustable.svg?452485786266403260" alt="Adjustable" />
+    <h5>Adjustable Base</h5>
+    <p class="hidden-xs">For customizable comfort, this mattress works with adjustable technology</p>
+</div>
+{% endif %}
+
+{% if surface2 == 'box' %}
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center">
+    <img src="https://cdn.shopify.com/s/files/1/1507/2946/t/2/assets/base-boxspring.svg?452485786266403260" alt="Box Spring" />
+    <h5>Box Spring & Foundation</h5>
+    <p class="hidden-xs">Perfect fit for a classic box spring foundation</p>
+</div>
+{% endif %}
+
+{% if surface3 == 'slated' %}
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center">
+    <img src="https://cdn.shopify.com/s/files/1/1507/2946/t/2/assets/base-slatted.svg?452485786266403260" alt="Adjustable" />
+    <h5>Slatted Base</h5>
+    <p class="hidden-xs">Supported by bases with 5 inches or less between slats</p>
+</div>
+{% endif %}
+
+{% if surface4 == 'flat' %}
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center">
+    <img src="https://cdn.shopify.com/s/files/1/1507/2946/t/2/assets/base-flat.svg?452485786266403260" alt="Adjustable" />
+    <h5>Platform Bed</h5>
+    <p class="hidden-xs">Rests perfectly on your flat platform base</p>
+</div>
+{% endif %}

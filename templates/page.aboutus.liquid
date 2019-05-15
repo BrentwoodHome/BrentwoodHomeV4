@@ -1,0 +1,23 @@
+
+
+<div class="images-top">
+  {% if settings.display_about_us_images %}	
+  	{{ 'images-aboutus-top.jpg' | asset_url | img_tag }}
+  {% endif %}
+</div>
+
+<header class="page-header">
+  <div class="container">
+    <h2>{{ page.title }}</h2>
+  </div>
+</header>
+{% comment %}
+  Regular page content goes here.
+{% endcomment %}
+<div class="container">
+  {{ page.content }}
+</div>
+
+<script>
+  jQuery('.main-content').removeClass('container');
+</script>

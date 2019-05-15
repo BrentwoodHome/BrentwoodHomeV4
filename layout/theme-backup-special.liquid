@@ -1,0 +1,395 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                                                          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                                })(window,document,'script','dataLayer','GTM-NWLPSV');
+        window.localStorage.setItem("ecommercetrackingtype", "ee");
+    </script>
+    <!-- End Google Tag Manager -->
+    
+    <script type="text/javascript">//window.variation1 = false; </script>
+    <script src="https://cdn.optimizely.com/js/5224130666.js"></script>
+  <!-- Basic page needs ================================================== -->
+    <meta charset="utf-8">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <!-- Title and description ================================================== -->
+  <title>
+  {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  </title>
+
+  {% if page_description %}
+  <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+    <meta name="robots" content="noodp, noydir, index, follow, archive">
+
+  <!-- Helpers ================================================== -->
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="publisher" href="https://plus.google.com/103341389217067802467">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/x-icon" />
+
+   <!-- fonts -->
+  {%comment%}{% include 'font-family' %}{%endcomment%}
+
+   <!-- Styles -->
+   {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
+
+    <!-- Theme base and media queries -->
+    {{ 'owl.carousel.css' | asset_url | stylesheet_tag }}
+    {{ 'owl.theme.css' | asset_url | stylesheet_tag }}
+    {{ 'jcarousel.css' | asset_url | stylesheet_tag }}
+    {{ 'selectize.bootstrap3.css' | asset_url | stylesheet_tag }}
+    {{ 'jquery.fancybox.css' | asset_url | stylesheet_tag }}
+    {{ 'component.css' | asset_url | stylesheet_tag }}
+    {%comment%}<link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6599576/7835972/css/fonts.css" />{%endcomment%}
+    {{ 'avenir-MyFontsWebfontsKit.css' | asset_url | stylesheet_tag }}
+    {{ 'styles.css' | asset_url | stylesheet_tag }}
+    {{ 'brentwoodhome.scss.css' | asset_url | stylesheet_tag }}
+    {{ 'styles-setting.css' | asset_url | stylesheet_tag }}
+    {{ 'responsive.css' | asset_url | stylesheet_tag }}
+    {{ 'animate.css' | asset_url | stylesheet_tag }}
+    {{ 'elegantfont.css' | asset_url | stylesheet_tag }}
+    {{ 'productpagev2.scss.css' | asset_url | stylesheet_tag }}
+    
+    {% if template.suffix contains 'product' %}
+        {{ 'flexslider.css' | asset_url | stylesheet_tag }}
+    {%endif%}
+    
+    <!-- Merge into SCSS -->
+    {{ 'collection-filter.css' | asset_url | stylesheet_tag }}
+    <!-- Merge into SCSS -->
+	
+    {% if settings.enable_retina %}
+        {{ 'retina-responsive.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+
+
+    
+    {% if template.suffix contains '3_0_0' %}
+        {{ 'product_3_0_0.scss.css' | asset_url | stylesheet_tag }}
+        {{ 'flexslider.css' | asset_url | stylesheet_tag }}
+    {%endif%}
+
+    {%comment%}Gets time and date and saves it into global var 'rightnowint'{%endcomment%}
+    {% include 'nowtime' %}
+    
+    
+{% if template contains 'article' %}
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{ article.title }}" />
+    <meta property="og:description" content="{{ article.content | truncatewords: 64 | strip_html }}" />
+    <meta property="og:image" content="{{ article | img_url: '1024x1024' }}" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="1024" />
+{% elsif template contains 'product' %}
+    <meta property="og:type" content="product" />
+    <meta property="og:title" content="{{ product.title }}" />
+    <meta property="og:description" content="{{ product.description | truncatewords: 64 | strip_html }}" />
+    <meta property="og:image" content="https:{{ product.featured_image.src | img_url: '1024x1024' }}" />
+{% else %}
+    <meta property="og:title" content="{{ page_title }}" />
+    <meta property="og:description" content="{{ page_description | escape }}" />
+    <meta property="og:image" content="https:{{ 'brentwoodhome-logo-2048.png' | asset_url }}" />
+    <meta property="og:type" content="website" />
+{% endif %}
+    {%comment%}<meta property="fb:admins" content="146160578919897" />{%endcomment%}
+    <meta property="fb:app_id" content="179143425831793" />
+    <meta property="og:site_name" content="Brentwood Home" />
+    <meta property="og:url" content="{{ canonical_url }}" />
+    <meta property="theme" content="{{ theme.id }}" />
+   <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.min.js"></script>
+
+  {% include 'head_scripts' %}
+    {{ 'modernizr.js' | asset_url | script_tag }}
+  <!-- Header hook for plugins ================================================== -->
+  {{ content_for_header }}
+
+  <!--[if lt IE 9]>
+  {{ '//html5shiv.googlecode.com/svn/trunk/html5.js' | script_tag }}
+  <![endif]-->
+
+  <script>var adobewebfontsappname ="dreamweaver"</script>
+
+
+  {% comment %}
+    If you store has customers disabled, you can remove the following JS file
+  {% endcomment %}
+  {% if template contains 'customers' %}
+    {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+    {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+  {% endif %}
+
+   {%comment%}To include Museo Sans, Essones
+    <script src="https://use.typekit.net/jnb0tlg.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>{%endcomment%}
+
+    {% include 'sca-quick-view-init' %}
+    {% if product.metafields.inventory.ShappifyHidden == "true" %} <meta name="robots" content="noindex"> {% endif %}
+
+    
+    <script>
+        // CURALATE
+        !function(){"crl8"in window||(window.crl8=function(){window.crl8.q.push(arguments)},window.crl8.q=[]);var n=document.createElement("script");n.src=document.location.protocol+"//cdn.curalate.com/js-min/crl8.min.js",n.async=!0;var c=document.getElementsByTagName("script")[0];c.parentNode.insertBefore(n,c)}();
+        crl8('init', 116365); 
+    </script>
+    
+    <!-- AdTriba -->
+    <script type="text/javascript">
+        (function(ptid){
+            var a = document.createElement("script");
+            a.type = "text/javascript";
+            a.async = true;
+            a.id = "adtriba-js";
+            a.setAttribute("data-project-tracker-id", ptid);
+            a.src = "https://cdn.adtriba.com/v2/adtriba.js";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(a, s);
+
+            window.adtriba = window.adtriba || [];
+            window.adtriba.push(["pageview"]);
+        })("729f159f");
+    </script>
+    <!-- End AdTriba tag -->
+    
+</head>
+
+{% comment %}
+  Add the page template as a class for easy page or template specific styling.
+{% endcomment %}
+    <body id="{{ page_title | handle }}" class=" {% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} {{template | handleize}}" >
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NWLPSV"
+                          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        
+<div id="loading"></div>
+  <div class="wrapper-container">
+	{% include 'header' %}
+
+  <div class="quick-view"></div>
+  <div class="clearfix breadcrumb-wrap">
+    <div class="container-fluid">
+       <div class="row">
+        <div>
+        {% include 'breadcrumb' %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+    {% if template contains 'product' %}
+        <main class="main-content" role="main">
+    {% else %}
+        <main class="main-content container" role="main">
+    {% endif %}
+    {{ content_for_layout }}
+    </main>
+
+  {% include 'footer' %}
+
+
+  {% include 'footer_scripts' %}
+	{% include 'popup-newsletter' %}
+    <div id="back-top" style="display: none;"><a class="" href="#top"><i class="fa fa-long-arrow-up"></i></a></div>
+  </div>
+<!-- END wrapper-container-->
+  {% include 'canvas-menu' %}
+{%comment%}
+   {% if settings.enable_product_image_zoom %}
+    {{ 'jqueryzoom.js' | asset_url | script_tag }}
+  {% endif %}
+{%endcomment%}
+  {% if settings.display_recently_viewed_products %}
+  <!-- Begin Recently Viewed Products -->
+  {{ '//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js' | script_tag }}
+  {{ 'jquery.products.min.js' | asset_url | script_tag }}
+  {% if template contains 'product' %}
+  <script>
+  Shopify.Products.recordRecentlyViewed();
+  </script>
+  {% endif %}
+  <!-- End Recently Viewed Products -->
+  {% endif %}
+
+{% include 'sca-quick-view-template' %}
+
+
+
+<script>
+    mixpanel.people.increment("Site Visit");
+</script>
+      {% if customer %}
+      <script>
+          mixpanel.identify('{{customer.id}}');
+      </script>
+      {% endif %}
+      
+      <!-- CRITEO START-->
+          {% include 'criteo-tracking' %}
+      <!-- CRITEO END-->
+      
+      
+      {% if template contains 'product' %}
+      <script>
+          var CRL8_TRANSACTION = {
+              'currency': 'USD',
+              'items': [{
+                  'id': '{{product.id}}',
+                  'name': '{{product.title}}',
+                  'quantity': 1,
+                  'price': '{{ product.price | money_without_currency }}',
+                  'displayPrice': '{{ product.price | money_without_currency }}',
+                  'category': '{{ collection.title }}'
+              }]
+          };
+          // end data
+
+          // add PDP event
+          crl8('viewProduct', {
+              'productId': CRL8_TRANSACTION.items[0].id,
+              'productName': CRL8_TRANSACTION.items[0].name,
+              'price': CRL8_TRANSACTION.items[0].price,
+              'displayPrice': CRL8_TRANSACTION.items[0].displayPrice,
+              'quantity': CRL8_TRANSACTION.items[0].quantity,
+              'category': CRL8_TRANSACTION.items[0].category
+          });
+
+          // send to Curalate
+          crl8('send');
+          
+          $(document).ready(function(){
+              $("#product-add-to-cart").click(function(){
+                  crl8('addToCart', {
+                      'productId': CRL8_TRANSACTION.items[0].id,
+                      'productName': CRL8_TRANSACTION.items[0].name,
+                      'price': CRL8_TRANSACTION.items[0].price,
+                      'displayPrice': CRL8_TRANSACTION.items[0].displayPrice,
+                      'quantity': CRL8_TRANSACTION.items[0].quantity,
+                      'category': CRL8_TRANSACTION.items[0].category
+                  });
+                  crl8('send');
+              });
+          });
+      </script>
+      {% endif %}
+      
+
+
+      <!-- Listrak Analytics – Javascript Framework -->
+      <script type="text/javascript">
+          var biJsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+          (function (d, s, id, tid, vid) {
+              var js, ljs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+              js.src = biJsHost + "cdn.listrakbi.com/scripts/script.js?m=" + tid + "&v=" + vid;
+              ljs.parentNode.insertBefore(js, ljs);
+          })(document, 'script', 'ltkSDK', '5i0OK62LxIKL', '1');
+      </script>
+      
+
+      
+      <!-- Start Quantcast Tag -->
+      <script type="text/javascript">
+          var _qevents = _qevents || [];
+
+          (function() {
+              var elem = document.createElement('script');
+              elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+              elem.async = true;
+              elem.type = "text/javascript";
+              var scpt = document.getElementsByTagName('script')[0];
+              scpt.parentNode.insertBefore(elem, scpt);
+          })();
+
+          _qevents.push({qacct: "p-kh-c8E2KpvhqF"});
+
+      </script>
+      <noscript>
+          <img src="//pixel.quantserve.com/pixel/p-kh-c8E2KpvhqF.gif?labels=_fp.event.Default" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/>
+      </noscript>
+      <!-- End Quantcast tag -->
+      
+      <!-- PxKnowledge -->
+      {% if product.type %}
+          {% for collection in product.collections %}
+              {% assign collectionTitle = collection.title | handleize %}
+              {{collectionTitle}}
+              {% if collectionTitle contains "pet-bed" %}
+                  <script>
+                      (function(d,t,u,p,e,f){e=d.createElement(t);f=d.getElementsByTagName(t)[0];
+                                             e.async=1;e.src=u+'?'+p+'&'+Math.floor(Math.random()*999999);f.parentNode.insertBefore(e,f);
+                                            })(document,'script','//upx.provenpixel.com/ujs.php', 'upx=10697');
+                  </script>
+                  {% break %}
+              {% elsif collectionTitle contains "babies-kids" %}
+                  <script>
+                      (function(d,t,u,p,e,f){e=d.createElement(t);f=d.getElementsByTagName(t)[0];
+                                             e.async=1;e.src=u+'?'+p+'&'+Math.floor(Math.random()*999999);f.parentNode.insertBefore(e,f);
+                                            })(document,'script','//upx.provenpixel.com/ujs.php', 'upx=10696');
+                  </script>
+                  {% break %}
+              {% elsif collectionTitle contains "bedding" %}
+                  <script>
+                      (function(d,t,u,p,e,f){e=d.createElement(t);f=d.getElementsByTagName(t)[0];
+                                             e.async=1;e.src=u+'?'+p+'&'+Math.floor(Math.random()*999999);f.parentNode.insertBefore(e,f);
+                                            })(document,'script','//upx.provenpixel.com/ujs.php', 'upx=10695');
+                  </script>
+                  {% break %}
+              {% elsif collectionTitle contains "crystal-cove-yoga" %}
+                  <script>
+                      (function(d,t,u,p,e,f){e=d.createElement(t);f=d.getElementsByTagName(t)[0];
+                                             e.async=1;e.src=u+'?'+p+'&'+Math.floor(Math.random()*999999);f.parentNode.insertBefore(e,f);
+                                            })(document,'script','//upx.provenpixel.com/ujs.php', 'upx=10695');
+                  </script>
+                  {% break %}
+              {% elsif collectionTitle contains "our-mattresses" %}
+                  <script>
+                      (function(d,t,u,p,e,f){e=d.createElement(t);f=d.getElementsByTagName(t)[0];
+                                             e.async=1;e.src=u+'?'+p+'&'+Math.floor(Math.random()*999999);f.parentNode.insertBefore(e,f);
+                                            })(document,'script','//upx.provenpixel.com/ujs.php', 'upx=10694');
+                  </script>
+                  {% break %}
+              {% endif %}
+          {% endfor %}
+      {% endif %}
+      
+        {% if template == "index" %}
+          <script>
+              (function(d,t,u,p,e,f){e=d.createElement(t);f=d.getElementsByTagName(t)[0];
+                                     e.async=1;e.src=u+'?'+p+'&'+Math.floor(Math.random()*999999);f.parentNode.insertBefore(e,f);
+                                    })(document,'script','//upx.provenpixel.com/ujs.php', 'upx=10693');
+          </script>
+        {% endif %}
+      <!-- End PxKnowledge -->
+      
+      
+      <!-- Pebble -->
+      <script>
+          window._pp = window._pp || [];
+          _pp.siteId = 1436;
+          _pp.siteUId = "{{ customer.id }}";
+          _pp.email = "{{ customer.email }}";
+          (function() {
+              var ppjs = document.createElement('script');
+              ppjs.type = 'text/javascript';
+              ppjs.async = true;
+              ppjs.src = ('https:' == document.location.protocol ? 'https:' : 'http:') +
+                  '//cdn.pbbl.co/r/' + _pp.siteId + '.js';
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(ppjs, s);
+          })(); 
+      </script>
+      <!-- End Pebble -->

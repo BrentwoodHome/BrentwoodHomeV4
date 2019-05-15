@@ -1,0 +1,75 @@
+{% if settings.display_blog_home %}	
+<div class="main-blog">
+    {% if settings.blog_title != blank %}<h3>{{ settings.blog_title }}</h3></div>{% endif %}
+
+   <style>
+       #latest-blogs A{
+           /*text-decoration: underline;*/
+       }
+       #latest-blogs A:HOVER{
+           text-decoration: underline !important;
+       }
+</style>
+    <div class="box-content">
+      <div id="latest-blogs" class="owl-carousel owl-theme">
+
+        {% for article in blogs.news.articles limit:settings.blog_limit %}
+          
+        <div class="item">
+          <div class="blog-item">     
+            {% if article.image %}
+              <a href="{{ article.url }}" title="{{ article.title }}" style="display: block;margin-bottom: 20px;">
+                  {% assign imgName = article.image.src | remove: 'articles/' | split:'?' | first %}
+                  
+                  <img src="https://brentwood-home-blog.imgix.net/{{ imgName }}?ch=Width,DPR&w=480&dpr=1&fit=clip" alt="{{ article.title | escape }}">
+               </a>
+                {% endif %}
+                
+              <h4><a href="{{ article.url }}" title="{{ article.title }}" class="underline">{{ article.title | truncate: 40 }}</a></h4>
+            
+                <div class="short-des">
+                    {%comment%}{% if article.excerpt.size > 0 %}
+                        {{ article.excerpt }}
+                    {% else %}
+                        <p>{{ article.content | strip_html | truncatewords: 15 }}</p>
+                    {% endif %}{%endcomment%}
+
+                    <p>{{ article.content | strip_html | truncatewords: 15 }} <a href="{{ article.url }}" title="{{ article.title }}" class="underline"><strong>Continue Reading</strong></a></p>
+                </div>
+            
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+   <!--<p class="text-center"><a href="/blog" class="cta" title="Read more on our blog">Read more on our blog</a></p>-->
+    <p class="text-center"><a href="/blog" title="Read more on our blog" class="cta solid text-center">Read more on our blog</a></p>
+   </div>
+{% endif %}
+<script>
+    $(document).ready(function() {
+
+        $('#latest-blogs').owlCarousel({
+            loop:false,
+            margin:10,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1,
+                    //nav:true
+                },
+                600:{
+                    items:2,
+                    //nav:true
+                },
+                800:{
+                    items:{{settings.blog_limit}},
+                    //nav:true
+                }
+            },
+            nav : false
+        });
+        
+    })
+</script>

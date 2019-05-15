@@ -1,0 +1,95 @@
+
+<div class="product-meta col-lg-5 col-md-7 col-sm-7 col-xs-12 abtest-var1">
+    <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
+        {% assign bamboohandle = product.handle %}
+        {% if bamboohandle contains 'exitthis' %} {%comment%}bamboo-gel{%endcomment%}
+            <style>
+                A.amz{
+                    padding: 0;
+                    line-height: 66px;
+                    height: auto;
+                    font-size: 16px;
+                }
+                A.amz:focus{
+                    color: white;
+                }
+                .product-meta{
+                    background-color: white;
+                }
+                .selector-wrapper{
+                    display: none;
+                }
+            </style>
+            {% assign variantCount = product.variants | size %}
+            {% if product.available %}
+                {% if variantCount > 1 %}
+                    <select id="product-selectors" name="id" style="display:none;visibility: hidden;">
+                        {% for variant in product.variants %}
+                        <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                        {% endfor %}
+                    </select>
+                {% endif %}
+            {% endif %}
+        <div class="prices product col-lg-offset-5 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-4 col-md-5 col-sm-5 col-xs-4" style="background-color: white;">
+            <img src="{{ 'exclusiveAmz.png' | asset_url }}" alt="" style="max-width: 150px;">
+        </div>
+        <div class="add-to-cart col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                {% case bamboohandle %}
+                    {% when 'bamboo-gel-13' %}
+                    <!--<a href="https://www.amazon.com/s/ref=nb_sb_noss?url=srs%3D9877898011%26search-alias%3Dspecialty-aps&field-keywords=gel+memory+foam+mattress+13" target="_blank" class="btn amz ">BUY IT</a>-->
+                    <a href="https://www.amazon.com/Brentwood-Home-Bamboo-Mattress-13-Inch/dp/B00JJZ18PS/" target="_blank" class="btn amz">BUY IT</a>
+                    {% when 'bamboo-gel-11' %}
+                    <!--<a href="https://www.amazon.com/s/ref=nb_sb_noss?url=srs%3D9877898011%26search-alias%3Dspecialty-aps&field-keywords=bamboo+gel+memory+foam+mattress+11" target="_blank" class="btn amz ">BUY IT</a>-->
+                    <a href="https://www.amazon.com/Brentwood-Home-Bamboo-Mattress-11-Inch/dp/B00J0I8RQ2/" target="_blank" class="btn amz">BUY IT</a>
+                    {% when 'bamboo-gel-10' %}
+                    <!--<a href="https://www.amazon.com/s/ref=nb_sb_noss?url=srs%3D9877898011%26search-alias%3Dspecialty-aps&field-keywords=bamboo+gel+memory+foam+mattress+10+inch" target="_blank" class="btn amz ">BUY IT</a>-->
+                    <a href="https://www.amazon.com/Brentwood-Home-Bamboo-Mattress-10-Inch/dp/B00F7S6G44/" target="_blank" class="btn amz">BUY IT</a>
+                    {% when 'bamboo-gel-9' %}
+                    <!--<a href="https://www.amazon.com/s/ref=nb_sb_noss?url=srs%3D9877898011%26search-alias%3Dspecialty-aps&field-keywords=bamboo+gel+memory+foam+mattress+9" target="_blank" class="btn amz ">BUY IT</a>-->
+                    <a href="https://www.amazon.com/Brentwood-Home-Bamboo-Mattress-Memory/dp/B00J0HD786/" target="_blank" class="btn amz">BUY IT</a>
+                {% endcase %} 
+            </div>
+        {%else%}
+            <div class="model col-lg-4 col-md-3 col-sm-3 col-xs-6 product-shop">
+                <div class="select">
+                    {% assign variantCount = product.variants | size %}
+                    {% if product.available %}
+                        {% if variantCount > 1 %}
+                        <select id="product-selectors" name="id" style="display:none">
+                            {% for variant in product.variants %}
+                                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                            {% endfor %}
+                        </select>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="prices product col-lg-3 col-md-5 col-sm-4 col-xs-5">
+                {% if product.available %}
+                <div class="text-center">
+                    <!-- PRICE -->
+                    <div class="price">
+                        {% if product.compare_at_price > product.price %}
+                            <span class="compare-price">{{ product.compare_at_price_max | money_without_currency | remove: '.00' }}</span>
+                            <span class="price on-sale" itemprop="price">{{ product.price | money_without_currency | remove: '.00' }}</span>
+                        {% else %}
+                            <span class="price" itemprop="price">{{ product.price | money_without_currency | remove: '.00' }}</span>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="affirm">
+                    <span id="learn-more" style="visibility:hidden"></span>
+                </div>
+            </div>
+            <div class="add-to-cart col-lg-5 col-md-4 col-sm-5 col-xs-6">
+                {% if product.available %}
+                    <input type="submit" name="add" class="btn" id="product-add-to-cart" value="Add to Cart">
+                {% else %}
+                    <input type="submit" name="add" class="btn" id="product-add-to-cart" disabled value="Unavailable">
+                {% endif %}
+            </div>
+        {%endif%}
+        <input type="text" id="quantity" name="quantity" value="1" hidden="">
+    </form>
+</div>

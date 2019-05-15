@@ -1,0 +1,73 @@
+{% if settings.display_breadcrumb %}
+{% comment %}
+  Documentation - http://docs.shopify.com/support/your-website/navigation/creating-a-breadcrumb-navigation
+{% endcomment %}
+
+<script>
+    //window.variation1 = false;
+    //console.log("Optimizely = "+window.variation1);
+</script>
+
+
+{% if template == 'product.mattresses' %}
+    {% include 'product-add-to-cart' %}
+{% endif %}
+
+<div id="add2cartAB"></div>
+{% if template == 'product.abtest' %}
+    {% include 'product-add-to-cart-abtest' %}
+{% endif %}
+{% unless template == 'index' %}
+<div class="breadcrumb">
+  <a href="/" title="Back to the frontpage">Home</a>
+  {% if template contains 'product' %}
+  {% if collection %}
+  <span class="icon">/</span>
+  {% if collection.handle %}
+  {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+  {{ collection.title | link_to: url }}
+  {% endif %}
+  {% endif %}
+
+  <span class="icon">/</span>
+  <span class="current-tag">{{ product.title }}</span>
+
+  {% elsif template contains 'collection' and collection.handle %}
+
+  {% if current_tags %}
+  <span class="icon">/</span>
+  {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+  {{ collection.title | link_to: url }}
+  <span class="icon">/</span>
+  <span class="current-tag">{{ current_tags.first }}</span>
+    {% elsif template contains 'page' %}
+       {%comment%}
+           Fixes a bug when a page name contains the word 'collection' it would display a wrong name in the breadcrumbs
+            {{template}} | {{collection.handle}} | {{ page.template_suffix }}
+       {%endcomment%}
+        <span class="icon">/</span>
+        <span class="current-tag">{{ page.title }}</span>
+  {% else %}
+      <span class="icon">/</span>
+      <span class="current-tag">{{ collection.title }}</span>
+  {% endif %}
+
+  {% elsif template == 'article' %}
+
+  <span class="icon">/</span>
+  {{ blog.title | link_to: blog.url }}
+  <span class="icon">/</span>
+  <span class="current-tag">{{ article.title }}</span>
+
+  {% elsif template contains 'page' %}
+
+  <span class="icon">/</span>
+  <span class="current-tag">{{ page.title }}</span>
+
+  {% else %}
+  <span class="icon">/</span>
+  <span class="current-tag">{{ page_title }}</span>
+  {% endif %}
+</div>
+{% endunless %}
+{% endif %}

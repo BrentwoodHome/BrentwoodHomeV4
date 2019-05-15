@@ -1,0 +1,45 @@
+
+<div class="standardPages">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="text-center">Kapok</h1>
+            <img src="{{ 'raw-kapok.jpg' | asset_url }}" alt="Raw Kapok">
+        </div>
+        <div class="col-xs-12 col-md-8 col-md-offset-2 description">
+            <p class="quote">Our Kapok fill is a natural fiber harvested from Kapok trees in Southeast Asia. The fibers are incredibly soft and lightweight, similar to the luxurious feel of silk, making it the perfect fill for select Brentwood Home bedding.</p>
+        </div>
+
+    </div> 
+    <div class="row">
+        <!-- Left Column -->
+        <div id="where" >
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="col-left-block-material" style="">
+                    <p class="text-center"><img src="{{'material-pin.png'|asset_url}}" alt=""></p>
+                   <h2>Where we get it</h2>
+                   <h3>Southeast Asia</h3>
+                    <p class="text-left">The Kapok we use is sourced from trees found in Southeast Asia.</p>
+                    <p class="text-center"><img src="{{'material-map-southasia.png'|asset_url}}" alt="Southeast Asia"></p>
+                </div> 
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-lg-9 col-md-9 col-sm-9 right-pane">
+            <h2>The material</h2>
+            <p>Kapok is similar to cotton in that its fibers are found in seed pods rather than in plant stems or leaves, and it’s similar to silk in its impossibly soft feel. The fibers are lightweight, buoyant, and water-resistant, commonly used as a natural and biodegradable alternative to traditional polyester stuffing. </p>
+            <p><img src="{{'materials_kapok.jpg'|asset_url}}" alt="Kapok"></p>
+            
+            <h2>Why we use it</h2>
+            <p>We choose to use Kapok because it’s a natural material that’s healthy for you, your home, and the environment. It’s completely biodegradable and eliminates the need for polyester stuffings and fills in the home. Flowering Kapok trees are also an important source of nectar and pollen for regional honeybees.</p>
+            <p>From a practical standpoint, Kapok is about eight times lighter than cotton, making is cheaper to ship large quantities for a savings that we can pass onto our customers. It’s water resistant, repelling moisture and preventing mold and mildew. Kapok isn’t prone to clumping, and bounces back to its original shape after use and washing.</p>
+            
+        </div>
+    </div> 
+    <p class="text-center" style="margin: 40px 0;"><a href="/pages/materials" title="Back to materials" class="btn">Back to materials</a></p>
+</div>        
+<script>
+    mixpanel.track("Materials Page", {
+        "name": "{{ page_title | handle }}"
+    });
+</script>

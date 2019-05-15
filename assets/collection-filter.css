@@ -1,0 +1,209 @@
+/* /////////////////////////////////////////////////////////////////////
+//  COLLECTION FILTER HEADINGS
+/////////////////////////////////////////////////////////////////////*/
+#filter-sidebar{
+    padding: 0;
+}
+#filter-sidebar .title h3 {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+#filter-sidebar .title h3 span {
+    text-transform: none;
+    border: none;
+}
+
+.sidebar-block {
+    margin: 0;
+}
+
+.sidebar-custom ul {
+    margin-left: 0;
+}
+
+.sidebar-custom ul li {
+    list-style-type: none;
+}
+
+.sidebar-tag {
+    padding: 0;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////
+//  PRODUCT WRAPPER GRID
+/////////////////////////////////////////////////////////////////////*/
+
+.product-item {
+    margin-bottom: 20px;
+}
+
+.product-wrapper {
+    -webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.19);
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.19);
+    width: 100%;
+    display: block;
+    height: 440px;
+}
+#our-mattresses .product-wrapper{
+    height: 435px;
+}
+.product-wrapper .product-item .product-bottom .product-title {
+    text-align: center;
+}
+
+.product-wrapper .btn {
+    background-color: #454d5a;
+    margin-bottom: 10px;
+}
+.product-wrapper A.btn:HOVER{
+    background-color: white !important;
+    color: #454d5a !important;
+    border: 1px solid #454d5a !important;
+}
+.product-item .product-bottom .product-title {
+    text-align: center;
+}
+
+.product-bottom {
+    text-align: center!important;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.product-wrapper .feel-description,
+.product-wrapper .low-price {
+    font-size: 13px;
+    font-style: italic;
+}
+
+.product-wrapper p {
+    margin-bottom: 10px;
+}
+
+.product-wrapper .reviews {
+    font-size: 13px;
+    font-style: italic;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////
+//  YOTPO RATING
+/////////////////////////////////////////////////////////////////////*/
+.grid-item .yotpo .pull-left{
+    text-align: center;
+}
+/*.grid-item .yotpo.bottomLine .yotpo-bottomline .yotpo-icon-star{
+    font-size: 18px !important;
+    color: #454d5a;
+}*/
+.grid-item .yotpo.bottomLine .yotpo-bottomline .yotpo-icon-star, 
+.grid-item .yotpo.bottomLine .yotpo-bottomline .yotpo-icon-half-star, 
+.grid-item .yotpo.bottomLine .yotpo-bottomline .yotpo-icon-empty-star, 
+.grid-item .yotpo.bottomline .yotpo-bottomline .yotpo-icon-star, 
+.grid-item .yotpo.bottomline .yotpo-bottomline .yotpo-icon-half-star, 
+.grid-item .yotpo.bottomline .yotpo-bottomline .yotpo-icon-empty-star, 
+.grid-item .yotpo .yotpo-modal-bottom-line .yotpo-bottomline .yotpo-icon-star, 
+.grid-item .yotpo .yotpo-modal-bottom-line .yotpo-bottomline .yotpo-icon-half-star, 
+.grid-item .yotpo .yotpo-modal-bottom-line .yotpo-bottomline .yotpo-icon-empty-star{
+    font-size: 18px !important;
+    color: #454d5a;
+}
+
+.product-bottom .yotpo{
+    height: 25px;
+}
+
+/* /////////////////////////////////////////////////////////////////////
+//  AFFIRM FINANCING WIDGET STYLING
+/////////////////////////////////////////////////////////////////////*/
+
+div.affirm {
+    margin-top: 10px;
+    text-align: center;
+    float: none;
+}
+
+div.affirm a {
+    white-space: normal;
+    display: block;
+    font-size: 12px;
+    color: #999;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////
+//  MEDIA QUERIES - iPad Pro + iPad + iPhone 7plus 6plus + iPhone 5
+/////////////////////////////////////////////////////////////////////*/
+
+@media screen and (max-width: 1024px) {
+    .sidebar-block {
+        overflow: hidden;
+    }
+    .product-wrapper {
+        height: 480px;
+    }
+    #filter-sidebar .title h3 span{
+        line-height: 18px;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #our-mattresses .product-wrapper {
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 600px) {}
+
+@media screen and (max-width: 414px) {
+    .collection-list {
+        padding: 0 10px 0 10px;
+    }
+    .product-wrapper {
+        /*height: 480px;*/
+    }
+    #our-mattresses .product-wrapper{
+        /*height: 410px;*/
+    }
+    .product-wrapper .btn {
+        width: 100%;
+        font-size: 14px;
+    }
+    div.affirm a {
+        white-space: normal;
+        font-size: 13px;
+    }
+    .col-main .grid-item.product-item.col-xs-12{
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .product-wrapper {
+        /*height: 410px;*/
+    }
+    #filter-sidebar .title h3 span {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .title img {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .product-wrapper .btn {
+        width: 100%;
+        font-size: 9px;
+        padding: 0;
+    }
+}
+
+
