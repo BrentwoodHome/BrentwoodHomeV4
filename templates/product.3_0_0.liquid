@@ -38,46 +38,9 @@
                     }
                 </style>
                 <!-- FLEXSLIDER -->
-                {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
-                {% assign imgName = featured_image | remove: 'products/' %}
-                <div class="col-xs-12 col-md-8" id="product-image-main">
-                    <section class="slider" style="position: relative;">
-                       <!-- -->
-                        <div id="flexPlaceholder">
-                            <picture>
-                                <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=767&dpr=1&fit=clip">
-                                <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip">
-                                <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&q=50" alt="{{product.title}}" loading="eager">
-                            </picture>
-                        </div>
-                        <div class="flexslider">
-                            <ul class="slides">
-                                {% for image in product.images %}
-                                    {% assign videotag = image.alt | escape %}
-                                    {% assign imgName = image | remove: 'products/' | split:'?' | first %}
-                                        <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=150&h=150">   
-                                            {% if videotag contains 'vimeo' %}
-                                                <div class='embed-container '>
-                                                    <!--https://player.vimeo.com/video/###-->
-                                                    <iframe src="{{ image.alt }}?title=0&byline=0&portrait=0" width="640" height="360" id="video_1" frameborder="0"></iframe>
-                                                </div>
-                                            {% else %}
-                                                <picture>
-                                                    <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=767&dpr=1&fit=clip">
-                                                    <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip">
-                                                    {% if forloop.first == true %}
-                                                        <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="eager">
-                                                    {% else %}
-                                                        <img data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="lazy">
-                                                    {% endif %}
-                                                </picture>
-                                            {% endif %}
-                                        </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </section>
-                </div>
+                {% include 'product-flexslider' %}
+                   
+                   
                     {% assign multi_prd = true %}
                     {% if collection.products_count <= 1 %}
                         {% assign multi_prd = false %}

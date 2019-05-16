@@ -21,7 +21,7 @@
               <a href="{{ article.url }}" title="{{ article.title }}" style="display: block;margin-bottom: 20px;">
                   {% assign imgName = article.image.src | remove: 'articles/' | split:'?' | first %}
                   
-                  <img src="https://brentwood-home-blog.imgix.net/{{ imgName }}?ch=Width,DPR&w=480&dpr=1&fit=clip" alt="{{ article.title | escape }}">
+                  <img src="https://brentwood-home-blog.imgix.net/{{ imgName }}?ch=Width,DPR&w=480&dpr=1&fit=clip" alt="{{ article.title | escape }}" loading="lazy">
                </a>
                 {% endif %}
                 

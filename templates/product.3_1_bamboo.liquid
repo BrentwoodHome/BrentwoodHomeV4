@@ -27,38 +27,9 @@
                        ">
             <meta itemprop="itemCondition" content="http://schema.org/NewCondition"/>
             <div class="row">
-                {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
-
-                <!-- FLEXSLIDER -->
-                <div class="col-xs-12 col-md-8" id="product-image-main">
-                    <section class="slider">
-                        <div class="flexslider">
-                            <ul class="slides">
-                                {% for image in product.images %}
-                                {% assign videotag = image.alt | escape %}
-                                {% assign imgName = image | remove: 'products/' | split:'?' | first %}
-                                <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=150&h=150">
-                                    {% if videotag contains 'vimeo' %}
-                                    <div class="embed-container">
-                                        <iframe src="{{ image.alt }}?title=0&byline=0&portrait=0" width="640" height="360" id="video_1" frameborder="0"></iframe>
-                                    </div>
-                                    {% else %}
-                                    <picture>
-                                        <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024 1x,
-                                                                                   https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=40&dpr=2 2x,
-                                                                                   https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=20&dpr3 3x">
-                                        <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024 1x,
-                                                                                   https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=40&dpr=2 2x,
-                                                                                   https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3 3x">
-                                        <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024" alt="">
-                                    </picture>     
-                                    {% endif %}
-                                </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </section>
-                </div>
+                
+                {% include 'product-flexslider' %}
+                
                 {% assign multi_prd = true %}
                 {% if collection.products_count <= 1 %}
                                                    {% assign multi_prd = false %}
@@ -285,27 +256,27 @@
     <h2 class="text-center">Try the {{ product.title }} Risk-Free</h2>
     <div class="row">
         <div class="col-xs-4 col-sm-2">
-            <img src="https://brentwood-home-36.imgix.net/iconv2-1yearguarantee.svg" alt="1-year trial">
+            <img loading="lazy" data-src="https://brentwood-home-36.imgix.net/iconv2-1yearguarantee.svg" alt="1-year trial">
             <p>1-Year<br>Trial</p>
         </div>
         <div class="col-xs-4 col-sm-2">
-            <img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Free shipping and free return">
+            <img loading="lazy" data-src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Free shipping and free return">
             <p>Free Shipping<br>Free Return</p>
         </div>
         <div class="col-xs-4 col-sm-2">
-            <img src="https://brentwood-home.imgix.net/iconv2-madeincalifornia.svg" alt="Made in California">
+            <img loading="lazy" data-src="https://brentwood-home.imgix.net/iconv2-madeincalifornia.svg" alt="Made in California">
             <p>Made in<br>California</p>
         </div>
         <div class="col-xs-4 col-sm-2">
-            <img src="https://brentwood-home.imgix.net/iconv2-25yearwarranty.svg" alt="25-year warranty">
+            <img loading="lazy" data-src="https://brentwood-home.imgix.net/iconv2-25yearwarranty.svg" alt="25-year warranty">
             <p>25-year<br>Warranty</p>
         </div>
         <div class="col-xs-4 col-sm-2">
-            <img src="https://brentwood-home.imgix.net/iconv2-whiteglovedelivery.svg" alt="In home delivery available">
-            <p>In Home<br>Delivery*</p>
+            <img loading="lazy" data-src="https://brentwood-home.imgix.net/iconv2-whiteglovedelivery.svg" alt="In home delivery available">
+            <p>In Home<br>Delivery</p>
         </div>
         <div class="col-xs-4 col-sm-2">
-            <img src="https://brentwood-home.imgix.net/iconv2-0percent.svg" alt="0% financing available">
+            <img loading="lazy" data-src="https://brentwood-home.imgix.net/iconv2-0percent.svg" alt="0% financing available">
             <p>0% Financing<br>Available</p>
         </div>
     </div>
@@ -314,9 +285,9 @@
     <div class="row flex">
         <div class="col-xs-12 col-sm-6 text-center">
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_1104.jpg?rect=210,0,800,1152&w=480&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_1104.jpg?rect=210,0,800,1152&w=920">
-                <img src="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_1104.jpg?rect=210,0,800,1152&w=920" alt="Keeps you cool all night long"> 
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_1104.jpg?rect=210,0,800,1152&w=480&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_1104.jpg?rect=210,0,800,1152&w=920">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_1104.jpg?rect=210,0,800,1152&w=920" alt="Keeps you cool all night long"> 
             </picture>
         </div>
         <div class="col-xs-12 col-sm-6 flexV">
@@ -332,9 +303,9 @@
     <div class="row flex">
         <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center">
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bambooforest72.jpg?h=480&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bambooforest72.jpg?rect=2107,500,1414,2048&w=920">
-                <img src="https://s3-brentwoodhome.imgix.net/products/cypress/bambooforest72.jpg?rect=2107,500,1414,2048&w=920" alt="Bamboo forest">
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bambooforest72.jpg?h=480&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bambooforest72.jpg?rect=2107,500,1414,2048&w=920">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/bambooforest72.jpg?rect=2107,500,1414,2048&w=920" alt="Bamboo forest">
             </picture>
         </div>
         <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV">
@@ -350,44 +321,44 @@
     <h2 class="text-center margTB7050 main">The perfect combination of body contouring and cooling</h2>
     <div class="inside five text-center">
         <div class="matTip small bamboo wow fadeIn" data-wow-duration="1s" data-wow-delay="1s">
-            <img src="https://s3-brentwoodhome.imgix.net/products/cypress/bamboocover-round.png?w=80&h=80" alt="Bamboo Cover" class="rdthumb">
+            <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/bamboocover-round.png?w=80&h=80" alt="Bamboo Cover" class="rdthumb">
             <p><strong>Removable Bamboo Zipper Cover</strong><span>Made from eco-friendly bamboo wood cellulose, it’s durable, luxurious and removable for cleaning.</span><span class="mobile">Eco-friendly and washable.</span></p>
             <div class="arrow">
                 <div class="pointer"></div>
             </div>
         </div>
         <div class="matTip small wool wow fadeIn" data-wow-duration="1s" data-wow-delay="1.3s">
-            <img src="https://s3-brentwoodhome.imgix.net/products/cypress/wool2-round.png?w=80&h=80" alt="Wool" class="rdthumb">
+            <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/wool2-round.png?w=80&h=80" alt="Wool" class="rdthumb">
             <p><strong>Natural New Zealand Wool</strong><span>Wool lining wicks moisture, regulates temperature, and prevents odor.</span><span class="mobile">Wicks moisture and prevents odor.</span></p>
             <div class="arrow">
                 <div class="pointer"></div>
             </div>
         </div>
         <div class="matTip small airflux wow fadeIn" data-wow-duration="1s" data-wow-delay="1.8s">
-            <img src="https://s3-brentwoodhome.imgix.net/products/cypress/airflux-round.png?w=80&h=80" alt="Airflow Foam" class="rdthumb">
+            <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/airflux-round.png?w=80&h=80" alt="Airflow Foam" class="rdthumb">
             <p><strong>Ventilated Airflow Zone</strong><span>Allows your mattress to breathe so that you stay cool and comfortable throughout the night.</span><span class="mobile">Allows mattress breathability to stay cool.</span></p>
             <div class="arrow">
                 <div class="pointer"></div>
             </div>
         </div>
         <div class="matTip small gelfoam wow fadeIn" data-wow-duration="1s" data-wow-delay="2.3s">
-            <img src="https://s3-brentwoodhome.imgix.net/products/cypress/gelmf-round.png?w=80&h=80" alt="Gel Memory Foam" class="rdthumb">
+            <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/gelmf-round.png?w=80&h=80" alt="Gel Memory Foam" class="rdthumb">
             <p><strong>Gel Memory Foam</strong><span>Conforms to your body for greater pressure relief and eliminates motion transfer while keeping you cool.</span></p>
             <div class="arrow">
                 <div class="pointer"></div>
             </div>
         </div>
         <div class="matTip small base wow fadeIn" data-wow-duration="1s" data-wow-delay="2.5s">
-            <img src="https://s3-brentwoodhome.imgix.net/products/cypress/basefoam-round.png?w=80&h=80" alt="Base Foam" class="rdthumb">
+            <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/basefoam-round.png?w=80&h=80" alt="Base Foam" class="rdthumb">
             <p><strong> Support Base Foam</strong><span>A solid support base absorbs your weight to dampen motion transfer and prevent noise.</span></p>
             <div class="arrow">
                 <div class="pointer"></div>
             </div>
         </div>
         <picture class="wow fadeIn" data-wow-duration="1s">
-            <source media="(max-width: 480px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bamboo_13in_internal.jpg?w=480&ch=Width,DPR">
-            <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bamboo_13in_internal.jpg">
-            <img src="https://s3-brentwoodhome.imgix.net/products/cypress/bamboo_13in_internal.jpg" alt="Bamboo 13 mattress">
+            <source media="(max-width: 480px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bamboo_13in_internal.jpg?w=480&ch=Width,DPR">
+            <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bamboo_13in_internal.jpg">
+            <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/bamboo_13in_internal.jpg" alt="Bamboo 13 mattress">
         </picture>
     </div>
 </div>
@@ -401,7 +372,7 @@
                     <h3>Cypress Bamboo 11"</h3>
                     <h4></h4>
                     <div class="thumb2">
-                        <img src="https://s3-brentwoodhome.imgix.net/products/cypress/bamboo11overview.jpg?w=375" alt="Cypress Bamboo 11 Medium-Firm" class="rdrectthumb">
+                        <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/bamboo11overview.jpg?w=375" alt="Cypress Bamboo 11 Medium-Firm" class="rdrectthumb">
                     </div>
                 </div>
                 <div class="content bamboo">
@@ -419,7 +390,7 @@
                     <h3>Cypress Bamboo 13"</h3>
                     <h4></h4>
                     <div class="thumb2">
-                        <img src="https://s3-brentwoodhome.imgix.net/products/cypress/bamboo13overview.jpg?w=375" alt="Cypress Bamboo 13 Medium" class="rdrectthumb">
+                        <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/bamboo13overview.jpg?w=375" alt="Cypress Bamboo 13 Medium" class="rdrectthumb">
                     </div>
                 </div>
                 <div class="content bamboo">
@@ -439,23 +410,23 @@
     <h2 class="text-center margTB7050 main">Features everything you’re looking for in a high-quality mattress</h2>
     <div class="row warranties margTB30">
         <div class="col-xs-6 col-sm-2 col-sm-offset-1">
-            <img src="https://brentwood-home.imgix.net/iconv2-gelmemoryfoam.svg" alt="Gel Memory Foam">
+            <img loading="lazy" data-src="https://brentwood-home.imgix.net/iconv2-gelmemoryfoam.svg" alt="Gel Memory Foam">
             <p>Gel<br> Memory Foam</p>
         </div>
         <div class="col-xs-6 col-sm-2">
-            <img src="https://brentwood-home.imgix.net/iconv2-motionisolation.svg" alt="Motion Isolation">
+            <img loading="lazy" data-src="https://brentwood-home.imgix.net/iconv2-motionisolation.svg" alt="Motion Isolation">
             <p>Motion<br>Isolation</p>
         </div>
         <div class="col-xs-6 col-sm-2">
-            <img src="https://brentwood-home.imgix.net/iconv2-certipurus.svg" alt="CertiPUR-US&reg; Foam">
+            <img loading="lazy" data-src="https://brentwood-home.imgix.net/iconv2-certipurus.svg" alt="CertiPUR-US&reg; Foam">
             <p>CertiPUR-US&reg;<br>Foam</p>
         </div>
         <div class="col-xs-6 col-sm-2">
-            <img src="https://brentwood-home.imgix.net/iconv2-pressurerelieving.svg" alt="Pressure Relieving">
+            <img loading="lazy" data-src="https://brentwood-home.imgix.net/iconv2-pressurerelieving.svg" alt="Pressure Relieving">
             <p>Pressure<br>Relieving</p>
         </div>
         <div class="col-xs-12 col-sm-2">
-            <img src="https://brentwood-home.imgix.net/iconv2-ecofriendly.svg" alt="Eco-friendly">
+            <img loading="lazy" data-src="https://brentwood-home.imgix.net/iconv2-ecofriendly.svg" alt="Eco-friendly">
             <p>Eco-friendly</p>
         </div>
     </div>
@@ -463,9 +434,9 @@
 
 <div class="container section text-center">
     <picture>
-        <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0817.jpg?rect=0,598,7195,4003&h=480&ch=Width,DPR&q=55">
-        <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0817.jpg?rect=0,598,7195,4003&w=1140">
-        <img src="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0817.jpg?rect=0,598,7195,4003&w=1140" alt="Laying on the Bamboo Mattress">
+        <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0817.jpg?rect=0,598,7195,4003&h=480&ch=Width,DPR&q=55">
+        <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0817.jpg?rect=0,598,7195,4003&w=1140">
+        <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0817.jpg?rect=0,598,7195,4003&w=1140" alt="Laying on the Bamboo Mattress">
     </picture>
 </div>
 
@@ -473,16 +444,16 @@
     <div class="row">
         <div class="col-xs-6">
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0565.jpg?h=480&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0565.jpg?w=555">
-                <img src="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0565.jpg?w=555" alt="Reading on Bamboo Mattress">
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0565.jpg?h=480&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0565.jpg?w=555">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0565.jpg?w=555" alt="Reading on Bamboo Mattress">
             </picture>
         </div>
         <div class="col-xs-6">
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0982.jpg?h=480&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0982.jpg?w=555">
-                <img src="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0982.jpg?w=555" alt="Seating on Bamboo Mattress">
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0982.jpg?h=480&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0982.jpg?w=555">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0982.jpg?w=555" alt="Seating on Bamboo Mattress">
             </picture>
         </div>
     </div>
@@ -490,9 +461,9 @@
 
 <div class="container section text-center">
     <picture>
-        <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0600.jpg?h=480&ch=Width,DPR&q=55">
-        <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0600.jpg?w=1140">
-        <img src="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0600.jpg?w=1140" alt="Front view Bamboo Mattress">
+        <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0600.jpg?h=480&ch=Width,DPR&q=55">
+        <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0600.jpg?w=1140">
+        <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0600.jpg?w=1140" alt="Front view Bamboo Mattress">
     </picture>
 </div>
 
@@ -505,9 +476,9 @@
                 <img src="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_Bare_2.jpg?rect=323,194,806,1229&w=555" alt="">
             </picture>-->
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/factory2.jpg?w=480&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/factory2.jpg?&w=555&q=55">
-                <img src="https://s3-brentwoodhome.imgix.net/factory2.jpg?w=555&q=55" alt="Handcrafted in Southern California">
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/factory2.jpg?w=480&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/factory2.jpg?&w=555&q=55">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/factory2.jpg?w=555&q=55" alt="Handcrafted in Southern California">
             </picture>
         </div>
         <div class="col-xs-12 col-sm-6 flexV">
@@ -523,9 +494,9 @@
     <div class="row flex">
         <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center">
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_Bare_2.jpg?rect=368,0,998,998&w=480&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_Bare_2.jpg?rect=323,194,806,1229&w=555">
-                <img src="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_Bare_2.jpg?rect=323,194,806,1229&w=555" alt="Eco-friendly, non-toxic materials">
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_Bare_2.jpg?rect=368,0,998,998&w=480&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_Bare_2.jpg?rect=323,194,806,1229&w=555">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_Bare_2.jpg?rect=323,194,806,1229&w=555" alt="Eco-friendly, non-toxic materials">
             </picture>
         </div>
         <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV">
@@ -542,9 +513,9 @@
     <div class="row flex">
         <div class="col-xs-12 col-sm-6 text-center">
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0501.jpg?rect=1200,440,3500,4310&w=480&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0501.jpg?rect=2608,0,2693,4061&w=555">
-                <img src="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0501.jpg?rect=2608,0,2693,4061&w=555" alt="Greenguard Gold Certified Mattress">
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0501.jpg?rect=1200,440,3500,4310&w=480&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0501.jpg?rect=2608,0,2693,4061&w=555">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/Bamboo_0501.jpg?rect=2608,0,2693,4061&w=555" alt="Greenguard Gold Certified Mattress">
             </picture>
         </div>
         <div class="col-xs-12 col-sm-6 flexV">
@@ -561,9 +532,9 @@
     <div class="row flex">
         <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center">
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bambootopmodels.jpg?w=480&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bambootopmodels.jpg?rect=880,0,1625,2066&w=555">
-                <img src="https://s3-brentwoodhome.imgix.net/products/cypress/bambootopmodels.jpg?rect=880,0,1625,2066&w=555" alt="Start Your 1-Year Sleep Trial">
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bambootopmodels.jpg?w=480&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bambootopmodels.jpg?rect=880,0,1625,2066&w=555">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/bambootopmodels.jpg?rect=880,0,1625,2066&w=555" alt="Start Your 1-Year Sleep Trial">
             </picture>
         </div>
         <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV">
@@ -685,9 +656,9 @@
     <div class="row flex">
         <div class="col-xs-12 col-sm-6 text-center">
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,998,998&w=480&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,701,998&w=555">
-                <img src="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,701,998&w=555" alt="Supporting the National Forest Foundation">
+                <source media="(max-width: 767px)" dara-srcset="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,998,998&w=480&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,701,998&w=555">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,701,998&w=555" alt="Supporting the National Forest Foundation">
             </picture>
         </div>
         <div class="col-xs-12 col-sm-6 flexV">
