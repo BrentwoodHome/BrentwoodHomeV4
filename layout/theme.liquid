@@ -6,6 +6,7 @@
 <!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
 {%endcomment%}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -167,24 +168,7 @@
     {% if product.metafields.inventory.ShappifyHidden == "true" %} <meta name="robots" content="noindex"> {% endif %}
     {%endcomment%}
     
-   
-    <!-- AdTriba -->
-    <script type="text/javascript">
-        (function(ptid){
-            var a = document.createElement("script");
-            a.type = "text/javascript";
-            a.async = true;
-            a.id = "adtriba-js";
-            a.setAttribute("data-project-tracker-id", ptid);
-            a.src = "https://cdn.adtriba.com/v2/adtriba.js";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(a, s);
 
-            window.adtriba = window.adtriba || [];
-            window.adtriba.push(["pageview"]);
-        })("729f159f");
-    </script>
-    <!-- End AdTriba tag -->
     <script>console.log("{{template}}");</script>
   <script type='text/javascript'>var jiltStorefrontParams = {{ shop.metafields.jilt_storefront | json }}; {% if customer %}jiltStorefrontParams.customerID = {{ customer.id }};{% endif %}</script>
 

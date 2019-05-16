@@ -13,7 +13,6 @@
             ">
             <meta itemprop="itemCondition" content="http://schema.org/NewCondition"/>
             <div class="row">
-                {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
                 <style>
                     .flexslider .slides > li{
                         background-color: #f9f9f9;
@@ -39,18 +38,22 @@
                     }
                 </style>
                 <!-- FLEXSLIDER -->
+                {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+                {% assign imgName = featured_image | remove: 'products/' %}
                 <div class="col-xs-12 col-md-8" id="product-image-main">
-                    <section class="slider">
+                    <section class="slider" style="position: relative;">
+                       <!-- -->
+                        <div id="flexPlaceholder">
+                            <picture>
+                                <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=767&dpr=1&fit=clip">
+                                <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip">
+                                <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&q=50" alt="{{product.title}}" loading="eager">
+                            </picture>
+                        </div>
                         <div class="flexslider">
                             <ul class="slides">
                                 {% for image in product.images %}
                                     {% assign videotag = image.alt | escape %}
-                                       {%comment%}
-                                        <li data-thumb="{{ image.src | product_img_url: 'small' }}">
-                                            <img src="{{ image.src | product_img_url: '1024x1024' }}"
-                                                 alt="{{ image.alt | escape }}">
-                                        </li>
-                                        {%endcomment%}
                                     {% assign imgName = image | remove: 'products/' | split:'?' | first %}
                                         <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=150&h=150">   
                                             {% if videotag contains 'vimeo' %}
@@ -60,9 +63,13 @@
                                                 </div>
                                             {% else %}
                                                 <picture>
-                                                    <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=767&dpr=1&fit=clip">
-                                                    <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip">
-                                                    <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip" alt="{{ product.title | escape }} View {{ forloop.index }}">
+                                                    <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=767&dpr=1&fit=clip">
+                                                    <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip">
+                                                    {% if forloop.first == true %}
+                                                        <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="eager">
+                                                    {% else %}
+                                                        <img data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="lazy">
+                                                    {% endif %}
                                                 </picture>
                                             {% endif %}
                                         </li>
@@ -320,50 +327,31 @@
             <h2 class="text-center">Try the {{ product.title }} Risk-Free</h2>
             <div class="row">
                 <div class="col-xs-4 col-sm-2">
-                    <img src="https://brentwood-home-36.imgix.net/iconv2-1yearguarantee.svg" alt="1-Year Trial">
+                    <img loading="lazy" data-src="https://brentwood-home-36.imgix.net/iconv2-1yearguarantee.svg" alt="1-Year Trial">
                     <p>1-Year<br>Trial</p>
                 </div>
                 <div class="col-xs-4 col-sm-2">
-                    <img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Free Shipping Free Return">
+                    <img loading="lazy" data-src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Free Shipping Free Return">
                     <p>Free Shipping<br>Free Return</p>
                 </div>
                 <div class="col-xs-4 col-sm-2">
-                    <img src="https://brentwood-home.imgix.net/iconv2-madeincalifornia.svg" alt="Made in California">
+                    <img loading="lazy" data-src="https://brentwood-home.imgix.net/iconv2-madeincalifornia.svg" alt="Made in California">
                     <p>Made in<br>California</p>
                 </div>
                 <div class="col-xs-4 col-sm-2">
-                    <img src="https://brentwood-home.imgix.net/iconv2-25yearwarranty.svg" alt="25-year Warranty">
+                    <img loading="lazy" data-src="https://brentwood-home.imgix.net/iconv2-25yearwarranty.svg" alt="25-year Warranty">
                     <p>25-year<br>Warranty</p>
                 </div>
                 <div class="col-xs-4 col-sm-2">
-                    <img src="https://brentwood-home.imgix.net/iconv2-whiteglovedelivery.svg" alt="In Home Delivery*">
+                    <img loading="lazy" data-src="https://brentwood-home.imgix.net/iconv2-whiteglovedelivery.svg" alt="In Home Delivery*">
                     <p>In Home<br>Delivery*</p>
                 </div>
                 <div class="col-xs-4 col-sm-2">
-                    <img src="https://brentwood-home.imgix.net/iconv2-0percent.svg" alt="0% Financing Available">
+                    <img loading="lazy" data-src="https://brentwood-home.imgix.net/iconv2-0percent.svg" alt="0% Financing Available">
                     <p>0% Financing<br>Available</p>
                 </div>
             </div>
         </div>
-        
-        {%comment%}
-        <section class="overlays overlays-4 container only-mobile">
-            <div class="row">
-                <div @click.prevent="showImg" id="mtrImg" class="col-xs-12 col-sm-6 col-sm-push-6">
-                    <img src="{{ 'cedar-materials-wool.png' | asset_url }}" alt="" class="img-responsive img">
-                    <img src="{{ 'overlays-2-s1.svg' | asset_url }}" alt="" class="img-responsive svg">
-                    <img src="{{ 'cedar-materials-latex.png' | asset_url }}" alt="" class="img-responsive img">
-                    <img src="{{ 'overlays-2-s2.svg' | asset_url }}" alt="" class="img-responsive svg">
-                    <img src="{{ 'cedar-materials-flax.png' | asset_url }}" alt="" class="img-responsive img">
-                    <img src="{{ 'overlays-2-s4.svg' | asset_url }}" alt="" class="img-responsive svg">
-                    <img src="{{ 'cedar-materials-springs.png' | asset_url }}" alt="" class="img-responsive img">
-                    <img src="{{ 'overlays-2-s3.svg' | asset_url }}" alt="" class="img-responsive svg">
-                    <img src="{{ 'cedar-materials-cocohusk.png' | asset_url }}" alt="" class="img-responsive img">
-                    <img src="{{ 'overlays-2-s2.svg' | asset_url }}" alt="" class="img-responsive svg">
-                </div>
-            </div>
-        </section>
-        {%endcomment%}
         
         {% if metaf.feature1_title %}
             <section class="overlays overlays-4 container">
@@ -377,7 +365,7 @@
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         {%comment%}<img src="{{ metaf.feature1_img | asset_url }}" alt="{{ product.title | escape }} {{metaf.feature1_title | escape }}" class="feature-img img-responsive img">{%endcomment%}
-                        <img src="https://brentwood-home.imgix.net/{{ metaf.feature1_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature1_title | escape }}" class="feature-img img-responsive img">
+                        <img loading="lazy" data-src="https://brentwood-home.imgix.net/{{ metaf.feature1_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature1_title | escape }}" class="feature-img img-responsive img">
                     </div>
                 </div>
             </section>
@@ -394,7 +382,7 @@
                     </div>
                     <div class="col-xs-12 col-sm-6 col-sm-pull-6">
                         {%comment%}<img src="{{ metaf.feature2_img | asset_url }}" alt="{{ product.title | escape }} {{metaf.feature2_title | escape }}" class="feature-img img-responsive img">{%endcomment%}
-                        <img src="https://brentwood-home.imgix.net/{{ metaf.feature2_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature2_title | escape }}" class="feature-img img-responsive img">
+                        <img loading="lazy" data-src="https://brentwood-home.imgix.net/{{ metaf.feature2_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature2_title | escape }}" class="feature-img img-responsive img">
                     </div>
                 </div>
             </section>
@@ -430,7 +418,7 @@
                     </div>
                     <div class="col-xs-12 col-sm-6 col-sm-pull-6">
                         {%comment%}<img src="{{ metaf.feature4_img | asset_url }}" alt="{{ product.title | escape }} {{metaf.feature4_title | escape }}" class="feature-img img-responsive img">{%endcomment%}
-                        <img src="{{ metaf.feature4_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature4_title | escape }}" class="feature-img img-responsive img">
+                        <img loading="lazy" data-src="{{ metaf.feature4_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature4_title | escape }}" class="feature-img img-responsive img">
                     </div>
                 </div>
             </section>
@@ -447,7 +435,7 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
-                        <img src="{{ metaf.feature5_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature5_title | escape }}" class="feature-img img-responsive img">
+                        <img loading="lazy" data-src="{{ metaf.feature5_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature5_title | escape }}" class="feature-img img-responsive img">
                     </div>
                 </div>
             </section>
@@ -464,7 +452,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-sm-pull-6">
-                    <img src="{{ metaf.feature6_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature6_title | escape }}" class="feature-img img-responsive img">
+                    <img loading="lazy" data-src="{{ metaf.feature6_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature6_title | escape }}" class="feature-img img-responsive img">
                 </div>
             </div>
         </section>
@@ -472,7 +460,7 @@
         
                 
         <section class="overlays overlays-7 only-desktop">
-            <img class="col-xs-12" src="https://brentwood-home.imgix.net/{{ metaf.ecommimage }}?w=1280" alt="{{ product.title | escape }} {{metaf.feature4_title | escape }}">
+            <img class="col-xs-12" loading="lazy" data-src="https://brentwood-home.imgix.net/{{ metaf.ecommimage }}?w=1280" alt="{{ product.title | escape }} {{metaf.feature4_title | escape }}">
             <p>
                 {{ metaf.ecommimage_tagline }}
             </p>
@@ -484,9 +472,9 @@
                     <p class="text-center">
                         {% case metaf.comfort %}
                             {% when 'Medium Plush' %}
-                                <img src="{{ 'icon-mediumplushsupport.svg' | asset_url }}" alt="Medium Plush">
+                                <img loading="lazy" data-src="{{ 'icon-mediumplushsupport.svg' | asset_url }}" alt="Medium Plush">
                             {% when 'Medium' %}
-                                <img src="{{ 'icon-mediumsupport.svg' | asset_url }}" alt="Medium">
+                                <img loading="lazy" data-src="{{ 'icon-mediumsupport.svg' | asset_url }}" alt="Medium">
                             {% else %}
                             
                         {% endcase %}
@@ -587,7 +575,7 @@
         <section class="overlays overlays-5 container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
-                    <img src="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?w=715" alt="">
+                    <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?w=715" alt="">
                 </div>
                 <div class="col-xs-12 col-sm-6">
                     <h2 class="overlays-title">Donate a Bed, Change A Life!</h2>
