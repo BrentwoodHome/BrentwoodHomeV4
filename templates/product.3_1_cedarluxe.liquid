@@ -27,38 +27,8 @@
                        ">
             <meta itemprop="itemCondition" content="http://schema.org/NewCondition"/>
             <div class="row">
-                {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
-
-                <!-- FLEXSLIDER -->
-                <div class="col-xs-12 col-md-8" id="product-image-main">
-                    <section class="slider">
-                        <div class="flexslider">
-                            <ul class="slides">
-                                {% for image in product.images %}
-                                {% assign videotag = image.alt | escape %}
-                                {% assign imgName = image | remove: 'products/' | split:'?' | first %}
-                                <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=150&h=150">
-                                    {% if videotag contains 'vimeo' %}
-                                    <div class="embed-container">
-                                        <iframe src="{{ image.alt }}?title=0&byline=0&portrait=0" width="640" height="360" id="video_1" frameborder="0"></iframe>
-                                    </div>
-                                    {% else %}
-                                    <picture>
-                                        <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fm=webp&auto=format 1x,
-https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fm=webp&auto=format&fit=max&q=40&dpr=2 2x,
-                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fm=webp&auto=format&fit=max&q=20&dpr3 3x">
-                                        <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fm=webp&auto=format 1x,
-                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&&fm=webp&auto=formatfit=max&q=40&dpr=2 2x,
-https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3 3x">
-                                        <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fm=webp&auto=format" alt="">
-                                    </picture>     
-                                    {% endif %}
-                                </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </section>
-                </div>
+                {% include 'product-flexslider' %}
+                
                 {% assign multi_prd = true %}
                 {% if collection.products_count <= 1 %}
                                                    {% assign multi_prd = false %}
@@ -356,13 +326,13 @@ https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3
             </picture>-->
             
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-104.jpg?w=767 1x,
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-104.jpg?w=767 1x,
                                                            https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-104.jpg?w=767&fit=max&q=40&dpr=2 2x,
                                                            https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-104.jpg?w=767&fit=max&q=20&dpr3 3x">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-104.jpg?w=555 1x,
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-104.jpg?w=555 1x,
                                                            https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-104.jpg?w=555&fit=max&q=40&dpr=2 2x,
                                                            https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-104.jpg?w=555&fit=max&q=20&dpr3 3x">
-                <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-104.jpg?w=555" alt="">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-104.jpg?w=555" alt="">
             </picture>                 
         </div>
         <div class="col-xs-12 col-sm-6 flexV wow fadeInRight">
@@ -384,9 +354,9 @@ https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3
                 <img src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-topview.jpg?rect=781,0,1388,1920&w=555" alt="">
             </picture>-->
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/3zonelatexcut.jpg?rect=201,62,816,816&w=768&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/3zonelatexcut.jpg?rect=423,557,555,805&w=555">
-                <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/3zonelatexcut.jpg?rect=423,557,555,805&w=555" alt="">
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/3zonelatexcut.jpg?rect=201,62,816,816&w=768&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/3zonelatexcut.jpg?rect=423,557,555,805&w=555">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/3zonelatexcut.jpg?rect=423,557,555,805&w=555" alt="">
             </picture>
         </div>
         <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV wow fadeInLeft">
@@ -403,9 +373,9 @@ https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3
     <div class="row flex">
         <div class="col-xs-12 col-sm-6 text-center wow fadeInLeft">
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-topview.jpg?rect=781,0,1920,1920&w=768&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-topview.jpg?rect=781,0,1388,1920&w=555">
-                <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-topview.jpg?rect=781,0,1388,1920&w=555" alt="">
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-topview.jpg?rect=781,0,1920,1920&w=768&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-topview.jpg?rect=781,0,1388,1920&w=555">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-topview.jpg?rect=781,0,1388,1920&w=555" alt="">
             </picture>
         </div>
         <div class="col-xs-12 col-sm-6 flexV wow fadeInRight">
@@ -421,44 +391,44 @@ https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3
     <h2 class="text-center margTB7050">Handmade with<br>Eco-Conscious Materials</h2>
     <div class="inside five text-center">
         <div class="matTip small cedarluxe latex wow fadeIn" data-wow-duration="1s" data-wow-delay="1s">
-            <img src="https://s3-brentwoodhome.imgix.net/latex-closeup.png?w=80&h=80" alt="100% COLS Certified Organoc Latex" class="rdthumb">
+            <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/latex-closeup.png?w=80&h=80" alt="100% COLS Certified Organoc Latex" class="rdthumb">
             <p><strong>100% Organic Latex</strong><span>This 100% GOLS organic certified latex is free of synthetic latex or blends and gives the topper medium feel.</span><span class="mobile">100% GOLS organic certified latex.</span></p>
             <div class="arrow">
                 <div class="pointer"></div>
             </div>
         </div>
         <div class="matTip small cedarluxe wool wow fadeIn" data-wow-duration="1s" data-wow-delay="1.3s">
-            <img src="https://s3-brentwoodhome.imgix.net/products/cypress/wool2-round.png?w=80&h=80" alt="Wool" class="rdthumb">
+            <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/wool2-round.png?w=80&h=80" alt="Wool" class="rdthumb">
             <p><strong>New Zealand Joma Wool</strong><span>Untreated 100% New Zealand Joma wool wicks away moisture, allows for air circulation, and regulates temperature.</span><span class="mobile">Wicks away moisture and prevents odor.</span></p>
             <div class="arrow">
                 <div class="pointer"></div>
             </div>
         </div>
         <div class="matTip small cedarluxe threezonelatex wow fadeIn" data-wow-duration="1s" data-wow-delay="1.8s">
-            <img src="https://s3-brentwoodhome.imgix.net/3zonelatex-round2.png?w=80&h=80" alt="3-zone latex" class="rdthumb">
+            <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/3zonelatex-round2.png?w=80&h=80" alt="3-zone latex" class="rdthumb">
             <p><strong>Zoned Latex</strong><span>100% GOLS organic certified latex, computer designed and cut into 3 targeted zones.</span><span class="mobile">Precision cut for maximum support.</span></p>
             <div class="arrow">
                 <div class="pointer"></div>
             </div>
         </div>
         <div class="matTip small cedarluxe wow springs" data-wow-duration="1s" data-wow-delay="2.3s">
-            <img src="https://s3-brentwoodhome.imgix.net/rd-spring-closeup.png?w=80&h=80" alt="5-Zone spring core" class="rdthumb">
+            <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/rd-spring-closeup.png?w=80&h=80" alt="5-Zone spring core" class="rdthumb">
             <p><strong>5-Zone Support Core</strong><span>Up to 1,414 zoned support coils to relieve pressure points and a reinforced perimeter that supports you all the way to the edge.</span><span class="mobile">Reinforced all around</span></p>
             <div class="arrow">
                 <div class="pointer"></div>
             </div>
         </div>
         <div class="matTip small cedarluxe alpaca wow fadeIn" data-wow-duration="1s" data-wow-delay="2.5s">
-            <img src="https://s3-brentwoodhome.imgix.net/alpacawool-round.png?w=80&h=80" alt="Alpaca Wool" class="rdthumb">
+            <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/alpacawool-round.png?w=80&h=80" alt="Alpaca Wool" class="rdthumb">
             <p><strong>Alpaca Wool</strong><span>A lustrous and silky natural fiber that is not only soft and luxurious but also naturally hypoallergenic and flame resistant.</span><span class="mobile">Naturally hypoallergenic and flame resistant.</span></p>
             <div class="arrow">
                 <div class="pointer"></div>
             </div>
         </div>
         <picture class="wow fadeIn" data-wow-duration="1s">
-            <source media="(max-width: 480px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_internals.jpg?w=480&ch=Width,DPR">
-            <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_internals.jpg?w=1170">
-            <img src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_internals.jpg?w=1170" alt="Cedar Luxe Mattress">
+            <source media="(max-width: 480px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_internals.jpg?w=480&ch=Width,DPR">
+            <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_internals.jpg?w=1170">
+            <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_internals.jpg?w=1170" alt="Cedar Luxe Mattress">
         </picture>
     </div>
 </div>
@@ -477,39 +447,39 @@ https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3
     <h2 class="text-center margTB7050">Handmade with<br>Eco-Conscious Materials</h2>
     <h3 class="text-center features">Mattress Structure</h3>
     <picture class="wow fadeIn" data-wow-duration="1s">
-        <source media="(max-width: 480px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_internals.jpg?w=480&ch=Width,DPR">
-        <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_internals.jpg?w=1170">
-        <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_internals.jpg?w=1170" alt="Cedar Luxe Mattress">
+        <source media="(max-width: 480px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_internals.jpg?w=480&ch=Width,DPR">
+        <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_internals.jpg?w=1170">
+        <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_internals.jpg?w=1170" alt="Cedar Luxe Mattress">
     </picture>
     <h3 class="text-center features">Materials</h3>
     <div id="materials" class=" owl-carousel owl-theme">
         <div class="item text-center">
-            <p class="text-center" style="margin-top: 10px;"><img src="https://s3-brentwoodhome.imgix.net/latex-closeup.png?w=160&h=160" alt="100% COLS Certified Organoc Latex" class="rdthumb"></p>
+            <p class="text-center" style="margin-top: 10px;"><img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/latex-closeup.png?w=160&h=160" alt="100% COLS Certified Organoc Latex" class="rdthumb"></p>
             <h3 class="text-center features">100% GOLS Organic Certified latex</h3>
             <p>This 100% GOLS organic certified latex is free of synthetic latex or blends and gives the topper medium feel.</p>
         </div>
         <div class="item text-center">
-            <p class="text-center" style="margin-top: 10px;"><img src="https://s3-brentwoodhome.imgix.net/products/cypress/wool2-round.png?w=160&h=160" alt="Wool" class="rdthumb"></p>
+            <p class="text-center" style="margin-top: 10px;"><img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/wool2-round.png?w=160&h=160" alt="Wool" class="rdthumb"></p>
             <h3 class="text-center features">New Zealand Joma Wool</h3>
             <p>Untreated 100% New Zealand Joma wool wicks away moisture, allows for air circulation, and regulates temperature.</p>
         </div>
         <div class="item text-center">
-            <p class="text-center" style="margin-top: 10px;"><img src="https://s3-brentwoodhome.imgix.net/alpacawool-round.png?w=160&h=160" alt="Alpaca Wool" class="rdthumb"></p>
+            <p class="text-center" style="margin-top: 10px;"><img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/alpacawool-round.png?w=160&h=160" alt="Alpaca Wool" class="rdthumb"></p>
             <h3 class="text-center features">Alpaca Wool</h3>
             <p>A lustrous and silky natural fiber that is not only soft and luxurious but also naturally hypoallergenic and flame resistant.</p>
         </div>
         <div class="item text-center">
-            <p class="text-center" style="margin-top: 10px;"><img src="https://s3-brentwoodhome.imgix.net/3zonelatex-round2.png?w=160&h=160" alt="3-zone latex" class="rdthumb"></p>
+            <p class="text-center" style="margin-top: 10px;"><img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/3zonelatex-round2.png?w=160&h=160" alt="3-zone latex" class="rdthumb"></p>
             <h3 class="text-center features">Zoned GOLS Certified Latex</h3>
             <p>Computer designed and cut into 3 targeted zones to allow for greater heat dissipation and precise comfort.</p>
         </div>
         <div class="item text-center">
-            <p class="text-center" style="margin-top: 10px;"><img src="https://s3-brentwoodhome.imgix.net/rd-spring-closeup.png?w=160&h=160" alt="5-Zone spring core" class="rdthumb"></p>
+            <p class="text-center" style="margin-top: 10px;"><img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/rd-spring-closeup.png?w=160&h=160" alt="5-Zone spring core" class="rdthumb"></p>
             <h3 class="text-center features">5-Zone Support Core</h3>
             <p>Up to 1,414 zoned support coils to relieve pressure points and a reinforced perimeter that supports you all the way to the edge.</p>
         </div>
         <div class="item text-center">
-            <p class="text-center" style="margin-top: 10px;"><img src="https://s3-brentwoodhome.imgix.net/rd-coconut-closeup.png?w=160&h=160" alt="Cocnut Husk" class="rdthumb"></p>
+            <p class="text-center" style="margin-top: 10px;"><img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/rd-coconut-closeup.png?w=160&h=160" alt="Cocnut Husk" class="rdthumb"></p>
             <h3 class="text-center features">Coconut Husk</h3>
             <p>An eco-friendly and sustainable layer coconut husk is bonded with GOLS® certified natural latex by hand-tufting and without the use of glue.</p>
         </div>
@@ -565,19 +535,19 @@ https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3
     <h2 class="text-center margTB7050">It's all in the details</h2>
     <div id="details" class=" owl-carousel owl-theme">
         <div class="item text-center">
-            <p class="text-center"><img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_tuftingdetail.jpg?w=480" alt=""></p>
+            <p class="text-center"><img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_tuftingdetail.jpg?w=480" alt="Wool Tufting"></p>
             <h3 class="text-center features">Wool Tufting</h3>
             <p class="hidden-xs">We button-tuft the Cedar Natural Luxe by hand not only because it adds a nice luxurious touch but it is also functional — it keeps the different layers together without the use of chemical adhesives between the comfort layers.
             </p>
         </div>
         <div class="item text-center">
-            <p class="text-center"><img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_strapsdetail.jpg?w=480" alt=""></p>
+            <p class="text-center"><img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_strapsdetail.jpg?w=480" alt="Coconut Buttons"></p>
             <h3 class="text-center features">Coconut Buttons</h3>
             <p class="hidden-xs">The buttons on our Cedar Natural Luxe are cut from imported coconut husks and finished by hand. They’re sourced from a small Veteran-owned button shop in Brooklyn, New York, that has been in continuous operation since 1939.
             </p>
         </div>
         <div class="item text-center">
-            <p class="text-center"><img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_removetopperdetail.jpg?w=480" alt=""></p>
+            <p class="text-center"><img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_removetopperdetail.jpg?w=480" alt="Hand-Stitched Handles"></p>
             <h3 class="text-center features">Hand-Stitched Handles</h3>
             <p class="hidden-xs">We outfitted this mattress with eight hand-stitched and reinforced handles for easy moving. These handles are also designed to attach your Euro-designed topper to the mattress and hold it firmly in place.
             </p>
@@ -640,9 +610,9 @@ https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3
 
 <div class="container section text-center">
     <picture>
-        <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00008.jpg?rect=240,0,1834,1834&h=480&ch=Width,DPR&q=55">
-        <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00008.jpg?w=1140">
-        <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00008.jpg?w=1140" alt="">
+        <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00008.jpg?rect=240,0,1834,1834&h=480&ch=Width,DPR&q=55">
+        <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00008.jpg?w=1140">
+        <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00008.jpg?w=1140" alt="">
     </picture>
 </div>
 
@@ -650,16 +620,16 @@ https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3
     <div class="row">
         <div class="col-xs-6">
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00000.jpg?rect=240,0,1834,1834&h=480&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00000.jpg?w=760&rect=500,0,1900,1900">
-                <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00000.jpg?w=760&rect=500,0,1900,1900" alt="">
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00000.jpg?rect=240,0,1834,1834&h=480&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00000.jpg?w=760&rect=500,0,1900,1900">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00000.jpg?w=760&rect=500,0,1900,1900" alt="">
             </picture>
         </div>
         <div class="col-xs-6">
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00001.jpg?w=480&rect=0,179,2880,2880&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00001.jpg?w=760&rect=0,179,2880,2880">
-                <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00001.jpg?w=760&rect=0,179,2880,2880" alt="">
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00001.jpg?w=480&rect=0,179,2880,2880&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00001.jpg?w=760&rect=0,179,2880,2880">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00001.jpg?w=760&rect=0,179,2880,2880" alt="">
             </picture>
         </div>
     </div>
@@ -667,9 +637,9 @@ https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3
 
 <div class="container section text-center">
     <picture>
-        <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00002.jpg?rect=240,0,1834,1834&h=480&ch=Width,DPR&q=55">
-        <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00002.jpg?w=1140">
-        <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00002.jpg?w=1140" alt="">
+        <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00002.jpg?rect=240,0,1834,1834&h=480&ch=Width,DPR&q=55">
+        <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00002.jpg?w=1140">
+        <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe_book_00002.jpg?w=1140" alt="">
     </picture>
 </div>
 
@@ -691,17 +661,17 @@ https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3
     <div class="row">
         <div class="col-xs-12 col-sm-6 text-center">
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/materialsource1.jpg?&w=768&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/materialsource1.jpg?w=620">
-                <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/materialsource1.jpg?&w=620" alt="">
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/materialsource1.jpg?&w=768&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/materialsource1.jpg?w=620">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/materialsource1.jpg?&w=620" alt="">
             </picture>
 
         </div>
         <div class="col-xs-12 col-sm-6 text-center">
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-latex3.jpg?rect=746,350,1388,1388&w=768&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-latex3.jpg?rect=840,0,1679,1920&w=620">
-                <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-latex3.jpg?rect=746,0,1388,1920&w=620" alt="">
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-latex3.jpg?rect=746,350,1388,1388&w=768&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-latex3.jpg?rect=840,0,1679,1920&w=620">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-latex3.jpg?rect=746,0,1388,1920&w=620" alt="">
             </picture>
 
         </div>
@@ -714,9 +684,9 @@ https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3
     <div class="row flex">
         <div class="col-xs-12 col-sm-6 text-center wow fadeInLeft">
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/factory2.jpg?w=480&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/factory2.jpg?w=555&q=55">
-                <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/factory2.jpg?w=555&q=55" alt="Handcrafted in Southern California">
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/factory2.jpg?w=480&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/factory2.jpg?w=555&q=55">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/factory2.jpg?w=555&q=55" alt="Handcrafted in Southern California">
             </picture>
         </div>
         <div class="col-xs-12 col-sm-6 flexV wow fadeInRight">
@@ -733,9 +703,9 @@ https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3
     <div class="row flex">
         <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center wow fadeInRight">
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-greengaurd.jpg?rect=796,235,1218,1686&w=480&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-greengaurd.jpg?rect=796,235,1218,1686&w=555">
-                <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-greengaurd.jpg?rect=796,235,1218,1686&w=555" alt="Greenguard Gold Certified Non-Toxic Mattress">
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-greengaurd.jpg?rect=796,235,1218,1686&w=480&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-greengaurd.jpg?rect=796,235,1218,1686&w=555">
+                <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-greengaurd.jpg?rect=796,235,1218,1686&w=555&q=10&blur=500" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-greengaurd.jpg?rect=796,235,1218,1686&w=555" alt="Greenguard Gold Certified Non-Toxic Mattress">
             </picture>
         </div>
         <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV wow fadeInLeft">
@@ -754,9 +724,9 @@ https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3
     <div class="row flex">
         <div class="col-xs-12 col-sm-6 text-center wow fadeInLeft">
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=480&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=555&ch=Width,DPR&q=55">
-                <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=555&ch=Width,DPR&q=55" alt="Start Your 1-Year Sleep Trial">
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=480&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=555&ch=Width,DPR&q=55">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=555&ch=Width,DPR&q=55" alt="Start Your 1-Year Sleep Trial">
             </picture>
         </div>
         <div class="col-xs-12 col-sm-6 flexV wow fadeInRight">
@@ -841,9 +811,9 @@ https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3
     <div class="row flex">
         <div class="col-xs-12 col-sm-6 text-center wow fadeInLeft">
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,998,998&w=480&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,701,998&w=555&q=60">
-                <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,701,998&w=555&q=60" alt="Supporting the National Forest Foundation">
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,998,998&w=480&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,701,998&w=555&q=60">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,701,998&w=555&q=60" alt="Supporting the National Forest Foundation">
             </picture>
         </div>
         <div class="col-xs-12 col-sm-6 flexV wow fadeInRight">
@@ -860,9 +830,9 @@ https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3
     <div class="row flex">
         <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center wow fadeInRight">
             <picture>
-                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=650,0,3056,2734&w=480&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=932,266,1500,2731&w=555">
-                <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=932,266,1500,2731&w=555" alt="Relief Bed">
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=650,0,3056,2734&w=480&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=932,266,1500,2731&w=555">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=932,266,1500,2731&w=555" alt="Relief Bed">
             </picture>
         </div>
         <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV wow fadeInLeft">

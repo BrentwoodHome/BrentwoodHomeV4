@@ -55,9 +55,16 @@
                   <a href="{{ item.url }}" title="{{ item.title }}" class="ctaStd solid">SEE IT</a>
               </span>
           {% else %}
-              <span itemprop="price">
-                  <a href="{{ item.url }}" title="{{ item.title }}" class="ctaStd solid">from {{ item.price | money }}</a>
-              </span>
+
+              {% if item.available == false %}
+                    <span itemprop="price">
+                          <a href="{{ item.url }}" title="{{ item.title }}" class="ctaStd solid">SOLD OUT</a>
+                  </span>
+              {% else %}
+                  <span itemprop="price">
+                      <a href="{{ item.url }}" title="{{ item.title }}" class="ctaStd solid">from {{ item.price | money }}</a>
+                  </span>
+              {% endif %}
           {% endif %}
       </h6>
     </div>
