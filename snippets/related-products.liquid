@@ -22,8 +22,10 @@
        {% assign current_product_found = true %}
     {% else %}
        {% unless current_product_found == false and forloop.last %}
+    {% unless product.available == false %}
        	{% include 'related-product-item' %}
        {% endunless %}
+    {% endunless %}
     {% endif %}
   {% endfor %}
   </div>

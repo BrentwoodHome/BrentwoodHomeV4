@@ -35,28 +35,8 @@
             </style>
             
             <!-- FLEXSLIDER -->
-            <div class="col-xs-12 col-md-7" id="product-image-main">
-                <section class="slider">
-                    <div class="flexslider">
-                        <ul class="slides">
-                            {% for image in product.images %}
-                                {% assign videotag = image.alt | escape %}
-                                {% assign imgName = image | remove: 'products/' | split:'?' | first %}
-                                <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=100&dpr=1&fit=clip" class="slide">
-                                    {% if videotag contains 'vimeo' %}
-                                        <div class='embed-container '>
-                                            <!--https://player.vimeo.com/video/###-->
-                                            <iframe src="{{ image.alt }}?title=0&byline=0&portrait=0" width="640" height="360" id="video_1" frameborder="0"></iframe>
-                                        </div>
-                                    {% else %}
-                                        <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=960&dpr=1&fit=clip" alt="{{ image.alt | escape }}">
-                                    {% endif %}
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </section>
-            </div>
+            {% include 'product-flexslider' %}
+            
             {%comment%}
             to remove the pull-left for single products
             {%endcomment%}
@@ -64,7 +44,7 @@
             {% if collection.products_count <= 1 %}
                                                {% assign multi_prd = false %}
                                                {% endif %}
-                                               <div class="col-xs-12 col-md-5 product-shop">
+        <div class="col-xs-12 col-md-4 product-shop">
             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                 <header class="product-title {% if collection.previous_product or collection.next_product and settings.display_prev_next_product and collection %}has-btn{% endif %}">
                     <h1 {% if settings.display_prev_next_product and collection and multi_prd%}class="pull-left"{%endif%}>{{ product.title }}</h1>
@@ -388,7 +368,7 @@
             <div class="row flexVCenter" style="background-color: #4a4a4a;">
                 <div class="col-xs-12 col-md-6" style="background-color: #fff;padding-right:0px;padding-bottom:0;">
                     
-                    <img src="https://brentwood-home-36.imgix.net/{{product.metafields.bhsite.outsideimg }}?w=1024" alt="{{product.title}}">
+                    <img loading="lazy" data-src="https://brentwood-home-36.imgix.net/{{product.metafields.bhsite.outsideimg }}?w=1024" src="https://brentwood-home-36.imgix.net/{{product.metafields.bhsite.outsideimg }}?w=1024&blur=500&q=10" alt="{{product.title}}">
                 </div>
                 <div class="col-xs-12 col-md-6" style="padding-left: 0px;padding-bottom:0;">
                     <div class="" id="description-outside">
@@ -400,7 +380,7 @@
         {% if product.metafields.bhsite.inside %}
         <div class="row flexVCenter" style="background-color: #9b9b9b;">
             <div class="col-xs-12 col-md-6 col-md-push-6" style="background-color: #fff;padding-left:0px;padding-top:0;">
-                <img src="https://brentwood-home-36.imgix.net/{{product.metafields.bhsite.insideimg }}?w=1024" class="" alt="{{product.title}}">
+                <img loading="lazy" data-src="https://brentwood-home-36.imgix.net/{{product.metafields.bhsite.insideimg }}?w=1024" src="https://brentwood-home-36.imgix.net/{{product.metafields.bhsite.insideimg }}?w=1024&blur=500&q=10" class="" alt="{{product.title}}">
             </div>
             <div class="col-xs-12 col-md-6 col-md-pull-6" style="padding-right:0px;">
                 <div id="description-inside">
@@ -412,7 +392,7 @@
         {% if product.metafields.bhsite.feature3 %}
         <div class="row flexVCenter" style="margin-top: 20px; background-color: #4a4a4a;">
             <div class="col-xs-12 col-md-6" style="background-color: #fff;padding-top:0;">
-                <img src="{{product.metafields.bhsite.feature3b | asset_url}}" alt="{{product.title}}">
+                <img loading="lazy" data-src="{{product.metafields.bhsite.feature3b | asset_url}}" alt="{{product.title}}">
             </div>
             <div class="col-xs-12 col-md-6">
                 <div class="" id="description-outside">
@@ -424,7 +404,7 @@
         {% if product.tags contains "yoga" %}
         <div class="row flexVCenter" style="background-color: #4a4a4a;">
             <div class="col-xs-12 col-md-6" style="background-color: #fff;padding-right:0px;padding-bottom:0;">
-                <img src="https://s3-brentwoodhome.imgix.net/ccyoga/yogagirl-trio.jpg?rect=305,0,3972,3972&w=1024" alt="{{product.title}} Vegan Certified">
+                <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/ccyoga/yogagirl-trio.jpg?rect=305,0,3972,3972&w=1024" src="https://s3-brentwoodhome.imgix.net/ccyoga/yogagirl-trio.jpg?rect=305,0,3972,3972&w=1024&blur=500&q=10" alt="{{product.title}} Vegan Certified">
             </div>
             <div class="col-xs-12 col-md-6" style="padding-left: 0px;padding-bottom:0;">
                 <div class="" id="description-outside">
@@ -446,9 +426,9 @@
         <div class="row flex">
             <div class="col-xs-12 col-sm-6">
                 <picture>
-                    <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/caleyalyssa3.jpg?w=480&ch=Width,DPR&q=55">
-                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/caleyalyssa3.jpg?w=920">
-                    <img src="https://s3-brentwoodhome.imgix.net/caleyalyssa3.jpg?w=920" alt="">
+                    <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/caleyalyssa3.jpg?w=480&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/caleyalyssa3.jpg?w=920">
+                    <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/caleyalyssa3.jpg?w=920" src="https://s3-brentwoodhome.imgix.net/caleyalyssa3.jpg?w=920&blur=500&q=10" alt="">
                 </picture>
             </div>
             <div class="col-xs-12 col-sm-6 flexV">
@@ -468,9 +448,9 @@
         <div class="row flex">
             <div class="col-xs-12 col-sm-6 text-center">
                 <picture>
-                    <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/naturel-ul.jpg?rect=796,235,1218,1686&w=480&ch=Width,DPR&q=55">
-                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/naturel-ul.jpg?rect=796,235,1218,1686&w=555">
-                    <img src="https://s3-brentwoodhome.imgix.net/products/naturel-ul.jpg?w=555" alt="Greenguard Gold Certified">
+                    <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/naturel-ul.jpg?rect=796,235,1218,1686&w=480&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/naturel-ul.jpg?rect=796,235,1218,1686&w=555">
+                    <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/naturel-ul.jpg?w=555" alt="Greenguard Gold Certified">
                 </picture>
             </div>
             <div class="col-xs-12 col-sm-6 flexV">

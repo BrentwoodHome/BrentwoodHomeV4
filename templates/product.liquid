@@ -6,22 +6,7 @@
         <meta itemprop="itemCondition" content="http://schema.org/NewCondition" />
 
         <div class="row">
-            {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
-            <!-- FLEXSLIDER -->
-            <div class="col-xs-12 col-md-7" id="product-image-main">
-                <section class="slider">
-                    <div class="flexslider">
-                        <ul class="slides">
-                            {% for image in product.images %}
-                            <li data-thumb="{{ image.src | product_img_url: 'small' }}">
-                                <img src="{{ image.src | product_img_url: '1024x1024' }}" alt="{{ image.alt | escape }}">
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-
-                </section>
-            </div>
+            {% include 'product-flexslider' %}
             {%comment%}
             to remove the pull-left for single products
             {%endcomment%}
@@ -29,7 +14,7 @@
             {% if collection.products_count <= 1 %}
                 {% assign multi_prd = false %}
             {% endif %}
-            <div class="col-xs-12 col-md-5 product-shop">
+            <div class="col-xs-12 col-md-4 product-shop">
               <div>
                   <header class="product-title {% if collection.previous_product or collection.next_product and settings.display_prev_next_product and collection %}has-btn{% endif %}">
                       <h1 {% if settings.display_prev_next_product and collection and multi_prd %}class="pull-left"{%endif%} itemprop="name">{{ product.title }}</h1>

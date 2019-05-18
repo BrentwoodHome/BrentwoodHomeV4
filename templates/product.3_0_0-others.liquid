@@ -10,7 +10,6 @@
                        ">
             <meta itemprop="itemCondition" content="http://schema.org/NewCondition"/>
             <div class="row">
-                {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
                 <style>
                     .flexslider .slides > li{
                         background-color: #f9f9f9;
@@ -36,31 +35,8 @@
                     }
                 </style>
                 <!-- FLEXSLIDER -->
-                <div class="col-xs-12 col-md-8" id="product-image-main">
-                    <section class="slider">
-                        <div class="flexslider">
-                            <ul class="slides">
-                                {% for image in product.images %}
-                                {% assign videotag = image.alt | escape %}
-                                {% assign imgName = image | remove: 'products/' | split:'?' | first %}
-                                <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=150&h=150">
-                                    {% if videotag contains 'vimeo' %}
-                                    <div class="embed-container">
-                                        <iframe src="{{ image.alt }}?title=0&byline=0&portrait=0" width="640" height="360" id="video_1" frameborder="0"></iframe>
-                                    </div>
-                                    {% else %}
-                                    <picture>
-                                        <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=767&dpr=1&fit=clip">
-                                        <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip">
-                                        <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip" alt="">
-                                    </picture>
-                                    {% endif %}
-                                </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </section>
-                </div>
+                {% include 'product-flexslider' %}
+                
                 {% assign multi_prd = true %}
                 {% if collection.products_count <= 1 %}
                                                    {% assign multi_prd = false %}
@@ -341,7 +317,7 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6">
-                <img src="https://brentwood-home-36.imgix.net/{{ metaf.feature1_img }}" alt="{{metaf.feature1_title | escape }}" class="feature-img img-responsive img">
+                <img loading="lazy" data-src="https://brentwood-home-36.imgix.net/{{ metaf.feature1_img }}" src="https://brentwood-home-36.imgix.net/{{ metaf.feature1_img }}?blur=500&q=10" alt="{{metaf.feature1_title | escape }}" class="feature-img img-responsive img">
             </div>
         </div>
     </section>
@@ -357,7 +333,7 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-sm-pull-6">
-                <img src="https://brentwood-home-36.imgix.net/{{ metaf.feature2_img }}" alt="{{metaf.feature2_title | escape }}" class="feature-img img-responsive img">
+                <img loading="lazy" data-src="https://brentwood-home-36.imgix.net/{{ metaf.feature2_img }}" src="https://brentwood-home-36.imgix.net/{{ metaf.feature2_img }}?blur=500&q=10" alt="{{metaf.feature2_title | escape }}" class="feature-img img-responsive img">
             </div>
         </div>
     </section>
@@ -383,7 +359,7 @@
                         </video>
                     </div>
                 {% else %}
-                    <img src="https://brentwood-home-36.imgix.net/{{ metaf.feature3_img }}" alt="{{metaf.feature3_title | escape }}" class="feature-img img-responsive img">
+                <img loading="lazy" data-src="https://brentwood-home-36.imgix.net/{{ metaf.feature3_img }}" src="https://brentwood-home-36.imgix.net/{{ metaf.feature3_img }}?blur=500&q=10" alt="{{metaf.feature3_title | escape }}" class="feature-img img-responsive img">
                 {% endif %}
             </div>
         </div>
@@ -401,7 +377,7 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-sm-pull-6">
-                <img src="https://brentwood-home-36.imgix.net/{{ metaf.feature4_img }}" alt="{{ product.title | escape }} {{metaf.feature4_title | escape }}" class="feature-img img-responsive img">
+                <img loading="lazy" data-src="https://brentwood-home-36.imgix.net/{{ metaf.feature4_img }}" src="https://brentwood-home-36.imgix.net/{{ metaf.feature4_img }}?blur=500&q=10" alt="{{metaf.feature4_title | escape }}" class="feature-img img-responsive img">
             </div>
         </div>
     </section>
@@ -418,7 +394,7 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6">
-                <img src="https://brentwood-home-36.imgix.net/{{ metaf.feature5_img }}" alt="{{ product.title | escape }} {{metaf.feature5_title | escape }}" class="feature-img img-responsive img">
+                <img loading="lazy" data-src="https://brentwood-home-36.imgix.net/{{ metaf.feature5_img }}" src="https://brentwood-home-36.imgix.net/{{ metaf.feature5_img }}?blur=500&q=10" alt="{{metaf.feature5_title | escape }}" class="feature-img img-responsive img">
             </div>
         </div>
     </section>
