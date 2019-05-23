@@ -1,4 +1,7 @@
 {% assign metaf = product.metafields.c_f %}
+
+
+
 <div id="followMeBar" class="stickybuy-invisible">
     <p class=""><span style="font-size: 20px;color: white;line-height: 50px;">{{ product.title | escape }} </span><a href="#buy" class="sscroll lp-cta" title="">BUY</a></p>
 </div>
@@ -45,7 +48,7 @@
                     {% if collection.products_count <= 1 %}
                         {% assign multi_prd = false %}
                     {% endif %}
-                    <div class="col-xs-12 col-md-4 product-shop">
+                    <div class="col-xs-12 col-md-5 col-lg-4 product-shop">
                         <div>
                             {% if settings.display_prev_next_product and collection and multi_prd %}
                             <div class="product-step">
@@ -92,7 +95,7 @@
 
                             {% include 'nowtime' %}
                             <p class="short-description">{{ metaf.shortdesc }}</p>
-                            {% include 'shippingtime' %}
+                            <!--{% include 'shippingtime' %}-->
 
                             <div class="mob-dark">
                                 {% if settings.display_product_reviews %}
@@ -192,7 +195,7 @@
                                                 float: right;
                                                 width: 49%;
                                                 text-align: center;
-                                                padding: 0 38px;
+                                                padding: 0 8px;
                                             }
                                             DIV.affirm{
                                                 font-size: 12px;
@@ -245,7 +248,7 @@
                                
                                
                                 <button type="submit" name="add" class="cta2" style="width: 100%;" id="product-add-to-cart">Add to Cart</button>
-                                <p id="add2cart_shipping"><img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Ships free in 3-5 days">Ships free in 3-5 days</p>
+                                <p id="add2cart_shipping"><img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Ships free in 3-7 days">Ships free in 3-7 days</p>
                                 
                                 
 {% endunless %}

@@ -36,7 +36,8 @@
                 {% if collection.products_count <= 1 %}
                                                    {% assign multi_prd = false %}
                                                    {% endif %}
-                                                   <div class="col-xs-12 col-md-4 product-shop">
+            <div class="col-xs-12 col-md-5 col-lg-4 product-shop">
+
                 <div>
                     {% if settings.display_prev_next_product and collection and multi_prd %}
                     <div class="product-step">
@@ -178,7 +179,7 @@
                                         float: right;
                                         width: 49%;
                                         text-align: center;
-                                        padding: 0 38px;
+                                        padding: 0 8px;
                                     }
                                     DIV.affirm{
                                         font-size: 12px;
@@ -245,7 +246,7 @@
                         {% assign current_variant = product.selected_or_first_available_variant %}
                         </form>
                     <button type="button" class="cta2" style="width: 100%;" id="product-add-to-cart">Add to Cart</button>
-                    {% include 'shippingtime' %}
+                    <!--{% include 'shippingtime' %}-->
                     <p id="add2cart_shipping"><img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Ships free in {{ shipsfree }}">Ships free in {{ shipsfree }}</p>
                 </div>
             </div>

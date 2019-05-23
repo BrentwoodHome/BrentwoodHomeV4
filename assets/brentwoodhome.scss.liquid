@@ -4428,7 +4428,7 @@ DIV.landing{
     SECTION{
         margin-top: 75px;
         margin-bottom: 75px;
-        P.promo{
+        P.promo A{
             text-transform: uppercase;
             color: #fff;
             font-weight: 400;
@@ -4625,6 +4625,7 @@ div.header-tool{
 @media (min-width: 767px) and (max-width: 991px){
     div.header-tool{
         margin-right: 90px;
+        margin-top: 12px;
         span#extole_zone_global_header{
             width: 70px;
             top: 16px;
@@ -4899,9 +4900,17 @@ DIV#financing-modal{
 @media (min-width: 767px) {
     #header-content .site-nav li A[href="/pages/sale"]{
         color: #a1242f;
+        SPAN{
+            color: white;
+            background-color: #a1242f;
+            padding: 10px;
+            border-radius: 6px;
+            color: white;
+        }
     }
     #header-content .is-ticky .site-nav >li >a[href="/pages/sale"]:after, #header-content .is-ticky .site-nav >li >a[href="/pages/sale"]:before, body:not(.template-index) #header-content .site-nav >li >a[href="/pages/sale"]:after, body:not(.template-index) #header-content .site-nav >li >a[href="/pages/sale"]:before{
         background-color: #a1242f;
+        background-color: transparent;
     }
 }
 /* Extra small devices (phones, less than 768px) */

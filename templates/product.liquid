@@ -14,7 +14,8 @@
             {% if collection.products_count <= 1 %}
                 {% assign multi_prd = false %}
             {% endif %}
-            <div class="col-xs-12 col-md-4 product-shop">
+                                               <div class="col-xs-12 col-md-5 col-lg-4 product-shop">
+
               <div>
                   <header class="product-title {% if collection.previous_product or collection.next_product and settings.display_prev_next_product and collection %}has-btn{% endif %}">
                       <h1 {% if settings.display_prev_next_product and collection and multi_prd %}class="pull-left"{%endif%} itemprop="name">{{ product.title }}</h1>

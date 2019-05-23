@@ -1,7 +1,7 @@
 <!-- FLEXSLIDER -->
 {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
 {% assign imgName = featured_image | remove: 'products/' %}
-<div class="col-xs-12 col-md-8" id="product-image-main">
+<div class="col-xs-12 col-md-7 col-lg-8" id="product-image-main">
     <section class="slider" style="position: relative;">
         <!-- -->
         <div id="flexPlaceholder">
@@ -24,16 +24,16 @@
                     </div>
                     {% else %}
                     <picture>
-                        <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024 1x,
+                        <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024 1x,
                                                                    https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=40&dpr=2 2x,
                                                                    https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=20&dpr3 3x">
-                        <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024 1x,
+                        <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024 1x,
                                                                    https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=40&dpr=2 2x,
                                                                    https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3 3x">
                         {% if forloop.first == true %}
                         <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="eager">
                         {% else %}
-                        <img data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="lazy">
+                        <img data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip" src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&blur=500&q=10" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="lazy">
                         {% endif %}
                     </picture>
                     {% endif %}
