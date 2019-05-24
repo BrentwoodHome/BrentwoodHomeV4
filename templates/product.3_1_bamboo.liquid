@@ -1,3 +1,4 @@
+
 {% assign metaf = product.metafields.c_f %}
 <style>
     @media all and (max-width: 480px){
@@ -16,9 +17,87 @@
             display: inline-block;
         }
     }
+    
+    /*TEST*/
+    .site-nav > li > a{
+        padding: 21px 22px;
+    }
+    .header-tool {
+        padding: 18px;
+    }
+    .logo{
+        padding-top: 9px;
+    }
+    .breadcrumb{
+        margin-top: 5px;
+    }
+    .flex-control-thumbs li{
+        margin-right: 5px !important;
+        width: 75px !important;
+    }
+    .flex-control-thumbs li:first-child{
+        margin-left: 0 !important;
+    }
+
+
+
+    .product-shop .product-title h1, .product-shop .product-title a{
+        font-size: 32px;
+        line-height: 38px;
+    }
+    .product-shop .product-title{
+        margin-bottom: 0;
+    }
+    @media (min-width: 1200px){
+        .product-shop {
+            max-width: none !important;
+        }
+    }
+    .yotpo {
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+    .product-shop .short-description {
+        line-height: 25px;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+        color: #666;
+    }
+    #product-variants {
+        margin-bottom: 10px;
+    }
+    div.addonmodule {
+        padding: 10px;
+    }
+    .squaredOne {
+        margin: 5px auto;
+    }
+    div.addonmodule .column.img {
+        padding: 0 15px 0 20px;
+        width: 95px;
+    }
+    DIV.cta-module {
+        margin: 20px 0 10px 0;
+    }
+    .cta2 {
+        margin-top: 10px;
+    }
+    .product-shop .product-title h1{
+        font-style: normal;
+        letter-spacing: 1px;
+    }
+    #add-to-cart-form .swatch.clearfix{
+        margin: 0;
+    }
+    @media screen and (max-width: 480px){
+        div.addonmodule .column.copy {
+            float: left;
+            width: 60%;
+        }
+    }
 </style>
 <div id="page_product">
-    <div class="container-fluid" id="product">
+    <div class="container" id="product">
         <div itemscope itemtype="http://schema.org/Product" class="product">
             <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
             <meta itemprop="image"
@@ -28,13 +107,57 @@
             <meta itemprop="itemCondition" content="http://schema.org/NewCondition"/>
             <div class="row">
                 
-                {% include 'product-flexslider' %}
+                <!-- FLEXSLIDER -->
+                {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+                {% assign imgName = featured_image | remove: 'products/' %}
+                <div class="col-xs-12 col-md-7 col-lg-7" id="product-image-main">
+                    <section class="slider" style="position: relative;">
+                        <!-- -->
+                        <div id="flexPlaceholder">
+                            <picture>
+                                <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=767&dpr=1&fit=clip">
+                                <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip">
+                                <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&q=50" alt="{{product.title}}" loading="eager">
+                            </picture>
+                        </div>
+                        <div class="flexslider">
+                            <ul class="slides">
+                                {% for image in product.images %}
+                                {% assign videotag = image.alt | escape %}
+                                {% assign imgName = image | remove: 'products/' | split:'?' | first %}
+                                <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=150&h=150">   
+                                    {% if videotag contains 'vimeo' %}
+                                    <div class='embed-container '>
+                                        <!--https://player.vimeo.com/video/###-->
+                                        <iframe src="{{ image.alt }}?title=0&byline=0&portrait=0" width="640" height="360" id="video_1" frameborder="0"></iframe>
+                                    </div>
+                                    {% else %}
+                                    <picture>
+                                        <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024 1x,
+                                                                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=40&dpr=2 2x,
+                                                                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=20&dpr3 3x">
+                                        <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024 1x,
+                                                                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=40&dpr=2 2x,
+                                                                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3 3x">
+                                        {% if forloop.first == true %}
+                                        <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="eager">
+                                        {% else %}
+                                        <img data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip" src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&blur=500&q=10" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="lazy">
+                                        {% endif %}
+                                    </picture>
+                                    {% endif %}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </section>
+                </div>
                 
                 {% assign multi_prd = true %}
                 {% if collection.products_count <= 1 %}
                                                    {% assign multi_prd = false %}
                                                    {% endif %}
-            <div class="col-xs-12 col-md-5 col-lg-4 product-shop">
+            <div class="col-xs-12 col-md-5 col-lg-5 product-shop">
                 <div>
                     {% if settings.display_prev_next_product and collection and multi_prd %}
                     <div class="product-step">
@@ -80,7 +203,7 @@
                     {% include 'nowtime' %}
 
                     <p class="short-description">
-                        {{ metaf.shortdesc }}
+                        Our best selling mattress features gel infused memory foam, New Zealand wool, a natural bamboo-derived, removable cover and ventilated support foam.
                     </p>
 
                     <div class="mob-dark">
@@ -130,7 +253,44 @@
                                 {% endif %}
                                 {% endif %}
 
-                                {% include 'productbundles-widget' %}
+                                {% assign producthandle = product.handle %}
+
+                                <label class="" style="color:#38414f;font-weight: 500;font-size: 16px;">Add matching Easy Foundation</label>
+                                <div class="addonmodule clearfix">
+                                    <div class="column input">
+                                        <div class="squaredOne">
+                                            <input type="checkbox" value="none" id="foundation" name="foundation" />
+                                            <label for="foundation"></label>
+                                        </div>
+                                    </div>
+                                    <div class="column img">
+                                        {% case producthandle %}
+                                        {% when "cedar-natural-luxe-mattress" %}
+                                        <img src="https://brentwood-home-products.imgix.net/marlo-00002.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+                                        {% when "cypress-bamboo-gel-mattress" %}
+                                        <img src="https://brentwood-home-products.imgix.net/marlo-00002.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+                                        {% when "oceano-mattress" %}
+                                        <img src="https://brentwood-home-products.imgix.net/hershel-01.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+                                        {% when "ojai-mattress" %}
+                                        <img src="https://brentwood-home-products.imgix.net/Brentwood_Home_-_Foundation_Web_-1.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+                                        {% when "crystal-cove-mattress" %}
+                                        <img src="https://brentwood-home-products.imgix.net/Brentwood_Home_-_Foundation_Web_-1.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+                                        {% else %}
+                                        <img src="https://brentwood-home-products.imgix.net/Brentwood_Home_-_Foundation_Web_-1.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+                                        {% endcase %}
+                                    </div>
+                                    <div class="column copy">
+                                        <p class="text-left hidden-xs">
+                                            Our minimalist design, high-grade wood frame, tool-free assembly foundation.
+                                            <a href="/products/foundation">Learn more</a>
+                                        </p>
+                                        <p class="text-center visible-xs-block">
+                                            Minimalist design, high-grade wood frame, tool-free assembly.
+                                            <a href="/products/foundation">Learn more</a>
+                                        </p>
+                                        <p class="text-center"><strong id="easy-foundation-price"></strong></p>
+                                    </div>
+                                </div>
 
                             </div>
                             {% if product.available %}
@@ -160,7 +320,7 @@
                                 {% include 'affirm-product' %}
                                 <style>
                                     DIV.cta-module{
-                                        margin: 40px 0 10px 0;
+                                        margin: 20px 0 10px 0;
                                     }
                                     DIV.product-shop .prices{
                                         width: 49%;
