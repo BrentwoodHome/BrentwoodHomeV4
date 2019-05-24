@@ -133,16 +133,16 @@
                                     </div>
                                     {% else %}
                                     <picture>
-                                        <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024 1x,
+                                        <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=767 1x,
                                                                                         https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=40&dpr=2 2x,
                                                                                         https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=20&dpr3 3x">
-                                        <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024 1x,
-                                                                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=40&dpr=2 2x,
-                                                                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3 3x">
+                                        <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=768 1x,
+                                                                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=768&fit=max&q=40&dpr=2 2x,
+                                                                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=768&fit=max&q=20&dpr3 3x">
                                         {% if forloop.first == true %}
                                         <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="eager">
                                         {% else %}
-                                        <img data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip" src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&blur=500&q=10" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="lazy">
+                                        <img data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=768&dpr=1&fit=clip" src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=768&blur=500&q=10" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="lazy">
                                         {% endif %}
                                     </picture>
                                     {% endif %}
