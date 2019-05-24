@@ -5868,11 +5868,22 @@ div.addonmodule{
 }
 @media screen and (max-width: 480px) {
     div.addonmodule .column.copy{
-        float: right;
-        width: 40%;
+        float: none;
+        //width: 40%;
     }
 }
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 375px) {
+    div.addonmodule .column.copy{
+        float: none;
+        width: 180px;
+        text-align: left;
+        margin-left: 125px;
+    }
+    div.addonmodule .column.img{
+        display: block;
+    }
+}
+@media screen and (max-width: 320px) {
     div.addonmodule .column.copy{
         float: left;
         width: 190px;
