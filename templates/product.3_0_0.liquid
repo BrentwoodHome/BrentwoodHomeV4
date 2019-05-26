@@ -288,8 +288,14 @@
                                             DIV.affirm A#learn-more{
                                                 margin-bottom: 0px;
                                                 line-height: 18px;
+                                                text-decoration: none;
                                             }
-                                            DIV.affirm A.affirm-prequal-text{
+                                            DIV.affirm A#learn-more:HOVER{
+                                                margin-bottom: 0px;
+                                                line-height: 18px;
+                                                text-decoration: none;
+                                            }
+                                            DIV.affirm A.affirm-modal-trigger{
                                                 cursor: pointer;
                                                 display: inline-block;
                                                 text-decoration: none;
@@ -300,7 +306,7 @@
                                                 line-height: 14px;
                                                 text-transform: capitalize;
                                             }
-                                            DIV.affirm A.affirm-prequal-text:HOVER{
+                                            DIV.affirm A.affirm-modal-trigger:HOVER{
                                                 text-decoration: none;
                                                 background-color: transparent;
                                                 color: #0FA0EA;
@@ -309,7 +315,7 @@
                                         </style>
                                         <div class="affirmWrap">
                                             <div class="affirm" style="">
-                                                <a id="learn-more" class="affirm-as-low-as" data-learnmore-show="false" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{variant.price}}"></a> <a class="affirm-prequal-text" data-promo-id="prequal_text_brentwood" style="cursor: pointer;"></a>
+                                                <a id="learn-more" class="affirm-as-low-as" data-learnmore-show="true" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{variant.price}}"></a>
                                             </div>
                                         </div>
                                         

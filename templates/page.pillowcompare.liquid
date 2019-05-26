@@ -9,15 +9,8 @@
 
 {% assign crystalcove = all_products['crystal-cove-pillow'] %}
 {% assign ojai = all_products['ojai-pillow'] %}
-{% assign pacifica = all_products['pacifica-pillow'] %}
-{% assign helena = all_products['helena-pillow'] %}
 {% assign oceano = all_products['oceano-pillow'] %}
 
-{% for variant in helena.variants %}
-{% if variant.title == "Standard" %}
-{% assign helenaPrice = variant.price %}
-{% endif %}
-{% endfor %}
 
 {% for variant in oceano.variants %}
 {% if variant.title == "Standard" %}
@@ -37,11 +30,7 @@
 {% endif %}
 {% endfor %}
 
-{% for variant in pacifica.variants %}
-{% if variant.title == "Standard" %}
-{% assign pacificaPrice = variant.price %}
-{% endif %}
-{% endfor %}
+
 
 
 <div class="container-fluid">
@@ -64,7 +53,7 @@
                                 <img src="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=750" alt="">
                             </picture>
                         </a>
-                        <div class="margTB10">No Reviews Yet</div>
+                        
                         <div class="paddingwrap">
                             <div class="yotpo bottomLine"
                                  data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
@@ -161,7 +150,7 @@
                                 <img src="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=750" alt="">
                             </picture>
                         </a>
-                        <div class="margTB10">No Reviews Yet</div>
+                    
                         <div class="paddingwrap">
                             <div class="yotpo bottomLine"
                                  data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
@@ -195,7 +184,7 @@
                     </div>
                 </div>
             </div>
-            
+            {%comment%}
             <div class="item">
                 <div class="product-col cedar text-center">
                     <div class="colorwrap">
@@ -291,7 +280,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>{%endcomment%}
             
         </div>
     </div><!-- end row-eq-->

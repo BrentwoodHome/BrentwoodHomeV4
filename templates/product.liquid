@@ -68,7 +68,7 @@
 
                   <h3 class="text-left">{{product.metafields.bhsite.feel}}</h3>
                   <p class="short-description">{{product.metafields.bhsite.shortdesc}}</p>
-                  {% include 'shippingtime' %}
+                  
                   
 
                   <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
@@ -152,7 +152,9 @@
                           </p>
                       </div>
                     {%else%}
-                      <input type="submit" name="add" class="cta2" id="product-add-to-cart" value="Add to Cart">
+                      <input type="submit" name="add" class="cta2" id="product-add-to-cart" value="Add to Cart"><br>
+                      <div class="clearfix"></div>
+                  {% include 'shippingtime' %}
                     {% endif %}
                      
                       

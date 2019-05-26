@@ -157,7 +157,7 @@
                                     <input type="submit" name="add" class="btn" id="product-add-to-cart" value="PRE-ORDER">
                                 {% else if %}
                                     <input type="submit" name="add" class="cta2" id="product-add-to-cart" value="Add to Cart">
-                                    {% include 'shippingtime' %}
+                                    
                                     <p id="add2cart_shipping"><img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Ships free in {{ shipsfree }}">Ships free in {{ shipsfree }}</p>
                                     {% if product.type == 'Mattress' %}
                                         {% include 'affirm-product' %}
@@ -168,7 +168,7 @@
                                             DIV.affirm A#learn-more{
                                                 margin-bottom: 0px;
                                             }
-                                            DIV.affirm A.affirm-prequal-text{
+                                            DIV.affirm A.affirm-modal-trigger{
                                                 cursor: pointer;
                                                 display: inline-block;
                                                 /*background-color: #00c8e5;*/
@@ -178,7 +178,7 @@
                                                 border-radius: 5px;
                                                 line-height: 24px;
                                             }
-                                            DIV.affirm A.affirm-prequal-text:HOVER{
+                                            DIV.affirm A.affirm-modal-trigger:HOVER{
                                                 text-decoration: none;
                                                 background-color: #00d9f6;
                                                 color: white;
@@ -188,9 +188,11 @@
                                                 display: inline-block;
                                             }
                                         </style>
-                                        <div class="affirm">
-                                            <a id="learn-more" class="affirm-as-low-as affirm-site-modal" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{variant.price}}"></a> or <a class="affirm-prequal-text" data-promo-id="prequal_text_brentwood" style="cursor: pointer;"></a>
-                                        </div>
+                    <div class="affirmWrap">
+                        <div class="affirm" style="">
+                            <a id="learn-more" class="affirm-as-low-as" data-learnmore-show="true" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{variant.price}}"></a>
+                        </div>
+                    </div>
                                     {% endif %}
                                 {% endif %}
                             

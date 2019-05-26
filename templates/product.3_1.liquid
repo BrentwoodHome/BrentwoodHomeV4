@@ -16,9 +16,95 @@
             display: inline-block;
         }
     }
+    
+    <style>
+    .site-nav > li > a{
+        padding: 21px 22px;
+    }
+    .header-tool {
+        padding: 18px;
+    }
+    .logo{
+        padding-top: 9px;
+    }
+    .breadcrumb{
+        margin-top: 5px;
+    }
+    .flex-control-thumbs li{
+        margin-right: 5px;
+        width: 70px !important;
+        height: auto !important;
+    }
+    .flex-control-thumbs li:first-child{
+        margin-left: 0 !important;
+    }
+
+
+
+    .product-shop .product-title h1, .product-shop .product-title a{
+        font-size: 32px !important;
+        line-height: 48px;
+        font-style: normal;
+        letter-spacing: 1px;
+    }
+    .product-shop .product-title{
+        margin-bottom: 0;
+    }
+    @media (min-width: 1200px){
+        .product-shop {
+            max-width: none;
+        }
+    }
+    .yotpo {
+        margin-bottom: 10px;
+    }
+    .product-shop .short-description {
+        line-height: 25px;
+        letter-spacing: 1px;
+        color: #666;
+    }
+    #product-variants {
+        margin-bottom: 10px;
+    }
+    div.addonmodule {
+        padding: 10px;
+    }
+    .squaredOne {
+        margin: 5px auto;
+    }
+    div.addonmodule .column.img {
+        padding: 0 15px 0 20px;
+        width: 95px;
+    }
+    DIV.cta-module {
+        margin: 20px 0 10px 0;
+    }
+    .cta2 {
+        margin-top: 10px;
+    }
+    DIV.affirm A {
+        line-height: 14px;
+    }
+    DIV.cta-module {
+        margin-top: 20px !important;
+    }
+    .cta2 {
+        margin-top: 10px;
+    }
+    @media (min-width: 1024px){
+        .buycontent {
+            margin-left: 6%;
+        }
+    }
+    @media (max-width: 768px){
+        .header-tool {
+            padding: 0px 18px 0 0;
+        }
+    }
 </style>
+
 <div id="page_product">
-    <div class="container-fluid" id="product">
+    <div class="container" id="product">
         <div itemscope itemtype="http://schema.org/Product" class="product">
             <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
             <meta itemprop="image"
@@ -36,7 +122,7 @@
                 {% if collection.products_count <= 1 %}
                                                    {% assign multi_prd = false %}
                                                    {% endif %}
-            <div class="col-xs-12 col-md-5 col-lg-4 product-shop">
+            <div class="col-xs-12 col-md-5 col-lg-6 product-shop">
 
                 <div>
                     {% if settings.display_prev_next_product and collection and multi_prd %}
@@ -83,7 +169,10 @@
                     {% include 'nowtime' %}
 
                     <p class="short-description">
-                        {{ metaf.shortdesc }}
+                        {%comment%}{{ metaf.shortdesc }}{%endcomment%}
+                        Innovative <strong>dual-sided hybrid mattress</strong>, with 5-zone coil support system, specifically designed to promote therapeutic recovery and deep, restorative sleep. It is also completely <strong>vegan</strong>. GREENGUARD Gold Certified. <strong>Bundle and save $20 per pillow!</strong>
+
+
                     </p>
 
                     <div class="mob-dark">
@@ -188,8 +277,14 @@
                                     DIV.affirm A#learn-more{
                                         margin-bottom: 0px;
                                         line-height: 18px;
+                                        text-decoration: none;
                                     }
-                                    DIV.affirm A.affirm-prequal-text{
+                                    DIV.affirm A#learn-more:HOVER{
+                                        margin-bottom: 0px;
+                                        line-height: 18px;
+                                        text-decoration: none;
+                                    }
+                                    DIV.affirm A.affirm-modal-trigger{
                                         cursor: pointer;
                                         display: inline-block;
                                         text-decoration: none;
@@ -200,7 +295,7 @@
                                         line-height: 14px;
                                         text-transform: capitalize;
                                     }
-                                    DIV.affirm A.affirm-prequal-text:HOVER{
+                                    DIV.affirm A.affirm-modal-trigger:HOVER{
                                         text-decoration: none;
                                         background-color: transparent;
                                         color: #0FA0EA;
@@ -209,7 +304,7 @@
                                 </style>
                                 <div class="affirmWrap">
                                     <div class="affirm" style="">
-                                        <a id="learn-more" class="affirm-as-low-as" data-learnmore-show="false" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{variant.price}}"></a> <a class="affirm-prequal-text" data-promo-id="prequal_text_brentwood" style="cursor: pointer;"></a>
+                                        <a id="learn-more" class="affirm-as-low-as" data-learnmore-show="true" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{variant.price}}"></a>
                                     </div>
                                 </div>
 
