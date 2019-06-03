@@ -84,6 +84,29 @@
             padding: 0px 18px 0 0;
         }
     }
+    @media (max-width: 991px) and (min-width: 768px){
+        .header.is-ticky .site-nav > li > a {
+            padding: 20px 5px 20px;
+        }
+        .flex-control-thumbs li{
+            width: 60px !important;
+            height: 44px !important;
+            overflow: hidden;
+        }
+        .header-tool {
+            padding: 10px;
+        }
+        .header.is-ticky #search-top .icon_search, .header.is-ticky #header-content .header-inner p.top-cart {
+            line-height: 18px;
+        }
+        .product-shop>DIV {
+            margin: 0;
+        }
+        #page_product .product-shop h1{
+            text-align: left;
+            font-size: 32px !important;
+        }
+    }
 </style>
 
 <div id="followMeBar" class="stickybuy-invisible">
@@ -132,7 +155,7 @@
                     {% if collection.products_count <= 1 %}
                         {% assign multi_prd = false %}
                     {% endif %}
-                    <div class="col-xs-12 col-md-5 col-lg-6 product-shop">
+                    <div class="col-xs-12 col-sm-6  col-md-5 col-lg-6 product-shop">
                         <div class="buycontent">
                             {% if settings.display_prev_next_product and collection and multi_prd %}
                             <div class="product-step">
