@@ -1,7 +1,7 @@
 <!-- FLEXSLIDER -->
 {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
 {% assign imgName = featured_image | remove: 'products/' %}
-<div class="col-xs-12 col-md-7 {% if product.handle == "oceano-mattress" or product.handle == "ojai-mattress" or product.handle == "crystal-cove-mattress" %}col-sm-6 col-lg-6{% else %}col-lg-8{%endif%}" id="product-image-main">
+<div class="col-xs-12 col-md-7 {% if product.handle == "ojai-mattress" or product.handle == "crystal-cove-mattress" %}col-sm-6 col-lg-6{% else %}col-lg-8{%endif%}" id="product-image-main">
     <section class="slider" style="position: relative;">
         <!-- -->
         <div id="flexPlaceholder">

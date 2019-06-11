@@ -14,9 +14,9 @@
         margin-top: 5px;
     }
     .flex-control-thumbs li{
-        margin-right: 5px;
+        margin: 0 5px 0 0 !important;
         width: 70px !important;
-        height: auto !important;
+        min-height: 51px !important;
     }
     .flex-control-thumbs li:first-child{
         margin-left: 0 !important;
@@ -76,7 +76,7 @@
     }
     @media (min-width: 1024px){
         .buycontent {
-            margin-left: 6%;
+            /*margin-left: 6%;*/
         }
     }
     @media (max-width: 768px){
@@ -148,7 +148,79 @@
                     }
                 </style>
                 <!-- FLEXSLIDER -->
-                {% include 'product-flexslider' %}
+                <!-- FLEXSLIDER -->
+                {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+                {% assign imgName = featured_image | remove: 'products/' %}
+                <div class="col-xs-12 col-md-7 col-sm-6 col-lg-6" id="product-image-main">
+                    <section class="slider" style="position: relative;">
+                        <!-- -->
+                        <div id="flexPlaceholder">
+                            <picture>
+                                <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=767&dpr=1&fit=clip">
+                                <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip">
+                                <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&q=50" alt="{{product.title}}" loading="eager">
+                            </picture>
+                        </div>
+                        <div class="flexslider">
+                            <ul class="slides">
+                                {% for image in product.images %}
+                                    {% assign videotag = image.alt | escape %}
+                                    {% assign imgName = image | remove: 'products/' | split:'?' | first %}
+                                    <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=150&h=150">   
+                                        {% if videotag contains 'vimeo' %}
+                                            <div class='embed-container '>
+                                                <!--https://player.vimeo.com/video/###-->
+                                                <iframe src="{{ image.alt }}?title=0&byline=0&portrait=0" width="640" height="360" id="video_1" frameborder="0"></iframe>
+                                            </div>
+                                        {% else %}
+                                            <picture>
+                                                <source
+                                                        data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=555 1x,
+                                                                https://brentwood-home-products.imgix.net/{{ imgName }}?w=555&dpr=2 2x"
+                                                        media="(min-width: 769px)"
+                                                        >
+                                                <source
+                                                        data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=crop 1x,
+                                                                https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&&fit=crop&dpr=2 2x"
+                                                        media="(min-width: 480px)"
+                                                        >
+                                                <source
+                                                        data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=480&fit=crop 1x,
+                                                                https://brentwood-home-products.imgix.net/{{ imgName }}?w=480&fit=crop&dpr=2 2x"
+                                                        media="(min-width: 320px)"
+                                                        >
+                                                {% if forloop.first == true %}
+                                                    <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=555&fit=crop 1x,
+                                                          https://brentwood-home-products.imgix.net/{{ imgName }}?w=555&fit=crop&dpr=2 2x" loading="eager">
+                                                {% else %}
+                                                    <img data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=555&fit=crop" src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=555&blur=500&q=10&fit=crop" loading="lazy">
+                                                {% endif %}
+                                            </picture>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                                    {%comment%}
+                                    <picture>
+                                        <source media="(min-width: 769px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=555 1x,
+                                                                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=555&fit=max&q=40&dpr=2 2x,
+                                                                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=555&fit=max&q=20&dpr3 3x">
+                                        <source media="(min-width: 480px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=767 1x,
+                                                                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=40&dpr=2 2x,
+                                                                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=20&dpr3 3x">
+                                        <source media="(min-width: 320px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=480 1x,
+                                                                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=640&fit=crop&q=40&auto=format&dpr=2 2x,
+                                                                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=640&fit=crop&q=20&auto=format&dpr3 3x">
+                                        {% if forloop.first == true %}
+                                        <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="eager">
+                                        {% else %}
+                                        <img data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip" src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&blur=500&q=10" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="lazy">
+                                        {% endif %}
+                                    </picture>
+                                    {%endcomment%}
+                            </ul>
+                        </div>
+                    </section>
+                </div>
                    
                    
                     {% assign multi_prd = true %}
@@ -201,7 +273,10 @@
                             </div>
 
                             {% include 'nowtime' %}
-                            <p class="short-description">{{ metaf.shortdesc }}</p>
+                            
+                                <p class="short-description">{{ metaf.shortdesc }}</p>
+                            
+                            <!---->
                             <!--{% include 'shippingtime' %}-->
 
                             <div class="mob-dark">

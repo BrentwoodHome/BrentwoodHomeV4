@@ -198,7 +198,7 @@
 {%endif%}
 {%endcomment%}
 
-{% if template.suffix contains '3_1_bamboo' or template.suffix contains '3_1_cedarluxe' %}
+{% if template.suffix contains '3_1_bamboo' or template.suffix contains '3_1_cedarluxe' or template.suffix contains 'product-wide' %}
     {{ 'animate.min.css' | asset_url | stylesheet_tag }}
     {{ 'wow.min.js' | asset_url | script_tag }}
     <script>

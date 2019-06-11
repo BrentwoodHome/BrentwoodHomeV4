@@ -98,7 +98,7 @@
         {{ 'retina-responsive.css' | asset_url | stylesheet_tag }}
     {% endif %}
 
-    {% if template.suffix contains '3_0' or template.suffix contains 'cb2' %}
+    {% if template.suffix contains '3_0' or template.suffix contains 'cb2' or template.suffix contains 'wide' %}
         {{ 'product_3_0_0.scss.css' | asset_url | stylesheet_tag }}
     {%endif%}
     {% if template.suffix contains '3_1' %}
@@ -231,8 +231,9 @@
 
 
 <!-- MODAL DISCOUNT CODE -->
+           
 {% include 'modal-promo' %}
-   
+        
    
     <!--<div id="back-top" ><a class="" href="#top"><i class="fa fa-long-arrow-up"></i></a></div>-->
     
