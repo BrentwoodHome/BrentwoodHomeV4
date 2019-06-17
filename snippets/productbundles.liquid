@@ -233,7 +233,7 @@
 
                           //update variant inventory
                           {% if settings.display_availability %}
-                          if (variant.available) {
+                          if (variant && variant.available) {
                               if (variant.inventory_management != null) {
                                   jQuery(".product-inventory span").text(variant.inventory_quantity + " in stock");
                               } else {
@@ -245,7 +245,7 @@
                            {% endif %}
 
                            //display message for sheets and quilts when out of stock
-                           if (variant.available) {
+                           if (variant && variant.available) {
                                if (variant.inventory_management != null) {
                                    if (variant.inventory_quantity < 1) {
                                        jQuery(".out-of-stock").show();
@@ -290,11 +290,11 @@
 
                            jQuery(function ($) {
                                {% if product.available and product.variants.size > 1 %}
-                               new Shopify.OptionSelectors('product-selectors', {
-                                   product: {{ product | json }},
-                                                           onVariantSelected: selectCallback,
-                                                           enableHistoryState: true
-                                                           });
+                               new Shopify.CustomOptionSelectors('product-selectors', {
+                                 product: {{ product | json }},
+                                 onVariantSelected: selectCallback,
+                                 enableHistoryState: true
+                               });
 
                                 {% comment %}
                                 Use color swatch and linked options(copyright by @carolineschnapp)
@@ -305,7 +305,7 @@
                                   {% endif %}
 
                                   {% if settings.use_color_swatch != true %}
-                                  jQuery('.single-option-selector').selectize();
+                                   jQuery('.single-option-selector').selectize();
                                    jQuery('.selectize-input input').attr("disabled", "disabled");
                                    {% endif %}
 
@@ -320,17 +320,6 @@
                                     {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
                                     $('.selector-wrapper').hide();
                                      {% endif %}
-
-                                     // Auto-select first available variant on page load. Otherwise the product looks sold out.
-                                     {% assign found_one_in_stock = false %}
-                                     {% for variant in product.variants %}
-                                     {% if variant.available and found_one_in_stock == false %}
-                                     {% assign found_one_in_stock = true %}
-                                     {% for option in product.options %}
-                                     $('.single-option-selector:eq({{ forloop.index0 }})').val({{ variant.options[forloop.index0] | json }}).trigger('change');
-                                      {% endfor %}
-                                      {% endif %}
-                                      {% endfor %}
 
                                       {% if settings.display_product_reviews %}
                                       var reviewsTimeout = setInterval(function () {
