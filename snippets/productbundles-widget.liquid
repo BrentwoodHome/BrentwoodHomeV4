@@ -1,5 +1,40 @@
 {% assign producthandle = product.handle %}
-
+{%comment%}
+<label class="" style="color:#38414f;font-weight: 500;font-size: 16px;">Add matching pillow(s) & save</label>
+<div class="addonmodule clearfix">
+    <div class="column input">
+        <div class="squaredOne">
+            <input type="checkbox" value="none" id="pillowBundle" name="pillowBundle" />
+            <label for="pillowbundle"></label>
+        </div>
+    </div>
+    <div class="column img">
+        {% case producthandle %}
+        {% when "cedar-natural-luxe-mattress" %}
+        <img src="https://brentwood-home-products.imgix.net/marlo-00002.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+        {% when "cypress-bamboo-gel-mattress" %}
+        <img src="https://brentwood-home-products.imgix.net/marlo-00002.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+        {% when "oceano-mattress-test" %}
+        <img src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+        {% when "ojai-mattress" %}
+        <img src="https://brentwood-home-products.imgix.net/Brentwood_Home_-_Foundation_Web_-1.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+        {% when "crystal-cove-mattress" %}
+        <img src="https://brentwood-home-products.imgix.net/Brentwood_Home_-_Foundation_Web_-1.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+        {% else %}
+        <img src="https://brentwood-home-products.imgix.net/Brentwood_Home_-_Foundation_Web_-1.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+        {% endcase %}
+    </div>
+    <div class="column copy">
+        <p class="text-left hidden-xs">
+            Filled with a breathable Certi-PUR-US® gel memory foam and polyester blend to provide the ultimate in comfort and cooling sleep.
+        </p>
+        <p class="text-left visible-xs-block">
+            Filled with a breathable Certi-PUR-US® gel memory foam and polyester blend to provide the ultimate in comfort and cooling sleep.
+        </p>
+        <p class="text-center"><strong id="pillowBundle-price"></strong></p>
+    </div>
+</div>
+{%endcomment%}
 <label class="" style="color:#38414f;font-weight: 500;font-size: 16px;">Add matching Easy Foundation</label>
 <div class="addonmodule clearfix">
     <div class="column input">
@@ -15,6 +50,8 @@
         {% when "cypress-bamboo-gel-mattress" %}
         <img src="https://brentwood-home-products.imgix.net/marlo-00002.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
         {% when "oceano-mattress" %}
+        <img src="https://brentwood-home-products.imgix.net/hershel-01.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+        {% when "oceano-mattress-test" %}
         <img src="https://brentwood-home-products.imgix.net/hershel-01.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
         {% when "ojai-mattress" %}
         <img src="https://brentwood-home-products.imgix.net/Brentwood_Home_-_Foundation_Web_-1.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
