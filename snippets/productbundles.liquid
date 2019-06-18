@@ -79,76 +79,6 @@
                       price: 35000
                   }
               ];
-           {% when "oceano-mattress-test" %}
-               //Oceano blue color foundation
-               var variantFoundations = [
-                   {//Twin
-                       id: 19308085641278,
-                       price: 22500,
-                   },
-                   {//Twin XL
-                       id: 19308085772350,
-                       price: 25000,
-                   },
-                   {//Full
-                       id: 19308085805118,
-                       price: 25000
-                   },
-                   {//Queen
-                       id: 19308085837886,
-                       price: 27500,
-                   },
-                   {//King
-                       id: 19308085870654,
-                       price: 35000,
-                   },
-                   {//CalKing
-                       id: 19308085903422,
-                       price: 35000
-                   },
-                   {//Split K
-                       id: 19308085870654,
-                       price: 35000
-                   }
-               ];
-            //Oceano Pillow Bundle
-            var variantPillowBundle = [
-                {//Twin
-                    id: 12210708742255,
-                    price: 10900,
-                    qt: 1
-                },
-                {//Twin XL
-                    id: 12210708742255,
-                    price: 10900,
-                    qt: 1
-                },
-                {//Full
-                    id: 12210708742255,
-                    price: 10900,
-                    qt: 1
-                },
-                {//Queen
-                    id: 12210708775023,
-                    price: 11900,
-                    qt: 2
-                },
-                {//King
-                    id: 12210708807791,
-                    price: 12900,
-                    qt: 2
-                },
-                {//CalKing
-                    id: 12210708807791,
-                    price: 12900,
-                    qt: 2
-                },
-                {//Split K
-                    id: 12210708807791,
-                    price: 12900,
-                    qt: 2
-                }
-            ];
         {% else %}
             //Gray foundation for Ojai, Crystal Cove and everything else
             var variantFoundations = [
@@ -208,11 +138,6 @@
                 totalPrice += variantFoundations[sizeIndex].price
             }
 
-            // Pillow Bundle
-            /*if (jQuery('#pillowBundle').prop('checked') && variantPillowBundle[sizeIndex]) {
-                totalPrice += variantFoundations[sizeIndex].price
-            }*/
-            
             var totalPriceText = Shopify.formatMoney(totalPrice, window.money_format);
 
             totalPriceText = totalPriceText.match(regex)[0];
@@ -255,28 +180,14 @@
                   totalPrice += variantFoundations[sizeIndex].price;
                   compareAtPrice += variantFoundations[sizeIndex].price;
               }
-              // Pillow Bundle
-              /*if (jQuery('#pillowBundle').prop('checked') && variantPillowBundle[sizeIndex]) {
-                  totalPrice += variantPillowBundle[sizeIndex].price;
-                  compareAtPrice += variantPillowBundle[sizeIndex].price;
-              }*/
 
-
-                // Update Foundation Pricing
-                if (variantFoundations[sizeIndex]) {
-                    var foundation = variantFoundations[sizeIndex];
-                    {% raw %}
-                        jQuery("#easy-foundation-price").text("+" + Shopify.formatMoney(foundation.price, "${{amount_no_decimals}}"));
-                    {% endraw %}
-                }
-                     
-                // Update pillow bundle Pricing
-                /*if (variantPillowBundle[sizeIndex]) {
-                    var pillows = variantPillowBundle[sizeIndex];
-                    {% raw %}
-                        jQuery("#pillowBundle-price").text("+" + Shopify.formatMoney(foundation.price, "${{amount_no_decimals}}"));
-                    {% endraw %}
-                }*/
+              // Update Foundation Pricing
+              if (variantFoundations[sizeIndex]) {
+                  var foundation = variantFoundations[sizeIndex];
+                  {% raw %}
+                  jQuery("#easy-foundation-price").text("+" + Shopify.formatMoney(foundation.price, "${{amount_no_decimals}}"));
+                   {% endraw %}
+                   }
 
                    // Regardless of stock, update the product price
                    {% raw %}
@@ -376,11 +287,6 @@
                            jQuery("#foundation").on('change', function() {
                                selectCallback(currentVariant)
                            });
-                           
-                           // Pillow Bundle
-                           /*jQuery("#pillowBundle").on('change', function() {
-                               selectCallback(currentVariant)
-                           });*/
 
                            jQuery(function ($) {
                                {% if product.available and product.variants.size > 1 %}
@@ -456,13 +362,6 @@
                 {% when "oceano-mattress" %}
                     //Twin, Twin XL, Full, Q, K, CK
                     var variantFoundationIds = [19308085641278, 19308085772350, 19308085805118, 19308085837886, 19308085870654, 19308085903422, 19308085870654]
-                    
-                {% when "oceano-mattress-test" %}
-                    //Twin, Twin XL, Full, Q, K, CK
-                    var variantFoundationIds = [19308085641278, 19308085772350, 19308085805118, 19308085837886, 19308085870654, 19308085903422, 19308085870654]
-                    var variantPillowBundle = [12210708742255, 12210708742255, 12210708742255, 12210708775023, 12210708807791, 12210708807791, 12210708807791]
-                    var variantPillowBundleQt = [1, 1, 1, 2, 2, 2, 2]
-                    
                 {% else %}
                     //Twin, Twin XL, Full, Q, K, CK, SplitK
                     var variantFoundationIds = [18582182297662, 18582182330430, 18582182363198, 18582182395966, 18582182428734, 18582182461502, 18582182428734]
@@ -476,14 +375,6 @@
                 })
             }
 
-             // Pillow Bundle
-             if (jQuery('#pillowBundle').prop('checked')) {
-                 toAdd.push({
-                     id: variantPillowBundle[sizeIndex],
-                     quantity: variantPillowBundleQt[sizeIndex]
-                 })
-             }
-             
             function moveAlong(){
                 if (toAdd.length) {
                     $.ajax({
