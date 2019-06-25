@@ -457,9 +457,11 @@
             </div>
         </div><!-- End Row --> 
     </div><!-- End Container for top part (img+buy) -->
-    <div class="product-tabs container">
+    <div class="product-tabs">
        
-        <div class="overlays overlays-2">
+       {% comment %}
+        {% if metaf.product_tagline %}
+        <div class="overlays container overlays-2">
             <h2 class="overlays-title">
                 {{ metaf.product_tagline }}
             </h2>
@@ -474,7 +476,8 @@
                 </div>
             </div>
         </div>
-        
+        {% endif %}
+        {%endcomment%}
         <div class="container section warranties">
             <h2 class="text-center">Try the {{ product.title }} Risk-Free</h2>
             <div class="row">
@@ -505,148 +508,124 @@
             </div>
         </div>
         
-        <section class="overlays overlays container oceanoAB">
+        
+        {% if product.handle == "oceano-mattress" %}
+        <section class="overlays container">
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-sm-push-6">
-                    <h2 class="overlays-title text-center">Handmade in Sunny California</h2>
-                    <p class="description">We’ve been handcrafting mattresses in California for over 30 years, so it’s no surprise we have a fondness for the highest-quality materials. In our Oceano, experience incredible support with up to <strong>3,136 individually-wrapped coil springs</strong> (more than any other bed in its class!) and luxurious <strong>medium-plush comfort</strong> from our Tencel cover, a plant-based fiber that’s softer than silk and more breathable than linen.
-                    </p>
-                    <div class="row">
-                        <div class="col-xs-4 icon">
-                            <img src="https://brentwood-home.imgix.net/icon-MicroCoils.svg?12345" alt="Up to 3,136 individually-wrapped coil springs">
-                            <p>3,136 individually-wrapped coils</p>
-                        </div>
-                        <div class="col-xs-4 icon">
-                            <img src="https://brentwood-home.imgix.net/icon-PressureRelieving.svg?12345" alt="Medium Plush">
-                            <p>Medium-Plush Comfort</p>
-                        </div>
-                        <div class="col-xs-4 icon">
-                            <img src="https://brentwood-home.imgix.net/iconv2-madeincalifornia.svg" alt="Made in CA">
-                            <p>Made in California</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-sm-pull-6">
+                <div class="col-xs-12 col-sm-6">
                     <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/sunnycal-shoreline2.jpg?w=800" alt="Oceano Mattress Handcrafted In Southern California" class="feature-img img-responsive img" src="https://s3-brentwoodhome.imgix.net/sunnycal-shoreline2.jpg?w=800&blur=500&q=10">
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <h2 class="overlays-title text-center">Handmade in Sunny California</h2>
+                    <p class="description"><strong>We’ve been handcrafting mattresses in California for over 30 years</strong>, so it’s no surprise we have a fondness for the highest-quality materials. In our Oceano, experience incredible support with up to 3,136 individually-wrapped coil springs (more than any other bed in its class!) and luxurious <strong>medium-plush comfort</strong> from our Tencel cover, a plant-based fiber that’s softer than silk and more breathable than linen.</p>
                 </div>
             </div>
         </section>
+        {% endif %}
         
         {% if metaf.feature1_title %}
-            <section class="overlays overlays-4 container">
+            <section class="overlays container">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-6">
+                    <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                        {%comment%}<img src="{{ metaf.feature1_img | asset_url }}" alt="{{ product.title | escape }} {{metaf.feature1_title | escape }}" class="feature-img img-responsive img">{%endcomment%}
+                        <img loading="lazy" src="https://brentwood-home-36.imgix.net/{{ metaf.feature1_img }}?w=800&blur=500&q=10" data-src="https://brentwood-home-36.imgix.net/{{ metaf.feature1_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature1_title | escape }}" class="feature-img img-responsive img">
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-sm-pull-6">
                         <h2 class="overlays-title text-center">{{metaf.feature1_title}}</h2>
                         {{metaf.feature1}}
                         <div class="row">
                             {{ metaf.feature1_icons }}
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6">
-                        {%comment%}<img src="{{ metaf.feature1_img | asset_url }}" alt="{{ product.title | escape }} {{metaf.feature1_title | escape }}" class="feature-img img-responsive img">{%endcomment%}
-                        <img loading="lazy" src="https://brentwood-home-36.imgix.net/{{ metaf.feature1_img }}?w=800&blur=500&q=10" data-src="https://brentwood-home-36.imgix.net/{{ metaf.feature1_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature1_title | escape }}" class="feature-img img-responsive img">
-                    </div>
                 </div>
             </section>
         {% endif %}
         {% if metaf.feature2_title %}
-            <section class="overlays overlays-5 container">
+            <section class="overlays container">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                    <div class="col-xs-12 col-sm-6">
+                        <img loading="lazy" src="https://brentwood-home-36.imgix.net/{{ metaf.feature2_img }}?w=800&blur=500&q=10" data-src="https://brentwood-home-36.imgix.net/{{ metaf.feature2_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature2_title | escape }}" class="feature-img img-responsive img">
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
                         <h2 class="overlays-title text-center">{{metaf.feature2_title}}</h2>
                         {{metaf.feature2}}
                         <div class="row">
                             {{ metaf.feature2_icon }}
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-sm-pull-6">
-                        <img loading="lazy" src="https://brentwood-home-36.imgix.net/{{ metaf.feature2_img }}?w=800&blur=500&q=10" data-src="https://brentwood-home-36.imgix.net/{{ metaf.feature2_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature2_title | escape }}" class="feature-img img-responsive img">
-                    </div>
                 </div>
             </section>
         {% endif %}
         
         {% if metaf.feature3_title %}
-            <section class="overlays overlays-6 container">
+            <section class="overlays container">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-6">
+                    <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                        <img loading="lazy" src="https://brentwood-home-36.imgix.net/{{ metaf.feature3_img }}?w=800&blur=500&q=10" data-src="https://brentwood-home-36.imgix.net/{{ metaf.feature3_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature3_title | escape }}" class="feature-img img-responsive img">
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-sm-pull-6">
                         <h2 class="overlays-title text-center">{{metaf.feature3_title}}</h2>
                         {{metaf.feature3}}
                         <div class="row">
                             {{ metaf.feature3_icons }}
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <img loading="lazy" src="https://brentwood-home-36.imgix.net/{{ metaf.feature3_img }}?w=800&blur=500&q=10" data-src="https://brentwood-home-36.imgix.net/{{ metaf.feature3_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature3_title | escape }}" class="feature-img img-responsive img">
-                    </div>
                 </div>
             </section>
         {% endif %}
         
         {% if metaf.feature4_title %}
-            <section class="overlays overlays-5 container">
+            <section class="overlays container">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                    <div class="col-xs-12 col-sm-6">
+                        <img loading="lazy" src="https://brentwood-home-36.imgix.net/{{ metaf.feature4_img }}?w=800&blur=500&q=10" data-src="https://brentwood-home-36.imgix.net/{{ metaf.feature4_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature4_title | escape }}" class="feature-img img-responsive img">
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
                         <h2 class="overlays-title text-center">{{metaf.feature4_title}}</h2>
                         {{metaf.feature4}}
                         <div class="row">
                             {{ metaf.feature4_icons }}
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-sm-pull-6">
-                        <img loading="lazy" src="https://brentwood-home-36.imgix.net/{{ metaf.feature4_img }}?w=800&blur=500&q=10" data-src="https://brentwood-home-36.imgix.net/{{ metaf.feature4_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature4_title | escape }}" class="feature-img img-responsive img">
-                    </div>
                 </div>
             </section>
         {% endif %}
         
         {% if metaf.feature5_title %}
-            <section class="overlays overlays-5 container">
+            <section class="overlays container">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-6">
+                    <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                        <img loading="lazy" src="https://brentwood-home-36.imgix.net/{{ metaf.feature5_img }}?w=800&blur=500&q=10" data-src="https://brentwood-home-36.imgix.net/{{ metaf.feature5_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature5_title | escape }}" class="feature-img img-responsive img">
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-sm-pull-6">
                         <h2 class="overlays-title text-center">{{metaf.feature5_title}}</h2>
                         {{metaf.feature5}}
                         <div class="row">
                             {{ metaf.feature5_icons }}
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <img loading="lazy" src="https://brentwood-home-36.imgix.net/{{ metaf.feature5_img }}?w=800&blur=500&q=10" data-src="https://brentwood-home-36.imgix.net/{{ metaf.feature5_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature5_title | escape }}" class="feature-img img-responsive img">
-                    </div>
                 </div>
             </section>
         {% endif %}
         
         {% if metaf.feature6_title %}
-        <section class="overlays overlays-5 container">
+        <section class="overlays container">
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                <div class="col-xs-12 col-sm-6">
+                    <img loading="lazy" src="https://brentwood-home-36.imgix.net/{{ metaf.feature6_img }}?w=800&blur=500&q=10" data-src="https://brentwood-home-36.imgix.net/{{ metaf.feature6_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature6_title | escape }}" class="feature-img img-responsive img">
+                </div>
+                <div class="col-xs-12 col-sm-6">
                     <h2 class="overlays-title text-center">{{metaf.feature6_title}}</h2>
                     {{metaf.feature6}}
                     <div class="row">
                         {{ metaf.feature6_icons }}
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-sm-pull-6">
-                    <img loading="lazy" src="https://brentwood-home-36.imgix.net/{{ metaf.feature6_img }}?w=800&blur=500&q=10" data-src="https://brentwood-home-36.imgix.net/{{ metaf.feature6_img }}?w=800" alt="{{ product.title | escape }} {{metaf.feature6_title | escape }}" class="feature-img img-responsive img">
-                </div>
             </div>
         </section>
         {% endif %}
         
-        <section class="overlays overlays-5 container oceanoAB">
-            <div class="row">
-                <div class="col-xs-12 col-sm-6">
-                    <h2 class="overlays-title text-center">Passionate About the Details</h2>
-                    <p class="description">All Brentwood Home products are <strong>inspired by a passion for California living</strong>, the state’s unparalleled natural beauty and <strong>strict quality standards for manufacturing with respect to impact on health and the environment.</strong> This passion comes through in every detail in all of our products. <strong>All of our mattresses are handcrafted in our own factory located just outside of Los Angeles.</strong>
-                    </p>
-                </div>
-                <div class="col-xs-12 col-sm-6">
-                    <img loading="lazy" data-src="https://brentwood-home-36.imgix.net/factoryv3.jpg?w=800" alt="Passionate About the Details" class="feature-img img-responsive img" src="https://brentwood-home-36.imgix.net/factoryv3.jpg?w=800&blur=500&q=10">
-                </div>
-            </div>
-        </section>
-                
+        
         <section class="overlays overlays-7 only-desktop">
             <img class="col-xs-12" loading="lazy" src="https://brentwood-home.imgix.net/{{ metaf.ecommimage }}?w=1280&blur=500&q=10" data-src="https://brentwood-home.imgix.net/{{ metaf.ecommimage }}?w=1280" alt="{{ product.title | escape }} {{metaf.feature4_title | escape }}">
             <p>
@@ -656,16 +635,9 @@
         <section class="container overlays overlays-8">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                 <div>
-                    <h2 class="overlays-title">Comfort &amp; Support</h2>
+                    <h2 class="overlays-title overlays-title2">Comfort &amp; Support</h2>
                     <p class="text-center">
-                        {% case metaf.comfort %}
-                            {% when 'Medium Plush' %}
-                                <img loading="lazy" data-src="{{ 'icon-mediumplushsupport.svg' | asset_url }}" alt="Medium Plush">
-                            {% when 'Medium' %}
-                                <img loading="lazy" data-src="{{ 'icon-mediumsupport.svg' | asset_url }}" alt="Medium">
-                            {% else %}
-                            
-                        {% endcase %}
+                        
                     </p>
                     <h4 style="font-size: 28px;" class="text-center">{{ metaf.comfort }}</h4><br>
                     <p class="text-center">
@@ -676,7 +648,7 @@
         </section>
         {%comment%}
         <section class="overlays overlays-9">
-            <h2 class="overlays-title">
+            <h2 class="overlays-title ">
                 Works on all surfaces
             </h2>
             <div class="left col-md-6 only-desktop">
@@ -700,7 +672,7 @@
         </section>
         {%endcomment%}
         <section class="overlays overlays-11">
-            <h2 class="overlays-title">
+            <h2 class="overlays-title overlays-title2">
                 What people say about us
             </h2>
             <div class="container sectionMarg">
@@ -760,14 +732,14 @@
             });
         </script>
 
-        <section class="overlays overlays-5 container">
+        <section class="overlays container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
                     <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?w=715" src="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?w=715&blur=500&q=10" alt="Donate a Bed, Change A Life!">
                 </div>
                 <div class="col-xs-12 col-sm-6">
                     <h2 class="overlays-title">Donate a Bed, Change A Life!</h2>
-                    <p>We proudly support the urgent mission and vision of <a href="https://reliefbed.com/" title="Relief Bed" target="_blank">Relief Bed</a>, a 501(c)(3) nonprofit. 
+                    <p class="description">We proudly support the urgent mission and vision of <a href="https://reliefbed.com/" title="Relief Bed" target="_blank">Relief Bed</a>, a 501(c)(3) nonprofit. 
                         <strong>With your $25 donation, we’ll cover the rest (a $50 value) to build one Relief Bed.</strong> Simply select this option in the shopping cart. Relief Beds are innovative and strategically-built mattresses designed to meet the practical needs of the homeless, impoverished, shelter residents, and victims of natural disaster. It is a tangible way we can help the members of our community in their time of need, and we hope you’ll join us.
                     </p>
                     <p class="text-center"><a href="/pages/relief-bed" class="cta2">Learn More</a></p>
