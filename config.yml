@@ -31,6 +31,44 @@ lazy:
   - gulpfile.babel.js
   - package.json
   - yarn.lock
+  
+  
+impact:
+  password: e23046dc3a70a3d845e2051dadfbf92f
+  theme_id: "48929472574"
+  store: brentwood-home.myshopify.com
+  ignore_files:
+  - config/settings_data.json
+  - node_modules
+  - src
+  - dist
+  - flow-typed
+  - .babelrc
+  - .editorconfig
+  - .eslintrc
+  - .flowconfig
+  - .gitignore
+  - config.yml
+  - gulpfile.babel.js
+  - package.json
+  - yarn.lock
+  - config/settings_data.json
+  - node_modules
+  - src
+  - dist
+  - flow-typed
+  - .babelrc
+  - .editorconfig
+  - .eslintrc
+  - .flowconfig
+  - .gitignore
+  - config.yml
+  - gulpfile.babel.js
+  - package.json
+  - yarn.lock
+  
+  
+  
 live:
   password: e23046dc3a70a3d845e2051dadfbf92f
   theme_id: "46433665086"
