@@ -125,18 +125,7 @@
                       </div>
                       {% endif %}
 
-                {% if product.selected_or_first_available_variant.inventory_management %}
-                        {% assign first_inventory = product.selected_or_first_available_variant.inventory_quantity %}
-                        {% if first_inventory < 1 %}
-                          <div class="out-of-stock">
-                             <span class="left"></span>
-                              <p class="product-inventory">
-                                We’re currently making this item to order.<br> Please allow <b>up to 3 weeks</b> for crafting and shipping.
-                              </p>
-                            <span class="right"></span>
-                          </div>
-                        {% endif %}
-                    {% endif %}
+                
                     {% include 'nowtime' %}
                     {% if product.type == "Crib Mattress" %}
                       {% if rightnowint > 201801180001 and rightnowint < 201801290001 %}
@@ -152,9 +141,11 @@
                           </p>
                       </div>
                     {%else%}
-                      <input type="submit" name="add" class="cta2" id="product-add-to-cart" value="Add to Cart"><br>
+                      <!--{% include 'shippingtime' %}-->
+                      <input type="submit" name="add" class="cta2" id="product-add-to-cart" value="Add to Cart">
+                      <p id="add2cart_shipping"><img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Ships free in {{ shipsfree }}">Ships free in {{ shipsfree }}</p>
                       <div class="clearfix"></div>
-                  {% include 'shippingtime' %}
+                  
                     {% endif %}
                      
                       
