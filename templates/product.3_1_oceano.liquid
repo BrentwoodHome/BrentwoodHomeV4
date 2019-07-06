@@ -101,7 +101,10 @@
             padding: 0px 18px 0 0;
         }
     }
-    @media (max-width: 991px) and (min-width: 768px){
+    @media (max-width: 1199px) and (min-width: 768px){
+        .site-nav > li > a{
+            padding: 20px 12px;
+        }
         .header.is-ticky .site-nav > li > a {
             padding: 20px 5px 20px;
         }
@@ -134,7 +137,7 @@
         font-family: AvenirLTStd-Roman, 'Helvetica Neue', helvetica, sans-serif;
         line-height: 48px;
     }
-    H3{
+    #page_product H3{
         text-transform: capitalize;
         text-align: left;
         /*font-size: 22px;*/
@@ -293,6 +296,10 @@
         font-weight: bold;
         font-family: AvenirLTStd-Roman, 'Helvetica Neue', helvetica, sans-serif;
     }
+    .owl-carousel.owl-drag .owl-item h3{
+        text-align:center !important;
+        line-height: 20px !important;
+    }
     @media (max-width: 1199px){
         DIV.inside .matTip.cedarluxe.springs{
             width: 290px;
@@ -341,7 +348,7 @@
             margin-top: 0;
         }
         .owl-carousel.owl-drag .owl-item .item{
-            padding: 15px;
+            padding: 15px 0;
         }
         .materialListMob H3{
             margin: 15px 0;
@@ -349,15 +356,18 @@
         .flexV div{
             padding: 0;
         }
-        H3{
+        #page_product H3{
             line-height: 20px;
         }
         #product-image-main{
             margin-bottom: 30px;
         }
+        .owl-carousel.owl-drag .owl-item {
+            min-height: 250px;   
+        }
     }
     @media (max-width: 768px){
-        H3{
+        #page_product H3{
             line-height: 24px;
             margin: 0 0 16px 0;
             text-transform: uppercase;
@@ -371,7 +381,10 @@
             margin-bottom: 0px;
         }
         .product-shop .product-title h1{
-            margin: 0;
+            margin: 10px 0;
+        }
+        .owl-carousel.owl-drag .owl-item {
+             min-height: 320px;   
         }
     }
     .owl-carousel .owl-stage-outer{
@@ -388,7 +401,14 @@
         background-color: white;
         box-shadow: 0 0 8px #aaa;
         border-radius: 6px;
-        min-height: 320px;
+        min-height: 320px;   
+    }
+    
+    #warranties.owl-carousel.owl-drag .owl-item {
+        min-height: 230px;
+    }
+    #materials-desk.owl-carousel.owl-drag .owl-item{
+        min-height: 260px;
     }
 </style>
 
@@ -663,7 +683,6 @@
                     {% assign current_variant = product.selected_or_first_available_variant %}
                     </form>
                     <button type="button" class="cta2" style="width: 100%;" id="product-add-to-cart">Add to Cart</button>
-                    
                    
             </div>
         </div>
@@ -679,21 +698,21 @@
             <div class="inside five">
                 <div class="hidden-xs hidden-sm matTip small oceano tencel wow fadeIn" data-wow-duration="1s" data-wow-delay="1s">
                     <img src="https://s3-brentwoodhome.imgix.net/tencel_round.png?w=80&h=80" alt="Plant-Based Tencel™ Blended Fabric Cover" class="rdthumb">
-                    <p><strong>Plant-Based Tencel™ Blended Fabric Cover</strong><span>Sustainably-produced, airy and soft to the skin with unique moisture-absorbing abilities.</span></p>
+                    <p><strong>1. Plant-Based Tencel™ Blended Fabric Cover</strong><span>Sustainably-produced, airy and soft to the skin with unique moisture-absorbing abilities.</span></p>
                     <div class="arrow">
                         <div class="pointer"></div>
                     </div>
                 </div>
                 <div class="hidden-xs hidden-sm matTip small oceano wool wow fadeIn" data-wow-duration="1s" data-wow-delay="1.3s">
                     <img src="https://s3-brentwoodhome.imgix.net/products/cypress/wool2-round.png?w=80&h=80" alt="GOTS Organic Certified Wool" class="rdthumb">
-                    <p><strong>GOTS Organic Certified Wool</strong><span>100% organic, keeps you cool in the summer and warm in the winter.</span></p>
+                    <p><strong>2. GOTS Organic Certified Wool</strong><span>100% organic, keeps you cool in the summer and warm in the winter.</span></p>
                     <div class="arrow">
                         <div class="pointer"></div>
                     </div>
                 </div>
                 <div class="hidden-xs hidden-sm matTip small oceano microcoils wow fadeIn" data-wow-duration="1s" data-wow-delay="1.8s">
                     <img src="https://s3-brentwoodhome.imgix.net/microcoils_round.png?w=80&h=80" alt="Responsive Micro-Support Coils" class="rdthumb">
-                    <p><strong>Responsive Micro-Support Coils</strong><span>Up to 1,722 micro-pocketed coils for ultra-responsive comfort and precision support.
+                    <p><strong>4. Responsive Micro-Support Coils</strong><span>Up to 1,722 micro-pocketed coils for ultra-responsive comfort and precision support.
                         </span></p>
                     <div class="arrow">
                         <div class="pointer"></div>
@@ -701,14 +720,14 @@
                 </div>
                 <div class="hidden-xs hidden-sm matTip small cedarluxe wow springs" data-wow-duration="1s" data-wow-delay="2.3s">
                     <img src="https://s3-brentwoodhome.imgix.net/rd-spring-closeup.png?w=80&h=80" alt="5-Zone spring core" class="rdthumb">
-                    <p><strong>5-Zone Support Core</strong><span>An up to 1,441 premium support unit strategically designed to support hips, back and shoulders.</span></p>
+                    <p><strong>3. 5-Zone Support Core</strong><span>An up to 1,441 premium support unit strategically designed to support hips, back and shoulders.</span></p>
                     <div class="arrow">
                         <div class="pointer"></div>
                     </div>
                 </div>
                 <div class="hidden-xs hidden-sm matTip small oceano gel wow fadeIn" data-wow-duration="1s" data-wow-delay="2.5s">
                     <img src="https://s3-brentwoodhome.imgix.net/products/cypress/gelmf-round.png?w=80&h=80" alt="CertiPUR-US® certified Cooling Gel Memory Foam" class="rdthumb">
-                    <p><strong>CertiPUR-US® certified Cooling Gel Memory Foam</strong><span>Contouring and cooling for pressure-point relief and deep rest.</span></p>
+                    <p><strong>5. CertiPUR-US® certified Cooling Gel Memory Foam</strong><span>Contouring and cooling for pressure-point relief and deep rest.</span></p>
                     <div class="arrow">
                         <div class="pointer"></div>
                     </div>
@@ -720,17 +739,18 @@
                     <source media="(max-width: 991px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_side_materials_tablet.jpg?w=767 1x,
                                                                     https://s3-brentwoodhome.imgix.net/products/oceano/oceano_side_materials_tablet.jpg?w=767&fit=max&q=40&dpr=2 2x,
                                                                     https://s3-brentwoodhome.imgix.net/products/oceano/oceano_side_materials_tablet.jpg?w=767&fit=max&q=20&dpr3 3x">
-                    <source media="(min-width: 992px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_side_materials_desktop.jpg?w=1170 1x,
-                                                                    https://s3-brentwoodhome.imgix.net/products/oceano/oceano_side_materials_desktop.jpg?w=1170&fit=max&q=40&dpr=2 2x,
-                                                                    https://s3-brentwoodhome.imgix.net/products/oceano/oceano_side_materials_desktop.jpg?w=1170&fit=max&q=20&dpr3 3x">
-                    <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_side_materials_desktop.jpg?w=1170&q=10&blur=500" data-src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_side_materials_desktop.jpg?w=1170" alt="">
+                    <source media="(min-width: 992px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_side_materials_desktop2b.jpg?w=1170 1x,
+                                                                    https://s3-brentwoodhome.imgix.net/products/oceano/oceano_side_materials_desktop2b.jpg?w=1170&fit=max&q=40&dpr=2 2x,
+                                                                    https://s3-brentwoodhome.imgix.net/products/oceano/oceano_side_materials_desktop2b.jpg?w=1170&fit=max&q=20&dpr3 3x">
+                    <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_side_materials_desktop2b.jpg?w=1170&q=10&blur=500" data-src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_side_materials_desktop2b.jpg?w=1170" alt="Oceano Materials">
                 </picture>         
             </div>
         </div>
         <style>
             .materialListMob H3{
-                font-size: 16px;
-                line-height: 20px;
+                font-size: 16px !important;
+                line-height: 20px !important;
+                margin: 15px 0 !important;
             }
             .materialListMob P{
                 font-size: 14px;
@@ -739,11 +759,11 @@
             }
         </style>
         <div class="container visible-md-block visible-lg-block section materialListMob">
-           <br><h3 class="text-center">additional natural layers</h3>
+           <br><h3 class="text-center" style="text-align: center">additional natural layers</h3>
             <div id="materials-desk" class=" owl-carousel owl-theme">
                 
                 <div class="item text-center">
-                    <p class="text-center matnumber" style="margin-top: 10px;">1</p>
+                    <p class="text-center matnumber" style="margin-top: 10px;">6</p>
                     <h3 class="text-center features">Luxurious Natural Poly-Silk Fiber
                     </h3>
                     <p>A premium and unique fiber blend for lightness and enhanced breathability that only natural silk provides.
@@ -751,20 +771,20 @@
                 </div>
                 
                 <div class="item text-center">
-                    <p class="text-center matnumber" style="margin-top: 10px;">2</p>
+                    <p class="text-center matnumber" style="margin-top: 10px;">7</p>
                     <h3 class="text-center features">Serene Cool Air Luxe Foam™</h3>
                     <p>2-inches of deep comfort for pressure-point relief, that is notably airy and cool.
                     </p>
                 </div>
                 
                 <div class="item text-center">
-                    <p class="text-center matnumber" style="margin-top: 10px;">3</p>
+                    <p class="text-center matnumber" style="margin-top: 10px;">8</p>
                     <h3 class="text-center features">Premium Base Support Foam
                     </h3>
                     <p>1-inch of luxe CertiPUR-US® Certified High-Density support foam.</p>
                 </div>
                 <div class="item text-center">
-                    <p class="text-center matnumber" style="margin-top: 10px;">4</p>
+                    <p class="text-center matnumber" style="margin-top: 10px;">9</p>
                     <h3 class="text-center features">Organic Cotton Canvas Base
                     </h3>
                     <p>100% GOTS organic certified cotton canvas base in a beautiful Herringbone pattern.
