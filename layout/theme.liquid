@@ -45,7 +45,11 @@
                                            
 -->
    
-    
+    <!-- Start Impact -->
+    <script type="text/javascript"> 
+        (function(a,b,c,d,e,f,g){e['ire_o']=c;e[c]=e[c]||function(){(e[c].a=e[c].a||[]).push(arguments)};f=d.createElement(b);g=d.getElementsByTagName(b)[0];f.async=1;f.src=a;g.parentNode.insertBefore(f,g);})('//d.impactradius-event.com/A1450394-1267-428a-a5d4-10165976a1d81.js','script','ire',document,window); 
+    </script>
+    <!-- End Impact -->
     
     <meta http-equiv="Accept-CH" content="DPR, Width, Viewport-Width">
     <script type="text/javascript">//window.variation1 = false; </script>
@@ -183,6 +187,77 @@
                           height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- End Google Tag Manager (noscript) -->
         
+        
+        
+        <script>
+            function setCookie(name,value,days) {
+                var expires = "";
+                if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + (days*24*60*60*1000));
+                    expires = "; expires=" + date.toUTCString();
+                }
+                document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+            }
+
+            function getCookie(name) {
+                var nameEQ = name + "=";
+                var ca = document.cookie.split(';');
+                for(var i=0;i < ca.length;i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                }
+                return null;
+            }
+            function eraseCookie(name) {   
+                document.cookie = name+'=; Max-Age=-99999999; path=/';  
+            }
+        </script>
+        <!-- Start Impact -->
+        {% assign email = "" %}
+        {% assign customerID = "" %}
+        {% if customer %}
+        {% assign email = customer.email | sha1 %}
+        {% assign customerID = customer.id %}
+        {% endif %}
+        <script type="text/javascript">
+            //console.log("customerID: ", {{customerID}});
+            //console.log("customerEmail: ", '{{email}}');
+            ire('identify', {customerId: "{{customerID}}", customerEmail: "{{email}}"});
+        </script>
+
+        <script>
+            //eraseCookie("bwh_impact");
+            var myImpactCookie = getCookie("bwh_impact");
+
+            // if clickid present in url, always update cookie with latest value, if no clickid but cookie present, dont do anything, if no click id and no cookie, generate clickid
+            var impact_clickID = "";
+            const urlParams = new URLSearchParams(window.location.search);
+            if(urlParams.has('irclickid')){
+                //clickid available from url
+                //console.log(urlParams.get('irclickid')); // true 
+                impact_clickID = urlParams.get('irclickid');
+                setCookie("bwh_impact", impact_clickID, 120); //create 120 day cookie with url value
+            }else{
+                //no value in url, check if cookie doesn't exists, if not, do nothing
+                if (myImpactCookie == null) {
+                    //cookie doesn't exists, no click id available, generate one
+                    ire('generateClickId', function(clickId) {
+                        // use clickId here
+                        //console.log("generated clickID: ", clickId);
+                        setCookie("bwh_impact", clickId, 120);
+                    });
+                    //impact_clickID = generateClickId();
+                    //setCookie("bwh_impact", impact_clickID, 120);
+                }
+            }
+            console.log("bwh_impact cookie: "+getCookie("bwh_impact"));
+        </script>
+        <!-- END IMPACT -->
+        
+        
+        
 <div id="loading"></div>
   <div class="wrapper-container">
 	{% include 'header' %}
@@ -197,7 +272,6 @@
       </div>
     </div>
   </div>
-
 
       
     {% if template contains 'product' or template contains 'reliefbed' or template contains 'certifications' or template contains 'team' %}
@@ -279,6 +353,10 @@
 {%comment%}
 {% include 'special-offers' %}
 {%endcomment%}
+
+
+
+
 
 <!-- Intercom settings override for custom launcher -->
     <script>

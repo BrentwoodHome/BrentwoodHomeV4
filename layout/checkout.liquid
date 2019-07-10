@@ -19,6 +19,12 @@
 
         <title>{{ page_title }}</title>
 
+        <!-- IMPACT -->
+        <script type="text/javascript"> 
+            (function(a,b,c,d,e,f,g){e['ire_o']=c;e[c]=e[c]||function(){(e[c].a=e[c].a||[]).push(arguments)};f=d.createElement(b);g=d.getElementsByTagName(b)[0];f.async=1;f.src=a;g.parentNode.insertBefore(f,g);})('//d.impactradius-event.com/A1450394-1267-428a-a5d4-10165976a1d81.js','script','ire',document,window); 
+        </script>
+        <!-- END IMPACT -->
+
         {{ content_for_header }}
 
         {{ checkout_stylesheets }}
@@ -32,6 +38,7 @@
                                     })(window,document,'script','dataLayer','GTM-NWLPSV');</script>
         <!-- End Google Tag Manager -->
 
+        
         <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
         for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
         mixpanel.init("b2d0db1e54496b9a137db682bd10295a");</script><!-- end Mixpanel -->
@@ -40,9 +47,7 @@
         
         <!-- Favicon -->
         <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/x-icon" />
-        <style>
-            .shopify-preview-bar { display: none; }
-        </style>
+
     </head>
     <body id="checkout-{{ page_title | handle }}">
         {{ skip_to_content_link }}
@@ -95,6 +100,8 @@
     {{ tracking_code }}
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script> 
+
+   
 
 
     <!-- MIXPANEL -->
@@ -155,7 +162,7 @@
             //console.log("order.order_number:", {{ order.order_number }});
 
             //pinterest
-            pintrk('track', 'checkout');
+            //pintrk('track', 'checkout');
 
         }else{
             //Tracking checkout steps
