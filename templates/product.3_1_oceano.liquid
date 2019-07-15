@@ -184,10 +184,10 @@
         text-decoration: none;
     }
     div.oceanomaterials{
-        /*background-image: url({{ 'oceanowaves-pattern3.svg' | asset_url }});*/
+        background-image: url({{ 'oceanowaves-pattern4.svg' | asset_url }});
         background-position: top left;
         background-repeat: repeat-x;
-        padding-top: 120px;
+        padding-top: 140px;
         margin-bottom: 110px;
     }
     div.oceanomaterials section{
@@ -285,7 +285,7 @@
         font-size: 14px;
     }
     .update-ui #bk-localnav.bk-localnav-top.bk-localnav-light.custom-box-shadow{
-        display: none;
+        /*display: none;*/
     }
     .matnumber{
         background-color: #38414F;
@@ -903,6 +903,7 @@
                 });
             });
         </script>
+        {%comment%}
         <div class="container margTB7050 text-center boxMat">
             <div class="hidden-xs row">
                 <div class="col-xs-12 col-md-8 col-md-offset-2 text-center">
@@ -933,8 +934,10 @@
                     <p>Eco-friendly</p>
                 </div>
             </div><br>
-            <p class="text-center"><a href="#materialsspecs" class="sscroll cta2">see full materials specs</a></p>
+            
         </div>
+        {%endcomment%}
+        <p class="text-center"><a href="#materialsspecs" class="sscroll cta2">see full materials specs</a></p>
     </section>
 </div>
 
@@ -996,27 +999,6 @@
         </div>
     </div>
 </div>
-{% comment %}
-<div class="container section">
-    <div class="row flex">
-        <div class="col-xs-12 col-sm-6 text-center wow fadeInLeft">
-            <picture>
-                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-topview.jpg?rect=781,0,1920,1920&w=768&ch=Width,DPR&q=55">
-                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-topview.jpg?rect=781,0,1388,1920&w=555">
-                <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-topview.jpg?rect=781,0,1388,1920&w=555&blur=500&q=10" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-topview.jpg?rect=781,0,1388,1920&w=555" alt="">
-            </picture>
-        </div>
-        <div class="col-xs-12 col-sm-6 flexV wow fadeInRight">
-            <div>
-                <h3>Sleep with Peace of&nbsp;Mind</h3>
-                <h2>Non-Toxic Materials</h2>
-                <p>Our non-toxic materials include <strong>CertiPUR-US®</strong> certified cooling, gel-infused memory foam, silk fibers, <strong>GOTS organic certified cotton and wool</strong>, and sustainably-sourced plant-based Tencel fibers from eucalyptus trees. Better still, no chemical or synthetic fiber flame retardants are used. 
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-{% endcomment %}
 
 <div class="container section">
     <div class="row flex">
@@ -1032,21 +1014,42 @@
                 <h3>Unsurpassed Quality Since 1987</h3>
                 <h2>Handmade in Sunny&nbsp;California</h2>
                 <p><strong>Handcrafted in our own GOTS & GOLS organic certified factory just outside of Los Angeles.</strong> Most other mattresses are shipped from overseas, where environmental and quality standards are low. Not ours. We make our own mattresses (few brands do!) and our valued team members (many of whom have been with us for more than 20 years) are paid living wages and provided comprehensive benefits.</p>
-                <p class="text-center"><img src="{{ 'gots-gols-product.jpg' | asset_url }}" alt="GOTS &amp; GOLS Certified" style="max-width: 250px; width: 250px;margin-top: 30px;"></p>
+                <p class="text-center"><img src="{{ 'gots-gols-logo-factory.png' | asset_url }}" alt="GOTS &amp; GOLS Certified Factory" style="max-width: 250px; width: 250px;margin-top: 30px;"></p>
             </div>
         </div>
     </div>
 </div>
+
 <div class="container section">
     <div class="row flex">
-        <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center wow fadeInRight">
+        <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center wow fadeInLeft">
+            <picture>
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-topview.jpg?rect=781,0,1920,1920&w=768&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-topview.jpg?rect=781,0,1388,1920&w=555">
+                <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-topview.jpg?rect=781,0,1388,1920&w=555&blur=500&q=10" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/BrentwoodHome-CedarMattress-topview.jpg?rect=781,0,1388,1920&w=555" alt="">
+            </picture>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV wow fadeInRight">
+            <div>
+                <h3>Sleep with Peace of&nbsp;Mind</h3>
+                <h2>Non-Toxic Materials</h2>
+                <p>Our non-toxic materials include <strong>CertiPUR-US®</strong> certified cooling, gel-infused memory foam, silk fibers, <strong>GOTS organic certified cotton and wool</strong>, and sustainably-sourced plant-based Tencel fibers from eucalyptus trees. Better still, no chemical or synthetic fiber flame retardants are used. 
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container section">
+    <div class="row flex">
+        <div class="col-xs-12 col-sm-6 text-center wow fadeInRight">
             <picture>
                 <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_details_cover.jpg?rect=2853,0,2999,2999&w=768&ch=Width,DPR&q=55">
                 <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_details_cover.jpg?rect=2853,0,2999,4150&w=555">
                 <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_details_cover.jpg?rect=2853,0,2999,4150&w=555&blur=500&q=10" data-src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_details_cover.jpg?rect=2853,0,2999,4150&w=555" alt="">
             </picture>
         </div>
-        <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV wow fadeInLeft">
+        <div class="col-xs-12 col-sm-6 flexV wow fadeInLeft">
             <div>
                 <h3>Lab Tested for Low Emissions</h3>
                 <h2>Greenguard Gold&nbsp;Certified</h2>
@@ -1059,14 +1062,14 @@
 
 <div class="container section">
     <div class="row flex">
-        <div class="col-xs-12 col-sm-6 text-center wow fadeInLeft">
+        <div class="col-xs-12 col-sm-6 text-center col-sm-push-6 wow fadeInLeft">
             <picture>
                 <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1605,953,3634,3634&w=480&ch=Width,DPR&q=55">
                 <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&ch=Width,DPR&q=55">
                 <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&blur=500q=10" data-src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&ch=Width,DPR&q=55" alt="Start Your 1-Year Sleep Trial">
             </picture>
         </div>
-        <div class="col-xs-12 col-sm-6 flexV wow fadeInRight">
+        <div class="col-xs-12 col-sm-6 flexV col-sm-pull-6 wow fadeInRight">
             <div>
                 <h2>Start Your 1-Year Sleep&nbsp;Trial</h2>
                 <p>Experiencing is believing, especially when it comes to our top-rated {{ product.title }}. Sleep soundly knowing you can try our mattress for <strong>365 days, risk-free, in the comfort of your home</strong>. Learn more about our amazing <a href="https://www.brentwoodhome.com/pages/1-year-risk-free-mattress-trial">1-Year Sleep Trial Policy</a> for mattresses sold on our website.

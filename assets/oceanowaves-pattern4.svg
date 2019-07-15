@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1736px" height="152px" viewBox="0 0 1736 152" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>oceano-waves2</title>
+    <desc>Created with Sketch.</desc>
+    <g id="oceano-waves2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#FFFFFF" x="0" y="0" width="1736" height="152"></rect>
+        <g id="Group-3" transform="translate(871.193912, 79.035764) scale(1, -1) rotate(-2.000000) translate(-871.193912, -79.035764) translate(-3.306088, -110.464236)">
+            <path d="M4.01004503,79.1345592 L223.875419,79.1345592 L1748.01005,79.1345592 L1738.63843,223.714603 C1586.4814,198.993388 1464.69955,181.065675 1373.29287,169.931464 C1010.17582,125.700316 640.679944,167.457452 496.709723,171.340011 C383.534263,174.392104 319.328953,179.154272 236.274816,179.255786 C173.272117,179.332792 95.0912008,173.600826 1.7320674,162.059887 L4.01004503,79.1345592 Z" id="Rectangle" fill="#FAFAFA" opacity="0.818708147"></path>
+            <path d="M2.0904084,215.483312 C354.451362,138.406948 680.499573,134.522316 980.23504,203.829418 C1279.97051,273.136519 1532.15508,297.420819 1736.78875,276.682317" id="Path-4-Copy" stroke="#38414F" opacity="0.75"></path>
+            <path d="M4.30664494,122.645954 C370.307503,87.768568 703.175666,104.983426 1002.91113,174.290527 C1302.6466,243.597628 1547.26506,276.765675 1736.7665,273.794669" id="Path-4-Copy-2" stroke="#38414F" opacity="0.330054874" transform="translate(870.536573, 189.555092) scale(-1, 1) rotate(-7.000000) translate(-870.536573, -189.555092) "></path>
+        </g>
+    </g>
+</svg>
