@@ -407,12 +407,15 @@
     </section>
     {% endif %}
 
-    <section class="overlays overlays-7 only-desktop">
-        <img class="col-xs-12" src="{{ metaf.ecommimage | asset_url }}"/>
-        <p>
-            {{ metaf.ecommimage_tagline }}
-        </p>
-    </section>
+    {% if metaf.ecommimage_tagline %}
+        <section class="overlays overlays-7 only-desktop">
+            <img class="col-xs-12" src="{{ metaf.ecommimage | asset_url }}"/>
+            <p>
+                {{ metaf.ecommimage_tagline }}
+            </p>
+        </section>
+    {% endif %}
+    
     {% if product.type == "Pet Bed" %}
         <section class="overlays overlays-11">
             <h2 class="overlays-title">
@@ -491,8 +494,8 @@
         </section>
     {% endif %}
    
-    <section class="overlays overlays-13">
-        <div id="exTab1" class="container">
+    <section class="overlays overlays-tabs container">
+        <div id="exTab1" class="">
         <h2 class="overlays-title">Details</h2>
             <ul class="nav nav-pills">
                 <li class="active">
@@ -549,6 +552,9 @@
                                         We offer free returns for 30 days with our pet beds.</p>
                                 </div>
                                 {% else %}
+                                {% if shipsfree %}
+                                    <p class="text-left"><strong>Note: Currently shipping out for free in {{ shipsfree }}.</strong></p>
+                                {% endif %}
                                     {{ metaf.details_shipping }}
                                 {% endif %}
                             </div>
