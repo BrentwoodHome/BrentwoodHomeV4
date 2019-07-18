@@ -362,8 +362,39 @@
         #product-image-main{
             margin-bottom: 30px;
         }
+        
+    }
+    @media (min-width: 768px) and (max-width: 991px){ /* bootstrap SM */
         .owl-carousel.owl-drag .owl-item {
             min-height: 250px;   
+        }
+        .flex-control-thumbs{
+            display: inline-block !important;
+            width: auto;
+            left: 50%;
+            top: 0;
+            margin-left: calc(-30%);
+            position: relative;
+        }
+        BODY.template-product .product-shop .yotpo .pull-left{
+            float: none !important;
+            text-align: center;
+        }
+        div.oceanomaterials{
+            padding-top: 115px;
+            margin-bottom: 110px;
+            margin-top: -40px;
+        }
+        H2.margTB7050 {
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+        .product-shop .product-title h1{
+            text-align: center !important;
+        }
+        body:not(.template-index) #header-content {
+            position: relative;
+            box-shadow: 0 6px 15px #aeaeae;
         }
     }
     @media (max-width: 768px){
@@ -482,7 +513,7 @@
                 {% if collection.products_count <= 1 %}
                                                    {% assign multi_prd = false %}
                                                    {% endif %}
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 col-lg-5 product-shop">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-0 col-lg-5 product-shop">
 
                 <div>
                     {% if settings.display_prev_next_product and collection and multi_prd %}
