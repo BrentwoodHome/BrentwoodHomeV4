@@ -67,6 +67,11 @@
     {{ 'jquery.elevateZoom-3.0.8.min.js' | asset_url | script_tag }}
     {{ 'jquery.fancybox.pack.js' | asset_url | script_tag }}
     {{ 'jquery.fakecrop.js' | asset_url | script_tag }}
+    
+<script type="text/javascript">
+    adroll_custom_data = {"product_id":"{{product.id}}"}; 
+</script>
+    
 {%endif%}
 
 {{ 'owl.carousel.min.234.js' | asset_url | script_tag }}
