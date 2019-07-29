@@ -76,7 +76,7 @@ $bodyHeight: 27px;
 .cta2{
     background-color: #38414f;
     border: 1px solid white;
-    color: white;
+    color: white !important;
     padding: 18px 60px;
     font-size: 18px;
     border-radius: 6px;
@@ -84,8 +84,9 @@ $bodyHeight: 27px;
     margin-top: 30px;
     transition: background-color 0.5s ease;
     text-transform: uppercase;
+    text-decoration: none !important;
     &:HOVER{
-        color: white;
+        color: white !important;
         background-color: #687283;
         border: 1px solid $blue;
     }
@@ -3718,6 +3719,10 @@ BODY.template-article{
     A{
         color: white;
         text-decoration: underline;
+        &:HOVER{
+            color: white;
+            text-decoration: none;
+        }
     }
 }
 

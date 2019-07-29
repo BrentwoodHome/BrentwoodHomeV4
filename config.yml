@@ -33,9 +33,9 @@ lazy:
   - yarn.lock
   
   
-impact:
+titan:
   password: e23046dc3a70a3d845e2051dadfbf92f
-  theme_id: "48929472574"
+  theme_id: "49730879550"
   store: brentwood-home.myshopify.com
   ignore_files:
   - config/settings_data.json
