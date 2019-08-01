@@ -3146,7 +3146,7 @@ position:relative;
 
 
 #offcanvas{display:none}
-@media (max-width: 767px) {
+@media (max-width: 991px) {
    body #offcanvas{display:block}
   .offcanvas-push {
       bottom: 0;
@@ -3169,10 +3169,10 @@ position:relative;
       position: fixed;
       overflow-y: scroll;
       top: 0;
-      transform: translateY(-100%);
-      -webkit-transform: translateY(-100%);
-      -moz-transform: translateY(-100%);
-      -o-transform:translateY(-100%);-o-transition: all 0.5s ease 0s;     -moz-transition: all 0.5s ease 0s;     -webkit-transition: all 0.5s ease 0s;
+      transform: translateX(-100%);
+      -webkit-transform: translateX(-100%);
+      -moz-transform: translateX(-100%);
+      -o-transform:translateX(-100%);-o-transition: all 0.5s ease 0s;     -moz-transition: all 0.5s ease 0s;     -webkit-transition: all 0.5s ease 0s;
       width: 100%;
       z-index: 1000;
   }
@@ -3198,7 +3198,7 @@ position:relative;
 
 
   /*---canvas---*/
-  .offcanvas-mainnav .navbar-nav.megamenu{margin:0;}
+  .offcanvas-mainnav .navbar-nav.megamenu{margin:0;width: 100%;}
 
     #offcanvas {background:#454D5B; height:100%;}
 
@@ -3226,7 +3226,7 @@ position:relative;
       z-index: 9;
   }
   #offcanvas .navbar-nav ul{ width: 100% !important;padding-left: 15px;}
-  #offcanvas .navbar-nav li{margin:0;padding:0 15px;}
+  #offcanvas .navbar-nav li{margin:0;padding:0 15px;float: none;}
   #off-canvas-button{
        color: #939393;
       font-size: 20px;
@@ -4468,7 +4468,7 @@ html{padding-top:0 !important;}
 }
 
 
-@media (max-width: 768px) { 
+@media (max-width: 991px) { 
     .logo{
         display: block;
         text-align: center;

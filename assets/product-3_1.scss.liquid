@@ -99,8 +99,9 @@ p{
         color: white;
         height: 560px;
         H3{
-            text-transform: uppercase;
-            color: $darkgrey;
+            text-transform: uppercase !important;
+            color: $darkgrey !important;
+            text-align: center !important;
         }
         P{
             color: #666;
@@ -122,10 +123,10 @@ p{
         color: white;
         height: 560px;
         H3{
-            text-transform: uppercase;
-            color: #fff;
-            font-size: 26px;
-            margin: 28px 0;
+            text-transform: uppercase !important;
+            color: #fff !important;
+            font-size: 26px !important;
+            margin: 28px 0 !important;
         }
         P{
             color: #fff;
@@ -151,9 +152,9 @@ p{
             padding: 30px;
         }
         H3{
-            color: white;
-            font-size: 24px;
-            text-align: left;
+            color: white !important;
+            font-size: 24px !important;
+            text-align: left !important;
         }
         P{
             color: white;
@@ -214,9 +215,12 @@ LABEL.selectLabel{
         margin-top: 30px;   
     }
     h3{
-        color: white;
-        font-size: 24px;
-        letter-spacing: 8px;
+        color: white !important;
+        font-size: 24px !important;
+        letter-spacing: 8px !important;
+        text-transform: uppercase !important;
+        margin: 10px 0 !important;
+        text-align: center !important;
     }
     h4{
         color: white;
@@ -1095,7 +1099,7 @@ DIV.inside{
 }
 
 
-@media all and (max-width: 767px){
+@media all and (max-width: 991px){
     .warranties{
         margin-top: 0;
         margin-bottom: 50px;
@@ -1154,7 +1158,7 @@ DIV.inside{
         padding: 10px;
     }
     .side h3{
-        font-size: 22px;
+        font-size: 22px !important;
         letter-spacing: 5px;
     }
     .side h4{
@@ -1179,13 +1183,7 @@ DIV.inside{
         margin-top: 20px !important;
         margin-bottom: 20px !important;
     }
-    .cc_yoga{
-        DIV.image{
-            background-image: url(https://s3-brentwoodhome.imgix.net/Crystal_Cove%20Family.jpg?rect=2336,389,3037,4400&h=620) !important;
-            padding: 50px 0 150px;
-            height: 560px;
-        }
-    }
+    
     
     .container.section.cc_coils{
         height: auto !important;
@@ -1193,9 +1191,6 @@ DIV.inside{
             background-image: url(https://s3-brentwoodhome.imgix.net/5zonecoils.jpg?rect=0,0,5100,5100&h=480) !important;
             padding: 0 !important;
             height: 480px !important;
-        }
-        P{
-            color: #9B9B9B;
         }
     }
     DIV.tab-content{
@@ -1220,7 +1215,20 @@ DIV.inside{
         padding: 0 5%;
     }
 }
-
+@media all and (max-width: 767px){
+    .container.section.cc_coils{
+        P{
+            color: #9B9B9B;
+        }
+    }
+    .cc_yoga{
+        DIV.image{
+            background-image: url(https://s3-brentwoodhome.imgix.net/Crystal_Cove%20Family.jpg?rect=2336,389,3037,4400&h=620) !important;
+            padding: 50px 0 150px;
+            height: 560px;
+        }
+    }
+}
 @media all and (max-width: 414px){
     DIV.inside{
         .matTip{

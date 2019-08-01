@@ -17,8 +17,8 @@
             display: inline-block;
         }
     }
-    
-    /*TEST*/
+</style>
+<style>
     .site-nav > li > a{
         padding: 21px 22px;
     }
@@ -32,13 +32,10 @@
         margin-top: 5px;
     }
     .flex-control-thumbs li{
-        margin-right: 5px !important;
-        width: 75px !important;
+        margin: 0 5px 0 0 !important;
+        width: 70px !important;
+        min-height: 51px !important;
     }
-    
-    
-    
-    
     .flex-control-thumbs li:first-child{
         margin-left: 0 !important;
     }
@@ -46,25 +43,25 @@
 
 
     .product-shop .product-title h1, .product-shop .product-title a{
-        font-size: 32px;
-        line-height: 38px;
+        font-size: 32px !important;
+        line-height: 48px;
+        font-style: normal;
+        letter-spacing: 1px;
     }
     .product-shop .product-title{
         margin-bottom: 0;
     }
     @media (min-width: 1200px){
         .product-shop {
-            max-width: none !important;
+            max-width: auto;
         }
     }
     .yotpo {
         margin-bottom: 10px;
-        margin-top: 10px;
     }
     .product-shop .short-description {
         line-height: 25px;
         letter-spacing: 1px;
-        margin-bottom: 5px;
         color: #666;
     }
     #product-variants {
@@ -86,25 +83,36 @@
     .cta2 {
         margin-top: 10px;
     }
-    .product-shop .product-title h1{
-        font-style: normal;
-        letter-spacing: 1px;
+    DIV.affirm A {
+        line-height: 14px;
     }
-    #add-to-cart-form .swatch.clearfix{
-        margin: 0;
+    DIV.cta-module {
+        margin-top: 20px !important;
     }
-    @media screen and (max-width: 480px){
-        div.addonmodule .column.copy {
-            float: left;
-            width: 60%;
+    .cta2 {
+        margin-top: 10px;
+    }
+    @media (min-width: 1024px){
+        .buycontent {
+            /*margin-left: 6%;*/
         }
     }
-    @media (max-width: 991px) and (min-width: 768px){
+    @media (max-width: 768px){
+        .header-tool {
+            padding: 0px 18px 0 0;
+        }
+    }
+    @media (max-width: 1199px) and (min-width: 768px){
+        .site-nav > li > a{
+            padding: 20px 12px;
+        }
         .header.is-ticky .site-nav > li > a {
             padding: 20px 5px 20px;
         }
         .flex-control-thumbs li{
             width: 60px !important;
+            height: 44px !important;
+            overflow: hidden;
         }
         .header-tool {
             padding: 10px;
@@ -112,10 +120,121 @@
         .header.is-ticky #search-top .icon_search, .header.is-ticky #header-content .header-inner p.top-cart {
             line-height: 18px;
         }
+        .product-shop>DIV {
+            margin: 0;
+        }
+        #page_product .product-shop h1{
+            text-align: left;
+            font-size: 32px !important;
+        }
+    }
+    LABEL.selectLabel{
+        display: none;
+    }
+    H2{
+        font-style: normal;
+        font-size: 36px;
+        margin-bottom: 25px;
+        font-family: AvenirLTStd-Roman, 'Helvetica Neue', helvetica, sans-serif;
+        line-height: 48px;
+    }
+    #page_product H3{
+        text-transform: capitalize;
+        text-align: left;
+        /*font-size: 22px;*/
+        font-size: 16px;
+        font-family: AvenirLTStd-Roman, 'Helvetica Neue', helvetica, sans-serif;
+        color: #4a4a4a;
+        letter-spacing: 1px;
+        line-height: 33px;
+        margin: 0 0 16px 0;
+        text-transform: uppercase;
+    }
+    strong{
+        /*font-family: AvenirLTStd-Roman, 'Helvetica Neue', helvetica, sans-serif;*/
+    }
+    P{
+        line-height: 26px;
+    }
+    #productPrice span, .product-shop .short-description{
+        margin-bottom: 10px;
+    }
+
+
+    @media (max-width: 991px){
+
+        H2{
+            font-size: 28px;
+            line-height: 38px;
+        }
+
+
+        .section{
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+
+        .flexV div{
+            padding: 0;
+        }
+        #page_product H3{
+            line-height: 20px;
+        }
+        #product-image-main{
+            margin-bottom: 30px;
+        }
+
+    }
+    @media (min-width: 768px) and (max-width: 991px){ /* bootstrap SM */
+
+        .flex-control-thumbs{
+            display: inline-block !important;
+            width: auto;
+            left: 50%;
+            top: 0;
+            margin-left: calc(-30%);
+            position: relative;
+        }
+        BODY.template-product .product-shop .yotpo .pull-left{
+            float: none !important;
+            text-align: center;
+        }
+
+        H2.margTB7050 {
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+        .product-shop .product-title h1{
+            text-align: center !important;
+        }
+        body:not(.template-index) #header-content {
+            position: relative;
+            box-shadow: 0 6px 15px #aeaeae;
+        }
+    }
+    @media (max-width: 768px){
+        #page_product H3{
+            line-height: 24px;
+            margin: 0 0 16px 0;
+            text-transform: uppercase;
+            /*background-color: white;
+            margin: -42px 20px 0 20px;
+            border-radius: 6px 6px 0 0;*/
+            padding: 10px;
+            text-align: center;
+        }
+        #product-image-main{
+            margin-bottom: 0px;
+        }
+        .product-shop .product-title h1{
+            margin: 10px 0;
+        }
+
     }
 </style>
 <div id="page_product">
-    <div class="container" id="product">
+    <div class="container-fluid" id="product">
         <div itemscope itemtype="http://schema.org/Product" class="product">
             <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
             <meta itemprop="image"
@@ -124,11 +243,10 @@
                        ">
             <meta itemprop="itemCondition" content="http://schema.org/NewCondition"/>
             <div class="row">
-                
                 <!-- FLEXSLIDER -->
                 {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
                 {% assign imgName = featured_image | remove: 'products/' %}
-                <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7" id="product-image-main">
+                <div class="col-xs-12 col-md-7 col-lg-7" id="product-image-main">
                     <section class="slider" style="position: relative;">
                         <!-- -->
                         <div id="flexPlaceholder">
@@ -151,16 +269,26 @@
                                     </div>
                                     {% else %}
                                     <picture>
-                                        <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=767 1x,
-                                                                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=40&dpr=2 2x,
-                                                                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=20&dpr3 3x">
-                                        <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=768 1x,
-                                                                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=768&fit=max&q=40&dpr=2 2x,
-                                                                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=768&fit=max&q=20&dpr3 3x">
+                                        <source
+                                                data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=960 1x,
+                                                             https://brentwood-home-products.imgix.net/{{ imgName }}?w=1920&dpr=2 2x"
+                                                media="(min-width: 768px)"
+                                                >
+                                        <source
+                                                data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=crop 1x,
+                                                             https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&&fit=crop&dpr=2 2x"
+                                                media="(min-width: 480px)"
+                                                >
+                                        <source
+                                                data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=480&fit=crop 1x,
+                                                             https://brentwood-home-products.imgix.net/{{ imgName }}?w=480&fit=crop&dpr=2 2x"
+                                                media="(min-width: 320px)"
+                                                >
                                         {% if forloop.first == true %}
-                                        <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="eager">
+                                        <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=960&fit=crop 1x,
+                                                  https://brentwood-home-products.imgix.net/{{ imgName }}?w=1920&fit=crop&dpr=2 2x" loading="eager">
                                         {% else %}
-                                        <img data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=768&dpr=1&fit=clip" src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=768&blur=500&q=10" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="lazy">
+                                        <img data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=555&fit=crop" src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=555&blur=500&q=10&fit=crop" loading="lazy">
                                         {% endif %}
                                     </picture>
                                     {% endif %}
@@ -175,7 +303,7 @@
                 {% if collection.products_count <= 1 %}
                                                    {% assign multi_prd = false %}
                                                    {% endif %}
-            <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5 product-shop">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-0 col-lg-5 product-shop">
                 <div>
                     {% if settings.display_prev_next_product and collection and multi_prd %}
                     <div class="product-step">
@@ -465,7 +593,7 @@
 </div>
 
 <div class="container section">
-    <h2 class="text-center margTB7050 main">The perfect combination of body contouring and cooling</h2>
+    <h2 class="text-center margTB7050">The perfect combination of body contouring and cooling</h2>
     <div class="inside five text-center">
         <div class="matTip small bamboo wow fadeIn" data-wow-duration="1s" data-wow-delay="1s">
             <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/bamboocover-round.png?w=80&h=80" src="https://s3-brentwoodhome.imgix.net/products/cypress/bamboocover-round.png?w=80&h=80&blur=500&q=10" alt="Bamboo Cover" class="rdthumb">
