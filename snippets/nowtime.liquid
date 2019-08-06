@@ -14,8 +14,9 @@ Tobe used for banners/tickers ect...
 {% assign rightnow = 'now' | date: '%Y%m%d%H%M' %}
 {% assign rightnowint = rightnow | times: 1 %}
 
-{% assign currentPromoEnd = 201907152359 %}
-{% assign newPromoEnd = 201908052359 %}
+{% assign currentPromoEnd = 201908042359 %}
+{% assign newPromoEnd = 201908192359 %}
+{% assign extensionStart = 201908052359 %}
 
 
 
@@ -28,4 +29,9 @@ Tobe used for banners/tickers ect...
 <!-- MODAL -->
 
 
-<!-- SALE PAGE -->
+<!-- SALE PAGE variable for extending promo -->
+{% if rightnowint > extensionStart %}
+    {% assign enddate = "Ends August 19" %}
+{% else %} 
+    {% assign enddate = "Ends August 5" %}
+{% endif %}
