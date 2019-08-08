@@ -284,7 +284,7 @@
                                     //jQuery(".squaredOne").addClass("disabled");
                                     jQuery("#easy-foundation-price").text("Sold Out").addClass("soldout");
                                 } else {
-                                    jQuery("#foundation").prop("disabled", false);
+                                    jQuery("#foundation").prop("disabled", false).parent().removeClass("disabled");;
                                 }
                             }
                         } 
