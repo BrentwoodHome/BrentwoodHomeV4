@@ -1,437 +1,461 @@
 {% assign producthandle = product.handle %}
 
 <script>
+    var allFoundationVariants = {{ all_products['foundation'].variants | json }};
+
     // Easy Foundation Bundle
     {% case producthandle %}
-        {% when "cedar-natural-luxe-mattress" %}
-            //Cedar foundation
-            var variantFoundations = [
-                {//Queen
-                    id: 19294522540094,
-                    price: 27500,
-                },
-                {//King
-                    id: 19294522572862,
-                    price: 35000,
-                },
-                {//CalKing
-                    id: 19294522769470,
-                    price: 35000
-                }
-            ];
-        {% when "cypress-bamboo-gel-mattress" %}
-            //Cedar color foundation
-            var variantFoundations = [
-                 {//Twin
-                     id: 19294522310718,
-                     price: 22500,
-                 },
-                 {//Twin XL
-                     id: 19294522441790,
-                     price: 25000,
-                 },
-                 {//Full
-                     id: 19294522474558,
-                     price: 25000
-                 },
-                 {//Queen
-                     id: 19294522540094,
-                     price: 27500,
-                 },
-                 {//King
-                     id: 19294522572862,
-                     price: 35000,
-                 },
-                 {//CalKing
-                     id: 19294522769470,
-                     price: 35000
-                 }
-                ];
-          {% when "oceano-mattress" %}
-              //Oceano blue color foundation
-              var variantFoundations = [
-                  {//Twin
-                      id: 19308085641278,
-                      price: 22500,
-                  },
-                  {//Twin XL
-                      id: 19308085772350,
-                      price: 25000,
-                  },
-                  {//Full
-                      id: 19308085805118,
-                      price: 25000
-                  },
-                  {//Queen
-                      id: 19308085837886,
-                      price: 27500,
-                  },
-                  {//King
-                      id: 19308085870654,
-                      price: 35000,
-                  },
-                  {//CalKing
-                      id: 19308085903422,
-                      price: 35000
-                  },
-                  {//Split K
-                      id: 19308085870654,
-                      price: 35000
-                  }
-              ];
-           {% when "oceano-mattress-test" %}
-               //Oceano blue color foundation
-               var variantFoundations = [
-                   {//Twin
-                       id: 19308085641278,
-                       price: 22500,
-                   },
-                   {//Twin XL
-                       id: 19308085772350,
-                       price: 25000,
-                   },
-                   {//Full
-                       id: 19308085805118,
-                       price: 25000
-                   },
-                   {//Queen
-                       id: 19308085837886,
-                       price: 27500,
-                   },
-                   {//King
-                       id: 19308085870654,
-                       price: 35000,
-                   },
-                   {//CalKing
-                       id: 19308085903422,
-                       price: 35000
-                   },
-                   {//Split K
-                       id: 19308085870654,
-                       price: 35000
-                   }
-               ];
-            //Oceano Pillow Bundle
-            var variantPillowBundle = [
-                {//Twin
-                    id: 12210708742255,
-                    price: 10900,
-                    qt: 1
-                },
-                {//Twin XL
-                    id: 12210708742255,
-                    price: 10900,
-                    qt: 1
-                },
-                {//Full
-                    id: 12210708742255,
-                    price: 10900,
-                    qt: 1
-                },
-                {//Queen
-                    id: 12210708775023,
-                    price: 11900,
-                    qt: 2
-                },
-                {//King
-                    id: 12210708807791,
-                    price: 12900,
-                    qt: 2
-                },
-                {//CalKing
-                    id: 12210708807791,
-                    price: 12900,
-                    qt: 2
-                },
-                {//Split K
-                    id: 12210708807791,
-                    price: 12900,
-                    qt: 2
-                }
-            ];
-        {% else %}
-            //Gray foundation for Ojai, Crystal Cove and everything else
-            var variantFoundations = [
-                {//Twin
-                    id: 18582182297662,
-                    price: 22500,
-                },
-                {//Twin XL
-                    id: 18582182330430,
-                    price: 25000,
-                },
-                {//Full
-                    id: 18582182363198,
-                    price: 25000
-                },
-                {//Queen
-                    id: 18582182395966,
-                    price: 27500,
-                },
-                {//King
-                    id: 18582182428734,
-                    price: 35000,
-                },
-                {//CalKing
-                    id: 18582182461502,
-                    price: 35000
-                },
-                {//Split King
-                    id: 18582182428734,
-                    price: 35000
-                }
-            ];
-    {% endcase %}
-
-    {% if settings.display_subtotal and product.available %}
-    //update price when changing quantity
-    function updatePricing() {
-        //try pattern one before pattern 2
-        var regex = /([0-9]+[.|,][0-9]+[.|,][0-9]+)/g;
-        var unitPriceTextMatch = jQuery('.product .price').text().match(regex);
-
-        if (!unitPriceTextMatch) {
-            regex = /([0-9]+[.|,][0-9]+)/g;
-            unitPriceTextMatch = jQuery('.product .price').text().match(regex);
+    {% when "cedar-natural-luxe-mattress" %}
+    //Cedar foundation
+    var variantFoundations = [
+        {//Queen
+            id: 19294522540094,
+            price: 27500,
+        },
+        {//King
+            id: 19294522572862,
+            price: 35000,
+        },
+        {//CalKing
+            id: 19294522769470,
+            price: 35000
         }
-
-        if (unitPriceTextMatch) {
-            var unitPriceText = unitPriceTextMatch[0];
-            var unitPrice = unitPriceText.replace(/[.|,]/g, '');
-            var quantity = parseInt(jQuery('#quantity').val());
-            var totalPrice = unitPrice * quantity;
-
-            var sizeIndex = $('#product-selectors-option-0')[0].selectedIndex
-
-            // Easy Foundation Bundle
-            if (jQuery('#foundation').prop('checked') && variantFoundations[sizeIndex]) {
-                totalPrice += variantFoundations[sizeIndex].price
+    ];
+     {% when "cypress-bamboo-gel-mattress" %}
+     //Cedar color foundation
+     var variantFoundations = [
+         {//Twin
+             id: 19294522310718,
+             price: 22500,
+         },
+         {//Twin XL
+             id: 19294522441790,
+             price: 25000,
+         },
+         {//Full
+             id: 19294522474558,
+             price: 25000
+         },
+         {//Queen
+             id: 19294522540094,
+             price: 27500,
+         },
+         {//King
+             id: 19294522572862,
+             price: 35000,
+         },
+         {//CalKing
+             id: 19294522769470,
+             price: 35000
+         }
+     ];
+      {% when "oceano-mattress" %}
+      //Oceano blue color foundation
+      var variantFoundations = [
+          {//Twin
+              id: 19308085641278,
+              price: 22500,
+          },
+          {//Twin XL
+              id: 19308085772350,
+              price: 25000,
+          },
+          {//Full
+              id: 19308085805118,
+              price: 25000
+          },
+          {//Queen
+              id: 19308085837886,
+              price: 27500,
+          },
+          {//King
+              id: 19308085870654,
+              price: 35000,
+          },
+          {//CalKing
+              id: 19308085903422,
+              price: 35000
+          },
+          {//Split K
+              id: 19308085870654,
+              price: 35000
+          }
+      ];
+       {% when "oceano-mattress-test" %}
+       //Oceano blue color foundation
+       var variantFoundations = [
+           {//Twin
+               id: 19308085641278,
+               price: 22500,
+           },
+           {//Twin XL
+               id: 19308085772350,
+               price: 25000,
+           },
+           {//Full
+               id: 19308085805118,
+               price: 25000
+           },
+           {//Queen
+               id: 19308085837886,
+               price: 27500,
+           },
+           {//King
+               id: 19308085870654,
+               price: 35000,
+           },
+           {//CalKing
+               id: 19308085903422,
+               price: 35000
+           },
+           {//Split K
+               id: 19308085870654,
+               price: 35000
+           }
+       ];
+        //Oceano Pillow Bundle
+        var variantPillowBundle = [
+            {//Twin
+                id: 12210708742255,
+                price: 10900,
+                qt: 1
+            },
+            {//Twin XL
+                id: 12210708742255,
+                price: 10900,
+                qt: 1
+            },
+            {//Full
+                id: 12210708742255,
+                price: 10900,
+                qt: 1
+            },
+            {//Queen
+                id: 12210708775023,
+                price: 11900,
+                qt: 2
+            },
+            {//King
+                id: 12210708807791,
+                price: 12900,
+                qt: 2
+            },
+            {//CalKing
+                id: 12210708807791,
+                price: 12900,
+                qt: 2
+            },
+            {//Split K
+                id: 12210708807791,
+                price: 12900,
+                qt: 2
             }
+        ];
+        {% else %}
+        //Gray foundation for Ojai, Crystal Cove and everything else
+        var variantFoundations = [
+            {//Twin
+                id: 18582182297662,
+                price: 22500,
+            },
+            {//Twin XL
+                id: 18582182330430,
+                price: 25000,
+            },
+            {//Full
+                id: 18582182363198,
+                price: 25000
+            },
+            {//Queen
+                id: 18582182395966,
+                price: 27500,
+            },
+            {//King
+                id: 18582182428734,
+                price: 35000,
+            },
+            {//CalKing
+                id: 18582182461502,
+                price: 35000
+            },
+            {//Split King
+                id: 18582182428734,
+                price: 35000
+            }
+        ];
+         {% endcase %}
 
-            // Pillow Bundle
-            /*if (jQuery('#pillowBundle').prop('checked') && variantPillowBundle[sizeIndex]) {
+         {% if settings.display_subtotal and product.available %}
+         //update price when changing quantity
+         function updatePricing() {
+             //try pattern one before pattern 2
+             var regex = /([0-9]+[.|,][0-9]+[.|,][0-9]+)/g;
+             var unitPriceTextMatch = jQuery('.product .price').text().match(regex);
+
+             if (!unitPriceTextMatch) {
+                 regex = /([0-9]+[.|,][0-9]+)/g;
+                 unitPriceTextMatch = jQuery('.product .price').text().match(regex);
+             }
+
+             if (unitPriceTextMatch) {
+                 var unitPriceText = unitPriceTextMatch[0];
+                 var unitPrice = unitPriceText.replace(/[.|,]/g, '');
+                 var quantity = parseInt(jQuery('#quantity').val());
+                 var totalPrice = unitPrice * quantity;
+
+                 var sizeIndex = $('#product-selectors-option-0')[0].selectedIndex
+
+                 // Easy Foundation Bundle
+                 if (jQuery('#foundation').prop('checked') && variantFoundations[sizeIndex]) {
+                     totalPrice += variantFoundations[sizeIndex].price
+                 }
+
+                 // Pillow Bundle
+                 /*if (jQuery('#pillowBundle').prop('checked') && variantPillowBundle[sizeIndex]) {
                 totalPrice += variantFoundations[sizeIndex].price
             }*/
-            
-            var totalPriceText = Shopify.formatMoney(totalPrice, window.money_format);
 
-            totalPriceText = totalPriceText.match(regex)[0];
+                 var totalPriceText = Shopify.formatMoney(totalPrice, window.money_format);
 
-            var regInput = new RegExp(unitPriceText, "g");
-            var totalPriceHtml = jQuery('.product .price').html().replace(regInput, totalPriceText);
+                 totalPriceText = totalPriceText.match(regex)[0];
 
-            jQuery('.product .total-price span').html(totalPriceHtml);
-        }
-    }
+                 var regInput = new RegExp(unitPriceText, "g");
+                 var totalPriceHtml = jQuery('.product .price').html().replace(regInput, totalPriceText);
 
-     jQuery('#quantity').on('change', updatePricing);
-     {% endif %}
+                 jQuery('.product .total-price span').html(totalPriceHtml);
+             }
+         }
 
-     var currentVariant = null;
+          jQuery('#quantity').on('change', updatePricing);
+          {% endif %}
 
-      var selectCallback = function (variant, selector) {
-          currentVariant = variant
+          var currentVariant = null;
 
-          var addToCart = jQuery('#product-add-to-cart'),
-              productPrice = jQuery('.product .price'),
-              comparePrice = jQuery('.product .compare-price');
+           var selectCallback = function (variant, selector) {
+               currentVariant = variant
 
-          if (variant) {
-              if (variant.available) {
-                  // We have a valid product variant, so enable the submit button
-                  addToCart.removeClass('disabled').removeAttr('disabled').val('Add to Cart');
+               var addToCart = jQuery('#product-add-to-cart'),
+                   productPrice = jQuery('.product .price'),
+                   comparePrice = jQuery('.product .compare-price');
 
-              } else {
-                  // Variant is sold out, disable the submit button
-                  addToCart.val('Sold Out').addClass('disabled').attr('disabled', 'disabled');
-              }
+               if (variant) {
+                   if (variant.available) {
+                       // We have a valid product variant, so enable the submit button
+                       addToCart.removeClass('disabled').removeAttr('disabled').val('Add to Cart');
 
-              var sizeIndex = $('#product-selectors-option-0')[0].selectedIndex;
-              var totalPrice = variant.price;
-              var compareAtPrice = variant.compare_at_price
+                   } else {
+                       // Variant is sold out, disable the submit button
+                       addToCart.val('Sold Out').addClass('disabled').attr('disabled', 'disabled');
+                   }
 
-              // Easy Foundation Bundle
-              if (jQuery('#foundation').prop('checked') && variantFoundations[sizeIndex]) {
-                  totalPrice += variantFoundations[sizeIndex].price;
-                  compareAtPrice += variantFoundations[sizeIndex].price;
-              }
-              // Pillow Bundle
-              /*if (jQuery('#pillowBundle').prop('checked') && variantPillowBundle[sizeIndex]) {
+                   var sizeIndex = $('#product-selectors-option-0')[0].selectedIndex;
+                   var totalPrice = variant.price;
+                   var compareAtPrice = variant.compare_at_price
+
+                   // Easy Foundation Bundle
+
+
+
+                   // Pillow Bundle
+                   /*if (jQuery('#pillowBundle').prop('checked') && variantPillowBundle[sizeIndex]) {
                   totalPrice += variantPillowBundle[sizeIndex].price;
                   compareAtPrice += variantPillowBundle[sizeIndex].price;
               }*/
 
 
-                // Update Foundation Pricing
-                if (variantFoundations[sizeIndex]) {
-                    var foundation = variantFoundations[sizeIndex];
-                    {% raw %}
-                        jQuery("#easy-foundation-price").text("+" + Shopify.formatMoney(foundation.price, "${{amount_no_decimals}}"));
-                    {% endraw %}
-                }
-                     
-                // Update pillow bundle Pricing
-                /*if (variantPillowBundle[sizeIndex]) {
+                   // Update Foundation Pricing
+                   if (variantFoundations[sizeIndex]) {
+                       var foundation = variantFoundations[sizeIndex];
+                       {% raw %}
+                       jQuery("#easy-foundation-price").text("+" + Shopify.formatMoney(foundation.price, "${{amount_no_decimals}}"));
+                        {% endraw %}
+                        }
+
+                        // Disable checkbox if foundation is sold out                                                                        
+                        var foundation = variantFoundations[sizeIndex];
+
+                        for (var i = 0; i < allFoundationVariants.length; i++) {
+                            if (allFoundationVariants[i].id === foundation.id) {
+                                if (!allFoundationVariants[i].available) {
+                                    jQuery("#foundation")
+                                        .prop("disabled", true)
+                                        .addClass("disabled")
+                                        .prop("checked", false).parent().addClass("disabled");
+                                    //jQuery(".squaredOne").addClass("disabled");
+                                    jQuery("#easy-foundation-price").text("Sold Out").addClass("soldout");
+                                } else {
+                                    jQuery("#foundation").prop("disabled", false);
+                                }
+                            }
+                        } 
+
+                        if (jQuery('#foundation').prop('checked') && variantFoundations[sizeIndex]) {
+                            totalPrice += variantFoundations[sizeIndex].price;
+                            compareAtPrice += variantFoundations[sizeIndex].price;
+                        }
+
+                        // Update pillow bundle Pricing
+                        /*if (variantPillowBundle[sizeIndex]) {
                     var pillows = variantPillowBundle[sizeIndex];
                     {% raw %}
                         jQuery("#pillowBundle-price").text("+" + Shopify.formatMoney(foundation.price, "${{amount_no_decimals}}"));
                     {% endraw %}
                 }*/
 
-                   // Regardless of stock, update the product price
-                   {% raw %}
-                   productPrice.html(Shopify.formatMoney(totalPrice, "${{amount_no_decimals}}"));
-                    {% endraw %}
-
-                    // Also update and show the product's compare price if necessary
-                    if (compareAtPrice > totalPrice) {
-                        productPrice.addClass("on-sale")
+                        // Regardless of stock, update the product price
                         {% raw %}
-                        comparePrice
-                            .html(Shopify.formatMoney(compareAtPrice, "${{amount_no_decimals}}"))
-                            .show();
+                        productPrice.html(Shopify.formatMoney(totalPrice, "${{amount_no_decimals}}"));
                          {% endraw %}
-                         } else {
-                             comparePrice.hide();
-                             productPrice.removeClass("on-sale");
-                         }
 
-                         {% if settings.use_color_swatch %}
-                         // BEGIN SWATCHES
-                         if (selector && selector.domIdPrefix) {
-                           var form = jQuery('#' + selector.domIdPrefix).closest('form');
-                           for (var i = 0, length = variant.options.length; i < length; i++) {
-                             var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] + '"]');
-                             if (radioButton.size()) {
-                               radioButton.get(0).checked = true;
-                             }
-                           }
-                         }
-                         // END SWATCHES
-                         {% endif %}
-
-                         {% if settings.display_subtotal and product.available %}
-                         updatePricing();
-                          {% endif %}
-
-
-                          } else {
-                              // The variant doesn't exist. Just a safeguard for errors, but disable the submit button anyway
-                              addToCart.val('Unavailable').addClass('disabled').attr('disabled', 'disabled');
-                          }
-
-                          //update variant inventory
-                          {% if settings.display_availability %}
-                          if (variant && variant.available) {
-                              if (variant.inventory_management != null) {
-                                  jQuery(".product-inventory span").text(variant.inventory_quantity + " in stock");
+                         // Also update and show the product's compare price if necessary
+                         if (compareAtPrice > totalPrice) {
+                             productPrice.addClass("on-sale")
+                             {% raw %}
+                             comparePrice
+                                 .html(Shopify.formatMoney(compareAtPrice, "${{amount_no_decimals}}"))
+                                 .show();
+                              {% endraw %}
                               } else {
-                                  jQuery(".product-inventory span").text("Many in stock");
+                                  comparePrice.hide();
+                                  productPrice.removeClass("on-sale");
                               }
-                          } else {
-                              jQuery(".product-inventory span").text("Out of stock");
-                          }
-                           {% endif %}
 
-                           //display message for sheets and quilts when out of stock
-                           if (variant && variant.available) {
-                               if (variant.inventory_management != null) {
-                                   if (variant.inventory_quantity < 1) {
-                                       jQuery(".out-of-stock").show();
-                                       jQuery(".out-of-stock p").html("We’re currently making this item to order.<br> Please allow <b>up to 3 weeks</b> for crafting and shipping.");
-                                   } else {
-                                       jQuery(".out-of-stock").hide();
-                                   }
-                               }
-                           } else {
-                               jQuery(".out-of-stock p").text("Out of stock");
-                           }
+                              {% if settings.use_color_swatch %}
+                              // BEGIN SWATCHES
+                              if (selector && selector.domIdPrefix) {
+                                  var form = jQuery('#' + selector.domIdPrefix).closest('form');
+                                  for (var i = 0, length = variant.options.length; i < length; i++) {
+                                      var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] + '"]');
+                                      if (radioButton.size()) {
+                                          radioButton.get(0).checked = true;
+                                      }
+                                  }
+                              }
+                               // END SWATCHES
+                               {% endif %}
 
-                            /*begin variant image*/
-                            if (variant && variant.featured_image) {
-                                var originalImage = jQuery("#product-featured-image");
-                                var newImage = variant.featured_image;
-                                var element = originalImage[0];
-                                Shopify.Image.switchImage(newImage, element, function (newImageSizedSrc, newImage, element) {
-                                    jQuery('#zt_list_product img').each(function () {
-                                        var grandSize = jQuery(this).attr('src');
-                                        grandSize = grandSize.replace('compact', 'grande');
-                                        if (grandSize == newImageSizedSrc) {
-                                            console.log(newImageSizedSrc);
-                                            jQuery(this).parent().trigger('click');
-                                            return false;
-                                        }
-                                    });
-                                });
-                            }
-                            /*end of variant image*/
-                            //updateAffirmAsLowAs(totalPrice); //Update affirm price
-                            $('.affirm-as-low-as').attr('data-amount',totalPrice);
-                            affirm.ui.ready(function(){
-                                affirm.ui.refresh(); 
-                            });
-                           };
+                               {% if settings.display_subtotal and product.available %}
+                               updatePricing();
+                                {% endif %}
 
-                           // Easy Foundation Bundle
-                           jQuery("#foundation").on('change', function() {
-                               selectCallback(currentVariant)
-                           });
-                           
-                           // Pillow Bundle
-                           /*jQuery("#pillowBundle").on('change', function() {
+
+                                } else {
+                                    // The variant doesn't exist. Just a safeguard for errors, but disable the submit button anyway
+                                    addToCart.val('Unavailable').addClass('disabled').attr('disabled', 'disabled');
+                                }
+
+                                //update variant inventory
+                                {% if settings.display_availability %}
+                                if (variant && variant.available) {
+                                    if (variant.inventory_management != null) {
+                                        jQuery(".product-inventory span").text(variant.inventory_quantity + " in stock");
+                                    } else {
+                                        jQuery(".product-inventory span").text("Many in stock");
+                                    }
+                                } else {
+                                    jQuery(".product-inventory span").text("Out of stock");
+                                }
+                                 {% endif %}
+
+                                 //display message for sheets and quilts when out of stock
+                                 if (variant && variant.available) {
+                                     if (variant.inventory_management != null) {
+                                         if (variant.inventory_quantity < 1) {
+                                             jQuery(".out-of-stock").show();
+                                             jQuery(".out-of-stock p").html("We’re currently making this item to order.<br> Please allow <b>up to 3 weeks</b> for crafting and shipping.");
+                                         } else {
+                                             jQuery(".out-of-stock").hide();
+                                         }
+                                     }
+                                 } else {
+                                     jQuery(".out-of-stock p").text("Out of stock");
+                                 }
+
+                                  /*begin variant image*/
+                                  if (variant && variant.featured_image) {
+                                      var originalImage = jQuery("#product-featured-image");
+                                      var newImage = variant.featured_image;
+                                      var element = originalImage[0];
+                                      Shopify.Image.switchImage(newImage, element, function (newImageSizedSrc, newImage, element) {
+                                          jQuery('#zt_list_product img').each(function () {
+                                              var grandSize = jQuery(this).attr('src');
+                                              grandSize = grandSize.replace('compact', 'grande');
+                                              if (grandSize == newImageSizedSrc) {
+                                                  console.log(newImageSizedSrc);
+                                                  jQuery(this).parent().trigger('click');
+                                                  return false;
+                                              }
+                                          });
+                                      });
+                                  }
+                                  /*end of variant image*/
+                                  //updateAffirmAsLowAs(totalPrice); //Update affirm price
+                                  $('.affirm-as-low-as').attr('data-amount',totalPrice);
+                                  affirm.ui.ready(function(){
+                                      affirm.ui.refresh(); 
+                                  });
+                                 };
+
+                                 // Easy Foundation Bundle
+                                 jQuery("#foundation").on('change', function() {
+                                     selectCallback(currentVariant)
+                                 });
+
+                                 // Pillow Bundle
+                                 /*jQuery("#pillowBundle").on('change', function() {
                                selectCallback(currentVariant)
                            });*/
 
-                           jQuery(function ($) {
-                               {% if product.available and product.variants.size > 1 %}
-                               new Shopify.CustomOptionSelectors('product-selectors', {
-                                 product: {{ product | json }},
-                                 onVariantSelected: selectCallback,
-                                 enableHistoryState: true
-                               });
+                                 jQuery(function ($) {
+                                     {% if product.available and product.variants.size > 1 %}
+                                     new Shopify.CustomOptionSelectors('product-selectors', {
+                                         product: {{ product | json }},
+                                                                       onVariantSelected: selectCallback,
+                                                                       enableHistoryState: true
+                                                                       });
 
-                                {% comment %}
-                                Use color swatch and linked options(copyright by @carolineschnapp)
-                                 {% endcomment %}
-                                 
-                                 {% if settings.use_color_swatch and product.available and product.options.size > 1 %}
-                                 Shopify.linkOptionSelectors({{ product | json }});
-                                  {% endif %}
+                                      {% comment %}
+                                      Use color swatch and linked options(copyright by @carolineschnapp)
+                                       {% endcomment %}
 
-                                  {% if settings.use_color_swatch != true %}
-                                   jQuery('.single-option-selector').selectize();
-                                   jQuery('.selectize-input input').attr("disabled", "disabled");
-                                   {% endif %}
+                                       {% if settings.use_color_swatch and product.available and product.options.size > 1 %}
+                                       Shopify.linkOptionSelectors({{ product | json }});
+                                        {% endif %}
 
-                                   {% endif %}
+                                        {% if settings.use_color_swatch != true %}
+                                        jQuery('.single-option-selector').selectize();
+                                         jQuery('.selectize-input input').attr("disabled", "disabled");
+                                         {% endif %}
 
-                                   // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
-                                   {% if product.options.size == 1 and product.options.first != 'Title' %}
-                                   $('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first }}</label>');
-                                    {% endif %}
+                                         {% endif %}
 
-                                    // Hide selectors if we only have 1 variant and its title contains 'Default'.
-                                    {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
-                                    $('.selector-wrapper').hide();
-                                     {% endif %}
+                                         // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
+                                         {% if product.options.size == 1 and product.options.first != 'Title' %}
+                                         $('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first }}</label>');
+                                          {% endif %}
 
-                                      {% if settings.display_product_reviews %}
-                                      var reviewsTimeout = setInterval(function () {
-                                          if (jQuery(".spr-badge-caption").length > 0) {
-                                              jQuery(".spr-badge-caption").on('click', function () {
-                                                  jQuery('html,body').animate({
-                                                      scrollTop: jQuery(".panel:last").offset().top
-                                                  },
-                                                                              '400');
-                                                  jQuery("#collapse-tab4").collapse('show');
-                                              });
-                                              clearInterval(reviewsTimeout);
-                                          }
-                                      }, 1000);
+                                          // Hide selectors if we only have 1 variant and its title contains 'Default'.
+                                          {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+                                          $('.selector-wrapper').hide();
+                                           {% endif %}
 
-                                       {% endif %}
+                                           {% if settings.display_product_reviews %}
+                                           var reviewsTimeout = setInterval(function () {
+                                               if (jQuery(".spr-badge-caption").length > 0) {
+                                                   jQuery(".spr-badge-caption").on('click', function () {
+                                                       jQuery('html,body').animate({
+                                                           scrollTop: jQuery(".panel:last").offset().top
+                                                       },
+                                                                                   '400');
+                                                       jQuery("#collapse-tab4").collapse('show');
+                                                   });
+                                                   clearInterval(reviewsTimeout);
+                                               }
+                                           }, 1000);
 
-                                       });
+                                            {% endif %}
+
+                                            });
 
 </script>
 
@@ -439,72 +463,72 @@
     $(document).ready(function () {
         jQuery('#product-add-to-cart').click(function() {
             var sizeIndex = $('#product-selectors-option-0')[0].selectedIndex
-            
+
             var toAdd = [];
             {% case producthandle %}
-                {% when "cedar-natural-luxe-mattress" %}
-                    //Cedar Luxe Only because only 3 sizes are available
-                    var variantFoundationIds = [19294522540094, 19294522572862, 19294522769470]
-                    var variantCedarTopperIds = [18665794601022, 18665794633790, 18665794666558]
-                    toAdd = [{
-                        id: variantCedarTopperIds[sizeIndex],
-                        quantity: 1
-                    }];
-                {% when "cypress-bamboo-gel-mattress" %}
-                    //Twin, Twin XL, Full, Q, K, CK
-                    var variantFoundationIds = [19294522310718, 19294522441790, 19294522474558, 19294522540094, 19294522572862, 19294522769470, 19294522572862]
-                {% when "oceano-mattress" %}
-                    //Twin, Twin XL, Full, Q, K, CK
-                    var variantFoundationIds = [19308085641278, 19308085772350, 19308085805118, 19308085837886, 19308085870654, 19308085903422, 19308085870654]
-                    
-                {% when "oceano-mattress-test" %}
-                    //Twin, Twin XL, Full, Q, K, CK
-                    var variantFoundationIds = [19308085641278, 19308085772350, 19308085805118, 19308085837886, 19308085870654, 19308085903422, 19308085870654]
-                    var variantPillowBundle = [12210708742255, 12210708742255, 12210708742255, 12210708775023, 12210708807791, 12210708807791, 12210708807791]
-                    var variantPillowBundleQt = [1, 1, 1, 2, 2, 2, 2]
-                    
-                {% else %}
-                    //Twin, Twin XL, Full, Q, K, CK, SplitK
-                    var variantFoundationIds = [18582182297662, 18582182330430, 18582182363198, 18582182395966, 18582182428734, 18582182461502, 18582182428734]
-            {% endcase %}
-  
-            // Easy Foundation Bundle
-            if (jQuery('#foundation').prop('checked')) {
-                toAdd.push({
-                    id: variantFoundationIds[sizeIndex],
-                    quantity: 1
-                })
-            }
+            {% when "cedar-natural-luxe-mattress" %}
+            //Cedar Luxe Only because only 3 sizes are available
+            var variantFoundationIds = [19294522540094, 19294522572862, 19294522769470]
+            var variantCedarTopperIds = [18665794601022, 18665794633790, 18665794666558]
+            toAdd = [{
+                id: variantCedarTopperIds[sizeIndex],
+                quantity: 1
+            }];
+             {% when "cypress-bamboo-gel-mattress" %}
+             //Twin, Twin XL, Full, Q, K, CK
+             var variantFoundationIds = [19294522310718, 19294522441790, 19294522474558, 19294522540094, 19294522572862, 19294522769470, 19294522572862]
+             {% when "oceano-mattress" %}
+             //Twin, Twin XL, Full, Q, K, CK
+             var variantFoundationIds = [19308085641278, 19308085772350, 19308085805118, 19308085837886, 19308085870654, 19308085903422, 19308085870654]
 
-             // Pillow Bundle
-             if (jQuery('#pillowBundle').prop('checked')) {
+             {% when "oceano-mattress-test" %}
+             //Twin, Twin XL, Full, Q, K, CK
+             var variantFoundationIds = [19308085641278, 19308085772350, 19308085805118, 19308085837886, 19308085870654, 19308085903422, 19308085870654]
+             var variantPillowBundle = [12210708742255, 12210708742255, 12210708742255, 12210708775023, 12210708807791, 12210708807791, 12210708807791]
+             var variantPillowBundleQt = [1, 1, 1, 2, 2, 2, 2]
+
+             {% else %}
+             //Twin, Twin XL, Full, Q, K, CK, SplitK
+             var variantFoundationIds = [18582182297662, 18582182330430, 18582182363198, 18582182395966, 18582182428734, 18582182461502, 18582182428734]
+             {% endcase %}
+
+             // Easy Foundation Bundle
+             if (jQuery('#foundation').prop('checked')) {
                  toAdd.push({
-                     id: variantPillowBundle[sizeIndex],
-                     quantity: variantPillowBundleQt[sizeIndex]
+                     id: variantFoundationIds[sizeIndex],
+                     quantity: 1
                  })
              }
-             
-            function moveAlong(){
-                if (toAdd.length) {
-                    $.ajax({
-                        type: 'POST',
-                        url: '/cart/add.js',
-                        data: toAdd.shift(),
-                        dataType: 'json',
-                        success: function() {
-                            moveAlong();
-                        },
-                        error: function(error) {
-                            console.log('error', error);
-                        }
-                    });
-                } else {
-                    $('#add-to-cart-form').submit();
-                }  
-            };
-            moveAlong();
-        });
-    });
+
+              // Pillow Bundle
+              if (jQuery('#pillowBundle').prop('checked')) {
+                  toAdd.push({
+                      id: variantPillowBundle[sizeIndex],
+                      quantity: variantPillowBundleQt[sizeIndex]
+                  })
+              }
+
+              function moveAlong(){
+                  if (toAdd.length) {
+                      $.ajax({
+                          type: 'POST',
+                          url: '/cart/add.js',
+                          data: toAdd.shift(),
+                          dataType: 'json',
+                          success: function() {
+                              moveAlong();
+                          },
+                          error: function(error) {
+                              console.log('error', error);
+                          }
+                      });
+                  } else {
+                      $('#add-to-cart-form').submit();
+                  }  
+              };
+              moveAlong();
+             });
+             });
 </script>
 
 <script>

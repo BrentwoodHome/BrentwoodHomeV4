@@ -5892,7 +5892,17 @@ P#add2cart_shipping{
             opacity: 1;
             border-radius: 3px;
         }   
-    } 
+    }
+    &.disabled{
+        border: none;
+        background: #efefef;
+        LABEL{
+            cursor: default;
+            &:after {
+                background: transparent;   
+            }
+        }
+    }
 }
 /* end .squaredOne */
 
@@ -5916,6 +5926,10 @@ div.addonmodule{
                     &:HOVER{
                         text-decoration: none;
                     }
+                }
+                STRONG.soldout{
+                    text-transform: uppercase;
+                    color: $blue;
                 }
             }
         }
