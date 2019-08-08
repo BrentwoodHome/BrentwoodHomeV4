@@ -312,14 +312,14 @@ visibility: hidden;
     .copy{
         padding-right: 30px;
     }
-    H2{
+    p.h2{
         @include titleStyle(42px);
         font-style: italic;
         font-size: 38px;
         line-height: 46px;
         text-align: center !important;
     }
-    H3{
+    p.h3{
         margin: 15px 0 30px;
         font-size: 18px;
     }
@@ -761,9 +761,6 @@ DIV.banner-features{
 BODY.template-index .slick-dotted.slick-slider{
     margin-bottom: 0 !important;
 }
-BODY.template-index H3{
-
-}
 BODY.template-index a.cta{
     text-transform: uppercase;
 }
@@ -775,7 +772,7 @@ BODY.template-index a.cta.clear{
     display: inline-block;
     margin-top: 20px !important;*/
 }
-BODY.template-index H3{
+BODY.template-index H3, BODY.template-index p.h3{
     margin-bottom: 25px;
     font-size: 21px;
     letter-spacing: 2px;
@@ -791,7 +788,7 @@ BODY.template-index, BODY.template-404{
         padding-right:0;
         .sectionHeader{
             padding: 40px 0;
-            h4{
+            h2{
                 color: #38414F;
             }
             .title3{
@@ -821,18 +818,19 @@ BODY.template-index, BODY.template-404{
                     margin: 0 auto;
                     
                 }
-                H2{
+                P.title{
                     @include chronicleDisplay(60px);
                     color: white;
                     &.single{
                         margin-bottom: 18%;
                     }
                 }
-                H3{
+                P.sub{
                     font-size: 16px;
                     margin-top: 20px;
                     line-height: 24px;
                     font-weight: 300;
+                    color: white;
                 }
                 .cta{
                     background-color: rgba(255,255,255,0.9);
@@ -854,8 +852,10 @@ BODY.template-index, BODY.template-404{
                     &.center{
                         top: 0px;
                     }
-                    H2{
+                    P.title{
                         margin-bottom: 25px;
+                        @include chronicleDisplay(60px);
+                        color: white;
                     }
                 }
             }
@@ -886,7 +886,7 @@ BODY.template-index, BODY.template-404{
                 @include chronicleDisplay(70px);
                 letter-spacing: 4px;
                 margin-bottom: 35px;
-                line-height: 71px;
+                line-height: 80px;
             }
             H2{
                 color: white;
@@ -902,6 +902,15 @@ BODY.template-index, BODY.template-404{
             }
             P{
                 color: white;
+            }
+            P.caption{
+                font-size: 21px;
+                letter-spacing: 2px;
+                line-height: 30px;
+                font-family: AvenirLTStd-Light,"Helvetica Neue",helvetica,sans-serif;
+                text-transform: uppercase;
+                margin: 10px 0 25px;
+                text-align: center;
             }
             .cta{
                 margin-top: 10px;
@@ -1114,6 +1123,23 @@ BODY.template-index, BODY.template-404{
         color: dodgerblue;
     }
 }
+#home-reviews, .home-reviews{
+    P.title{
+        margin-bottom: 25px;
+        font-size: 21px;
+        letter-spacing: 2px;
+        line-height: 30px;
+        font-family: AvenirLTStd-Light,"Helvetica Neue",helvetica,sans-serif;
+        text-transform: uppercase;
+        text-align: center;
+    }
+    P.review-title{
+        font-size: 16px;
+        margin-bottom: 10px;
+        font-family: AvenirLTStd-Light,"Helvetica Neue",helvetica,sans-serif;
+        letter-spacing: 1px;
+    }
+}
 @media (min-width: 768px){
     .one-year-trial{
         padding-top: 100px;
@@ -1134,7 +1160,7 @@ BODY.template-index, BODY.template-404{
 }
 
 @media (max-width: 768px) {
-    BODY.template-index #hpCategories .collection DIV.ctaBloc H2.single{
+    BODY.template-index #hpCategories .collection DIV.ctaBloc p.title.single{
         margin-bottom: 10%;
         font-size: 40px;
     }
@@ -1143,13 +1169,13 @@ BODY.template-index, BODY.template-404{
 @media only screen  
     and (max-device-width : 768px) 
     and (-webkit-min-device-pixel-ratio: 2){
-        BODY.template-index #hpCategories .collection DIV.ctaBloc H2,
+        BODY.template-index #hpCategories .collection DIV.ctaBloc p.title,
         BODY.template-index .carousel .carousel-caption H1,
         BODY.template-index #hpCategories .sectionHeader .title3{
             @include chronicleDisplay(40px);
 
         }
-        BODY.template-index #hpCategories .collection DIV.ctaBloc H2.single{
+        BODY.template-index #hpCategories .collection DIV.ctaBloc p.title.single{
 
             margin-bottom: 10%;
             font-size: 40px;
@@ -1171,13 +1197,14 @@ BODY.template-index, BODY.template-404{
         top: 15%;*/
     }
     BODY.template-index .carousel .carousel-caption H1{
-        font-size: 50px;
+        font-size: 40px;
         margin-bottom: 20px;
-        line-height: 50px;
+        line-height: 40px;
         letter-spacing: 2px;
     }
-    BODY.template-index .carousel .carousel-caption H3.caption{
+    BODY.template-index .carousel .carousel-caption p.caption{
         font-size: 15px;
+        margin: 0;
     }
     BODY.template-index H3.caption{
         margin-bottom: 0px;
@@ -1227,12 +1254,12 @@ BODY.template-index, BODY.template-404{
         top: 8px;
         padding: 20px 15px;
     }
-    BODY.template-index #hpCategories .collection DIV.ctaBloc H2{
+    BODY.template-index #hpCategories .collection DIV.ctaBloc p.title, BODY.template-index #hpCategories .collection.yoga DIV.ctaBloc P.title, BODY.template-404 #hpCategories .collection.yoga DIV.ctaBloc P.title{
         font-size: 36px;
         line-height: 46px;
         color: white;
     }
-    BODY.template-index #hpCategories .collection DIV.ctaBloc H2.single{
+    BODY.template-index #hpCategories .collection DIV.ctaBloc p.title.single{
         margin-bottom: 8%;
         font-size: 34px;
     }
@@ -1241,17 +1268,17 @@ BODY.template-index, BODY.template-404{
         margin: 10px 0 !important;
         padding: 12px 20px;
     }
-    BODY.template-index #hpCategories .collection DIV.ctaBloc H3{
+    BODY.template-index #hpCategories .collection DIV.ctaBloc p.sub{
         font-size: 12px;
         margin-top: 9px;
         line-height: 18px;
     }
 }
 @media (max-width: 320px) {
-    BODY.template-index #hpCategories .collection DIV.ctaBloc H3{
+    BODY.template-index #hpCategories .collection DIV.ctaBloc p.sub{
         //display: none;
     }
-    BODY.template-index .carousel .carousel-caption H3{
+    BODY.template-index .carousel .carousel-caption p.caption{
         line-height: 22px;
     }
     BODY.template-index .carousel .carousel-caption H1{
@@ -1346,7 +1373,7 @@ DIV.sectionMarg50{
     BODY.template-index .cta{
         margin-top: 20px !important;
     }
-    BODY.template-index H3{
+    BODY.template-index H3, BODY.template-index p.h3{
         font-size: 19px;
         margin-bottom: 30px;
         font-weight: 700;
@@ -2731,6 +2758,12 @@ DIV#findusbanner{
         //height: 260px;
     }
     .contact{
+        P{
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            line-height: 19px;
+        }
         padding-top: 36px;
         padding-bottom: 36px;
         //height: 260px;
@@ -2757,14 +2790,16 @@ DIV#findusbanner{
             DIV{
                 background-color: transparent;
             }
-            H2{
+            p.h2{
                 //font-family: $body-stack-bold;
                 //font-size: 38px;
                 @include chronicleDisplay(38px);
                 color: $blue;
                 text-align: left;
+                margin: 10px 0;
+                line-height: 46px;
             }
-            H3{
+            p.h3{
                 font-size: 26px;
                 margin-bottom: 10px;
                 margin-top: 25px;
@@ -2772,28 +2807,24 @@ DIV#findusbanner{
                 text-transform: none;
                 font-family: $body-stack-bold;
                 text-align: left;
+                line-height: 30px;
+                letter-spacing: 2px;
             }
         }
         &.middle{
             //border-left: 1px solid white;
             //border-right: 1px solid white;
         }
-        H2{
+        p.h2{
             color: white;
         }
-        H3{
+        p.h3{
             font-size: 18px;
             margin-bottom: 10px;
             margin-top: 25px;
             color: white;
             text-transform: none;
             font-family: $body-stack-bold;
-        }
-        P{
-            color: white;
-            font-size: 14px;
-            text-align: center;
-            line-height: 19px;
         }
     }
 }
@@ -2807,7 +2838,7 @@ DIV#findusbanner{
         padding-top: 16px;
         padding-bottom: 16px;
     }
-    DIV#findusbanner .contact.first H2, DIV#findusbanner .contact.first H3{
+    DIV#findusbanner .contact.first p.h2, DIV#findusbanner .contact.first p.h3{
         text-align: center;
     }
     DIV#findusbanner .contact.first DIV{
@@ -3327,10 +3358,27 @@ DIV.article-hero{
         //z-index: -1;
     }
 }
+DIV.main-blog{
+    P.title{
+        font-size: 21px;
+        letter-spacing: 2px;
+        line-height: 30px;
+        font-family: AvenirLTStd-Light,"Helvetica Neue",helvetica,sans-serif;
+        text-transform: uppercase;
+        margin: 10px 0 25px;
+        text-align: center;
+    }
+}
 DIV.blog-item{
     padding: 10px 20px;
     H4{
         font-size: 25px;
+    }
+    P.hpblog-title{
+        font-size: 25px;
+        margin-bottom: 10px;
+        font-family: AvenirLTStd-Light,"Helvetica Neue",helvetica,sans-serif;
+        letter-spacing: 1px;
     }
     .short-des{
         //padding: 10px 20px;

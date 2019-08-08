@@ -40,30 +40,30 @@
                 {% else %}
                     {% if linklists[link.handle] != empty %}
                         <li class="parent dropdown {% if link.active %}active{% endif %}">
-                            <h3>
+                            <p class="h3">
                               <i class="icon_plus"></i>
                               <a class="dropdown-toggle has-category" href="{{ link.url }}" title="{{ link.title }}">
                                   <span class="">{{ link.title }}</span>
                               </a>
-                            </h3>
+                            </p>
                             <ul class="level-1">
                               {% for child_link in linklists[link.handle].links %}
                               {% if linklists[child_link.handle] != empty %}
                               <li class="parent dropdown-submenu {% if child_link.active %}active{% endif %}">
-                                <h3><i class="icon_plus"></i>
+                                <p class="h3"><i class="icon_plus"></i>
                                   <a class="dropdown-toggle" data-toggle="dropdown" href="{{ child_link.url }}" title="{{ child_link.title }}">
                                     <span class="">{{ child_link.title }}</span>
                                   </a>
-                                </h3>
+                                </p>
                                       <ul class="level-2">
                                         {% for child_link1 in linklists[child_link.handle].links %}
                                         {% if linklists[child_link1.handle] != empty %}
                                         <li class="parent dropdown-submenu {% if child_link1.active %}active{% endif %}">
-                                          <h3><i class="icon_plus"></i>
+                                        <p class="h3"><i class="icon_plus"></i>
                                           <a class="dropdown-toggle" href="{{ child_link1.url }}" title="{{ child_link1.title }}">
                                             <span class="">{{ child_link1.title }}</span>
                                           </a>
-                                          </h3>
+                                          </p>
                                                 <ul class="level-3">
                                                   {% for child_link2 in linklists[child_link1.handle].links %}
                                                   <li class="{% if child_link2.active %}active{% endif %}">
@@ -141,11 +141,11 @@
   });
 
     jQuery("#offcanvas .navbar-nav ul").hide();
-    jQuery("#offcanvas .navbar-nav li h3 i").addClass("accordion-show");
+    jQuery("#offcanvas .navbar-nav li p.h3 i").addClass("accordion-show");
 
     //var iconAccordion = jQuery("#offcanvas .navbar-nav li h3 i");
 
-    jQuery("#offcanvas .navbar-nav li h3 A").click(function(e){
+    jQuery("#offcanvas .navbar-nav li p.h3 A").click(function(e){
         e.preventDefault();
         if(jQuery(this).parent().next().is(":visible")){
             jQuery(this).parent().addClass("accordion-show");
@@ -169,10 +169,10 @@ $(document).ready(function() {
     function checkWidth() {
         var windowSize = $(window).width();
         if (windowSize < 991) {
-            $("h3 i:first-of-type").removeClass( "icon_plus" ).addClass( "icon_minus-06" );
-            $(".level-1 h3 i").addClass( "icon_plus" );
+            $("p.h3 i:first-of-type").removeClass( "icon_plus" ).addClass( "icon_minus-06" );
+            $(".level-1 p.h3 i").addClass( "icon_plus" );
             $("ul.level-1:first-of-type").css("display", "block");
-            $("ul.level-1 li.parent:first-of-type h3 i:first-of-type").removeClass( "icon_plus" ).addClass( "icon_minus-06" );
+            $("ul.level-1 li.parent:first-of-type p.h3 i:first-of-type").removeClass( "icon_plus" ).addClass( "icon_minus-06" );
             $("li.parent:first-of-type ul.level-2:first-of-type").css("display", "block");
         }
     }
