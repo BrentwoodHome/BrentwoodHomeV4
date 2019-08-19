@@ -404,25 +404,18 @@
                             </div>
                             {% if product.available %}
                             <div class="cta-module clearfix">
-                                <div class="prices" itemprop="offers" itemscope
-                                     itemtype="http://schema.org/Offer"
-                                     style="float: left;">
-                                    <meta itemprop="priceCurrency"
-                                          content="{{ shop.currency }}">
+                                <div class="prices" itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="float: left;">
+                                    <meta itemprop="priceCurrency" content="{{ shop.currency }}">
                                     {% if product.compare_at_price > product.price %}
-                                    <span class="compare-price">{{ product.compare_at_price_max | money_without_trailing_zeros}}</span>
-                                    <span class="price on-sale" itemprop="price"
-                                          content="{{ current_variant.price | money_without_currency | remove: ',' }}">{{ current_variant.price | money_without_trailing_zeros}}</span>
+                                        <span class="compare-price">{{ product.compare_at_price_max | money_without_trailing_zeros}}</span>
+                                        <span class="price on-sale" itemprop="price" content="{{ current_variant.price | money_without_currency | remove: ',' }}">{{ current_variant.price | money_without_trailing_zeros}}</span>
                                     {% else %}
-                                    <span class="price" itemprop="price"
-                                          content="{{ current_variant.price | money_without_currency | remove: ',' }}">{{ current_variant.price | money_without_trailing_zeros }}</span>
+                                    <span class="price" itemprop="price" content="{{ product.price | money_without_currency }}">{{ product.price | money_without_trailing_zeros }}</span>
                                     {% endif %}
                                     {% if product.available %}
-                                    <link itemprop="availability"
-                                          href="http://schema.org/InStock">
+                                        <link itemprop="availability" href="http://schema.org/InStock">
                                     {% else %}
-                                    <link itemprop="availability"
-                                          href="http://schema.org/OutOfStock">
+                                        <link itemprop="availability" href="http://schema.org/OutOfStock">
                                     {% endif %}
                                 </div>
 
@@ -486,33 +479,27 @@
                                 </div>
 
                                 <div id="qt" style="display: none">
-                                    QTY: <input type="text"
-                                                id="quantity"
-                                                name="quantity"
-                                                value="1"
-                                                >
+                                    QTY: <input type="text" id="quantity" name="quantity" value="1">
                                 </div>
                             </div>
                             {% if product.selected_or_first_available_variant.inventory_management %}
-                            {% assign first_inventory = product.selected_or_first_available_variant.inventory_quantity %}
-                            {% if first_inventory < 1 %}
-                                                     <div class="out-of-stock">
-                            <span class="left"></span>
-                            <p class="product-inventory">
-                                We’re currently making this item to order.<br>
-                                Please
-                                allow <b>up to 3 weeks</b> for crafting and
-                                shipping.
-                            </p>
-                            <span class="right"></span>
-                            </div> 
-                        {% endif %}
-                        {% endif %}
-
-
+                                {% assign first_inventory = product.selected_or_first_available_variant.inventory_quantity %}
+                                {% if first_inventory < 1 %}
+                                    <div class="out-of-stock">
+                                        <span class="left"></span>
+                                        <p class="product-inventory">
+                                            We’re currently making this item to order.<br>
+                                            Please
+                                            allow <b>up to 3 weeks</b> for crafting and
+                                            shipping.
+                                        </p>
+                                        <span class="right"></span>
+                                    </div> 
+                                {% endif %}
+                            {% endif %}
 
                         {% else %}
-                        <button type="button" class="btn" id="product-add-to-cart" disabled>Unavailable</button>
+                            <button type="button" class="btn" id="product-add-to-cart" disabled>Unavailable</button>
                         {% endif %}
 
                         {% assign current_variant = product.selected_or_first_available_variant %}
