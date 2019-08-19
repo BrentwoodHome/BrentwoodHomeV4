@@ -408,9 +408,9 @@
                                     <meta itemprop="priceCurrency" content="{{ shop.currency }}">
                                     {% if product.compare_at_price > product.price %}
                                         <span class="compare-price">{{ product.compare_at_price_max | money_without_trailing_zeros}}</span>
-                                        <span class="price on-sale" itemprop="price" content="{{ current_variant.price | money_without_currency | remove: ',' }}">{{ current_variant.price | money_without_trailing_zeros}}</span>
+                                        <span class="price on-sale" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">{{ current_variant.price | money_without_trailing_zeros}}</span>
                                     {% else %}
-                                    <span class="price" itemprop="price" content="{{ product.price | money_without_currency }}">{{ product.price | money_without_trailing_zeros }}</span>
+                                        <span class="price" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">{{ current_variant.price | money_without_trailing_zeros }}</span>
                                     {% endif %}
                                     {% if product.available %}
                                         <link itemprop="availability" href="http://schema.org/InStock">
