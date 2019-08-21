@@ -1,10 +1,116 @@
-<section id="offcanvas" class="megamenu-canvas">
-	<nav class="offcanvas-mainnav">
-		<div id="off-canvas-button">
 
-			<span class="off-canvas-nav"><i class="icon_close"></i></span>
+<section id="offcanvasb" class="megamenu-canvas b-version">
+	<nav class="offcanvas-mainnav">
+		<div id="off-canvas-buttonb">
+            <span class="off-canvas-nav"><img src="{{ 'icon-nav-close.svg' | asset_url }}" alt="Close"></span>
 		</div>
 		<ul class="nav navbar-nav megamenu">
+            <li class="lvl1">
+                <a href="/pages/sale" class="navico sale">Labor Day Sale</a>
+                <a href="/pages/sale" class="description">Explore our deals on mattresses, yoga pillows and pet beds. Ends September 9.</a>
+            </li>
+            <li class="lvl1">
+                <a href="/collections/mattresses" class="navico mattresses">Mattresses</a>
+                <ul>
+                    <li class="lvl2">
+                        <a href="/products/oceano-mattress">Oceano Mattress <sup>best-selling</sup></a>
+                        <a href="/products/oceano-mattress" class="description">#1 rated luxury mattress, 9 layers of premium materials. Medium-plush feel.</a>
+                    </li>
+                    <li class="lvl2">
+                        <a href="/products/crystal-cove-mattress">Crystal Cove Mattress <sup>vegan</sup></a>
+                        <a href="/products/crystal-cove-mattress" class="description">For the active lifestyle, dual-feel, charcoal infused foam &amp; latex. Promotes therapeutic recovery &amp; restorative sleep.</a>
+                    </li>
+                    <li class="lvl2">
+                        <a href="/products/cedar-natural-luxe-mattress">Cedar Mattress <sup>organic</sup></a>
+                        <a href="/products/cedar-natural-luxe-mattress" class="description">The pinnacle of eco-conscious green mattress design. Medium to moderately plush experience.</a>
+                    </li>
+                    <li class="lvl2">
+                        <a href="/products/cypress-bamboo-gel-mattress">Cypress Bamboo Gel Mattress</a>
+                        <a href="/products/cypress-bamboo-gel-mattress" class="description">Our best-selling and most affordable all-foam mattress available in medium and medium-firm feel.</a>
+                    </li>
+                    <li class="lvl2">
+                        <a href="/products/ojai-mattress">Ojai Hybrid Mattress</a>
+                        <a href="/products/ojai-mattress" class="description">Our most affordable hybrid with cooling gel memory foam. Medium feel.</a>
+                    </li>
+                    <li class="lvl2 text-center pills">
+                        <p class="text-center">
+                            <a href="/collections/mattresses" class="navpill">See All</a>
+                            &nbsp;|&nbsp;
+                            <a href="pages/matress-comparison" class="navpill">Compare</a>
+                        </p>
+                    </li>
+                </ul>
+            </li>
+            <li class="lvl1">
+                <a href="/pages/sale" class="navico bedding">Bedding</a>
+                <ul>
+                    <li class="lvl2">
+                        <a href="/collections/pillows">Pillows</a>
+                        <a href="/collections/pillows" class="description">Natural and cooling memory foam pillows matching your mattress.</a>
+                    </li>
+                    <li class="lvl2">
+                        <a href="/collections/mattress-toppers">Mattress Toppers</a>
+                        <a href="/collections/mattress-toppers" class="description">Add softness and luxury to your existing mattress with our GreenGuard Gold certified latex or memory foam toppers.</a>
+                    </li>
+                    <li class="lvl2">
+                        <a href="/products/foundation">The Easy Foundation</a>
+                        <a href="/products/foundation" class="description">Complete your set with our minimalist design, high-grade wood frame &amp; tool-free assembly foundation.</a>
+                    </li>
+                    <li class="lvl2 text-center pills">
+                        <p class="text-center">
+                            <a href="/collections/bedding" class="navpill">See All Bedding</a>
+                        </p>
+                    </li>
+                </ul>
+            </li>
+            <li class="lvl1">
+                <a href="/pages/crystal-cove-collection" class="navico yoga">Crystal Cove Yoga</a>
+                <a href="/pages/crystal-cove-collection" class="description">The Crystal Cove Yoga pillow collection is 100% Certified Vegan by Vegan Action.</a>
+            </li>
+            <li class="lvl1">
+                <a href="/collections/baby-kids" class="navico babies">Babies & Kids</a>
+                <a href="/collections/baby-kids" class="description">A beautiful collection of natural and non-toxic mattresses and pillows for the little ones.</a>
+            </li>
+            <li class="lvl1">
+                <a href="/collections/pets" class="navico pets">Pet Beds</a>
+                <a href="/collections/pets" class="description">Stylish therapeutic and waterproof pet beds, easy to clean, and beautiful in your home.</a>
+            </li>
+            <li class="lvl1">
+                <a role="button" data-toggle="collapse" href="#collapseLearn" aria-expanded="false" aria-controls="collapseLearn" class="navico learn defaultCollapsed">Learn</a>
+                <ul class="collapse" id="collapseLearn">
+                    {% for child_link in linklists.learn.links %}
+                        <li class="lvl2">
+                            <a href="{{ child_link.url }}">{{ child_link.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li class="lvl1">
+                <a href="/blogs/news" class="navico blog">Blog</a>
+            </li>
+            <li class="lvl1 search">
+                <a href="/search?type=product" class="navico search">Search</a>
+                <form action="/search" method="get" class="input-group search-bar" role="search">
+                    {% comment %}
+                    Uncomment the following hidden input to only show products in your search results
+                    {% endcomment %}
+                    <input type="hidden" name="type" value="product">
+                    <input type="text" name="q" placeholder="Product, feature, ..." value=""  onclick="this.value=='{{ settings.search_placeholder }}'?this.value='':''" onblur="this.value==''?this.value='{{ settings.search_placeholder }}':''" class="input-group-field" aria-label="Search Site" autocomplete="off">
+                    <span class="searchIco">
+                        <input type="submit" class="nav-search" value="Search">
+                    </span>
+                </form>
+            </li>
+        </ul>
+    </nav>
+</section>
+
+<section id="offcanvas" class="megamenu-canvas control">
+    <nav class="offcanvas-mainnav">
+        <div id="off-canvas-button">
+            <span class="off-canvas-nav"><i class="icon_close"></i></span>
+        </div>
+        <ul class="nav navbar-nav megamenu">
           <li class="currency-mobile">{% include 'currencies-mobile' %}</li>
 			{% for link in linklists.main-menu.links %}
                 {% assign hasMega = false %}
@@ -110,6 +216,8 @@
         </ul>
 	</nav>
 </section>
+
+
 <script>
   jQuery('.btn-menu-canvas').click(function(){
   	if(jQuery('#offcanvas').hasClass('active')){
@@ -139,8 +247,11 @@
     }
 
   });
+    
+    
+    
 
-    jQuery("#offcanvas .navbar-nav ul").hide();
+  jQuery("#offcanvas .navbar-nav ul").hide();
     jQuery("#offcanvas .navbar-nav li p.h3 i").addClass("accordion-show");
 
     //var iconAccordion = jQuery("#offcanvas .navbar-nav li h3 i");
@@ -163,7 +274,6 @@
     });
 </script>
 
-
 <script>
 $(document).ready(function() {
     function checkWidth() {
@@ -181,4 +291,49 @@ $(document).ready(function() {
     // Bind event listener
     $(window).resize(checkWidth);
 });
+</script>
+
+
+
+<script>
+    //NEW NAV
+    jQuery('.btn-menu-canvas').click(function(){
+        if(jQuery('#offcanvasb').hasClass('active')){
+            jQuery('body').removeClass('off-canvas-active');
+            jQuery('#offcanvasb').removeClass('active');
+            jQuery('.wrapper-container').removeClass('offcanvas-push');
+        }else{
+            jQuery('body').addClass('off-canvas-active');
+            jQuery('#offcanvasb').addClass('active');
+            jQuery('.wrapper-container').addClass('offcanvas-push');
+        }
+    });
+    jQuery('#off-canvas-buttonb').click(function(){
+        jQuery('#offcanvasb').removeClass('active');
+        jQuery('.wrapper-container').removeClass('offcanvas-push');
+    });
+
+    jQuery(document).mouseup(function (e){
+
+        var container = jQuery("#offcanvasb");
+
+        if (!container.is(e.target) // if the target of the click isn't the container...
+            && container.has(e.target).length === 0) // ... nor a descendant of the container
+        {
+            jQuery('#offcanvasb').removeClass('active');
+            jQuery('.wrapper-container').removeClass('offcanvas-push');
+        }
+
+    });
+    $(document).ready(function() {
+        $('#collapseLearn').collapse({
+            toggle: false
+        });
+        $('#collapseLearn').on('show.bs.collapse', function () {
+            $("a.learn").addClass("open");
+        });
+        $('#collapseLearn').on('hide.bs.collapse', function () {
+            $("a.learn").removeClass("open");
+        });
+    });
 </script>
