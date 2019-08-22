@@ -393,8 +393,14 @@ visibility: hidden;
     color: #4a4a4a;
 }
 .header-cart .top-cart a{font-size: 16px;}
-.header-cart .top-cart{margin-right: 18px;}
+.header-cart .top-cart{
+    margin-right: 5px;
+}
+.is-ticky .header-cart .top-cart{
+    margin: 10px 2px 0 0;
+}
 #cart #cartSpecialInstructions{min-height: 130px;}
+.is-ticky #search-top{margin-top: 0px;}
 .mini_cart_header OL{
     margin-left: 0;
 }
@@ -531,6 +537,17 @@ BODY.template-index #header-content{
 .header{
     position: relative;
 }
+
+/*.header-content{
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    height: 55px;
+    -webkit-box-shadow: 0 6px 15px #aeaeae;
+    -moz-box-shadow:    0 6px 15px #aeaeae;
+    box-shadow: 0 6px 15px #aeaeae;
+}*/
+
 #header-content .site-nav li a{
     color: #444;
     font-family: $body-stack-bold;
@@ -4676,6 +4693,9 @@ div.header-tool{
         width: 100px;
     }
 }
+.is-ticky div.header-tool{
+    padding: 10px 20px;
+}
 @media (min-width: 767px) and (max-width: 991px){
     div.header-tool{
         margin-right: 90px;
@@ -5396,6 +5416,11 @@ DIV#financing-modal{
     }
 }
 
+@media (max-width: 991px) {
+    .is-ticky .header-cart .top-cart{
+        margin: -5px 2px 0 0;
+    }
+}
 /****** OLD MOBILE NAVIGATION ******/
 #offcanvas.control{display:none}
 @media (max-width: 991px) {
@@ -5610,6 +5635,7 @@ DIV#financing-modal{
         UL{
             padding-left: 0;
             LI{
+                margin: 22px 0;
                 A{
                     border: none;
                     padding: 0;
@@ -5625,7 +5651,6 @@ DIV#financing-modal{
                     display: inline-block;
                     margin-top: 20px;
                 }
-                margin: 22px 0;
                 &.lvl1{
                     P{
                         padding-left: 35px;
