@@ -26,11 +26,13 @@
 {% endif %}
 {% endfor %}
 
+{% comment %}
 {% for variant in ojai.variants %}
 {% if variant.title == "Twin / No Pillows" %}
 {% assign ojaiPrice = variant.price %}
 {% endif %}
 {% endfor %}
+{% endcomment %}
 
 {% for variant in crystalcove.variants %}
 {% if variant.title == "Twin / No Pillows" %}
@@ -45,7 +47,7 @@
 {% endfor %}
 
 {% include 'affirm-product' %}
-<div class="container-fluid">
+<div class="container">
     <div class="row"><!--row-eq-height-->
         <div id="compare-mattresses-wrap" class=" owl-carousel owl-theme">
             <div class="item">
@@ -348,6 +350,7 @@
                 </div>
             </div>
             
+            {% comment %}
            <div class="item">
                 <div class="product-col ojai text-center">
                     <div class="colorwrap">
@@ -405,7 +408,7 @@
                     </div>
                 </div>
             </div>
-            
+            {% endcomment %}
             
             
         </div>
@@ -432,7 +435,7 @@
                     nav:true
                 },
                 1480:{
-                    items:5,
+                    items:4,
                     nav:false
                 }
             }

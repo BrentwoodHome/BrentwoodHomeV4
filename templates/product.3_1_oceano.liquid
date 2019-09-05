@@ -209,6 +209,16 @@
     DIV.inside .matTip DIV.arrow DIV.pointer{
         background-color: white;
     }*/
+    DIV.inside .matTip P STRONG{
+        display: inline;
+        margin: 10px 0px 5px 37px;
+        color: #4A4A4A;
+        float: left;
+        line-height: 20px;
+    }
+    DIV.inside .matTip P{
+        margin-top: 20px;
+    }
     DIV.inside .matTip.cedarluxe.wool {
         top: -90px;
         left: 570px;
@@ -216,9 +226,14 @@
     
 
     DIV.inside .matTip.cedarluxe.springs {
-        bottom: -140px;
+        bottom: -100px;
         left: 20px;
         width: 360px;
+    }
+    DIV.inside .matTip.cedarluxe.springs DIV.arrow {
+        height: 130px;
+        bottom: 45px;
+        left: 45px;
     }
     DIV.inside .matTip.oceano.tencel {
         bottom: -157px;
@@ -236,26 +251,26 @@
         left: -5px;
     }
     DIV.inside .matTip.oceano.tencel {
-        top: -90px;
+        top: -60px;
         bottom: auto;
         left: 170px;
     }
     DIV.inside .matTip.oceano.wool {
-        top: -90px;
+        top: -60px;
         left: 570px;
         right: 170px;
     }
     DIV.inside .matTip.oceano.wool DIV.arrow {
-        height: 218px;
+        height: 192px;
         top: 45px;
         left: 45px;
     }
     DIV.inside .matTip.oceano.gel {
-        bottom: -140px;
+        bottom: -100px;
         left: 690px;
     }
     DIV.inside .matTip.oceano.gel DIV.arrow {
-        height: 285px;
+        height: 245px;
         bottom: 45px;
         left: 45px;
     }
@@ -264,12 +279,12 @@
         left: -5px;
     }
     DIV.inside .matTip.oceano.microcoils {
-        bottom: -160px;
+        bottom: -100px;
         left: 380px;
         width: 300px;
     }
     DIV.inside .matTip.oceano.microcoils DIV.arrow {
-        height: 278px;
+        height: 222px;
         bottom: 45px;
         left: 45px;
     }
@@ -277,6 +292,10 @@
         top: 0;
         left: -5px;
     }
+    DIV.inside{
+        margin: 140px 0 130px;
+    }
+    
     .boxMat{
         background-color: white; padding: 40px 15px; border-radius: 6px;
     }
@@ -287,7 +306,7 @@
     .update-ui #bk-localnav.bk-localnav-top.bk-localnav-light.custom-box-shadow{
         /*display: none;*/
     }
-    .matnumber{
+    .matnumber, .matnumberSmall{
         background-color: #38414F;
         color: white;
         border-radius: 100px;
@@ -295,7 +314,15 @@
         padding: 10px 16px;
         font-weight: bold;
         font-family: AvenirLTStd-Roman, 'Helvetica Neue', helvetica, sans-serif;
+        margin-top: 10px;
     }
+    .matnumberSmall{
+        padding: 3px 8px;
+        font-style: normal;
+        font-size: 14px;
+        position: absolute;
+    }
+    
     .owl-carousel.owl-drag .owl-item h3{
         text-align:center !important;
         line-height: 20px !important;
@@ -306,19 +333,22 @@
         }
         DIV.inside .matTip.oceano.gel{
             width: 270px;
-            left: 570px;
+            left: 620px;
         }
         DIV.inside .matTip.oceano.wool{
             left: 500px;
         }
         DIV.inside .matTip.oceano.wool DIV.arrow{
-            height: 192px;
+            height: 160px;
         }
         DIV.inside .matTip.oceano.microcoils{
             left: 310px;
         }
         DIV.inside .matTip.oceano.microcoils DIV.arrow{
-            height: 255px;
+            height: 195px;
+        }
+        DIV.inside .matTip.oceano.gel DIV.arrow{
+            height: 212px;
         }
     }
     @media (max-width: 991px){
@@ -729,36 +759,35 @@
             <div class="inside five">
                 <div class="hidden-xs hidden-sm matTip small oceano tencel wow fadeIn" data-wow-duration="1s" data-wow-delay="1s">
                     <img src="https://s3-brentwoodhome.imgix.net/tencel_round.png?w=80&h=80" alt="Plant-Based Tencel™ Blended Fabric Cover" class="rdthumb">
-                    <p><strong>1. Plant-Based Tencel™ Blended Fabric Cover</strong><span>Sustainably-produced, airy and soft to the skin with unique moisture-absorbing abilities.</span></p>
+                    <p><em class="matnumberSmall">1</em><strong>Plant-Based Tencel™ Blended Fabric Cover</strong></p>
                     <div class="arrow">
                         <div class="pointer"></div>
                     </div>
                 </div>
                 <div class="hidden-xs hidden-sm matTip small oceano wool wow fadeIn" data-wow-duration="1s" data-wow-delay="1.3s">
                     <img src="https://s3-brentwoodhome.imgix.net/products/cypress/wool2-round.png?w=80&h=80" alt="GOTS Organic Certified Wool" class="rdthumb">
-                    <p><strong>2. GOTS Organic Certified Wool</strong><span>100% organic, keeps you cool in the summer and warm in the winter.</span></p>
+                    <p><em class="matnumberSmall">2</em><strong>GOTS Organic Certified Wool</strong></p>
                     <div class="arrow">
                         <div class="pointer"></div>
                     </div>
                 </div>
                 <div class="hidden-xs hidden-sm matTip small oceano microcoils wow fadeIn" data-wow-duration="1s" data-wow-delay="1.8s">
                     <img src="https://s3-brentwoodhome.imgix.net/microcoils_round.png?w=80&h=80" alt="Responsive Micro-Support Coils" class="rdthumb">
-                    <p><strong>4. Responsive Micro-Support Coils</strong><span>Up to 1,722 micro-pocketed coils for ultra-responsive comfort and precision support.
-                        </span></p>
+                    <p><em class="matnumberSmall">4</em><strong>Responsive Micro-Support Coils</strong></p>
                     <div class="arrow">
                         <div class="pointer"></div>
                     </div>
                 </div>
                 <div class="hidden-xs hidden-sm matTip small cedarluxe wow springs" data-wow-duration="1s" data-wow-delay="2.3s">
                     <img src="https://s3-brentwoodhome.imgix.net/rd-spring-closeup.png?w=80&h=80" alt="5-Zone spring core" class="rdthumb">
-                    <p><strong>3. 5-Zone Support Core</strong><span>An up to 1,441 premium support unit strategically designed to support hips, back and shoulders.</span></p>
+                    <p><em class="matnumberSmall">3</em><strong>5-Zone Support Core</strong></p>
                     <div class="arrow">
                         <div class="pointer"></div>
                     </div>
                 </div>
                 <div class="hidden-xs hidden-sm matTip small oceano gel wow fadeIn" data-wow-duration="1s" data-wow-delay="2.5s">
                     <img src="https://s3-brentwoodhome.imgix.net/products/cypress/gelmf-round.png?w=80&h=80" alt="CertiPUR-US® certified Cooling Gel Memory Foam" class="rdthumb">
-                    <p><strong>5. CertiPUR-US® certified Cooling Gel Memory Foam</strong><span>Contouring and cooling for pressure-point relief and deep rest.</span></p>
+                    <p><em class="matnumberSmall">5</em><strong>CertiPUR-US® certified Cooling Gel Memory Foam</strong></p>
                     <div class="arrow">
                         <div class="pointer"></div>
                     </div>
@@ -790,32 +819,60 @@
             }
         </style>
         <div class="container visible-md-block visible-lg-block section materialListMob">
-           <br><h3 class="text-center" style="text-align: center">additional natural layers</h3>
+           <br><h3 class="text-center" style="text-align: center">our natural layers</h3>
             <div id="materials-desk" class=" owl-carousel owl-theme">
-                
                 <div class="item text-center">
-                    <p class="text-center matnumber" style="margin-top: 10px;">6</p>
+                    <p class="text-center matnumber">1</p>
+                    <h3 class="text-center features">Plant-Based Tencel™ Blended Fabric Cover</h3>
+                    <p>Sustainably-produced, airy and soft to the skin with unique moisture-absorbing abilities.</p>
+                </div>
+                <div class="item text-center">
+                    <p class="text-center matnumber">2</p>
+                    <h3 class="text-center features">GOTS Organic Certified Wool</h3>
+                    <p>100% organic, keeps you cool in the summer and warm in the winter.
+                    </p>
+                </div>
+                <div class="item text-center">
+                    <p class="text-center matnumber">3</p>
+                    <h3 class="text-center features">5 Zones, Up to 1,441 Support Coils</h3>
+                    <p>Premium support unit strategically designed to support hips, back and shoulders.
+                    </p>
+                </div>
+                <div class="item text-center">
+                    <p class="text-center matnumber">4</p>
+                    <h3 class="text-center features">Responsive Micro-Support</h3>
+                    <p>Up to 1,722 comfort coils for ultra-responsive comfort for precise support.
+                    </p>
+                </div>
+                <div class="item text-center">
+                    <p class="text-center matnumber">5</p>
+                    <h3 class="text-center features">Cooling Gel-Infused Swirl Memory Foam</h3>
+                    <p>Contouring and cooling for pressure-point relief and deep rest.
+                    </p>
+                </div>
+                <div class="item text-center">
+                    <p class="text-center matnumber">6</p>
                     <h3 class="text-center features">Luxurious Natural Poly-Silk Fiber
                     </h3>
                     <p>A premium and unique fiber blend for lightness and enhanced breathability that only natural silk provides.
                     </p>
                 </div>
-                
+
                 <div class="item text-center">
-                    <p class="text-center matnumber" style="margin-top: 10px;">7</p>
+                    <p class="text-center matnumber">7</p>
                     <h3 class="text-center features">Serene Cool Air Luxe Foam™</h3>
                     <p>2-inches of deep comfort for pressure-point relief, that is notably airy and cool.
                     </p>
                 </div>
-                
+
                 <div class="item text-center">
-                    <p class="text-center matnumber" style="margin-top: 10px;">8</p>
+                    <p class="text-center matnumber">8</p>
                     <h3 class="text-center features">Premium Base Support Foam
                     </h3>
                     <p>1-inch of luxe CertiPUR-US® Certified High-Density support foam.</p>
                 </div>
                 <div class="item text-center">
-                    <p class="text-center matnumber" style="margin-top: 10px;">9</p>
+                    <p class="text-center matnumber">9</p>
                     <h3 class="text-center features">Organic Cotton Canvas Base
                     </h3>
                     <p>100% GOTS organic certified cotton canvas base in a beautiful Herringbone pattern.
@@ -823,59 +880,60 @@
                 </div>
             </div>
         </div>
-        
+
+       
         <div class="container section visible-xs-block visible-sm-block materialListMob">
             <div id="materials" class=" owl-carousel owl-theme">
                 <div class="item text-center">
-                    <p class="text-center matnumber" style="margin-top: 10px;">1</p>
+                    <p class="text-center matnumber">1</p>
                     <h3 class="text-center features">Plant-Based Tencel™ Blended Fabric Cover</h3>
                     <p>Sustainably-produced, airy and soft to the skin with unique moisture-absorbing abilities.</p>
                 </div>
                 <div class="item text-center">
-                    <p class="text-center matnumber" style="margin-top: 10px;">2</p>
+                    <p class="text-center matnumber">2</p>
                     <h3 class="text-center features">GOTS Organic Certified Wool</h3>
                     <p>100% organic, keeps you cool in the summer and warm in the winter.
                     </p>
                 </div>
                 <div class="item text-center">
-                    <p class="text-center matnumber" style="margin-top: 10px;">3</p>
+                    <p class="text-center matnumber">3</p>
                     <h3 class="text-center features">Luxurious Natural Poly-Silk Fiber
                     </h3>
                     <p>A premium and unique fiber blend for lightness and enhanced breathability that only natural silk provides.
                     </p>
                 </div>
                 <div class="item text-center">
-                    <p class="text-center matnumber" style="margin-top: 10px;">4</p>
+                    <p class="text-center matnumber">4</p>
                     <h3 class="text-center features">Cooling Gel-Infused Swirl Memory Foam</h3>
                     <p>Contouring and cooling for pressure-point relief and deep rest.
                     </p>
                 </div>
                 <div class="item text-center">
-                    <p class="text-center matnumber" style="margin-top: 10px;">5</p>
+                    <p class="text-center matnumber">5</p>
                     <h3 class="text-center features">Responsive Micro-Support</h3>
                     <p>Up to 1,722 comfort coils for ultra-responsive comfort for precise support.
                     </p>
                 </div>
                 <div class="item text-center">
-                    <p class="text-center matnumber" style="margin-top: 10px;">6</p>
+                    <p class="text-center matnumber">6</p>
                     <h3 class="text-center features">Serene Cool Air Luxe Foam™</h3>
                     <p>2-inches of deep comfort for pressure-point relief, that is notably airy and cool.
                     </p>
                 </div>
                 <div class="item text-center">
-                    <p class="text-center matnumber" style="margin-top: 10px;">7</p>
+                    <p class="text-center matnumber">7</p>
                     <h3 class="text-center features">5 Zones, Up to 1,441 Support Coils</h3>
                     <p>Premium support unit strategically designed to support hips, back and shoulders.
                     </p>
                 </div>
                 <div class="item text-center">
-                    <p class="text-center matnumber" style="margin-top: 10px;">8</p>
+                    <p class="text-center matnumber">8</p>
                     <h3 class="text-center features">Premium Base Support Foam
                     </h3>
                     <p>1-inch of luxe CertiPUR-US® Certified High-Density support foam.</p>
                 </div>
                 <div class="item text-center">
-                    <p class="text-center matnumber" style="margin-top: 10px;">9</p>
+                    <p class="text-center matnumber">9</p>
                     <h3 class="text-center features">Organic Cotton Canvas Base
                     </h3>
                     <p>100% GOTS organic certified cotton canvas base in a beautiful Herringbone pattern.
@@ -904,6 +962,7 @@
                     },
                     nav : false,
                 });
+
                 $('#materials').owlCarousel({
                     loop:false,
                     margin:10,
