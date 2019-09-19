@@ -15,7 +15,7 @@ Tobe used for banners/tickers ect...
 {% assign rightnowint = rightnow | times: 1 %}
 
 {% assign currentPromoEnd = 201908192359 %}
-{% assign newPromoEnd = 201909162359 %}
+{% assign newPromoEnd = 201909240000 %}
 {% assign extensionStart = 201909092359 %}
 
 
@@ -23,7 +23,7 @@ Tobe used for banners/tickers ect...
 <!-- EYEBROW -->
 {% assign eyebrowCurrent = "summer sale! $175 to $400 off select mattresses & more" %}
 {% assign eyebrowCurrentMobile = "Sale! $175-$400 off mattresses & more" %}
-{% assign eyebrowNew = "Labor Day Sale! $175 to $400 off select mattresses & more" %}
+{% assign eyebrowNew = "end of summer Sale! $175 to $400 off select mattresses & more" %}
 {% assign eyebrowNewMobile = "Sale! Up to $400 off mattresses & more" %}
 
 <!-- MODAL -->
@@ -31,7 +31,7 @@ Tobe used for banners/tickers ect...
 
 <!-- SALE PAGE variable for extending promo -->
 {% if rightnowint > extensionStart %}
-    {% assign enddate = "Ends September 16" %}
+    {% assign enddate = "Ends September 23" %}
 {% elsif rightnowint < currentPromoEnd %}
     {% comment %} Display the correct end date when still in current promo range {% endcomment%}
     {% assign enddate = "Ends August 19" %}
