@@ -15,7 +15,7 @@ Tobe used for banners/tickers ect...
 {% assign rightnowint = rightnow | times: 1 %}
 
 {% assign currentPromoEnd = 201908192359 %}
-{% assign newPromoEnd = 201909240000 %}
+{% assign newPromoEnd = 201910080000 %}
 {% assign extensionStart = 201909092359 %}
 
 
@@ -31,7 +31,7 @@ Tobe used for banners/tickers ect...
 
 <!-- SALE PAGE variable for extending promo -->
 {% if rightnowint > extensionStart %}
-    {% assign enddate = "Ends September 23" %}
+    {% assign enddate = "Ends October 7" %}
 {% elsif rightnowint < currentPromoEnd %}
     {% comment %} Display the correct end date when still in current promo range {% endcomment%}
     {% assign enddate = "Ends August 19" %}
