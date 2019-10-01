@@ -81,7 +81,7 @@ LABEL.selectLabel{
     border: 1px solid $blue;
 }
 #add-to-cart-form .swatch.clearfix input:checked+label.swatch-label, #add-to-cart-form .swatch.clearfix label.swatch-label:hover{
-    border-width: 2px;
+    border-width: 2px !important;
     color: $blue;
 }
 
@@ -512,8 +512,8 @@ DIV.inside{
     .owl-carousel.owl-drag .owl-item {
         min-height: 320px;   
     }
-    .panel-body {
-        padding: 30px 35px;
+    p.short-description.shipping{
+        line-height: 18px;
     }
 }
 .owl-carousel .owl-stage-outer{
@@ -547,6 +547,7 @@ DIV.inside{
 }
 #warranties.owl-carousel.owl-drag .owl-item {
     min-height: 230px;
+    min-height: 190px;
 }
 #materials-desk.owl-carousel.owl-drag .owl-item{
     min-height: 260px;
@@ -637,4 +638,17 @@ DIV.inside{
 }
 .underline{
     text-decoration: underline;
+}
+@media (max-width: 768px){
+    .panel-body {
+        padding: 30px 35px;
+    }
+    .container.section .panel-title>A{
+        line-height: 42px;
+        height: 35px;
+        font-size: 13px;
+    }
+    #certification-specs IMG{
+        max-width: 55px;
+    }
 }
