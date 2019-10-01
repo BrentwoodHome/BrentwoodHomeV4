@@ -29,7 +29,9 @@ $bodySize : 16px;
 $h1size : 48px;
 $bodyHeight: 27px;
 
-
+body:not(.template-index) .main-content{
+    margin-top: 20px;
+}
 
 .margTBLarge{
     margin-top: 80px;
@@ -43,6 +45,16 @@ $bodyHeight: 27px;
     margin-top: 30px;
     margin-bottom: 30px;
 }
+.margBLarge{
+    margin-bottom: 80px;
+}
+.margBMedium{
+    margin-bottom: 50px;
+}
+.margBSmall{
+    margin-bottom: 30px;
+}
+
 
 .bhblue{
     background-color: $blue;
@@ -3075,6 +3087,7 @@ background-color: goldenrod;
     text-align: center;
     IMG{
         max-width: 75px;
+        max-height: 75px;
         margin-bottom: 10px;
     }
     P{
@@ -6408,4 +6421,34 @@ bkt--btn bkt--btn-primary bkt--vertical-add-cart {
 //Hide on cedar page or only mattress gets added
 BODY.template-product.product-3_1_cedarluxe div.beeketing-page-block.mboost_default{
     display: none !important;
+}
+
+
+
+
+
+LABEL.selectLabel{
+    display: block;
+    font-family: $body-stack-bold;
+    font-size: 20px !important;
+    color: #38414f;
+    font-weight: 300 !important;
+    letter-spacing: 0.15px !important;
+    line-height: 27px;
+}
+.swatch-color-text .swatch-value{
+    color: $blue;
+    font-size: 14px;
+    font-family: $body-stack-bold;
+    text-align: center;
+    text-transform: capitalize;
+}
+#add-to-cart-form .swatch.clearfix .color.swatch-element label.swatch-label{
+    height: 40px !important;
+    width: 40px !important;
+    border: 1px solid $blue;
+}
+.swatch input:checked+label.swatch-label, .swatch label.swatch-label:hover{
+    border-width: 2px;
+    color: $blue;
 }

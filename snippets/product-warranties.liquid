@@ -1,0 +1,127 @@
+{% if product.type == "Mattress" %}
+
+<div class="container section warranties">
+    <h2 class="text-center">Try the {{ product.title }} Risk-Free</h2>
+    <div id="warranties" class=" owl-carousel owl-theme">
+        <div class="item text-center">
+            <img src="https://brentwood-home-36.imgix.net/iconv2-1yearguarantee.svg" alt="1-year trial">
+            <p>1-Year<br>Trial</p>
+        </div>
+        <div class="item text-center">
+            <img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Free shipping and free return">
+            <p>Free Shipping<br>Free Return</p>
+        </div>
+        <div class="item text-center">
+            <img src="https://brentwood-home.imgix.net/iconv2-madeincalifornia.svg" alt="Made in California">
+            <p>Made in<br>California</p>
+        </div>
+        <div class="item text-center">
+            <img src="https://brentwood-home.imgix.net/iconv2-25yearwarranty.svg" alt="25-year warranty">
+            <p>25-year<br>Warranty</p>
+        </div>
+        <div class="item text-center">
+            <img src="https://brentwood-home.imgix.net/iconv2-whiteglovedelivery.svg" alt="In home delivery available">
+            <p>In Home<br>Delivery Available</p>
+        </div>
+        <div class="item text-center">
+            <img src="https://brentwood-home.imgix.net/iconv2-0percent.svg" alt="0% financing available">
+            <p>0% Financing<br>Available</p>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+
+        $('#warranties').owlCarousel({
+            loop:false,
+            margin:10,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:2,
+                    loop: true,
+                    stagePadding: 40,
+                },
+                480:{
+                    items:4,
+                    loop: true,
+                    stagePadding: 40,
+                },
+                768:{
+                    items:6,
+                    //nav:true
+                    stagePadding: 0,
+                    loop: false,
+                    mouseDrag: false,
+                    touchDrag: false
+                }
+            },
+            nav : false,
+
+        });
+    });
+</script> 
+{% elsif product.type == "Bed Sheets" %}
+    <div class="container section warranties background">
+       <div>
+           <h2 class="text-center">Peace of Mind Guarantee</h2>
+            <div id="warranties" class=" owl-carousel owl-theme">
+                <div class="item text-center">
+                    <img src="https://brentwood-home-2.imgix.net/iconv2-100nightguarantee.svg" alt="100-night trial">
+                    <p>100-Night<br>Trial</p>
+                </div>
+                <div class="item text-center">
+                    <img src="https://brentwood-home-2.imgix.net/iconv2-freeshipping.svg" alt="Free shipping and free return">
+                    <p>Free Shipping<br>Free Return</p>
+                </div>
+                <div class="item text-center">
+                    <img src="https://brentwood-home-2.imgix.net/iconv2-GOTS.svg" alt="GOTS">
+                    <p>GOTS<br>Organic Certified</p>
+                </div>
+                <div class="item text-center">
+                    <img src="https://brentwood-home-2.imgix.net/iconv2-1yearwarranty.svg" alt="1-year warranty">
+                    <p>1-year<br>Warranty</p>
+                </div>
+                <div class="item text-center">
+                    <img src="https://brentwood-home-2.imgix.net/iconv2-0percent.svg" alt="0% financing available">
+                    <p>0% Financing<br>Available</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+    $(document).ready(function() {
+
+        $('#warranties').owlCarousel({
+            loop:false,
+            margin:10,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:2,
+                    loop: true,
+                    stagePadding: 40,
+                },
+                480:{
+                    items:3,
+                    loop: true,
+                    stagePadding: 40,
+                },
+                768:{
+                    items:5,
+                    //nav:true
+                    stagePadding: 0,
+                    loop: false,
+                    mouseDrag: false,
+                    touchDrag: false
+                }
+            },
+            nav : false,
+
+        });
+    });
+</script> 
+{% endif %}
+

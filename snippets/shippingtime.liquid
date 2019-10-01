@@ -31,7 +31,8 @@ shipping page at https://brentwood-home.myshopify.com/admin/pages/73357635
 {% endcase %}
 {%endcomment%}
 
-{% assign shipsfree = "3-7 day business days" %}
+{% assign shipsfree = "3-7 business days" %}
+{% assign trial = "1-year trial" %}
 
 {% case product.handle %}
    
@@ -72,7 +73,11 @@ shipping page at https://brentwood-home.myshopify.com/admin/pages/73357635
         {% assign shipsfree = "3-7 business days" %}
         
     {% when 'beachwood-linen-quilt' %}
-        {% assign shipsfree = "3-7 business days" %}
+        {% assign shipsfree = "2-3 weeks" %}
+        
+    {% when 'luxury-organic-cotton-sheets' %}
+        {% assign shipsfree = "2-3 days" %}
+        {% assign trial = "100-night trial" %}
         
 {% endcase %}
 

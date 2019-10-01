@@ -1763,13 +1763,41 @@ div#myTabContent{
 .swatch .header { margin: 0; border: none; padding: 0 0 5px; font-weight: 500; color: #000; }
 /* Hide radio buttons.*/
 .swatch input { display:none; }
-.swatch label { border: 1px solid #cbcbcb; /*float: left;*/ font-weight: 400; font-size: 11px; min-width: 34px!important; height: 34px!important; line-height: 32px; margin: 0; text-align: center; text-transform: uppercase; white-space: nowrap; cursor: pointer; }
-.swatch-element label { padding:0 5px; }
-.color.swatch-element label { padding:0; }
+.swatch label.swatch-label { border: 1px solid #cbcbcb; /*float: left;*/ font-weight: 400; font-size: 11px; min-width: 34px!important; height: 34px!important; line-height: 32px; margin: 0; text-align: center; text-transform: uppercase; white-space: nowrap; cursor: pointer; }
+
+/* swatches for non color variant*/
+.swatch div:not(.color) label { 
+    border: 1px solid #cbcbcb; /*float: left;*/ 
+    font-weight: 400; 
+    font-size: 11px; 
+    min-width: 34px!important; 
+    height: 34px!important; 
+    line-height: 32px; 
+    margin: 0; 
+    text-align: center; 
+    text-transform: uppercase; 
+    white-space: nowrap; 
+    cursor: pointer; 
+    line-height: 32px;
+    border-radius: 6px;
+    background-color: white;
+    padding: 0 7px;
+}
+.swatch div:not(.color) input:checked + label, .swatch div:not(.color) label:hover{
+    border-color: #38414F;
+    border-width: 2px;
+    line-height: 32px;
+    background-color: #687283;
+    color: white;
+}
+
+
+.swatch-element label.swatch-label { padding:0 5px; }
+.color.swatch-element label.swatch-label { padding:0; }
 /* Styling selected swatch */
 /* Slightly raised */
-.swatch input:checked + label ,
-.swatch label:hover { border-color: #38414F; border-width: 3px; line-height: 28px; }
+.swatch input:checked + label.swatch-label ,
+.swatch label.swatch-label:hover { border-color: #38414F; border-width: 3px; line-height: 28px; }
 .swatch .swatch-element {
   float:left;
   -webkit-transform:translateZ(0); /* webkit flicker fix */

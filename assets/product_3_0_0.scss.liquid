@@ -44,7 +44,7 @@ $beige: #A7A59A;
         display: none !important;
     }
 
-    select, input, a, button, label {
+    select, input, a, button {
         @include outline(none);
     }
 
@@ -52,7 +52,7 @@ $beige: #A7A59A;
         background-color: #fff !important;
     }
 
-    h1, h2, h3, p, label, input, select, div {
+    h1, h2, h3, p, input, select, div {
         font-family: AvenirLTStd-Light, "Helvetica Neue", helvetica, sans-serif !important;
     }
     h4{
@@ -188,7 +188,7 @@ $beige: #A7A59A;
                     margin-top: 0 !important;
                     .color.swatch-element label{
                         width: 50px;
-                        height: 50px !important;
+                        height: 50px;
                     }
                 }
                 .swatch.clearfix[data-option-index="0"] {
@@ -830,7 +830,7 @@ $beige: #A7A59A;
         color: #FFF !important;
     }
 }
-
+/*
 .swatch label{
     border-radius: 6px;
     line-height: 33px;
@@ -851,6 +851,33 @@ LABEL.selectLabel{
     font-weight: 300 !important;
     letter-spacing: 0.15px !important;
     line-height: 27px;
+}
+*/
+LABEL.selectLabel{
+    display: block;
+    //font-family: $body-stack-bold;
+    font-size: 20px !important;
+    color: #38414f;
+    font-weight: 300 !important;
+    letter-spacing: 0.15px !important;
+    line-height: 27px;
+}
+.swatch-color-text .swatch-value{
+    color: $blue;
+    font-size: 14px;
+    //font-family: $body-stack-bold;
+    text-align: center;
+    text-transform: capitalize;
+}
+#add-to-cart-form .swatch.clearfix .color.swatch-element label.swatch-label{
+    height: 50px !important;
+    width: 50px !important;
+    border: 1px solid $blue;
+    border-radius: 6px;
+}
+#add-to-cart-form .swatch.clearfix input:checked+label.swatch-label, #add-to-cart-form .swatch.clearfix label.swatch-label:hover{
+    border-width: 2px !important;
+    color: $blue;
 }
 
 #page_product .product-tabs #exTab1 H2.overlays-title{
@@ -920,3 +947,4 @@ LABEL.selectLabel{
         padding: 0 !important;
     }
 }
+

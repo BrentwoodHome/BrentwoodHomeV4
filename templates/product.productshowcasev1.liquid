@@ -217,8 +217,21 @@
 </div><!-- End Row -->
 </div><!-- End Container -->
 
+{%comment%}
+<!-- list ids for bundles. needed in productbundles.liquid -->
+{% for variant in product.variants %}
+{<br>
+id: {{ variant.id }},<br>
+price: {{variant.price}},<br>
+qt: 1<br>
+},<br>
+{% endfor %}
 
+{% for variant in product.variants %}
+ {{ variant.id }},
+{% endfor %}
 
+{%endcomment%}
 <div class="product-tabs ">
     {% if product.metafields.bhsite.tagline != "0" %}
     <div class="container">

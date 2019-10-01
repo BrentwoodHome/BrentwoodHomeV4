@@ -24,7 +24,7 @@
 
     <script type='text/javascript'>
         if(typeof(_vis_opt_settings_loaded) == "boolean") { document.write('<s' + 'cript src="' + _vis_opt_protocol +
-                                                                           'd5phz18u4wuww.cloudfront.net/vis_opt.js" type="text/javascript">' + '<\/s' + 'cript>'); }
+                                                                           'd5phz18u4wuww.cloudfront.net/vis_opt_no_jquery.js" type="text/javascript">' + '<\/s' + 'cript>'); }
         /* if your site already has jQuery 1.4.2, replace vis_opt.js with vis_opt_no_jquery.js above */
     </script>
 
@@ -105,8 +105,11 @@
     {% if template.suffix contains '3_0' or template.suffix contains 'cb2' or template.suffix contains 'wide' %}
         {{ 'product_3_0_0.scss.css' | asset_url | stylesheet_tag }}
     {%endif%}
-    {% if template.suffix contains '3_1' %}
+    {% if template.suffix contains '3_1' or template.suffix contains '3_2' %}
         {{ 'product-3_1.scss.css' | asset_url | stylesheet_tag }}
+    {%endif%}
+    {% if template.suffix contains '3_2' %}
+        {{ '3_2.scss.css' | asset_url | stylesheet_tag }}
     {%endif%}
 
     {{ 'owl.carousel.min.234.css' | asset_url | stylesheet_tag }}
@@ -262,6 +265,7 @@
   <div class="wrapper-container">
 	{% include 'header' %}
 
+{% comment %}
   <div class="quick-view"></div>
   <div class="clearfix breadcrumb-wrap">
     <div class="container-fluid">
@@ -272,7 +276,7 @@
       </div>
     </div>
   </div>
-
+{% endcomment %}
       
     {% if template contains 'product' or template contains 'reliefbed' or template contains 'certifications' or template contains 'team' %}
         <main class="main-content" role="main">
