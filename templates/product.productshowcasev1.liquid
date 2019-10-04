@@ -769,21 +769,8 @@ qt: 1<br>
 </script>
 
 <script>
-    mixpanel.track(
-        "Product Viewed",
-        {"name": "{{product.title}}",
-         "price": "{{ product.price | money_without_currency }}",
-         "brand": "{{product.vendor}}",
-         "category": "{{ collection.title }}",
-         "variant": "{% for variant in product.variants %}{{ variant.sku }}{% endfor %}"
-        });
-</script>
-<script>
     $(document).ready(function(){
         $("#product-add-to-cart").click(function(){
-            mixpanel.track(
-                "Added to Cart", {"name": "{{product.title}}"});
-
             pintrk('track', 'addtocart', {
                 value: '{{ product.price | money_without_currency }}',
                 currency: 'USD',

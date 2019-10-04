@@ -35,16 +35,7 @@
     </script>
     <!-- End Visual Website Optimizer Synchronous Code -->
     
-    <!-- Google Optimize | Minimize page flickering
-    <style>.async-hide { opacity: 0 !important} </style>
-    <script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
-                                         h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
-                                         (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
-                                        })(window,document.documentElement,'async-hide','dataLayer',4000,
-                                           {'GTM-MPWVJQJ':true});</script>
-                                           
--->
-   
+    
     <!-- Start Impact -->
     <script type="text/javascript"> 
         (function(a,b,c,d,e,f,g){e['ire_o']=c;e[c]=e[c]||function(){(e[c].a=e[c].a||[]).push(arguments)};f=d.createElement(b);g=d.getElementsByTagName(b)[0];f.async=1;f.src=a;g.parentNode.insertBefore(f,g);})('//d.impactradius-event.com/A1450394-1267-428a-a5d4-10165976a1d81.js','script','ire',document,window); 
@@ -278,7 +269,7 @@
   </div>
 {% endcomment %}
       
-    {% if template contains 'product' or template contains 'reliefbed' or template contains 'certifications' or template contains 'team' %}
+      {% if template contains 'product' or template contains 'reliefbed' or template contains 'certifications' or template contains 'team' or template contains 'index' %}
         <main class="main-content" role="main">
     {%elsif template contains 'mattresscompare'%}
         <main class="main-content" role="main" style="max-width:1480px; margin-left: auto;margin-right:auto;">
@@ -341,26 +332,6 @@
   {% endif %}
 {% include 'sca-quick-view-template' %}
 {%endcomment%}
-
-
-
-<script>
-    mixpanel.people.increment("Site Visit");
-</script>
-      {% if customer %}
-      <script>
-          mixpanel.identify('{{customer.id}}');
-      </script>
-      {% endif %}
-
-     
-{%comment%}
-{% include 'special-offers' %}
-{%endcomment%}
-
-
-
-
 
 <!-- Intercom settings override for custom launcher -->
     <script>

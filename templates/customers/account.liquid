@@ -110,18 +110,7 @@
   </div>
 
 </div>
-{% if customer %}
-<script>
-    mixpanel.identify('{{customer.id}}');
-    mixpanel.people.set({
-        "$first_name": "{{customer.first_name}}",
-        "$last_name": "{{customer.last_name}}",
-                        "$email": "{{customer.email}}",
-                        "Order Count": "{{customer.orders_count}}",
-                        "Total Spent": "{{customer.total_spent | money_without_currency}}"
-                        });
-</script>
-{% endif %}
+
 
 
 

@@ -39,12 +39,6 @@
         <!-- End Google Tag Manager -->
 
         
-        <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
-        for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
-        mixpanel.init("b2d0db1e54496b9a137db682bd10295a");</script><!-- end Mixpanel -->
-
-
-        
         <!-- Favicon -->
         <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/x-icon" />
 
@@ -101,89 +95,19 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script> 
 
-   
-
-
-    <!-- MIXPANEL -->
-    <script>
-        //saves the last step in a session variable to avoid duplicate order complete events everytime someone checks the status of their order
-        if (Shopify.Checkout.step == 'payment_method'){
-            sessionStorage.setItem("followedSteps","complete");
-        }
-
-        if(typeof Shopify.checkout != 'undefined'){
-            var firstName = Shopify.checkout['billing_address']['first_name'];
-            var lastName = Shopify.checkout['billing_address']['last_name'];
-        }
-
-        //console.log ("Shopify.first_name: "+Shopify.checkout['billing_address']['first_name']);
-        //console.log ("Shopify.last_name: "+Shopify.checkout['billing_address']['last_name']);
-        console.log("current step:", Shopify.Checkout.step);
-        console.log("session storage:", sessionStorage.getItem("followedSteps"));
-
-        mixpanel.identify({{ attributes.mixpanel_id }});
-        mixpanel.people.set({
-            "$name": ""+firstName+" "+lastName+"",
-            "First Name": ""+firstName+"",
-            "Last Name": ""+lastName+"",
-            "$email": "{{ checkout.email }}",
-            "$marketing": "{{checkout.buyer_accepts_marketing}}",
-            "last_updated": new Date(),
-            "Order Num": "{{order_name|handleize}}"
-        });
-
-        if(Shopify.Checkout.step == 'thank_you' && sessionStorage.getItem("followedSteps") == null){
-            mixpanel.track("Checked Order Status");
-            console.log("3:", {{ checkout.discounts_amount | money_without_currency }});
-            console.log("4:", {% for discount in checkout.discounts %}"{{ discount.code }}: {{ discount.amount | money }}"{% endfor %});
-            console.log("5:", {{ checkout.total_price | money_without_currency }});
-            console.log("order_name:", {{order_name|handleize}});
-            console.log("order.customer:", {{ order_customer }});
-            //console.log("order.order_number:", {{ order.order_number }});
-        }
-
-        if (Shopify.Checkout.step == 'thank_you' && sessionStorage.getItem("followedSteps") == "complete"){
-            //We are on the thank you page after order is complete, do not track thank you email status check
-            //sessionStorage.clear(); 
-            sessionStorage.removeItem("followedSteps"); //delete session to avoid double display of checkout in mixpanel
-            /*mixpanel.track("Order Completed",
-                               { "Order Total": "{{ checkout.total_price | money_without_currency }}",
-                                "Ordered Items": [{% for item in checkout.line_items %}'{{ item.product.title }}',{% endfor %}],
-                                "Discount": "{% for discount in checkout.discounts %}{{discount.code}} {%endfor%}",
-                               });
-
-               mixpanel.people.track_charge({{ checkout.total_price | money_without_currency }});*/
-
-            /*console.log("3:", {{ checkout.discounts_amount | money_without_currency }});
-               console.log("4:", {% for discount in checkout.discounts %}"{{ discount.code }}: {{ discount.amount | money }}"{% endfor %});
-                console.log("5:", {{ checkout.total_price | money_without_currency }});
-               console.log("order_name:", {{order_name|handleize}});
-               console.log("order.customer:", {{ order_customer }});*/
-            //console.log("order.order_number:", {{ order.order_number }});
-
-            //pinterest
-            //pintrk('track', 'checkout');
-
-        }else{
-            //Tracking checkout steps
-            mixpanel.identify({{ attributes.mixpanel_id }});
-            var current_step = Shopify.Checkout.step;
-            switch(current_step){
-                case "contact_information":
-                    mixpanel.track("CkOut Contact Info");
-
-                    break;
-                case "shipping_method":
-                    mixpanel.track("CkOut Shipping");
-                    break;
-                case "payment_method":
-                    mixpanel.track("CkOut Pay Info");
-
-                    break;
-                default:
-                    break;
-            }
-        }
-    </script>
     </body>
 </html>
+{%comment%}
+If re-activating mixpanel, add this to https://brentwood-home.myshopify.com/admin/settings/checkout
+{% if first_time_accessed %}
+<!-- MIXPANEL CONVERSION-->
+<script type="text/javascript">
+    mixpanel.track("Order Completed",
+                   { "Order Total": "{{ total_price | money_without_currency }}",
+                    "Ordered Items":"{% for line_item in line_items %}{% if forloop.last == true %}{{ line_item.title }}{% else %}{{ line_item.title | append: ','}}{% endif %}{% endfor %}",
+                    "Discount": "{% for discount in checkout.discounts %}{{discount.code}} {%endfor%}"
+                   });                   
+    mixpanel.people.track_charge({{ checkout.total_price | money_without_currency }});
+</script>
+{% endif %}
+{%endcomment%}

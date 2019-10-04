@@ -233,7 +233,7 @@
             <div class="col-xs-12 span6 inner-right inner-left text-right">
                 <input type="button" id="update-cart" class="cta2 whiteinv" style="padding: 10px" name="update" value="{{ 'Update Cart'}}" />
                 <input type="submit" id="checkout" class="cta2" name="checkout" value="{{ 'Check Out'}}" />
-                <input type="hidden" id="mixpanel_id" name="attributes[mixpanel_id]" value="" />
+
             </div>
         </div>
         </form>
@@ -278,21 +278,6 @@
 </div>
 
 <script>
-    mixpanel.init('b2d0db1e54496b9a137db682bd10295a', {
-        loaded: function(mixpanel) {
-            if (document.getElementById("mixpanel_id") != null){
-                document.getElementById("mixpanel_id").value = mixpanel.get_distinct_id();
-            }
-        }
-    });
-
-    mixpanel.track("Viewed Cart",
-                   {"cart items": "{% for item in cart.items %}{{ item.product.title }} , {%endfor%}",
-                    "cart number items": {{cart.item_count}},
-                   "cart total": {{ cart.total_price | divided_by: 100 }}
-                   });
-</script>
-<script>
     var variants = {
         18602823614526: 18665794601022,
         18602823647294: 18665794633790,
@@ -300,10 +285,7 @@
     }
 
     $(document).ready(function(){
-        /*$(".cart").click(function(){
-            mixpanel.track(
-                "Remove from Cart", {"name": "{% for item in cart.items %}{{ item.product.title }} , {%endfor%}"});
-        });*/
+
 
         $('#update-cart').click(function() {
             $('.item-quantity').each(function(i, obj) {
@@ -372,14 +354,7 @@
     });
 </script>
 
-<script>
-    /*$(document).ready(function(){
-        $("A#cartToggle").click(function(){
-            mixpanel.track(
-                "Viewed Cart", {"name": "Clicked Cart Icon main nav"});
-        });
-    });*/
-</script>
+
 
 
 <!-- PIXEL KNOWLEDGE -->

@@ -531,19 +531,3 @@
 
 {{ 'swatch-new.js' | asset_url | script_tag }}
 
-<script>
-    mixpanel.track(
-        "Product Viewed",
-        {
-            "name": "{{ product.title }}",
-            "price": "{{ product.price | money_without_currency }}",
-            "brand": "{{ product.vendor }}",
-            "category": "{{ collection.title }}",
-            "variant": "{% for variant in product.variants %}{{ variant.sku }}{% endfor %}"
-        });
-    $(document).ready(function () {
-        $("#product-add-to-cart").click(function () {
-            mixpanel.track("Added to Cart", { "name": "{{ product.title }}" });
-        });
-    });
-</script>

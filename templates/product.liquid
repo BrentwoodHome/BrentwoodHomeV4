@@ -481,25 +481,6 @@ jQuery(function($) {
     {% endif %}
 </div>
 
-
-<script>
-    mixpanel.track(
-        "Product Viewed",
-        {"name": "{{product.title}}",
-         "price": "{{ product.price | money_without_currency }}",
-         "brand": "{{product.vendor}}",
-         "category": "{{ collection.title }}",
-         "variant": "{% for variant in product.variants %}{{ variant.sku }}{% endfor %}"
-        });
-    $(document).ready(function(){
-        $("#product-add-to-cart").click(function(){
-            mixpanel.track("Added to Cart", {"name": "{{product.title}}"});
-        });
-    });
-</script>
-
-
-
 <span id="extole-zone-product_page"></span>
 <script type="text/javascript">
     (function(c,b,f,k,a){c[b]=c[b]||{};for(c[b].q=c[b].q||[];a<k.length;)f(k[a++],c[b])})(window,"extole",function (c,b){b[c]=b[c]||function (){b.q.push([c,arguments])}},["createZone"],0);

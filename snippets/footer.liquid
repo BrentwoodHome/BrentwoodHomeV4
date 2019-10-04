@@ -1,13 +1,16 @@
-<section class="container-fluid margTBLarge" id="instaFeed">
-    <div class="row">
-        <div class="col-xs-12">
-            <h2 class="">Get Inspired, Follow Us</h2>
+{% unless template contains "product" %}
+    <section class="container-fluid margTBLarge" id="instaFeed">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="">Get Inspired, Follow Us</h2>
+            </div>
+            <h3>#BRENTWOODHOME</h3>
+            <div id="insta-feed"></div>
+            {%comment%}{% include 'instagram' %}{%endcomment%}
         </div>
-        <h3>#BRENTWOODHOME</h3>
-        <div id="insta-feed"></div>
-        {%comment%}{% include 'instagram' %}{%endcomment%}
-    </div>
-</section>
+    </section>
+{% endunless %}
+
 <div id="findusbanner">
     <div class="container">
         <div class="row">
