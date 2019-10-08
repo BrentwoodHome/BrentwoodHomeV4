@@ -14,29 +14,31 @@ Tobe used for banners/tickers ect...
 {% assign rightnow = 'now' | date: '%Y%m%d%H%M' %}
 {% assign rightnowint = rightnow | times: 1 %}
 
-{% assign currentPromoEnd = 201908192359 %}
-{% assign newPromoEnd = 201910080000 %}
-{% assign extensionStart = 201909092359 %}
+{% assign currentPromoEnd = 201910150000 %}
+{% assign newPromoEnd = 201910282359 %}
+{% assign extensionStart = 201910290000 %}
 
 
 
 <!-- EYEBROW -->
-{% assign eyebrowCurrent = "summer sale! $175 to $400 off select mattresses & more" %}
+{% assign eyebrowCurrent = "sale! $175 to $400 off select mattresses & more" %}
 {% assign eyebrowCurrentMobile = "Sale! $175-$400 off mattresses & more" %}
-{% assign eyebrowNew = "Sale! $175 to $400 off select mattresses & more" %}
-{% assign eyebrowNewMobile = "Sale! Up to $400 off mattresses & more" %}
-{% assign mobile_sale_name = "Affordable Luxury Sale" %}
+{% assign eyebrowNew = "Fall Sale! Mattresses, yoga & pets up to $200 off" %}
+{% assign eyebrowNewMobile = "Sale! Up to $200 off mattresses & more" %}
+{% assign mobile_sale_name = "Fall Sale" %}
 
 <!-- MODAL -->
 
 
-<!-- SALE PAGE variable for extending promo -->
+<!-- SALE PAGE variable for extending promo. 'enddate' var displayed in mobile nav and sale page. -->
 {% if rightnowint > extensionStart %}
-    {% assign enddate = "Ends October 7" %}
+    {% comment %} Shows extended end sale date {% endcomment%}
+    {% assign enddate = "Ends November 7" %}
 {% elsif rightnowint < currentPromoEnd %}
-    {% comment %} Display the correct end date when still in current promo range {% endcomment%}
-    {% assign enddate = "Ends August 19" %}
+    {% comment %} Shows the correct end date when still in current promo range (currentPromoEnd){% endcomment%}
+    {% assign enddate = "Ends October 14" %}
 {% else %}
-    {% assign enddate = "Ends September 9" %}
+    {% comment %} Shows end date for new promo (newPromoEnd){% endcomment%}
+    {% assign enddate = "Ends October 28" %}
 {% endif %}
 

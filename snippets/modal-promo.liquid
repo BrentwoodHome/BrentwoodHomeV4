@@ -11,13 +11,13 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>                    
                         {% if rightnowint <= currentPromoEnd %}
-                            <p class="h2">Summer Sale</p>
-                            <p class="h3">Up to $400 OFF SELECT MATTRESSES and 20% off yoga pillows and pet beds</p>
-                            <p><a href="/pages/sale" class="cta2">Get your code</a></p>
-                        {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
                             <p class="h2">Affordable Luxury Sale</p>
                             <p class="h3">Up to $400 OFF SELECT MATTRESSES and 20% off yoga pillows and pet beds</p>
                             <p><a href="/pages/sale" class="cta2">SEE SALE PAGE</a></p>
+                        {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
+                            <p class="h2">Fall Sale</p>
+                            <p class="h3">Mattresses, Yoga & Pet Collections</p>
+                            <p><a href="/pages/sale" class="cta2">see sale page</a></p>
                         {% endif %}
                     </div>
                 </div>
