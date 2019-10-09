@@ -35,6 +35,12 @@
         padding-left: 15px !important;
         padding-right: 15px !important;
     }
+    A{
+        text-decoration: underline;
+    }
+    A:HOVER{
+        text-decoration: none;
+    }
     /* The hero image */
     .hero-image {
         /* The image used */
@@ -315,6 +321,26 @@
             </div>
         </div>
     </div>
+    
+    <div class="container section margTBMedium">
+        <div class="row flex">
+            <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center">
+                <picture>
+                    <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/organicsheets/brentwoodhome_organicsheets_00020.jpg?rect=1410,231,1220,1220&w=768&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/organicsheets/brentwoodhome_organicsheets_00020.jpg?rect=1410,231,1220,1688&w=555">
+                    <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/organicsheets/brentwoodhome_organicsheets_00020.jpg?rect=1410,231,1220,1688&w=555&blur=500&q=10" data-src="https://s3-brentwoodhome.imgix.net/products/organicsheets/brentwoodhome_organicsheets_00020.jpg?rect=1410,231,1220,1688&w=555" alt="Naturally Non-Toxic">
+                </picture>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV">
+                <div>
+                    <h2>MADE SAFE<sup>&reg;</sup> Non-Toxic Certified<sup>&trade;</sup></h2>
+                    <p>Our Luxury Organic Cotton Sheets are MADE SAFE® Non-Toxic Certified™ — a rigorous screening process for toxicity. It screens for all known and suspected harmful substances. Unlike other certifications, it does not set acceptable levels of toxicity. Instead, it prohibits ALL use of harmful substances meaning that a product is made with safe ingredients, without toxic chemicals known to harm our health. <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3380966-can-i-see-your-made-safe-certification">See our certificate</a>.</p>
+                    <p class="text-center"><img src="{{ 'logo-madesafe-square-newblu.png' | asset_url}}" alt="MADESAFE" style="max-width: 90px; width: 90px;margin-top: 30px;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <p class="text-center" style="margin: 50px 0;"><a href="/collections/mattresses" class="cta2 solid text-center">shop mattresses</a></p>
 
 
