@@ -1,7 +1,32 @@
 <!-- FLEXSLIDER -->
+<style>
+    .flexslider .slides > li{
+        background-color: #f9f9f9;
+    }
+    .embed-container { 
+        position: relative;
+        left: 0; 
+        right: 0;
+        top: 50%;
+        /* video height / video width */
+        /*padding-bottom: 66.2%;*/
+        /* the above value * 0.5 */
+        /*margin-top: -28.1%;*/
+        height: 0;
+        overflow: hidden;
+    } 
+    .embed-container iframe, .embed-container object, .embed-container embed { 
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+    }
+</style>
+
 {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
 {% assign imgName = featured_image | remove: 'products/' %}
-<div class="col-xs-12 col-md-7 {% if product.handle == "ojai-mattress" or product.handle == "crystal-cove-mattress" %}col-sm-6 col-lg-6{% else %}col-lg-8{%endif%}" id="product-image-main">
+<div class="col-xs-12 col-md-7 col-lg-7" id="product-image-main">
     <section class="slider" style="position: relative;">
         <!-- -->
         <div id="flexPlaceholder">
@@ -10,35 +35,36 @@
                 <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip">
                 <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&q=50" alt="{{product.title}}" loading="eager">
             </picture>
-        </div><!--{{product.handle}}-->
+        </div>
         {% if product.handle == "foundation" %}
+           {% comment %}Embed copy in images for foundation only {% endcomment %}
             <div class="flexslider">
                 <ul class="slides">
                     {% for image in product.images %}
-                    {% assign videotag = image.alt | escape %}
-                    {% assign imgName = image | remove: 'products/' | split:'?' | first %}
-                    <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=150&h=150">   
-                        {% if videotag contains 'vimeo' %}
-                        <div class='embed-container '>
-                            <!--https://player.vimeo.com/video/###-->
-                            <iframe src="{{ image.alt }}?title=0&byline=0&portrait=0" width="640" height="360" id="video_1" frameborder="0"></iframe>
-                        </div>
-                        {% else %}
-                        <picture>
-                            <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=14 1x,
-                                                                            https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=40&dpr=2&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=14 2x,
-                                                                            https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=20&dpr3&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=14 3x">
-                            <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=14 1x,
-                                                                            https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=40&dpr=2&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=14 2x,
-                                                                            https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=14 3x">
-                            {% if forloop.first == true %}
-                            <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=14" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="eager">
+                        {% assign videotag = image.alt | escape %}
+                        {% assign imgName = image | remove: 'products/' | split:'?' | first %}
+                        <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=150&h=150">   
+                            {% if videotag contains 'vimeo' %}
+                            <div class='embed-container '>
+                                <!--https://player.vimeo.com/video/###-->
+                                <iframe src="{{ image.alt }}?title=0&byline=0&portrait=0" width="640" height="360" id="video_1" frameborder="0"></iframe>
+                            </div>
                             {% else %}
-                            <img data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=14" src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&blur=500&q=10" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="lazy">
+                                <picture>
+                                    <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=14 1x,
+                                                                                    https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=40&dpr=2&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=16 2x,
+                                                                                    https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=20&dpr3&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=16 3x">
+                                    <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=14 1x,
+                                                                                    https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=40&dpr=2&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=16 2x,
+                                                                                    https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=16 3x">
+                                    {% if forloop.first == true %}
+                                    <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=14" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="eager">
+                                    {% else %}
+                                    <img data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=14" src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&blur=500&q=10" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="lazy">
+                                    {% endif %}
+                                </picture>
                             {% endif %}
-                        </picture>
-                        {% endif %}
-                    </li>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>
@@ -46,30 +72,32 @@
             <div class="flexslider">
                 <ul class="slides">
                     {% for image in product.images %}
-                    {% assign videotag = image.alt | escape %}
-                    {% assign imgName = image | remove: 'products/' | split:'?' | first %}
-                    <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=150&h=150">   
-                        {% if videotag contains 'vimeo' %}
-                        <div class='embed-container '>
-                            <!--https://player.vimeo.com/video/###-->
-                            <iframe src="{{ image.alt }}?title=0&byline=0&portrait=0" width="640" height="360" id="video_1" frameborder="0"></iframe>
-                        </div>
-                        {% else %}
-                        <picture>
-                            <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024 1x,
-                                                                            https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=40&dpr=2 2x,
-                                                                            https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=max&q=20&dpr3 3x">
-                            <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024 1x,
-                                                                            https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=40&dpr=2 2x,
-                                                                            https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&fit=max&q=20&dpr3 3x">
-                            {% if forloop.first == true %}
-                            <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="eager">
+                        {% assign videotag = image.alt | escape %}
+                        {% assign imgName = image | remove: 'products/' | split:'?' | first %}
+                        <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=150&h=150">   
+                            {% if videotag contains 'vimeo' %}
+                                <div class='embed-container '>
+                                    <!--https://player.vimeo.com/video/###-->
+                                    <iframe src="{{ image.alt }}?title=0&byline=0&portrait=0" width="640" height="360" id="video_1" frameborder="0"></iframe>
+                                </div>
                             {% else %}
-                            <img data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip" src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&blur=500&q=10" alt="{{ product.title | escape }} View {{ forloop.index }}" loading="lazy">
+                                <picture>
+                                    <source data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=960 1x,
+                                                         https://brentwood-home-products.imgix.net/{{ imgName }}?w=1920&dpr=2 2x" media="(min-width: 768px)">
+                                    <source data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=crop 1x,
+                                                         https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&&fit=crop&dpr=2 2x" media="(min-width: 480px)">
+                                    <source data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=480&fit=crop 1x,
+                                                         https://brentwood-home-products.imgix.net/{{ imgName }}?w=480&fit=crop&dpr=2 2x" media="(min-width: 320px)">
+                                    {% if forloop.first == true %}
+                                    <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=960&fit=crop 1x,
+                                              https://brentwood-home-products.imgix.net/{{ imgName }}?w=1920&fit=crop&dpr=2 2x" loading="eager">
+                                    {% else %}
+                                    <img data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=555&fit=crop" 
+                                         src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=555&blur=500&q=10&fit=crop" loading="lazy">
+                                    {% endif %}
+                                </picture>
                             {% endif %}
-                        </picture>
-                        {% endif %}
-                    </li>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>

@@ -96,10 +96,10 @@
     {% if template.suffix contains '3_0' or template.suffix contains 'cb2' or template.suffix contains 'wide' %}
         {{ 'product_3_0_0.scss.css' | asset_url | stylesheet_tag }}
     {%endif%}
-    {% if template.suffix contains '3_1' or template.suffix contains '3_2' %}
+    {% if template.suffix contains '3_0' or template.suffix contains '3_1' or template.suffix contains '3_2' or template.suffix contains 'productshowcasev1' %}
         {{ 'product-3_1.scss.css' | asset_url | stylesheet_tag }}
     {%endif%}
-    {% if template.suffix contains '3_2' %}
+    {% if template contains 'product' %}
         {{ '3_2.scss.css' | asset_url | stylesheet_tag }}
     {%endif%}
 
@@ -108,8 +108,7 @@
     
     {%comment%}Gets time and date and saves it into global var 'rightnowint'{%endcomment%}
     {% include 'nowtime' %}
-    
-    
+        
 {% if template contains 'article' %}
     <meta property="og:type" content="article" />
     <meta property="og:title" content="{{ article.title }}" />
@@ -165,9 +164,7 @@
     {% include 'sca-quick-view-init' %}
     {% if product.metafields.inventory.ShappifyHidden == "true" %} <meta name="robots" content="noindex"> {% endif %}
     {%endcomment%}
-    
 
-    <script>console.log("{{template}}");</script>
   <script type='text/javascript'>var jiltStorefrontParams = {{ shop.metafields.jilt_storefront | json }}; {% if customer %}jiltStorefrontParams.customerID = {{ customer.id }};{% endif %}</script>
 
 </head>
@@ -175,7 +172,7 @@
   Add the page template as a class for easy page or template specific styling.
 {% endcomment %}
     <body id="{{ page_title | handle }}" class=" {% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} {{template | handleize}}" >
-       
+        <script>console.log("Template: {{template}}")</script>
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NWLPSV"
                           height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

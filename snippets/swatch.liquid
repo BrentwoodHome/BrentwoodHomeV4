@@ -30,7 +30,7 @@
     {% assign downcased_option = swatch | downcase %}
     {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
       {% assign is_color = true %}
-       {%comment%}loading js here. only needed for color variant otherwise variants that are not a color will trigger image change on click{%endcomment%}
+       {%comment%}loading js here. only needed for color variant otherwise variants that are not a color will trigger image change on click (like choosing a different mattress thickness or aroma for candles){%endcomment%}
         {{ 'swatch-new.js' | asset_url | script_tag }}
     {% endif %}
   {% endif %}

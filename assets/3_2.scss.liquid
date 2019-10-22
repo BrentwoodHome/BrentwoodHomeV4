@@ -68,6 +68,20 @@ LABEL.selectLabel{
     letter-spacing: 0.15px !important;
     line-height: 27px;
 }
+.swatch label.swatch-label{
+    border-radius: 6px;
+    line-height: 33px;
+    border-width: 1px;
+    padding: 0 10px;
+}
+.swatch input:checked + label.swatch-label, .swatch label.swatch-label:hover{
+    border-color: $lightblue;
+    line-height: 33px;
+    border-radius: 6px;
+    background-color: #687283;
+    color: white;
+    border-width: 1px;
+}
 .swatch-color-text .swatch-value{
     color: $blue;
     font-size: 14px;
@@ -75,9 +89,29 @@ LABEL.selectLabel{
     text-align: center;
     text-transform: capitalize;
 }
+#add-to-cart-form {
+    .swatch.clearfix{
+        clear: both !important;
+        margin-top: 10px !important;
+        .color.swatch-element label.swatch-label{
+            width: 50px;
+            height: 50px !important;
+        }
+    }
+    /*.swatch.clearfix[data-option-index="0"] {
+        display: none !important;
+
+        label {
+            display: none !important;
+        }
+    }*/
+    .product-shop #add-to-cart-form .clearfix.cta-module{
+        clear: both;
+    }
+}
 #add-to-cart-form .swatch.clearfix .color.swatch-element label.swatch-label{
-    height: 40px !important;
-    width: 40px !important;
+    height: 45px !important;
+    width: 45px !important;
     border: 1px solid $blue;
 }
 #add-to-cart-form .swatch.clearfix input:checked+label.swatch-label, #add-to-cart-form .swatch.clearfix label.swatch-label:hover{

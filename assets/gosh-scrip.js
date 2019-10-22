@@ -43,7 +43,7 @@
   })
 
 
-  if ($("#filter-sidebar")) {
+  /*if ($("#filter-sidebar")) {
     History.Adapter.bind(window, "statechange", function() {
       var e = History.getState();
       if (!mt.isSidebarAjaxClick) {
@@ -54,7 +54,7 @@
       }
       mt.isSidebarAjaxClick = false
     })
-  }
+  }*/
 
   if (window.use_color_swatch) {
     $(".swatch :radio").change(function() {

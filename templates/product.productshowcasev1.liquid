@@ -9,30 +9,6 @@
 
         <div class="row">
             {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
-            <style>
-                .flexslider .slides > li{
-                    background-color: #f9f9f9;
-                }
-                .embed-container { 
-                    position: relative;
-                    left: 0; 
-                    right: 0;
-                    top: 50%;
-                    /* video height / video width */
-                    padding-bottom: 66.2%;
-                    /* the above value * 0.5 */
-                    /*margin-top: -28.1%;*/
-                    height: 0;
-                    overflow: hidden;
-                } 
-                .embed-container iframe, .embed-container object, .embed-container embed { 
-                    position: absolute; 
-                    top: 0; 
-                    left: 0; 
-                    width: 100%; 
-                    height: 100%; 
-                }
-            </style>
             
             <!-- FLEXSLIDER -->
             {% include 'product-flexslider' %}
@@ -44,23 +20,10 @@
             {% if collection.products_count <= 1 %}
                                                {% assign multi_prd = false %}
                                                {% endif %}
-                                               <div class="col-xs-12 col-md-5 col-lg-4 product-shop">
-
-            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-0 col-lg-5 product-shop">
+            <div>
                 <header class="product-title {% if collection.previous_product or collection.next_product and settings.display_prev_next_product and collection %}has-btn{% endif %}">
-                    <h1 {% if settings.display_prev_next_product and collection and multi_prd%}class="pull-left"{%endif%}>{{ product.title }}</h1>
-
-                    {% if settings.display_prev_next_product and collection %}
-                    <div class="product-step">
-                        {% if collection.previous_product %}
-                        <a class="prev-p" href="{{ collection.next_product }}" title="Prev"><span class="fa fa-angle-left"></span>Previous</a>
-                        {% endif %}
-                        {% if collection.next_product %}
-                        <a class="next-p" href="{{ collection.next_product }}" title="Next">Next<span class=" fa fa-angle-right"></span></a>
-                        {% endif %}
-                    </div>
-                    {% endif %}
-
+                    <h1 {% if settings.display_prev_next_product and collection and multi_prd %}class="pull-left"{% endif %} itemprop="name">{{ product.title }}</h1>
                 </header>
                 <div class="yotpo bottomLine"
                      data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
@@ -69,150 +32,125 @@
                      data-product-models="{{ product.id }}"
                      data-name="{{ product.title | escape }}"
                      data-url="{{ shop.url }}{{ product.url }}"
-                     data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+                     data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26' }}"
                      data-description="{{ product.description | escape }}"
-                     data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+                     data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                    <meta itemprop="itemReviewed" content="{{ product.title }}">
+                    <meta itemprop="ratingValue" content="{{ product.metafields.yotpo.reviews_average }}">
+                    <meta itemprop="ratingCount" content="{{ product.metafields.yotpo.reviews_count }}">
                 </div>
-
-                {% if settings.display_product_reviews %}
-                <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
-                {% endif %}
-
-                {% if settings.display_availability or settings.display_product_type or settings.display_vendor %}
-
-                {% if settings.display_availability %}
-                <div class="availability">
-                    <p class="product-inventory"> <label>Availability</label><span>{% if product.selected_or_first_available_variant.inventory_management %}{% assign first_inventory = product.selected_or_first_available_variant.inventory_quantity %}{% if first_inventory > 0 %}{{first_inventory}} in stock{% else %}Out of stock{% endif %}{% else %}Many in stock{% endif %}
-                        </span></p>
-                </div>
-                {% endif %}
-
-
-                {% endif %}
-
-                {% if product.available %}
-                <link itemprop="availability" href="http://schema.org/InStock">
-                {% else %}
-                <link itemprop="availability" href="http://schema.org/OutOfStock">
-                {% endif %}
-
+                {% include 'nowtime' %}
                 <h3 class="text-left">{{product.metafields.bhsite.feel}}</h3>
-                <p class="short-description">{{product.metafields.bhsite.shortdesc}}</p>
                 <!--{% include 'shippingtime' %}-->
+                <p class="short-description">
+                    {{product.metafields.bhsite.shortdesc}}
+                </p>
                 {% if productTags contains 'amazon' %}
                     <p><img src="{{ 'exclusiveAmz.png' | asset_url }}" alt="" style="max-width: 150px;"></p>
                 {%endif%}
-                <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
-                    <div id="product-variants">
-                        {% assign variantCount = product.variants | size %}
+                
+                {% if metaf.shortdesc_more %}
+                <div class="shortdesc more">
+                    <a role="button" data-toggle="collapse" href="#collapseDescription" aria-expanded="false" aria-controls="collapseDescription" class="navico productDetails defaultCollapsed">More details +</a>
+                    <ul class="collapse" id="collapseDescription">
+                        {{ metaf.shortdesc_more }}
+                    </ul>
+                </div>
+                <script>
+                    $(document).ready(function() {
+                        $('#collapseDescription').collapse({
+                            toggle: false
+                        });
+                        $('#collapseDescription').on('show.bs.collapse', function () {
+                            $("a.productDetails").addClass("open").text("Less details -");
+                        });
+                        $('#collapseDescription').on('hide.bs.collapse', function () {
+                            $("a.productDetails").removeClass("open").text("More details +");
+                        });
+                    });
+                </script>
+                {% endif %}
+                <div class="mob-dark">
+                    <div id="buysection"></div>
+                    <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
                         {% if product.available %}
-                        {% if variantCount > 1 %}
-                        <select id="product-selectors" name="id" style="display:none">
-                            {% for variant in product.variants %}
-                            <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                            {% for option in product.options %}
+                                {% if option contains "Size" %}
+                                    <label for="product-selectors" class="selectLabel">Size</label>
+                                {% endif %}
                             {% endfor %}
-                        </select>
-
-                        {% if settings.use_color_swatch %}
-                        {% for option in product.options %}
-                        {% include 'swatch' with option %}
-                        {% endfor %}
                         {% endif %}
-                        {% else %}
-                        <input type="hidden" name="id" value="{{ product.variants[0].id }}" />
-                        {% endif %}
-                        {% endif %}
-                    </div>
-                    
-                    {% if product.available %}
-                        <div class="clearfix" {% if productTags contains 'amazon' %} style="display:none;"{%endif%}>
-                            <div id="qt">QTY: <input type="text" id="quantity" name="quantity" value="1"></div>
-                            <!-- PRICE -->
-                            <div class="prices" style="float: right;">
-                                {% if product.compare_at_price > product.price %}
-                                <span class="compare-price">{{ product.compare_at_price_max | money }}</span>
-                                <span class="price on-sale" itemprop="price"
-                                      content="{{ product.selected_or_first_available_variant.price | money_without_currency | remove: ',' }}">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros}}</span>
-                                {% else %}
-                                <span class="price" itemprop="price"
-                                      content="{{ product.selected_or_first_available_variant.price | money_without_currency | remove: ',' }}">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</span>
-                                {% endif %}
-                            </div>
-                        </div>
-                    
-                        {% if productTags contains 'amazon' %}
-                            <a href="{{product.metafields.bhsite.amazonlink}}" class="cta4amz" target="_blank" title="See it on Amazon">BUY IT</a>
-                        {% elsif productTags contains 'Costco' %}
-                           <h3>OUT OF STOCK</h3>
-                        {% else %}
-                            
-                                
-                                {% if productTags contains 'preorder' %}
-                                    <div class="out-of-stock">
-                                        <span class="left"></span>
-                                        <p class="product-inventory">
-                                            This item is currently available for pre-order.<br>It will ship end of May.
-                                        </p>
-                                        <span class="right"></span>
-                                    </div>
-                                    <input type="submit" name="add" class="btn" id="product-add-to-cart" value="PRE-ORDER">
-                                {% else if %}
-                                    <input type="submit" name="add" class="cta2" id="product-add-to-cart" value="Add to Cart">
-                                    
-                                    <p id="add2cart_shipping"><img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Ships free in {{ shipsfree }}">Ships free in {{ shipsfree }}</p>
-                                    {% if product.type == 'Mattress' %}
-                                        {% include 'affirm-product' %}
-                                        <style>
-                                            DIV.affirm{
-                                                font-size: 12px;
-                                            }
-                                            DIV.affirm A#learn-more{
-                                                margin-bottom: 0px;
-                                            }
-                                            DIV.affirm A.affirm-modal-trigger{
-                                                cursor: pointer;
-                                                display: inline-block;
-                                                /*background-color: #00c8e5;*/
-                                                color: #00c8e5;
-
-                                                padding: 0;
-                                                border-radius: 5px;
-                                                line-height: 24px;
-                                            }
-                                            DIV.affirm A.affirm-modal-trigger:HOVER{
-                                                text-decoration: none;
-                                                background-color: #00d9f6;
-                                                color: white;
-                                                padding: 2px 9px;
-                                            }
-                                            #add-to-cart-form .affirm #learn-more a {
-                                                display: inline-block;
-                                            }
-                                        </style>
-                    <div class="affirmWrap">
-                        <div class="affirm" style="">
-                            <a id="learn-more" class="affirm-as-low-as" data-learnmore-show="true" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{variant.price}}"></a>
-                        </div>
-                    </div>
+                        <div id="product-variants">
+                            {% assign variantCount = product.variants | size %}
+                            {% if product.available %}
+                                {% if variantCount > 1 %}
+                                    <select id="product-selectors" name="id" style="display: none;">
+                                        {% for variant in product.variants %}
+                                        <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
+                                                value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    {% comment %}variables set in snippets/shippingtime.liquid{% endcomment %}
+                                    <p class="short-description shipping"><img src="https://brentwood-home-2.imgix.net/icon-shippingv4.svg" alt="">Ships free in {{ shipsfree }} | free returns | {{trial}}</p>
+                                    {% if settings.use_color_swatch %}
+                                        {% for option in product.options %}
+                                            {% include 'swatch' with option %}
+                                        {% endfor %}
                                     {% endif %}
+                                    <div id="qt"><label for="Quantity" class="selectLabel">Qty: </label> <input type="text" id="quantity" name="quantity" value="1"></div>
+                                {% else %}
+                                    {%comment%}No variant products like yoga pillows, we still want to display shipping and qty{%endcomment%}
+                                    {% comment %}variables set in snippets/shippingtime.liquid{% endcomment %}
+                            <p class="short-description shipping"><img src="https://brentwood-home-2.imgix.net/icon-shippingv4.svg" alt="">Ships free in {{ shipsfree }} | free returns {% if trial %}| {{trial}}{% endif %}</p>
+                                    <div id="qt"><label for="Quantity" class="selectLabel">Qty: </label> <input type="text" id="quantity" name="quantity" value="1"></div>
+                                    <input type="hidden" name="id" value="{{ product.variants[0].id }}"/>
                                 {% endif %}
-                            
-                            
-                        {%endif%}
-                    {% else %}
+                            {% endif %}
+                            <!-- WIDGET BUNDLES (PILLOW + FOUNDATION )-->
+                            {% include 'productbundles-widget' %}
+                        </div>
+                        {% if product.available %}
+                            <link itemprop="availability" href="http://schema.org/InStock">
+                            <div class="cta-module clearfix">
+                                <div class="prices" itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="float: left;">
+                                    <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+                                    {% if product.compare_at_price > product.price %}
+                                    <span class="compare-price">{{ product.compare_at_price_max | money_without_trailing_zeros}}</span>
+                                    <span class="price on-sale" itemprop="price" content="{{ product.selected_or_first_available_variant.price | money_without_currency | remove: ',' }}">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros}}</span>
+                                    {% else %}
+                                    <span class="price" itemprop="price" content="{{ product.selected_or_first_available_variant.price | money_without_currency | remove: ',' }}">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</span>
+                                    {% endif %}
+                                </div>
+                                {% include 'affirm-product' %}
+                                <div class="affirmWrap">
+                                    <div class="affirm">
+                                        <a id="learn-more" class="affirm-as-low-as" data-learnmore-show="true" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{ product.selected_or_first_available_variant.price }}"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <link itemprop="availability" href="http://schema.org/OutOfStock">                           
                             {% if product.tags contains "korea" %}
                                 <input type="submit" name="add" class="btn" id="product-add-to-cart" disabled value="For Korea Market Only">
+                            {% elsif productTags contains 'amazon' %}
+                                <a href="{{product.metafields.bhsite.amazonlink}}" class="cta4amz" target="_blank" title="See it on Amazon">BUY IT</a>
+                            {% elsif productTags contains 'Costco' %}
+                                <h3>OUT OF STOCK</h3>
                             {% else %}
                                 <input type="submit" name="add" class="btn" id="product-add-to-cart" disabled value="Out of stock">
                             {% endif %}
+                        {% endif %}
+                        {% assign current_variant = product.selected_or_first_available_variant %}
+                    </form>
+                    {% if product.available %}
+                        <button type="button" class="cta2" style="width: 100%;" id="product-add-to-cart">Add to Cart</button>
                     {% endif %}
-                    {%comment%}Passing pre-order as line item for tracking
-                    <input type="hidden" id="preorder" name="properties[preorder]" value="true">{%endcomment%}
-                </form>
-                {% assign current_variant = product.selected_or_first_available_variant %}
-                
+                </div>
             </div>
-        </div>
+        </div><!-- Right Col product-shop --> 
+           
+           
+           
     </div>
 </div><!-- End Row -->
 </div><!-- End Container -->
@@ -486,7 +424,7 @@ qt: 1<br>
     <div class="container description">
         <div class="row">
            <div class="col-xs-12">
-               <h2>Description</h2>
+               <h2 style="text-align: center;">Description</h2>
            </div>
             <div class="col-md-offset-2 col-md-8">
                 {{product.description}}
@@ -496,12 +434,7 @@ qt: 1<br>
     </div>
     <br>
     
-    
-    <div id="recommendationApp">
 
-    </div>
-    
-    
     {%comment%}
     <ul class="nav nav-tabs" id="myTab">
         {% if settings.display_product_detail_description %}
@@ -565,248 +498,34 @@ qt: 1<br>
 
 
 
-{{ 'option_selection.js' | shopify_asset_url | script_tag }}
-
-</div>
-{% include 'block-productdetail-right' %}
-</div>
-
-<script>
-    jQuery(document).ready(function(){
-        
-        jQuery("#zt_list_product").owlCarousel({
-
-            itemsCustom : [
-                [600, 3]
-            ],
-            navigation : true,
-            navigationText : ['<i class="fa icon-left"></i>','<i class="fa icon-right"></i>']
-        });
-    });
-    //Shopify.Image.preload({{ product.images | json }}, 'grande');
-
-    {% if settings.display_subtotal and product.available %}
-    //update price when changing quantity
-    function updatePricing() {
-        //try pattern one before pattern 2
-        var regex = /([0-9]+[.|,][0-9]+[.|,][0-9]+)/g;
-        var unitPriceTextMatch = jQuery('.product .price').text().match(regex);
-
-        if (!unitPriceTextMatch) {
-            regex = /([0-9]+[.|,][0-9]+)/g;
-            unitPriceTextMatch = jQuery('.product .price').text().match(regex);
-        }
-
-        if (unitPriceTextMatch) {
-            var unitPriceText = unitPriceTextMatch[0];
-            var unitPrice = unitPriceText.replace(/[.|,]/g,'');
-            var quantity = parseInt(jQuery('#quantity').val());
-            var totalPrice = unitPrice * quantity;
-
-            var totalPriceText = Shopify.formatMoney(totalPrice, window.money_format);
-
-            totalPriceText = totalPriceText.match(regex)[0];
-
-            var regInput = new RegExp(unitPriceText, "g");
-            var totalPriceHtml = jQuery('.product .price').html().replace(regInput ,totalPriceText);
-
-            jQuery('.product .total-price span').html(totalPriceHtml);
-        }
-    }
-     jQuery('#quantity').on('change', updatePricing);
-     {% endif %}
-
-     var selectCallback = function(variant, selector) {
-
-         var addToCart = jQuery('#product-add-to-cart'),
-             productPrice = jQuery('.product .price'),
-             comparePrice = jQuery('.product .compare-price');
-
-         if (variant) {
-             if (variant.available) {
-                 // We have a valid product variant, so enable the submit button
-                 addToCart.removeClass('disabled').removeAttr('disabled').val('Add to Cart');
-
-             } else {
-                 // Variant is sold out, disable the submit button
-                 addToCart.val('Sold Out').addClass('disabled').attr('disabled', 'disabled');
-             }
-
-             // Regardless of stock, update the product price
-             productPrice.html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}"));
-
-             // Also update and show the product's compare price if necessary
-             if ( variant.compare_at_price > variant.price ) {
-                 productPrice.addClass("on-sale")
-                 comparePrice
-                     .html(Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}"))
-                     .show();
-             } else {
-                 comparePrice.hide();
-                 productPrice.removeClass("on-sale");
-             }
-             {% if settings.use_color_swatch %}
-             // BEGIN SWATCHES
-             var form = jQuery('#' + selector.domIdPrefix).closest('form');
-              for (var i=0,length=variant.options.length; i<length; i++) {
-                  var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]');
-                  if (radioButton.size()) {
-                      radioButton.get(0).checked = true;
-                  }
-              }
-              // END SWATCHES
-              {% endif %}
-
-              {% if settings.display_subtotal and product.available %}
-              updatePricing();
-               {% endif %}
-
-
-               } else {
-                   // The variant doesn't exist. Just a safeguard for errors, but disable the submit button anyway
-                   addToCart.val('Unavailable').addClass('disabled').attr('disabled', 'disabled');
-               }
-
-               //update variant inventory
-               {% if settings.display_availability %}
-               if (variant.available) {
-                   if (variant.inventory_management!=null) {
-                       jQuery(".product-inventory span").text(variant.inventory_quantity + " in stock");
-                   } else {
-                       jQuery(".product-inventory span").text("Many in stock");
-                   }
-               } else {
-                   jQuery(".product-inventory span").text("Out of stock");
-               }
-                {% endif %}
-
-                /*begin variant image*/
-                if (variant && variant.featured_image) {
-                    var originalImage = jQuery("#product-featured-image");
-                    var newImage = variant.featured_image;
-                    var element = originalImage[0];
-                    Shopify.Image.switchImage(newImage, element, function (newImageSizedSrc, newImage, element) {
-                        jQuery('#zt_list_product img').each(function() {
-                            var grandSize = jQuery(this).attr('src');
-                            grandSize = grandSize.replace('compact','grande');
-                            if (grandSize == newImageSizedSrc) {
-                                console.log(newImageSizedSrc);
-                                jQuery(this).parent().trigger('click');
-                                return false;
-                            }
-                        });
-                    });
-                }
-                     /*AFFIRM*/
-                     {% if product.type == 'Mattress' %}
-                     $('.affirm-as-low-as').attr('data-amount',variant.price);
-                     affirm.ui.ready(function(){
-                         affirm.ui.refresh(); 
-                     });
-                      {% endif %}
-                };
-
-                jQuery(function($) {
-                    {% if product.available and product.variants.size > 1 %}
-                    new Shopify.OptionSelectors('product-selectors', {
-                        product: {{ product | json }},
-                                                onVariantSelected: selectCallback,
-                                                enableHistoryState: true
-                                                });
-
-                     {% comment %}
-                     Use color swatch and linked options (copyright by @carolineschnapp)
-                     {% endcomment %}
-                     {% if settings.use_color_swatch and product.available and product.options.size > 1 %}
-                     Shopify.linkOptionSelectors({{ product | json }});
-                      {% endif %}
-
-                      {% if settings.use_color_swatch != true %}
-                      jQuery('.single-option-selector').selectize();
-                       jQuery('.selectize-input input').attr("disabled","disabled");
-                       {% endif %}
-
-                       {% endif %}
-
-                       // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
-                       {% if product.options.size == 1 and product.options.first != 'Title' %}
-                       $('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first }}</label>');
-                        {% endif %}
-
-                        // Hide selectors if we only have 1 variant and its title contains 'Default'.
-                        {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
-                        $('.selector-wrapper').hide();
-                         {% endif %}
-
-                         // Auto-select first available variant on page load. Otherwise the product looks sold out.
-                         {% assign found_one_in_stock = false %}
-                         {% for variant in product.variants %}
-                         {% if variant.available and found_one_in_stock == false %}
-                         {% assign found_one_in_stock = true %}
-                         {% for option in product.options %}
-                         $('.single-option-selector:eq({{ forloop.index0 }})').val({{ variant.options[forloop.index0] | json }}).trigger('change');
-                          {% endfor %}
-                          {% endif %}
-                          {% endfor %}
-
-                          {% if settings.display_product_reviews %}
-                          var reviewsTimeout = setInterval(function() {
-                              if (jQuery(".spr-badge-caption").length>0) {
-                                  jQuery(".spr-badge-caption").on('click', function() {
-                                      jQuery('html,body').animate({
-                                          scrollTop: jQuery(".panel:last").offset().top},
-                                                                  '400');
-                                      jQuery("#collapse-tab4").collapse('show');
-                                  });
-                                  clearInterval(reviewsTimeout);
-                              }
-                          },1000);
-
-                           {% endif %}
-
-                           });
-
-</script>
-
-<script>
-    $(document).ready(function(){
-        $("#product-add-to-cart").click(function(){
-            pintrk('track', 'addtocart', {
-                value: '{{ product.price | money_without_currency }}',
-                currency: 'USD',
-                line_items: [
-                    {
-                        product_name: '{{product.title}}',
-                        product_category: '{{ collection.title }}',
-                        product_variant_id: '{% for variant in product.variants %}{{ variant.sku }}{% endfor %}',
-                        product_price: '{{ product.price | money_without_currency }}',
-                        product_quantity: 1,
-                        product_brand: '{{product.vendor}}'
-                    }
-                ]
-            });
-        });
-    });
-</script>
-
-
-
-{% if settings.display_related_products %}
-{% if settings.related_products_type == "tags" %}
-{% include 'related-products-by-tags' %}
-{% else %}
-<div class="container">{% include 'related-products' %}</div>
-{% endif %}
-{% endif %}
+<p class="text-center"><a href="#buysection" class="sscroll cta2">back to top</a></p>
 
 <span id="extole-zone-product_page"></span>
 <script type="text/javascript">
-    (function(c,b,f,k,a){c[b]=c[b]||{};for(c[b].q=c[b].q||[];a<k.length;)f(k[a++],c[b])})(window,"extole",function (c,b){b[c]=b[c]||function (){b.q.push([c,arguments])}},["createZone"],0);
+    (function (c, b, f, k, a) {
+        c[b] = c[b] || {};
+        for (c[b].q = c[b].q || []; a < k.length;) f(k[a++], c[b])
+    })(window, "extole", function (c, b) {
+        b[c] = b[c] || function () {
+            b.q.push([c, arguments])
+        }
+    }, ["createZone"], 0);
     extole.createZone({
         name: "product_page",
         element_id: "extole-zone-product_page",
-        parameters: {
-
-        }
+        parameters: {}
     });
 </script>
+<script>
+    $(document).ready(function(){
+        $('A.sscroll').bind('click', function(event) {
+            var $anchor = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $($anchor.attr('href')).offset().top - 150
+            }, 1500, 'easeInOutExpo');
+            event.preventDefault();
+        });
+    });
+</script>
+
+{% include 'productbundles' %}

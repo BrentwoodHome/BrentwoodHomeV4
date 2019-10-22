@@ -11,6 +11,7 @@ shipping page at https://brentwood-home.myshopify.com/admin/pages/73357635
         padding: 15px;
         border-radius: 6px;
         background-color: #FFFBF9;
+        background-color: #fff;
         margin: 20px 0 25px 0;
     }
 </style>
@@ -32,13 +33,20 @@ shipping page at https://brentwood-home.myshopify.com/admin/pages/73357635
 {%endcomment%}
 
 {% assign shipsfree = "3-7 business days" %}
-{% assign trial = "1-year trial" %}
+
+{% case product.type %}
+    {% when 'Pillows' %}
+        {% assign trial = "30-day trial" %}
+    {% when 'Mattress Topper' %}
+        {% assign trial = "30-night trial" %}
+    {% when 'Mattress' %}
+        {% assign trial = "1-year trial" %}
+{% endcase %}
 
 {% case product.handle %}
-   
     {% when 'foundation' %}
         {% assign shipsfree = "3-5 business days" %}
-        
+        {% assign trial = "1-year trial" %}
     {% when 'griffith-orthopedic-pet-bed' %}
         {% assign shipsfree = "5-7 business days" %}
         
@@ -53,7 +61,7 @@ shipping page at https://brentwood-home.myshopify.com/admin/pages/73357635
         
     {% when 'crystal-cove-mattress' %}
         {% assign shipsfree = "3-5 business days" %}
-        
+ 
     {% when 'cedar-natural-luxe-mattress' %}
         {% assign shipsfree = "3-5 business days" %}
         

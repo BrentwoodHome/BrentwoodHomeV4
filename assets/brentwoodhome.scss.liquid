@@ -105,7 +105,7 @@ body:not(.template-index) .main-content{
 }
 .cta2.white{
     background-color: white;
-    color: $grey;
+    color: $grey !important;
     &:HOVER{
         background-color: transparent;
         color: white;
@@ -2365,12 +2365,21 @@ BODY.template-product{
     float: none;
 }
 .product-shop DIV#qt{
-    float: left;
+    //float: left;
+    margin: 20px 0;
+    LABEL{
+        display: inline-block;
+    }
     INPUT#quantity{
         font-family: $body-stack;
         font-size: 16px;
         color: $dark-text-color;
+        border: 1px solid $blue;
     }
+}
+BODY.product .product-shop DIV#qt{
+    float: left;
+    margin: 0;
 }
 .swatch{
     margin-top: 15px;

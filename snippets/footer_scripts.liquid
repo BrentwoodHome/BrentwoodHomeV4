@@ -9,9 +9,6 @@
 {{ 'bootstrap.min.js' | asset_url | script_tag }}
 {{ 'api.jquery.js' | shopify_asset_url | script_tag }}
 
-<script async src="https://origin.extole.io/brentwood-home/core.js"></script>
-
-
 {% if template contains 'product'%}
 <!-- FlexSlider -->
 {{ 'jquery.flexslider.271.js' | asset_url | script_tag }}
@@ -63,11 +60,12 @@
    
     {{ 'option_selection.js' | shopify_asset_url | script_tag }}
     {{ 'custom_option_selector.js' | asset_url | script_tag }}
+    {% comment %}
     {{ 'jquery.jcarousel.latest.min.js' | asset_url | script_tag }}
     {{ 'jquery.elevateZoom-3.0.8.min.js' | asset_url | script_tag }}
     {{ 'jquery.fancybox.pack.js' | asset_url | script_tag }}
     {{ 'jquery.fakecrop.js' | asset_url | script_tag }}
-    
+    {% endcomment %}
 <script type="text/javascript">
     adroll_custom_data = {"product_id":"{{product.id}}"}; 
 </script>
@@ -77,13 +75,14 @@
 {{ 'owl.carousel.min.234.js' | asset_url | script_tag }}
 
 {%  include 'new-currency' %}
-{{ 'jquery.history.js' | asset_url | script_tag }}
+{% comment %}{{ 'jquery.history.js' | asset_url | script_tag }}{% endcomment %}
 {{ 'gosh-scrip.js' | asset_url | script_tag }}
 {{ 'classie.js' | asset_url | script_tag }}
 {%comment%}
 {{ 'ga-linktracking.js' | asset_url | script_tag }}
-{%endcomment%}
+
 {{ 'jquery.easing.min.js' | asset_url | script_tag }}
+{%endcomment%}
 
 {% unless template contains 'collections' %}
 <!-- YOTPO -->
@@ -202,7 +201,6 @@
 </script>
 
 {%endif%}
-{%endcomment%}
 
 {% if template.suffix contains '3_1_bamboo' or template.suffix contains '3_1_cedarluxe' or template.suffix contains 'product-wide' %}
     {{ 'animate.min.css' | asset_url | stylesheet_tag }}
@@ -225,6 +223,7 @@
         wow.init();
     </script>
 {%endif%}
+{%endcomment%}
 
 
 <!-- Set the options for the global instance of vanilla-lazyload -->
@@ -237,3 +236,53 @@
 
 <!-- Include vanilla lazyload 12 through an async script -->
 <script async src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.0.0/dist/lazyload.min.js"></script>
+<!--<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        //Lazy loading for background images containing the class of lazy
+        var lazyloadImages
+
+        if ('IntersectionObserver' in window) {
+            lazyloadImages = document.querySelectorAll('.lazy')
+
+            const options = {
+                rootMargin: '100px 0px'
+            }
+
+            var imageObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        let image = entry.target
+
+                        if (image.getAttribute('data-background-image')) {
+                            image.style.backgroundImage =
+                                'url(' + image.getAttribute('data-background-image') + ')'
+                        }
+
+                        if (image.getAttribute('data-src')) {
+                            image.src = image.getAttribute('data-src')
+                        }
+
+                        if (image.getAttribute('data-srcset')) {
+                            image.srcset = image.getAttribute('data-srcset')
+                        }
+
+                        image.style.animation = 'fadeIn 1s'
+                        image.style.WebkitAnimation = 'fadeIn 1s'
+
+                        image.classList.remove('lazy')
+                        imageObserver.unobserve(image)
+                    }
+                })
+            }, options)
+
+            lazyloadImages = [...lazyloadImages]
+
+            lazyloadImages.forEach(function(image) {
+                imageObserver.observe(image)
+            })
+        }
+    })
+</script>-->
+
+
+<script async src="https://origin.extole.io/brentwood-home/core.js"></script>
