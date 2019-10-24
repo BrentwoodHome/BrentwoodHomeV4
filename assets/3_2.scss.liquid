@@ -134,6 +134,13 @@ LABEL.selectLabel{
         .owl-carousel .owl-item img{
             display: inline-block;
         }
+        .owl-carousel .owl-item img.rdthumb{
+            max-width: 160px;
+            margin: 0 auto;
+        }
+        .owl-carousel.owl-drag .owl-item h3{
+            margin: 0 !important;
+        }
     }
 
     .site-nav > li > a{
@@ -293,104 +300,109 @@ LABEL.selectLabel{
         margin-bottom: 40px;
         border-bottom: 1px solid #eef7fd;
     }
-    /*div.oceanomaterials section H2, div.oceanomaterials section DIV.inside .matTip P STRONG{
-    color: white;
-    }
-    div.oceanomaterials section DIV.inside .matTip P{
-    color: white;
-    }
-    DIV.inside .matTip DIV.arrow{
-    background-color: white;
-    }
-    DIV.inside .matTip DIV.arrow DIV.pointer{
-    background-color: white;
-    }*/
-DIV.inside .matTip P STRONG{
-    display: inline;
-    margin: 10px 0px 5px 37px;
-    color: #4A4A4A;
-    float: left;
-    line-height: 20px;
-}
-DIV.inside .matTip P{
-    margin-top: 20px;
-}
-DIV.inside .matTip.cedarluxe.wool {
-    top: -90px;
-    left: 570px;
-}
 
-
-DIV.inside .matTip.cedarluxe.springs {
-    bottom: -100px;
-    left: 20px;
-    width: 360px;
-}
-DIV.inside .matTip.cedarluxe.springs DIV.arrow {
-    height: 130px;
-    bottom: 45px;
-    left: 45px;
-}
-DIV.inside .matTip.oceano.tencel {
-    bottom: -157px;
-    left: 390px;
-    width: 300px;
-}
-
-DIV.inside .matTip.oceano.tencel DIV.arrow {
-    height: 140px;
-    bottom: -75px;
-    left: 45px;
-}
-DIV.inside .matTip.oceano.tencel DIV.pointer {
-    bottom: 0;
-    left: -5px;
-}
-DIV.inside .matTip.oceano.tencel {
-    top: -60px;
-    bottom: auto;
-    left: 170px;
-}
-DIV.inside .matTip.oceano.wool {
-    top: -60px;
-    left: 570px;
-    right: 170px;
-}
-DIV.inside .matTip.oceano.wool DIV.arrow {
-    height: 192px;
-    top: 45px;
-    left: 45px;
-}
-DIV.inside .matTip.oceano.gel {
-    bottom: -100px;
-    left: 690px;
-}
-DIV.inside .matTip.oceano.gel DIV.arrow {
-    height: 245px;
-    bottom: 45px;
-    left: 45px;
-}
-DIV.inside .matTip.oceano.gel DIV.pointer {
-    top: 0;
-    left: -5px;
-}
-DIV.inside .matTip.oceano.microcoils {
-    bottom: -100px;
-    left: 380px;
-    width: 300px;
-}
-DIV.inside .matTip.oceano.microcoils DIV.arrow {
-    height: 222px;
-    bottom: 45px;
-    left: 45px;
-}
-DIV.inside .matTip.oceano.microcoils DIV.pointer {
-    top: 0;
-    left: -5px;
-}
-DIV.inside{
+DIV.inside {
     margin: 140px 0 130px;
+    .matTip {
+        P {
+            STRONG {
+                display: inline;
+                margin: 10px 0px 5px 37px;
+                color: #4A4A4A;
+                float: left;
+                line-height: 20px;
+            }
+            margin-top: 20px;
+        }
+        &.cedarluxe{
+            P{
+                STRONG{
+                    display: block;
+                    margin: 10px 0 5px 0;
+                    float: none;
+                }
+            }
+            &.wool {
+                top: -90px;
+                left: 570px;
+            }
+            &.springs {
+                bottom: -130px;
+                left: 20px;
+                width: 360px;
+                DIV.arrow {
+                    height: 200px;
+                    bottom: 45px;
+                    left: 45px;
+                }
+            }
+            &.latex {
+                DIV.arrow {
+                    bottom: -58px;
+                }
+            }
+        }
+        &.oceano{
+            &.tencel {
+                bottom: -157px;
+                left: 390px;
+                width: 300px;
+                top: -60px;
+                bottom: auto;
+                left: 170px;
+                DIV.arrow {
+                    height: 140px;
+                    bottom: -75px;
+                    left: 45px;
+                }
+                DIV.pointer {
+                    bottom: 0;
+                    left: -5px;
+                }
+            }
+            &.wool {
+                top: -60px;
+                left: 570px;
+                right: 170px;
+                DIV.arrow {
+                    height: 192px;
+                    top: 45px;
+                    left: 45px;
+                }
+            }
+            &.gel {
+                bottom: -100px;
+                left: 690px;
+                DIV.arrow {
+                    height: 245px;
+                    bottom: 45px;
+                    left: 45px;
+                }
+                DIV.pointer {
+                    top: 0;
+                    left: -5px;
+                }
+            }
+            &.microcoils {
+                bottom: -100px;
+                left: 380px;
+                width: 300px;
+                DIV.arrow {
+                    height: 222px;
+                    bottom: 45px;
+                    left: 45px;
+                }
+                DIV.pointer {
+                    top: 0;
+                    left: -5px;
+                }
+            }
+        }
+    }
+
+    
 }
+
 
 .boxMat{
     background-color: white; padding: 40px 15px; border-radius: 6px;
@@ -546,14 +558,44 @@ DIV.inside{
     .owl-carousel.owl-drag .owl-item {
         min-height: 320px;   
     }
-    p.short-description.shipping{
+    P.short-description.shipping{
         line-height: 18px;
     }
-    
 }
 @media (max-width: 480px){
     UL#collapseDescription{
         margin-left: 15px;
+    }
+    P.short-description.shipping{
+        letter-spacing: 2px;
+        IMG{
+            display: none;
+        }
+    }
+    DIV.addonmodule{
+        border: none;
+        margin: 20px 0;
+        .column{
+            &.input{
+                .squaredOne{
+                    border-color: $blue;
+                }
+            }
+            &.img{
+                display: none;
+            }
+            &.copy{
+                margin-left: 40px;
+                padding-top: 5px;
+                P{
+                    color: $blue;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+    LABEL.selectLabel{
+        display: none;
     }
 }
 .owl-carousel .owl-stage-outer{
@@ -682,6 +724,22 @@ DIV.inside{
 @media (max-width: 768px){
     .panel-body {
         padding: 30px 35px;
+    }
+    .container.section .panel-title>A{
+        line-height: 42px;
+        height: 35px;
+        font-size: 13px;
+    }
+    #certification-specs IMG{
+        max-width: 55px;
+    }
+}
+@media (max-width: 480px){
+    .panel-body {
+        padding: 15px;
+    }
+    .panel-default>.panel-heading{
+        padding: 10px 10px;
     }
     .container.section .panel-title>A{
         line-height: 42px;

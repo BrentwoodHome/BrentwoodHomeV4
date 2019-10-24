@@ -574,9 +574,11 @@
 <script>
   $(document).ready(function () {
       jQuery('#product-add-to-cart').click(function() {
-          var sizeIndex = $('#product-selectors-option-0')[0].selectedIndex
           var toAdd = [];
-
+          var sizeIndex = -1; //for products that have a size selector like yoga pillows or candles
+          if ($('#product-selectors-option-0').lenght > 0){
+            sizeIndex = $('#product-selectors-option-0')[0].selectedIndex;
+          }
           {% case producthandle %}
               {% when "cedar-natural-luxe-mattress" %}
                   //Cedar Luxe Only because only 3 sizes are available

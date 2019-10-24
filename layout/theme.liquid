@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+   {%comment%}
     <!-- Start Visual Website Optimizer Asynchronous Code -->
     <script type='text/javascript'>
         var _vwo_code=(function(){
@@ -34,7 +35,7 @@
         }
     </script>
     <!-- End Visual Website Optimizer Synchronous Code -->
-    
+    {%endcomment%}
     
     <!-- Start Impact -->
     <script type="text/javascript"> 
@@ -172,7 +173,7 @@
   Add the page template as a class for easy page or template specific styling.
 {% endcomment %}
     <body id="{{ page_title | handle }}" class=" {% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} {{template | handleize}}" >
-        <script>console.log("Template: {{template}}")</script>
+        
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NWLPSV"
                           height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -243,7 +244,7 @@
                     //setCookie("bwh_impact", impact_clickID, 120);
                 }
             }
-            console.log("bwh_impact cookie: "+getCookie("bwh_impact"));
+            //console.log("bwh_impact cookie: "+getCookie("bwh_impact"));
         </script>
         <!-- END IMPACT -->
         

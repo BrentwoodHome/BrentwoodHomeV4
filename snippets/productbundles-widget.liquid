@@ -69,11 +69,18 @@
                 Our minimalist design, high-grade wood frame, tool-free assembly foundation.
                 <a href="/products/foundation">Learn more</a>
             </p>
-            <p class="text-left visible-xs-block">
-                Minimalist design, high-grade wood frame, tool-free assembly.
-                <a href="/products/foundation">Learn more</a>
-            </p>
-            <p class="text-center"><strong id="easy-foundation-price"></strong></p>
+            {%comment%}
+            <div class="addon-a">
+                <p class="text-left visible-xs-block">
+                    Minimalist design, high-grade wood frame, tool-free assembly.
+                    <a href="/products/foundation">Learn more</a>
+                </p>
+                <p class="text-center"><strong id="easy-foundation-price"></strong></p>
+            </div>
+            {%endcomment%}
+            <div class="addon-b">
+                <p class="text-left visible-xs-block">Add matching Easy Foundation <a data-toggle="tooltip" title="Our minimalist design, high-grade wood frame, tool-free assembly foundation. Color matches the {{product.title}}"><em class="glyphicon glyphicon-question-sign"></em></a> <strong id="easy-foundation-price"></strong></p>
+            </div>
         </div>
     </div>
 {% endif %}
