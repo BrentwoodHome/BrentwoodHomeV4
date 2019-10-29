@@ -362,7 +362,7 @@
               if (variantFoundations[sizeIndex]) {
                 var foundation = variantFoundations[sizeIndex];
                 {% raw %}
-                  jQuery("#easy-foundation-price").text("+" + Shopify.formatMoney(foundation.price, "${{amount_no_decimals}}"));
+                jQuery("#easy-foundation-price, #easy-foundation-price-mob").text("+" + Shopify.formatMoney(foundation.price, "${{amount_no_decimals}}"));
                 {% endraw %}
               }
 
@@ -377,7 +377,7 @@
                         .addClass("disabled")
                         .prop("checked", false).parent().addClass("disabled");
                     //jQuery(".squaredOne").addClass("disabled");
-                    jQuery("#easy-foundation-price").text("Foundation Sold Out").addClass("soldout");
+                      jQuery("#easy-foundation-price, #easy-foundation-price-mob").text("Foundation Out of Stock").addClass("soldout");
                   } else {
                     jQuery("#foundation").prop("disabled", false).parent().removeClass("disabled");;
                   }
@@ -575,8 +575,8 @@
   $(document).ready(function () {
       jQuery('#product-add-to-cart').click(function() {
           var toAdd = [];
-          var sizeIndex = -1; //for products that have a size selector like yoga pillows or candles
-          if ($('#product-selectors-option-0').lenght > 0){
+          var sizeIndex = -1; //for products that don't have a size selector like yoga pillows or candles
+          if ($('#product-selectors-option-0').length > 0){
             sizeIndex = $('#product-selectors-option-0')[0].selectedIndex;
           }
           {% case producthandle %}

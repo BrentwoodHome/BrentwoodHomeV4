@@ -1,7 +1,7 @@
 {% assign producthandle = product.handle %}
 
 {% if product.tags contains "bundle-pillows" %}
-    <label class="selectLabel">Add matching pillow(s) & save</label>
+    <label class="selectLabel bundle">Add matching pillow(s) & save</label>
     <div class="addonmodule clearfix">
         <div class="column input">
             <div class="squaredOne">
@@ -38,7 +38,7 @@
 {% endif %}
 
 {% if product.tags contains "bundle-foundation" %}
-    <label class="selectLabel">Add matching Easy Foundation</label>
+    <label class="selectLabel bundle">Add matching Easy Foundation</label>
     <div class="addonmodule clearfix">
         <div class="column input">
             <div class="squaredOne">
@@ -69,6 +69,7 @@
                 Our minimalist design, high-grade wood frame, tool-free assembly foundation.
                 <a href="/products/foundation">Learn more</a>
             </p>
+            <p class="text-center hidden-xs"><strong id="easy-foundation-price"></strong></p>
             {%comment%}
             <div class="addon-a">
                 <p class="text-left visible-xs-block">
@@ -79,7 +80,7 @@
             </div>
             {%endcomment%}
             <div class="addon-b">
-                <p class="text-left visible-xs-block">Add matching Easy Foundation <a data-toggle="tooltip" title="Our minimalist design, high-grade wood frame, tool-free assembly foundation. Color matches the {{product.title}}"><em class="glyphicon glyphicon-question-sign"></em></a> <strong id="easy-foundation-price"></strong></p>
+                <p class="text-left visible-xs-block">Add matching Easy Foundation <a data-toggle="tooltip" title="Our minimalist design, high-grade wood frame, tool-free assembly foundation. Color matches the {{product.title}}"><em class="glyphicon glyphicon-question-sign"></em></a> <strong id="easy-foundation-price-mob"></strong></p>
             </div>
         </div>
     </div>
