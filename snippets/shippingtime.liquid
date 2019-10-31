@@ -32,7 +32,7 @@ shipping page at https://brentwood-home.myshopify.com/admin/pages/73357635
 {% endcase %}
 {%endcomment%}
 
-{% assign shipsfree = "3-7 business days" %}
+{% assign shipsfree = "3-7 days" %}
 
 {% case product.type %}
     {% when 'Pillow' %}
@@ -41,44 +41,48 @@ shipping page at https://brentwood-home.myshopify.com/admin/pages/73357635
         {% assign trial = "30-night trial" %}
     {% when 'Mattress' %}
         {% assign trial = "1-year trial" %}
+    {% when 'Bed Frames' %}
+        {% assign trial = "1-year trial" %}
+{% assign shipsfree = "3-5 days" %}
 {% endcase %}
 
 {% case product.handle %}
     {% when 'foundation' %}
-        {% assign shipsfree = "3-5 business days" %}
+        {% assign shipsfree = "3-5 days" %}
         {% assign trial = "1-year trial" %}
+        
     {% when 'griffith-orthopedic-pet-bed' %}
-        {% assign shipsfree = "5-7 business days" %}
+        {% assign shipsfree = "5-7 days" %}
         
     {% when 'runyon-deluxe-orthopedic-pet-bed' %}
-        {% assign shipsfree = "3-7 business days" %}
+        {% assign shipsfree = "3-7 days" %}
         
     {% when 'oceano-mattress' %}
-        {% assign shipsfree = "3-5 business days" %}
+        {% assign shipsfree = "3-5 days" %}
         
     {% when 'ojai-mattress' %}
-        {% assign shipsfree = "3-5 business days" %}
+        {% assign shipsfree = "3-5 days" %}
         
     {% when 'crystal-cove-mattress' %}
-        {% assign shipsfree = "3-5 business days" %}
+        {% assign shipsfree = "3-5 days" %}
  
     {% when 'cedar-natural-luxe-mattress' %}
-        {% assign shipsfree = "3-5 business days" %}
+        {% assign shipsfree = "3-5 days" %}
         
     {% when 'cypress-bamboo-gel-mattress' %}
-        {% assign shipsfree = "3-5 business days" %}
+        {% assign shipsfree = "3-5 days" %}
         
     {% when 'crystal-cove-yoga-bolster' %}
-        {% assign shipsfree = "3-7 business days" %}
+        {% assign shipsfree = "3-7 days" %}
         
     {% when 'crystal-cove-pranayama-bolster' %}
-        {% assign shipsfree = "3-7 business days" %}
+        {% assign shipsfree = "3-7 days" %}
         
     {% when 'crystal-cove-meditation-pillow' %}
-        {% assign shipsfree = "3-7 business days" %}
+        {% assign shipsfree = "3-7 days" %}
         
     {% when 'crystal-cove-bundle' %}
-        {% assign shipsfree = "3-7 business days" %}
+        {% assign shipsfree = "3-7 days" %}
         
     {% when 'beachwood-linen-quilt' %}
         {% assign shipsfree = "2-3 weeks" %}
