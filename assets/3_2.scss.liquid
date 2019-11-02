@@ -282,7 +282,11 @@ LABEL.selectLabel{
     P{
         line-height: 26px;
     }
-
+    .side P.h3{
+        text-transform: uppercase;
+        font-weight: bold;
+        color: white;
+    }
     .warranties.h2{
         font-size: 32px;
     }
@@ -404,6 +408,14 @@ DIV.inside {
     
 }
 
+.cypress_cutout .inside{
+    margin: 140px 0 130px;
+    .matTip P STRONG{
+        display: block;
+        margin: 10px 0 5px 0;
+        float: none;
+    }
+}
 
 .boxMat{
     background-color: white; padding: 40px 15px; border-radius: 6px;
@@ -564,8 +576,21 @@ DIV.inside {
     }
 }
 @media (max-width: 480px){
+    .cc_mattress_cutout{
+        DIV.inside .matTip P{
+            margin-top: 0;
+            STRONG{
+                margin: 10px 0 5px 0;
+                display: block;
+                float: none;
+            }
+        }
+    }
     UL#collapseDescription{
-        margin-left: 15px;
+        margin-left: 40px;
+    }
+    .panel-collapse UL{
+        margin-left: 20px;
     }
     P.short-description.shipping{
         letter-spacing: 2px;
@@ -598,6 +623,9 @@ DIV.inside {
     LABEL.selectLabel.bundle{
         display: none;
     }
+    #warranties.owl-carousel.owl-drag .owl-item{
+        min-height: 210px !important;
+    }
 }
 .owl-carousel .owl-stage-outer{
     padding: 15px 0 15px;
@@ -629,7 +657,6 @@ DIV.inside {
     }
 }
 #warranties.owl-carousel.owl-drag .owl-item {
-    min-height: 230px;
     min-height: 190px;
 }
 #materials-desk.owl-carousel.owl-drag .owl-item{

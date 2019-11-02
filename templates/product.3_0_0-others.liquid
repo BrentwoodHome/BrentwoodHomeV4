@@ -357,7 +357,7 @@
             </div>
             <div class="col-xs-12 col-sm-6 flexV">
                 <div>
-                    <h2 class="overlays-title text-center">{{metaf.feature1_title}}</h2>
+                    <h2 class="overlays-title">{{metaf.feature1_title}}</h2>
                     <p>{{metaf.feature1}}</p>
                     <div class="row">
                         {{ metaf.feature1_icons }}
@@ -375,7 +375,7 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV">
                 <div>
-                    <h2 class="overlays-title text-center">{{metaf.feature2_title}}</h2>
+                    <h2 class="overlays-title">{{metaf.feature2_title}}</h2>
                     <p>{{metaf.feature2}}</p>
                     <div class="row">
                         {{ metaf.feature2_icon }}
@@ -404,7 +404,7 @@
             </div>
             <div class="col-xs-12 col-sm-6 flexV">
                 <div>
-                    <h2 class="overlays-title text-center">{{metaf.feature3_title}}</h2>
+                    <h2 class="overlays-title">{{metaf.feature3_title}}</h2>
                     <p>{{metaf.feature3}}</p>
                     <div class="row">
                         {{ metaf.feature3_icons }}
@@ -427,7 +427,7 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV">
                 <div>
-                    <h2 class="overlays-title text-center">{{metaf.feature4_title}}</h2>
+                    <h2 class="overlays-title">{{metaf.feature4_title}}</h2>
                     <p>{{metaf.feature4}}</p>
                     <div class="row">
                         {{ metaf.feature4_icons }}
@@ -446,7 +446,7 @@
             </div>
             <div class="col-xs-12 col-sm-6 flexV">
                 <div>
-                    <h2 class="overlays-title text-center">{{metaf.feature5_title}}</h2>
+                    <h2 class="overlays-title">{{metaf.feature5_title}}</h2>
                     <p>{{metaf.feature5}}</p>
                     <div class="row">
                         {{ metaf.feature5_icons }}
@@ -748,44 +748,27 @@
     </section>
     
     {% endif %}
-    {% comment %}
-    <br><br>
-    {% include 'mattress-platforms' %}
-    <ul class="nav nav-tabs" id="myTab">
-        {% if settings.display_product_detail_description %}
-        <li class="active"><a data-toggle="tab" href="#collapse-tab1">{{ settings.product_description_title }}</a></li>
-        {% endif %}
-        {% if settings.display_product_reviews %}
-        <li><a data-toggle="tab"
-               href="#collapse-tab2">{{ settings.product_review_title }}</a>
-        </li>
-        {% endif %}
-    </ul>
-    <div id="myTabContent" class="tab-content">
-        {% if settings.display_product_detail_description %}
-        <div id="collapse-tab1" class="tab-pane fade in active">
-            {{ product.description }}
+
+    <div class="container section">
+        <div class="row flex">
+            <div class="col-xs-12 col-sm-6 text-center {% if isLastSectionLeft %}col-sm-push-6{% endif %} wow fadeInLeft">
+                <picture>
+                    <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1605,953,3634,3634&w=480&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&ch=Width,DPR&q=55">
+                    <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&blur=500q=10" data-src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&ch=Width,DPR&q=55" alt="Start Your 1-Year Sleep Trial">
+                </picture>
+            </div>
+            <div class="col-xs-12 col-sm-6 flexV {% if isLastSectionLeft %}col-sm-pull-6{% endif %} wow fadeInRight">
+                <div>
+                    <h2>Start Your 1-Year Sleep&nbsp;Trial</h2>
+                    <p>Experiencing is believing, especially when it comes to our top-rated {{ product.title }}. Sleep soundly knowing you can try our mattress for <strong>365 days, risk-free, in the comfort of your home</strong>. Learn more about our amazing <a href="https://www.brentwoodhome.com/pages/1-year-risk-free-mattress-trial">1-Year Sleep Trial Policy</a> for mattresses sold on our website.
+                    </p>
+                    <p class="text-center" style="margin-top: 30px;" ><img src="https://brentwood-home-36.imgix.net/iconv2-1yearguarantee.svg" alt="1-year trial"><br>
+                        1-Year Trial</p>
+                </div>
+            </div>
         </div>
-        {% endif %}
-        {% if settings.display_product_reviews %}
-        <div id="collapse-tab2" class="tab-pane fade">
-            {% comment %}
-            Add product review widget, must install Product Review App:
-            https://apps.shopify.com/product-reviews
-            {% endcomment %}
-            <div id="shopify-product-reviews"
-                 data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
-        </div>
-        {% endif %}
     </div>
-    {% endcomment %}
-</div>
-<script>
-    jQuery('#myTab a').click(function (e) {
-        e.preventDefault();
-        jQuery(this).tab('show');
-    })
-</script>
 
 <div id="yotpoReviews" class="container margTB120">
     <div class="row">

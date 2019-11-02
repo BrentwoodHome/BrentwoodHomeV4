@@ -253,7 +253,7 @@
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                     <div class="panel-body">
-                        <div class="row">
+                        
                             {% if product.type == "Bed Sheets" %}
                                 
                                     <p><strong>Free Standard Shipping:</strong><br>
@@ -263,7 +263,7 @@
                                     </p>
                                 
                             {% else %}
-                            
+                        <div class="row">
                                 <div class="col-xs-12 col-sm-4">
                                     <p><strong>Free Standard Shipping:</strong><br>
                                         The handcrafting process usually takes 3–5 days to complete.{% include 'shippingtime' %} Delivery times vary depending on your distance from our Los Angeles factory. 
@@ -300,10 +300,10 @@
                                         We offer a 1-year sleep guarantee with our mattresses. Sleep on your new mattress for at least 30 nights to allow your body time to adjust to the comfort and support of your new Brentwood Home mattress. If you decide the mattress isn’t the right one for you, then we will schedule a pick up and provide a full refund.
                                     </p>
                                 </div>
-                            {% endif %}
-
                             <div class="clear"></div>
                         </div>
+                            {% endif %}
+
                     </div>
                 </div>
             </div>
@@ -375,14 +375,14 @@
     
         <div class="container section">
             <div class="row flex">
-                <div class="col-xs-12 col-sm-6 text-center wow fadeInLeft">
+                <div class="col-xs-12 col-sm-6 text-center {% if isLastSectionLeft == false %}col-sm-push-6{% endif %} wow fadeInLeft">
                     <picture>
                         <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,998,998&w=480&ch=Width,DPR&q=55">
                         <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,701,998&w=555&q=60">
                         <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,701,998&w=555&q=60" alt="Supporting the National Forest Foundation">
                     </picture>
                 </div>
-                <div class="col-xs-12 col-sm-6 flexV wow fadeInRight">
+                <div class="col-xs-12 col-sm-6 flexV {% if isLastSectionLeft == false %}col-sm-pull-6{% endif %} wow fadeInRight">
                     <div>
                         <h2>Supporting the National Forest Foundation</h2>
                         <p>Our forests are in peril and need our help. So for every mattress sold on our website, we also make a donation to the <a href="https://www.nationalforests.org/" title="National Forest Foundation" target="_blank">National Forest Foundation</a> to plant three trees. It’s part of our ambitious effort to help stem the impact of climate change and help replant America’s forests.</p>
@@ -394,14 +394,14 @@
 
         <div class="container section">
             <div class="row flex">
-                <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center wow fadeInRight">
+                <div class="col-xs-12 col-sm-6 text-center {% if isLastSectionLeft %}col-sm-push-6{% endif %} wow fadeInRight">
                     <picture>
                         <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=650,0,3056,2734&w=480&ch=Width,DPR&q=55">
                         <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=932,266,1500,2731&w=555">
                         <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=932,266,1500,2731&w=555" alt="Relief Bed">
                     </picture>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV wow fadeInLeft">
+                <div class="col-xs-12 col-sm-6 flexV {% if isLastSectionLeft %}col-sm-pull-6{% endif %} wow fadeInLeft">
                     <div>
                         <h2>Buy One, Give One, Change a Life!</h2>
                         <p>We proudly support the urgent mission and vision of ReliefBed, a 501(c)(3) nonprofit. <strong>For every {{product.title}} sold on our website, we will build one <a href="https://reliefbed.com" title="ReliefBed" target="_blank">ReliefBed</a> for charity.</strong> ReliefBeds are an innovative and strategically-built mattresses designed to meet the practical needs of the homeless, impoverished, shelter residents, and victims of natural disaster. It is tangible way we can help the members of our community in their time of need. <a href="/pages/relief-bed" title="Relief Bed">Learn more about our partnership</a>.</p>
@@ -412,37 +412,7 @@
             </div>
         </div>
 
-        <div class="container section warranties">
-            <h2 class="text-center">Try the {{ product.title }} Risk-Free</h2>
-            <div id="warranties" class=" owl-carousel owl-theme">
-                <div class="item text-center">
-                    <img src="https://brentwood-home-36.imgix.net/iconv2-1yearguarantee.svg" alt="1-year trial">
-                    <p>1-Year<br>Trial</p>
-                </div>
-                <div class="item text-center">
-                    <img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Free shipping and free return">
-                    <p>Free Shipping<br>Free Return</p>
-                </div>
-                <div class="item text-center">
-                    <img src="https://brentwood-home.imgix.net/iconv2-madeincalifornia.svg" alt="Made in California">
-                    <p>Made in<br>California</p>
-                </div>
-                <div class="item text-center">
-                    <img src="https://brentwood-home.imgix.net/iconv2-25yearwarranty.svg" alt="25-year warranty">
-                    <p>25-year<br>Warranty</p>
-                </div>
-                <div class="item text-center">
-                    <img src="https://brentwood-home.imgix.net/iconv2-whiteglovedelivery.svg" alt="In home delivery available">
-                    <p>In Home<br>Delivery Available</p>
-                </div>
-                <div class="item text-center">
-                    <img src="https://brentwood-home.imgix.net/iconv2-0percent.svg" alt="0% financing available">
-                    <p>0% Financing<br>Available</p>
-                </div>
-            </div>
-        </div>
     {% endif %}
-    
     <script>
         $(document).ready(function() {
 
@@ -475,9 +445,7 @@
             });
         });
     </script>
-
-
-
+    
     <div id="yotpoReviews" class="container margTB120">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12 text-center">
