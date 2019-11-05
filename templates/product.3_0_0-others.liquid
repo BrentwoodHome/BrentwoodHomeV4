@@ -353,7 +353,11 @@
     <section class="overlays overlays-5 container" style="margin-top: 30px;">
         <div class="row flex">
             <div class="col-xs-12 col-sm-6">
-                <img loading="lazy" data-src="https://brentwood-home-2.imgix.net/{{ metaf.feature1_img }}?w=555" src="https://brentwood-home-2.imgix.net/{{ metaf.feature1_img }}?blur=500&q=10" alt="{{metaf.feature1_title | escape }}" class="feature-img img-responsive img">
+                <picture>
+                    <source media="(max-width: 767px)" data-srcset="https://brentwood-home-2.imgix.net/{{ metaf.feature1_img }}?w=555&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" data-srcset="https://brentwood-home-2.imgix.net/{{ metaf.feature1_img }}?w=555">
+                    <img loading="lazy" src="https://brentwood-home-2.imgix.net/{{ metaf.feature1_img }}?w=555&blur=500&q=10" data-src="https://brentwood-home-2.imgix.net/{{ metaf.feature1_img }}?w=555" alt="{{metaf.feature1_title | escape}}" class="feature-img img-responsive img">
+                </picture>
             </div>
             <div class="col-xs-12 col-sm-6 flexV">
                 <div>
@@ -371,7 +375,11 @@
     <section class="overlays overlays-5 container">
         <div class="row flex">
             <div class="col-xs-12 col-sm-6 col-sm-push-6">
-                <img loading="lazy" data-src="https://brentwood-home-2.imgix.net/{{ metaf.feature2_img }}?w=555" src="https://brentwood-home-2.imgix.net/{{ metaf.feature2_img }}?blur=500&q=10&w=555" alt="{{metaf.feature2_title | escape }}" class="feature-img img-responsive img">
+                <picture>
+                    <source media="(max-width: 767px)" data-srcset="https://brentwood-home-2.imgix.net/{{ metaf.feature2_img }}?w=555&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" data-srcset="https://brentwood-home-2.imgix.net/{{ metaf.feature2_img }}?w=555">
+                    <img loading="lazy" src="https://brentwood-home-2.imgix.net/{{ metaf.feature2_img }}?w=555&blur=500&q=10" data-src="https://brentwood-home-2.imgix.net/{{ metaf.feature2_img }}?w=555" alt="{{metaf.feature2_title | escape}}" class="feature-img img-responsive img">
+                </picture>
             </div>
             <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV">
                 <div>
@@ -399,7 +407,11 @@
                         </video>
                     </div>
                 {% else %}
-                <img loading="lazy" data-src="https://brentwood-home-2.imgix.net/{{ metaf.feature3_img }}?w=555" src="https://brentwood-home-2.imgix.net/{{ metaf.feature3_img }}?blur=500&q=10&w=555" alt="{{metaf.feature3_title | escape }}" class="feature-img img-responsive img">
+                <picture>
+                    <source media="(max-width: 767px)" data-srcset="https://brentwood-home-2.imgix.net/{{ metaf.feature3_img }}?w=555&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" data-srcset="https://brentwood-home-2.imgix.net/{{ metaf.feature3_img }}?w=555">
+                    <img loading="lazy" src="https://brentwood-home-2.imgix.net/{{ metaf.feature3_img }}?w=555&blur=500&q=10" data-src="https://brentwood-home-2.imgix.net/{{ metaf.feature3_img }}?w=555" alt="{{metaf.feature3_title | escape}}" class="feature-img img-responsive img">
+                </picture>
                 {% endif %}
             </div>
             <div class="col-xs-12 col-sm-6 flexV">
@@ -422,7 +434,11 @@
                 {% if metaf.feature4_img contains "gif" %}
                     <img src="{{ 'easyframegif555.gif' | asset_url }}" alt="">
                 {% else %}
-                    <img loading="lazy" data-src="https://brentwood-home-2.imgix.net/{{ metaf.feature4_img }}?w=555" src="https://brentwood-home-2.imgix.net/{{ metaf.feature4_img }}?blur=500&q=10&w=555" alt="{{metaf.feature4_title | escape }}" class="feature-img img-responsive img">
+                <picture>
+                    <source media="(max-width: 767px)" data-srcset="https://brentwood-home-2.imgix.net/{{ metaf.feature4_img }}?w=555&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" data-srcset="https://brentwood-home-2.imgix.net/{{ metaf.feature4_img }}?w=555">
+                    <img loading="lazy" src="https://brentwood-home-2.imgix.net/{{ metaf.feature4_img }}?w=555&blur=500&q=10" data-src="https://brentwood-home-2.imgix.net/{{ metaf.feature4_img }}?w=555" alt="{{metaf.feature4_title | escape}}" class="feature-img img-responsive img">
+                </picture>
                 {% endif %}
             </div>
             <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV">
@@ -442,7 +458,11 @@
     <section class="overlays overlays-5 container">
         <div class="row flex">
             <div class="col-xs-12 col-sm-6">
-                <img loading="lazy" data-src="https://brentwood-home-2.imgix.net/{{ metaf.feature5_img }}?w=555" src="https://brentwood-home-2.imgix.net/{{ metaf.feature5_img }}?blur=500&q=10&w=555" alt="{{metaf.feature5_title | escape }}" class="feature-img img-responsive img">
+                <picture>
+                    <source media="(max-width: 767px)" data-srcset="https://brentwood-home-2.imgix.net/{{ metaf.feature5_img }}?w=555&ch=Width,DPR&q=55">
+                    <source media="(min-width: 768px)" data-srcset="https://brentwood-home-2.imgix.net/{{ metaf.feature5_img }}?w=555">
+                    <img loading="lazy" src="https://brentwood-home-2.imgix.net/{{ metaf.feature5_img }}?w=555&blur=500&q=10" data-src="https://brentwood-home-2.imgix.net/{{ metaf.feature5_img }}?w=555" alt="{{metaf.feature5_title | escape}}" class="feature-img img-responsive img">
+                </picture>
             </div>
             <div class="col-xs-12 col-sm-6 flexV">
                 <div>
@@ -546,7 +566,7 @@
    
     <div id="materialsspecs"></div>
 
-   {% if product.handle == "metal-bed-frame" %}
+    {% if product.handle == "metal-bed-frame" or product.handle == "foundation" or product.handle == "adjustable-bed-frame" %}
     <div class="container section margTB120">
         <h2 class="text-center">Product Specifications</h2>
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -667,6 +687,22 @@
                 </div>
             </div>
             {% endif %}
+            {% if metaf.details_faq %}
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingFour">
+                    <h4 class="panel-title">
+                        <a class="collapsed icons care" role="button" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Frequently Asked Questions
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                    <div class="panel-body">
+                        {{ metaf.details_faq }}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
     {% else %}
@@ -749,27 +785,28 @@
     
     {% endif %}
 
-    <div class="container section">
-        <div class="row flex">
-            <div class="col-xs-12 col-sm-6 text-center {% if isLastSectionLeft %}col-sm-push-6{% endif %} wow fadeInLeft">
-                <picture>
-                    <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1605,953,3634,3634&w=480&ch=Width,DPR&q=55">
-                    <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&ch=Width,DPR&q=55">
-                    <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&blur=500q=10" data-src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&ch=Width,DPR&q=55" alt="Start Your 1-Year Sleep Trial">
-                </picture>
-            </div>
-            <div class="col-xs-12 col-sm-6 flexV {% if isLastSectionLeft %}col-sm-pull-6{% endif %} wow fadeInRight">
-                <div>
-                    <h2>Start Your 1-Year Sleep&nbsp;Trial</h2>
-                    <p>Experiencing is believing, especially when it comes to our top-rated {{ product.title }}. Sleep soundly knowing you can try our mattress for <strong>365 days, risk-free, in the comfort of your home</strong>. Learn more about our amazing <a href="https://www.brentwoodhome.com/pages/1-year-risk-free-mattress-trial">1-Year Sleep Trial Policy</a> for mattresses sold on our website.
-                    </p>
-                    <p class="text-center" style="margin-top: 30px;" ><img src="https://brentwood-home-36.imgix.net/iconv2-1yearguarantee.svg" alt="1-year trial"><br>
-                        1-Year Trial</p>
+    {% if product.tags contains "1-Year Sleep Trial" %}
+        <div class="container section">
+            <div class="row flex">
+                <div class="col-xs-12 col-sm-6 text-center {% if isLastSectionLeft %}col-sm-push-6{% endif %} wow fadeInLeft">
+                    <picture>
+                        <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1605,953,3634,3634&w=480&ch=Width,DPR&q=55">
+                        <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&ch=Width,DPR&q=55">
+                        <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&blur=500q=10" data-src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&ch=Width,DPR&q=55" alt="Start Your 1-Year Sleep Trial">
+                    </picture>
+                </div>
+                <div class="col-xs-12 col-sm-6 flexV {% if isLastSectionLeft %}col-sm-pull-6{% endif %} wow fadeInRight">
+                    <div>
+                        <h2>Start Your 1-Year Sleep&nbsp;Trial</h2>
+                        <p>Experiencing is believing, especially when it comes to our top-rated {{ product.title }}. Sleep soundly knowing you can try our mattress for <strong>365 days, risk-free, in the comfort of your home</strong>. Learn more about our amazing <a href="https://www.brentwoodhome.com/pages/1-year-risk-free-mattress-trial">1-Year Sleep Trial Policy</a> for mattresses sold on our website.
+                        </p>
+                        <p class="text-center" style="margin-top: 30px;" ><img src="https://brentwood-home-36.imgix.net/iconv2-1yearguarantee.svg" alt="1-year trial"><br>
+                            1-Year Trial</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    {% endif %}
 <div id="yotpoReviews" class="container margTB120">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12 text-center">

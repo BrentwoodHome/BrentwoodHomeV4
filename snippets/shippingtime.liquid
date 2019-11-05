@@ -43,14 +43,16 @@ shipping page at https://brentwood-home.myshopify.com/admin/pages/73357635
         {% assign trial = "1-year trial" %}
     {% when 'Bed Frames' %}
         {% assign trial = "1-year trial" %}
-{% assign shipsfree = "3-5 days" %}
+        {% assign shipsfree = "3-5 days" %}
 {% endcase %}
 
 {% case product.handle %}
     {% when 'foundation' %}
         {% assign shipsfree = "3-5 days" %}
         {% assign trial = "1-year trial" %}
-        
+    {% when 'adjustable-bed-frame' %}
+        {% assign shipsfree = "3-5 days" %}
+        {% assign trial = false %}
     {% when 'griffith-orthopedic-pet-bed' %}
         {% assign shipsfree = "5-7 days" %}
         
