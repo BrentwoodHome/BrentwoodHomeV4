@@ -213,7 +213,7 @@
                                 </select>
                                 {% comment %}variables set in snippets/shippingtime.liquid{% endcomment %}
                                 <p class="short-description shipping"><img src="https://brentwood-home-2.imgix.net/icon-shippingv4.svg" alt="">Ships free in {{ shipsfree }} | free returns {% if trial %}| {{trial}}{% endif %}</p>
-
+<!-- Trial: {{trial}} -->
                                 {% if settings.use_color_swatch %}
                                 {% for option in product.options %}
                                 {% include 'swatch' with option %}
@@ -691,7 +691,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingFour">
                     <h4 class="panel-title">
-                        <a class="collapsed icons care" role="button" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <a class="collapsed icons faq" role="button" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                             Frequently Asked Questions
                         </a>
                     </h4>

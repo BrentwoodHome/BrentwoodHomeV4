@@ -675,11 +675,10 @@ DIV.inside {
 
 /***** SPECS ACCORDION *****/
 .icons{
-    background-image: url("https://brentwood-home-2.imgix.net/icons-specs.svg");
-    //background-image: url({{'icons-specs.svg' | assets_url }});
+    //background-image: url("https://brentwood-home-2.imgix.net/icons-specs.svg");
+    background-image: url({{'icons-specs.svg' | assets_url }});
     background-position: left top;
     background-repeat: no-repeat;
-    //background-size: 25px 25px;
     &.materials{
         background-position:  -20px -13px;
     }
@@ -697,6 +696,9 @@ DIV.inside {
     }
     &.prddescription{
         background-position:  -20px -213px;
+    }
+    &.faq{
+        background-position:  -16px -265px;
     }
 }
 .panel-body{
@@ -799,6 +801,9 @@ DIV.inside {
         }
         &.prddescription{
             background-position:  -20px -172px;
+        }
+        &.faq{
+            background-position:  -20px -202px;
         }
     }
 }
