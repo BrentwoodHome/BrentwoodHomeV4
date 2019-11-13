@@ -118,7 +118,16 @@ LABEL.selectLabel{
     border-width: 2px !important;
     color: $blue;
 }
-
+P.h3.subs{
+    color: rgb(56, 65, 79);
+    font-size: 18px;
+    font-family: Avenir-Heavy;
+    font-weight: 900;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.13px;
+    line-height: 26px;
+}
     @media all and (max-width: 480px){
         .breadcrumb-wrap{
             display: none;
@@ -219,6 +228,16 @@ LABEL.selectLabel{
     }
     .cta2 {
         margin-top: 10px;
+    }
+    .line-right-a{
+        border-right: 1px solid rgb(151, 151, 151);   
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-right: 20px;
+    }
+    .line-right-b{
+        padding-top: 15px;
+        padding-bottom: 15px;
     }
     @media (min-width: 1024px){
         .buycontent {
@@ -417,6 +436,20 @@ DIV.inside {
     }
 }
 
+.cypress_2020_cutout .inside{
+    margin: 0;
+    DIV.beautiful{
+        position: absolute;
+        top: 150px;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+        H2{
+            font-size: 48px;
+            color: #38414f;
+        }
+    }
+}
 .boxMat{
     background-color: white; padding: 40px 15px; border-radius: 6px;
 }
@@ -550,6 +583,17 @@ DIV.inside {
     #page_product H3{
         text-align: center;
     }
+    .cypress_2020_cutout .inside{
+        DIV.beautiful{
+            top: 30px;
+            H2{
+                //font-size: 38px;
+                width: 50%;
+                margin: 0 auto;
+                line-height: 48px;
+            }
+        }
+    }
 }
 @media (max-width: 768px){
     #page_product H3{
@@ -625,6 +669,16 @@ DIV.inside {
     }
     #warranties.owl-carousel.owl-drag .owl-item{
         min-height: 210px !important;
+    }
+    .cypress_2020_cutout .inside{
+        DIV.beautiful{
+            top: 30px;
+            H2{
+                font-size: 34px;
+                width: 75%;
+                margin: 0 auto;
+            }
+        }
     }
 }
 .owl-carousel .owl-stage-outer{
@@ -768,6 +822,12 @@ DIV.inside {
     }
 }
 @media (max-width: 480px){
+    .line-right-a, .line-right-b{
+        border: none;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-right: 0;
+    }
     .panel-body {
         padding: 15px;
     }
@@ -781,6 +841,9 @@ DIV.inside {
         padding-right: 30px;
         padding-left: 36px;
         letter-spacing: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     #certification-specs IMG{
         max-width: 55px;
@@ -803,7 +866,7 @@ DIV.inside {
             background-position:  -20px -172px;
         }
         &.faq{
-            background-position:  -20px -202px;
+            background-position:  -15px -214px;
         }
     }
 }

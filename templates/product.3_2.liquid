@@ -264,7 +264,7 @@
                                 
                             {% else %}
                         <div class="row">
-                                <div class="col-xs-12 col-sm-4">
+                                <div class="col-xs-12">
                                     <p><strong>Free Standard Shipping:</strong><br>
                                         The handcrafting process usually takes 3–5 days to complete.{% include 'shippingtime' %} Delivery times vary depending on your distance from our Los Angeles factory. 
                                         {% if product.handle == "cedar-natural-luxe-mattress" %}
@@ -273,8 +273,9 @@
 
                                         <br>
                                         In general, you can expect to receive your mattress within 7-10 business days from the date of order via FedEx and 2-3 weeks if you choose our White Glove service. Once your purchase ships, we’ll send you an email with tracking information so you can follow your shipment and plan for delivery.</p>
+                                        <p><strong>Ships roll-packed in a Brentwood Home-branded mattress box.</strong></p>
                                 </div>
-                                <div class="col-xs-12 col-sm-4">
+                                <div class="col-xs-12">
                                     <p><strong>Optional White Glove Delivery:</strong><br>
                                         For an additional $199 per mattress, you can select our Premium White Glove Service through our delivery partner, AGS. This includes in-home delivery.
                                         <br>
@@ -295,7 +296,7 @@
                                     <p>Visit our <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/shipping-and-delivery">Help center</a> for more information</p>
 
                                 </div>
-                                <div class="col-xs-12 col-sm-4">
+                                <div class="col-xs-12">
                                     <p><strong>Returns:</strong><br>
                                         We offer a 1-year sleep guarantee with our mattresses. Sleep on your new mattress for at least 30 nights to allow your body time to adjust to the comfort and support of your new Brentwood Home mattress. If you decide the mattress isn’t the right one for you, then we will schedule a pick up and provide a full refund.
                                     </p>
@@ -322,6 +323,22 @@
                         </div>
                     </div>
                 </div>
+            {% endif %}
+            {% if metaf.details_faq %}
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingFive">
+                    <h4 class="panel-title">
+                        <a class="collapsed icons faq" role="button" data-toggle="collapse" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Frequently Asked Questions
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                    <div class="panel-body">
+                        {{ metaf.details_faq }}
+                    </div>
+                </div>
+            </div>
             {% endif %}
         </div>
     </div>
@@ -372,6 +389,12 @@
                         <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bambootopmodels.jpg?rect=880,0,1625,2066&w=555">
                         <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/bambootopmodels.jpg?rect=880,0,1625,2066&w=555" alt="Start Your 1-Year Sleep Trial">
                     </picture>
+                    {% when "cypress-memory-foam-mattress" %}
+                    <picture>
+                        <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/temp/DL2A3083-2.jpg?rect=846,200,1191,1191&w=480&ch=Width,DPR&q=55">
+                        <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/temp/DL2A3083-2.jpg?rect=846,0,1191,1648&w=555">
+                        <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/temp/DL2A3083-2.jpg?rect=846,0,1191,1648&w=555" alt="Start Your 1-Year Sleep Trial">
+                    </picture>
                     {% when "crystal-cove-mattress" %}
                     <picture>
                         <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_82688.jpg?w=480&ch=Width,DPR&q=55">
@@ -382,9 +405,10 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 flexV {% if isLastSectionLeft %}col-sm-pull-6{% endif %} wow fadeInRight">
                     <div>
+                        <h3>free shipping + free returns</h3>
                         <h2>Start Your 1-Year Sleep&nbsp;Trial</h2>
-                        <p>Experiencing is believing, especially when it comes to our top-rated {{ product.title }}. Sleep soundly knowing you can try our mattress for <strong>365 days, risk-free, in the comfort of your home</strong>. Learn more about our amazing <a href="https://www.brentwoodhome.com/pages/1-year-risk-free-mattress-trial">1-Year Sleep Trial Policy</a> for mattresses sold on our website.
-                        </p>
+                        <p>Risk free means no pressure. That’s why we offer free shipping and returns and a fully-backed, risk-free 1-year trial. Try your {{ product.title }} for a year and if you feel like it’s not the right mattress for you, we’ll work with you to have the mattress picked up or donated to a local charity.</p>
+                        <p> Learn more about our amazing <a href="https://www.brentwoodhome.com/pages/1-year-risk-free-mattress-trial">1-Year Sleep Trial Policy</a> for mattresses sold on our website.</p>
                         <p class="text-center" style="margin-top: 30px;" ><img src="https://brentwood-home-36.imgix.net/iconv2-1yearguarantee.svg" alt="1-year trial"><br>
                             1-Year Trial</p>
                     </div>
@@ -413,27 +437,27 @@
                 </div>
             </div>
         </div>
-
-        <div class="container section">
-            <div class="row flex">
-                <div class="col-xs-12 col-sm-6 text-center {% if isLastSectionLeft %}col-sm-push-6{% endif %} wow fadeInRight">
-                    <picture>
-                        <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=650,0,3056,2734&w=480&ch=Width,DPR&q=55">
-                        <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=932,266,1500,2731&w=555">
-                        <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=932,266,1500,2731&w=555" alt="Relief Bed">
-                    </picture>
-                </div>
-                <div class="col-xs-12 col-sm-6 flexV {% if isLastSectionLeft %}col-sm-pull-6{% endif %} wow fadeInLeft">
-                    <div>
-                        <h2>Buy One, Give One, Change a Life!</h2>
-                        <p>We proudly support the urgent mission and vision of ReliefBed, a 501(c)(3) nonprofit. <strong>For every {{product.title}} sold on our website, we will build one <a href="https://reliefbed.com" title="ReliefBed" target="_blank">ReliefBed</a> for charity.</strong> ReliefBeds are an innovative and strategically-built mattresses designed to meet the practical needs of the homeless, impoverished, shelter residents, and victims of natural disaster. It is tangible way we can help the members of our community in their time of need. <a href="/pages/relief-bed" title="Relief Bed">Learn more about our partnership</a>.</p>
-                        <!--<p class="text-center"><img src="{{ 'logo-reliefbed.png' | asset_url }}" alt="" style="max-width: 140px; width: 140px;margin-top: 30px;" ></p>-->
-                        <p class="text-center"><img src="https://s3-brentwoodhome.imgix.net/reliefbed-logo-vertical.jpg" style="max-width: 140px; width: 140px;margin-top: 30px;" alt="Relief Bed"></p>
+        {% if product.tags contains "reliefbed" %}
+            <div class="container section">
+                <div class="row flex">
+                    <div class="col-xs-12 col-sm-6 text-center {% if isLastSectionLeft %}col-sm-push-6{% endif %} wow fadeInRight">
+                        <picture>
+                            <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=650,0,3056,2734&w=480&ch=Width,DPR&q=55">
+                            <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=932,266,1500,2731&w=555">
+                            <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=932,266,1500,2731&w=555" alt="Relief Bed">
+                        </picture>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 flexV {% if isLastSectionLeft %}col-sm-pull-6{% endif %} wow fadeInLeft">
+                        <div>
+                            <h2>Buy One, Give One, Change a Life!</h2>
+                            <p>We proudly support the urgent mission and vision of ReliefBed, a 501(c)(3) nonprofit. <strong>For every {{product.title}} sold on our website, we will build one <a href="https://reliefbed.com" title="ReliefBed" target="_blank">ReliefBed</a> for charity.</strong> ReliefBeds are an innovative and strategically-built mattresses designed to meet the practical needs of the homeless, impoverished, shelter residents, and victims of natural disaster. It is tangible way we can help the members of our community in their time of need. <a href="/pages/relief-bed" title="Relief Bed">Learn more about our partnership</a>.</p>
+                            <!--<p class="text-center"><img src="{{ 'logo-reliefbed.png' | asset_url }}" alt="" style="max-width: 140px; width: 140px;margin-top: 30px;" ></p>-->
+                            <p class="text-center"><img src="https://s3-brentwoodhome.imgix.net/reliefbed-logo-vertical.jpg" style="max-width: 140px; width: 140px;margin-top: 30px;" alt="Relief Bed"></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+        {% endif %}
     {% endif %}
     <script>
         $(document).ready(function() {

@@ -212,7 +212,7 @@
                                     {% endfor %}
                                 </select>
                                 {% comment %}variables set in snippets/shippingtime.liquid{% endcomment %}
-                                <p class="short-description shipping"><img src="https://brentwood-home-2.imgix.net/icon-shippingv4.svg" alt="">Ships free in {{ shipsfree }} | free returns {% if trial %}| {{trial}}{% endif %}</p>
+                                <p class="short-description shipping"><img src="https://brentwood-home-2.imgix.net/icon-shippingv4.svg" alt="">Ships free in {{ shipsfree }} | free returns {% unless trial == "false"  %}| {{trial}}{% endunless %}</p>
 
                                 {% if settings.use_color_swatch %}
                                 {% for option in product.options %}
