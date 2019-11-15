@@ -41,7 +41,7 @@
 {% endfor %}
 
 {% for variant in cypress.variants %}
-{% if variant.title == "Twin / 11-inch Medium-Firm Feel" %}
+{% if variant.title == "Twin / Classic 11-inch / All Foam" %}
 {% assign cypressPrice = variant.price %}
 {% endif %}
 {% endfor %}
@@ -295,19 +295,19 @@
                     </div>
                 </div>
             </div>
-            
+            {%endcomment%}
             <div class="item">
                 <div class="product-col cypress text-center">
                     <div class="colorwrap">
                         <a href="{{cypress.url}}" class="col-header">
                             <h2>{{cypress.title}}</h2>
-                            <h3>Best Selling All Foam Mattress</h3>
+                            <h3>Charcoal-Infused & Hybrid</h3>
                         </a>
                         <a href="{{ cypress.url }}" class="product-grid-image" title="">
                             <picture>
-                                <source media="(min-width: 768px)" srcset="https://brentwood-home-36.imgix.net/bamboo-compare-img.jpg?w=480&fit=crop&auto=format&q=75">
-                                <source media="(max-width: 767px)" srcset="https://brentwood-home-36.imgix.net/bamboo-compare-img.jpg?w=750&fit=crop&auto=format&q=40&dpr=2">
-                                <img src="https://brentwood-home-36.imgix.net/bamboo-compare-img.jpg?w=480&fit=crop&auto=format&q=75" alt="Cypress">
+                                <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/2E4A2695.jpg?w=480&fit=crop&auto=format&q=75">
+                                <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/2E4A2695.jpg?w=750&fit=crop&auto=format&q=40&dpr=2">
+                                <img src="https://brentwood-home-products.imgix.net/2E4A2695.jpg?w=480&fit=crop&auto=format&q=75" alt="Cypress">
                             </picture>
                         </a>
                         <div class="paddingwrap">
@@ -324,32 +324,32 @@
                                 <p id="learn-more" class="affirm-as-low-as" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{cypressPrice}}"> <a class="affirm-site-modal" data-promo-id="promo_set_pdp_12_standard">Learn more</a></p>
                             </div>
                             <ul class="featList text-left">
-                                <li class="ico feel">Medium to Medium-Firm Feel</li>
-                                <li class="ico gel">Cooling Gel Memory Foam</li>
-                                <li class="ico">&nbsp;</li>
+                                <li class="ico feel">11 or 13" Comfort</li>
+                                <li class="ico gel">Charcoal-Infused Memory Foam</li>
+                                <li class="ico coils">Hybrid Available</li>
                                 <li class="ico">&nbsp;</li>
                             </ul>
                             <p class="description">
-                                Our best selling, all foam mattress features: Gel infused memory foam, New Zealand wool, a natural bamboo-derived, removable cover and ventilated support foam — all to keep you comfy and cool — at an unbelievably affordable price! Proudly made in Los Angeles.
+                                American-made with our cooling charcoal-infused, CertiPUR-US® certified memory foam, regulates temperature while contouring your body. Providing optimal support for all sleepers. Optional innerspring hybrid upgrade.
                             </p>
                             <div class="otherFeatures">
                                 <p><strong>Other Features</strong></p>
                                 <ul class="otherfeatures text-left">
                                     <li>GREENGUARD&reg; Gold Certified Mattress</li>
-                                    <li>11” &amp; 13” Height, 3 Layers</li>
-                                    <li>Eco-Luxury Viscose Bamboo Cover</li>
+                                    <li>11” &amp; 13” Height</li>
                                     <li>Pressure Relief</li>
                                     <li>Temperature Regulating</li>
                                     <li>Motion Isolation</li>
                                     <li>CertiPUR-US&reg; Certified Foam</li>
                                     <li>No Chemical Flame Retardants</li>
+                                    <li>Made in USA</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {%endcomment%}
+            
             {% comment %}
            <div class="item">
                 <div class="product-col ojai text-center">
@@ -534,13 +534,3 @@
     </section>
 </div>
 
-<script>
-    mixpanel.track(
-        "Mattress Comparison",
-    );
-    /*$(document).ready(function () {
-        $(".product-col A").click(function () {
-            mixpanel.track("Click", { "name": "{{ product.title }}" });
-        });
-    });*/
-</script>
