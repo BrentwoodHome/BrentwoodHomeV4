@@ -157,12 +157,12 @@
                                         </div>
                                         <div id="qt" style="display: none">QTY: <input type="text" id="quantity" name="quantity" value="1"></div>
                                     </div>
-                                    <button type="button" class="cta2" style="width: 100%;" id="product-add-to-cart">Add to Cart</button>
                                 {% else %}
                                     <button type="button" class="btn" id="product-add-to-cart" disabled>Unavailable</button>
                                 {% endif %}
                                 {% assign current_variant = product.selected_or_first_available_variant %}
                             </form>
+                            <button type="button" class="cta2" style="width: 100%;" id="product-add-to-cart">Add to Cart</button>
                         </div>
                     </div>
                 </div><!-- Right Col product-shop --> 
