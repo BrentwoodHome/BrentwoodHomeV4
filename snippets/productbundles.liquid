@@ -2,10 +2,11 @@
 
 <script>
   var allFoundationVariants = {{ all_products['foundation'].variants | json }};
+  var allAdjustableVariants = {{ all_products['adjustable-bed-frame'].variants | json }};
   var variantPillowBundle = [];//create empty pillow array to prevent errors when a mattress doesn't offer pillow bundle
 
   // Easy Foundation Bundle
-  {% case producthandle %}
+{% case producthandle %}
   {% when "cedar-natural-luxe-mattress" %}
   //Cedar foundation
   var variantFoundations = [
@@ -250,6 +251,109 @@
                qt: 2
            }
        ];
+       {% when "cypress-memory-foam-mattress" %}
+       //Gray foundation 
+       var variantFoundations = [
+           {//Twin
+               id: 18582182297662,
+               price: 22500,
+           },
+           {//Twin
+               id: 18582182297662,
+               price: 22500,
+           },
+           {//Twin XL
+               id: 18582182330430,
+               price: 25000,
+           },
+           {//Twin XL
+               id: 18582182330430,
+               price: 25000,
+           },
+           {//Full
+               id: 18582182363198,
+               price: 25000
+           },
+           {//Full
+               id: 18582182363198,
+               price: 25000
+           },
+           {//Queen
+               id: 18582182395966,
+               price: 27500,
+           },
+           {//Queen
+               id: 18582182395966,
+               price: 27500,
+           },
+           {//King
+               id: 18582182428734,
+               price: 35000,
+           },
+           {//King
+               id: 18582182428734,
+               price: 35000,
+           },
+           {//CalKing
+               id: 18582182461502,
+               price: 35000
+           },
+           {//CalKing
+               id: 18582182461502,
+               price: 35000
+           }
+       ];
+
+        var variantAdjustableBundle = [
+            {//Twin 
+                id: 4329013608510,
+                price: 59900,
+            },
+            {//Twin 
+                id: 4329013608510,
+                price: 59900,
+            },
+            {//Twin XL
+                id: 4329013608510,
+                price: 59900,
+            },
+            {//Twin XL
+                id: 4329013608510,
+                price: 59900,
+            },
+            {//Full
+                id: 0,
+                price: 0
+            },
+            {//Full
+                id: 0,
+                price: 0
+            },
+            {//Queen
+                id: 4329013608510,
+                price: 79900,
+            },
+            {//Queen
+                id: 4329013608510,
+                price: 79900,
+            },
+            {//King
+                id: 4329013608510,
+                price: 129800,
+            },
+            {//King
+                id: 4329013608510,
+                price: 129800,
+            },
+            {//CalKing
+                id: 4329013608510,
+                price: 129800
+            },
+            {//CalKing
+                id: 4329013608510,
+                price: 129800
+            }
+        ];
       {% else %}
       //Gray foundation for Ojai, Crystal Cove and everything else
       var variantFoundations = [
@@ -282,6 +386,33 @@
               price: 35000
           }
       ];
+       
+       var variantAdjustableBundle = [
+           {//Twin 
+               id: 31082150559806,
+               price: 59900,
+           },
+           {//Twin XL
+               id: 31082150559806,
+               price: 59900,
+           },
+           {//Full
+               id: 0,
+               price: 0
+           },
+           {//Queen
+               id: 31082150625342,
+               price: 79900,
+           },
+           {//King
+               id: 31123066585150,
+               price: 129800,
+           },
+           {//CalKing
+               id: 31082150690878,
+                price: 129800
+           }
+       ];
        {% endcase %}
 
        {% if settings.display_subtotal and product.available %}
@@ -306,6 +437,7 @@
 
                // Easy Foundation Bundle
                if( $('#foundation').length ){
+                   //console.log("clicked foundation");
                    if (jQuery('#foundation').prop('checked') && variantFoundations[sizeIndex]) {
                        totalPrice += variantFoundations[sizeIndex].price
                    }
@@ -315,6 +447,13 @@
                    if (jQuery('#pillow-bundle').prop('checked') && variantPillowBundle[sizeIndex]) {
                        totalPrice += variantPillowBundle[sizeIndex].price
                   }
+               }
+               // Adjustable Bundle
+               if( $('#adjustable-bundle').length ){
+                   //console.log("clicked adjustable");
+                   if (jQuery('#adjustable-bundle').prop('checked') && variantAdjustableBundle[sizeIndex]) {
+                       totalPrice += variantAdjustableBundle[sizeIndex].price
+                   }
                }
 
                var totalPriceText = Shopify.formatMoney(totalPrice, window.money_format);
@@ -358,6 +497,9 @@
             
 /*****************FOUNDATION BUNDLE PRICE UPDATE*************************/
             if ($('#foundation').length) {
+                /*if ($('#adjustable-bundle').length) {
+                    $('#adjustable-bundle').prop("checked", false);
+                }*/
               // Update Foundation Pricing
               if (variantFoundations[sizeIndex]) {
                 var foundation = variantFoundations[sizeIndex];
@@ -379,7 +521,7 @@
                     //jQuery(".squaredOne").addClass("disabled");
                       jQuery("#easy-foundation-price, #easy-foundation-price-mob").text("Foundation Out of Stock").addClass("soldout");
                   } else {
-                    jQuery("#foundation").prop("disabled", false).parent().removeClass("disabled");;
+                    jQuery("#foundation").prop("disabled", false).parent().removeClass("disabled");
                   }
                 }
               }
@@ -407,6 +549,37 @@
             }
 /****************************************************************/
 
+/*****************ADJUSTABLE BUNDLE PRICE UPDATE*************************/
+            if ($('#adjustable-bundle').length) {
+                /*if ($('#foundation').length) {
+                    $('#foundation').prop("checked", false);
+                }*/
+                // Update Adjustable Pricing
+                if (variantAdjustableBundle[sizeIndex]) {
+                    var adjustable = variantAdjustableBundle[sizeIndex];
+                    //console.log(adjustable);
+                    if(adjustable.id != 0){ //check if product variant exist (see id array above), if 0, deactivate box
+                        jQuery("#adjustable-bundle").prop("disabled", false).parent().removeClass("disabled");
+                        {% raw %}
+                        jQuery("#adjustable-bundle-price").text("+" + Shopify.formatMoney(adjustable.price, "${{amount_no_decimals}}"));
+                         {% endraw %}
+                     }else{
+                         jQuery("#adjustable-bundle")
+                             .prop("disabled", true)
+                             .addClass("disabled")
+                             .prop("checked", false).parent().addClass("disabled");
+                         //jQuery(".squaredOne").addClass("disabled");
+                         jQuery("#adjustable-bundle-price").text("Base Not Available in this size").addClass("soldout");
+                     }
+                }
+
+                if (jQuery('#adjustable-bundle').prop('checked') && variantAdjustableBundle[sizeIndex]) {
+                 totalPrice += variantAdjustableBundle[sizeIndex].price;
+                 compareAtPrice += variantAdjustableBundle[sizeIndex].price;
+                }
+            }
+/****************************************************************/
+                            
             // Regardless of stock, update the product price
             {% raw %}
             productPrice.html(Shopify.formatMoney(totalPrice, "${{amount_no_decimals}}"));
@@ -517,10 +690,17 @@
 
           // Easy Foundation Bundle
           if ($('#foundation').length) {
-            $("#foundation").on('change', function() {
-              selectCallback(currentVariant)
-            });
+                $("#foundation").on('change', function() {
+                  selectCallback(currentVariant)
+                });
           }
+            
+            // Adjustable Bundle
+            if ($('#adjustable-bundle').length) {
+                $("#adjustable-bundle").on('change', function() {
+                    selectCallback(currentVariant)
+                });
+            }
 
           {% if product.available and product.variants.size > 1 %}
             new Shopify.CustomOptionSelectors('product-selectors', {
@@ -573,7 +753,8 @@
 
 <script>
   $(document).ready(function () {
-      jQuery('#product-add-to-cart').click(function() {
+      jQuery('#product-add-to-cart').click(function(e) {
+          e.preventDefault();
           var toAdd = [];
           var sizeIndex = -1; //for products that don't have a size selector like yoga pillows or candles
           if ($('#product-selectors-option-0').length > 0){
@@ -596,19 +777,59 @@
                    var variantFoundationIds = [19308085641278, 19308085772350, 19308085805118, 19308085837886, 19308085870654, 19308085903422, 19308085870654]
                    var variantPillowBundle = [12210708742255, 12210708742255, 12210708742255, 12210708775023, 12210708807791, 12210708807791, 12210708807791]
                    var variantPillowBundleQt = [1, 1, 1, 2, 2, 2, 2]
-               {% when "oceano-mattress-test" %}
-                   //Twin, Twin XL, Full, Q, K, CK
-                   var variantFoundationIds = [19308085641278, 19308085772350, 19308085805118, 19308085837886, 19308085870654, 19308085903422, 19308085870654]
-                   var variantPillowBundle = [12210708742255, 12210708742255, 12210708742255, 12210708775023, 12210708807791, 12210708807791, 12210708807791]
-                   var variantPillowBundleQt = [1, 1, 1, 2, 2, 2, 2]
                 {% when "crystal-cove-mattress" %}
                    //Twin, Twin XL, Full, Q, K, CK
                    var variantFoundationIds = [19308085641278, 19308085772350, 19308085805118, 19308085837886, 19308085870654, 19308085903422, 19308085870654]
                    var variantPillowBundle = [8119702585455, 8119702585455, 8119702585455, 8119702618223, 8119702650991, 8119702650991, 8119702650991]
                    var variantPillowBundleQt = [1, 1, 1, 2, 2, 2, 2, 2]
+                   
+                {% when "cypress-memory-foam-mattress" %}
+                // Because drop down has 12 options, need 12 options for add-ons to match index position
+                    //Twin, Twin XL, Full, Q, K, CK
+                    var variantFoundationIds = [
+                        18582182297662, 
+                        18582182297662, 
+                        18582182330430,
+                        18582182330430,
+                        18582182363198, 
+                        18582182363198,
+                        18582182395966, 
+                        18582182395966,
+                        18582182428734, 
+                        18582182428734,
+                        18582182461502, 
+                        18582182461502
+                    ]
+                    //Adjustable base
+                    //Twin 11, Twin 13, Twin XL 11, XL 11, ..., Full, Q, K, CK
+                    var variantAdjustableIds = [
+                        
+                        31082150559806, 
+                        31082150559806, 
+                        
+                        31082150559806, 
+                        31082150559806, 
+                        
+                        0,
+                        0,
+                        
+                        31082150625342, 
+                        31082150625342, 
+                        
+                        31123066585150, 
+                        31123066585150, 
+                        
+                        31082150690878,
+                        31082150690878
+                    ]
+                   
                {% else %}
                    //Twin, Twin XL, Full, Q, K, CK, SplitK
                    var variantFoundationIds = [18582182297662, 18582182330430, 18582182363198, 18582182395966, 18582182428734, 18582182461502, 18582182428734]
+                   
+                   //Adjustable base
+                   //Twin, Twin XL, Full, Q, K, CK
+                   var variantAdjustableIds = [31082150559806, 31082150559806, 0000, 31082150625342, 31123066585150, 31082150690878]
            {% endcase %}
 
            // Easy Foundation Bundle
@@ -624,6 +845,14 @@
                 toAdd.push({
                     id: variantPillowBundle[sizeIndex],
                     quantity: variantPillowBundleQt[sizeIndex]
+                })
+            }
+            
+            // Adjustable Bundle
+            if (jQuery('#adjustable-bundle').prop('checked')) {
+                toAdd.push({
+                    id: variantAdjustableIds[sizeIndex],
+                    quantity: 1
                 })
             }
 

@@ -1,5 +1,23 @@
 {% assign producthandle = product.handle %}
 
+<style>
+    /*.abtest-control{
+        
+    }
+    .abtest-a{
+        
+    }
+    div.addonmodule .column.img{
+        display: none;
+    }
+    div.addonmodule .column.copy{
+        margin-left: 40px;
+    }
+    .abtest-b{
+
+    }*/
+</style>
+
 {% if product.tags contains "bundle-pillows" %}
     <label class="selectLabel bundle">Add matching pillow(s) & save</label>
     <div class="addonmodule clearfix">
@@ -11,18 +29,18 @@
         </div>
         <div class="column img">
             {% case producthandle %}
-            {% when "cedar-natural-luxe-mattress" %}
-            <img src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Add pillow(s) and save">
-            {% when "cypress-bamboo-gel-mattress" %}
-            <img src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Add pillow(s) and save">
-            {% when "oceano-mattress-test" %}
-            <img src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Add pillow(s) and save">
-            {% when "ojai-mattress" %}
-            <img src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Add pillow(s) and save">
-            {% when "crystal-cove-mattress" %}
-            <img src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Add pillow(s) and save">
-            {% else %}
-            <img src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Add pillow(s) and save">
+                {% when "cedar-natural-luxe-mattress" %}
+                <img src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Add pillow(s) and save">
+                {% when "cypress-bamboo-gel-mattress" %}
+                <img src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Add pillow(s) and save">
+                {% when "oceano-mattress-test" %}
+                <img src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Add pillow(s) and save">
+                {% when "ojai-mattress" %}
+                <img src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Add pillow(s) and save">
+                {% when "crystal-cove-mattress" %}
+                <img src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Add pillow(s) and save">
+                {% else %}
+                <img src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Add pillow(s) and save">
             {% endcase %}
         </div>
         <div class="column copy">
@@ -56,7 +74,7 @@
             <img src="https://brentwood-home-products.imgix.net/hershel-01.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
             {% when "oceano-mattress-test" %}
             <img src="https://brentwood-home-products.imgix.net/hershel-01.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
-            {% when "ojai-mattress" %}
+            {% when "cypress-memory-foam-mattress" %}
             <img src="https://brentwood-home-products.imgix.net/Brentwood_Home_-_Foundation_Web_-1.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
             {% when "crystal-cove-mattress" %}
             <img src="https://brentwood-home-products.imgix.net/Brentwood_Home_-_Foundation_Web_-1.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
@@ -84,4 +102,28 @@
             </div>
         </div>
     </div>
+{% endif %}
+
+{% if product.tags contains "bundle-adjustable" %}
+<label class="selectLabel bundle">Add an Adjustable Base & save</label>
+<div class="addonmodule clearfix">
+    <div class="column input">
+        <div class="squaredOne">
+            <input type="checkbox" value="none" id="adjustable-bundle" name="adjustable-bundle" />
+            <label for="adjustable-bundle"></label>
+        </div>
+    </div>
+    <div class="column img">
+        <img src="https://brentwood-home-products.imgix.net/2E4A4243.jpg?rect=658,850,1592,1066&ch=Width,DPR&w=115&dpr=1&fit=clip" alt=">Add Adjustable Base & save">
+    </div>
+    <div class="column copy">
+        <p class="text-left hidden-xs">
+            Customize your sleep positions for your upper and lower body, delivering truly personalized comfort. Tool-less assembly.
+        </p>
+        <p class="text-left visible-xs-block">
+            Customize your sleep positions, delivering truly personalized comfort. Tool-less assembly.
+        </p>
+        <p class="text-center"><strong id="adjustable-bundle-price"></strong></p>
+    </div>
+</div>
 {% endif %}
