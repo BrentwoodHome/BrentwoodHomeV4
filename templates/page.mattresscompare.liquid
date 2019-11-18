@@ -41,7 +41,7 @@
 {% endfor %}
 
 {% for variant in cypress.variants %}
-{% if variant.title == "Twin / Classic 11-inch / All Foam" %}
+{% if variant.title == "Twin - Classic 11" Height / All-Foam" %}
 {% assign cypressPrice = variant.price %}
 {% endif %}
 {% endfor %}
@@ -310,6 +310,7 @@
                                 <img src="https://brentwood-home-products.imgix.net/2E4A2695.jpg?w=480&fit=crop&auto=format&q=75" alt="Cypress">
                             </picture>
                         </a>
+                        <br>
                         <div class="paddingwrap">
                             <div class="yotpo bottomLine"
                                  data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
@@ -319,9 +320,9 @@
                                  data-name="{{ cypress.title | escape }}"
                                  data-url="{{ shop.url }}{{ cypress.url }}">
                             </div>
-                            <p><a href="{{cypress.url}}" class="cta2 solid text-center marg0">From {{cypressPrice | money }}</a></p>
+                            <p><a href="{{cypress.url}}" class="cta2 solid text-center marg0">From $399</a></p>
                             <div class="affirm">
-                                <p id="learn-more" class="affirm-as-low-as" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{cypressPrice}}"> <a class="affirm-site-modal" data-promo-id="promo_set_pdp_12_standard">Learn more</a></p>
+                                <p id="learn-more" class="affirm-as-low-as" data-promo-id="promo_set_brentwood_zero_percent" data-amount="39900"> <a class="affirm-site-modal" data-promo-id="promo_set_pdp_12_standard">Learn more</a></p>
                             </div>
                             <ul class="featList text-left">
                                 <li class="ico feel">11 or 13" Comfort</li>
