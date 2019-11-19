@@ -1,3 +1,4 @@
+{% include 'nowtime' %}
 <div class="container-fluid" id="product">
     <div itemscope itemtype="http://schema.org/Product" class="product">
         <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
@@ -16,6 +17,11 @@
                                                <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-0 col-lg-5 product-shop">
 
               <div>
+                  {% if sale %}
+                  <div class="sale-badge testA">
+                      <p>{{ sale }}</p>
+                  </div>
+                  {% endif %}
                   <header class="product-title {% if collection.previous_product or collection.next_product and settings.display_prev_next_product and collection %}has-btn{% endif %}">
                       <h1 {% if settings.display_prev_next_product and collection and multi_prd %}class="pull-left"{%endif%} itemprop="name">{{ product.title }}</h1>
                       
@@ -40,6 +46,11 @@
                        data-name="{{ product.title | escape }}"
                        data-url="{{ product.url }}">
                   </div>
+                  {% if sale %}
+                  <div class="sale-badge control">
+                      <p>{{ sale }}</p>
+                  </div>
+                  {% endif %}
                   {% if settings.display_product_reviews %}
                   <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
                   {% endif %}
