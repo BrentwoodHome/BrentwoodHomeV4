@@ -18,8 +18,10 @@
 
               <div>
                   {% if sale %}
-                  <div class="sale-badge testA">
-                      <p>{{ sale }}</p>
+                  <div class="sale-badge-wrap">
+                     <div class="sale-badge testA">
+                          <p>{{ sale }}</p>
+                      </div>
                   </div>
                   {% endif %}
                   <header class="product-title {% if collection.previous_product or collection.next_product and settings.display_prev_next_product and collection %}has-btn{% endif %}">
@@ -47,8 +49,10 @@
                        data-url="{{ product.url }}">
                   </div>
                   {% if sale %}
-                  <div class="sale-badge control">
+                  <div class="sale-badge-wrap">
+                     <div class="sale-badge control">
                       <p>{{ sale }}</p>
+                      </div>
                   </div>
                   {% endif %}
                   {% if settings.display_product_reviews %}
