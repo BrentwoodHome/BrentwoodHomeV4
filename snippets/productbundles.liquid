@@ -1,10 +1,9 @@
 {% assign producthandle = product.handle %}
-
 <script>
   var allFoundationVariants = {{ all_products['foundation'].variants | json }};
   var allAdjustableVariants = {{ all_products['adjustable-bed-frame'].variants | json }};
   var variantPillowBundle = [];//create empty pillow array to prevent errors when a mattress doesn't offer pillow bundle
-
+    var sale = true;
   // Easy Foundation Bundle
 {% case producthandle %}
   {% when "cedar-natural-luxe-mattress" %}
@@ -257,50 +256,62 @@
            {//Twin
                id: 18582182297662,
                price: 22500,
+               sale: 22000
            },
            {//Twin
                id: 18582182297662,
                price: 22500,
+               sale: 22000
            },
            {//Twin XL
                id: 18582182330430,
                price: 25000,
+               sale: 24500
            },
            {//Twin XL
                id: 18582182330430,
                price: 25000,
+               sale: 24500
            },
            {//Full
                id: 18582182363198,
-               price: 25000
+               price: 25000,
+               sale: 24500
            },
            {//Full
                id: 18582182363198,
-               price: 25000
+               price: 25000,
+               sale: 24500
            },
            {//Queen
                id: 18582182395966,
                price: 27500,
+               sale: 27000
            },
            {//Queen
                id: 18582182395966,
                price: 27500,
+               sale: 27000
            },
            {//King
                id: 18582182428734,
                price: 35000,
+               sale: 34500
            },
            {//King
                id: 18582182428734,
                price: 35000,
+               sale: 34500
            },
            {//CalKing
                id: 18582182461502,
-               price: 35000
+               price: 35000,
+               sale: 34500
            },
            {//CalKing
                id: 18582182461502,
-               price: 35000
+               price: 35000,
+               sale: 34500
            }
        ];
 
@@ -308,18 +319,22 @@
             {//Twin 
                 id: 4329013608510,
                 price: 59900,
+                sale: 59400,
             },
             {//Twin 
                 id: 4329013608510,
                 price: 59900,
+                sale: 59400,
             },
             {//Twin XL
                 id: 4329013608510,
                 price: 59900,
+                sale: 59400,
             },
             {//Twin XL
                 id: 4329013608510,
                 price: 59900,
+                sale: 59400,
             },
             {//Full
                 id: 0,
@@ -332,26 +347,32 @@
             {//Queen
                 id: 4329013608510,
                 price: 79900,
+                sale: 79400,
             },
             {//Queen
                 id: 4329013608510,
                 price: 79900,
+                sale: 79400,
             },
             {//King
                 id: 4329013608510,
                 price: 129800,
+                sale: 129300,
             },
             {//King
                 id: 4329013608510,
                 price: 129800,
+                sale: 129300,
             },
             {//CalKing
                 id: 4329013608510,
-                price: 129800
+                price: 129800,
+                sale: 129300,
             },
             {//CalKing
                 id: 4329013608510,
-                price: 129800
+                price: 129800,
+                sale: 129300,
             }
         ];
       {% else %}
@@ -453,6 +474,11 @@
                    //console.log("clicked adjustable");
                    if (jQuery('#adjustable-bundle').prop('checked') && variantAdjustableBundle[sizeIndex]) {
                        totalPrice += variantAdjustableBundle[sizeIndex].price
+                       /*if(sale){
+                           totalPrice += variantAdjustableBundle[sizeIndex].price - (variantAdjustableBundle[sizeIndex].price - variantAdjustableBundle[sizeIndex].sale)
+                        }else{
+                            totalPrice += variantAdjustableBundle[sizeIndex].price
+                        }*/
                    }
                }
 

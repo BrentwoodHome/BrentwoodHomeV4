@@ -14,18 +14,17 @@ Tobe used for banners/tickers ect...
 {% assign rightnow = 'now' | date: '%Y%m%d%H%M' %}
 {% assign rightnowint = rightnow | times: 1 %}
 
-{% assign currentPromoEnd = 201910290000 %}
-{% assign newPromoEnd = 201911190000 %}
-{% assign extensionStart = 201911190001 %}
+{% assign currentPromoEnd = 201911182359 %}
+{% assign newPromoEnd = 201912100000 %}
+{% assign extensionStart = 201912100001 %}
 
 
 
 <!-- EYEBROW -->
-{% assign eyebrowCurrent = "Fall Sale! Up to $200 off mattresses, 20% off yoga & pets collections" %}
-{% assign eyebrowCurrentMobile = "Sale! Up to $200 off mattresses & more" %}
-{% assign eyebrowNew = "Veteran's Day Sale! Up to $200 off mattresses, 20% off yoga & pets collections" %}
-{% assign eyebrowNewMobile = "Veteran's Day Sale! Save on mattresses & more" %}
-{% assign mobile_sale_name = "Fall Sale" %}
+{% assign eyebrowCurrent = "Veteran's Day Sale! Up to $200 off mattresses, 20% off yoga & pets collections" %}
+{% assign eyebrowCurrentMobile = "Veteran's Day Sale! Save on mattresses & more" %}
+{% assign eyebrowNew = "Cyber Sale! See all our deals on mattresses, bedding & more" %}
+{% assign eyebrowNewMobile = "Cyber Sale! See all our deals" %}
 
 <!-- MODAL -->
 
@@ -33,14 +32,15 @@ Tobe used for banners/tickers ect...
 <!-- SALE PAGE variable for extending promo. 'enddate' var displayed in mobile nav and sale page. -->
 {% if rightnowint > extensionStart %}
     {% comment %} Shows extended end sale date {% endcomment%}
-    {% assign enddate = "Ends November 21" %}
+    {% assign enddate = "Ends December 21" %}
+    {% assign mobile_sale_name = "Cyber Sale" %}
 {% elsif rightnowint < currentPromoEnd %}
     {% comment %} Shows the correct end date when still in current promo range (currentPromoEnd){% endcomment%}
-    {% assign enddate = "Ends October 28" %}
-    {% assign mobile_sale_name = "Fall Sale" %}
+    {% assign enddate = "November 18" %}
+    {% assign mobile_sale_name = "Veteran's Day Sale" %}
 {% else %}
     {% comment %} Shows end date for new promo (newPromoEnd){% endcomment%}
-    {% assign enddate = "Ends November 18" %}
-    {% assign mobile_sale_name = "Veteran's Day Sale" %}
+    {% assign enddate = "Ends December 9" %}
+    {% assign mobile_sale_name = "Cyber Sale" %}
 {% endif %}
 

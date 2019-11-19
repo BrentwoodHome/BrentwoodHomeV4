@@ -190,42 +190,135 @@
         <h2 class="text-center">Product Specifications</h2>
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
+                <div class="panel-heading" role="tab" id="headingZero">
                     <h4 class="panel-title">
-                        <a role="button" class="icons materials" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Materials & Certifications
+                        <a role="button" class="icons materials" data-toggle="collapse" href="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
+                            Materials
                         </a>
                     </h4>
                 </div>
-                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div id="collapseZero" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingZero">
                     <div class="panel-body">
                         <div id="materialsspecs"></div>
                         {{ metaf.details_materials }}
-                        
-                        <p class="text-center" id="certification-specs">
-                            {% for tag in product.tags %}
-                                {% case tag %}
-                                    {% when 'GreenGuard' %}
-                                        <img src="{{ 'logo-greenguard-2.svg' | asset_url}}" alt="GreenGuard Certified" style="max-width: 100px;">
-                                    {% when 'GOTS' %}
-                                        <img src="{{ 'gots-logo.png' | asset_url}}" alt="GOTS" style="max-width: 100px;">
-                                    {% when 'GOTSorg' %}
-                                        <img src="{{ 'logo-gotsorg-cu861640.png' | asset_url}}" alt="GOTS" style="max-width: 75px;">
-                                    {% when 'GOLS' %}
-                                        <img src="{{ 'gols-logo.png' | asset_url}}" alt="GOLS" style="max-width: 100px;">
-                                    {% when 'ecoinstitute' %}
-                                        <img src="{{ 'logo-eco-institut.png' | asset_url}}" alt="eco-Institut" style="max-width: 100px;">
-                                    {% when 'Oeko' %}
-                                        <img src="{{ 'oeko-tex-logo-hin.png' | asset_url}}" alt="Oeko-Tex Standard" style="max-width: 190px;">
-                                    {% when 'CertiPUR-US Certified' %}
-                                        <img src="{{ 'certipur-badge.png' | asset_url}}" alt="CertiPUR-US Certified" style="max-width: 100px;">
-                                    {% when 'vegan' %}
-                                        <img src="{{ 'veganlogo.svg' | asset_url}}" alt="100% Vegan" style="max-width: 100px;">
-                                    {% when 'MADESAFE' %}
-                                        <img src="{{ 'logo-madesafe-square-newblu.png' | asset_url}}" alt="Made Safe" style="max-width: 100px;">
-                                {% endcase %}
-                            {% endfor %}
-                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a role="button" class="icons certifications" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Certifications
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        <p class="text-center"><strong>The {{product.title}} has the following certifications:</strong></p><br>
+                        {% for tag in product.tags %}
+                            {% case tag %}
+                                {% when 'GreenGuard' %}
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-2">
+                                        <p class="text-center"><img src="{{ 'logo-greenguard-2.svg' | asset_url}}" alt="GreenGuard Certified" style="max-width: 100px;"></p>
+                                    </div>
+                                    <div class="col-xs-12 col-md-10">
+                                        <p><strong>GreenGuard Gold</strong></p>
+                                        <p>The {{product.title}} is completely GREENGUARD Gold Certified by UL Environment. That means it was scientifically tested in environmental chambers to meet some of the world’s most rigorous, third-party emissions standards for prolonged chemical exposure and pollutants, such as volatile organic compounds (VOCs), formaldehyde, and phthalates. </p>
+                                    </div>
+                                </div>
+                                
+                                {% when 'Oeko' %}
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-2">
+                                            <p class="text-center"><img src="{{ 'oeko-tex-logo-hin.png' | asset_url}}" alt="Oeko-Tex Standard" style="max-width: 100px;"></p>
+                                        </div>
+                                        <div class="col-xs-12 col-md-10">
+                                            <p><strong>STANDARD 100 by OEKO-TEX®</strong></p>
+                                            <p>The wool on the panel fabric of the {{product.title}} is STANDARD 100 by OEKO-TEX® certified (19.HIN.68466, Hohenstein HTTI), which is one of the world's best-known labels for textiles tested for harmful substances. 
+                                            </p>
+                                        </div>
+                                    </div>
+                                {% when 'CertiPUR-US Certified' %}
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-2">
+                                            <p class="text-center"><img src="{{ 'certipur-badge.png' | asset_url}}" alt="CertiPUR-US Certified" style="max-width: 100px;"></p>
+                                        </div>
+                                        <div class="col-xs-12 col-md-10">
+                                            <p><strong>CertiPUR-US®</strong></p>
+                                            <p>The {{product.title}} has passed the strict regulations of CertiPUR-US®. That means you can be confident that our polyurethane foam meets CertiPUR-US® standards for content, emissions, and durability, and has been analyzed by independent, accredited testing laboratories. 
+                                            </p>
+                                        </div>
+                                    </div>
+                                {% when 'vegan' %}
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-2">
+                                            <p class="text-center"><img src="{{ 'veganlogo.svg' | asset_url}}" alt="100% Vegan" style="max-width: 100px;"></p>
+                                        </div>
+                                        <div class="col-xs-12 col-md-10">
+                                            <p><strong>100% Certified Vegan by Vegan Action</strong></p>
+                                            <p>The {{product.title}} are 100% Certified Vegan by Vegan Action. This means the products are free from animal products (like feathers, wool and down) or byproducts that have been tested on animals. In addition, although we do manufacture some items that do use natural animal products like wool, we have stringent requirements in place for cleaning the machines in-between use, so cross-contamination will not occur. If you practice a vegan lifestyle, you can rest assured that your {{product.title}} are aligned with your values.
+                                            </p>
+                                        </div>
+                                    </div>
+                                {% when 'MADESAFE' %}
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-2">
+                                            <p class="text-center"><img src="{{ 'logo-madesafe-square-newblu.png' | asset_url}}" alt="Made Safe" style="max-width: 100px;"></p>
+                                        </div>
+                                        <div class="col-xs-12 col-md-10">
+                                            <p><strong>MADE SAFE® Non-Toxic Certified™</strong></p>
+                                            <p>Our {{product.title}} are MADE SAFE® Non-Toxic Certified™ — a rigorous screening process for toxicity. It screens for all known and suspected harmful substances. Unlike other certifications, it does not set acceptable levels of toxicity. Instead, it prohibits ALL use of harmful substances meaning that a product is made with safe ingredients, without toxic chemicals known to harm our health.
+                                            </p>
+                                        </div>
+                                    </div>
+                                {% when 'GOTS' %}
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-2">
+                                            <p class="text-center"><img src="{{ 'gots-logo.png' | asset_url}}" alt="GOTS" style="max-width: 100px;"></p>
+                                        </div>
+                                        <div class="col-xs-12 col-md-10">
+                                            <p><strong>GOTS Organic Certified</strong></p>
+                                            <p>Free from harmful chemicals, our organic cotton and organic wool are certified to the Global Organic Textile Standard (GOTS). These renewable and sustainable resources are independently verified, and always ethically and responsibly sourced. They’re better for you as well as the people that grow it. We’re proud to use GOTS organic certified materials, and operate our own GOTS certified factory in Los Angeles.
+                                            </p>
+                                        </div>
+                                    </div>
+                                {% when 'GOTSorg' %}
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-2">
+                                            <p class="text-center"><img src="{{ 'logo-gotsorg-cu861640.png' | asset_url}}" alt="GOTS" style="max-width: 75px;"></p>
+                                        </div>
+                                        <div class="col-xs-12 col-md-10">
+                                            <p><strong>GOTS Organic Certified</strong></p>
+                                            <p>Free from harmful chemicals, our organic cotton and organic wool are certified to the Global Organic Textile Standard (GOTS). These renewable and sustainable resources are independently verified, and always ethically and responsibly sourced. They’re better for you as well as the people that grow it. We’re proud to use GOTS organic certified materials, and operate our own GOTS certified factory in Los Angeles.
+                                            </p>
+                                        </div>
+                                    </div>
+                                {% when 'GOLS' %}
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-2">
+                                            <p class="text-center"><img src="{{ 'gols-logo.png' | asset_url}}" alt="GOLS" style="max-width: 100px;"></p>
+                                        </div>
+                                        <div class="col-xs-12 col-md-10">
+                                            <p><strong>GOLS Organic Certified</strong></p>
+                                            <p>Our {{product.title}} uses GOLS Organic Certified latex. The Global Organic Latex Standard (GOLS) ensures that products contain more than 95% of certified organic raw material based on total weight. The GOLS standard features permissible limits for harmful substances, emission test requirements and polymer and filler percentages. Our factory in Los Angeles is also a GOLS certified facility.
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                {% when 'ecoinstitute' %}
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-2">
+                                            <p class="text-center"><img src="{{ 'logo-eco-institut.png' | asset_url}}" alt="eco-Institut" style="max-width: 100px;"></p>
+                                        </div>
+                                        <div class="col-xs-12 col-md-10">
+                                            <p><strong>eco-INSTITUT Certified</strong></p>
+                                            <p>Based in Germany, the <a href="http://www.eco-institut.de/en/" target="_blank">eco-INSTITUT</a> is a label marking products that meet the strictest requirements for emissions and pollutants. The eco-INSTITUT label has been developed according to the latest standards defined by the organization. 
+                                            </p>
+                                        </div>
+                                    </div>
+                            {% endcase %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
