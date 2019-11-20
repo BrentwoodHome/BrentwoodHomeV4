@@ -6478,9 +6478,24 @@ div.sale-badge.testA{
         display: none !important;
     }*/
 }
-div.sale-badge.testB{
+div.sale-badge-wrap.testB{
     display: none;
+    //display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10000;
+    div.sale-badge{
+        border-radius: 0 0 0 10px;
+    }
 }
+/*div.sale-badge.testB{
+    display: none;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+}*/
 div.sale-badge{
     background-color: #38414f;
     /*background-color: lightslategray;*/

@@ -42,8 +42,15 @@ Tobe used for banners/tickers ect...
     {% assign mobile_sale_name = "Cyber Sale" %}
 {% endif %}
 
+{% comment %} SALE BADGE {% endcomment %}
 {% assign sale = false %}
 
+{% if product.type == "Pillow"%}
+{% assign sale = "Sale! Save 20% with code <strong>PILLOWS20</strong><span>*enter code at checkout</span>" %}
+{% endif %}
+{% if product.type == "Wedge Pillow" %}
+{% assign sale = "Sale! Save 20% with code <strong>PILLOWS20</strong><span>*enter code at checkout</span>" %}
+{% endif %}
 {% case product.handle %}
     {% when 'foundation' %}
                                       {% assign sale = "CYBER Sale! Save <strong>$50</strong><span>*no code needed</span>" %}
@@ -79,9 +86,3 @@ Tobe used for banners/tickers ect...
                                       {% assign sale = "Sale! Save 20% with code <strong>YOGA20</strong><span>*enter code at checkout</span>" %}
 {% endcase %}
 
-{% if product.type == "Pillow"%}
-                                      {% assign sale = "Sale! Save 20% with code <strong>PILLOWS20</strong><span>*enter code at checkout</span>" %}
-{% endif %}
-{% if product.type == "Wedge Pillow" %}
-                                      {% assign sale = "Sale! Save 20% with code <strong>PILLOWS20</strong><span>*enter code at checkout</span>" %}
-{% endif %}

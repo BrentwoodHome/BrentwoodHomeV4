@@ -15,6 +15,13 @@
                 {% assign imgName = featured_image | remove: 'products/' %}
                 <div class="col-xs-12 col-md-7 col-lg-7" id="product-image-main">
                     <section class="slider" style="position: relative;">
+                        {% if sale %}
+                        <div class="sale-badge-wrap testB">
+                            <div class="sale-badge">
+                                <p>{{ sale }}</p>
+                            </div>
+                        </div>
+                        {% endif %}
                         <!-- -->
                         <div id="flexPlaceholder">
                             <picture>
@@ -24,6 +31,7 @@
                             </picture>
                         </div>
                         <div class="flexslider">
+                            
                             <ul class="slides">
                                 {% for image in product.images %}
                                     {% assign videotag = image.alt | escape %}
