@@ -6478,17 +6478,8 @@ div.sale-badge.testA{
         display: none !important;
     }*/
 }
-div.sale-badge-wrap.testB{
-    display: none;
-    //display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 10000;
-    div.sale-badge{
-        border-radius: 0 0 0 10px;
-    }
-}
+
+
 /*div.sale-badge.testB{
     display: none;
     display: block;
@@ -6521,6 +6512,25 @@ div.sale-badge P SPAN{
     display: block;
     text-transform: lowercase;
 }
+div.sale-badge-wrap.testB{
+    display: none;
+    //display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10000;
+    div.sale-badge{
+        padding: 15px 20px 12px;
+        border-radius: 0 0 0 10px;
+        P{
+            font-size: 15px;
+            SPAN{
+                font-size: 11px;
+                padding-top: 3px;
+            }
+        }
+    }
+}
 @media(max-width:480px){
     div.sale-badge{
         padding: 10px 17px 8px;
@@ -6531,5 +6541,24 @@ div.sale-badge P SPAN{
     }
     div.sale-badge-wrap{
         text-align: center;
+    }
+    div.sale-badge{
+        margin-bottom: 0;
+    }
+    div.sale-badge.testA{
+        margin-top: 15px;
+    }
+    div.sale-badge-wrap.testB{
+        div.sale-badge{
+            padding: 10px 13px 9px;
+            P{
+                font-size: 12px;
+                text-align: right;
+                SPAN{
+                    font-size: 11px;
+                    padding-top: 3px;
+                }
+            }
+        }
     }
 }

@@ -46,7 +46,9 @@ Tobe used for banners/tickers ect...
 {% assign sale = false %}
 
 {% if product.type == "Pillow"%}
+{% unless product.title contains "Bundle"%}
 {% assign sale = "Sale! Save 20% with code <strong>PILLOWS20</strong><span>*enter code at checkout</span>" %}
+{% endunless %}
 {% endif %}
 {% if product.type == "Wedge Pillow" %}
 {% assign sale = "Sale! Save 20% with code <strong>PILLOWS20</strong><span>*enter code at checkout</span>" %}

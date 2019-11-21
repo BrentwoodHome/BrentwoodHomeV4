@@ -442,7 +442,6 @@ qt: 1<br>
            </div>
             <div class="col-md-offset-2 col-md-8">
                 {{product.description}}
-                {% include 'shippingtime' %}
             </div>
         </div>
     </div>
@@ -484,12 +483,11 @@ qt: 1<br>
 <br><br>
 
 
-{% if productTags contains "korea" %}
-{% else %}
+{% unless productTags contains "korea" %}
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <h2>REVIEWS</h2>
+            <h2 style="text-align: center;">Reviews</h2>
         </div>
         <div class="col-xs-12">
             <div class="yotpo yotpo-main-widget"
@@ -502,7 +500,7 @@ qt: 1<br>
         </div>
     </div>
 </div>
-{% endif %}
+{% endunless %}
 <script>
     jQuery('#myTab a').click(function (e) {
         e.preventDefault();
