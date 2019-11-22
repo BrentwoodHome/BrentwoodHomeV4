@@ -530,9 +530,126 @@
             </div>
         </div>
     
-        <p class="text-center margBLarge"><a href="#buysection" class="sscroll cta2">buy the mattress</a></p> 
-    
-    
+
+{% if product.handle == "cypress-memory-foam-mattress" %}
+    <!-- https://codepen.io/adrianjacob/pen/KdVLXY -->
+<div class="container section compare" style="margin-top: 45px;">
+    <h2 class="text-center">Compare to Nectar, Casper &amp; Purple</h2>
+    <article>
+        <ul>
+            <li class="bg-purple">
+                <button>Brentwood Home</button>
+            </li>
+            <li class="bg-blue">
+                <button>Nectar</button>
+            </li>
+            <li class="bg-blue active">
+                <button>Casper</button>
+            </li>
+            <li class="bg-blue">
+                <button>Purple</button>
+            </li>
+        </ul>  
+        <table>
+            <thead>
+                <tr>
+                    <th class="hide"></th>
+                    <th class="bg-bwh default"><strong style="text-transform: uppercase;color:#666;">Brentwood Home</strong><span>"Cypress Mattress"</span></th>
+                    <th class="bg-gray">Nectar</th>
+                    <th class="bg-gray">Casper<span>"The Casper Mattress"</span></th>
+                    <th class="bg-gray">Purple</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="price">
+                    <td>Price (Queen)</td>
+                    <td class="default"><span class="txt-top">&dollar;</span><span class="txt-l">599</span></td>
+                    <td><span class="txt-top">&dollar;</span><span class="txt-l">799</span></td>
+                    <td><span class="txt-top">&dollar;</span><span class="txt-l">995</span></td>
+                    <td><span class="txt-top">&dollar;</span><span class="txt-l">1,099</span></td>
+                </tr>
+                <tr class="price">
+                    <td>Price Hybrid (Queen)</td>
+                    <td class="default"><span class="txt-top">&dollar;</span><span class="txt-l">799</span></td>
+                    <td><span class="txt-l">-</span></td>
+                    <td><span class="txt-top">&dollar;</span><span class="txt-l">1,195</span></td>
+                    <td><span class="txt-top">&dollar;</span><span class="txt-l">1,599</span></td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="sep"><strong>Specifications</strong></td>
+                </tr>
+                <tr>
+                    <td>Charcoal Infused Memory Foam</td>
+                    <td class="default"><span class="tick">&#10004;</span></td>
+                    <td><span class="cross gray">&#x2717;</span></td>
+                    <td><span class="cross gray">&#x2717;</span></td>
+                    <td><span class="cross gray">&#x2717;</span></td>
+                </tr>
+                <tr>
+                    <td>Sleep Trial</td>
+                    <td class="default"><strong>1 Year</strong></td>
+                    <td>1 Year</td>
+                    <td>100 Nights</td>
+                    <td>100 Nights</td>
+                </tr>
+                <tr>
+                    <td>Warranty</td>
+                    <td class="default"><strong>25 Years</strong></td>
+                    <td>"Lifetime"</td>
+                    <td>10 Years</td>
+                    <td>10 Years</td>
+                </tr>
+                
+                <tr>
+                    <td>Made in the USA</td>
+                    <td class="default"><span class="tick">&#10004;</span></td>
+                    <td><span class="cross gray">&#x2717;</span></td>
+                    <td><span class="tick gray">&#10004;</span></td>
+                    <td><span class="tick gray">&#10004;</span></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><p class="text-center"><a href="#buysection" class="sscroll cta2" style="padding: 18px 20px;">buy now</a></p> </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </article>
+</div>
+    <script>
+        $( ".compare ul" ).on( "click", "li", function() {
+            //$( "ul" ).click(function() {
+            var pos = $(this).index()+2;
+            $("tr").find('td:not(:eq(0))').hide();
+            $('td:nth-child('+pos+')').css('display','table-cell');
+            $("tr").find('th:not(:eq(0))').hide();
+            $('li').removeClass('active');
+            $(this).addClass('active');
+        });
+
+        // Initialize the media query
+        var mediaQuery = window.matchMedia('(min-width: 640px)');
+
+        // Add a listen event
+        mediaQuery.addListener(doSomething);
+
+        // Function to do something with the media query
+        function doSomething(mediaQuery) {    
+            if (mediaQuery.matches) {
+                $('.sep').attr('colspan',5);
+            } else {
+                $('.sep').attr('colspan',2);
+            }
+        }
+
+        // On load
+        doSomething(mediaQuery);
+    </script>
+{% else %}
+    <p class="text-center margBLarge"><a href="#buysection" class="sscroll cta2">buy the mattress</a></p> 
+{% endif %}
         <div class="container section">
             <div class="row flex">
                 <div class="col-xs-12 col-sm-6 text-center {% if isLastSectionLeft == false %}col-sm-push-6{% endif %} wow fadeInLeft">

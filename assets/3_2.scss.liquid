@@ -941,3 +941,129 @@ DIV.inside {
         margin-left: 15px;
     }
 }
+
+/****** COMPARE TABLES ******/
+DIV.section.compare{
+    article {
+        width:100%;
+        max-width:1000px;
+        margin:0 auto;
+        //height:1000px;
+        position:relative;
+    }
+    ul {
+        display:flex;
+        top:0px;
+        z-index:10;
+        padding-bottom:14px;
+    }
+    li {
+        list-style:none;
+        flex:1;
+    }
+    li:last-child {
+        border-right:1px solid #DDD;
+    }
+    button {
+        width:100%;
+        border: 1px solid #DDD;
+        border-right:0;
+        border-top:0;
+        padding: 10px;
+        background:#FFF;
+        font-size:14px;
+        font-weight:bold;
+        height:60px;
+        color:#999
+    }
+    li.active button {
+        background:#F5F5F5;
+        color:#000;
+    }
+    table { border-collapse:collapse; table-layout:fixed; width:100%; }
+    th { background:#F5F5F5; display:none; }
+    td, th {
+        height:53px
+    }
+    td,th { border:1px solid #DDD; padding:10px; empty-cells:show; }
+    td,th {
+        text-align:left;
+    }
+    td+td, th+th {
+        text-align:center;
+        display:none;
+    }
+    th+th {
+        color: #666;
+        SPAN{
+            display: block;
+            text-transform: capitalize;
+            line-height: 10px;
+        }
+    }
+    td.default {
+        display:table-cell;
+    }
+    .bg-bwh {
+        border-top:3px solid #38414f;
+    }
+    .bg-gray {
+        border-top:3px solid #aaa;
+    }
+    .sep {
+        background:#F5F5F5;
+        font-weight:bold;
+    }
+    .txt-l { font-size:28px; font-weight:bold; }
+    .txt-top { position:relative; top:-9px; left:-2px; }
+    .tick { 
+        font-size:22px; 
+        color:#2CA01C; 
+        display: inline-block;
+        background-color: white;
+        border-radius: 170px;
+        padding: 5px 10px;
+    }
+    .cross { 
+        color: #666 !important;
+        font-size: 26px;
+    }
+    .hide {
+        border:0;
+        background:none;
+    }
+    td.default{
+        background-color: antiquewhite;
+        color: #2ca01c;
+        font-weight: bold;
+        STRONG{
+            color: #2ca01c;
+        }
+    }
+    tr.price td.default{
+        SPAN{
+            color: $blue;
+        }
+    }
+    .gray{
+        color: #666 !important;
+    }
+}
+
+@media (min-width: 640px) {
+    DIV.section.compare{
+        ul {
+            display:none;
+        }
+        td,th {
+            display:table-cell !important;
+        }
+        td,th {
+            width: 330px;
+
+        }
+        td+td, th+th {
+            width: auto;
+        }
+    }
+}
