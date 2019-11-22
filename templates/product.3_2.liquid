@@ -533,7 +533,7 @@
 
 {% if product.handle == "cypress-memory-foam-mattress" %}
     <!-- https://codepen.io/adrianjacob/pen/KdVLXY -->
-<div class="container section compare" style="margin-top: 45px;">
+<div class="container section compare" style="margin-top: 75px;margin-bottom: 75px;">
     <h2 class="text-center">Compare to Nectar, Casper &amp; Purple</h2>
     <article>
         <ul>
@@ -618,35 +618,35 @@
         </table>
     </article>
 </div>
-    <script>
-        $( ".compare ul" ).on( "click", "li", function() {
-            //$( "ul" ).click(function() {
-            var pos = $(this).index()+2;
-            $("tr").find('td:not(:eq(0))').hide();
-            $('td:nth-child('+pos+')').css('display','table-cell');
-            $("tr").find('th:not(:eq(0))').hide();
-            $('li').removeClass('active');
-            $(this).addClass('active');
-        });
+<script>
+    $( ".compare ul" ).on( "click", "li", function() {
+        //$( "ul" ).click(function() {
+        var pos = $(this).index()+2;
+        $("tr").find('td:not(:eq(0))').hide();
+        $('td:nth-child('+pos+')').css('display','table-cell');
+        $("tr").find('th:not(:eq(0))').hide();
+        $('li').removeClass('active');
+        $(this).addClass('active');
+    });
 
-        // Initialize the media query
-        var mediaQuery = window.matchMedia('(min-width: 640px)');
+    // Initialize the media query
+    var mediaQuery = window.matchMedia('(min-width: 640px)');
 
-        // Add a listen event
-        mediaQuery.addListener(doSomething);
+    // Add a listen event
+    mediaQuery.addListener(doSomething);
 
-        // Function to do something with the media query
-        function doSomething(mediaQuery) {    
-            if (mediaQuery.matches) {
-                $('.sep').attr('colspan',5);
-            } else {
-                $('.sep').attr('colspan',2);
-            }
+    // Function to do something with the media query
+    function doSomething(mediaQuery) {    
+        if (mediaQuery.matches) {
+            $('.sep').attr('colspan',5);
+        } else {
+            $('.sep').attr('colspan',2);
         }
+    }
 
-        // On load
-        doSomething(mediaQuery);
-    </script>
+    // On load
+    doSomething(mediaQuery);
+</script>
 {% else %}
     <p class="text-center margBLarge"><a href="#buysection" class="sscroll cta2">buy the mattress</a></p> 
 {% endif %}
