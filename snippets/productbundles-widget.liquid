@@ -127,3 +127,129 @@
     </div>
 </div>
 {% endif %}
+
+{% if product.tags contains "bundle-adj-found" %}
+<label for="product-selectors" class="selectLabel">Bundle & Save</label>
+<div class="clearfix">
+    <div class="addonmodule clearfix double left">
+        <!--<p class="text-center"><a href="#" data-toggle="modal" data-target="#foundationmodal">Add a Foundation <em class="glyphicon glyphicon-question-sign"></em></a></p>-->
+        <p class="text-center"><strong>Add a Foundation</strong></p>
+        <div class="column input">
+            <div class="squaredOne">
+                <input type="checkbox" value="none" id="foundation" name="foundation" />
+                <label for="foundation"></label>
+            </div>
+        </div>
+        <div class="column img">
+            {% case producthandle %}
+                {% when "cedar-natural-luxe-mattress" %}
+            <img src="https://brentwood-home-products.imgix.net/marlo-00002.jpg?ch=Width,DPR&w=165&dpr=1&fit=clip" alt="Include a foundation">
+                {% when "cypress-bamboo-gel-mattress" %}
+            <img src="https://brentwood-home-products.imgix.net/marlo-00002.jpg?ch=Width,DPR&w=165&dpr=1&fit=clip" alt="Include a foundation">
+                {% when "oceano-mattress" %}
+            <img src="https://brentwood-home-products.imgix.net/hershel-01.jpg?ch=Width,DPR&w=165&dpr=1&fit=clip" alt="Include a foundation">
+                {% when "cypress-memory-foam-mattress" %}
+            <img src="https://brentwood-home-products.imgix.net/Brentwood_Home_-_Foundation_Web_-1.jpg?ch=Width,DPR&w=165&dpr=1&fit=clip" alt="Include a foundation">
+                {% when "crystal-cove-mattress" %}
+            <img src="https://brentwood-home-products.imgix.net/Brentwood_Home_-_Foundation_Web_-1.jpg?ch=Width,DPR&w=165&dpr=1&fit=clip" alt="Include a foundation">
+                {% else %}
+                <img src="https://brentwood-home-products.imgix.net/Brentwood_Home_-_Foundation_Web_-1.jpg?ch=Width,DPR&w=165&dpr=1&fit=clip" alt="Include a foundation">
+            {% endcase %}
+        </div>
+        <div class="column copy">
+            <p class="text-left">
+                Minimalist design, tool-free assembly.
+                <strong>Limited time: Bundle and save $50</strong>
+            </p>
+            <p class="text-center"><strong id="easy-foundation-price"> <span style="text-decoration: line-through"></span></strong></p>
+        </div>
+    </div>
+
+    <div class="addonmodule clearfix double right">
+        <!--<p class="text-center"><a href="#" data-toggle="modal" data-target="#adjustablemodal">Add an Adjustable <em class="glyphicon glyphicon-question-sign"></em></a></p>-->
+        <p class="text-center"><strong>Add an Adjustable</strong></p>
+        <div class="column input">
+            <div class="squaredOne">
+                <input type="checkbox" value="none" id="adjustable-bundle" name="adjustable-bundle" />
+                <label for="adjustable-bundle"></label>
+            </div>
+        </div>
+        <div class="column img">
+            <img src="https://brentwood-home-products.imgix.net/2E4A4243.jpg?rect=658,850,1592,1066&ch=Width,DPR&w=165&dpr=1&fit=clip" alt=">Add Adjustable Base & save">
+        </div>
+        <div class="column copy">
+            <p class="text-left">
+                Customize your sleep positions. <strong>Limited time: Bundle and save $50</strong>
+            </p>
+            <p class="text-center"><strong id="adjustable-bundle-price"> <span style="text-decoration: line-through"></span></strong></p>
+        </div>
+    </div>
+</div>
+
+
+<!--MODAL-->
+<div class="modal fade" id="foundationmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">The Easy Foundation</h4>
+            </div>
+            <div class="modal-body">
+                <div class="column img">
+                    {% case producthandle %}
+                    {% when "cedar-natural-luxe-mattress" %}
+                    <img src="https://brentwood-home-products.imgix.net/marlo-00002.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+                    {% when "oceano-mattress" %}
+                    <img src="https://brentwood-home-products.imgix.net/hershel-01.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+                    {% when "cypress-memory-foam-mattress" %}
+                    <img src="https://brentwood-home-products.imgix.net/Brentwood_Home_-_Foundation_Web_-1.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+                    {% when "crystal-cove-mattress" %}
+                    <img src="https://brentwood-home-products.imgix.net/Brentwood_Home_-_Foundation_Web_-1.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+                    {% else %}
+                    <img src="https://brentwood-home-products.imgix.net/Brentwood_Home_-_Foundation_Web_-1.jpg?ch=Width,DPR&w=165&dpr=1&fit=clip" alt="Include a foundation">
+                    {% endcase %}
+                </div>
+                <div class="column copy">
+                    <p class="text-left">
+                        Minimalist design, high-grade wood frame, tool-free assembly.
+                        <strong>Limited time offer: Bundle and save $50 in cart</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="adjustablemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">The Easy Foundation</h4>
+            </div>
+            <div class="modal-body">
+                <div class="column img">
+                    {% case producthandle %}
+                    {% when "cedar-natural-luxe-mattress" %}
+                    <img src="https://brentwood-home-products.imgix.net/marlo-00002.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+                    {% when "oceano-mattress" %}
+                    <img src="https://brentwood-home-products.imgix.net/hershel-01.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+                    {% when "cypress-memory-foam-mattress" %}
+                    <img src="https://brentwood-home-products.imgix.net/Brentwood_Home_-_Foundation_Web_-1.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+                    {% when "crystal-cove-mattress" %}
+                    <img src="https://brentwood-home-products.imgix.net/Brentwood_Home_-_Foundation_Web_-1.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+                    {% else %}
+                    <img src="https://brentwood-home-products.imgix.net/Brentwood_Home_-_Foundation_Web_-1.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Include a foundation">
+                    {% endcase %}
+                </div>
+                <div class="column copy">
+                    <p class="text-left">
+                        Minimalist design, high-grade wood frame, tool-free assembly.
+                        <strong>Limited time offer: Save $50</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

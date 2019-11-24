@@ -237,6 +237,19 @@ P.h3.subs{
         padding: 0 15px 0 20px;
         width: 95px;
     }
+    div.addonmodule.double{
+        width: 45%;
+        &.left{
+            float: left;
+        }
+        &.right{
+            float: right;
+        }
+        .column.img{
+            padding-bottom: 15px;
+            width: 165px;
+        }
+    }
     DIV.cta-module {
         margin: 20px 0 10px 0;
     }
@@ -272,6 +285,36 @@ P.h3.subs{
             padding: 0px 18px 0 0;
         }
     }
+    @media (max-width: 480px){
+        div.addonmodule.double{
+            width: 100%;
+            &.left{
+                float: none;
+            }
+            &.right{
+                float: none;
+            }
+            .column.img{
+                padding-bottom: 15px;
+                width: 165px;
+            }
+        }
+    }
+    @media (max-width: 1024px)and (min-width: 991px){
+        div.addonmodule.double{
+            width: 100%;
+            &.left{
+                float: none;
+            }
+            &.right{
+                float: none;
+            }
+            .column.img{
+                padding-bottom: 15px;
+                width: 165px;
+            }
+        }
+    }
     @media (max-width: 1199px) and (min-width: 768px){
         .site-nav > li > a{
             padding: 20px 12px;
@@ -297,8 +340,34 @@ P.h3.subs{
             text-align: left;
             font-size: 32px !important;
         }
+        div.addonmodule.double{
+            .column.img{
+                width: 115px;
+            }
+        }
     }
-    
+    @media (max-width: 1024px)and (min-width: 991px){
+        div.addonmodule.double{
+            width: 100%;
+            &.left{
+                float: none;
+            }
+            &.right{
+                float: none;
+            }
+            .column.img{
+                padding-bottom: 15px;
+                width: 165px;
+            }
+        }
+    }
+    @media (max-width: 1480px) and (min-width: 1200px){
+        div.addonmodule.double{
+            .column.img{
+                width: 125px;
+            }
+        }
+    }
     H2{
         font-style: normal;
         font-size: 32px;
