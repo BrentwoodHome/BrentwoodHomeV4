@@ -315,8 +315,13 @@
                     <p>Free Shipping<br>Free Return</p>
                 </div>
                 <div class="col-xs-3 col-md-2">
+                    {% if product.handle == "adjustable-bed-frame" %}
+                    <img src="https://brentwood-home-2.imgix.net/iconv2-20yearwarranty.svg" alt="20-year Warranty">
+                    <p>20-year<br>Warranty</p>
+                    {% else %}
                     <img src="https://brentwood-home-2.imgix.net/iconv2-10yearwarranty.svg" alt="10-year Warranty">
                     <p>10-year<br>Warranty</p>
+                    {% endif %}
                 </div>
                 <div class="col-xs-3 col-md-2">
                     <img src="https://brentwood-home.imgix.net/iconv2-0percent.svg" alt="0% Financing Available">
