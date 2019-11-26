@@ -537,16 +537,16 @@
     <h2 class="text-center">Compare to Nectar, Casper &amp; Purple</h2>
     <article>
         <ul>
-            <li class="bg-purple">
+            <li class="bg-bwh active">
                 <button>Brentwood Home</button>
             </li>
-            <li class="bg-blue">
+            <li class="bg-gray">
                 <button>Nectar</button>
             </li>
-            <li class="bg-blue active">
+            <li class="bg-gray">
                 <button>Casper</button>
             </li>
-            <li class="bg-blue">
+            <li class="bg-gray">
                 <button>Purple</button>
             </li>
         </ul>  
@@ -609,7 +609,7 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><p class="text-center"><a href="#buysection" class="sscroll cta2" style="padding: 18px 20px;">buy now</a></p> </td>
+                    <td class="default"><p class="text-center"><a href="#buysection" class="sscroll cta2" style="padding: 18px 20px;">buy now</a></p> </td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -621,11 +621,10 @@
 </div>
 <script>
     $( ".compare ul" ).on( "click", "li", function() {
-        //$( "ul" ).click(function() {
         var pos = $(this).index()+2;
-        $("tr").find('td:not(:eq(0))').hide();
+        $("tr").find("td").hide();
+        $("tr").find("td:first").show();
         $('td:nth-child('+pos+')').css('display','table-cell');
-        $("tr").find('th:not(:eq(0))').hide();
         $('li').removeClass('active');
         $(this).addClass('active');
     });

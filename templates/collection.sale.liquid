@@ -1,0 +1,213 @@
+{% assign productTags = product.tags | join:',' %}
+{% assign delayTime = 200 | times : forloop.index %}
+    
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12 col-main">
+        <div class="collection-list {{collection.handle}}-color">
+            <div class="row">
+                <div class="col-xs-12 col-md-8">
+                    <img src="{{ collection.image.src | collection_img_url: 'master'}}" class="img-responsive" alt="">
+                </div>
+                <div class="col-xs-12 col-md-4 text-center">
+                    <div class="flexVCenter collections-block-padding" style="background-color: black;color: white;">
+                        <div>
+                            <h2>{{ collection.title }}</h2>
+                            {{ collection.description }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<style>
+    H2{
+        font-size: 21px;
+        line-height: 34px;
+        color: #4A4A4A;
+        font-family: AvenirLTStd-Light,"Helvetica Neue",helvetica,sans-serif;
+        letter-spacing: 1px;
+        margin: 10px 0;
+    }
+    DIV.products-grid H3{
+        text-transform: uppercase;
+        font-size: 21px;
+        text-align: center;
+        color: #38414f;
+    }
+    .cta2{
+        padding: 8px 48px;
+        background-color: black;
+        margin-top: 0;
+    }
+    .cta2:HOVER{
+        background-color: #555;
+    }
+    .cta2 span{
+        font-size: 12px;
+        display: block;
+        line-height: 14px;
+    }
+    .grid-item .product-wrapper{
+        /*height: auto;*/
+        height: 470px
+        
+    }
+    .hr-row{
+        /*margin-top: 75px;*/
+    }
+    .price-box{
+        margin-top: 15px;
+    }
+    .price-box P{
+        margin-bottom: 0;
+        font-style: italic;
+    }
+    @media (max-width: 480px) {
+        H2{
+            line-height: 28px;
+        }
+        .grid-item .product-wrapper{
+            height: 370px;
+        }
+        .cta2{
+            padding: 8px;
+        }
+        .yotpo{
+            display: none;
+        }
+    }
+</style>
+        <div class="products-grid">
+            {% if collection.products.size > 0 %}
+                {% assign products = collection.products %}
+
+                {%comment%}
+                - Sort product collection by type
+                - Create new array with just mattresses
+                - Combine mattresses array with array containing all the products
+                - Remove all the double products (mattresses)
+                - Now we're left with mattresses first in the product loop
+                {%endcomment%}
+                {% assign products = products | sort: 'type' %}
+                {% assign productsMattresses = products | where: 'type', 'Mattress' %}
+                {% assign productsMattFirst = productsMattresses | concat: products %}
+                {% assign productsMattFirst = productsMattFirst | uniq %}
+
+                {% for product in productsMattFirst %}
+                    <!-- Edit product type names -->
+                    {% case product.type %}
+                    {% when "Mattress" %}
+                        {% assign customType = "Mattress Sale" %}
+                        {% assign code = "LUXURY175" %}
+                        {% assign amount = "$175" %}
+                        {% if product.title == "Cedar Natural Luxe Mattress" %}
+                        {% assign code = "CYBER500" %}
+                        {% assign amount = "$500" %}
+                        {% endif %}
+                        {% if product.title == "Cypress Memory Foam Mattress" %}
+                        {% assign code = "CYPRESS50" %}
+                        {% assign amount = "$50" %}
+                        {% endif %}
+                    {% when "Bed Frames" %}
+                        {% assign customType = "Bed Frame Sale" %}
+                        {% assign code = "No Code" %}
+                        {% assign amount = "$50" %}
+                    {% when "Pet Bed" %}
+                        {% assign customType = "Pet Bed Sale" %}
+                        {% assign code = "PETBED20" %}
+                        {% assign amount = "20%" %}
+                    {% when "Pillow" %}
+                        {% assign customType = "Pillow Sale" %}
+                        {% assign code = "PILLOW20" %}
+                        {% assign amount = "20%" %}
+                    {% when "Wedge Pillow" %}
+                        {% assign customType = "Wedge Pillow Sale" %}
+                        {% assign code = "PILLOW20" %}
+                        {% assign amount = "20%" %}
+                    {% when "Box Foundation" %}
+                        {% assign customType = "Foundation Sale" %}
+                        {% assign code = "No Code" %}
+                        {% assign amount = "$50" %}
+                    {% endcase %}
+                    
+                    {% if forloop.first%}
+                        {% assign productNewType = product.type %}
+                        {% assign productLastType = product.type %}
+                        <hr><h3><strong>{{customType}}</strong></h3><hr>
+                        <div class="row">
+                    {% endif %}
+                    {% assign productNewType = product.type %}
+                    {% if productLastType == productNewType %}
+                        {%comment%}continue product row{%endcomment%}
+                        {% assign productLastType = productNewType %}
+                    {% else %}
+                        {%comment%}end row, new product type, show new promo{%endcomment%}
+                        </div>
+                        <div class="hr-row"><hr><h3><strong>{{customType}}</strong></h3><hr></div>
+                        <div class="row">
+                        {% assign productLastType = productNewType %}
+                    {% endif %}
+
+                    <div class="grid-item product-item col-xs-6 col-sm-6 col-md-3" id="product-{{ product.id }}">
+                        <div class="product-wrapper">
+                            <div class="">
+                                {% if label_sale %}
+                                <div class="product-label">
+
+                                </div>
+                                {% endif %}
+                                {% assign imgName = product.featured_image.src | remove: 'products/' | split:'?' | first %}
+                                <a href="{{ product.url }}" class="product-grid-image">
+                                    <picture>
+                                        <source media="(max-width: 520px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=550&ar=4:3&fit=crop&ch=Width,DPR&q=55">
+                                        <source media="(min-width: 521px) and (max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=550&ar=4:3&fit=crop&Width,DPR&q=55">
+                                        <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=550&ar=4:3&fit=crop">
+                                        <img loading="lazy" src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=550" alt="{{ product.title }} sale">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="product-bottom">
+                                <h2><a class="" href="{{ product.url }}">{{ product.title | split:'Mattress' | first }}</a></h2>
+
+                                <div style="height:25px" class="yotpo bottomLine"
+                                     data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
+                                     data-domain="{{ shop.permanent_domain | escape }}"
+                                     data-product-id="{{ product.id }}"
+                                     data-product-models="{{ product.id }}"
+                                     data-name="{{ product.title | escape }}"
+                                     data-url="{{ shop.url }}{{ product.url }}">
+                                </div>
+
+                                <div class="price-box">
+                                    {% comment %}
+                                    {% if lable_sale %}
+                                    <p class="regular-product"></p>
+                                    {% else %}
+                                    <p class="regular-product">
+                                        You can show a leading 'from' or 'up to' by checking 'product.price_varies'
+                                        if your variants have different prices.
+                                    </p>
+                                    {% endif %}
+                                    {% endcomment %}
+                                    <!--<a class="cta2 solid text-center" href="{{ product.url }}">
+                                        {% if product.price_varies %}from{% endif %} {{ product.price | money }}
+                                    </a>-->
+                                    <p class="text-center">{% if product.price_varies %}from{% endif %} {{ product.price | money | remove: '.00'}}</p>
+                                    <a class="cta2 solid text-center" href="{{ product.url }}">
+                                        Save {{amount}} 
+                                        {% if code == "No Code" %}
+                                        <span>no code necessary</span>
+                                        {% else %}
+                                        <span>with code <strong>{{code}}</strong></span>
+                                        {% endif %}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+</div>
+
