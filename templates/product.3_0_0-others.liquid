@@ -289,7 +289,7 @@
         </div>
     {% endif %}
     
-    {% if product.type == "Box Foundation" or product.type == "Bed Frames" %}
+    {% if product.type contains "Bed Frames" %}
        <style>
            .warranties IMG{
                max-width: 60px;
@@ -581,7 +581,7 @@
     </script>
 
   
-    {% if product.type == "Box Foundation" %}
+    {% if product.handle == "foundation" %}
         <section class="overlays overlays-5 container">
             <div class="row">
                 <div class="col-xs-12 col-sm-10 col-sm-offset-1">

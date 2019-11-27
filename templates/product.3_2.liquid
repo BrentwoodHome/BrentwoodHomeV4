@@ -255,9 +255,19 @@
                                             <p class="text-center"><img src="{{ 'oeko-tex-logo-hin.png' | asset_url}}" alt="Oeko-Tex Standard" style="max-width: 100px;"></p>
                                         </div>
                                         <div class="col-xs-12 col-md-10">
-                                            <p><strong>STANDARD 100 by OEKO-TEX®</strong></p>
+                                            <p><strong>STANDARD 100 by OEKO-TEX® — Wool</strong></p>
                                             <p>The wool on the panel fabric of the {{product.title}} is STANDARD 100 by OEKO-TEX® certified (19.HIN.68466, Hohenstein HTTI), which is one of the world's best-known labels for textiles tested for harmful substances. 
                                             </p>
+                                        </div>
+                                    </div>
+                                {% when 'Oeko-Spring' %}
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-2">
+                                            <p class="text-center"><img src="{{ 'oeko-tex-logo-hin-spring.png' | asset_url}}" alt="Oeko-Tex Standard" style="max-width: 100px;"></p>
+                                        </div>
+                                        <div class="col-xs-12 col-md-10">
+                                            <p><strong>STANDARD 100 by OEKO-TEX® — Innerspring Unit</strong></p>
+                                            <p>The innerspring core system used on the hybrid versions of the {{product.title}} is made of steel springs, clips and frame, and woven and non-woven fabric, using materials certified to STANDARD 100 by OEKO-TEX® (10.0.77270, Hohenstein HTTI),</p>
                                         </div>
                                     </div>
                                 {% when 'CertiPUR-US Certified' %}
@@ -330,7 +340,7 @@
                                 {% when 'ecoinstitute' %}
                                     <div class="row">
                                         <div class="col-xs-12 col-md-2">
-                                            <p class="text-center"><img src="{{ 'logo-eco-institut.png' | asset_url}}" alt="eco-Institut" style="max-width: 100px;"></p>
+                                            <p class="text-center"><img src="{{ 'logo-eco-institut.png' | asset_url}}" alt="eco-Institut" style="max-width: 80px;"></p>
                                         </div>
                                         <div class="col-xs-12 col-md-10">
                                             <p><strong>eco-INSTITUT Certified</strong></p>
