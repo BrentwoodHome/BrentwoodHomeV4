@@ -33,7 +33,18 @@
     </header>
     {%endcomment%}
 
-
+<style>
+    .collections-block-padding H1{
+        font-size: 26px;
+        color: white;
+        font-family: AvenirLTStd-Light,"Helvetica Neue",helvetica,sans-serif;
+        letter-spacing: 1px;
+        margin: 10px 0;
+        line-height: 38px;
+        font-style: normal;
+        font-weight: 300;
+    }        
+</style>
         <div class="collection-list {{collection.handle}}-color">
             <div class="row">
                 <div class="col-xs-12 col-md-8">
@@ -42,7 +53,7 @@
                 <div class="col-xs-12 col-md-4 text-center">
                     <div class="flexVCenter collections-block-padding">
                         <div>
-                           <h2>{{ collection.title }}</h2>
+                           <h1>{{ collection.title }}</h1>
                             {{ collection.description }}
                         </div>
                     </div>

@@ -122,6 +122,10 @@
                         {% assign customType = "Pillow Sale" %}
                         {% assign code = "PILLOWS20" %}
                         {% assign amount = "20%" %}
+                    {% if product.title == "Crystal Cove Bundle" %}
+                        {% assign code = "No Code" %}
+                        {% assign amount = "20%" %}
+                        {% endif %}
                     {% when "Wedge Pillow" %}
                         {% assign customType = "Wedge Pillow Sale" %}
                         {% assign code = "PILLOWS20" %}
