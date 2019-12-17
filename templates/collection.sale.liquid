@@ -96,6 +96,7 @@
                 {% assign productsMattFirst = productsMattFirst | uniq %}
 
                 {% for product in productsMattFirst %}
+                {% if product.tags contains "sale" %}
                     <!-- Edit product type names -->
                     {% case product.type %}
                     {% when "Mattress" %}
@@ -211,6 +212,7 @@
                             </div>
                         </div>
                     </div>
+                    {%endif%}
                 {% endfor %}
             {% endif %}
         </div>
