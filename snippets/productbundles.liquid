@@ -3,7 +3,8 @@
   var allFoundationVariants = {{ all_products['foundation'].variants | json }};
   var allAdjustableVariants = {{ all_products['adjustable-bed-frame'].variants | json }};
   var variantPillowBundle = [];//create empty pillow array to prevent errors when a mattress doesn't offer pillow bundle
-    var sale = true;
+  var saleFlag = false; //Switch to true to activate sale price display (note that it will activate for all product listed with a sale price)
+  /*TODO: ability to turn sale on and off for individual products*/
   // Easy Foundation Bundle
 {% case producthandle %}
   {% when "cedar-natural-luxe-mattress" %}
@@ -605,7 +606,7 @@
                 var foundation = variantFoundations[sizeIndex];
                 
                 //
-                if(foundation.sale){
+                if(saleFlag && foundation.sale){
                     {% raw %}
                      jQuery("#easy-foundation-price").html("+" + Shopify.formatMoney(foundation.sale, "${{amount_no_decimals}}") + "&nbsp;<span style='text-decoration: line-through'>" + Shopify.formatMoney(foundation.price, "${{amount_no_decimals}}" + "</span>"));
                      {% endraw %} 
@@ -636,7 +637,7 @@
               }
 
               if (jQuery('#foundation').prop('checked') && variantFoundations[sizeIndex]) {
-                  if(variantFoundations[sizeIndex].sale){
+                  if(saleFlag && variantFoundations[sizeIndex].sale){
                       totalPrice += variantFoundations[sizeIndex].sale;
                       compareAtPrice += variantFoundations[sizeIndex].price;
                   }else{
@@ -672,16 +673,16 @@
                     if(adjustable.id != 0){ //check if product variant exist (see id array above), if 0, deactivate box
                         jQuery("#adjustable-bundle").prop("disabled", false).parent().removeClass("disabled");
                         
-                        if(adjustable.sale){
+                        if(saleFlag && adjustable.sale){
                             {% raw %}
                             jQuery("#adjustable-bundle-price").html("+" + Shopify.formatMoney(adjustable.sale, "${{amount_no_decimals}}") + "&nbsp;<span style='text-decoration: line-through'>" + Shopify.formatMoney(adjustable.price, "${{amount_no_decimals}}" + "</span>"));
                             {% endraw %} 
                         }else{
                             {% raw %}
-                            jQuery("#easy-foundation-price").text("+" + Shopify.formatMoney(adjustable.price, "${{amount_no_decimals}}"));
+                            jQuery("#adjustable-bundle-price").text("+" + Shopify.formatMoney(adjustable.price, "${{amount_no_decimals}}"));
                              {% endraw %}
                         }
-                        
+                      
                      }else{
                          jQuery("#adjustable-bundle")
                              .prop("disabled", true)
@@ -693,7 +694,7 @@
                 }
 
                 if (jQuery('#adjustable-bundle').prop('checked') && variantAdjustableBundle[sizeIndex]) {
-                    if(variantAdjustableBundle[sizeIndex].sale){
+                    if(saleFlag && variantAdjustableBundle[sizeIndex].sale){
                         totalPrice += variantAdjustableBundle[sizeIndex].sale;
                         compareAtPrice += variantAdjustableBundle[sizeIndex].price;
                     }else{
