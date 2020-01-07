@@ -101,12 +101,8 @@
                     {% case product.type %}
                     {% when "Mattress" %}
                         {% assign customType = "Mattress Sale" %}
-                        {% assign code = "LUXURY175" %}
+                        {% assign code = "LA175" %}
                         {% assign amount = "$175" %}
-                        {% if product.title == "Cedar Natural Luxe Mattress" %}
-                        {% assign code = "CEDAR200" %}
-                        {% assign amount = "$200" %}
-                        {% endif %}
                     {% when "Bed Frames, Bases & Foundations" %}
                     {% assign customType = "Bed Frame, Base & Foundation Sale" %}
                         {% assign code = "No Code" %}
