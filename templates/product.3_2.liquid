@@ -22,7 +22,7 @@
                             </div>
                         </div>
                         {% endif %}
-                        <!-- -->
+                        
                         <div id="flexPlaceholder">
                             <picture>
                                 <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=767&dpr=1&fit=clip">
@@ -68,13 +68,13 @@
 
                 <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-0 col-lg-5 product-shop">
                     <div>
-                        {% if sale %}
+                        <!--{% if sale %}
                         <div class="sale-badge-wrap">
                            <div class="sale-badge testA">
                                 <p>{{ sale }}</p>
                             </div>
                         </div>
-                        {% endif %}
+                        {% endif %}-->
                         <header class="product-title {% if collection.previous_product or collection.next_product and settings.display_prev_next_product and collection %}has-btn{% endif %}">
                             <h1 {% if settings.display_prev_next_product and collection and multi_prd %}class="pull-left"{% endif %} itemprop="name">{{ product.title }}</h1>
                         </header>
@@ -92,13 +92,6 @@
                             <meta itemprop="ratingValue" content="{{ product.metafields.yotpo.reviews_average }}">
                             <meta itemprop="ratingCount" content="{{ product.metafields.yotpo.reviews_count }}">
                         </div>
-                        {% if sale %}
-                        <div class="sale-badge-wrap">
-                           <div class="sale-badge control">
-                                <p>{{ sale }}</p>
-                            </div>
-                        </div>
-                        {% endif %}
                         <!--{% include 'shippingtime' %}-->
                         <p class="short-description">
                             {{ metaf.shortdesc }}
