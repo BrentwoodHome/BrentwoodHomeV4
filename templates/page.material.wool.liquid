@@ -1,4 +1,5 @@
-
+{% assign cedar = all_products['cedar-natural-luxe-mattress'] %}
+{% assign oceano = all_products['oceano-mattress'] %}
 <div class="standardPages">
     <div class="row">
         <div class="col-xs-12">
@@ -36,25 +37,28 @@
 
             <h2>Where we use it</h2>
             <div class="where-we-use-products">
-                <div class="col-xs-12 col-md-3">
-                    <p><a href="/products/cedar-natural-luxe-mattress" title="Cedar Natural Luxe Mattress"><img src="https://brentwood-home.imgix.net/cedar-front-modelfree.jpg?w=480&fit=crop&auto=format&q=75" alt="Cedar Natural Luxe Mattress"></a></p>
-                    <p><a href="/products/cedar-natural-luxe-mattress" title="Cedar Natural Luxe Mattress"><h3>Cedar Natural Luxe Mattress</h3></a></p>
-                    
-                </div>
-                <div class="col-xs-12 col-md-3">
-                    <p><a href="/products/oceano-mattress" title="Oceano Mattress"><img src="https://brentwood-home.imgix.net/oceano-front-modelfree.jpg?w=480&fit=crop&auto=format&q=75" alt="Oceano Mattress"></a></p>
-                    <p><a href="/products/oceano-mattress" title="Crystal Cove Mattress"><h3>Oceano Mattress</h3></a></p>
-                    
-                </div>
-                <div class="col-xs-12 col-md-3">
-                    <p><a href="/products/ojai-mattress" title="Ojai Mattress"><img src="https://brentwood-home.imgix.net/ojai-front-modelfree.jpg?w=480&fit=crop&auto=format&q=75" alt="Ojai Mattress"></a></p>
-                    <p><a href="/products/ojai-mattress" title="Ojai Mattress"><h3>Ojai Mattress</h3></a></p>
+                <div class="col-xs-12 col-md-4">
+                    <a href="{{ cedar.url }}" class="product-grid-image" title="{{cedar.title}}">
+                        <picture>
+                            <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/cedarfrontcover-2.jpg?w=360&fit=crop&auto=format&q=75">
 
+                            <source media="(min-width: 320px)" srcset="https://brentwood-home-products.imgix.net/cedarfrontcover-2.jpg?w=414&fit=crop&auto=format&q=40&dpr=2">
+                            <img src="https://brentwood-home-products.imgix.net/cedarfrontcover-2.jpg?w=752&fit=crop&auto=format&q=75" alt="">
+                        </picture>
+                    </a>
+                    <p><a href="{{ cedar.url }}" title="{{cedar.title}}"><h3>{{cedar.title}}</h3></a></p>
+                    <p>Made with eco-friendly and organic materials, our Cedar mattress is the answer to your search for all natural comfort.</p>
                 </div>
-                <div class="col-xs-12 col-md-3">
-                    <p><a href="/products/cypress-bamboo-gel-mattress" title="Cypress Bamboo Gel Mattress"><img src="https://brentwood-home-36.imgix.net/bamboo-compare-img.jpg?w=480&fit=crop&auto=format&q=75" alt="Oceano Mattress"></a></p>
-                    <p><a href="/products/cypress-bamboo-gel-mattress" title="Cypress Bamboo Gel Mattress"><h3>Cypress Bamboo Gel Mattress</h3></a></p>
-
+                <div class="col-xs-12 col-md-4">
+                    <a href="{{ oceano.url }}" class="product-grid-image" title="">
+                        <picture>
+                            <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/oceano2017-_0002_Oceano79006.jpg?w=360&fit=crop&auto=format&q=75">
+                            <source media="(max-width: 320px)" srcset="hhttps://brentwood-home-products.imgix.net/oceano2017-_0002_Oceano79006.jpg?w=414&fit=crop&auto=format&q=40&dpr=2">
+                            <img src="https://brentwood-home-products.imgix.net/oceano2017-_0002_Oceano79006.jpg?w=752&fit=crop&auto=format&q=75" alt="">
+                        </picture>
+                    </a>
+                    <p><a href="{{ oceano.url }}" title="{{oceano.title}}"><h3>{{oceano.title}}</h3></a></p>
+                    <p>The Oceano is where traditional craftsmanship meets new sleep technology for endless nights of luxury comfort.</p>
                 </div>
             </div>
             <p class="text-center" style="margin: 40px 0;"><a href="/pages/materials" title="Back to materials" class="cta2">Back to materials</a></p>

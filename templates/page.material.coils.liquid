@@ -1,6 +1,5 @@
-{% assign cedar = all_products['cedar-mattress'] %}
+{% assign cedar = all_products['cedar-natural-luxe-mattress'] %}
 {% assign oceano = all_products['oceano-mattress'] %}
-{% assign ojai = all_products['ojai-mattress'] %}
 <div class="standardPages">
     <div class="row">
         <div class="col-xs-12">
@@ -40,10 +39,10 @@
                 <div class="col-xs-12 col-md-4">
                     <a href="{{ cedar.url }}" class="product-grid-image" title="{{cedar.title}}">
                         <picture>
-                            <source media="(min-width: 768px)" srcset="https://brentwood-home.imgix.net/cedar-front-modelfree.jpg?w=360&fit=crop&auto=format&q=75">
+                            <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/cedarfrontcover-2.jpg?w=360&fit=crop&auto=format&q=75">
 
-                            <source media="(min-width: 320px)" srcset="https://brentwood-home.imgix.net/cedar-front-modelfree.jpg?w=414&fit=crop&auto=format&q=40&dpr=2">
-                            <img src="https://brentwood-home.imgix.net/cedar-front-modelfree.jpg?w=752&fit=crop&auto=format&q=75" alt="">
+                            <source media="(min-width: 320px)" srcset="https://brentwood-home-products.imgix.net/cedarfrontcover-2.jpg?w=414&fit=crop&auto=format&q=40&dpr=2">
+                            <img src="https://brentwood-home-products.imgix.net/cedarfrontcover-2.jpg?w=752&fit=crop&auto=format&q=75" alt="">
                         </picture>
                     </a>
                     <p><a href="{{ cedar.url }}" title="{{cedar.title}}"><h3>{{cedar.title}}</h3></a></p>
@@ -52,33 +51,16 @@
                 <div class="col-xs-12 col-md-4">
                     <a href="{{ oceano.url }}" class="product-grid-image" title="">
                         <picture>
-                            <source media="(min-width: 768px)" srcset="https://brentwood-home.imgix.net/oceano-front-modelfree.jpg?w=360&fit=crop&auto=format&q=75">
-                            <source media="(max-width: 320px)" srcset="https://brentwood-home.imgix.net/oceano-front-modelfree.jpg?w=414&fit=crop&auto=format&q=40&dpr=2">
-                            <img src="https://brentwood-home.imgix.net/oceano-front-modelfree.jpg?w=752&fit=crop&auto=format&q=75" alt="">
+                            <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/oceano2017-_0002_Oceano79006.jpg?w=360&fit=crop&auto=format&q=75">
+                            <source media="(max-width: 320px)" srcset="hhttps://brentwood-home-products.imgix.net/oceano2017-_0002_Oceano79006.jpg?w=414&fit=crop&auto=format&q=40&dpr=2">
+                            <img src="https://brentwood-home-products.imgix.net/oceano2017-_0002_Oceano79006.jpg?w=752&fit=crop&auto=format&q=75" alt="">
                         </picture>
                     </a>
                     <p><a href="{{ oceano.url }}" title="{{oceano.title}}"><h3>{{oceano.title}}</h3></a></p>
                     <p>The Oceano is where traditional craftsmanship meets new sleep technology for endless nights of luxury comfort.</p>
                 </div>
-                <div class="col-xs-12 col-md-4">
-                    <a href="{{ ojai.url }}" class="product-grid-image" title="">
-                        <picture>
-                            <source media="(min-width: 768px)" srcset="https://brentwood-home.imgix.net/ojai-front-modelfree.jpg?w=360&fit=crop&auto=format&q=75">
-
-                            <source media="(min-width: 320px)" srcset="https://brentwood-home.imgix.net/ojai-front-modelfree.jpg?w=414&fit=crop&auto=format&q=40&dpr=2">
-                            <img src="https://brentwood-home.imgix.net/ojai-front-modelfree.jpg?w=752&fit=crop&auto=format&q=75" alt="">
-                        </picture>
-                    </a>
-                    <p><a href="{{ ojai.url }}" title="{{ojai.title}}"><h3>{{ojai.title}}</h3></a></p>
-                    <p>A combination of detailed craftsmanship and premium quality materials make the Ojai your foundation for everyday comfort.</p>
-                </div>
             </div>
         </div>
     </div> 
-    <p class="text-center" style="margin: 40px 0;"><a href="/pages/materials" title="Back to materials" class="btn">Back to materials</a></p>
+    <p class="text-center" style="margin: 40px 0;"><a href="/pages/materials" title="Back to materials" class="cta2">Back to materials</a></p>
 </div>        
-<script>
-    mixpanel.track("Materials Page", {
-        "name": "{{ page_title | handle }}"
-    });
-</script>
