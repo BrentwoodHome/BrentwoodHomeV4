@@ -12,7 +12,7 @@
 {% if collection and collection.products_count > 1 %}
 <section class="related-products">
   {% if settings.related_products_title != '' %}
-  <h2 style="color: #454d5a;">{{ settings.related_products_title }}</h2>
+  <h2 style="color: #454d5a; font-size: 32px;text-transform: capitalize;">You may also like</h2>
   {% endif %}
 <div class="products-grid owl-carousel owl-theme">
   {% assign current_product = product %}
@@ -46,7 +46,7 @@
                 //nav:true
             },
             1024:{
-                items:4,
+                items:3,
                 //nav:true
             }
         },
