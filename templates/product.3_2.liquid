@@ -175,18 +175,18 @@
                                     <button type="button" class="btn" id="product-add-to-cart" disabled>Unavailable</button>
                                 {% endif %}
                                 {% assign current_variant = product.selected_or_first_available_variant %}
+                                <div id="th_pb_custom_bundle" class="th_pb_custom_bundle" data-id="19325"></div>
                             </form>
                             <button type="button" class="cta2" style="width: 100%;" id="product-add-to-cart">Add to Cart</button>
                         </div>
-                    </div>
+                    </div>                    
                 </div><!-- Right Col product-shop --> 
             </div>
         </div>
     </div><!-- End container-fluid --> 
     
-    
-    
-    
+ 
+
     {%comment%} Load the appropriate snippet based on product handle{%endcomment%}
     {% assign snippet_name = "product-" | append: product.handle %}
     {% capture output %}
