@@ -519,7 +519,7 @@ DIV.inside {
     
 }
 
-.cypress_cutout .inside{
+.mattress19_cutout .inside{
     margin: 140px 0 130px;
     .matTip P STRONG{
         display: block;
@@ -528,7 +528,7 @@ DIV.inside {
     }
 }
 
-.cypress_2020_cutout .inside{
+.mattress19_cutout .inside{
     margin: 0;
     DIV.beautiful{
         position: absolute;
@@ -540,6 +540,51 @@ DIV.inside {
             font-size: 48px;
             color: #38414f;
         }
+        P.sub{
+            font-size: 21px;
+            color: $blue;
+        }
+    }
+}
+
+.mattress19_cutout .reviewOverlay{
+    background-color: white;
+    box-shadow: 0px 0px 12px 0px rgba(123, 123, 123, 0.5);
+    margin: -70px 50px 40px;
+    position: relative;
+    padding: 60px 50px;
+    .reviewTitle{
+        color: $blue !important;
+        font-size: 18px;
+        margin: 0px 0;
+    }
+    i.fa.fa-star{
+        color: $blue;
+        letter-spacing: -4px;
+        font-size: 20px;
+    }
+    .readAll{
+        font-size: 18px;
+        color: $blue !important;
+        margin: 38px 0 0;
+        A{
+            text-decoration: underline;
+            color: $blue !important;
+            &:HOVER{
+                text-decoration: none;
+            }
+        }
+    }
+}
+@media (max-width: 991px) {
+    .mattress19_cutout .reviewOverlay{
+        margin: 0 -15px 0 -15px;
+    }
+    .mattress19_cutout .inside DIV.beautiful{
+        top: 40px;
+    }
+    .line-right-a{
+        border-right: none;
     }
 }
 .boxMat{
@@ -675,7 +720,7 @@ DIV.inside {
     #page_product H3{
         text-align: center;
     }
-    .cypress_2020_cutout .inside{
+    .mattress19_cutout .inside{
         DIV.beautiful{
             top: 30px;
             H2{
@@ -710,7 +755,7 @@ DIV.inside {
     P.short-description.shipping{
         line-height: 18px;
     }
-    .cypress_2020_cutout .inside{
+    .mattress19_cutout .inside{
         DIV.beautiful{
             top: 30px;
             H2{
@@ -772,7 +817,7 @@ DIV.inside {
     #warranties.owl-carousel.owl-drag .owl-item{
         min-height: 210px !important;
     }
-    .cypress_2020_cutout .inside{
+    .mattress19_cutout .inside{
         DIV.beautiful{
             top: 30px;
             H2{
@@ -780,7 +825,13 @@ DIV.inside {
                 width: 75%;
                 margin: 0 auto;
             }
+            P.sub{
+                font-size: 14px;
+            }
         }
+    }
+    .mattress19_cutout .reviewOverlay{
+        padding: 15px 0;
     }
 }
 .owl-carousel .owl-stage-outer{
