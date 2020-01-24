@@ -767,14 +767,17 @@
           if (variant && variant.available) {
             if (variant.inventory_management != null) {
               if (variant.inventory_quantity < 1) {
-                jQuery(".out-of-stock").show();
-                jQuery(".out-of-stock p").html("We’re currently making this item to order.<br> Please allow <b>up to 3 weeks</b> for crafting and shipping.");
+                //jQuery(".out-of-stock").show();
+                //jQuery(".out-of-stock p").html("We’re currently making this item to order.<br> Please allow <b>up to 3 weeks</b> for crafting and shipping.");
+                addToCart.val('Out of Stock').addClass('disabled').attr('disabled', 'disabled').html("Out of Stock");
               } else {
-                jQuery(".out-of-stock").hide();
+                //jQuery(".out-of-stock").hide();
+                addToCart.val('Add to Cart').removeClass('disabled').removeAttr("disabled").html("Add to Cart");
               }
             }
           } else {
-            jQuery(".out-of-stock p").text("Out of stock");
+            //jQuery(".out-of-stock p").text("Out of stock");
+            addToCart.val('Out of Stock').addClass('disabled').attr('disabled', 'disabled').html("Out of Stock");
           }
 
           /*begin variant image*/
