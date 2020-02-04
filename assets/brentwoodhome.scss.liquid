@@ -334,6 +334,7 @@ visibility: hidden;
     p.h3{
         margin: 15px 0 30px;
         font-size: 18px;
+        line-height: 30px;
     }
     P.promocode{
         display: inline-block;
@@ -6299,16 +6300,16 @@ P#add2cart_shipping{
     position: relative;
     margin: 20px auto;
     background: #fff;
-    border: 1px solid $blue;
-    border-radius: 6px;
+    border: 2px solid $blue;
+    border-radius: 50px;
     label {
         width: 20px;
         height: 20px;
         position: absolute;
-        top: 4px;
-        left: 4px;
+        top: 3px;
+        left: 3px;
         cursor: pointer;
-        border-radius: 6px;
+        border-radius: 50px;
         &:after {
             content: '';
             width: 16px;
@@ -6321,13 +6322,21 @@ P#add2cart_shipping{
         }
         &:hover::after {
             opacity: 0.3;
+            border-radius: 50px;
+            //content: "&#x2713";
+        }
+        &:visited::after, &:focus::after, &:active::after {
+            background-color: white;
+        }
+        &:visited, &:focus, &:active {
+            background-color: white;
         }
     }
     input[type=checkbox] {
         visibility: hidden;
         &:checked + label:after {
             opacity: 1;
-            border-radius: 3px;
+            border-radius: 50px;
         }   
     }
     &.disabled{
@@ -6344,16 +6353,24 @@ P#add2cart_shipping{
 /* end .squaredOne */
 
 div.addonmodule{
-    border: 1px solid $blue;
     border-radius: 6px;
-    padding: 20px;
+    padding: 15px;
+
+    border: 1px solid rgb(170, 177, 188);
+    box-shadow: 0px 0px 6px 0px rgba(108, 108, 108, 0.3);
+    .leftblock{
+        float: left;
+    }
     .column{
         float: left;
         &.img{
-            padding: 0 15px 0 20px;
+            padding: 0 15px 0 15px;
+            width: 100px;
         }
         &.copy{
             float: none;
+            width: 300px;
+            margin-left: 130px;
             P{
                 line-height: 16px;
                 font-size: 14px;
@@ -6369,25 +6386,123 @@ div.addonmodule{
                     color: $blue;
                 }
             }
+            .title, .title A{
+                font-size: 17px;
+                color: $blue;
+                font-family: $body-stack-bold;
+                font-weight: bold;
+            }
+        }
+        &.addonprice{
+            float: right;
         }
     }
 }
+.modal .modal-content{
+    //top: 110px;
+}
 @media screen and (max-width: 480px) {
-    div.addonmodule .column.copy{
-        float: none;
-        //width: 40%;
+    DIV.addonmodule{
+        border: none;
+        margin: 20px 0;
+        .column{
+            &.input{
+                .squaredOne{
+                    border-color: $blue;
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+            &.img{
+                display: none;
+            }
+            &.copy{
+                margin-left: 35px;
+                padding-top: 5px;
+                float: none;
+                width: 224px;
+                P{
+                    color: $blue;
+                    font-size: 15px;
+                }
+                .title, .title A{
+                    font-size: 14px;
+                    letter-spacing: 0;
+                }
+            }
+        }
+    }
+    LABEL.selectLabel.bundle{
+        display: none;
+    }
+    .modal{
+        width: 320px;
+        left: 50%;
+        margin-left: -160px;
+        top: 60px;
+        UL{
+            margin-left: 20px;
+        }
+        .modal-title{
+            line-height: 28px !important;
+            font-size: 21px !important;
+        }
+    }
+    .modal .vertical-alignment-helper{
+        width: 80%;
+    }
+    .squaredOne label:after{
+        top: -1px;
+        left: -1px;
     }
 }
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 414px) {
+    div.addonmodule{
+        background-color: transparent;
+        margin: 0;
+        box-shadow: none;
+        border: none;
+        padding: 10px;
+        .column.copy{
+            padding-top: 8px;
+        }
+        .column.addonprice{
+            P{
+                margin-top: 5px;
+                color: $blue;
+                letter-spacing: 0;
+                strong{
+                    color: $blue;
+                    font-size: 14px;
+                    letter-spacing: 0;
+                    span{
+                        color: #777;
+                        letter-spacing: 0;
+                    }
+                }
+            }
+        }
+    }
+    LABEL.selectLabel.set{
+        display: none;
+    }
     div.addonmodule .column.copy{
-        float: none;
+        /*float: none;
         width: 180px;
         text-align: left;
-        margin-left: 125px;
+        margin-left: 125px;*/
+        width: 195px;
     }
-    div.addonmodule .column.img{
+    div.addonmodule .column.addonprice{
+        font-size: 14px;
+        span{
+            line-height: 8px;
+            font-size: 12px;
+        }
+    }
+    /*div.addonmodule .column.img{
         display: block;
-    }
+    }*/
 }
 @media screen and (max-width: 320px) {
     div.addonmodule .column.copy{
@@ -6402,6 +6517,55 @@ div.addonmodule{
     }
     div.addonmodule .column.img{
         display: none;
+    }
+}
+
+.modal{
+    .vertical-alignment-helper {
+        display:table;
+        height: 100%;
+        width: 100%;
+        pointer-events:none; /* This makes sure that we can still click outside of the modal to close it */
+    }
+    .vertical-align-center {
+        /* To center vertically */
+        display: table-cell;
+        vertical-align: middle;
+        pointer-events:none;
+    }
+    .modal-content {
+        /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+        width:inherit;
+        max-width:inherit; /* For Bootstrap 4 - to avoid the modal window stretching full width */
+        height:inherit;
+        /* To center horizontally */
+        margin: 0 auto;
+        pointer-events: all;
+    }
+    .modal-title{
+        font-size: 25px;
+        color: #38414f;
+        font-weight: bold;
+        line-height: 41px;
+        font-family: $body-stack-bold;
+    }
+    button.close{
+        font-size: 38px;
+        color: $blue;
+        opacity: 0.8;
+        margin-top: 3px;
+    }
+    .copy .sub{
+        text-transform: uppercase;
+        color: $blue;
+        font-size: 16px;
+        margin: 20px 0 15px;
+        font-family: $body-stack-bold;
+    }
+    .modal-bottom-cta{
+        a.more{
+            text-decoration: underline;
+        }
     }
 }
 /**********RECOMMEND APP***********/
@@ -6520,7 +6684,7 @@ div.sale-badge-wrap.testB{
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 10000;
+    z-index: 100;
     div.sale-badge{
         padding: 15px 20px 12px;
         border-radius: 0 0 0 10px;

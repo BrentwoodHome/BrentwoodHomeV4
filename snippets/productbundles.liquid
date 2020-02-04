@@ -2,8 +2,9 @@
 <script>
   var allFoundationVariants = {{ all_products['foundation'].variants | json }};
   var allAdjustableVariants = {{ all_products['adjustable-bed-frame'].variants | json }};
+  var variantTopperBundle = {{ all_products['cedar-natural-luxe-topper-standalone'].variants | json }};
   var variantPillowBundle = [];//create empty pillow array to prevent errors when a mattress doesn't offer pillow bundle
-  var saleFlag = false; //Switch to true to activate sale price display (note that it will activate for all product listed with a sale price)
+  var saleFlag = true; //Switch to true to activate sale price display (note that it will activate for all product listed with a sale price)
   /*TODO: ability to turn sale on and off for individual products*/
   // Easy Foundation Bundle
 {% case producthandle %}
@@ -13,17 +14,17 @@
       {//Queen
           id: 19294522540094,
           price: 27500,
-          sale: 22500
+          sale: 0
       },
       {//King
           id: 19294522572862,
           price: 35000,
-          sale: 30000
+          sale: 0
       },
       {//CalKing
           id: 19294522769470,
           price: 35000,
-          sale: 30000
+          sale: 0
       }
   ];
    var variantAdjustableBundle = [
@@ -31,16 +32,34 @@
        {//Queen
            id: 31082150625342,
            price: 79900,
-           sale: 74900,
+           sale: 0,
        },
        {//King
            id: 31123066585150,
            price: 119800,
-           sale: 114800,
+           sale: 0,
        },
        {//CAKing
            id: 0,
            price: 0
+       }
+   ];
+   var variantTopperBundle = [
+       
+       {//Queen
+           id: 31529554018366,
+           price: 49900,
+           sale: 39900,
+       },
+       {//King
+           id: 31529554051134,
+           price: 59900,
+           sale: 49900,
+       },
+       {//CAKing
+           id: 31529554083902,
+           price: 59900,
+           sale: 49900,
        }
    ];
    {% when "cypress-bamboo-gel-mattress" %}
@@ -140,12 +159,12 @@
          {//Twin 
              id: 31082150559806,
              price: 59900,
-             sale: 54900,
+             sale: 0,
          },
          {//Twin XL
              id: 31082150559806,
              price: 59900,
-             sale: 54900,
+             sale: 0,
          },
          {//Full
              id: 0,
@@ -154,12 +173,12 @@
          {//Queen
              id: 31082150625342,
              price: 79900,
-             sale: 74900,
+             sale: 0,
          },
          {//King
              id: 31123066585150,
              price: 119800,
-             sale: 114800,
+             sale: 0,
          },
          {//CAKing
              id: 0,
@@ -276,12 +295,12 @@
            {//Twin 
                id: 31082150559806,
                price: 59900,
-               sale: 54900,
+               sale: 0,
            },
            {//Twin XL
                id: 31082150559806,
                price: 59900,
-               sale: 54900,
+               sale: 0,
            },
            {//Full
                id: 0,
@@ -290,12 +309,12 @@
            {//Queen
                id: 31082150625342,
                price: 79900,
-               sale: 74900,
+               sale: 0,
            },
            {//King
                id: 31123066585150,
                price: 119800,
-               sale: 114800,
+               sale: 0,
            },
            {//CAKing
                id: 0,
@@ -345,62 +364,62 @@
            {//Twin
                id: 18582182297662,
                price: 22500,
-               sale: 17500
+               sale: 0
            },
            {//Twin
                id: 18582182297662,
                price: 22500,
-               sale: 17500
+               sale: 0
            },
            {//Twin XL
                id: 18582182330430,
                price: 22500,
-               sale: 17500
+               sale: 0
            },
            {//Twin XL
                id: 18582182330430,
                price: 22500,
-               sale: 17500
+               sale: 0
            },
            {//Full
                id: 18582182363198,
                price: 25000,
-               sale: 20000
+               sale: 0
            },
            {//Full
                id: 18582182363198,
                price: 25000,
-               sale: 20000
+               sale: 0
            },
            {//Queen
                id: 18582182395966,
                price: 27500,
-               sale: 22500
+               sale: 0
            },
            {//Queen
                id: 18582182395966,
                price: 27500,
-               sale: 22500
+               sale: 0
            },
            {//King
                id: 18582182428734,
                price: 35000,
-               sale: 30000
+               sale: 0
            },
            {//King
                id: 18582182428734,
                price: 35000,
-               sale: 30000
+               sale: 0
            },
            {//CalKing
                id: 18582182461502,
                price: 35000,
-               sale: 30000
+               sale: 0
            },
            {//CalKing
                id: 18582182461502,
                price: 35000,
-               sale: 30000
+               sale: 0
            }
        ];
 
@@ -408,22 +427,22 @@
             {//Twin 
                 id: 31082150559806,
                 price: 59900,
-                sale: 54900,
+                sale: 0,
             },
             {//Twin 
                 id: 31082150559806,
                 price: 59900,
-                sale: 54900,
+                sale: 0,
             },
             {//Twin XL
                 id: 31082150559806,
                 price: 59900,
-                sale: 54900,
+                sale: 0,
             },
             {//Twin XL
                 id: 31082150559806,
                 price: 59900,
-                sale: 54900,
+                sale: 0,
             },
             {//Full
                 id: 0,
@@ -436,22 +455,22 @@
             {//Queen
                 id: 31082150625342,
                 price: 79900,
-                sale: 74900,
+                sale: 0,
             },
             {//Queen
                 id: 31082150625342,
                 price: 79900,
-                sale: 74900,
+                sale: 0,
             },
             {//King
                 id: 31123066585150,
                 price: 119800,
-                sale: 114800,
+                sale: 0,
             },
             {//King
                 id: 31123066585150,
                 price: 119800,
-                sale: 114800,
+                sale: 0,
             },
             {//CAKing
                 id: 0,
@@ -557,6 +576,13 @@
                    //console.log("clicked adjustable");
                    if (jQuery('#adjustable-bundle').prop('checked') && variantAdjustableBundle[sizeIndex]) {
                        totalPrice += variantAdjustableBundle[sizeIndex].price
+                   }
+               }
+               // Cedar Luxe Topper Bundle
+               if( $('#luxetopper-bundle').length ){
+                   //console.log("clicked luxetopper");
+                   if (jQuery('#luxetopper-bundle').prop('checked') && variantTopperBundle[sizeIndex]) {
+                       totalPrice += variantTopperBundle[sizeIndex].price
                    }
                }
 
@@ -705,6 +731,47 @@
             }
 /****************************************************************/
                     
+/*****************CEDAR LUXE TOPPER PRICE UPDATE*************************/
+            if ($('#luxetopper-bundle').length) {
+                // Update Topper Pricing
+                if (variantTopperBundle[sizeIndex]) {
+                    var topper = variantTopperBundle[sizeIndex];
+                    //console.log(adjustable);
+                    if(topper.id != 0){ //check if product variant exist (see id array above), if 0, deactivate box
+                        jQuery("#luxetopper-bundle").prop("disabled", false).parent().removeClass("disabled");
+                        
+                        if(saleFlag && topper.sale){
+                            {% raw %}
+                            //jQuery("#cedarluxe-topper-price").html("+" + Shopify.formatMoney(topper.sale, "${{amount_no_decimals}}") + "&nbsp;<span style='text-decoration: line-through'>" + Shopify.formatMoney(topper.price, "${{amount_no_decimals}}" + "</span>"));
+                            jQuery("#cedarluxe-topper-price").html(Shopify.formatMoney(topper.sale, "<span style='text-decoration: line-through;display: block;'>" + Shopify.formatMoney(topper.price, "${{amount_no_decimals}}" + "</span>&nbsp;" + "+${{amount_no_decimals}}")));
+                            {% endraw %} 
+                        }else{
+                            {% raw %}
+                            jQuery("#cedarluxe-topper-price").text("+" + Shopify.formatMoney(topper.price, "${{amount_no_decimals}}"));
+                             {% endraw %}
+                        }
+                      
+                     }else{
+                         jQuery("#luxetopper-bundle")
+                             .prop("disabled", true)
+                             .addClass("disabled")
+                             .prop("checked", false).parent().addClass("disabled");
+                         //jQuery(".squaredOne").addClass("disabled");
+                         jQuery("#cedarluxe-topper-price").text("Base Not Available in this size").addClass("soldout");
+                     }
+                }
+
+                if (jQuery('#luxetopper-bundle').prop('checked') && variantTopperBundle[sizeIndex]) {
+                    if(saleFlag && variantTopperBundle[sizeIndex].sale){
+                        totalPrice += variantTopperBundle[sizeIndex].sale;
+                        compareAtPrice += variantTopperBundle[sizeIndex].price;
+                    }else{
+                        totalPrice += variantTopperBundle[sizeIndex].price;
+                        compareAtPrice += variantTopperBundle[sizeIndex].price;
+                    }
+                }
+            }
+/****************************************************************/
                     
                     
             // Regardless of stock, update the product price
@@ -832,6 +899,13 @@
             });
           }
 
+          // Cedar topper
+          if ($('#luxetopper-bundle').length) {
+            $("#luxetopper-bundle").on('change', function() {
+              selectCallback(currentVariant)
+            });
+          }
+
           // Easy Foundation Bundle
           if ($('#foundation').length) {
                 $("#foundation").on('change', function() {
@@ -914,13 +988,15 @@
               {% when "cedar-natural-luxe-mattress" %}
                   //Cedar Luxe Only because only 3 sizes are available
                   var variantFoundationIds = [19294522540094, 19294522572862, 19294522769470]
-                  var variantCedarTopperIds = [18665794601022, 18665794633790, 18665794666558]
+                  //var variantCedarTopperIds = [18665794601022, 18665794633790, 18665794666558] //built-in topper
+                  var variantCedarTopperIds = [31529554018366, 31529554051134, 31529554083902] //standalone topper
                   //Adjustable base
                   var variantAdjustableIds = [31082150625342,31123066585150,0]
-                  toAdd = [{
+                  //uncomment to include topper automatically
+                  /*toAdd = [{
                       id: variantCedarTopperIds[sizeIndex],
                       quantity: 1
-                  }];
+                  }];*/
 
                {% when "oceano-mattress" %}
                    //Twin, Twin XL, Full, Q, K, CK
@@ -1001,6 +1077,14 @@
                    //Twin, Twin XL, Full, Q, K, CK
                    var variantAdjustableIds = [31082150559806, 31082150559806, 0000, 31082150625342, 31123066585150, 0000]
            {% endcase %}
+
+          // Cedar Luxe Topper
+           if (jQuery('#luxetopper-bundle').prop('checked')) {
+               toAdd.push({
+                   id: variantCedarTopperIds[sizeIndex],
+                   quantity: 1
+               })
+           }
 
            // Easy Foundation Bundle
            if (jQuery('#foundation').prop('checked')) {

@@ -329,6 +329,28 @@
                 </div>
             </div>
         </div>
+    {% elsif product.type == "Mattress Topper" %}
+    <div class="container section warranties">
+        <h2 class="text-center">Try the {{ product.title }} Risk-Free</h2>
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <img src="https://brentwood-home-2.imgix.net/iconv2-1yearguarantee.svg" alt="1-year sleep trial">
+                <p>1-year<br>Trial</p>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Free shippinh & Returns">
+                <p>Free Shipping<br>Free Return</p>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <img src="https://brentwood-home.imgix.net/iconv2-madeincalifornia.svg" alt="Made in California">
+                <p>Made in<br>California</p>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <img src="https://brentwood-home-2.imgix.net/iconv2-10yearwarranty.svg" alt="10-year Warranty">
+                <p>10-year<br>Warranty</p>
+            </div>
+        </div>
+    </div>
     {% else %}
         <div class="overlays overlays-1" style="margin: 50px 0;">
             <h2 class="overlays-title">Peace of mind guarantee</h2>
@@ -741,7 +763,7 @@
 
     <section class="overlays overlays-tabs container">
         <div id="exTab1" class="">
-        <h2 class="overlays-title">Details</h2>
+            <h2 class="overlays-title">Details</h2>
             <ul class="nav nav-pills">
                 <li class="active">
                     <a href="#1a" data-toggle="tab">Description</a>
@@ -786,30 +808,23 @@
                         <div class="container">
                             <div class="row">
                                 {% if product.type == "Pet Bed" %}
-                                <div class="col-xs-12 col-sm-6">
-                                    <p><strong>Free Standard Shipping:</strong><br>
+                                    <div class="col-xs-12 col-sm-6">
+                                        <p><strong>Free Standard Shipping:</strong><br>
                                         This product is handcrafted to order in approximately 5-7 business days. Once your purchase ships, we’ll send you an email with tracking information so you can follow your shipment and plan for delivery.</p>
                                         {% include 'shippingtime' %}
-                                </div>
+                                    </div>
 
-                                <div class="col-xs-12 col-sm-6">
-                                    <p><strong>Returns:</strong><br>
-                                        We offer free returns for 30 days with our pet beds.</p>
-                                </div>
+                                    <div class="col-xs-12 col-sm-6">
+                                        <p><strong>Returns:</strong><br>
+                                            We offer free returns for 30 days with our pet beds.</p>
+                                    </div>
                                 {% else %}
-                                {% if shipsfree %}
-                                    <p class="text-left"><strong>Note: Currently shipping out for free in {{ shipsfree }}.</strong></p>
-                                {% endif %}
-                                    {{ metaf.details_shipping }}
+                                    <div class="col-xs-12">{{ metaf.details_shipping }}</div>
                                 {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
-                {%comment%}
-                <div class="tab-pane" id="5a">
-                    <div class="description">description for [Certifications]</div>
-                </div>{%endcomment%}
             </div>
         </div>
     </section>

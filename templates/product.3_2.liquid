@@ -94,7 +94,12 @@
                         </div>
                         <!--{% include 'shippingtime' %}-->
                         <p class="short-description">
+                            
+                            {% if product.handle == "cedar-natural-luxe-mattress" %}
+                                <strong>The pinnacle of eco-conscious luxury mattresses: our 100% GOTS organic certified mattress!</strong> We use the finest natural and organic certified materials and a premium hybrid latex mattress design for a medium-soft feel.
+                            {% else %}
                             {{ metaf.shortdesc }}
+                            {%endif%}
                         </p>
                         {% if metaf.shortdesc_more %}
                             <div class="shortdesc more">

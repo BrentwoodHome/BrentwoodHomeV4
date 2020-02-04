@@ -22,6 +22,17 @@
     table A:hover{
         text-decoration: underline;
     }
+    .cart__table-cell--line-price SPAN{
+        font-size: 18px;
+    }
+    .cart-item__original-price SMALL{
+        font-size: 14px;
+    }
+    .cart-item__discount SMALL{
+        color: #336600;
+        font-weight: bold;
+        font-size: 14px;
+    }
 </style>
 
 <div id="cart">
@@ -141,11 +152,25 @@
                                        />
                                 {% endunless %}
                             </td>
-                            <td class="price">
+                            <!--<td class="price">
                                 {% unless item.product.tags contains "addon" %}
                                 {{ item.line_price | money }}
                                 {% endunless %}
+                            </td>-->
+
+                            <td data-label="{{ 'cart.label.total' | t }}" class="cart__table-cell--line-price">
+                                {% if item.original_line_price != item.line_price %}
+                                    <p class="cart-item__original-price"><small><s>{{ item.original_line_price | money }}</s></small></p>
+                                {% endif %}
+                                <span>
+                                    {{ item.line_price | money }}
+                                </span>
+                                {% for discount in item.discounts %}
+                                    <p class="cart-item__discount"><small>{{ discount.title }}</small></p>
+                                {% endfor %}
                             </td>
+
+
                             <td class="remove">
                                 {% unless item.product.tags contains "addon" %}
                                 <a class="cart remove-item" data-id="{{ item.id }}" style="cursor:pointer">
@@ -154,33 +179,7 @@
                                 {% endunless %}
                             </td>
                         </tr>
-                        {% endfor %}
-
-                        {% if rightnowint > 201801180001 and rightnowint < 201801290001 %}
-                                                                                       {% if productType == "Mattress"%}
-                                                                                       {% assign product = all_products['natural-aromatherapy-candle'] %}
-                                                                                       <tr>
-                        <td class="image hidden-xs">
-                            <div class="product_image">
-                                <img src="{{ product | img_url: 'compact' }}"  alt="" />
-                            </div>
-                        </td>
-                        <td class="item">
-                            <p class="hidden-sm hidden-md hidden-lg">
-                                <img src="{{ product | img_url: 'compact' }}"  alt="{{ product.title }}" />
-                            </p>
-                            <a href="#!" class="cart-title" title="{{ item.product.title }}">
-                                <strong>Natural Aromatherapy Candle</strong>
-                            </a>
-                        </td>
-                        <td class="qty">
-                            <input type="text" size="4" name="updates[]" id="updates_{{ product.id }}" value="1" readonly class="tc item-quantity" />
-                        </td>
-                        <td class="price">FREE</td>
-                        <td class="remove"></td>
-                    </tr>
-                {%endif%}
-                {%endif%}
+                    {% endfor %}
                 </tbody>
             </table>
 
