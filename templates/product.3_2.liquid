@@ -94,12 +94,7 @@
                         </div>
                         <!--{% include 'shippingtime' %}-->
                         <p class="short-description">
-                            
-                            {% if product.handle == "cedar-natural-luxe-mattress" %}
-                                <strong>The pinnacle of eco-conscious luxury mattresses: our 100% GOTS organic certified mattress!</strong> We use the finest natural and organic certified materials and a premium hybrid latex mattress design for a medium-soft feel.
-                            {% else %}
                             {{ metaf.shortdesc }}
-                            {%endif%}
                         </p>
                         {% if metaf.shortdesc_more %}
                             <div class="shortdesc more">
@@ -306,8 +301,8 @@
                                             <p class="text-center"><img src="{{ 'gots-logo.png' | asset_url}}" alt="GOTS" style="max-width: 100px;"></p>
                                         </div>
                                         <div class="col-xs-12 col-md-10">
-                                            <p><strong>GOTS Organic Certified</strong></p>
-                                            <p>Free from harmful chemicals, our organic cotton and organic wool are certified to the Global Organic Textile Standard (GOTS). These renewable and sustainable resources are independently verified, and always ethically and responsibly sourced. They’re better for you as well as the people that grow it. We’re proud to use GOTS organic certified materials, and operate our own GOTS certified factory in Los Angeles.
+                                            <p><strong>GOTS Organic Certified Product</strong></p>
+                                            <p>Our {{product.title}} is a GOTS certified product, and listed on the GOTS public database under our brand name. At the material level, our organic cotton and organic wool are also certified to the Global Organic Textile Standard (GOTS). These renewable and sustainable resources are independently verified, and always ethically and responsibly sourced. They’re better for you as well as the people that grow it. And at the factory level, we are proud to operate our own GOTS certified factory in Los Angeles. License #861640.
                                             </p>
                                         </div>
                                     </div>
@@ -317,8 +312,8 @@
                                             <p class="text-center"><img src="{{ 'logo-gotsorg-cu861640.png' | asset_url}}" alt="GOTS" style="max-width: 75px;"></p>
                                         </div>
                                         <div class="col-xs-12 col-md-10">
-                                            <p><strong>GOTS Organic Certified</strong></p>
-                                            <p>Free from harmful chemicals, our organic cotton and organic wool are certified to the Global Organic Textile Standard (GOTS). These renewable and sustainable resources are independently verified, and always ethically and responsibly sourced. They’re better for you as well as the people that grow it. We’re proud to use GOTS organic certified materials, and operate our own GOTS certified factory in Los Angeles.
+                                            <p><strong>GOTS Organic Certified Materials</strong></p>
+                                            <p>Free from harmful chemicals, our organic cotton and organic wool are certified to the Global Organic Textile Standard (GOTS). These renewable and sustainable resources are independently verified, and always ethically and responsibly sourced. They’re better for you as well as the people that grow it. We’re proud to use GOTS organic certified materials, and operate our own GOTS certified factory in Los Angeles. License #861640.
                                             </p>
                                         </div>
                                     </div>
