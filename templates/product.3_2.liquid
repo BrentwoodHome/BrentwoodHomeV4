@@ -31,12 +31,13 @@
                             </picture>
                         </div>
                         <div class="flexslider">
-                            
                             <ul class="slides">
                                 {% for image in product.images %}
                                     {% assign videotag = image.alt | escape %}
                                     {% assign imgName = image | remove: 'products/' | split:'?' | first %}
-                                    <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=150&h=150">   
+                                    <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=160&h=120&crop=focalpoint&dpr=1 1x,
+                                    https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&crop=focalpoint&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=160&h=120&fit=crop&dpr=2 2x,
+                                    https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&crop=focalpoint&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=160&h=120&fit=crop&dpr=3 3x">   
                                         {% if videotag contains 'vimeo' %}
                                             <div class='embed-container '>
                                                 <!--https://player.vimeo.com/video/###-->
@@ -44,18 +45,30 @@
                                             </div>
                                         {% else %}
                                             <picture>
-                                                <source data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=960 1x,
-                                                                     https://brentwood-home-products.imgix.net/{{ imgName }}?w=1920&dpr=2 2x" media="(min-width: 768px)">
-                                                <source data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=crop 1x,
-                                                                     https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&&fit=crop&dpr=2 2x" media="(min-width: 480px)">
-                                                <source data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=480&fit=crop 1x,
-                                                                     https://brentwood-home-products.imgix.net/{{ imgName }}?w=480&fit=crop&dpr=2 2x" media="(min-width: 320px)">
-                                                {% if forloop.first == true %}
-                                                    <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=960&fit=crop 1x,
-                                                              https://brentwood-home-products.imgix.net/{{ imgName }}?w=1920&fit=crop&dpr=2 2x" loading="eager">
+                                                <source data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&fit=crop&dpr=1&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 1x,
+                                                                     https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&fit=crop&dpr=2&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 2x,
+                                                                     https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&fit=crop&dpr=3&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 3x" 
+                                                                     media="(min-width: 768px)">
+
+                                                <source data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=crop&dpr=1&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 1x,
+                                                                     https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=crop&dpr=2&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 2x,
+                                                                     https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=crop&dpr=3&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 3x" 
+                                                                     media="(min-width: 480px) and (max-width: 767px)">
+
+                                                <source data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=480&fit=crop&dpr=1&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 1x,
+                                                                     https://brentwood-home-products.imgix.net/{{ imgName }}?w=480&fit=crop&dpr=2&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 2x,
+                                                                     https://brentwood-home-products.imgix.net/{{ imgName }}?w=480&fit=crop&dpr=3&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 3x" 
+                                                                     media="(min-width: 320px) and (max-width: 479px)">
+
+                                                {% if forloop.first %}
+                                                    <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&fit=crop&dpr=1&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 1x,
+                                                                     https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&fit=crop&dpr=2&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 2x,
+                                                                     https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&fit=crop&dpr=3&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 3x" 
+                                                                     loading="eager">
                                                 {% else %}
                                                     <img data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=555&fit=crop" 
-                                                    src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=555&blur=500&q=10&fit=crop" loading="lazy">
+                                                     src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=555&blur=500&q=10&fit=crop" 
+                                                     loading="lazy">
                                                 {% endif %}
                                             </picture>
                                         {% endif %}
@@ -94,7 +107,12 @@
                         </div>
                         <!--{% include 'shippingtime' %}-->
                         <p class="short-description">
+                            
+                            {% if product.handle == "cedar-natural-luxe-mattress" %}
+                                <strong>The pinnacle of eco-conscious luxury mattresses: our 100% GOTS organic certified mattress!</strong> We use the finest natural and organic certified materials and a premium hybrid latex mattress design for a medium-soft feel.
+                            {% else %}
                             {{ metaf.shortdesc }}
+                            {%endif%}
                         </p>
                         {% if metaf.shortdesc_more %}
                             <div class="shortdesc more">

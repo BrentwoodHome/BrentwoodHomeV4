@@ -715,27 +715,27 @@
                              .addClass("disabled")
                              .prop("checked", false).parent().addClass("disabled");
                          //jQuery(".squaredOne").addClass("disabled");
-                         jQuery("#adjustable-bundle-price").text("Base Not Available in this size").addClass("soldout");
+                         jQuery("#adjustable-bundle-price").html("Unavailable").addClass("soldout");
                      }
                 }
 
                 // Disable checkbox if sold out
-              /*var adjustable = variantAdjustableBundle[sizeIndex];
+              var adjustable = variantAdjustableBundle[sizeIndex];
 
               for (var i = 0; i < allAdjustableVariants.length; i++) {
-                if (allAdjustableVariants[i].id === foundation.id) {
+                if (allAdjustableVariants[i].id === adjustable.id) {
                   if (!allAdjustableVariants[i].available) {
                     jQuery("#adjustable-bundle")
                         .prop("disabled", true)
                         .addClass("disabled")
                         .prop("checked", false).parent().addClass("disabled");
                     //jQuery(".squaredOne").addClass("disabled");
-                      jQuery("#adjustable-bundle-price").text("Base Out of Stock").addClass("soldout");
+                      jQuery("#adjustable-bundle-price").text("Out of Stock").addClass("soldout");
                   } else {
                     jQuery("#adjustable-bundle").prop("disabled", false).parent().removeClass("disabled");
                   }
                 }
-              }*/
+              }
 
                 if (jQuery('#adjustable-bundle').prop('checked') && variantAdjustableBundle[sizeIndex]) {
                     if(saleFlag && variantAdjustableBundle[sizeIndex].sale){
