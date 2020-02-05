@@ -33,6 +33,25 @@
                         <div class="flexslider">
                             <ul class="slides">
                                 {% for image in product.images %}
+                                {% assign videotag = image.alt | escape %}
+                                    {% assign imgName = image | remove: 'products/' | split:'?' | first %}
+                                <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=160&h=120&crop=focalpoint&dpr=1 1x,
+                                    https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&crop=focalpoint&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=160&h=120&fit=crop&dpr=2 2x,
+                                    https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&crop=focalpoint&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=160&h=120&fit=crop&dpr=3 3x">
+                                    {% if videotag contains 'vimeo' %}
+                                            <div class='embed-container '>
+                                                <!--https://player.vimeo.com/video/###-->
+                                                <iframe src="{{ image.alt }}?title=0&byline=0&portrait=0" width="640" height="360" id="video_1" frameborder="0"></iframe>
+                                            </div>
+                                        {% else %}
+                                        <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=830" />
+                                        {% endif %}
+                                </li>
+                                {% endfor%}
+                              </ul>
+                            {%comment%}
+                            <ul class="slides">
+                                {% for image in product.images %}
                                     {% assign videotag = image.alt | escape %}
                                     {% assign imgName = image | remove: 'products/' | split:'?' | first %}
                                     <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=160&h=120&crop=focalpoint&dpr=1 1x,
@@ -75,6 +94,7 @@
                                     </li>
                                 {% endfor %}
                             </ul>
+                            {%endcomment%}
                         </div>
                     </section>
                 </div>
