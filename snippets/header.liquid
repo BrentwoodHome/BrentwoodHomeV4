@@ -65,10 +65,10 @@
                     {% if settings.use_logo %}
                         <a href="/">
                             <picture>
-                                <source media="(min-width: 768px)" srcset="{{ 'logo-brentwoodhome-v3-desktop-clean.svg' | asset_url }}">
-                                <source media="(min-width: 375px)" srcset="{{ 'logo-brentwoodhome-v3-mobile-clean.svg' | asset_url }}">
-                                <source media="(min-width: 320px)" srcset="{{ 'llogo-brentwoodhome-v3-mobile-clean.svg' | asset_url }}">
-                                <img src="{{ 'ogo-brentwoodhome-v3-desktop-clean.svg' | asset_url }}" alt="{{ shop.name }}">
+                                <source type="image/svg+xml" media="(min-width: 768px)" srcset="{{ 'logo-brentwoodhome-v3-desktop-clean.svg' | asset_url }}">
+                                <source type="image/svg+xml" media="(min-width: 375px)" srcset="{{ 'logo-brentwoodhome-v3-mobile-clean.svg' | asset_url }}">
+                                <source type="image/svg+xml" media="(min-width: 320px)" srcset="{{ 'logo-brentwoodhome-v3-mobile-clean.svg' | asset_url }}">
+                                <img src="{{ 'logo-brentwoodhome-v3-desktop-clean.svg' | asset_url }}" alt="{{ shop.name }}">
                             </picture>
                         </a>
                     {% endif %}
