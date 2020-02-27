@@ -26,8 +26,8 @@
                         <div id="flexPlaceholder">
                             <picture>
                                 <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=767&dpr=1&fit=clip">
-                                <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip">
-                                <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&q=50" alt="{{product.title}}" loading="eager">
+                                <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=830&dpr=1&fit=clip">
+                                <img class="lazy" src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&q=50" alt="{{product.title}}" loading="eager">
                             </picture>
                         </div>
                         <div class="flexslider">
@@ -44,10 +44,33 @@
                                             <iframe src="{{ image.alt }}?title=0&byline=0&portrait=0" width="640" height="360" id="video_1" frameborder="0"></iframe>
                                         </div>
                                     {% else %}
-                                        <img srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=830 1x,
-                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&fit=max&q=40&dpr=2 2x,
-                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&fit=max&q=20&dpr=3 3x"
-                                        src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=830" alt="{{ product.title | escape }} View {{ forloop.index }}">
+
+
+                                        <picture>
+                                                <source data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&fit=crop&dpr=1&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 1x,
+                                                                     https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&fit=crop&dpr=2&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 2x,
+                                                                     https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&fit=crop&dpr=3&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 3x" 
+                                                                     media="(min-width: 768px)">
+
+                                                <source data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=crop&dpr=1&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 1x,
+                                                                     https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=crop&dpr=2&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 2x,
+                                                                     https://brentwood-home-products.imgix.net/{{ imgName }}?w=767&fit=crop&dpr=3&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 3x" 
+                                                                     media="(min-width: 480px) and (max-width: 767px)">
+
+                                                <source data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=480&fit=crop&dpr=1&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 1x,
+                                                                     https://brentwood-home-products.imgix.net/{{ imgName }}?w=480&fit=crop&dpr=2&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 2x,
+                                                                     https://brentwood-home-products.imgix.net/{{ imgName }}?w=480&fit=crop&dpr=3&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false 3x" 
+                                                                     media="(min-width: 320px) and (max-width: 479px)">
+
+
+                                                <img class="lazy" src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&blur=500&q=10" data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=830 1x,
+                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=1660&fit=max&q=40&dpr=2 2x,
+                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=2490&fit=max&q=20&dpr=3 3x"
+                                         alt="{{ product.title | escape }} View {{ forloop.index }}">
+
+                                            </picture>
+
+
                                     {% endif %}
                                 </li>
                                 {% endfor%}
@@ -507,7 +530,7 @@
                     <picture>
                         <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/organicsheets/brentwoodhome_organicsheets_00024.jpg?rect=892,199,1243,1243&w=768&ch=Width,DPR&q=55">
                         <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/organicsheets/brentwoodhome_organicsheets_00024.jpg?rect=892,199,1243,1720&w=555">
-                        <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/organicsheets/brentwoodhome_organicsheets_00024.jpg?rect=892,199,1243,1720&w=555&blur=500&q=10" data-src="https://s3-brentwoodhome.imgix.net/products/organicsheets/brentwoodhome_organicsheets_00024.jpg?rect=892,199,1243,1720&w=555" alt="Naturally Non-Toxic">
+                        <img class="lazy" src="https://s3-brentwoodhome.imgix.net/products/organicsheets/brentwoodhome_organicsheets_00024.jpg?rect=892,199,1243,1720&w=555&blur=500&q=10" data-src="https://s3-brentwoodhome.imgix.net/products/organicsheets/brentwoodhome_organicsheets_00024.jpg?rect=892,199,1243,1720&w=555" alt="Naturally Non-Toxic">
                     </picture>
                 </div>
                 <div class="col-xs-12 col-sm-6 flexV {% if isLastSectionLeft %}col-sm-pull-6{% endif %} wow fadeInRight">
@@ -532,31 +555,31 @@
                     <picture>
                         <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1605,953,3634,3634&w=480&ch=Width,DPR&q=55">
                         <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&ch=Width,DPR&q=55">
-                        <img loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&blur=500q=10" data-src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&ch=Width,DPR&q=55" alt="Start Your 1-Year Sleep Trial">
+                        <img class="lazy" src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&blur=500&q=10" data-src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&ch=Width,DPR&q=55" alt="Start Your 1-Year Sleep Trial">
                     </picture>
                     {% when "cedar-natural-luxe-mattress" %}
                     <picture>
                         <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=480&ch=Width,DPR&q=55">
                         <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=555&ch=Width,DPR&q=55">
-                        <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=555&ch=Width,DPR&q=55" alt="Start Your 1-Year Sleep Trial">
+                        <img class="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=555&blur=500&q=10" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=555&ch=Width,DPR&q=55" alt="Start Your 1-Year Sleep Trial">
                     </picture>
                     {% when "cypress-bamboo-gel-mattress" %}
                     <picture>
                         <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bambootopmodels.jpg?w=480&ch=Width,DPR&q=55">
                         <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bambootopmodels.jpg?rect=880,0,1625,2066&w=555">
-                        <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/bambootopmodels.jpg?rect=880,0,1625,2066&w=555" alt="Start Your 1-Year Sleep Trial">
+                        <img class="lazy" src="https://s3-brentwoodhome.imgix.net/products/cypress/bambootopmodels.jpg?rect=880,0,1625,2066&blur=500&q=10&w=555" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/bambootopmodels.jpg?rect=880,0,1625,2066&w=555" alt="Start Your 1-Year Sleep Trial">
                     </picture>
                     {% when "cypress-memory-foam-mattress" %}
                     <picture>
                         <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bwh_cypressmattress_daydreaming.jpg?rect=846,200,1191,1191&w=480&ch=Width,DPR&q=55&flip=h">
                         <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bwh_cypressmattress_daydreaming.jpg?rect=846,0,1191,1648&w=555&flip=h">
-                        <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/bwh_cypressmattress_daydreaming.jpg?rect=846,0,1191,1648&w=555&flip=h" alt="Start Your 1-Year Sleep Trial">
+                        <img class="lazy" src="https://s3-brentwoodhome.imgix.net/products/cypress/bwh_cypressmattress_daydreaming.jpg?rect=846,0,1191,1648&w=555&flip=h&blur=500&q=10" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/bwh_cypressmattress_daydreaming.jpg?rect=846,0,1191,1648&w=555&flip=h" alt="Start Your 1-Year Sleep Trial">
                     </picture>
                     {% when "crystal-cove-mattress" %}
                     <picture>
-                        <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_82688.jpg?w=480&ch=Width,DPR&q=55">
-                        <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_82688.jpg?rect=1960,0,2686,4446&w=555">
-                        <img src="https://s3-brentwoodhome.imgix.net/CrystalCove_82688.jpg?rect=1960,0,2686,4446&w=555" alt="Start Your 1-Year Sleep Trial">
+                        <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_82688.jpg?rect=1960,1000,2686,2686&w=480&ch=Width,DPR&q=55">
+                        <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_82688.jpg?rect=1960,0,2686,4446&w=555&q=50">
+                        <img class="lazy" src="https://s3-brentwoodhome.imgix.net/CrystalCove_82688.jpg?rect=1960,0,2686,4446&blur=500&q=10&w=555" data-src="https://s3-brentwoodhome.imgix.net/CrystalCove_82688.jpg?rect=1960,0,2686,4446&w=555" alt="Start Your 1-Year Sleep Trial">
                     </picture>
                     {% endcase %}
                 </div>
@@ -699,7 +722,7 @@
                     <picture>
                         <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,998,998&w=480&ch=Width,DPR&q=55">
                         <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,701,998&w=555&q=60">
-                        <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,701,998&w=555&q=60" alt="Supporting the National Forest Foundation">
+                        <img class="lazy" src="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,701,998&w=555&q=10&blur=500" data-src="https://s3-brentwoodhome.imgix.net/forest.jpg?rect=368,0,701,998&w=555&q=60" alt="Supporting the National Forest Foundation">
                     </picture>
                 </div>
                 <div class="col-xs-12 col-sm-6 flexV {% if isLastSectionLeft == false %}col-sm-pull-6{% endif %} wow fadeInRight">
@@ -718,7 +741,7 @@
                         <picture>
                             <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=650,0,3056,2734&w=480&ch=Width,DPR&q=55">
                             <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=932,266,1500,2731&w=555">
-                            <img loading="lazy" data-src="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=932,266,1500,2731&w=555" alt="Relief Bed">
+                            <img class="lazy" src="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=932,266,1500,2731&w=555&q=10&blur=500" data-src="https://s3-brentwoodhome.imgix.net/BrentwoodHome-reliefbed-hero.jpg?rect=932,266,1500,2731&w=555" alt="Relief Bed">
                         </picture>
                     </div>
                     <div class="col-xs-12 col-sm-6 flexV {% if isLastSectionLeft %}col-sm-pull-6{% endif %} wow fadeInLeft">
