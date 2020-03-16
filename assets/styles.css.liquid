@@ -924,7 +924,7 @@ body:not(.template-index) #header-content  .site-nav >li >a:after,body:not(.temp
 .site-nav li {display: block;  margin: 0;}
 .site-nav a { display: block;  padding: 12px 0;  text-decoration: none; /* white-space: nowrap; */}
 .site-nav > li { position: relative; display: inline-block; list-style: none; }
-.site-nav > li > a { position:relative;text-transform: uppercase; padding: 25px 22px; letter-spacing: 0.05em;
+.site-nav > li > a { position:relative;text-transform: uppercase; padding: 25px 20px; letter-spacing: 0.05em;
 
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -2046,7 +2046,15 @@ table.wishlist-product .a-center { text-align: center; }
   float:right;
   border-right: 1px solid rgba(255, 255, 255, 0.3);
 }
-.is-ticky .header-inner  .site-nav,body:not(.template-index) .header-inner  .site-nav,body:not(.template-index) .header{border-color:#f1f1f1;}
+
+.is-ticky .header-inner  .site-nav,
+body:not(.template-index) .header-inner .site-nav,
+body:not(.template-index) .header,
+body.template-index .header-inner .site-nav,
+body.template-index .header{
+    border-color:#f1f1f1;
+}
+
   .menu-action{padding-right:123px;/*padding-left:100px;*/}
 .header .container{ position: relative;}
 .menu-title {

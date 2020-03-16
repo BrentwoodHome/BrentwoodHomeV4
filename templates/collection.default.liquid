@@ -71,16 +71,21 @@
       Use class grid-uniform to have evenly sized columns clear
       each other properly at each breakpoint.
     {% endcomment %}
-
+<style>
+  .yotpo .standalone-bottomline.star-clickable, .yotpo .standalone-bottomline .star-clickable{
+    display: block;
+  }
+  .yotpo .pull-left{
+    float: none !important;
+    text-align: center;
+  }
+</style>
     <div class="products-grid">
       <div class="row">
         {% if collection.products.size > 0 %}
             {% paginate collection.products by product_per_page %}
             {% for product in collection.products %}
                 {% include 'product-grid-item-category' %}
-
-                {% include 'bold-product' with product, hide_action: 'skip' %}
-
             {% endfor %}
             {% endpaginate %}
         {% else %}

@@ -40,12 +40,14 @@
             </div>
           {% endif %}
           <a href="{{ product.url }}" class="product-grid-image">
-            <img src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+            {% assign imgName = product.featured_image.src | remove: 'products/' | split:'?' | first %}
+            <img src="https://brentwood-home-products.imgix.net/{{imgName}}?w=360&h=360&fit=crop&fp-x=0.5&fp-y=0.5&fp-z=1" alt="{{ product.title | escape }}">
             {% if settings.product_image_hover %}
               <span class="product-image-hover" data-idproduct="{{ product.id }}">
                   {% for image in product.images %}
                       {% if forloop.first != true %}
-                          <img alt="{{ product.title | truncate: 4}}" src="{{ image.src | product_img_url: 'large' }}">
+                          {% assign imgName2 = image.src | remove: 'products/' | split:'?' | first %}
+                          <img alt="{{ product.title}}" src="https://brentwood-home-products.imgix.net/{{imgName2}}?w=360&h=360&fit=crop&fp-x=0.5&fp-y=0.5&fp-z=1">
                           {% break %}
                       {% endif %}
                   {% endfor %}
@@ -60,11 +62,6 @@
         </div>
         <div class="product-bottom">
         <h2><a class="" href="{{ product.url }}">{{ product.title }}</a></h2>
-
-            {% if product.metafields.bhsite.mattressfeel %}<p class="feel-description">{{product.metafields.bhsite.mattressfeel}}</p>{% endif %}
-
-
-
 
        <div style="height:25px" class="yotpo bottomLine"
              data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
