@@ -40,6 +40,7 @@
 
 <div class="nav2 control">
     {% unless template == 'index' %}
+       {%comment%}
        <div class="hidden-xs">
             {% if rightnowint <= currentPromoEnd %}
                 <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowCurrent}} <i class="fa fa-angle-double-right"></i></a>
@@ -54,12 +55,28 @@
                 <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowNewMobile}} <i class="fa fa-angle-double-right"></i></a>
             {% endif %}
         </div>
+        {%endcomment%}
+        <div class="hidden-xs">
+            {% if rightnowint <= currentPromoEnd %}
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
+            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
+            {% endif %}
+        </div>
+        <div class="visible-xs-block">
+            {% if rightnowint <= currentPromoEnd %}
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
+            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
+            {% endif %}
+        </div>
     {% endunless %}
 
 
     <header id="header-content">
         {%if template == 'index'%}
-        <div class="hidden-xs">
+        {%comment%}
+       <div class="hidden-xs">
             {% if rightnowint <= currentPromoEnd %}
                 <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowCurrent}} <i class="fa fa-angle-double-right"></i></a>
             {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
@@ -70,7 +87,22 @@
             {% if rightnowint <= currentPromoEnd %}
                 <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowCurrentMobile}}  <i class="fa fa-angle-double-right"></i></a>
             {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
-                <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowNewMobile}}  <i class="fa fa-angle-double-right"></i></a>
+                <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowNewMobile}} <i class="fa fa-angle-double-right"></i></a>
+            {% endif %}
+        </div>
+        {%endcomment%}
+        <div class="hidden-xs">
+            {% if rightnowint <= currentPromoEnd %}
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
+            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
+            {% endif %}
+        </div>
+        <div class="visible-xs-block">
+            {% if rightnowint <= currentPromoEnd %}
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
+            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
             {% endif %}
         </div>
         {% endif %}
@@ -528,7 +560,8 @@
                 <a href="/pages/reviews-all">3200+ Reviews</a>
                 <a href="/blogs/news">BW Lifestyle Blog</a>
                 <a href="#" id="extole_zone_global_header">Refer & Earn $50</a>
-                <a href="/pages/sale" class="sale">{{ newdesign }} <i class="fa fa-angle-right"></i></a>
+                <!--<a href="/pages/sale" class="sale">{{ newdesign }} <i class="fa fa-angle-right"></i></a>-->
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" class="sale">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-right"></i></a>
             </div>
         </div>
     {% endunless %}
