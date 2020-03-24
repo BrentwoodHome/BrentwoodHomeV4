@@ -14,14 +14,14 @@ Tobe used for banners/tickers ect...
 {% assign rightnow = 'now' | date: '%Y%m%d%H%M' %}
 {% assign rightnowint = rightnow | times: 1 %}
 
-{% assign currentPromoEnd = 202003030001 %}
-{% assign newPromoEnd = 202003310001 %}
-{% assign extensionStart = 202003310002 %}
+{% assign currentPromoEnd = 202003232359 %}
+{% assign newPromoEnd = 202004062359 %}
+{% assign extensionStart = 202004230000 %}
 
 <!-- EYEBROW -->
-{% assign eyebrowCurrent = "Presidents' Day Sale! Save up to $200 on mattresses & more" %}
-{% assign eyebrowCurrentMobile = "NPresidents' Day Sale! shop now" %}
-{% assign eyebrowNew = "Sale! Save up to $175 on mattresses & more" %}
+{% assign eyebrowCurrent = "Sale! Save up to $175 on mattresses & more" %}
+{% assign eyebrowCurrentMobile = "Sale! Save up to $175 on mattresses & more" %}
+{% assign eyebrowNew = "Spring Sale! Save up to $175 on mattresses & more" %}
 {% assign eyebrowNewMobile = "Shop our mattress sale now" %}
 {% assign newdesign = "Sale! $175 off mattresses & more" %}
 
@@ -31,16 +31,16 @@ Tobe used for banners/tickers ect...
 <!-- SALE PAGE variable for extending promo. 'enddate' var displayed in mobile nav and sale page. -->
 {% if rightnowint > extensionStart %}
     {% comment %} Shows extended end sale date {% endcomment%}
-    {% assign enddate = "Ends March 30" %}
-    {% assign mobile_sale_name = "Presidents' Day Sale" %}
+    {% assign enddate = "Ends March 23" %}
+    {% assign mobile_sale_name = "Sale" %}
 {% elsif rightnowint < currentPromoEnd %}
     {% comment %} Shows the correct end date when still in current promo range (currentPromoEnd){% endcomment%}
-    {% assign enddate = "Ends March 30" %}
-    {% assign mobile_sale_name = "Presidents' Day Sale" %}
+    {% assign enddate = "Ends March 23" %}
+    {% assign mobile_sale_name = "Natural Luxury Sale" %}
 {% else %}
     {% comment %} AFter current promoPromoEnd and before newPromoEnd. Shows end date for new promo (newPromoEnd){% endcomment%}
-    {% assign enddate = "Ends March 30" %}
-    {% assign mobile_sale_name = "Natural Luxury Sale" %}
+    {% assign enddate = "Ends April 6" %}
+    {% assign mobile_sale_name = "Spring Sale" %}
 {% endif %}
 
 {% comment %} SALE BADGE {% endcomment %}
@@ -55,13 +55,13 @@ Tobe used for banners/tickers ect...
           {% assign sale = "Sale! Save 20% with code <strong>PETBED20</strong><span>*enter code at checkout</span>" %}
 
         {% when 'oceano-mattress' %}
-          {% assign sale = "Sale! Save $200 with code <strong>PRESIDENTS200</strong><span>*enter code at checkout</span>" %}
+          {% assign sale = "Sale! Save $175 with code <strong>SPRING175</strong><span>*enter code at checkout</span>" %}
 
         {% when 'crystal-cove-mattress' %}
-          {% assign sale = "Sale! Save $175 with code <strong>LUXURY175</strong><span>*enter code at checkout</span>" %}
+          {% assign sale = "Sale! Save $175 with code <strong>SPRING175</strong><span>*enter code at checkout</span>" %}
 
         {% when 'cedar-natural-luxe-mattress' %}
-          {% assign sale = "Sale! Save $200 with code <strong>PRESIDENTS200</strong><span>*enter code at checkout</span>" %}
+          {% assign sale = "Sale! Save $175 with code <strong>SPRING175</strong><span>*enter code at checkout</span>" %}
 
         {% when 'crystal-cove-yoga-bolster' %}
           {% assign sale = "Sale! Save 20% with code <strong>YOGA20</strong><span>*enter code at checkout</span>" %}
