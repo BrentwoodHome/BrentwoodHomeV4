@@ -19,7 +19,9 @@
 {% if comment and comment.created_at %}
   {% assign number_of_comments = article.comments_count | plus: 1 %}
 {% endif %}
-
+<div class="blog-breadcrumbs">
+  <a href="/">Home</a> / <a href="/blogs/news">Blog</a>
+</div>
 {%comment%}style="background-image:url('{{ article.image.src | img_url: 'master' }}');"{%endcomment%}
 <div class="article-hero">
     <div id="heroarticle">{{ article.excerpt}}</div>
