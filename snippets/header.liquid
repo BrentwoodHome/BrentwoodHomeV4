@@ -2,27 +2,27 @@
     @media (min-width: 991px){
         /*control*/
         .banner-features.control{
-            /*display: none !important;*/
-            display: table;
+            display: none !important;
+            /*display: table;*/
         }
         .nav2.control{
-            /*display: none !important;*/
-            display: block;
+            display: none !important;
+            /*display: block;*/
         }
 
         /* nav v1 and 2 */
         .banner-features.nav2Test{
-            /*display: table !important;*/
-            display: none;
+            display: table !important;
+            /*display: none;*/
         }
         .nav2{
-            display: none;
+            display: block;
         }
         .nav2 LI.versionA{
             display: none;
         }
         .nav2 LI.versionB{
-            display: none;
+            display: block;
         }
     }
 
@@ -407,47 +407,6 @@
 <nav class=" megamenu">
    <ul class="navbar-nav site-nav">
 
-<!-- AB TEST A -->
-    <li class="menu-dropdown level-top versionA">
-         <a class="dropdown-toggle has-category" href="/collections/mattresses">
-         <span class="">Mattresses</span><i class="fa fa-angle-down"></i>
-         </a>
-         <div class="dropdown-sub testA one level1">
-            <ul class="mattress_listA">
-                {% for link in linklists.shop.links %}
-                    {%comment%}{% if link.type == 'collection_link' and link.handle == "mattresses" %}{%endif%}{%endcomment%} 
-                    {% if forloop.first %}
-                        {% assign collection = link.object %}
-                        {% for product in collection.products %}
-                            {% assign metaf = product.metafields.c_f %}
-                            {% assign imgName = product.featured_image | remove: 'products/' | split:'?' | first %}
-                            <li class="clearfix"> 
-                                <a href="{{product.url}}?utm_source={{ product.title | handleize }}&utm_medium=nav2&utm_campaign=variant1" class="visualRow">
-                                    <div class="image">
-                                        <img srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=86&h=86&crop=focalpoint&fit=crop&dpr=1 1x, 
-https://brentwood-home-products.imgix.net/{{ imgName }}?fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=172&h=172&crop=focalpoint&fit=crop&dpr=2 2x,
-https://brentwood-home-products.imgix.net/{{ imgName }}?fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=242&h=242&crop=focalpoint&fit=crop&dpr=3 3x
-                                    " src="https://brentwood-home-products.imgix.net/{{ imgName }}?fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=86&h=86&crop=focalpoint&fit=crop" alt="{{product.title}}">
-                                </div>
-                                <p class="title">{{product.title}}&nbsp;
-                                    {% for tag in product.tags %}
-                                        {% if tag contains "flag:" %}<span class="navpillA {{ tag | remove: "flag:" | handleize }}">{{ tag | remove: "flag:" }}</span>{% break %}{% endif %}
-                                    {% endfor %}
-                                </p>
-                                <p class="short-description">{{metaf.shortdesc_nav}}<br>From {{ product.price | money_without_trailing_zeros }}</p>
-                                </a>
-                            </li>
-                        {% endfor %}
-                        <li class="see-also">
-                            See also:&nbsp; 
-                            <a href="/collections/mattress-toppers">Mattress Toppers</a> | 
-                            <a href="/collections/foundations-frames-bases">Foundations, Frames & Bases</a>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-         </div>
-      </li>
 
 <style>
     .testB.one .visualNav{position:relative}.testB.one A{margin:0;padding:0}.testB.one div.featured{padding-right:0}div.visualNav div.badge-wrap{display:block;position:absolute;top:0;left:0;z-index:100}div.visualNav div.badge{background-color:#38414f;display:inline-block;padding:7px 17px 5px;line-height:12px;font-size:12px;margin-bottom:0;padding:10px 13px 9px;border-radius:0 0 10px 0;text-transform:uppercase;color:#fff;font-weight:500!important;font-family:AvenirLTStd-Roman,"Helvetica Neue",helvetica,sans-serif;letter-spacing:1px}div.visualNav div.badge.organic{background-color:#72836f}div.visualNav div.badge.customizable{background-color:#f69e64}div.visualNav div.badge.flippable{background-color:#7a7a7a}div.visualNav div.productDetail{bottom:0;position:absolute;left:0;background-color:rgba(255,255,255,.73);width:100%;padding-left:15px;padding-top:15px;overflow:hidden}div.visualNav div.productDetail A.title{color:#38414f!important;font-size:16px!important;font-weight:900!important;font-family:AvenirLTStd-Roman,"Helvetica Neue",helvetica,sans-serif;letter-spacing:0;text-transform:capitalize;line-height:15px}div.visualNav div.productDetail A.price{color:#4a4a4a;font-style:italic;font-size:14px;text-transform:none!important}div.visualNav.small div.productDetail{padding-top:10px;padding-right:10px}div.visualNav.small div.productDetail A.title{font-size:15px!important}div.visualNav.small div.productDetail A.price{line-height:22px}div.visualNav A.prd_highlight:HOVER{box-shadow:0 0 10px rgba(128,128,128,.7)}.productDetail P{color:#4a4a4a;line-height:18px;font-size:14px}.small .productDetail{max-height:48px;-webkit-transition:max-height .3 ease-out;-moz-transition:max-height .3 ease-out;-ms-transition:max-height .3 ease-out;-o-transition:max-height .3 ease-out;transition:max-height .3 ease-out}.featured .productDetail{max-height:60px;-webkit-transition:max-height .3 ease-out;-moz-transition:max-height .3 ease-out;-ms-transition:max-height .3 ease-out;-o-transition:max-height .3 ease-out;transition:max-height .3 ease-out}.featured .productDetail.visualNavHover{max-height:90px!important;background-color:rgba(255,255,255,.9)}.small .productDetail.visualNavHover{max-height:100px!important;background-color:rgba(255,255,255,.9)}
