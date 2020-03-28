@@ -1,0 +1,498 @@
+<style>
+    @media (min-width: 991px){
+        /*control*/
+        .banner-features.control{
+            display: none !important;
+        }
+        .nav2.control{
+            display: none !important;
+        }
+
+        /* nav v1 and 2 */
+        .banner-features.nav2Test{
+            display: table !important;
+        }
+        .nav2{
+            display: none;
+        }
+        .nav2 LI.versionA{
+            display: none;
+        }
+        .nav2 LI.versionB{
+            display: block;
+        }
+    }
+
+    
+    @media (max-width: 990px){
+        /* ipad resolution and below revert to control nav */
+        .nav2{
+            display: none !important;
+        }
+        .nav2.control{
+            display: block !important;
+        }
+    }
+</style>
+
+
+<div class="nav2 control">
+    {% unless template == 'index' %}
+       {%comment%}
+       <div class="hidden-xs">
+            {% if rightnowint <= currentPromoEnd %}
+                <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowCurrent}} <i class="fa fa-angle-double-right"></i></a>
+            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
+                <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowNew}} <i class="fa fa-angle-double-right"></i></a>
+            {% endif %}
+        </div>
+        <div class="visible-xs-block">
+            {% if rightnowint <= currentPromoEnd %}
+                <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowCurrentMobile}}  <i class="fa fa-angle-double-right"></i></a>
+            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
+                <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowNewMobile}} <i class="fa fa-angle-double-right"></i></a>
+            {% endif %}
+        </div>
+        {%endcomment%}
+        <div class="hidden-xs">
+            {% if rightnowint <= currentPromoEnd %}
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
+            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
+            {% endif %}
+        </div>
+        <div class="visible-xs-block">
+            {% if rightnowint <= currentPromoEnd %}
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
+            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
+            {% endif %}
+        </div>
+    {% endunless %}
+
+
+    <header id="header-content">
+        {%if template == 'index'%}
+        {%comment%}
+       <div class="hidden-xs">
+            {% if rightnowint <= currentPromoEnd %}
+                <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowCurrent}} <i class="fa fa-angle-double-right"></i></a>
+            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
+                <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowNew}} <i class="fa fa-angle-double-right"></i></a>
+            {% endif %}
+        </div>
+        <div class="visible-xs-block">
+            {% if rightnowint <= currentPromoEnd %}
+                <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowCurrentMobile}}  <i class="fa fa-angle-double-right"></i></a>
+            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
+                <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowNewMobile}} <i class="fa fa-angle-double-right"></i></a>
+            {% endif %}
+        </div>
+        {%endcomment%}
+        <div class="hidden-xs">
+            {% if rightnowint <= currentPromoEnd %}
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
+            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
+            {% endif %}
+        </div>
+        <div class="visible-xs-block">
+            {% if rightnowint <= currentPromoEnd %}
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
+            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
+            {% endif %}
+        </div>
+        {% endif %}
+        <div class="header">
+            <div class="container-fluid header-inner">
+                <div class="row">
+                    <div class="logo col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <style>
+                            
+                            @media (min-width: 992px){
+                                .template-index #header-content .header-inner .logo {
+                                    padding: 20px 0 0 30px;
+                                }
+                                .template-index #header-content .header-inner .logo IMG{
+                                    width: 275px;
+                                }
+                            }
+                            @media (max-width: 991px){
+                                .template-index #header-content .header-inner .logo {
+                                    padding-top: 15px;
+                                }
+                            }
+                            @media (max-width: 475px){
+                                .template-index #header-content .header-inner .logo {
+                                    top: 7px !important;
+                                    padding-top: 8px !important;
+                                }
+                                .logo, .header.is-ticky .logo {
+                                    padding-top: 12px;
+                                }
+                            }
+                        </style>
+                        {% if settings.use_logo %}
+                            <a href="/">
+                                <picture>
+                                    <source type="image/svg+xml" media="(min-width: 768px)" srcset="{{ 'logo-brentwoodhome-v3-desktop-clean.svg' | asset_url }}">
+                                    <source type="image/svg+xml" media="(min-width: 375px)" srcset="{{ 'logo-brentwoodhome-v3-mobile-clean.svg' | asset_url }}">
+                                    <source type="image/svg+xml" media="(min-width: 320px)" srcset="{{ 'logo-brentwoodhome-v3-mobile-clean.svg' | asset_url }}">
+                                    <img src="{{ 'logo-brentwoodhome-v3-desktop-clean.svg' | asset_url }}" alt="{{ shop.name }}">
+                                </picture>
+                            </a>
+                        {% endif %}
+                    </div>
+                    <!--<div class="logo-sticky col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        {% if settings.use_logo_sticky %}
+                        <a href="/"><img src="{{ 'logo-sticky.png' | asset_url }}" alt="{{ shop.name }}" /></a>
+                        {% endif %}
+                    </div>-->
+                    <div class="menu-top text-right col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                        <div class="header-tool" style="">
+
+                            <span id="extole_zone_global_header" style=""></span>
+                            
+
+                            <div class="top-currency hidden-xs">
+                                <!--<span class="dropdown-icon">
+    <i class="icon_cog"></i>
+    </span>-->
+                                <div class="wrap-tool">
+                                    <div class="top-bar-dropdown">
+                                        {% include 'currencies-mobile' %}
+                                        <div class="cusstom-link">
+                                            {% if shop.customer_accounts_enabled %}
+                                            {% if customer %}
+                                            <ul class="customer-links">
+                                                {% if settings.enable_wishlist %}
+                                                <li class="wishlist">
+                                                    <i class="icon_heart" arihttps://soulx-01.myshopify.com/admin/themes/82552071?key=snippets%2Fcurrencies-mobile.liquida-hidden="true"></i>
+                                                    <a href="/pages/wish-list" title="My Wishlist">My Wishlist</a>
+                                                </li>
+                                                {% endif %}
+                                                <li><i class="icon_check_alt" aria-hidden="true"></i><a href="/checkout"><span>Checkout</span></a></li>
+                                                <li>
+                                                    {{ 'Logout' | customer_logout_link }}
+                                                    <a href="/account">My Account</a>
+                                                </li>
+                                            </ul>
+                                            {% else %}
+                                            <ul class="customer-links">
+                                                {% if settings.enable_wishlist %}
+                                                <li class="wishlist">
+                                                    <i class="icon_heart" aria-hidden="true"></i>
+                                                    <a href="/pages/wish-list" title="My Wishlist">My Wishlist</a>
+                                                </li>
+                                                {% endif %}
+                                                <li><i class="icon_check_alt" aria-hidden="true"></i><a href="/checkout"><span>Checkout</span></a></li>
+                                                <li><i class="icon_lock-open" aria-hidden="true"></i>
+                                                    {{ 'Sign In' | customer_login_link }}
+                                                </li>
+                                                <li><i class="icon_profile" aria-hidden="true"></i>
+                                                    {% if shop.customer_accounts_optional %}
+                                                    {{ 'Register' | customer_register_link }}
+                                                    {% endif %}
+                                                </li>
+                                            </ul>
+                                            {% endif %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="header-cart">
+                                <!--%include 'customer_links' %-->
+                                <div class="top-cart">
+                                    <p class="top-cart">
+                                        <a href="/cart" id="cartToggle">
+                                            <span class="icon top-icon-cart"><i class="fa fa-shopping-cart"></i></span>
+                                            {% if cart.item_count > 0 %}
+                                                <span id="cart-count">{{ cart.item_count }}</span>
+                                            {% endif %}
+                                        </a>
+                                    </p>
+                                    <div id="dropdown-cart-hide" style="display:none">
+                                        <div class="cart-empty">
+                                            <p>You have no items in your shopping cart.</p>
+                                        </div>
+                                        <div class="mini_cart_header">
+                                            <ol class="cart-list">
+                                                {% for item in cart.items %}
+                                                    {% unless item.product.handle == "cedar-natural-luxe-topper" %}
+                                                        <li class="item" id="cart-item-{{item.id}}">
+                                                            <a href="{{item.url}}" title="{{item.title}}" class="product-image"><img src="{{ item.image | product_img_url: 'small' }}" alt="{{item.title}}"></a>
+                                                            <div class="product-inner">
+                                                                <p class="product-name"><a href="{{item.url}}">{{ item.product.title }}</a></p>
+                                                                <div class="option">
+                                                                    {% if item.product.variants.size != 0 %}
+                                                                    {% unless item.variant.title contains 'Default' %}
+                                                                    <small>{{ item.variant.title }}</small>
+                                                                    {% endunless %}
+                                                                    {% endif %}
+                                                                </div>
+                                                                <div class="cart-collateral"><span class="price">{{item.price | money}}</span> (x {{item.quantity}})</div>
+                                                                <a href="javascript:void(0)" title="Remove Item" class="btn-remove">x</a>
+                                                            </div>
+                                                        </li>
+                                                    {% endunless %}
+                                                {% endfor %}
+                                            </ol>
+                                            <div class="summary">
+                                                <p class="total">
+                                                    <span class="label" style="color:#000">Total:</span>
+                                                    <span class="price">{{cart.total_price | money}}</span>
+                                                </p>
+                                            </div>
+                                            <div class="actions">
+                                                <div class="view-cart"><a href="/cart">View Cart</a></div>
+                                                <button class="btn" onclick="window.location='/checkout'">Checkout</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% comment %}
+                                    If customer accounts are enabled, provide login and create account links
+                                    {% endcomment %}
+                                </div> <!-- End Top Header -->
+                            </div>
+                            <div id="search-top" class="hiden-sx">
+                                <div class="icon-search"><i class="icon_search"> </i></div>
+                                <div class="wrap-show-search">
+                                    <div class="search-form" style="">
+                                        <div class="search-close">
+                                            <i class="icon_close"></i>
+                                        </div>
+                                        {% include 'search-bar' %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="toggle-menu">
+                            <button class="navbar-toggle btn-menu-canvas" data-toggle="offcanvas" data-target="#off-canvas-nav">
+                                <i class="icon_menu"></i>
+                            </button>
+                        </div>
+                        <div class="menu-action">{% include 'site-nav' %}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</div><!-- end control -->
+
+<div class="nav2 abtest">
+    <style>
+        DIV#eyebrow-warranties{background-color:#38414f;padding:10px 0}DIV#eyebrow-warranties P{text-align:center;color:#fff;margin:0;padding:0;text-transform:uppercase;font-size:15px}div.subeyebrow{background-color:#a28f94;padding:0 30px}div.subeyebrow A{color:#fff;font-size:13px;display:inline-block;margin-right:25px;line-height:31px;text-transform:capitalize}div.subeyebrow A:HOVER{text-decoration:underline!important}div.subeyebrow A.sale{float:right;margin-right:0;text-transform:uppercase}.banner-features.nav2Test{height:1px!important}.nav2.abtest div.header-tool{margin-right:0}.dropdown-sub.testA.one{min-width:600px;left:-250px;padding:28px 15px 28px 15px}.dropdown-sub.testB.one{min-width:1021px;left:-320px;padding:28px 26px 28px 15px}.is-ticky .dropdown-sub.testB.one{left:-400px}#header-content .site-nav li a{height:auto}.dropdown-sub.testA.two{min-width:940px;width:940px;left:-200px;padding:15px}@media (min-width:1280px){.dropdown-sub.testA.two{min-width:1280px;width:100%}}@media (min-width:991px){.dropdown-sub.testA.two{min-width:1110px;width:100%}}.dropdown-sub.testA.two .dropdown-menu-inner{padding:0}.dropdown-sub.testA.two .menu-title{padding:0!important;margin:25px 0 5px 0;border-bottom:none;color:#38414f!important;font-size:16px!important;font-weight:500!important;font-family:AvenirLTStd-Roman,"Helvetica Neue",helvetica,sans-serif;letter-spacing:0}.dropdown-sub.testA.two .menu-title A{font-weight:500!important;color:#38414f!important;font-size:16px!important;letter-spacing:0}.dropdown-sub.testA.two li a{padding-left:0!important;color:#4a4a4a;font-size:16px;display:inline-block}#header-content .header-inner .site-nav li .dropdown-sub.testA.two li a{font-size:16px;font-family:AvenirLTStd-Light,'Helvetica Neue',helvetica,sans-serif}UL.mattress_listA{margin-left:0!important}UL.mattress_listA LI{margin-bottom:0}UL.mattress_listA LI A.visualRow{padding:0;text-decoration:none!important}#header-content .header-inner .site-nav li .dropdown-sub li a{padding:8px 10px 8px 10px;line-height:21px}UL.mattress_listA LI A.visualRow P.short-description{font-size:16px!important;line-height:21px;color:#4a4a4a!important;font-family:AvenirLTStd-Light,'Helvetica Neue',helvetica,sans-serif}UL.mattress_listA LI A.visualRow DIV.image{float:left;width:86px;height:86px;display:block;margin-right:18px;padding:0!important}UL.mattress_listA LI A.visualRow:HOVER{box-shadow:0 0 15px rgba(192,192,192,.5)}UL.mattress_listA LI A.visualRow P.title{color:#38414f!important;font-size:16px!important;font-weight:700;text-transform:uppercase!important;letter-spacing:.5px;padding:9px 0 3px 0!important;margin-bottom:0}SPAN.navpillA{background-color:#aeaeae;color:#fff;padding:12px 10px 10px 10px;font-size:11px!important;border-radius:25px;text-transform:uppercase!important;line-height:1px;display:inline-block;top:-3px;position:relative;font-size:14px;font-weight:300}SPAN.navpillA.organic{background-color:#72836f}SPAN.navpillA.best-selling{background-color:#38414f}SPAN.navpillA.flippable{background-color:#7a7a7a}SPAN.navpillA.foam-or-hybrid{background-color:#f69e64}UL.mattress_listA LI A.visualRow .copy{float:left;padding-top:12px}UL.mattress_listA LI.see-also{color:#7a7a7a;text-align:center;padding-top:25px}UL.mattress_listA LI.see-also A{display:inline-block;text-decoration:underline;color:#38414f;background-color:#dedede;padding:7px 13px!important;border-radius:50px;margin:0 8px}.nav2 .header-cart .top-cart{padding-left:25px}.nav2 #search-top .icon_search{font-family:FontAwesome;font-size:18px}.nav2 .top-cart a i{color:#38414f!important}.nav2 #search-top .icon-search i{color:#38414f!important}.nav2 #cart-count{right:-16px;top:-7px;color:#fff;color:#4a4a4a;position:absolute;font-size:18px;font-weight:700}.nav2 SPAN#cart-count{font-size:12px;display:inline-block;background-color:#a28f94;border-radius:50px;width:16px;height:16px;line-height:20px;color:#fff!important;top:-12px;right:-10px;font-family:AvenirLTStd-Light,'Helvetica Neue',helvetica,sans-serif}@media (min-width:991px){.nav2 .header-cart{border-left:1px solid #7a7a7a}}.nav2.abtest #search-top{margin-right:25px}.nav2.abtest .header-tool{padding-left:30px}
+        @media (max-width: 990px){
+        /* ipad resolution and below revert to control nav */
+        .nav2 .header-cart .top-cart{padding-left:0px}
+        }
+    </style>
+    {% unless template == 'index' %}
+       <div id="eyebrow-warranties" class="hidden-xs">
+            <p>1-year mattress sleep trial | 25-year warranty | free shipping & return | made in usa</p>
+        </div>
+        <div id="eyebrow-warranties" class="visible-xs-block">
+            <p>1-year mattress sleep trial | 25-year warranty | free shipping & return | made in usa</p>
+        </div>
+        <div class="subeyebrow">
+            <div>
+                <a href="/pages/reviews-all">3200+ Reviews</a>
+                <a href="/blogs/news">BW Lifestyle Blog</a>
+                <a href="#" id="extole_zone_global_header">Refer & Earn $50</a>
+                <!--<a href="/pages/sale" class="sale">{{ newdesign }} <i class="fa fa-angle-right"></i></a>-->
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" class="sale">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+    {% endunless %}
+
+<header id="header-content">
+        {%if template == 'index'%}
+        <div id="eyebrow-warranties" class="hidden-xs">
+            <p>1-year mattress sleep trial | 25-year warranty | free shipping & return | made in usa</p>
+        </div>
+        <div id="eyebrow-warranties" class="visible-xs-block">
+            <p>1-year mattress sleep trial | 25-year warranty | free shipping & return | made in usa</p>
+        </div>
+        <div class="subeyebrow">
+            <div>
+                <a href="/pages/reviews-all">3200+ Reviews</a>
+                <a href="/blogs/news">BW Lifestyle Blog</a>
+                <a href="#" id="extole_zone_global_header">Refer & Earn $50</a>
+                <!--<a href="/pages/sale" class="sale">{{ newdesign }} <i class="fa fa-angle-right"></i></a>-->
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" class="sale">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+        {% endif %}
+        <div class="header">
+            <div class="container-fluid header-inner">
+                <div class="row">
+                    <div class="logo col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <style>
+                            
+                            @media (min-width: 992px){
+                                .template-index #header-content .header-inner .logo {
+                                    padding: 20px 0 0 30px;
+                                }
+                                .template-index #header-content .header-inner .logo IMG{
+                                    width: 275px;
+                                }
+                            }
+                            @media (max-width: 991px){
+                                .template-index #header-content .header-inner .logo {
+                                    padding-top: 15px;
+                                }
+                            }
+                            @media (max-width: 475px){
+                                .template-index #header-content .header-inner .logo {
+                                    top: 7px !important;
+                                    padding-top: 8px !important;
+                                }
+                                .logo, .header.is-ticky .logo {
+                                    padding-top: 12px;
+                                }
+                            }
+                        </style>
+                        {% if settings.use_logo %}
+                            <a href="/">
+                                <picture>
+                                    <source type="image/svg+xml" media="(min-width: 768px)" srcset="{{ 'logo-brentwoodhome-v3-desktop-clean.svg' | asset_url }}">
+                                    <source type="image/svg+xml" media="(min-width: 375px)" srcset="{{ 'logo-brentwoodhome-v3-mobile-clean.svg' | asset_url }}">
+                                    <source type="image/svg+xml" media="(min-width: 320px)" srcset="{{ 'logo-brentwoodhome-v3-mobile-clean.svg' | asset_url }}">
+                                    <img src="{{ 'logo-brentwoodhome-v3-desktop-clean.svg' | asset_url }}" alt="{{ shop.name }}">
+                                </picture>
+                            </a>
+                        {% endif %}
+                    </div>
+                    <div class="menu-top text-right col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                        <div class="header-tool" style="">
+
+                            <span id="extole_zone_global_header" style=""></span>
+                            
+                            <div class="header-cart">
+                                <div class="top-cart">
+                                    <p class="top-cart">
+                                        <a href="/cart" id="cartToggle">
+                                            <span class="icon top-icon-cart"><i class="fa fa-shopping-cart"></i></span>
+                                            {% if cart.item_count > 0 %}
+                                                <span id="cart-count">{{ cart.item_count }}</span>
+                                            {% endif %}
+                                        </a>
+                                    </p>
+                                </div> <!-- End Top Header -->
+                            </div>
+                            <div id="search-top" class="hiden-sx">
+                                <div class="icon-search"><i class="icon_search"> </i></div>
+                                <div class="wrap-show-search">
+                                    <div class="search-form" style="">
+                                        <div class="search-close">
+                                            <i class="icon_close"></i>
+                                        </div>
+                                        {% include 'search-bar' %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="toggle-menu">
+                            <button class="navbar-toggle btn-menu-canvas" data-toggle="offcanvas" data-target="#off-canvas-nav">
+                                <i class="icon_menu"></i>
+                            </button>
+                        </div>
+                        <div class="menu-action">
+<nav class=" megamenu">
+   <ul class="navbar-nav site-nav">
+
+<!-- AB TEST A -->
+    <li class="menu-dropdown level-top versionA">
+         <a class="dropdown-toggle has-category" href="/collections/mattresses">
+         <span class="">Mattresses</span><i class="fa fa-angle-down"></i>
+         </a>
+         <div class="dropdown-sub testA one level1">
+            <ul class="mattress_listA">
+                {% for link in linklists.shop.links %}
+                    {%comment%}{% if link.type == 'collection_link' and link.handle == "mattresses" %}{%endif%}{%endcomment%} 
+                    {% if forloop.first %}
+                        {% assign collection = link.object %}
+                        {% for product in collection.products %}
+                            {% assign metaf = product.metafields.c_f %}
+                            {% assign imgName = product.featured_image | remove: 'products/' | split:'?' | first %}
+                            <li class="clearfix"> 
+                                <a href="{{product.url}}?utm_source={{ product.title | handleize }}&utm_medium=nav2&utm_campaign=variant1" class="visualRow">
+                                    <div class="image">
+                                        <img srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=86&h=86&crop=focalpoint&fit=crop&dpr=1 1x, 
+https://brentwood-home-products.imgix.net/{{ imgName }}?fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=172&h=172&crop=focalpoint&fit=crop&dpr=2 2x,
+https://brentwood-home-products.imgix.net/{{ imgName }}?fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=242&h=242&crop=focalpoint&fit=crop&dpr=3 3x
+                                    " src="https://brentwood-home-products.imgix.net/{{ imgName }}?fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=86&h=86&crop=focalpoint&fit=crop" alt="{{product.title}}">
+                                </div>
+                                <p class="title">{{product.title}}&nbsp;
+                                    {% for tag in product.tags %}
+                                        {% if tag contains "flag:" %}<span class="navpillA {{ tag | remove: "flag:" | handleize }}">{{ tag | remove: "flag:" }}</span>{% break %}{% endif %}
+                                    {% endfor %}
+                                </p>
+                                <p class="short-description">{{metaf.shortdesc_nav}}<br>From {{ product.price | money_without_trailing_zeros }}</p>
+                                </a>
+                            </li>
+                        {% endfor %}
+                        <li class="see-also">
+                            See also:&nbsp; 
+                            <a href="/collections/mattress-toppers">Mattress Toppers</a> | 
+                            <a href="/collections/foundations-frames-bases">Foundations, Frames & Bases</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+         </div>
+      </li>
+
+<style>
+    .testB.one .visualNav{position:relative}.testB.one A{margin:0;padding:0}.testB.one div.featured{padding-right:0}div.visualNav div.badge-wrap{display:block;position:absolute;top:0;left:0;z-index:100}div.visualNav div.badge{background-color:#38414f;display:inline-block;padding:7px 17px 5px;line-height:12px;font-size:12px;margin-bottom:0;padding:10px 13px 9px;border-radius:0 0 10px 0;text-transform:uppercase;color:#fff;font-weight:500!important;font-family:AvenirLTStd-Roman,"Helvetica Neue",helvetica,sans-serif;letter-spacing:1px}div.visualNav div.badge.organic{background-color:#72836f}div.visualNav div.badge.customizable{background-color:#f69e64}div.visualNav div.badge.flippable{background-color:#7a7a7a}div.visualNav div.productDetail{bottom:0;position:absolute;left:0;background-color:rgba(255,255,255,.73);width:100%;padding-left:15px;padding-top:15px;overflow:hidden}div.visualNav div.productDetail A.title{color:#38414f!important;font-size:16px!important;font-weight:900!important;font-family:AvenirLTStd-Roman,"Helvetica Neue",helvetica,sans-serif;letter-spacing:0;text-transform:capitalize;line-height:15px}div.visualNav div.productDetail A.price{color:#4a4a4a;font-style:italic;font-size:14px;text-transform:none!important}div.visualNav.small div.productDetail{padding-top:10px;padding-right:10px}div.visualNav.small div.productDetail A.title{font-size:15px!important}div.visualNav.small div.productDetail A.price{line-height:22px}div.visualNav A.prd_highlight:HOVER{box-shadow:0 0 10px rgba(128,128,128,.7)}.productDetail P{color:#4a4a4a;line-height:18px;font-size:14px}.small .productDetail{max-height:48px;-webkit-transition:max-height .3 ease-out;-moz-transition:max-height .3 ease-out;-ms-transition:max-height .3 ease-out;-o-transition:max-height .3 ease-out;transition:max-height .3 ease-out}.featured .productDetail{max-height:60px;-webkit-transition:max-height .3 ease-out;-moz-transition:max-height .3 ease-out;-ms-transition:max-height .3 ease-out;-o-transition:max-height .3 ease-out;transition:max-height .3 ease-out}.featured .productDetail.visualNavHover{max-height:90px!important;background-color:rgba(255,255,255,.9)}.small .productDetail.visualNavHover{max-height:100px!important;background-color:rgba(255,255,255,.9)}
+</style>
+<script>
+    $(window).load(function(){
+        $( "div.visualNav" ).hover(
+          function() {
+            $( this ).find("div.productDetail").addClass( "visualNavHover" );
+            /*$( this ).find("div.productDetail").animate({
+                height: "90px"
+            }, 350);*/
+          }, function() {
+            $( this ).find("div.productDetail").removeClass( "visualNavHover" );
+          }
+        );
+    });
+</script>
+<!-- AB TEST B -->
+<li class="menu-dropdown level-top versionB "> <a class="dropdown-toggle has-category" href="/collections/mattresses"> <span class="">Mattresses</span><i class="fa fa-angle-down"></i> </a><div class="dropdown-sub testB one level1"><div class="container"><div class="row"><div class="col-xs-6 featured" style="padding-right: 12px;"><div class="visualNav"><div class="badge-wrap best"><div class="badge">best-selling</div></div><div class="productDetail"> <a href="/products/oceano-mattress" class="title">Oceano Luxury Hybrid</a> <a href="/products/oceano-mattress" class="price">from $995</a><p>3000+ coils, exceptional craftmanship, luxurious feel.</p></div> <a href="/products/oceano-mattress" class="prd_highlight"> <img src="https://brentwood-home-products.imgix.net/oceano2017-_0002_Oceano79006.jpg?w=550&rect=37,27,1904,1413" alt="Oceano Memory Foam Hybrid Mattress"> </a></div></div><div class="col-xs-3 small" style="padding-right: 12px;padding-left: 0px;"><div class="visualNav small"><div class="badge-wrap"><div class="badge organic">organic</div></div><div class="productDetail"> <a href="/products/cedar-natural-luxe-mattress" class="title">Cedar Natural Luxe</a> <a href="/products/cedar-natural-luxe-mattress" class="price">from $1495</a><p>Our luxury organic certified latex mattress.</p></div> <a href="/products/oceano-mattress" class="prd_highlight"> <img src="https://brentwood-home-products.imgix.net/cedarluxe__0001_Brentwood_Home_-_Cedar_Mattress_web_-216.jpg?w=320&rect=178,79,1691,1207" alt="Cedar Natural Luxe Mattress"> </a></div></div><div class="col-xs-3 small" style="padding-left: 0px;padding-right: 12px;"><div class="visualNav small"><div class="badge-wrap"><div class="badge customizable">foam or hybrid</div></div><div class="productDetail"> <a href="/products/cypress-memory-foam-mattress" class="title">Cypress Memory Foam</a> <a href="/products/cypress-memory-foam-mattress" class="price">from $399</a><p>Available in 11 or 13” height, all-foam or hybrid.</p></div> <a href="/products/cypress-memory-foam-mattress" class="prd_highlight"> <img src="https://brentwood-home-products.imgix.net/bwh_cypressmattress_front.jpg?w=320&rect=460,290,2048,1462" alt="Cypress Memory Foam Mattress"> </a></div></div><div class="col-xs-3 small" style="padding-right: 12px;padding-left: 0px; margin-top: 12px;"><div class="visualNav small"><div class="badge-wrap"><div class="badge flippable">flippable</div></div><div class="productDetail"> <a href="/products/crystal-cove-mattress" class="title">Crystal Cove</a> <a href="/products/crystal-cove-mattress" class="price">from $995</a><p>Dual-feel latex/charcoal infused memory foam.</p></div> <a href="/products/crystal-cove-mattress" class="prd_highlight"> <img src="https://brentwood-home-products.imgix.net/CC_Details_003_0004_CC_Details_018.jpg?w=320&rect=460,590,2048,1462" alt="Crystal Cove Mattress Hybrid "> </a></div></div><div class="col-xs-3 small" style="padding-right: 12px;padding-left: 0px; margin-top: 12px;"><div class="visualNav small"><div class="productDetail"> <a href="/products/adjustable-bed-frame" class="title">Adjustable Bed Frame</a> <a href="/products/adjustable-bed-frame" class="price">from $599</a><p>Massage, remote control, USB, custom positions.</p></div> <a href="/products/adjustable-bed-frame" class="prd_highlight"> <img src="https://brentwood-home-products.imgix.net/adjustablebase-DL2A3650.jpg?w=320&rect=213,197,1516,1080" alt="Adjustable Bed Frame"> </a></div></div></div></div><ul class="mattress_listA"><li class="see-also"> See also:&nbsp; <a href="/collections/mattress-toppers">Mattress Toppers</a> | <a href="/collections/foundations-frames-bases">Foundations, Frames & Bases</a></li></ul></div></li><li class="menu-dropdown mega-menu level-top aligned-center "> <a class="dropdown-toggle" href="#"> <span>Bedding & more</span><i class="fa fa-angle-down"></i> </a><div class="dropdown-sub testA two sub-1"><div class="dropdown-menu-inner"><div class="row"><div class="mega-item col-sm-12 col-md-12"><div class="row"><div class="col-sm-4"><div class="mega-col-inner "> <a href="/products/luxury-organic-cotton-sheets"> <img src="https://brentwood-home-products.imgix.net/brentwoodhome_organicsheets_00028b.jpg?w=350&h=350&bri=-8&txtalign=middle,center&txtfont=Didot,Italic&txt=Organic%20Sheets&txtclr=FFFFFF&txtsize=42&fit=crop&dpr=1&fp-x=0.5&fp-y=0.5&fp-z=1" alt="New Organic Sheets"> </a></div></div><div class="col-sm-3" style="width: 21%"><div class="mega-col-inner "><div class="menu-title"><a href="/collections/pillows-all">Pillows</a></div><div class="widget-inner"><ul class="nav-links"><li class=""><a href="/collections/pillows">Bed Pillows</a></li><li class=""><a href="/collections/wedge-pillows">Wedge Pillows</a></li></ul></div><div class="menu-title"><a href="/pages/crystal-cove-collection">Crystal Cove Yoga</a></div><div class="widget-inner"><ul class="nav-links"><li class=""><a href="/products/crystal-cove-yoga-bolster">Yoga Bolster</a></li><li class=""><a href="/products/crystal-cove-pranayama-bolster">Pranayama Pillow</a></li><li class=""><a href="/products/crystal-cove-meditation-pillow">Meditation Pillow</a></li><li class=""><a href="/products/crystal-cove-bundle">Yoga Bundle</a><span class="navpillA saleNav">save 20%</span></li></ul></div></div></div><div class="col-sm-3" style="width: 23%"><div class="mega-col-inner "><div class="menu-title"><a href="/collections/sheets-blankets">Sheets & Blankets</a></div><div class="widget-inner"><ul class="nav-links"><li class=""><a href="/products/luxury-organic-cotton-sheets">Organic Sheets</a></li><li class=""><a href="/products/beachwood-linen-quilt">Quilts</a></li></ul></div><div class="menu-title"><a href="/collections/baby-kids">Babies &amp; Kids</a></div><div class="widget-inner"><ul class="nav-links"><li class=""><a href="/collections/crib-kids-mattresses">Crib &amp; Kids Mattresses</a></li><li class=""><a href="/products/sleeping-willow-toddler-pillow">Toddler Pillow</a></li><li class=""><a href="/collections/kids-pillow">Kids Pillows</a></li></ul></div></div></div><div class="col-sm-2" style="width: 22%"><div class="mega-col-inner "><div class="menu-title"><a href="/collections/pets">Pet Beds</a></div><div class="widget-inner"><ul class="nav-links"><li class=""><a href="/products/griffith-orthopedic-pet-bed" data-ol-has-click-handler="">Griffith</a></li><li class=""><a href="/products/runyon-deluxe-orthopedic-pet-bed" data-ol-has-click-handler="">Runyon</a></li></ul><div class="menu-title"><a href="/collections/mattress-toppers">Mattress Toppers</a></div><div class="menu-title" style="margin-top: 0px;"><a href="/collections/foundations-frames-bases">Foundations & Bases</a></div></div></div></div></div></div></div></div></div></li><li class="menu-dropdown mega-menu level-top aligned-center "> <a class="dropdown-toggle" href="#"> <span style="color: #666;">Why Brentwood</span><i class="fa fa-angle-down"></i> </a><div class="dropdown-sub testA two sub-1" style="width:"><div class="dropdown-menu-inner"><div class="row"><div class="mega-item col-sm-12 col-md-12"><div class="row"><div class="col-sm-4"><div class="mega-col-inner "> <img src="https://s3-brentwoodhome.imgix.net/crescent-bay-laguna-beach-california.jpg?w=350&h=350&bri=-8&txtalign=middle,center&txtfont=Didot,Italic&txt=California%20Lifestyle&txt-fit=max&txtclr=FFFFFF&txtsize=42&fit=crop&dpr=1&fp-x=0.5&fp-y=0.5&fp-z=1" alt="New Organic Sheets"></div></div><div class="col-sm-3" style="width: 21%"><div class="mega-col-inner "><div class="menu-title">Made in L.A.</div><div class="widget-inner"><ul class="nav-links"><li class=""><a href="/pages/our-story">Purpose</a></li><li class=""><a href="/pages/materials">Eco-Conscious Materials</a></li><li class=""><a href="/pages/sustainability-certifications-partnerships">Trusted Certifications</a></li><li class=""><a href="/pages/relief-bed">Brentwood Gives</a></li></ul></div></div></div><div class="col-sm-3" style="width: 24%"><div class="mega-col-inner "><div class="menu-title">Buy with confidence</div><div class="widget-inner"><ul class="nav-links"><li class=""><a href="/pages/1-year-mattress-trial">1-Year Sleep Trial</a></li><li class=""><a href="https://intercom.help/brentwood-home-b4d83ef0a14f/sleep-trail-warranty-and-returns" target="_blank">Warranties</a></li><li class=""><a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/2511384-do-you-offer-free-doorstep-delivery" target="_blank">Free Shipping & Returns</a></li><li class=""><a href="/pages/reviews-all">Reviews</a></li></ul></div></div></div><div class="col-sm-2" style="width: 21%"><div class="mega-col-inner "><div class="menu-title">A+ Support</div><div class="widget-inner"><ul class="nav-links"><li class=""><a class="open_intercom" href="mailto:gnkl0uyl@brentwood-home-d2962b2761e8.intercom-mail.com">Chat With a Human</a></li><li class=""><a href="https://intercom.help/brentwood-home-b4d83ef0a14f" target="_blank">Self-Help Center</a></li><li class=""><a href="/pages/contact-us">Contact Us</a></li><li class=""><a href="/pages/our-team">Meet Our Support Team</a></li></ul></div></div></div></div></div></div></div></div></li>
+
+      
+      <li class=" level-top">
+         <a class="" href="/pages/sale" title="Sale" target="_self">
+         <span class="" data-link="Sale">Sale</span>
+         </a>
+      </li>
+   </ul>
+</nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</div><!-- end versionA -->
+
+
+
+
+
+<script type="text/javascript">
+    /* Start Extole */
+    (function(c,e,k,l,a){c[e]=c[e]||{};for(c[e].q=c[e].q||[];a<l.length;)k(l[a++],c[e])})(window,"extole",function(c,e){e[c]=e[c]||function(){e.q.push([c,arguments])}},["createZone"],0);
+    /* End Extole */
+
+    extole.createZone({
+        name: 'global_header',
+        element_id: 'extole_zone_global_header'
+    });
+</script>

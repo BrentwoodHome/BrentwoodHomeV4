@@ -2,27 +2,27 @@
     @media (min-width: 991px){
         /*control*/
         .banner-features.control{
+            /*display: none !important;*/
             display: none !important;
-            /*display: table;*/
         }
         .nav2.control{
+            /*display: none !important;*/
             display: none !important;
-            /*display: block;*/
         }
 
         /* nav v1 and 2 */
         .banner-features.nav2Test{
+            /*display: table !important;*/
             display: table !important;
-            /*display: none;*/
         }
         .nav2{
-            display: block;
+            display: block !important;
         }
         .nav2 LI.versionA{
-            display: none;
+            display: none !important;
         }
         .nav2 LI.versionB{
-            display: block;
+            display: block !important;
         }
     }
 
@@ -30,81 +30,86 @@
     @media (max-width: 990px){
         /* ipad resolution and below revert to control nav */
         .nav2{
-            display: none !important;
-        }
-        .nav2.control{
             display: block !important;
         }
     }
 </style>
 
 
-<div class="nav2 control">
+<div class="nav2 abtest">
+    <style>
+        DIV#eyebrow-warranties{background-color:#38414f;padding:10px 0}DIV#eyebrow-warranties P{text-align:center;color:#fff;margin:0;padding:0;text-transform:uppercase;font-size:15px}div.subeyebrow{background-color:#a28f94;padding:0 30px}div.subeyebrow A{color:#fff;font-size:13px;display:inline-block;margin-right:25px;line-height:31px;text-transform:capitalize}div.subeyebrow A:HOVER{text-decoration:underline!important}div.subeyebrow A.sale{float:right;margin-right:0;text-transform:uppercase}.banner-features.nav2Test{height:1px!important}.nav2.abtest div.header-tool{margin-right:0}.dropdown-sub.testB.one{min-width:1021px;left:-320px;padding:28px 26px 28px 15px}.is-ticky .dropdown-sub.testB.one{left:-400px}#header-content .site-nav li a{height:auto}.dropdown-sub.testA.two{min-width:940px;width:940px;left:-200px;padding:15px}@media(min-width:1280px){.dropdown-sub.testA.two{min-width:1280px;width:100%}}@media(min-width:991px){.dropdown-sub.testA.two{min-width:1110px;width:100%}}.dropdown-sub.testA.two .dropdown-menu-inner{padding:0}.dropdown-sub.testA.two .menu-title{padding:0!important;margin:25px 0 5px 0;border-bottom:0;color:#38414f!important;font-size:16px!important;font-weight:500!important;font-family:AvenirLTStd-Roman,"Helvetica Neue",helvetica,sans-serif;letter-spacing:0}.dropdown-sub.testA.two .menu-title A{font-weight:500!important;color:#38414f!important;font-size:16px!important;letter-spacing:0}.dropdown-sub.testA.two li a{padding-left:0!important;color:#4a4a4a;font-size:16px;display:inline-block}#header-content .header-inner .site-nav li .dropdown-sub.testA.two li a{font-size:16px;font-family:AvenirLTStd-Light,'Helvetica Neue',helvetica,sans-serif}#header-content .header-inner .site-nav li .dropdown-sub li a{padding:8px 10px 8px 10px;line-height:21px}UL.mattress_listA LI A.visualRow P.short-description{font-size:16px!important;line-height:21px;color:#4a4a4a!important;font-family:AvenirLTStd-Light,'Helvetica Neue',helvetica,sans-serif}SPAN.navpillA{background-color:#aeaeae;color:#fff;padding:12px 10px 10px 10px;font-size:11px!important;border-radius:25px;text-transform:uppercase!important;line-height:1px;display:inline-block;top:-3px;position:relative;font-size:14px;font-weight:300}SPAN.navpillA.organic{background-color:#72836f}SPAN.navpillA.best-selling{background-color:#38414f}SPAN.navpillA.flippable{background-color:#7a7a7a}SPAN.navpillA.foam-or-hybrid{background-color:#f69e64}.nav2 .header-cart .top-cart{padding-left:25px}.nav2 #search-top .icon_search{font-family:FontAwesome;font-size:18px}.nav2 .top-cart a i{color:#38414f!important}.nav2 #search-top .icon-search i{color:#38414f!important}.nav2 #cart-count{right:-16px;top:-7px;color:#fff;color:#4a4a4a;position:absolute;font-size:18px;font-weight:700}.nav2 SPAN#cart-count{font-size:12px;display:inline-block;background-color:#a28f94;border-radius:50px;width:16px;height:16px;line-height:20px;color:#fff!important;top:-12px;right:-10px;font-family:AvenirLTStd-Light,'Helvetica Neue',helvetica,sans-serif}@media(min-width:991px){.nav2 .header-cart{border-left:1px solid #7a7a7a}}.nav2.abtest #search-top{margin-right:25px}.nav2.abtest .header-tool{padding-left:30px}UL.mattress_listA LI.see-also{color:#7a7a7a;text-align:center;padding-top:25px}UL.mattress_listA LI.see-also A{display:inline-block;text-decoration:underline;color:#38414f;background-color:#dedede;padding:7px 13px!important;border-radius:50px;margin:0 8px}
+        @media (max-width: 990px){
+            /* ipad resolution and below revert to control nav */
+            .nav2 .header-cart .top-cart{padding-left:0px}
+        
+            DIV#eyebrow-warranties P{
+                font-size: 12px;
+                letter-spacing: 0;
+            }
+            .nav2.abtest div.header-tool {
+                margin-right: 0;
+            }
+            .nav2.abtest .header-tool{
+                padding-left: 0;
+                position: absolute;
+                right: 15px;
+                top: 0;
+            }
+            div.subeyebrow{
+                padding: 0 15px;
+            }
+            div.subeyebrow A{
+                margin-right: 15px;
+            }
+            A.subHreviews SPAN{
+                display: none;
+            }
+            A.subHreviews:after{
+                content: "Reviews";
+            }
+            .header{
+                height: 56px;
+            }
+            .header-inner .row .menu-top{
+                /*position: absolute;*/
+            }
+        }
+    </style>
     {% unless template == 'index' %}
-       {%comment%}
-       <div class="hidden-xs">
-            {% if rightnowint <= currentPromoEnd %}
-                <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowCurrent}} <i class="fa fa-angle-double-right"></i></a>
-            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
-                <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowNew}} <i class="fa fa-angle-double-right"></i></a>
-            {% endif %}
+       <div id="eyebrow-warranties" class="hidden-xs">
+            <p>1-year mattress trial | 25-year warranty | free shipping & return | made in usa</p>
         </div>
-        <div class="visible-xs-block">
-            {% if rightnowint <= currentPromoEnd %}
-                <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowCurrentMobile}}  <i class="fa fa-angle-double-right"></i></a>
-            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
-                <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowNewMobile}} <i class="fa fa-angle-double-right"></i></a>
-            {% endif %}
+        <div id="eyebrow-warranties" class="visible-xs-block">
+            <p>1-year sleep trial | free shipping & return | made in usa</p>
         </div>
-        {%endcomment%}
-        <div class="hidden-xs">
-            {% if rightnowint <= currentPromoEnd %}
-                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
-            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
-                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
-            {% endif %}
-        </div>
-        <div class="visible-xs-block">
-            {% if rightnowint <= currentPromoEnd %}
-                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
-            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
-                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
-            {% endif %}
+        <div class="subeyebrow">
+            <div>
+                <a href="/pages/reviews-all" class="subHreviews"><span>3200+ Reviews</span></a>
+                <a href="/blogs/news">BW Lifestyle Blog</a>
+                <span id='extole_zone_global_header'></span>
+                <!--<a href="/pages/sale" class="sale">{{ newdesign }} <i class="fa fa-angle-right"></i></a>-->
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" class="sale">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-right"></i></a>
+            </div>
         </div>
     {% endunless %}
 
-
-    <header id="header-content">
+<header id="header-content">
         {%if template == 'index'%}
-        {%comment%}
-       <div class="hidden-xs">
-            {% if rightnowint <= currentPromoEnd %}
-                <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowCurrent}} <i class="fa fa-angle-double-right"></i></a>
-            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
-                <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowNew}} <i class="fa fa-angle-double-right"></i></a>
-            {% endif %}
+        <div id="eyebrow-warranties" class="hidden-xs">
+            <p>1-year mattress sleep trial | 25-year warranty | free shipping & return | made in usa</p>
         </div>
-        <div class="visible-xs-block">
-            {% if rightnowint <= currentPromoEnd %}
-                <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowCurrentMobile}}  <i class="fa fa-angle-double-right"></i></a>
-            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
-                <a href="/pages/sale" id="sitewidesalebanner" class="freepacificajune2017">{{eyebrowNewMobile}} <i class="fa fa-angle-double-right"></i></a>
-            {% endif %}
+        <div id="eyebrow-warranties" class="visible-xs-block">
+            <p>1-year sleep trial | free shipping & return | made in usa</p>
         </div>
-        {%endcomment%}
-        <div class="hidden-xs">
-            {% if rightnowint <= currentPromoEnd %}
-                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
-            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
-                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
-            {% endif %}
-        </div>
-        <div class="visible-xs-block">
-            {% if rightnowint <= currentPromoEnd %}
-                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
-            {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
-                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" id="sitewidesalebanner" class="freepacificajune2017">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-double-right"></i></a>
-            {% endif %}
+        <div class="subeyebrow">
+            <div>
+                <a href="/pages/reviews-all" class="subHreviews"><span>3200+ Reviews</span></a>
+                <a href="/blogs/news">BW Lifestyle Blog</a>
+                <span id='extole_zone_global_header'></span>
+                <!--<a href="/pages/sale" class="sale">{{ newdesign }} <i class="fa fa-angle-right"></i></a>-->
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" class="sale">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-right"></i></a>
+            </div>
         </div>
         {% endif %}
         <div class="header">
@@ -147,67 +152,12 @@
                             </a>
                         {% endif %}
                     </div>
-                    <!--<div class="logo-sticky col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        {% if settings.use_logo_sticky %}
-                        <a href="/"><img src="{{ 'logo-sticky.png' | asset_url }}" alt="{{ shop.name }}" /></a>
-                        {% endif %}
-                    </div>-->
                     <div class="menu-top text-right col-lg-9 col-md-9 col-sm-9 col-xs-12">
                         <div class="header-tool" style="">
 
-                            <span id="extole_zone_global_header" style=""></span>
+                            <!-- <span id="extole_zone_global_header" style=""></span> -->
                             
-
-                            <div class="top-currency hidden-xs">
-                                <!--<span class="dropdown-icon">
-    <i class="icon_cog"></i>
-    </span>-->
-                                <div class="wrap-tool">
-                                    <div class="top-bar-dropdown">
-                                        {% include 'currencies-mobile' %}
-                                        <div class="cusstom-link">
-                                            {% if shop.customer_accounts_enabled %}
-                                            {% if customer %}
-                                            <ul class="customer-links">
-                                                {% if settings.enable_wishlist %}
-                                                <li class="wishlist">
-                                                    <i class="icon_heart" arihttps://soulx-01.myshopify.com/admin/themes/82552071?key=snippets%2Fcurrencies-mobile.liquida-hidden="true"></i>
-                                                    <a href="/pages/wish-list" title="My Wishlist">My Wishlist</a>
-                                                </li>
-                                                {% endif %}
-                                                <li><i class="icon_check_alt" aria-hidden="true"></i><a href="/checkout"><span>Checkout</span></a></li>
-                                                <li>
-                                                    {{ 'Logout' | customer_logout_link }}
-                                                    <a href="/account">My Account</a>
-                                                </li>
-                                            </ul>
-                                            {% else %}
-                                            <ul class="customer-links">
-                                                {% if settings.enable_wishlist %}
-                                                <li class="wishlist">
-                                                    <i class="icon_heart" aria-hidden="true"></i>
-                                                    <a href="/pages/wish-list" title="My Wishlist">My Wishlist</a>
-                                                </li>
-                                                {% endif %}
-                                                <li><i class="icon_check_alt" aria-hidden="true"></i><a href="/checkout"><span>Checkout</span></a></li>
-                                                <li><i class="icon_lock-open" aria-hidden="true"></i>
-                                                    {{ 'Sign In' | customer_login_link }}
-                                                </li>
-                                                <li><i class="icon_profile" aria-hidden="true"></i>
-                                                    {% if shop.customer_accounts_optional %}
-                                                    {{ 'Register' | customer_register_link }}
-                                                    {% endif %}
-                                                </li>
-                                            </ul>
-                                            {% endif %}
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="header-cart">
-                                <!--%include 'customer_links' %-->
                                 <div class="top-cart">
                                     <p class="top-cart">
                                         <a href="/cart" id="cartToggle">
@@ -217,7 +167,8 @@
                                             {% endif %}
                                         </a>
                                     </p>
-                                    <div id="dropdown-cart-hide" style="display:none">
+                                    {% comment %}
+                                     <div id="dropdown-cart-hide" style="display:none">
                                         <div class="cart-empty">
                                             <p>You have no items in your shopping cart.</p>
                                         </div>
@@ -255,135 +206,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {% comment %}
-                                    If customer accounts are enabled, provide login and create account links
                                     {% endcomment %}
-                                </div> <!-- End Top Header -->
-                            </div>
-                            <div id="search-top" class="hiden-sx">
-                                <div class="icon-search"><i class="icon_search"> </i></div>
-                                <div class="wrap-show-search">
-                                    <div class="search-form" style="">
-                                        <div class="search-close">
-                                            <i class="icon_close"></i>
-                                        </div>
-                                        {% include 'search-bar' %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="toggle-menu">
-                            <button class="navbar-toggle btn-menu-canvas" data-toggle="offcanvas" data-target="#off-canvas-nav">
-                                <i class="icon_menu"></i>
-                            </button>
-                        </div>
-                        <div class="menu-action">{% include 'site-nav' %}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-</div><!-- end control -->
-
-<div class="nav2 abtest">
-    <style>
-        DIV#eyebrow-warranties{background-color:#38414f;padding:10px 0}DIV#eyebrow-warranties P{text-align:center;color:#fff;margin:0;padding:0;text-transform:uppercase;font-size:15px}div.subeyebrow{background-color:#a28f94;padding:0 30px}div.subeyebrow A{color:#fff;font-size:13px;display:inline-block;margin-right:25px;line-height:31px;text-transform:capitalize}div.subeyebrow A:HOVER{text-decoration:underline!important}div.subeyebrow A.sale{float:right;margin-right:0;text-transform:uppercase}.banner-features.nav2Test{height:1px!important}.nav2.abtest div.header-tool{margin-right:0}.dropdown-sub.testA.one{min-width:600px;left:-250px;padding:28px 15px 28px 15px}.dropdown-sub.testB.one{min-width:1021px;left:-320px;padding:28px 26px 28px 15px}.is-ticky .dropdown-sub.testB.one{left:-400px}#header-content .site-nav li a{height:auto}.dropdown-sub.testA.two{min-width:940px;width:940px;left:-200px;padding:15px}@media (min-width:1280px){.dropdown-sub.testA.two{min-width:1280px;width:100%}}@media (min-width:991px){.dropdown-sub.testA.two{min-width:1110px;width:100%}}.dropdown-sub.testA.two .dropdown-menu-inner{padding:0}.dropdown-sub.testA.two .menu-title{padding:0!important;margin:25px 0 5px 0;border-bottom:none;color:#38414f!important;font-size:16px!important;font-weight:500!important;font-family:AvenirLTStd-Roman,"Helvetica Neue",helvetica,sans-serif;letter-spacing:0}.dropdown-sub.testA.two .menu-title A{font-weight:500!important;color:#38414f!important;font-size:16px!important;letter-spacing:0}.dropdown-sub.testA.two li a{padding-left:0!important;color:#4a4a4a;font-size:16px;display:inline-block}#header-content .header-inner .site-nav li .dropdown-sub.testA.two li a{font-size:16px;font-family:AvenirLTStd-Light,'Helvetica Neue',helvetica,sans-serif}UL.mattress_listA{margin-left:0!important}UL.mattress_listA LI{margin-bottom:0}UL.mattress_listA LI A.visualRow{padding:0;text-decoration:none!important}#header-content .header-inner .site-nav li .dropdown-sub li a{padding:8px 10px 8px 10px;line-height:21px}UL.mattress_listA LI A.visualRow P.short-description{font-size:16px!important;line-height:21px;color:#4a4a4a!important;font-family:AvenirLTStd-Light,'Helvetica Neue',helvetica,sans-serif}UL.mattress_listA LI A.visualRow DIV.image{float:left;width:86px;height:86px;display:block;margin-right:18px;padding:0!important}UL.mattress_listA LI A.visualRow:HOVER{box-shadow:0 0 15px rgba(192,192,192,.5)}UL.mattress_listA LI A.visualRow P.title{color:#38414f!important;font-size:16px!important;font-weight:700;text-transform:uppercase!important;letter-spacing:.5px;padding:9px 0 3px 0!important;margin-bottom:0}SPAN.navpillA{background-color:#aeaeae;color:#fff;padding:12px 10px 10px 10px;font-size:11px!important;border-radius:25px;text-transform:uppercase!important;line-height:1px;display:inline-block;top:-3px;position:relative;font-size:14px;font-weight:300}SPAN.navpillA.organic{background-color:#72836f}SPAN.navpillA.best-selling{background-color:#38414f}SPAN.navpillA.flippable{background-color:#7a7a7a}SPAN.navpillA.foam-or-hybrid{background-color:#f69e64}UL.mattress_listA LI A.visualRow .copy{float:left;padding-top:12px}UL.mattress_listA LI.see-also{color:#7a7a7a;text-align:center;padding-top:25px}UL.mattress_listA LI.see-also A{display:inline-block;text-decoration:underline;color:#38414f;background-color:#dedede;padding:7px 13px!important;border-radius:50px;margin:0 8px}.nav2 .header-cart .top-cart{padding-left:25px}.nav2 #search-top .icon_search{font-family:FontAwesome;font-size:18px}.nav2 .top-cart a i{color:#38414f!important}.nav2 #search-top .icon-search i{color:#38414f!important}.nav2 #cart-count{right:-16px;top:-7px;color:#fff;color:#4a4a4a;position:absolute;font-size:18px;font-weight:700}.nav2 SPAN#cart-count{font-size:12px;display:inline-block;background-color:#a28f94;border-radius:50px;width:16px;height:16px;line-height:20px;color:#fff!important;top:-12px;right:-10px;font-family:AvenirLTStd-Light,'Helvetica Neue',helvetica,sans-serif}@media (min-width:991px){.nav2 .header-cart{border-left:1px solid #7a7a7a}}.nav2.abtest #search-top{margin-right:25px}.nav2.abtest .header-tool{padding-left:30px}
-        @media (max-width: 990px){
-        /* ipad resolution and below revert to control nav */
-        .nav2 .header-cart .top-cart{padding-left:0px}
-        }
-    </style>
-    {% unless template == 'index' %}
-       <div id="eyebrow-warranties" class="hidden-xs">
-            <p>1-year mattress sleep trial | 25-year warranty | free shipping & return | made in usa</p>
-        </div>
-        <div id="eyebrow-warranties" class="visible-xs-block">
-            <p>1-year mattress sleep trial | 25-year warranty | free shipping & return | made in usa</p>
-        </div>
-        <div class="subeyebrow">
-            <div>
-                <a href="/pages/reviews-all">3200+ Reviews</a>
-                <a href="/blogs/news">BW Lifestyle Blog</a>
-                <a href="#" id="extole_zone_global_header">Refer & Earn $50</a>
-                <!--<a href="/pages/sale" class="sale">{{ newdesign }} <i class="fa fa-angle-right"></i></a>-->
-                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" class="sale">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-right"></i></a>
-            </div>
-        </div>
-    {% endunless %}
-
-<header id="header-content">
-        {%if template == 'index'%}
-        <div id="eyebrow-warranties" class="hidden-xs">
-            <p>1-year mattress sleep trial | 25-year warranty | free shipping & return | made in usa</p>
-        </div>
-        <div id="eyebrow-warranties" class="visible-xs-block">
-            <p>1-year mattress sleep trial | 25-year warranty | free shipping & return | made in usa</p>
-        </div>
-        <div class="subeyebrow">
-            <div>
-                <a href="/pages/reviews-all">3200+ Reviews</a>
-                <a href="/blogs/news">BW Lifestyle Blog</a>
-                <a href="#" id="extole_zone_global_header">Refer & Earn $50</a>
-                <!--<a href="/pages/sale" class="sale">{{ newdesign }} <i class="fa fa-angle-right"></i></a>-->
-                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" class="sale">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-right"></i></a>
-            </div>
-        </div>
-        {% endif %}
-        <div class="header">
-            <div class="container-fluid header-inner">
-                <div class="row">
-                    <div class="logo col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                        <style>
-                            
-                            @media (min-width: 992px){
-                                .template-index #header-content .header-inner .logo {
-                                    padding: 20px 0 0 30px;
-                                }
-                                .template-index #header-content .header-inner .logo IMG{
-                                    width: 275px;
-                                }
-                            }
-                            @media (max-width: 991px){
-                                .template-index #header-content .header-inner .logo {
-                                    padding-top: 15px;
-                                }
-                            }
-                            @media (max-width: 475px){
-                                .template-index #header-content .header-inner .logo {
-                                    top: 7px !important;
-                                    padding-top: 8px !important;
-                                }
-                                .logo, .header.is-ticky .logo {
-                                    padding-top: 12px;
-                                }
-                            }
-                        </style>
-                        {% if settings.use_logo %}
-                            <a href="/">
-                                <picture>
-                                    <source type="image/svg+xml" media="(min-width: 768px)" srcset="{{ 'logo-brentwoodhome-v3-desktop-clean.svg' | asset_url }}">
-                                    <source type="image/svg+xml" media="(min-width: 375px)" srcset="{{ 'logo-brentwoodhome-v3-mobile-clean.svg' | asset_url }}">
-                                    <source type="image/svg+xml" media="(min-width: 320px)" srcset="{{ 'logo-brentwoodhome-v3-mobile-clean.svg' | asset_url }}">
-                                    <img src="{{ 'logo-brentwoodhome-v3-desktop-clean.svg' | asset_url }}" alt="{{ shop.name }}">
-                                </picture>
-                            </a>
-                        {% endif %}
-                    </div>
-                    <div class="menu-top text-right col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                        <div class="header-tool" style="">
-
-                            <span id="extole_zone_global_header" style=""></span>
-                            
-                            <div class="header-cart">
-                                <div class="top-cart">
-                                    <p class="top-cart">
-                                        <a href="/cart" id="cartToggle">
-                                            <span class="icon top-icon-cart"><i class="fa fa-shopping-cart"></i></span>
-                                            {% if cart.item_count > 0 %}
-                                                <span id="cart-count">{{ cart.item_count }}</span>
-                                            {% endif %}
-                                        </a>
-                                    </p>
                                 </div> <!-- End Top Header -->
                             </div>
                             <div id="search-top" class="hiden-sx">
@@ -406,7 +229,6 @@
                         <div class="menu-action">
 <nav class=" megamenu">
    <ul class="navbar-nav site-nav">
-
 
 <style>
     .testB.one .visualNav{position:relative}.testB.one A{margin:0;padding:0}.testB.one div.featured{padding-right:0}div.visualNav div.badge-wrap{display:block;position:absolute;top:0;left:0;z-index:100}div.visualNav div.badge{background-color:#38414f;display:inline-block;padding:7px 17px 5px;line-height:12px;font-size:12px;margin-bottom:0;padding:10px 13px 9px;border-radius:0 0 10px 0;text-transform:uppercase;color:#fff;font-weight:500!important;font-family:AvenirLTStd-Roman,"Helvetica Neue",helvetica,sans-serif;letter-spacing:1px}div.visualNav div.badge.organic{background-color:#72836f}div.visualNav div.badge.customizable{background-color:#f69e64}div.visualNav div.badge.flippable{background-color:#7a7a7a}div.visualNav div.productDetail{bottom:0;position:absolute;left:0;background-color:rgba(255,255,255,.73);width:100%;padding-left:15px;padding-top:15px;overflow:hidden}div.visualNav div.productDetail A.title{color:#38414f!important;font-size:16px!important;font-weight:900!important;font-family:AvenirLTStd-Roman,"Helvetica Neue",helvetica,sans-serif;letter-spacing:0;text-transform:capitalize;line-height:15px}div.visualNav div.productDetail A.price{color:#4a4a4a;font-style:italic;font-size:14px;text-transform:none!important}div.visualNav.small div.productDetail{padding-top:10px;padding-right:10px}div.visualNav.small div.productDetail A.title{font-size:15px!important}div.visualNav.small div.productDetail A.price{line-height:22px}div.visualNav A.prd_highlight:HOVER{box-shadow:0 0 10px rgba(128,128,128,.7)}.productDetail P{color:#4a4a4a;line-height:18px;font-size:14px}.small .productDetail{max-height:48px;-webkit-transition:max-height .3 ease-out;-moz-transition:max-height .3 ease-out;-ms-transition:max-height .3 ease-out;-o-transition:max-height .3 ease-out;transition:max-height .3 ease-out}.featured .productDetail{max-height:60px;-webkit-transition:max-height .3 ease-out;-moz-transition:max-height .3 ease-out;-ms-transition:max-height .3 ease-out;-o-transition:max-height .3 ease-out;transition:max-height .3 ease-out}.featured .productDetail.visualNavHover{max-height:90px!important;background-color:rgba(255,255,255,.9)}.small .productDetail.visualNavHover{max-height:100px!important;background-color:rgba(255,255,255,.9)}
@@ -458,3 +280,13 @@
         element_id: 'extole_zone_global_header'
     });
 </script>
+ <script>
+      jQuery(window).scroll(function() {
+        var scroll = jQuery(window).scrollTop();
+        if (scroll > 0) {
+            jQuery("#header-content .header").addClass("is-ticky");
+        }else{
+          jQuery("#header-content .header").removeClass("is-ticky");
+        }
+    });
+    </script>
