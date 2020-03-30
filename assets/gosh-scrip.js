@@ -673,16 +673,16 @@
       jQuery("#back-top").fadeOut()
     }
   });
-  jQuery( ".footer-top h3.module-title" ).append( '<i class="arrow_carrot-down"></i>' );
+  jQuery( ".footer-top p.module-title" ).append( '<i class="arrow_carrot-down"></i>' );
   jQuery(".footer-top .content").hide();
-  jQuery(".footer-top h3.module-title i").addClass("accordion-show");
-  jQuery(".footer-top h3.module-title i").click(function(){
-    if(jQuery(this).parent().next().is(":visible")){
+  jQuery(".footer-top p.module-title").addClass("accordion-show");
+  jQuery(".footer-top p.module-title").click(function(){
+    if(jQuery(this).next().is(":visible")){
       jQuery(this).addClass("accordion-show");
     }else{
       jQuery(this).removeClass("accordion-show");
     }
-    jQuery(this).parent().next().toggle(400);
+    jQuery(this).next().toggle(400);
   });
 
 /*
