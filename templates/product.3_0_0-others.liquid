@@ -351,7 +351,7 @@
             </div>
         </div>
     </div>
-    {% elsif product.handle == "waterproof-mattress-protector" %}
+    {% elsif product.handle == "organic-waterproof-mattress-protector" %}
     <div class="container section warranties">
         <h2 class="text-center">Start Your 100-night Sleep Trial</h2>
         <div class="row">
@@ -641,11 +641,11 @@
    
     <div id="materialsspecs"></div>
 
-    {% if product.handle == "metal-bed-frame" or product.handle == "foundation" or product.handle == "adjustable-bed-frame" or product.handle == "waterproof-mattress-protector" %}
+    {% if product.handle == "metal-bed-frame" or product.handle == "foundation" or product.handle == "adjustable-bed-frame" or product.handle == "organic-waterproof-mattress-protector" %}
     <div class="container section margTB120">
         <h2 class="text-center">Product Specifications</h2>
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            {% if product.description %}
+            {% if product.description != "" %}
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingZero">
                         <h4 class="panel-title">
