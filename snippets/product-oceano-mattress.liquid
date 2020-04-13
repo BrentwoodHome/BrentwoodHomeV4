@@ -1,7 +1,70 @@
+<div class="container section awards">
+    <h2 class="text-center">America's Best Memory Foam Mattress</h2>
+    <div id="awards" class=" owl-carousel owl-theme">
+        <div class="item text-center">
+            <img src="https://s3-brentwoodhome.imgix.net/products/oceano/awards-our-sleep-guide-best-hybrid-oceano.jpg?sat=-100&bri=21" style="max-width: 130px;" alt="Our Sleep Guide - Best Hybrid Oceano Mattress">
+            <p>Our Sleep Guide <br> Best Hybrid Mattress</p>
+        </div>
+        <div class="item text-center">
+            <img src="https://s3-brentwoodhome.imgix.net/products/oceano/awards-our-sleep-guide-best-overall-oceano.jpg?sat=-100&bri=21" style="max-width: 130px;" alt="Our Sleep Guide - Best Overall Oceano Mattress">
+            <p>Our Sleep Guide <br> Best Overall Mattress</p>
+        </div>
+        <div class="item text-center">
+            <img src="https://s3-brentwoodhome.imgix.net/products/oceano/awards-sleepfoundation-best-luxury-mattress2020-2.jpg?sat=-100&bri=21" style="max-width: 130px;" alt="Sleep Foundation - Best Luxury Mattress">
+            <p>Sleep Foundation<br>Best Luxury Mattress</p>
+        </div>
+        <div class="item text-center">
+            <img src="https://s3-brentwoodhome.imgix.net/products/oceano/awards-sleep-sherpa-best-luxury-oceano.jpg?sat=-100&bri=10" style="max-width: 130px;" alt="Sleep Sherpa - Best Luxury Mattress">
+            <p>Sleep Sherpa <br> Best Luxury Mattress</p>
+        </div>
+        <div class="item text-center">
+            <img src="https://s3-brentwoodhome.imgix.net/products/oceano/awards-slumber-yard-best-pillow-top-oceano.jpg?sat=-100&bri=21" style="max-width: 130px;" alt="Slumber Yard - Best Pillow Top Mattress">
+            <p>Slumber Yard <br> Best Pillow Top Mattress</p>
+        </div>
+        <div class="item text-center">
+            <img src="https://s3-brentwoodhome.imgix.net/products/oceano/awards-slumber-yard-best-side-sleeper-oceano.jpg?sat=-100&bri=21" style="max-width: 130px;" alt="Slumber Yard - Best Side Sleeper Mattress">
+            <p>Slumber Yard<br>Best Side Sleeper Mattress</p>
+        </div>
+
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+
+        $('#awards').owlCarousel({
+            loop:false,
+            margin:10,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:2,
+                    loop: true,
+                    stagePadding: 40,
+                },
+                480:{
+                    items:4,
+                    loop: true,
+                    stagePadding: 40,
+                },
+                768:{
+                    items:6,
+                    //nav:true
+                    stagePadding: 0,
+                    loop: false,
+                    mouseDrag: false,
+                    touchDrag: false
+                }
+            },
+            nav : false,
+
+        });
+    });
+</script> 
+
 <div class="oceanomaterials">
     <section>
         <div class="container">
-            <h2 class="text-center margTB7050">America's Best Memory Foam Mattress<br>With Nine Luxe Layers Of Premium Materials</h2>
+            <h2 class="text-center margTB7050">Nine Luxe Layers Of Premium Materials</h2>
             <div class="inside five">
                 <div class="hidden-xs hidden-sm matTip small oceano tencel wow fadeIn" data-wow-duration="1s" data-wow-delay="1s">
                     <img src="https://s3-brentwoodhome.imgix.net/tencel_round.png?w=80&h=80" alt="Plant-Based Tencel™ Blended Fabric Cover" class="rdthumb">
@@ -32,8 +95,8 @@
                     </div>
                 </div>
                 <div class="hidden-xs hidden-sm matTip small oceano gel wow fadeIn" data-wow-duration="1s" data-wow-delay="2.5s">
-                    <img src="https://s3-brentwoodhome.imgix.net/products/cypress/gelmf-round.png?w=80&h=80" alt="CertiPUR-US® certified Cooling Gel Memory Foam" class="rdthumb">
-                    <p><em class="matnumberSmall">5</em><strong>CertiPUR-US® certified Cooling Gel Memory Foam</strong></p>
+                    <img src="https://s3-brentwoodhome.imgix.net/products/cypress/gelmf-round.png?w=80&h=80" alt="CertiPUR-US® certified Cooling Bio Foam" class="rdthumb">
+                    <p><em class="matnumberSmall">5</em><strong>CertiPUR-US® certified memory foam with Plant-Based BioFoam&reg;</strong></p>
                     <div class="arrow">
                         <div class="pointer"></div>
                     </div>
@@ -81,8 +144,8 @@
                 </div>
                 <div class="item text-center">
                     <p class="text-center matnumber">5</p>
-                    <h3 class="text-center features">Cooling Gel-Infused Swirl Memory Foam</h3>
-                    <p>Contouring and cooling for pressure-point relief and deep rest.
+                    <h3 class="text-center features">CertiPUR-US® certified memory foam with plant-pased BioFoam&reg;</h3>
+                    <p>Cooling properties + eco-friendly
                     </p>
                 </div>
                 <div class="item text-center">
@@ -139,8 +202,8 @@
                 </div>
                 <div class="item text-center">
                     <p class="text-center matnumber">4</p>
-                    <h3 class="text-center features">Cooling Gel-Infused Swirl Memory Foam</h3>
-                    <p>Contouring and cooling for pressure-point relief and deep rest.
+                    <h3 class="text-center features">CertiPUR-US® certified memory foam with plant-based BioFoam&reg;</h3>
+                    <p>Contouring, cooling and eco-friendly.
                     </p>
                 </div>
                 <div class="item text-center">
@@ -232,6 +295,7 @@
     </section>
 </div>
 
+
 {% include 'product-warranties' %}
 
 <div class="container section">
@@ -267,7 +331,7 @@
             <div>
                 <h3>Temperature-Regulating and Moisture-Wicking</h3>
                 <h2>Sleep Cool, Wake&nbsp;Refreshed</h2>
-                <p>Our Air Luxe cooling Gel Memory Foam, which is <strong>CertiPUR-US® certified</strong>, uses <strong>open-cell technology to regulate temperature and wick moisture for a comfortable night’s sleep.</strong></p>
+                <p>Our cooling gel memory foam with plant-based BioFoam&reg;, which is CertiPUR-US® certified, uses open-cell technology to regulate temperature and wick moisture for a comfortable night’s sleep.</p>
             </div>
         </div>
     </div>
@@ -286,7 +350,7 @@
             <div>
                 <h3>perfect for all type of sleepers</h3>
                 <h2>Medium-Plush Hybrid</h2>
-                <p><strong>The combination of foam and coils in hybrid mattresses offers elevated support, increased airflow and lasting durability.</strong> For the Oceano, we took our pressure-relieving, breathable, gel-infused memory foam and combined it with our responsive layers of individually-wrapped microcoils that keep your spine in healthy alignment to create our most-luxurious and best-selling hybrid mattress.
+                <p><strong>The combination of foam and coils in hybrid mattresses offers elevated support, increased airflow and lasting durability.</strong> For the Oceano, we took our pressure-relieving, breathable, gel memory foam with plant-based BioFoam&reg; and combined it with our responsive layers of individually-wrapped microcoils that keep your spine in healthy alignment to create our most-luxurious and best-selling hybrid mattress.
                 </p>
             </div>
         </div>
@@ -370,7 +434,7 @@
             <div>
                 <h3>Sleep with Peace of&nbsp;Mind</h3>
                 <h2>Non-Toxic Materials</h2>
-                <p>Our non-toxic materials include <strong>CertiPUR-US®</strong> certified cooling, gel-infused memory foam, silk fibers, <strong>GOTS organic certified cotton and wool</strong>, and sustainably-sourced plant-based Tencel fibers from eucalyptus trees. Better still, no chemical or synthetic fiber flame retardants are used. 
+                <p>Our non-toxic materials include <strong>CertiPUR-US®</strong> certified cooling gel memory foam with BioFoam&reg;, silk fibers, <strong>GOTS organic certified cotton and wool</strong>, and sustainably-sourced plant-based Tencel fibers from eucalyptus trees. Better still, no chemical or synthetic fiber flame retardants are used. 
                 </p>
             </div>
         </div>
@@ -396,6 +460,27 @@
         </div>
     </div>
 </div>
+
+
+<div class="container section">
+    <div class="row flex">
+        <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center wow fadeInRight">
+            <picture>
+                <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/luxury-oceano-mattress-with-bio-foam.jpg?rect=450,200,1234,1234&w=768&ch=Width,DPR&q=55">
+                <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/luxury-oceano-mattress-with-bio-foam.jpg?rect=450,0,1234,1708&w=555">
+                <img class="lazy" loading="lazy" src="https://s3-brentwoodhome.imgix.net/products/oceano/luxury-oceano-mattress-with-bio-foam.jpg?rect=450,0,1234,1708&w=555&blur=500&q=10" data-src="https://s3-brentwoodhome.imgix.net/products/oceano/luxury-oceano-mattress-with-bio-foam.jpg?rect=450,0,1234,1708&w=555" alt="Memory Foam with Plant-Based BioFoam&reg;">
+            </picture>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-sm-pull-6 flexV wow fadeInLeft">
+            <div>
+                <h3>Eco-friendly &amp; supportive</h3>
+                <h2>Memory Foam with<br>Plant-Based BioFoam&reg;</h2>
+                <p>BioFoam&reg; is a polyurethane foam that adds a modest amount of soy-based polypol, the maximum possible, without altering the traditional cushioning feeling of memory foam. <strong>We believe memory foam with BioFoam&reg; is a better alternative, a positive step forward for reducing the environmental impact of memory foam, without sacrificing luxurious, supportive comfort.</strong> Of course, our memory foam with BioFoam&reg; is free of chlorofluorocarbon (CFCs) and Polybrominated Diphenyl Ethers (PBDEs), which can be harmful to human and environmental health. A CertiPUR-US certification validates our BioFoam&reg; has low indoor emissions and is made without ozone-depleters, formaldehyde, lead, mercury, and other harmful materials.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container section">
     <picture>
         <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano-bed-woman-reading-fun.jpg?rect=829,0,1708,1708&w=768">
