@@ -108,7 +108,7 @@ body:not(.template-index) .main-content{
     color: $grey !important;
     &:HOVER{
         background-color: transparent;
-        color: white;
+        color: white !important;
     }
 }
 .cta2.whiteinv{
@@ -117,8 +117,7 @@ body:not(.template-index) .main-content{
     border: 1px solid $blue;
     &:HOVER{
         background-color: $blue;
-        color: white;
-        //border: 1px solid $blue;
+        color: white !important;
     }
 }
 .cta2.nostroke{
@@ -5056,6 +5055,7 @@ DIV#financing-modal{
 @media (max-width: 767px) {
     DIV.landing DIV.jumbtron.crystalcove DIV.tagline H1{
         font-size: 32px;
+        line-height: 34px;
     }
     DIV.landing DIV.jumbtron.crystalcove DIV.tagline P.line{
         font-size: 18px;
