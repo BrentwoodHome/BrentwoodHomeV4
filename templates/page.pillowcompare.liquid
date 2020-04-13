@@ -10,6 +10,7 @@
 {% assign crystalcove = all_products['crystal-cove-pillow'] %}
 {% assign ojai = all_products['ojai-pillow'] %}
 {% assign oceano = all_products['oceano-pillow'] %}
+{% assign cypress = all_products['cypress-pillow'] %}
 
 
 {% for variant in oceano.variants %}
@@ -184,42 +185,41 @@
                     </div>
                 </div>
             </div>
-            {%comment%}
             <div class="item">
-                <div class="product-col cedar text-center">
+                <div class="product-col cypress text-center">
                     <div class="colorwrap">
-                        <a href="{{pacifica.url}}" class="col-header">
-                            <h2>{{pacifica.title}}</h2>
-                            <h3>Organic Cotton</h3>
+                        <a href="{{cypress.url}}" class="col-header">
+                            <h2>{{cypress.title}}</h2>
+                            <h3>Soft and Breathable</h3>
                         </a>
-                        <a href="{{ pacifica.url }}" class="product-grid-image" title="{{pacifica.title}}">
-                            {% assign imgName = pacifica.featured_image | remove: 'products/' | split:'?' | first %}
+                        <a href="{{ cypress.url }}" class="product-grid-image" title="">
+                            {% assign imgName = cypress.featured_image | remove: 'products/' | split:'?' | first %}
                             <picture>
                                 <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=480">
                                 <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=750">
                                 <img src="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=750" alt="">
                             </picture>
                         </a>
-
+                    
                         <div class="paddingwrap">
                             <div class="yotpo bottomLine"
                                  data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
                                  data-domain="{{ shop.permanent_domain | escape }}"
-                                 data-product-id="{{ pacifica.id }}"
-                                 data-product-models="{{ pacifica.id }}"
-                                 data-name="{{ pacifica.title | escape }}"
-                                 data-url="{{ shop.url }}{{ pacifica.url }}">
+                                 data-product-id="{{ cypress.id }}"
+                                 data-product-models="{{ cypress.id }}"
+                                 data-name="{{ cypress.title | escape }}"
+                                 data-url="{{ shop.url }}{{ cypress.url }}">
                             </div>
-                            <!--<p class="price"><i>Starting at</i> <a href="{{ pacifica.url }}" title="{{ pacifica.title }}">{{pacificaPrice | money }}</a></p>-->
-                            <p><a href="{{pacifica.url}}" class="cta2 solid text-center marg0">From {{pacificaPrice | money }}</a></p>
+                            <!--<p class="price"><i>Starting at</i> <a href="{{ ojai.url }}" title="{{ ojai.title }}">{{ojaiPrice | money }}</a></p>-->
+                            <p><a href="{{cypress.url}}" class="cta2 solid text-center marg0">From {{cypress.price | money }}</a></p>
 
                             <ul class="featList text-left">
-                                <li class="ico fabric">100% Organic Cotton Cover</li>
-                                <li class="ico gel">Gel Memory Foam + Down Alternative Blended Fill</li>
+                                <li class="ico fabric">Polyester & Spandex</li>
+                                <li class="ico gel">Polyester Puffs</li>
                                 <li class="ico zone5">Adjustable feel</li>
                             </ul>
                             <p class="description">
-                                An incredibly soft combination of gel memory foam ribbons and down alternative fill create the perfect sleep surface that gently cradles your neck and head.
+                                Handmade in the USA with a polyester-puff fill, the Cypress Pillow is lightweight, lofty, and supportive. It’s the perfect addition to your Cypress Memory Foam Mattress.
                             </p>
                             <div class="otherFeatures">
                                 <p><strong>Other Features</strong></p>
@@ -234,53 +234,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="item">
-                <div class="product-col cedar text-center">
-                    <div class="colorwrap">
-                        <a href="{{helena.url}}" class="col-header">
-                            <h2>{{helena.title}}</h2>
-                            <h3>The Most Natural</h3>
-                        </a>
-                        <a href="{{ helena.url }}" class="product-grid-image" title="">
-                            {% assign imgName = helena.featured_image | remove: 'products/' | split:'?' | first %}
-                            <picture>
-                                <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=480">
-                                <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=750">
-                                <img src="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=750" alt="">
-                            </picture>
-                        </a>
-                        <div class="paddingwrap">
-                            <div class="yotpo bottomLine"
-                                 data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
-                                 data-domain="{{ shop.permanent_domain | escape }}"
-                                 data-product-id="{{ helena.id }}"
-                                 data-product-models="{{ helena.id }}"
-                                 data-name="{{ helena.title | escape }}"
-                                 data-url="{{ shop.url }}{{ helena.url }}">
-                            </div>
-                            <p><a href="{{helena.url}}" class="cta2 solid text-center marg0">From {{helenaPrice | money }}</a></p>
-                            <ul class="featList text-left">
-                                <li class="ico fabric">100% Organic Cotton Cover</li>
-                                <li class="ico gel">All Natural Kapok + Latex Blended Fill </li>
-                                <li class="ico zone5">Adjustable feel</li>
-                            </ul>
-                            <p class="description">
-                                Fluffy and supportive, our Helena pillow was designed for the eco-friendly among us, with a fill of 100% natural latex ribbons and sustainable natural kapok fibers.
-                            </p>
-                            <div class="otherFeatures">
-                                <p><strong>Other Features</strong></p>
-                                <ul class="otherfeatures text-left">
-                                    <li>Free of flame retardants</li>
-                                    <li>CertiPUR-US® Certified Foam</li>
-                                    <li>Zipper</li>
-                                    <li>Made in USA</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>{%endcomment%}
             
         </div>
     </div><!-- end row-eq-->
@@ -308,10 +261,6 @@
                 1480:{
                     items:4,
                     nav:true
-                },
-                1620:{
-                    items:5,
-                    nav:false
                 }
             }
         });
@@ -320,23 +269,23 @@
 
 <div class="container">
     <section class="warranties">
-        <h2 class="overlays-title">Start Your 120-Night Sleep Trial</h2>
+        <h2 class="overlays-title">Start Your 30-Night Sleep Trial</h2>
         <div class="items row">
             <div class="col-xs-6 col-sm-3">
-                <img src="https://brentwood-home.imgix.net/iconv2-120nightguarantee.svg" alt="">
+                <img src="https://brentwood-home-2.imgix.net/iconv2-30nightguarantee.svg" alt="">
                 <p>30-night<br>Trial</p>
             </div>
             <div class="col-xs-6 col-sm-3">
-                <img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="">
+                <img src="https://brentwood-home-2.imgix.net/iconv2-freeshipping.svg" alt="">
                 <p>Free Shipping<br>Free Return</p>
             </div>
             <div class="col-xs-6 col-sm-3">
-                <img src="https://brentwood-home.imgix.net/iconv2-madeincalifornia.svg" alt="">
+                <img src="https://brentwood-home-2.imgix.net/iconv2-madeincalifornia.svg" alt="">
                 <p>Made in<br>California</p>
             </div>
             <div class="col-xs-6 col-sm-3">
-                <img src="https://brentwood-home.imgix.net/iconv2-3yearwarranty.svg" alt="">
-                <p>3-year<br>Warranty</p>
+                <img src="https://brentwood-home-2.imgix.net/iconv2-1yearwarranty.svg" alt="">
+                <p>1-year<br>Warranty</p>
             </div>
         </div>
     </section>

@@ -329,7 +329,7 @@
                                 {% when 'CertiPUR-US Certified' %}
                                     <div class="row">
                                         <div class="col-xs-12 col-md-2">
-                                            <p class="text-center"><img src="{{ 'certipur-badge.png' | asset_url}}" alt="CertiPUR-US Certified" style="max-width: 100px;"></p>
+                                            <p class="text-center"><img src="https://brentwood-home-2.imgix.net/logo-certipur-us.jpg?w=100" alt="CertiPUR-US Certified"></p>
                                         </div>
                                         <div class="col-xs-12 col-md-10">
                                             <p><strong>CertiPUR-US®</strong></p>
@@ -549,9 +549,8 @@
         <div class="container section">
             <div class="row flex">
                 <div class="col-xs-12 col-sm-6 text-center {% if isLastSectionLeft %}col-sm-push-6{% endif %} wow fadeInLeft">
-                    {% assign prdhandle = product.title|handleize %}
-                    {% case prdhandle %}
-                    {% when "oceano-luxury-hybrid-mattress" %}
+                    {% case product.handle %}
+                    {% when "oceano-mattress" %}
                     <picture>
                         <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1605,953,3634,3634&w=480&ch=Width,DPR&q=55">
                         <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&ch=Width,DPR&q=55">
@@ -562,12 +561,6 @@
                         <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=480&ch=Width,DPR&q=55">
                         <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=555&ch=Width,DPR&q=55">
                         <img class="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=555&blur=500&q=10" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=555&ch=Width,DPR&q=55" alt="Start Your 1-Year Sleep Trial">
-                    </picture>
-                    {% when "cypress-bamboo-gel-mattress" %}
-                    <picture>
-                        <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bambootopmodels.jpg?w=480&ch=Width,DPR&q=55">
-                        <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bambootopmodels.jpg?rect=880,0,1625,2066&w=555">
-                        <img class="lazy" src="https://s3-brentwoodhome.imgix.net/products/cypress/bambootopmodels.jpg?rect=880,0,1625,2066&blur=500&q=10&w=555" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/bambootopmodels.jpg?rect=880,0,1625,2066&w=555" alt="Start Your 1-Year Sleep Trial">
                     </picture>
                     {% when "cypress-memory-foam-mattress" %}
                     <picture>
@@ -590,7 +583,7 @@
                         <p>We offer free shipping and returns and an in-home, 1-year sleep trial. Try your {{ product.title }} for a year and if you feel like it’s not the right mattress for you, we’ll work with you to have the mattress picked up or donated to a local charity.</p>
                         <p> Learn more about our amazing <a href="https://www.brentwoodhome.com/pages/1-year-mattress-trial">1-Year Sleep Trial Policy</a> for mattresses sold on our website.</p>
                         <p class="text-center" style="margin-top: 30px;" ><img src="https://brentwood-home-36.imgix.net/iconv2-1yearguarantee.svg" alt="1-year trial"><br>
-                            1-Year Trial</p>
+                            1-Year Sleep Trial</p>
                     </div>
                 </div>
             </div>
