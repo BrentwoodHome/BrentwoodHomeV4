@@ -7,9 +7,7 @@
   Regular page content goes here.
 {% endcomment %}
 <div id="warranty-container">
-    <link href="https://cdn.jotfor.ms/static/formCss.css?3.3.17995" rel="stylesheet" type="text/css" />
     
-    {{ 'jotform.css' | asset_url | stylesheet_tag }}
     <style type="text/css"> .form-label-left{ width:150px !important; } .form-line{ padding-top:12px; padding-bottom:12px; } .form-label-right{ width:150px !important; } .form-all{  } .jotform-form{padding-top: 0;}
         .wrapper-container{
             background-image: url({{ 'joinbackground.jpg' | asset_url }});
@@ -101,16 +99,9 @@
             position: absolute;
         }
     </style>
-    <style type="text/css" id="form-designer-style"> /* Injected CSS Code */ .form-label.form-label-auto { display: block; float: none; text-align: left; width: 100%; } /*__INSPECT_SEPERATOR__*/ /* Injected CSS Code */
-    </style>
+
         {{page.content}}
-    <!-- Begin MailChimp Signup Form -->
-    <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
-    <style type="text/css">
-        #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
-        /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
-        We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-    </style>
+
     {%comment%}
     <div id="mc_embed_signup">
         <form action="https://brentwoodhome.us9.list-manage.com/subscribe/post?u=855577813e25708f5bf897c2e&amp;id=127fd5f77e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
@@ -146,7 +137,7 @@
             </div>
         </form>
     </div>
-    {%endcomment%}
+    
     
    
     
@@ -190,7 +181,84 @@
             </ul>
         </div>
     </form>
- 
+ {%endcomment%}
+
+    <iframe
+      id="JotFormIFrame-70805888384167"
+      title="Join our dream team"
+      onload="window.parent.scrollTo(0,0)"
+      allowtransparency="true"
+      allowfullscreen="true"
+      allow="geolocation; microphone; camera"
+      src="https://form.jotform.com/70805888384167"
+      frameborder="0"
+      style="
+      min-width: 100%;
+      height:539px;
+      border:none;"
+      scrolling="no"
+    >
+    </iframe>
+    <script type="text/javascript">
+      var ifr = document.getElementById("JotFormIFrame-70805888384167");
+      if(window.location.href && window.location.href.indexOf("?") > -1) {
+        var get = window.location.href.substr(window.location.href.indexOf("?") + 1);
+        if(ifr && get.length > 0) {
+          var src = ifr.src;
+          src = src.indexOf("?") > -1 ? src + "&" + get : src  + "?" + get;
+          ifr.src = src;
+        }
+      }
+      window.handleIFrameMessage = function(e) {
+        if (typeof e.data === 'object') { return; }
+        var args = e.data.split(":");
+        if (args.length > 2) { iframe = document.getElementById("JotFormIFrame-" + args[(args.length - 1)]); } else { iframe = document.getElementById("JotFormIFrame"); }
+        if (!iframe) { return; }
+        switch (args[0]) {
+          case "scrollIntoView":
+            iframe.scrollIntoView();
+            break;
+          case "setHeight":
+            iframe.style.height = args[1] + "px";
+            break;
+          case "collapseErrorPage":
+            if (iframe.clientHeight > window.innerHeight) {
+              iframe.style.height = window.innerHeight + "px";
+            }
+            break;
+          case "reloadPage":
+            window.location.reload();
+            break;
+          case "loadScript":
+            var src = args[1];
+            if (args.length > 3) {
+                src = args[1] + ':' + args[2];
+            }
+            var script = document.createElement('script');
+            script.src = src;
+            script.type = 'text/javascript';
+            document.body.appendChild(script);
+            break;
+          case "exitFullscreen":
+            if      (window.document.exitFullscreen)        window.document.exitFullscreen();
+            else if (window.document.mozCancelFullScreen)   window.document.mozCancelFullScreen();
+            else if (window.document.mozCancelFullscreen)   window.document.mozCancelFullScreen();
+            else if (window.document.webkitExitFullscreen)  window.document.webkitExitFullscreen();
+            else if (window.document.msExitFullscreen)      window.document.msExitFullscreen();
+            break;
+        }
+        var isJotForm = (e.origin.indexOf("jotform") > -1) ? true : false;
+        if(isJotForm && "contentWindow" in iframe && "postMessage" in iframe.contentWindow) {
+          var urls = {"docurl":encodeURIComponent(document.URL),"referrer":encodeURIComponent(document.referrer)};
+          iframe.contentWindow.postMessage(JSON.stringify({"type":"urls","value":urls}), "*");
+        }
+      };
+      if (window.addEventListener) {
+        window.addEventListener("message", handleIFrameMessage, false);
+      } else if (window.attachEvent) {
+        window.attachEvent("onmessage", handleIFrameMessage);
+      }
+      </script>
     <p class="text-center">By submitting this form, you agree to receive emails from Brentwood Home.</p>
     <p class="text-center"><a href="/pages/privacy-policy" target="_blank">Privacy Policy</a></p>
 </div>
