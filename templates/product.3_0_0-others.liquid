@@ -112,12 +112,12 @@
 <div id="page_product">
     <div class="container-fluid" id="product">
         <div itemscope itemtype="http://schema.org/Product" class="product">
-            <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
-            <meta itemprop="image"
-                  src="{{ product.featured_image.src | product_img_url: 'grande' }}"
-                  alt="{{ product.title | escape }}
-                       ">
+           <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+            <meta itemprop="description" content="{{ metaf.shortdesc }}">
+            <meta itemprop="image" src="{{ product.featured_image.src | product_img_url: 'grande' }}" alt="{{ product.title | escape }}">
             <meta itemprop="itemCondition" content="http://schema.org/NewCondition"/>
+            <meta itemprop="brand" content="{{shop.name}}"/>
+            <meta itemprop="sku" content="{{product.sku}}"/>
             <div class="row">
                 
                 <!-- FLEXSLIDER -->

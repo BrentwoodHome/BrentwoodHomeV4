@@ -5,31 +5,25 @@
 {% comment %}
   Documentation - http://docs.shopify.com/support/your-website/navigation/creating-a-breadcrumb-navigation
 {% endcomment %}
+{% assign collectionExist = false %}
+{% for collection in product.collections %}
+  {% if collection.title %}
+    {% assign collectionExist = true %}
+    {% break %}
+  {% endif %}
+{% endfor %}
 
-<script>
-    //window.variation1 = false;
-    //console.log("Optimizely = "+window.variation1);
-</script>
 
-
-{% if template == 'product.mattresses' %}
-    {% include 'product-add-to-cart' %}
-{% endif %}
-
-<div id="add2cartAB"></div>
-{% if template == 'product.abtest' %}
-    {% include 'product-add-to-cart-abtest' %}
-{% endif %}
 {% unless template == 'index' %}
 <div class="breadcrumb">
-  <a href="/" title="Back to the frontpage">Home</a>
+  <a href="/" title="Back to the frontpage" class="hidden-xs">Home</a>
   {% if template contains 'product' %}
-  {% if collection %}
-  <span class="icon">/</span>
-  {% if collection.handle %}
-  {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
-  {{ collection.title | link_to: url }}
-  {% endif %}
+  {% if collectionExist %}
+  <span class="icon hidden-xs">/</span>
+  {% for collection in product.collections %}
+    {{ collection.title | link_to: collection.url }}
+    {% break %}
+  {% endfor %}
   {% endif %}
 
   <span class="icon">/</span>
