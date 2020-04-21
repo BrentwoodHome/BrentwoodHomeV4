@@ -40,7 +40,7 @@
             <picture>
                 <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=767&dpr=1&fit=clip">
                 <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip">
-                <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&q=50" alt="{{product.title}}" loading="eager">
+                <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=1024&q=50" alt="{{product.title}}" alt="{{product.title}}" loading="eager">
             </picture>
         </div>
         {% if product.handle == "foundation" %}
@@ -74,7 +74,7 @@
                                     <img srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=14 1x,
                                 https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&fit=max&q=40&dpr=2&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=14 2x,
                                 https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&fit=max&q=20&dpr=3&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=14 3x"
-                                src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=14">
+                                src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&txtalign=right,bottom&txt=*Foundation%20only.%20Bed%20frame%20and%20mattress%20not%20included.&txtclr=454545&txtsize=14" alt="{{product.title}}">
                                 </picture>
                             {% endif %}
                         </li>
