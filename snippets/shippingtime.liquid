@@ -18,90 +18,90 @@ shipping page at https://brentwood-home.myshopify.com/admin/pages/73357635
 {%comment%}
 {% case product.title %}
     {% when 'Cedar Natural Luxe Mattress' %}
-        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our <strong>{{ product.title }} is currently 3 to 7 business days</strong>.</p>
+        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our <strong>{{ product.title }} is currently 3 to 7 business business days</strong>.</p>
     {% when 'Ojai Mattress' %}
-        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our <strong>{{ product.title }} is currently 3 to 7 business days</strong>.</p>
+        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our <strong>{{ product.title }} is currently 3 to 7 business business days</strong>.</p>
     {% when 'Crystal Cove Mattress' %}
-        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our <strong>{{ product.title }} is currently 3 to 7 business days</strong>.</p>
+        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our <strong>{{ product.title }} is currently 3 to 7 business business days</strong>.</p>
     {% when 'Cypress Bamboo Gel Mattress' %}
-        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our <strong>{{ product.title }} is currently 3 to 7 business days</strong>.</p>
+        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our <strong>{{ product.title }} is currently 3 to 7 business business days</strong>.</p>
     {% when 'Oceano Mattress' %}
-        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our <strong>{{ product.title }} is currently 3 to 7 business days</strong>.</p>
+        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our <strong>{{ product.title }} is currently 3 to 7 business business days</strong>.</p>
     {% else %}
     
 {% endcase %}
 {%endcomment%}
 
-{% assign shipsfree = "2-3 days" %}
+{% assign shipsfree = "2-3 business days" %}
 {% assign trial = "false" %}
 
 {% case product.type %}
     {% when 'Pillow' %}
         {% assign trial = "30-day trial" %}
-        {% assign shipsfree = "5-7 days" %}
+        {% assign shipsfree = "5-7 business days" %}
     {% when 'Wedge Pillow' %}
         {% assign trial = "30-day trial" %}
-        {% assign shipsfree = "5-7 days" %}
+        {% assign shipsfree = "5-7 business days" %}
     {% when 'Mattress Topper' %}
         {% assign trial = "30-night trial" %}
     {% when 'Mattress' %}
         {% assign trial = "1-year trial" %}
     {% when 'Bed Frames' %}
         {% assign trial = "1-year trial" %}
-        {% assign shipsfree = "3-5 days" %}
+        {% assign shipsfree = "3-5 business days" %}
     {% when 'Mattress Topper' %}
         {% assign trial = "1-year trial" %}
-        {% assign shipsfree = "3-7 days" %}
+        {% assign shipsfree = "3-7 business days" %}
 {% endcase %}
 
 {% case product.handle %}
     {% when 'foundation' %}
-        {% assign shipsfree = "2-3 days" %}
+        {% assign shipsfree = "2-3 business days" %}
         {% assign trial = "1-year trial" %}
         
     {% when 'adjustable-bed-frame' %}
-        {% assign shipsfree = "2-3 days" %}
+        {% assign shipsfree = "2-3 business days" %}
         {% assign trial = "100-night trial" %}
         
     {% when 'griffith-orthopedic-pet-bed' %}
-        {% assign shipsfree = "2-3 days" %}
+        {% assign shipsfree = "2-3 business days" %}
         
     {% when 'runyon-deluxe-orthopedic-pet-bed' %}
-        {% assign shipsfree = "2-3 days" %}
+        {% assign shipsfree = "2-3 business days" %}
         
     {% when 'oceano-mattress' %}
-        {% assign shipsfree = "3-5 days" %}
+        {% assign shipsfree = "3-5 business days" %}
         
     {% when 'ojai-mattress' %}
-        {% assign shipsfree = "2-3 days" %}
+        {% assign shipsfree = "2-3 business days" %}
         
     {% when 'crystal-cove-mattress' %}
-        {% assign shipsfree = "3-5 days" %}
+        {% assign shipsfree = "3-5 business days" %}
  
     {% when 'cedar-natural-luxe-mattress' %}
-        {% assign shipsfree = "3-5 days" %}
+        {% assign shipsfree = "3-5 business days" %}
 
     {% when 'cypress-memory-foam-mattress' %}
-        {% assign shipsfree = "3-5 days" %}
+        {% assign shipsfree = "3-5 business days" %}
 
     {% when 'crystal-cove-yoga-bolster' %}
-        {% assign shipsfree = "10-15 days" %}
+        {% assign shipsfree = "8-12 business days" %}
         
     {% when 'crystal-cove-pranayama-bolster' %}
-        {% assign shipsfree = "10-15 days" %}
+        {% assign shipsfree = "8-12 business days" %}
         
     {% when 'crystal-cove-meditation-pillow' %}
-        {% assign shipsfree = "10-15 days" %}
+        {% assign shipsfree = "8-12 business days" %}
         
     {% when 'crystal-cove-bundle' %}
-        {% assign shipsfree = "10-15 days" %}
+        {% assign shipsfree = "8-12 business days" %}
         
     {% when 'beachwood-linen-quilt' %}
         {% assign shipsfree = "2-3 weeks" %}
 
    
     {% when 'luxury-organic-cotton-sheets' %}
-        {% assign shipsfree = "2-3 days" %}
+        {% assign shipsfree = "2-3 business days" %}
         {% assign trial = "100-night trial" %}
         
 {% endcase %}
@@ -112,22 +112,22 @@ shipping page at https://brentwood-home.myshopify.com/admin/pages/73357635
 
 {% case product.type %}
     {% when 'Pet Bed' %}
-{% comment %}<p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>5 to 7 business days</strong>.</p>{% endcomment %}
+{% comment %}<p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>5 to 7 business business days</strong>.</p>{% endcomment %}
     {% when 'Wedge Pillow' %}
-        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>3 to 7 business days</strong>.</p>
+        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>3 to 7 business business days</strong>.</p>
     {% when 'Pillow' %}
         {% case product.title %}
             {% when 'Crystal Cove Activated Charcoal Pillow' %}
-                <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>3 to 7 business days</strong>.</p>
+                <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>3 to 7 business business days</strong>.</p>
             {% else %}
-                <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>3 to 7 business days</strong>.</p>
+                <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>3 to 7 business business days</strong>.</p>
         {% endcase %}
     {% when 'Crib Mattress' %}
-        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>3 to 7 business days</strong>.</p>
+        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>3 to 7 business business days</strong>.</p>
     {% when 'Changing Pads' %}
-        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>3 to 7 business days</strong>.</p>
+        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>3 to 7 business business days</strong>.</p>
     {% when 'Lounger' %}
-        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>3 to 7 business days</strong>.</p>
+        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>3 to 7 business business days</strong>.</p>
 {% endcase %}
 
 
