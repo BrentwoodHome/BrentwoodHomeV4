@@ -647,9 +647,13 @@
               // Disable checkbox if foundation is sold out
               var foundation = variantFoundations[sizeIndex];
 
+console.log("foundation OOS1");
+
               for (var i = 0; i < allFoundationVariants.length; i++) {
                 if (allFoundationVariants[i].id === foundation.id) {
+                  console.log("foundation OOS2");
                   if (!allFoundationVariants[i].available) {
+                    console.log("foundation OOS3");
                     jQuery("#foundation")
                         .prop("disabled", true)
                         .addClass("disabled")
@@ -1034,7 +1038,7 @@
                    
                 {% when "crystal-cove-mattress" %}
                    //Twin, Twin XL, Full, Q, K, CK
-                   var variantFoundationIds = [19308085641278, 19308085772350, 19308085805118, 19308085837886, 19308085870654, 19308085903422, 19308085870654]
+                   var variantFoundationIds = [18582182297662, 18582182330430, 18582182363198, 18582182395966, 18582182428734, 18582182461502, 18582182428734]
                    var variantPillowBundle = [8119702585455, 8119702585455, 8119702585455, 8119702618223, 8119702650991, 8119702650991, 8119702650991]
                    var variantPillowBundleQt = [1, 1, 1, 2, 2, 2, 2, 2]
                    //Adjustable base
