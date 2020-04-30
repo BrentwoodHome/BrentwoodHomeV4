@@ -815,9 +815,9 @@
                         <div class="row">
                             {% if product.type == "Pet Bed" %}
                             <div class="col-xs-12 col-sm-6">
+                                <p class="text-center"><strong>Ships free in {{ shipsfree }}, Free Returns{% unless trial == "false"  %}, {{trial}}{% endunless %}</strong></p>
                                 <p><strong>Free Standard Shipping:</strong><br>
-                                    This product is handcrafted to order in approximately 5-7 business days. Once your purchase ships, we’ll send you an email with tracking information so you can follow your shipment and plan for delivery.</p>
-                                {% include 'shippingtime' %}
+                                    Once your purchase ships, we’ll send you an email with tracking information so you can follow your shipment and plan for delivery.</p>
                             </div>
 
                             <div class="col-xs-12 col-sm-6">
@@ -825,6 +825,7 @@
                                     We offer free returns for 30 days with our pet beds.</p>
                             </div>
                             {% else %}
+                             <p class="text-center"><strong>Ships free in {{ shipsfree }}, Free Returns{% unless trial == "false"  %}, {{trial}}{% endunless %}</strong></p>
                             {{ metaf.details_shipping }}
                             {% endif %}
 
@@ -917,9 +918,11 @@
                         <div class="container">
                             <div class="row">
                                 {% if product.type == "Pet Bed" %}
+                                <p class="text-center"><strong>Ships free in {{ shipsfree }}, Free Returns{% unless trial == "false"  %}, {{trial}}{% endunless %}</strong></p>
                                     <div class="col-xs-12 col-sm-6">
+                                        
                                         <p><strong>Free Standard Shipping:</strong><br>
-                                        This product is handcrafted to order in approximately 5-7 business days. Once your purchase ships, we’ll send you an email with tracking information so you can follow your shipment and plan for delivery.</p>
+                                        Once your purchase ships, we’ll send you an email with tracking information so you can follow your shipment and plan for delivery.</p>
                                         {% include 'shippingtime' %}
                                     </div>
 
@@ -928,6 +931,7 @@
                                             We offer free returns for 30 days with our pet beds.</p>
                                     </div>
                                 {% else %}
+                                <p class="text-center"><strong>Ships free in {{ shipsfree }}, Free Returns{% unless trial == "false"  %}, {{trial}}{% endunless %}</strong></p>
                                     <div class="col-xs-12">{{ metaf.details_shipping }}</div>
                                 {% endif %}
                             </div>
