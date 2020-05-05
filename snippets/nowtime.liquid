@@ -14,14 +14,14 @@ Tobe used for banners/tickers ect...
 {% assign rightnow = 'now' | date: '%Y%m%d%H%M' %}
 {% assign rightnowint = rightnow | times: 1 %}
 
-{% assign currentPromoEnd = 202003232359 %}
-{% assign newPromoEnd = 202005042359 %}
-{% assign extensionStart = 202005050000 %}
+{% assign currentPromoEnd = 202005050000 %}
+{% assign newPromoEnd = 202006020000 %}
+{% assign extensionStart = 202006020001 %}
 
 <!-- EYEBROW -->
 {% assign eyebrowCurrent = "Sale! Save up to $175 on mattresses & more" %}
 {% assign eyebrowCurrentMobile = "Sale! Save up to $175 on mattresses & more" %}
-{% assign eyebrowNew = "Spring Sale! Save up to $175 on mattresses & more" %}
+{% assign eyebrowNew = "Memorial Day Sale! Save up to $175 on mattresses & more" %}
 {% assign eyebrowNewMobile = "Shop our mattress sale now" %}
 {% assign newdesign = "Sale! $175 off mattresses & more" %}
 
@@ -35,12 +35,12 @@ Tobe used for banners/tickers ect...
     {% assign mobile_sale_name = "Sale" %}
 {% elsif rightnowint < currentPromoEnd %}
     {% comment %} Shows the correct end date when still in current promo range (currentPromoEnd){% endcomment%}
-    {% assign enddate = "Ends March 23" %}
-    {% assign mobile_sale_name = "Natural Luxury Sale" %}
-{% else %}
-    {% comment %} AFter current promoPromoEnd and before newPromoEnd. Shows end date for new promo (newPromoEnd){% endcomment%}
     {% assign enddate = "Ends May 4" %}
     {% assign mobile_sale_name = "Spring Sale" %}
+{% else %}
+    {% comment %} AFter current promoPromoEnd and before newPromoEnd. Shows end date for new promo (newPromoEnd){% endcomment%}
+    {% assign enddate = "Ends June 1" %}
+    {% assign mobile_sale_name = "Memorial Day Sale" %}
 {% endif %}
 
 {% comment %} SALE BADGE {% endcomment %}
@@ -55,13 +55,13 @@ Tobe used for banners/tickers ect...
           {% assign sale = "Sale! Save 20% with code <strong>PETBED20</strong><span>*enter code at checkout</span>" %}
 
         {% when 'oceano-mattress' %}
-          {% assign sale = "Sale! Save $175 with code <strong>SPRING175</strong><span>*enter code at checkout</span>" %}
+          {% assign sale = "Sale! Save $175 with code <strong>LA175</strong><span>*enter code at checkout</span>" %}
 
         {% when 'crystal-cove-mattress' %}
-          {% assign sale = "Sale! Save $175 with code <strong>SPRING175</strong><span>*enter code at checkout</span>" %}
+          {% assign sale = "Sale! Save $175 with code <strong>LA175</strong><span>*enter code at checkout</span>" %}
 
         {% when 'cedar-natural-luxe-mattress' %}
-          {% assign sale = "Sale! Save $175 with code <strong>SPRING175</strong><span>*enter code at checkout</span>" %}
+          {% assign sale = "Sale! Save $175 with code <strong>LA175</strong><span>*enter code at checkout</span>" %}
 
         {% when 'crystal-cove-yoga-bolster' %}
           {% assign sale = "Sale! Save 20% with code <strong>YOGA20</strong><span>*enter code at checkout</span>" %}
@@ -84,13 +84,13 @@ Tobe used for banners/tickers ect...
           {% assign sale = "Sale! Save 20% with code <strong>PETBED20</strong><span>*enter code at checkout</span>" %}
 
         {% when 'oceano-mattress' %}
-          {% assign sale = "Sale! Save $175 with code <strong>LA175</strong><span>*enter code at checkout</span>" %}
+          {% assign sale = "Sale! Save $175 with code <strong>WAVES175</strong><span>*enter code at checkout</span>" %}
 
         {% when 'crystal-cove-mattress' %}
-          {% assign sale = "Sale! Save $175 with code <strong>LA175</strong><span>*enter code at checkout</span>" %}
+          {% assign sale = "Sale! Save $175 with code <strong>WAVES175</strong><span>*enter code at checkout</span>" %}
 
         {% when 'cedar-natural-luxe-mattress' %}
-          {% assign sale = "Sale! Save $175 with code <strong>LA175</strong><span>*enter code at checkout</span>" %}
+          {% assign sale = "Sale! Save $175 with code <strong>WAVES175</strong><span>*enter code at checkout</span>" %}
 
         {% when 'crystal-cove-yoga-bolster' %}
           {% assign sale = "Sale! Save 20% with code <strong>YOGA20</strong><span>*enter code at checkout</span>" %}
