@@ -351,9 +351,11 @@ qt: 1<br>
         </div>
         {% endif %}
         {% if product.metafields.bhsite.feature3 %}
-        <div class="row flexVCenter" style="margin-top: 20px; background-color: #4a4a4a;">
-            <div class="col-xs-12 col-md-6" style="background-color: #fff;padding-top:0;">
-                <img class="lazy" data-src="{{product.metafields.bhsite.feature3b | asset_url}}" alt="{{product.title}}">
+        <div class="row flexVCenter" style="background-color: #4a4a4a;">
+            <div class="col-xs-12 col-md-6" style="background-color: #fff;padding-top:0;padding-right: 0;">
+
+                <img class="lazy" data-src="https://brentwood-home-2.imgix.net/{{product.metafields.bhsite.feature3b }}?w=1024" src="https://brentwood-home-2.imgix.net/{{product.metafields.bhsite.feature3b }}?w=1024&blur=500&q=10" class="" alt="{{product.title}}">
+
             </div>
             <div class="col-xs-12 col-md-6">
                 <div class="" id="description-outside">
@@ -364,10 +366,10 @@ qt: 1<br>
         {% endif %}
         {% if product.tags contains "yoga" %}
         <div class="row flexVCenter" style="background-color: #4a4a4a;">
-            <div class="col-xs-12 col-md-6" style="background-color: #fff;padding-right:0px;padding-bottom:0;">
+            <div class="col-xs-12 col-md-6 {% if product.metafields.bhsite.feature3 %}col-md-push-6{% endif %}" style="background-color: #fff;padding:0;">
                 <img class="lazy" data-src="https://s3-brentwoodhome.imgix.net/ccyoga/yogagirl-trio.jpg?rect=305,0,3972,3972&w=1024" src="https://s3-brentwoodhome.imgix.net/ccyoga/yogagirl-trio.jpg?rect=305,0,3972,3972&w=1024&blur=500&q=10" alt="{{product.title}} Vegan Certified">
             </div>
-            <div class="col-xs-12 col-md-6" style="padding-left: 0px;padding-bottom:0;">
+            <div class="col-xs-12 col-md-6 {% if product.metafields.bhsite.feature3 %}col-md-pull-6{% endif %}" style="padding-left: 0px;padding-bottom:0;">
                 <div class="" id="description-outside">
                    <h4>VEGAN CERTIFIED</h4>
                     <p>The {{product.title}} is 100% Certified Vegan by Vegan Action. This means it is free from animal products (like feathers, wool and down) or byproducts that have been tested on animals. In addition, although we do manufacture some items that do use natural animal products like wool, we have stringent requirements in place for cleaning the machines in-between use, so cross-contamination will not occur. If you practice a vegan lifestyle, you can rest assured that your Crystal Cove products are aligned with your values.</p>
