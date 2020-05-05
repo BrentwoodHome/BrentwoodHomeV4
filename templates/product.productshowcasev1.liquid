@@ -54,7 +54,7 @@
                 </div>
                 {% endif %}
                 
-                <h3 class="text-left">{{product.metafields.bhsite.feel}}</h3>
+                {% if product.metafields.bhsite.feel %}<h3 class="text-left">{{product.metafields.bhsite.feel}}</h3>{% endif %}
                 <!--{% include 'shippingtime' %}-->
                 <p class="short-description">
                     {{product.metafields.bhsite.shortdesc}}
@@ -91,6 +91,8 @@
                             {% for option in product.options %}
                                 {% if option contains "Size" %}
                                     <label for="product-selectors" class="selectLabel">Size</label>
+                                {% elsif option contains "Option" %}
+                                    <label for="product-selectors" class="selectLabel">Choose an option</label>
                                 {% endif %}
                             {% endfor %}
                         {% endif %}
@@ -189,7 +191,13 @@ qt: 1<br>
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-10 col-md-offset-1 text-center">
-                <h2 class="product-tagline">{{product.metafields.bhsite.tagline}}</h2>
+                {% if product.metafields.bhsite.tagline contains "vimeo" %}
+                    <div class="embed-container ">
+                        {{product.metafields.bhsite.tagline}}
+                    </div>
+                {% else %}
+                    <h2 class="product-tagline">{{product.metafields.bhsite.tagline}}</h2>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -435,6 +443,7 @@ qt: 1<br>
                <h2 style="text-align: center;">Description</h2>
            </div>
             <div class="col-md-offset-2 col-md-8">
+                <p class="short-description shipping">Ships free in {{ shipsfree }} | free returns {% if trial %}| {{trial}}{% endif %}</p>
                 {{product.description}}
             </div>
         </div>
@@ -539,3 +548,7 @@ qt: 1<br>
 </script>
 
 {% include 'productbundles' %}
+
+<div class="container">
+    {% include 'related-products' %}
+</div>
