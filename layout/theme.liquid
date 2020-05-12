@@ -1,15 +1,9 @@
-{%comment%}
-<!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
-{%endcomment%}
+{% assign testing = false %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% if testing %}
     <!-- Start Visual Website Optimizer Asynchronous Code -->
     <script type='text/javascript'>
         var _vwo_code=(function(){
@@ -34,7 +28,7 @@
         }
     </script>
     <!-- End Visual Website Optimizer Synchronous Code -->
-
+{% endif%}
     
     <!-- Start Impact -->
     <script type="text/javascript"> 
@@ -128,12 +122,12 @@
 {% elsif template contains 'page.365daytrial' %}
     <meta property="og:title" content="{{ page_title }}" />
     <meta property="og:description" content="{{ page_description | escape }}" />
-    <meta property="og:image" content="https://brentwood-home-36.imgix.net/{{template | handleize}}.jpg">
+    <meta property="og:image" content="https://brentwood-home-2.imgix.net/{{template | handleize}}.jpg">
     <meta property="og:type" content="website" />
 {% else %}
     <meta property="og:title" content="{{ page_title }}" />
     <meta property="og:description" content="{{ page_description | escape }}" />
-    <meta property="og:image" content="https:{{ 'brentwoodhome-logo-2048.png' | asset_url }}" />
+    <meta property="og:image" content="https:{{ 'brentwood-logo-2048-og.png' | asset_url }}" />
     <meta property="og:type" content="website" />
 {% endif %}
     {%comment%}<meta property="fb:admins" content="146160578919897" />{%endcomment%}
