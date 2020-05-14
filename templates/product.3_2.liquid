@@ -301,7 +301,7 @@
                                         <p class="text-center"><img src="{{ 'greenguard-logo-full.svg' | asset_url}}" alt="GreenGuard Certified" style="max-width: 80px;"></p>
                                     </div>
                                     <div class="col-xs-12 col-md-10">
-                                        <p><strong>GREENGUARD Gold</strong></p>
+                                        <p><strong>GREENGUARD Gold - {{ product.type }}</strong></p>
                                         <p>The {{product.title}} is completely GREENGUARD Gold Certified by UL Environment. That means it was scientifically tested in environmental chambers to meet some of the world’s most rigorous, third-party emissions standards for prolonged chemical exposure and pollutants, such as volatile organic compounds (VOCs), formaldehyde, and phthalates. </p>
                                     </div>
                                 </div>
@@ -313,6 +313,17 @@
                                         </div>
                                         <div class="col-xs-12 col-md-10">
                                             <p><strong>STANDARD 100 by OEKO-TEX® — Wool</strong></p>
+                                            <p>The wool on the panel fabric of the {{product.title}} is STANDARD 100 by OEKO-TEX® certified (19.HIN.68466, Hohenstein HTTI), which is one of the world's best-known labels for textiles tested for harmful substances. 
+                                            </p>
+                                        </div>
+                                    </div>
+                                {% when 'Oeko-LCW' %}
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-2">
+                                            <p class="text-center"><img src="{{ 'oeko-tex-logo-hin.png' | asset_url}}" alt="Oeko-Tex Standard" style="max-width: 100px;"></p>
+                                        </div>
+                                        <div class="col-xs-12 col-md-10">
+                                            <p><strong>STANDARD 100 by OEKO-TEX® — Latex, Cotton, Wool</strong></p>
                                             <p>The wool on the panel fabric of the {{product.title}} is STANDARD 100 by OEKO-TEX® certified (19.HIN.68466, Hohenstein HTTI), which is one of the world's best-known labels for textiles tested for harmful substances. 
                                             </p>
                                         </div>
@@ -403,6 +414,37 @@
                                             <p><strong>eco-INSTITUT Certified</strong></p>
                                             <p>Based in Germany, the <a href="http://www.eco-institut.de/en/" target="_blank">eco-INSTITUT</a> is a label marking products that meet the strictest requirements for emissions and pollutants. The eco-INSTITUT label has been developed according to the latest standards defined by the organization. 
                                             </p>
+                                        </div>
+                                    </div>
+                                    {% when 'ecoinstitute-latex' %}
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-2">
+                                            <p class="text-center"><img src="{{ 'logo-eco-institut.png' | asset_url}}" alt="eco-Institut" style="max-width: 80px;"></p>
+                                        </div>
+                                        <div class="col-xs-12 col-md-10">
+                                            <p><strong>eco-INSTITUT&reg; - Latex</strong></p>
+                                            <p>Based in Germany, the <a href="http://www.eco-institut.de/en/" target="_blank">eco-INSTITUT</a> is a label marking products that meet the strictest requirements for emissions and pollutants. The eco-INSTITUT label has been developed according to the latest standards defined by the organization. 
+                                            <br>Our natural latex rubber foam has been certified as a result of on-site inspection and comprehensive material lab and environmental testing. eco-INSTITUT verifies that our latex contains no harmful substances, no non-natural rubber content, and meets stringent standards for emissions (VOCs, formaldehyde, Acetaldehyde).</p>
+                                        </div>
+                                    </div>
+                                    {% when 'FSC-latex' %}
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-2">
+                                            <p class="text-center"><img src="{{ 'fsc-logo-small.png' | asset_url}}" alt="eco-Institut" style="max-width: 110px;"></p>
+                                        </div>
+                                        <div class="col-xs-12 col-md-10">
+                                            <p><strong>FSC - Latex</strong></p>
+                                            <p>Natural latex comes from the Hevea brasiliensis tree. FSC® is considered the "gold standard" designation for resources harvested from forests that are responsibly managed, socially beneficial, environmentally conscious, and economically viable.</p>
+                                        </div>
+                                    </div>
+                                    {% when 'Rainforest-latex' %}
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-2">
+                                            <p class="text-center"><img src="{{ 'rainforest-alliance-certified.svg' | asset_url}}" alt="eco-Institut" style="max-width: 90px;"></p>
+                                        </div>
+                                        <div class="col-xs-12 col-md-10">
+                                            <p><strong>Rainforest Alliance - Latex</strong></p>
+                                            <p>Rainforest Alliance Certified™ latex farms are audited regularly to verify that farmers are complying with the Standard's comprehensive requirements, which require continual improvement on the journey to sustainable agriculture.</p>
                                         </div>
                                     </div>
                             {% endcase %}
@@ -546,51 +588,9 @@
         </div>
     {% endif %}
     
-    {% if product.type == "Mattress" %}
-        <div class="container section">
-            <div class="row flex">
-                <div class="col-xs-12 col-sm-6 text-center {% if isLastSectionLeft %}col-sm-push-6{% endif %} wow fadeInLeft">
-                    {% case product.handle %}
-                    {% when "oceano-mattress" %}
-                    <picture>
-                        <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1605,953,3634,3634&w=480&ch=Width,DPR&q=55">
-                        <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&ch=Width,DPR&q=55">
-                        <img class="lazy" src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&blur=500&q=10" data-src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&ch=Width,DPR&q=55" alt="Start Your 1-Year Sleep Trial">
-                    </picture>
-                    {% when "cedar-natural-luxe-mattress" %}
-                    <picture>
-                        <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=480&ch=Width,DPR&q=55">
-                        <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=555&ch=Width,DPR&q=55">
-                        <img class="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=555&blur=500&q=10" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=555&ch=Width,DPR&q=55" alt="Start Your 1-Year Sleep Trial">
-                    </picture>
-                    {% when "cypress-memory-foam-mattress" %}
-                    <picture>
-                        <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bwh_cypressmattress_daydreaming.jpg?rect=846,200,1191,1191&w=480&ch=Width,DPR&q=55&flip=h">
-                        <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bwh_cypressmattress_daydreaming.jpg?rect=846,0,1191,1648&w=555&flip=h">
-                        <img class="lazy" src="https://s3-brentwoodhome.imgix.net/products/cypress/bwh_cypressmattress_daydreaming.jpg?rect=846,0,1191,1648&w=555&flip=h&blur=500&q=10" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/bwh_cypressmattress_daydreaming.jpg?rect=846,0,1191,1648&w=555&flip=h" alt="Start Your 1-Year Sleep Trial">
-                    </picture>
-                    {% when "crystal-cove-mattress" %}
-                    <picture>
-                        <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_82688.jpg?rect=1960,1000,2686,2686&w=480&ch=Width,DPR&q=55">
-                        <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_82688.jpg?rect=1960,0,2686,4446&w=555&q=50">
-                        <img class="lazy" src="https://s3-brentwoodhome.imgix.net/CrystalCove_82688.jpg?rect=1960,0,2686,4446&blur=500&q=10&w=555" data-src="https://s3-brentwoodhome.imgix.net/CrystalCove_82688.jpg?rect=1960,0,2686,4446&w=555" alt="Start Your 1-Year Sleep Trial">
-                    </picture>
-                    {% endcase %}
-                </div>
-                <div class="col-xs-12 col-sm-6 flexV {% if isLastSectionLeft %}col-sm-pull-6{% endif %} wow fadeInRight">
-                    <div>
-                        <h3>free shipping + free returns</h3>
-                        <h2>Start Your 1-Year Sleep&nbsp;Trial</h2>
-                        <p>We offer free shipping and returns and an in-home, 1-year sleep trial. Try your {{ product.title }} for a year and if you feel like it’s not the right mattress for you, we’ll work with you to have the mattress picked up or donated to a local charity.</p>
-                        <p> Learn more about our amazing <a href="https://www.brentwoodhome.com/pages/1-year-mattress-trial">1-Year Sleep Trial Policy</a> for mattresses sold on our website.</p>
-                        <p class="text-center" style="margin-top: 30px;" ><img src="https://brentwood-home-36.imgix.net/iconv2-1yearguarantee.svg" alt="1-year trial"><br>
-                            1-Year Sleep Trial</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     
-
+    
+ <div id="compare"></div>
 {% if product.handle == "cypress-memory-foam-mattress" %}
     <!-- https://codepen.io/adrianjacob/pen/KdVLXY -->
 <div class="container section compare" style="margin-top: 75px;margin-bottom: 75px;">
@@ -640,10 +640,10 @@
                 </tr>
                 <tr>
                     <td>Charcoal Infused Memory Foam</td>
-                    <td class="default"><span class="tick">&#10004;</span></td>
-                    <td><span class="cross gray">&#x2717;</span></td>
-                    <td><span class="cross gray">&#x2717;</span></td>
-                    <td><span class="cross gray">&#x2717;</span></td>
+                    <td class="default"><span class="tick">&#10003;</span></td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                    <td><span class="cross ">&#x2715;</span></td>
                 </tr>
                 <tr>
                     <td>Sleep Trial</td>
@@ -662,10 +662,10 @@
                 
                 <tr>
                     <td>Made in the USA</td>
-                    <td class="default"><span class="tick">&#10004;</span></td>
-                    <td><span class="cross gray">&#x2717;</span></td>
-                    <td><span class="tick gray">&#10004;</span></td>
-                    <td><span class="tick gray">&#10004;</span></td>
+                    <td class="default"><span class="tick">&#10003;</span></td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                    <td><span class="tick ">&#10003;</span></td>
+                    <td><span class="tick ">&#10003;</span></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -677,7 +677,7 @@
             </tbody>
         </table>
     </article>
-    <i class="text-right">Price may not reflect any current promotions or discount. Last Updated: March 2019.</i>
+    <i class="text-right">Price may not reflect any current promotions or discount. Last Updated: March 2020.</i>
 </div>
 <script>
     $( ".compare ul" ).on( "click", "li", function() {
@@ -707,9 +707,240 @@
     // On load
     doSomething(mediaQuery);
 </script>
+
+
+{% elsif product.handle == "hybrid-latex-mattress" %}
+    <!-- https://codepen.io/adrianjacob/pen/KdVLXY -->
+<div class="container section compare" style="margin-top: 75px;margin-bottom: 75px;">
+    <h2 class="text-center">Compare to Other Brands</h2>
+    <article>
+        <ul>
+            <li class="bg-bwh active">
+                <button>Brentwood<sup>&reg</sup></button>
+            </li>
+            <li class="bg-gray">
+                <button>Awara<sup>&reg</sup></button>
+            </li>
+            <li class="bg-gray">
+                <button>Birch<sup>&reg</sup></button>
+            </li>
+            <li class="bg-gray">
+                <button>DreamCloud<sup>&reg</sup></button>
+            </li>
+            <li class="bg-gray">
+                <button>Casper<sup>&reg</sup> Wave</button>
+            </li>
+        </ul>  
+        <table>
+            <thead>
+                <tr>
+                    <th class="hide"></th>
+                    <th class="bg-bwh default"><strong style="text-transform: uppercase;color:#666;">Brentwood<sup>&reg</sup></strong><span>"Hybrid Latex Mattress"</span></th>
+                    <th class="bg-gray">Awara<sup>&reg</sup></th>
+                    <th class="bg-gray">Birch<sup>&reg</sup></th>
+                    <th class="bg-gray">DreamCloud<sup>&reg</sup></th>
+                    <th class="bg-gray">Casper<sup>&reg</sup><span>"The Wave"</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="price">
+                    <td>Price (Queen)</td>
+                    <td class="default"><span class="txt-top">&dollar;</span><span class="txt-l">1,099</span></td>
+                    <td><span class="txt-top">&dollar;</span><span class="txt-l">1,499</span></td>
+                    <td><span class="txt-top">&dollar;</span><span class="txt-l">1,499</span></td>
+                    <td><span class="txt-top">&dollar;</span><span class="txt-l">1,499</span></td>
+                    <td><span class="txt-top">&dollar;</span><span class="txt-l">2,595</span></td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="sep"><strong>Specifications</strong></td>
+                </tr>
+                <tr>
+                    <td>Latex Volume</td>
+                    <td class="default"><strong>4"</strong></td>
+                    <td>4"</td>
+                    <td>2"</td>
+                    <td><span class="cross">&#x2715;</span></td>
+                    <td>1.5"</td>
+                </tr>
+                <tr>
+                    <td>Support Coils (Queen)</td>
+                    <td class="default"><strong>789</strong></td>
+                    <td>765</td>
+                    <td>650</td>
+                    <td>682</td>
+                    <td>616</td>
+                </tr>
+                <tr>
+                    <td>No Polyurethane Foams</td>
+                    <td class="default"><span class="tick">&#10003;</span></td>
+                    <td><span class="tick ">&#10003;</span></td>
+                    <td><span class="tick ">&#10003;</span></td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                </tr>
+                <tr>
+                    <td>No Flame Retardants (1)</td>
+                    <td class="default"><span class="tick">&#10003;</span></td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                    <td><span class="tick ">&#10003;</span></td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                </tr>
+                <tr>
+                    <td>Handles</td>
+                    <td class="default"><strong>6</strong></td>
+                    <td>4</td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                    <td>4</td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                </tr>
+                <tr>
+                    <td>Recycled Materials (2)</td>
+                    <td class="default"><span class="tick">&#10003;</span></td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                    <td><span class="tick ">&#10003;</span></td>
+                </tr>
+                <tr>
+                    <td>Greenguard Gold</td>
+                    <td class="default"><span class="tick">&#10003;</span></td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                    <td><span class="tick ">&#10003;</span></td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                </tr>
+                <tr>
+                    <td>Brand-Owned Manufacturing</td>
+                    <td class="default"><span class="tick">&#10003;</span></td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                    <td><span class="cross ">&#x2715;</span></td>
+                </tr>
+                <tr>
+                    <td>Trial Period (Days) (4)</td>
+                    <td class="default"><strong>365</strong></td>
+                    <td>365</td>
+                    <td>100</td>
+                    <td>365</td>
+                    <td>100 </td>
+                </tr>
+                <tr>
+                    <td>Warranty</td>
+                    <td class="default"><strong>25 Years</strong></td>
+                    <td>"Lifetime"</td>
+                    <td>10 Years</td>
+                    <td>10 Years</td>
+                    <td>10 Years</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="default"><p class="text-center"><a href="#buysection" class="sscroll cta2" style="padding: 18px 20px;">buy now</a></p> </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </article>
+    <style>
+      i{
+        display: block;
+        margin: 0;
+        padding: 0;
+        line-height: 20px;
+      }
+    </style>
+      <i class="text-left small" style="margin-top: 10px;">Price may not reflect any current promotions or discount. Last Updated: May 2020.</i>
+      <i class="text-left small">(1) Brentwood and Birch use natural wool as fire barrier instead of a flame retardant or firesock. Awara, DreamCloud and Clasper use silica. </i>
+      <i class="text-left small">(2) Brentwood uses upcycled denim and recycled plastic bottles. Casper also uses recycled plastic bottles in their ticking. </i>
+      <i class="text-left small">(3) Brentwood has been making mattresses in Los Angeles since 1987. Many other brands subcontract their manufacturing or import their finished products.</i>
+      <i class="text-left small">(4) Terms & Conditions apply.</i>
+</div>
+<script>
+    $( ".compare ul" ).on( "click", "li", function() {
+        var pos = $(this).index()+2;
+        $("tr").find("td").hide();
+        $("tr").find("td:first").show();
+        $('td:nth-child('+pos+')').css('display','table-cell');
+        $('li').removeClass('active');
+        $(this).addClass('active');
+    });
+
+    // Initialize the media query
+    var mediaQuery = window.matchMedia('(min-width: 640px)');
+
+    // Add a listen event
+    mediaQuery.addListener(doSomething);
+
+    // Function to do something with the media query
+    function doSomething(mediaQuery) {    
+        if (mediaQuery.matches) {
+            $('.sep').attr('colspan',6);
+        } else {
+            $('.sep').attr('colspan',2);
+        }
+    }
+
+    // On load
+    doSomething(mediaQuery);
+</script>
+
 {% else %}
     <p class="text-center margBLarge"><a href="#buysection" class="sscroll cta2">buy the mattress</a></p> 
 {% endif %}
+
+{% if product.type == "Mattress" %}
+        <div class="container section">
+            <div class="row flex">
+                <div class="col-xs-12 col-sm-6 text-center {% if isLastSectionLeft %}col-sm-push-6{% endif %} wow fadeInLeft">
+                    {% case product.handle %}
+                    {% when "oceano-mattress" %}
+                    <picture>
+                        <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1605,953,3634,3634&w=480&ch=Width,DPR&q=55">
+                        <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&ch=Width,DPR&q=55">
+                        <img class="lazy" src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&blur=500&q=10" data-src="https://s3-brentwoodhome.imgix.net/products/oceano/oceano_oneyear.jpg?rect=1815,0,3460,4788&w=555&ch=Width,DPR&q=55" alt="Start Your 1-Year Sleep Trial">
+                    </picture>
+                    {% when "cedar-natural-luxe-mattress" %}
+                    <picture>
+                        <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=480&ch=Width,DPR&q=55">
+                        <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=555&ch=Width,DPR&q=55">
+                        <img class="lazy" src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=555&blur=500&q=10" data-src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-1year.jpg?w=555&ch=Width,DPR&q=55" alt="Start Your 1-Year Sleep Trial">
+                    </picture>
+                    {% when "cypress-memory-foam-mattress" %}
+                    <picture>
+                        <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bwh_cypressmattress_daydreaming.jpg?rect=846,200,1191,1191&w=480&ch=Width,DPR&q=55&flip=h">
+                        <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/products/cypress/bwh_cypressmattress_daydreaming.jpg?rect=846,0,1191,1648&w=555&flip=h">
+                        <img class="lazy" src="https://s3-brentwoodhome.imgix.net/products/cypress/bwh_cypressmattress_daydreaming.jpg?rect=846,0,1191,1648&w=555&flip=h&blur=500&q=10" data-src="https://s3-brentwoodhome.imgix.net/products/cypress/bwh_cypressmattress_daydreaming.jpg?rect=846,0,1191,1648&w=555&flip=h" alt="Start Your 1-Year Sleep Trial">
+                    </picture>
+                    {% when "crystal-cove-mattress" %}
+                    <picture>
+                        <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_82688.jpg?rect=1960,1000,2686,2686&w=480&ch=Width,DPR&q=55">
+                        <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/CrystalCove_82688.jpg?rect=1960,0,2686,4446&w=555&q=50">
+                        <img class="lazy" src="https://s3-brentwoodhome.imgix.net/CrystalCove_82688.jpg?rect=1960,0,2686,4446&blur=500&q=10&w=555" data-src="https://s3-brentwoodhome.imgix.net/CrystalCove_82688.jpg?rect=1960,0,2686,4446&w=555" alt="Start Your 1-Year Sleep Trial">
+                    </picture>
+                    {% when "hybrid-latex-mattress" %}
+                    <picture>
+                        <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/hybridlatex/brentwood_hybrid_latex_mattress_pillow_throw_1year_trial.jpg?rect=1840,300,2673,2673&w=480&ch=Width,DPR&q=55">
+                        <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/hybridlatex/brentwood_hybrid_latex_mattress_pillow_throw_1year_trial.jpg?rect=1840,300,2673,3699&w=555&q=50">
+                        <img class="lazy" src="https://s3-brentwoodhome.imgix.net/products/hybridlatex/brentwood_hybrid_latex_mattress_pillow_throw_1year_trial.jpg?rect=1840,300,2673,3699&blur=500&q=10&w=555" data-src="https://s3-brentwoodhome.imgix.net/products/hybridlatex/brentwood_hybrid_latex_mattress_pillow_throw_1year_trial.jpg?rect=1840,300,2673,3699&w=555" alt="Start Your 1-Year Sleep Trial">
+                    </picture>
+                    {% endcase %}
+                </div>
+                <div class="col-xs-12 col-sm-6 flexV {% if isLastSectionLeft %}col-sm-pull-6{% endif %} wow fadeInRight">
+                    <div>
+                        <h3>free shipping + free returns</h3>
+                        <h2>One Year Sleep Trial</h2>
+                        <p>Risk free means no pressure. That’s why we offer free shipping and returns and a fully-backed, risk-free 1-year trial. Try your mattress for a year and if you feel like it’s not the right mattress for you, we’ll work with you to have the mattress picked up or donated to a local charity.</p>
+                        <p> Learn more about our amazing <a href="https://www.brentwoodhome.com/pages/1-year-mattress-trial">1-Year Sleep Trial Policy</a> for mattresses sold on our website.</p>
+                        <p class="text-center" style="margin-top: 30px;" ><img src="https://brentwood-home-36.imgix.net/iconv2-1yearguarantee.svg" alt="1-year trial"><br>
+                            1-Year Sleep Trial</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container section">
             <div class="row flex">
                 <div class="col-xs-12 col-sm-6 text-center {% if isLastSectionLeft == false %}col-sm-push-6{% endif %} wow fadeInLeft">

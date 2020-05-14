@@ -77,6 +77,8 @@ Tobe used for banners/tickers ect...
 
         {% when 'crystal-cove-bundle' %}
           {% assign sale = "Bundle & Save 20%! <span>*no code needed</span>" %}
+        {% when 'hybrid-latex-mattress' %}
+          {% assign sale = "SALE! SAVE $100 <span>no code needed</span>" %}
     {% endcase %}
 {% else %}
     {% case product.handle %}
@@ -95,6 +97,9 @@ Tobe used for banners/tickers ect...
         {% when 'cedar-natural-luxe-mattress' %}
           {% assign sale = "Sale! Save $175 with code <strong>WAVES175</strong><span>*enter code at checkout</span>" %}
 
+{% when 'hybrid-latex-mattress' %}
+          {% assign sale = "SALE! SAVE $100 <span>no code needed</span>" %}
+          
         {% when 'crystal-cove-yoga-bolster' %}
           {% assign sale = "Sale! Save 20% with code <strong>YOGA20</strong><span>*enter code at checkout</span>" %}
 

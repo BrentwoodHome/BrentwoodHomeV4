@@ -400,6 +400,22 @@ P.h3.subs{
         font-family: AvenirLTStd-Roman, 'Helvetica Neue', helvetica, sans-serif;
         line-height: 42px;
     }
+    H2.quote{
+        font-size: 32px;
+        margin-bottom: 20px;
+        font-family: $body-stack-oblique;
+        line-height: 58px;
+        text-align: center;
+        color: $blue;
+    }
+    H2.title-break{
+        font-size: 42px;
+        margin: 50px 0;
+        font-family: $body-stack-bold;
+        line-height: 58px;
+        text-align: center;
+        color: $blue;
+    }
     #page_product H3{
         text-transform: capitalize;
         text-align: left;
@@ -441,6 +457,34 @@ P.h3.subs{
         margin-bottom: 40px;
         border-bottom: 1px solid #eef7fd;
     }
+
+OL.numbers{
+        list-style: none;
+        counter-reset: my-awesome-counter;
+        margin-left: 0;
+        margin-top: 32px;
+    LI{
+        counter-increment: my-awesome-counter;
+        position: relative;
+        padding-left: 36px;
+        margin-bottom: 12px;
+        line-height: 26px;
+    }
+    li::before {
+        color: $blue;
+        font-family: $body-stack-bold;
+            content: counter(my-awesome-counter);
+        border-radius: 70px;
+        border: 1px solid #38414f;
+        font-size: 14px;
+        padding: 2px 7px 0 8px;
+        margin-right: 15px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        line-height: 20px;
+    }
+}
 
 DIV.inside {
     margin: 140px 0 130px;
@@ -561,6 +605,12 @@ DIV.inside {
         margin: 0 auto;
         width: 100%;
         text-align: center;
+        &.pos2{
+            top: 50px;
+            P IMG{
+                max-width: 50%;
+            }
+        }
         H2{
             font-size: 48px;
             color: #38414f;
@@ -831,6 +881,21 @@ DIV.inside {
             }
             P.sub{
                 font-size: 14px;
+            }
+        }
+        DIV.beautiful.pos2{
+            top: 10px;
+            H2{
+                font-size: 26px;
+                width: 85%;
+                margin: 0 auto;
+            }
+            P{
+                text-align: center;
+                IMG{
+                    width: 90%;
+                    max-width: 100%
+                }
             }
         }
     }
@@ -1148,16 +1213,19 @@ DIV.section.compare{
     .txt-l { font-size:28px; font-weight:bold; }
     .txt-top { position:relative; top:-9px; left:-2px; }
     .tick { 
-        font-size:22px; 
+        font-size:16px; 
         color:#2CA01C; 
         display: inline-block;
         background-color: white;
         border-radius: 170px;
         padding: 5px 10px;
     }
+    .default .tick{
+        font-size: 22px;
+    }
     .cross { 
-        color: #666 !important;
-        font-size: 26px;
+        color: darkred !important;
+        font-size: 16px;
     }
     .hide {
         border:0;
@@ -1177,7 +1245,7 @@ DIV.section.compare{
         }
     }
     .gray{
-        color: #666 !important;
+        color: #7a7a7a !important;
     }
     li.bg-bwh.active button {
         background-color: antiquewhite;
@@ -1196,6 +1264,16 @@ DIV.section.compare{
         td{
             line-height: 23px;
         }
+    }
+    H2.quote, H2.title-break{
+        font-size: 22px;
+        margin-bottom: 20px;
+        line-height: 34px;
+        text-align: center;
+    }
+    H2.title-break{
+        //font-size: 42px;
+
     }
 }
 @media (min-width: 640px) {
