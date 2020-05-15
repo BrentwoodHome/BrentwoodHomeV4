@@ -481,6 +481,67 @@
                 price: 0
             }
         ];
+      {% when "hybrid-latex-mattress" %}
+      //Crystal cove mattress foundation
+      var variantFoundations = [
+          {//Twin
+              id: 19294522310718,
+              price: 22500,
+          },
+          {//Twin XL
+              id: 19294522441790,
+              price: 25000,
+          },
+          {//Full
+              id: 19294522474558,
+              price: 25000
+          },
+          {//Queen
+              id: 19294522540094,
+              price: 27500,
+              sale: 0
+          },
+          {//King
+              id: 19294522572862,
+              price: 35000,
+              sale: 0
+          },
+          {//CalKing
+              id: 19294522769470,
+              price: 35000,
+              sale: 0
+          }
+      ];
+       var variantAdjustableBundle = [
+           {//Twin 
+               id: 31082150559806,
+               price: 59900,
+               sale: 0,
+           },
+           {//Twin XL
+               id: 31082150559806,
+               price: 59900,
+               sale: 0,
+           },
+           {//Full
+               id: 0,
+               price: 0
+           },
+           {//Queen
+               id: 31082150625342,
+               price: 79900,
+               sale: 0,
+           },
+           {//King
+               id: 31123066585150,
+               price: 119800,
+               sale: 0,
+           },
+           {//CAKing
+               id: 0,
+               price: 0
+           }
+       ];
       {% else %}
       //Gray foundation for Ojai, Crystal Cove and everything else
       var variantFoundations = [
@@ -1025,6 +1086,19 @@ console.log("foundation OOS1");
                    var variantFoundationIds = [19308085641278, 19308085772350, 19308085805118, 19308085837886, 19308085870654, 19308085903422, 19308085870654]
                    var variantPillowBundle = [12210708742255, 12210708742255, 12210708742255, 12210708775023, 12210708807791, 12210708807791, 12210708807791]
                    var variantPillowBundleQt = [1, 1, 1, 2, 2, 2, 2]
+                   //Adjustable base
+                   var variantAdjustableIds = [
+                       31082150559806,                
+                       31082150559806, 
+                       0,
+                       31082150625342, 
+                       31123066585150, 
+                       0,
+                       0
+                   ]
+                {% when "hybrid-latex-mattress" %}
+                   //Twin, Twin XL, Full, Q, K, CK
+                   var variantFoundationIds = [19294522310718, 19294522441790, 19294522474558, 19294522540094, 19294522572862, 19294522769470]
                    //Adjustable base
                    var variantAdjustableIds = [
                        31082150559806,                
