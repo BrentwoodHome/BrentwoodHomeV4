@@ -15,46 +15,38 @@ shipping page at https://brentwood-home.myshopify.com/admin/pages/73357635
         margin: 20px 0 25px 0;
     }
 </style>
-{%comment%}
-{% case product.title %}
-    {% when 'Cedar Natural Luxe Mattress' %}
-        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our <strong>{{ product.title }} is currently 3 to 7 business business days</strong>.</p>
-    {% when 'Ojai Mattress' %}
-        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our <strong>{{ product.title }} is currently 3 to 7 business business days</strong>.</p>
-    {% when 'Crystal Cove Mattress' %}
-        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our <strong>{{ product.title }} is currently 3 to 7 business business days</strong>.</p>
-    {% when 'Cypress Bamboo Gel Mattress' %}
-        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our <strong>{{ product.title }} is currently 3 to 7 business business days</strong>.</p>
-    {% when 'Oceano Mattress' %}
-        <p class="short-description shippingtime">Due to high demand, the handcrafting process for our <strong>{{ product.title }} is currently 3 to 7 business business days</strong>.</p>
-    {% else %}
-    
-{% endcase %}
-{%endcomment%}
 
 {% assign shipsfree = "2-3 business days" %}
 {% assign trial = "false" %}
 
 {% case product.type %}
+
     {% when 'Pillow' %}
         {% assign trial = "30-day trial" %}
         {% assign shipsfree = "10-15 business days" %}
+
     {% when 'Wedge Pillow' %}
         {% assign trial = "30-day trial" %}
         {% assign shipsfree = "5-7 business days" %}
+
     {% when 'Mattress Topper' %}
         {% assign trial = "30-night trial" %}
+
     {% when 'Mattress' %}
         {% assign trial = "1-year trial" %}
+
     {% when 'Bed Frames' %}
         {% assign trial = "1-year trial" %}
         {% assign shipsfree = "3-5 business days" %}
+
     {% when 'Mattress Topper' %}
         {% assign trial = "1-year trial" %}
         {% assign shipsfree = "3-7 business days" %}
+
 {% endcase %}
 
 {% case product.handle %}
+
     {% when 'foundation' %}
         {% assign shipsfree = "2-3 business days" %}
         {% assign trial = "1-year trial" %}
@@ -69,38 +61,33 @@ shipping page at https://brentwood-home.myshopify.com/admin/pages/73357635
     {% when 'runyon-deluxe-orthopedic-pet-bed' %}
         {% assign shipsfree = "2-3 business days" %}
         
+
     {% when 'oceano-mattress' %}
         {% assign shipsfree = "3-5 business days" %}
-        
-    {% when 'ojai-mattress' %}
-        {% assign shipsfree = "2-3 business days" %}
-        
     {% when 'crystal-cove-mattress' %}
         {% assign shipsfree = "3-5 business days" %}
- {% when 'hybrid-latex-mattress' %}
+    {% when 'hybrid-latex-mattress' %}
         {% assign shipsfree = "3-5 business days" %}
     {% when 'cedar-natural-luxe-mattress' %}
         {% assign shipsfree = "3-5 business days" %}
-
     {% when 'cypress-memory-foam-mattress' %}
         {% assign shipsfree = "3-5 business days" %}
+
 
     {% when 'crystal-cove-yoga-bolster' %}
         {% assign shipsfree = "8-12 business days" %}
     {% when 'crystal-cove-meditation-pillow-square' %}
         {% assign shipsfree = "8-12 business days" %}
-        
     {% when 'crystal-cove-pranayama-bolster' %}
         {% assign shipsfree = "8-12 business days" %}
-        
     {% when 'crystal-cove-meditation-pillow' %}
         {% assign shipsfree = "8-12 business days" %}
-        
     {% when 'crystal-cove-square-meditation-pillow' %}
         {% assign shipsfree = "8-12 business days" %}
-        
     {% when 'crystal-cove-bundle' %}
         {% assign shipsfree = "8-12 business days" %}
+
+
         
     {% when 'beachwood-linen-quilt' %}
         {% assign shipsfree = "2-3 weeks" %}
