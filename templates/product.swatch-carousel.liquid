@@ -15,7 +15,7 @@
 
             {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
             <a href="{{ featured_image | img_url: 'original' }}" class="zoom" id="placeholder" >
-              <img id="product-featured-image" src="{{ featured_image | img_url: 'grande' }}" alt="{{ featured_image.alt | escape }}" data-zoom-image="{{ featured_image.src | img_url: 'original' }}"/>
+              <img id="product-featured-image" src="{{ featured_image | img_url: 'grande' }}" alt="{{ product.title }}" data-zoom-image="{{ featured_image.src | img_url: 'original' }}"/>
             </a>
 
           {% if product.images.size > 1 %}
@@ -24,7 +24,7 @@
               {% for image in product.images %}
               <div class="item">
                 <a href="javascript:void(0)" data-image="{{ image.src | product_img_url: 'grande' }}">
-                  <img src="{{ image.src | product_img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+                  <img src="{{ image.src | product_img_url: 'compact' }}" alt="{{ product.title }}">
                 </a>
               </div>
               {% endfor %}

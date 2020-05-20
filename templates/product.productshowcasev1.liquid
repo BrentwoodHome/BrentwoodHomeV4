@@ -60,7 +60,7 @@
                     {{product.metafields.bhsite.shortdesc}}
                 </p>
                 {% if productTags contains 'amazon' %}
-                    <p><img src="{{ 'exclusiveAmz.png' | asset_url }}" alt="" style="max-width: 150px;"></p>
+                    <p><img src="{{ 'exclusiveAmz.png' | asset_url }}" alt="Amazon only" style="max-width: 150px;"></p>
                 {%endif%}
                 
                 {% if metaf.shortdesc_more %}
@@ -107,7 +107,7 @@
                                         {% endfor %}
                                     </select>
                                     {% comment %}variables set in snippets/shippingtime.liquid{% endcomment %}
-                                    <p class="short-description shipping"><img src="https://brentwood-home-2.imgix.net/icon-shippingv4.svg" alt="">Ships free in {{ shipsfree }} | free returns {% if trial %}| {{trial}}{% endif %}</p>
+                                    <p class="short-description shipping"><img src="https://brentwood-home-2.imgix.net/icon-shippingv4.svg" alt="Ships free in {{ shipsfree }} | free returns {% if trial %}| {{trial}}{% endif %}">Ships free in {{ shipsfree }} | free returns {% if trial %}| {{trial}}{% endif %}</p>
                                     {% if settings.use_color_swatch %}
                                         {% for option in product.options %}
                                             {% include 'swatch' with option %}
@@ -117,7 +117,7 @@
                                 {% else %}
                                     {%comment%}No variant products like yoga pillows, we still want to display shipping and qty{%endcomment%}
                                     {% comment %}variables set in snippets/shippingtime.liquid{% endcomment %}
-                            <p class="short-description shipping"><img src="https://brentwood-home-2.imgix.net/icon-shippingv4.svg" alt="">Ships free in {{ shipsfree }} | free returns {% if trial %}| {{trial}}{% endif %}</p>
+                            <p class="short-description shipping"><img src="https://brentwood-home-2.imgix.net/icon-shippingv4.svg" alt="Ships free in {{ shipsfree }} | free returns {% if trial %}| {{trial}}{% endif %}">Ships free in {{ shipsfree }} | free returns {% if trial %}| {{trial}}{% endif %}</p>
                                     <div id="qt"><label for="Quantity" class="selectLabel">Qty: </label> <input type="text" id="quantity" name="quantity" value="1"></div>
                                     <input type="hidden" name="id" value="{{ product.variants[0].id }}"/>
                                 {% endif %}
@@ -399,14 +399,14 @@ qt: 1<br>
                 <picture>
                     <source media="(max-width: 767px)" data-srcset="https://s3-brentwoodhome.imgix.net/caleyalyssa3.jpg?w=480&ch=Width,DPR&q=55">
                     <source media="(min-width: 768px)" data-srcset="https://s3-brentwoodhome.imgix.net/caleyalyssa3.jpg?w=920">
-                    <img class="lazy" data-src="https://s3-brentwoodhome.imgix.net/caleyalyssa3.jpg?w=920" src="https://s3-brentwoodhome.imgix.net/caleyalyssa3.jpg?w=920&blur=500&q=10" alt="">
+                    <img class="lazy" data-src="https://s3-brentwoodhome.imgix.net/caleyalyssa3.jpg?w=920" src="https://s3-brentwoodhome.imgix.net/caleyalyssa3.jpg?w=920&blur=500&q=10" alt="Greenguard Gold Certified Non-Toxic">
                 </picture>
             </div>
             <div class="col-xs-12 col-sm-6 flexV">
                 <div>
                     <h2>Greenguard Gold Certified Non-Toxic</h2>
                     <p>The Crystal Cove pillow is completely <strong>GREENGUARD Gold Certified</strong> by UL Environment. It means that it has been scientifically tested in environmental chambers to meet some of the world’s most rigorous, third-party emissions standards for prolonged chemical exposure and pollutants, such as volatile organic compounds (VOCs), formaldehyde and phthalates. <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/health-safety-and-sustainability/are-your-mattresses-pillows-greenguard-gold-certified" title="Greenguard Gold Certified">View Certificate.</a></p>
-                    <p class="text-center"><img src="https://brentwood-home-2.imgix.net/greenguard-logo-full.svg" alt="" style="max-width: 100px; width: 100px;margin-top: 30px;" ></p>
+                    <p class="text-center"><img src="https://brentwood-home-2.imgix.net/greenguard-logo-full.svg" alt="Greenguard Gold Certified Non-Toxic" style="max-width: 100px; width: 100px;margin-top: 30px;" ></p>
                 </div>
             </div>
         </div>

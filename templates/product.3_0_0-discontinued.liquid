@@ -170,10 +170,10 @@
                             {% if productTags contains 'costco' %}
                                 <span class="cta2 grayedout nostroke w100" id="">Out of Stock</span>
                             {% elsif productTags contains 'amazon' %}
-                                <img src="{{'discontinued-01-03.png' | asset_url }}" alt="">
+                                <img src="{{'discontinued-01-03.png' | asset_url }}" alt="Discontinued">
                                 <a href="/products/ojai-mattress" style="line-height: 65px;" class="btn cta4amz" id="">UPGRADE TO THE OJAI</a>
                             {% elsif productTags contains 'discontinued' %}
-                                <div style="background-color: #efefef;border:1px solid #dedede;padding: 15px;text-align: center;"><img src="{{'discontinued-01-03.png' | asset_url }}" alt=""></div>
+                                <div style="background-color: #efefef;border:1px solid #dedede;padding: 15px;text-align: center;"><img src="{{'discontinued-01-03.png' | asset_url }}" alt="Discontinued"></div>
                                 <a href="/collections/mattresses" target="_blank" style="line-height: 65px;" class="btn cta4amz" id="">SEE OTHER MATTRESSES</a>
                             {%endif%}
                         {% endif %}

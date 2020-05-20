@@ -210,7 +210,7 @@
                                             {% endfor %}
                                         </select>
                                         {% comment %}variables set in snippets/shippingtime.liquid{% endcomment %}
-                                        <p class="short-description shipping"><img src="https://brentwood-home-2.imgix.net/icon-shippingv4.svg" alt="">Ships free in {{ shipsfree }} | free returns {% unless trial == "false"  %}| {{trial}}{% endunless %}</p>
+                                        <p class="short-description shipping"><img src="https://brentwood-home-2.imgix.net/icon-shippingv4.svg" alt="Ships free in {{ shipsfree }} | free returns {% unless trial == "false"  %}| {{trial}}{% endunless %}">Ships free in {{ shipsfree }} | free returns {% unless trial == "false"  %}| {{trial}}{% endunless %}</p>
 
                                         {% if settings.use_color_swatch %}
                                             {% for option in product.options %}
@@ -480,7 +480,7 @@
         <div class="row flex">
             <div class="col-xs-12 col-sm-6 col-sm-push-6">
                 {% if metaf.feature4_img contains "gif" %}
-                    <img src="{{ 'easyframegif555.gif' | asset_url }}" alt="">
+                    <img src="{{ 'easyframegif555.gif' | asset_url }}" alt="easy metal frame">
                 {% else %}
                 <picture>
                     <source media="(max-width: 767px)" data-srcset="https://brentwood-home-2.imgix.net/{{ metaf.feature4_img }}?w=555&ch=Width,DPR&q=55">
