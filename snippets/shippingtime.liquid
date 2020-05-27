@@ -29,9 +29,6 @@ shipping page at https://brentwood-home.myshopify.com/admin/pages/73357635
         {% assign trial = "30-day trial" %}
         {% assign shipsfree = "5-7 business days" %}
 
-    {% when 'Mattress Topper' %}
-        {% assign trial = "30-night trial" %}
-
     {% when 'Mattress' %}
         {% assign trial = "1-year trial" %}
 
@@ -93,8 +90,10 @@ shipping page at https://brentwood-home.myshopify.com/admin/pages/73357635
         {% assign shipsfree = "2-3 weeks" %}
 
     {% when 'cedar-natural-latex-mattress-topper' %}
-        {% assign shipsfree = "6-8 weeks" %}
+        {% assign shipsfree = "6-8 business days" %}
 
+    {% when 'cedar-natural-luxe-topper' %}
+        {% assign shipsfree = "6-8 business days" %}
    
     {% when 'luxury-organic-cotton-sheets' %}
         {% assign shipsfree = "2-3 business days" %}
