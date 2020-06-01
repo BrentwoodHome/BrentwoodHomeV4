@@ -23,7 +23,6 @@
         }
     }
 
-    
     @media (max-width: 990px){
         /* ipad resolution and below revert to control nav */
         .nav2{
@@ -419,7 +418,7 @@
                             {% assign metaf = product.metafields.c_f %}
                             {% assign imgName = product.featured_image | remove: 'products/' | split:'?' | first %}
                             <li class="clearfix"> 
-                                <a href="{{product.url}}?utm_source={{ product.title | handleize }}&utm_medium=nav2&utm_campaign=variant1" class="visualRow">
+                                <a href="{{product.url}}" class="visualRow">
                                     <div class="image">
                                         <img srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=86&h=86&crop=focalpoint&fit=crop&dpr=1 1x, 
 https://brentwood-home-products.imgix.net/{{ imgName }}?fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=172&h=172&crop=focalpoint&fit=crop&dpr=2 2x,
