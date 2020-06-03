@@ -59,12 +59,15 @@
     }
     .dropdown-sub.testB.one.yoga {
         left: -460px;
+        padding: 28px 26px 28px 15px
     }
     .dropdown-sub.testA.two{
         top: 65px;
-        left: -40px;
-        padding-top: 15px;
-        padding-bottom: 15px;
+        left: 80px;
+        /*padding-top: 15px;
+        padding-bottom: 15px;*/
+        padding: 28px 26px 28px 15px;
+        width: 1110px;
     }
     .is-ticky .dropdown-sub.testB.one {
         left: -360px;
@@ -87,6 +90,11 @@
         top: 65px !important;
     }
 
+@media (min-width: 1064px) and (max-width: 1480px){
+    .dropdown-sub.testA.two{
+        left: -220px;
+    }
+}
 
 @media (min-width: 991px) and (max-width: 1064px){
     .dropdown-sub.testB.one {
@@ -101,7 +109,7 @@
         min-width: 940px;
         width: 940px;
         left: -220px;
-        padding: 15px
+        /*padding: 15px*/
     }
     .is-ticky .dropdown-sub.testB.one {
         left: -360px;
@@ -184,7 +192,7 @@
                 <a href="/blogs/news">BW Lifestyle Blog</a>
                 <span id='extole_zone_global_header'></span>
                 <!--<a href="/pages/sale" class="sale">{{ newdesign }} <i class="fa fa-angle-right"></i></a>-->
-                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" class="sale">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-right"></i></a>
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" class="sale">COVID & PROTEST SHIPPING IMPACT <i class="fa fa-angle-right"></i></a>
             </div>
         </div>
     {% endunless %}
@@ -203,7 +211,7 @@
                 <a href="/blogs/news">BW Lifestyle Blog</a>
                 <span id='extole_zone_global_header'></span>
                 <!--<a href="/pages/sale" class="sale">{{ newdesign }} <i class="fa fa-angle-right"></i></a>-->
-                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" class="sale">OUR COVID19 RESPONSE & IMPACT <i class="fa fa-angle-right"></i></a>
+                <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3800030-our-covid-19-response" target="_blank" class="sale">COVID & PROTEST SHIPPING IMPACT <i class="fa fa-angle-right"></i></a>
             </div>
         </div>
         {% endif %}
@@ -485,12 +493,12 @@
          <div class="row">
             <div class="mega-item col-sm-12 col-md-12">
                <div class="row">
-                  <div class="col-sm-4" style="width: 35%">
-                     <div class="mega-col-inner "> <a href="/collections/crystal-cove-yoga"> <img src="https://brentwood-home-products.imgix.net/crystal_cove_yoga_meditation_square__3.jpg?w=350&h=350&bri=-8&txtalign=middle,center&txtfont=Didot,Italic&txt=Yoga%20Pillows&txtclr=FFFFFF&txtsize=42&fit=crop&dpr=1&fp-x=0.5&fp-y=0.5&fp-z=1" alt="Crystal Cove Yoga Collection"> </a></div>
-
-                     
+                  <div class="col-sm-4" style="">
+                     <div class="mega-col-inner "> 
+                        <a href="/collections/crystal-cove-yoga" style="padding: 0;"> <img src="https://brentwood-home-products.imgix.net/crystal_cove_yoga_meditation_square__3.jpg?w=350&h=350&bri=-8&txtalign=middle,center&txtfont=Didot,Italic&txt=Yoga%20Pillows&txtclr=FFFFFF&txtsize=42&fit=crop&dpr=1&fp-x=0.5&fp-y=0.5&fp-z=1" alt="Crystal Cove Yoga Collection"> </a>
+                    </div>
                   </div>
-                  <div class="col-sm-3" style="width: 23%">
+                  <div class="col-sm-3" style="">
                      <div class="mega-col-inner ">
                         <div class="menu-title"><a href="/collections/luxury-memory-foam-pillows">Pillows</a></div>
                         <div class="widget-inner">
@@ -509,7 +517,7 @@
                         </div>
                      </div>
                   </div>
-                  <div class="col-sm-3" style="width: 23%">
+                  <div class="col-sm-3" style="">
                      <div class="mega-col-inner ">
                         <div class="menu-title"><a href="/collections/luxury-sheets-and-mattress-protectors">Sheets & Protectors</a></div>
                         <div class="widget-inner">
@@ -523,7 +531,7 @@
                            <div class="menu-title" style="margin-top: 0px;"><a href="/collections/foundations-frames-bases">Foundations & Bases</a></div>
                      </div>
                   </div>
-                  <div class="col-sm-2" style="width: 15%">
+                  <div class="col-sm-2" style="">
                      <div class="mega-col-inner ">
                         <div class="menu-title"><a href="/collections/pets">Pet Beds</a></div>
                         <div class="widget-inner">

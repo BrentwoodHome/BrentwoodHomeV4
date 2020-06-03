@@ -10,7 +10,7 @@
 
 {% assign cedar = all_products['cedar-natural-luxe-mattress'] %}
 {% assign oceano = all_products['oceano-mattress'] %}
-{% assign ojai = all_products['ojai-mattress'] %}
+{% assign hybrid = all_products['hybrid-latex-mattress'] %}
 {% assign crystalcove = all_products['crystal-cove-mattress'] %}
 {% assign cypress = all_products['cypress-memory-foam-mattress'] %}
 
@@ -41,13 +41,13 @@
 {% endfor %}
 
 {% for variant in cypress.variants %}
-{% if variant.title == "Twin - Classic 11" Height / All-Foam" %}
+{% if variant.title == 'Twin - Classic 11" Height / All-Foam' %}
 {% assign cypressPrice = variant.price %}
 {% endif %}
 {% endfor %}
 
 {% include 'affirm-product' %}
-<div class="container">
+<div class="container-fluid">
     <div class="row"><!--row-eq-height-->
         <div id="compare-mattresses-wrap" class=" owl-carousel owl-theme">
             <div class="item">
@@ -305,12 +305,11 @@
                         </a>
                         <a href="{{ cypress.url }}" class="product-grid-image" title="">
                             <picture>
-                                <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/2E4A2695.jpg?w=480&fit=crop&auto=format&q=75">
-                                <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/2E4A2695.jpg?w=750&fit=crop&auto=format&q=40&dpr=2">
-                                <img src="https://brentwood-home-products.imgix.net/2E4A2695.jpg?w=480&fit=crop&auto=format&q=75" alt="Cypress">
+                                <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/bwh_cypressmattress_front.jpg?w=480&fit=crop&auto=format&q=75">
+                                <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/bwh_cypressmattress_front.jpg?w=750&fit=crop&auto=format&q=40&dpr=2">
+                                <img src="https://brentwood-home-products.imgix.net/bwh_cypressmattress_front.jpg?w=480&fit=crop&auto=format&q=75" alt="Cypress">
                             </picture>
                         </a>
-                        <br>
                         <div class="paddingwrap">
                             <div class="yotpo bottomLine"
                                  data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
@@ -351,6 +350,63 @@
                 </div>
             </div>
             
+            <div class="item">
+                <div class="product-col hybrid text-center">
+                    <div class="colorwrap">
+                        <a href="{{hybrid.url}}" class="col-header">
+                            <h2>{{hybrid.title}}</h2>
+                            <h3>The Green Choice</h3>
+                        </a>
+                        <a href="{{ hybrid.url }}" class="product-grid-image" title="">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/brentwood_hybrid_latex_mattress2.jpg?w=480&fit=crop&auto=format&q=75">
+                                <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/brentwood_hybrid_latex_mattress2.jpg?w=750&fit=crop&auto=format&q=40&dpr=2">
+                                <img src="https://brentwood-home-products.imgix.net/brentwood_hybrid_latex_mattress2.jpg?w=480&fit=crop&auto=format&q=75" alt="Hybrid Latex">
+                            </picture>
+                        </a>
+
+                        <br>
+                        <div class="paddingwrap">
+                            <div class="yotpo bottomLine"
+                                 data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
+                                 data-domain="{{ shop.permanent_domain | escape }}"
+                                 data-product-id="{{ hybrid.id }}"
+                                 data-product-models="{{ hybrid.id }}"
+                                 data-name="{{ hybrid.title | escape }}"
+                                 data-url="{{ shop.url }}{{ hybrid.url }}">
+                            </div>
+                            <p><a href="{{hybrid.url}}" class="cta2 solid text-center marg0">From $799</a></p>
+                            <div class="affirm">
+                                <p id="learn-more" class="affirm-as-low-as" data-promo-id="promo_set_brentwood_zero_percent" data-amount="79900"> <a class="affirm-site-modal" data-promo-id="promo_set_pdp_12_standard">Learn more</a></p>
+                            </div>
+                            <ul class="featList text-left">
+                                <li class="ico feel">12" Comfort</li>
+                                <li class="ico gel">Alternative materials</li>
+                                <li class="ico coils">Hybrid up 975 coils</li>
+                                <li class="ico">&nbsp;</li>
+                            </ul>
+                            <p class="description">
+                                The mattress, evolved. Made entirely from alternative, natural, & recycled materials. Provides extraordinary comfort and zoned support.
+                            </p>
+                            <div class="otherFeatures">
+                                <p><strong>Other Features</strong></p>
+                                <ul class="otherfeatures text-left">
+                                    <li>GREENGUARD&reg; Gold Certified Mattress</li>
+                                    <li>Alternative, recycled, breathable materials</li>
+                                    <li>Pressure Relief</li>
+                                    <li>Temperature Regulating</li>
+                                    <li>Motion Isolation</li>
+                                    <li>CertiPUR-US&reg; Certified Foam</li>
+                                    <li>No Chemical Flame Retardants</li>
+                                    <li>Made in USA</li>
+                                    <li>Rainforest Alliance Certified</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             {% comment %}
            <div class="item">
                 <div class="product-col ojai text-center">
@@ -436,7 +492,7 @@
                     nav:true
                 },
                 1480:{
-                    items:4,
+                    items:5,
                     nav:false
                 }
             }
