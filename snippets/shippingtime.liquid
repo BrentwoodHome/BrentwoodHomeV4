@@ -27,7 +27,7 @@ shipping page at https://brentwood-home.myshopify.com/admin/pages/73357635
 
     {% when 'Wedge Pillow' %}
         {% assign trial = "30-day trial" %}
-        {% assign shipsfree = "5-7 business days" %}
+        {% assign shipsfree = "2-3 business days" %}
 
     {% when 'Mattress' %}
         {% assign trial = "1-year trial" %}
@@ -38,7 +38,7 @@ shipping page at https://brentwood-home.myshopify.com/admin/pages/73357635
 
     {% when 'Mattress Topper' %}
         {% assign trial = "1-year trial" %}
-        {% assign shipsfree = "3-7 business days" %}
+        {% assign shipsfree = "3-5 business days" %}
 
 {% endcase %}
 
@@ -61,65 +61,68 @@ shipping page at https://brentwood-home.myshopify.com/admin/pages/73357635
     {% when 'lilypad-kids-pillow' %}
         {% assign shipsfree = "2-3 business days" %}
     {% when 'sleeping-willow-toddler-pillow' %}
-        {% assign shipsfree = "7-8 business days" %}
+        {% assign shipsfree = "2-3 business days" %}
 
-
+{% comment %}
     {% when 'crystal-cove-wedge-pillow' %}
         {% assign shipsfree = "2-3 business days" %}
     {% when 'therapeutic-foam-bed-wedge' %}
         {% assign shipsfree = "2-3 business days" %}
     {% when 'whitney-gel-memory-foam-wedge-pillow' %}
         {% assign shipsfree = "2-3 business days" %}
+{% endcomment %}
 
     {% when 'oceano-mattress' %}
-        {% assign shipsfree = "7-8 business days" %}
-    {% when 'crystal-cove-mattress' %}
         {% assign shipsfree = "3-5 business days" %}
+    {% when 'crystal-cove-mattress' %}
+        {% assign shipsfree = "9-10 business days" %}
     {% when 'hybrid-latex-mattress' %}
         {% assign shipsfree = "15 business days" %}
     {% when 'cedar-natural-luxe-mattress' %}
-        {% assign shipsfree = "5-7 business days" %}
+        {% assign shipsfree = "3-5 business days" %}
     {% when 'cypress-memory-foam-mattress' %}
-        {% assign shipsfree = "7-8 business days" %}
+        {% assign shipsfree = "3-5 business days" %}
 
 
     {% when 'crystal-cove-yoga-bolster' %}
-        {% assign shipsfree = "5-7 business days" %}
+        {% assign shipsfree = "3-5 business days" %}
     {% when 'crystal-cove-meditation-pillow-square' %}
-        {% assign shipsfree = "5-7 business days" %}
+        {% assign shipsfree = "3-5 business days" %}
     {% when 'crystal-cove-pranayama-bolster' %}
-        {% assign shipsfree = "5-7 business days" %}
+        {% assign shipsfree = "3-5 business days" %}
     {% when 'crystal-cove-meditation-pillow' %}
-        {% assign shipsfree = "5-7 business days" %}
+        {% assign shipsfree = "3-5 business days" %}
     {% when 'crystal-cove-square-meditation-pillow' %}
-        {% assign shipsfree = "5-7 business days" %}
+        {% assign shipsfree = "3-5 business days" %}
     {% when 'crystal-cove-bundle' %}
-        {% assign shipsfree = "5-7 business days" %}
+        {% assign shipsfree = "3-5 business days" %}
 
 
         
     {% when 'beachwood-linen-quilt' %}
         {% assign shipsfree = "2-3 weeks" %}
 
+{% comment %}
     {% when 'cedar-natural-latex-mattress-topper' %}
-        {% assign shipsfree = "3-7 business days" %}
-
+        {% assign shipsfree = "3-5 business days" %}
     {% when 'cedar-natural-luxe-topper' %}
-        {% assign shipsfree = "3-7 business days" %}
-   
+        {% assign shipsfree = "3-5 business days" %}
+{% endcomment %}
+
     {% when 'luxury-organic-cotton-sheets' %}
         {% assign shipsfree = "2-3 business days" %}
         {% assign trial = "100-night trial" %}
+}
         
 {% endcase %}
 
 
 
-
+{% comment %}
 
 {% case product.type %}
     {% when 'Pet Bed' %}
-{% comment %}<p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>5 to 7 business business days</strong>.</p>{% endcomment %}
+<p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>5 to 7 business business days</strong>.</p>
     {% when 'Wedge Pillow' %}
         <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>3 to 7 business business days</strong>.</p>
     {% when 'Pillow' %}
@@ -136,5 +139,5 @@ shipping page at https://brentwood-home.myshopify.com/admin/pages/73357635
     {% when 'Lounger' %}
         <p class="short-description shippingtime">Due to high demand, the handcrafting process for our {{ product.title }} is currently <strong>3 to 7 business business days</strong>.</p>
 {% endcase %}
-
+{% endcomment %}
 
