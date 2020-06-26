@@ -23,7 +23,7 @@ Tobe used for banners/tickers ect...
 {% assign eyebrowCurrentMobile = "Sale! Save up to $175 on mattresses & more" %}
 {% assign eyebrowNew = "Sale! Save up to $200 on mattresses & more" %}
 {% assign eyebrowNewMobile = "Shop our mattress sale now" %}
-{% assign newdesign = "Sale! $200 off mattresses & more" %}
+{% assign newdesign = "Fourth of July Sale" %}
 
 
 <!-- SALE PAGE variable for extending promo. 'enddate' var displayed in mobile nav and sale page. -->
@@ -74,6 +74,9 @@ Tobe used for banners/tickers ect...
 
         {% when 'hybrid-latex-mattress' %}
           {% assign sale = "SALE! SAVE $100 <span>no code needed</span>" %}
+
+        {% when 'cypress-memory-foam-mattress' %}
+          {% assign sale = "SAVE 10% with code <strong>CYPRESS10</strong><span>*enter code at checkout</span>" %}
           
     {% endcase %}
 {% endif %}

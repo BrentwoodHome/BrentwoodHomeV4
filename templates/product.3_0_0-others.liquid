@@ -198,7 +198,11 @@
                     <div class="mob-dark">
                         <div id="buysection"></div>
                         <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
-                            <label for="product-selectors" class="selectLabel">Size</label>
+                            <label for="product-selectors" class="selectLabel">
+                            {% for product_option in product.options_with_values limit:1 %}
+                                {{ product_option.name }}
+                            {% endfor %}
+                            </label>
                             <div id="product-variants">
                                 {% assign variantCount = product.variants | size %}
                                 {% if product.available %}
@@ -451,7 +455,7 @@
                         <video playsinline autoplay loop muted poster="https://brentwood-home-2.imgix.net/{{ metaf.feature3_img }}.jpg" preload="none">
                             <source src="https://s3.us-east-2.amazonaws.com/brentwoodhome/imgix/{{ metaf.feature3_img }}.mp4" type="video/mp4">
                             <source src="https://s3.us-east-2.amazonaws.com/brentwoodhome/imgix/{{ metaf.feature3_img }}.webm" type='video/webm; codecs="vp8, vorbis"' />
-                            <img alt="{{metaf.feature3_title | escape }}" src="https://brentwood-home-2.imgix.net/{{ metaf.feature3_img }}?w=555">
+                            <img alt="{{metaf.feature3_title | escape }}" src="https://brentwood-home-2.imgix.net/{{ metaf.feature3_img }}.jpg?w=555">
                         </video>
                     </div>
                 {% else %}
@@ -915,7 +919,7 @@
                 </div>
                 <div class="tab-pane" id="4a">
                     <div class="description">
-                        <div class="container">
+                        <div class="">
                             <div class="row">
                                 {% if product.type == "Pet Bed" %}
                                 <p class="text-center"><strong>Ships free in {{ shipsfree }}, Free Returns{% unless trial == "false"  %}, {{trial}}{% endunless %}</strong></p>
