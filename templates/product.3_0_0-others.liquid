@@ -373,6 +373,27 @@
             </div>
         </div>
     </div>
+    {% elsif product.handle == "eco-latex-charcoal-foam-seat-cushions" %}
+    <div class="container section warranties">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <img src="https://brentwood-home.imgix.net/iconv2-gelmemoryfoam.svg" alt="Pressure Relief">
+                <p>Cool Support &amp;<br>Pressure Relief</p>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Free shippinh & Returns">
+                <p>Free Shipping<br>Free Return</p>
+            </div>
+            <div class="col-xs-4 col-sm-3 hidden-xs">
+                <img src="https://brentwood-home.imgix.net/iconv2-madeincalifornia.svg" alt="Made in California">
+                <p>Made in<br>California</p>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <img src="https://brentwood-home-2.imgix.net/iconv2-1yearwarranty.svg" alt="1-year Warranty">
+                <p>1 year<br>Warranty</p>
+            </div>
+        </div>
+    </div>
     {% else %}
         <div class="overlays overlays-1" style="margin: 50px 0;">
             <h2 class="overlays-title">Peace of mind guarantee</h2>
@@ -390,7 +411,7 @@
                 <div class="item col-xs-6 col-md-3">
                     <img src="{{ 'icon-California.svg' | asset_url }}"/>
                     <br/>
-                    <label>Made in California</label>
+                    <label>Cool Support &amp; Pressure Relief</label>
                 </div>
                 <div class="item col-xs-6 col-md-3">
                     <img src="{{ 'icon-3YearWarranty.svg' | asset_url }}"/>
@@ -554,7 +575,11 @@
     
     {% if metaf.ecommimage_tagline %}
         <section class="overlays overlays-7 only-desktop">
-            <img class="col-xs-12" src="{{ metaf.ecommimage | asset_url }}"/>
+            {% if metaf.ecommimage contains "https://" %}
+                <img class="col-xs-12" src="{{ metaf.ecommimage }}" alt="{{ metaf.ecommimage_tagline }}" />
+            {% else %}
+                <img class="col-xs-12" src="{{ metaf.ecommimage | asset_url }}" alt="{{ metaf.ecommimage_tagline }}" />
+            {% endif %}
             <p>
                 {{ metaf.ecommimage_tagline }}
             </p>
