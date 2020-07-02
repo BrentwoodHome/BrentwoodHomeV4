@@ -220,6 +220,7 @@
              
     {% if product.description != "" %}
          <h2>Product Description</h2>
+         <p class="text-center"><strong>Ships free in {{ shipsfree }}, Free Returns{% unless trial == "false"  %}, {{trial}}{% endunless %}</strong></p>
      {% endif %}
      <br>
      
