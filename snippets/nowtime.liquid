@@ -29,8 +29,9 @@ Tobe used for banners/tickers ect...
 <!-- SALE PAGE variable for extending promo. 'enddate' var displayed in mobile nav and sale page. -->
 {% if rightnowint > extensionStart %}
     {% comment %} Shows extended end sale date {% endcomment%}
-    {% assign enddate = "Ends March 23" %}
-    {% assign mobile_sale_name = "Sale" %}
+    {% assign enddate = "Ends July 20" %}
+    {% assign mobile_sale_name = "July 4th Sale Extended" %}
+    {% assign newdesign = "Fourth of July Sale - Extended" %}
 {% elsif rightnowint < currentPromoEnd %}
     {% comment %} Shows the correct end date when still in current promo range (currentPromoEnd){% endcomment%}
     {% assign enddate = "Ends June 15" %}
