@@ -48,8 +48,74 @@
 
 {% include 'affirm-product' %}
 <div class="container-fluid">
+
     <div class="row"><!--row-eq-height-->
         <div id="compare-mattresses-wrap" class=" owl-carousel owl-theme">
+            <div class="item">
+                <div class="product-col cedar text-center">
+                    <div class="colorwrap">
+                        <a href="{{cedar.url}}" class="col-header">
+                            <h2>{{cedar.title}}</h2>
+                            <h3>The Ultimate in Natural & Organic</h3>
+                        </a>
+                        <a href="{{ cedar.url }}" class="product-grid-image" title="{{cedar.title}}">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-comparecover.jpg?w=480&fit=crop&auto=format&q=75">
+                                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-comparecover.jpg?w=750&fit=crop&auto=format&q=75&ch=Width,DPR">
+                                <img src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-comparecover.jpg?w=480&fit=crop&auto=format&q=75" alt="{{cedar.title}}">
+                            </picture>
+                        </a>
+
+                        <div class="paddingwrap">
+                            <div class="yotpo bottomLine"
+                                 data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
+                                 data-domain="{{ shop.permanent_domain | escape }}"
+                                 data-product-id="{{ cedar.id }}"
+                                 data-product-models="{{ cedar.id }}"
+                                 data-name="{{ cedar.title | escape }}"
+                                 data-url="{{ shop.url }}{{ cedar.url }}">
+                            </div>
+                            <!--<p class="price"><i>Starting at</i> <a href="{{ cedar.url }}" title="{{ cedar.title }}">{{cedar.price | money }}</a></p>-->
+                            <p><a href="{{cedar.url}}" class="cta2 solid text-center marg0">From {{cedar.price | money }}</a></p>
+                            <div class="affirm">
+                                <p id="learn-more" class="affirm-as-low-as" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{cedar.price}}"> <a class="affirm-site-modal" data-promo-id="promo_set_pdp_12_standard">Learn more</a></p>
+                            </div>
+                            <ul class="featList text-left">
+                                <li class="ico feel">Medium Feel</li>
+                                <li class="ico latex">Responsive Natural Latex</li>
+                                <li class="ico zone3">3-Zone Pressure Relief</li>
+                                <li class="ico zone5">5-Zone Support System</li>
+                            </ul>
+                            <p class="description">
+                                Our Cedar Natural Luxe mattress represents the pinnacle of eco-conscious mattress design. It uses the best natural and organic certified materials: organic latex, two types of wool and organic cotton.
+                            </p>
+                            <div class="otherFeatures">
+                                <p><strong>Other Features</strong></p>
+                                <ul class="otherfeatures text-left">
+                                    <li>GREENGUARD&reg; Gold Certified Mattress</li>
+                                    <li>100% GOLS organic certified latex</li>
+                                    <li>100% natural wool</li>
+                                    <li>100% organic certified cotton</li>
+                                    <li>100% natural imported coconut shell husk buttons</li>
+                                    <li>Hybrid Latex + Spring Design</li>
+                                    <li>15” Height</li>
+                                    <li>3-Zone Pressure Relief</li>
+                                    <li>Temperature Regulating</li>
+                                    <li>5-Zone Support System</li>
+                                    <li>Edge Retention</li>
+                                    <li>Motion Isolation</li>
+                                    <li>Upholstery Grade Fabric</li>
+                                    <li>Hand-tufted layers</li>
+                                    <li>GOTS&reg; Certified Cotton Ticking</li>
+                                    <li>No Chemical Flame Retardants</li>
+                                    <li>Eurotop Design</li>
+                                    <li>Removable Latex Topper</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="item">
                 <div class="product-col oceano text-center">
                     <div class="colorwrap">
@@ -169,71 +235,7 @@
                     </div>
                 </div>
             </div>
-            <div class="item">
-                <div class="product-col cedar text-center">
-                    <div class="colorwrap">
-                        <a href="{{cedar.url}}" class="col-header">
-                            <h2>{{cedar.title}}</h2>
-                            <h3>The Ultimate in Natural & Organic</h3>
-                        </a>
-                        <a href="{{ cedar.url }}" class="product-grid-image" title="{{cedar.title}}">
-                            <picture>
-                                <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-comparecover.jpg?w=480&fit=crop&auto=format&q=75">
-                                <source media="(max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-comparecover.jpg?w=750&fit=crop&auto=format&q=75&ch=Width,DPR">
-                                <img src="https://s3-brentwoodhome.imgix.net/products/cedarluxe/cedarluxe-comparecover.jpg?w=480&fit=crop&auto=format&q=75" alt="{{cedar.title}}">
-                            </picture>
-                        </a>
-
-                        <div class="paddingwrap">
-                            <div class="yotpo bottomLine"
-                                 data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
-                                 data-domain="{{ shop.permanent_domain | escape }}"
-                                 data-product-id="{{ cedar.id }}"
-                                 data-product-models="{{ cedar.id }}"
-                                 data-name="{{ cedar.title | escape }}"
-                                 data-url="{{ shop.url }}{{ cedar.url }}">
-                            </div>
-                            <!--<p class="price"><i>Starting at</i> <a href="{{ cedar.url }}" title="{{ cedar.title }}">{{cedar.price | money }}</a></p>-->
-                            <p><a href="{{cedar.url}}" class="cta2 solid text-center marg0">From {{cedar.price | money }}</a></p>
-                            <div class="affirm">
-                                <p id="learn-more" class="affirm-as-low-as" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{cedar.price}}"> <a class="affirm-site-modal" data-promo-id="promo_set_pdp_12_standard">Learn more</a></p>
-                            </div>
-                            <ul class="featList text-left">
-                                <li class="ico feel">Medium Feel</li>
-                                <li class="ico latex">Responsive Natural Latex</li>
-                                <li class="ico zone3">3-Zone Pressure Relief</li>
-                                <li class="ico zone5">5-Zone Support System</li>
-                            </ul>
-                            <p class="description">
-                                Our Cedar Natural Luxe mattress represents the pinnacle of eco-conscious mattress design. It uses the best natural and organic certified materials: organic latex, two types of wool and organic cotton.
-                            </p>
-                            <div class="otherFeatures">
-                                <p><strong>Other Features</strong></p>
-                                <ul class="otherfeatures text-left">
-                                    <li>GREENGUARD&reg; Gold Certified Mattress</li>
-                                    <li>100% GOLS organic certified latex</li>
-                                    <li>100% natural wool</li>
-                                    <li>100% organic certified cotton</li>
-                                    <li>100% natural imported coconut shell husk buttons</li>
-                                    <li>Hybrid Latex + Spring Design</li>
-                                    <li>15” Height</li>
-                                    <li>3-Zone Pressure Relief</li>
-                                    <li>Temperature Regulating</li>
-                                    <li>5-Zone Support System</li>
-                                    <li>Edge Retention</li>
-                                    <li>Motion Isolation</li>
-                                    <li>Upholstery Grade Fabric</li>
-                                    <li>Hand-tufted layers</li>
-                                    <li>GOTS&reg; Certified Cotton Ticking</li>
-                                    <li>No Chemical Flame Retardants</li>
-                                    <li>Eurotop Design</li>
-                                    <li>Removable Latex Topper</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             {%comment%}
             <div class="item">
                 <div class="product-col cedar text-center">
@@ -297,6 +299,61 @@
             </div>
             {%endcomment%}
             <div class="item">
+                <div class="product-col hybrid text-center">
+                    <div class="colorwrap">
+                        <a href="{{hybrid.url}}" class="col-header">
+                            <h2>{{hybrid.title}}</h2>
+                            <h3>The Green Choice</h3>
+                        </a>
+                        <a href="{{ hybrid.url }}" class="product-grid-image" title="">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/brentwood_hybrid_latex_mattress2.jpg?w=480&fit=crop&auto=format&q=75">
+                                <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/brentwood_hybrid_latex_mattress2.jpg?w=750&fit=crop&auto=format&q=40&dpr=2">
+                                <img src="https://brentwood-home-products.imgix.net/brentwood_hybrid_latex_mattress2.jpg?w=480&fit=crop&auto=format&q=75" alt="Hybrid Latex">
+                            </picture>
+                        </a>
+                        <div class="paddingwrap">
+                            <div class="yotpo bottomLine"
+                                 data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
+                                 data-domain="{{ shop.permanent_domain | escape }}"
+                                 data-product-id="{{ hybrid.id }}"
+                                 data-product-models="{{ hybrid.id }}"
+                                 data-name="{{ hybrid.title | escape }}"
+                                 data-url="{{ shop.url }}{{ hybrid.url }}">
+                            </div>
+                            <p><a href="{{hybrid.url}}" class="cta2 solid text-center marg0">From $799</a></p>
+                            <div class="affirm">
+                                <p id="learn-more" class="affirm-as-low-as" data-promo-id="promo_set_brentwood_zero_percent" data-amount="79900"> <a class="affirm-site-modal" data-promo-id="promo_set_pdp_12_standard">Learn more</a></p>
+                            </div>
+                            <ul class="featList text-left">
+                                <li class="ico feel">12" Comfort</li>
+                                <li class="ico gel">Alternative materials</li>
+                                <li class="ico coils">Hybrid up 975 coils</li>
+                                <li class="ico">&nbsp;</li>
+                                <li class="ico">&nbsp;</li>
+                            </ul>
+                            <p class="description">
+                                The mattress, evolved. Made entirely from alternative, natural, & recycled materials. Provides extraordinary comfort and zoned support.
+                            </p>
+                            <div class="otherFeatures">
+                                <p><strong>Other Features</strong></p>
+                                <ul class="otherfeatures text-left">
+                                    <li>GREENGUARD&reg; Gold Certified Mattress</li>
+                                    <li>Alternative, recycled, breathable materials</li>
+                                    <li>Pressure Relief</li>
+                                    <li>Temperature Regulating</li>
+                                    <li>Motion Isolation</li>
+                                    <li>CertiPUR-US&reg; Certified Foam</li>
+                                    <li>No Chemical Flame Retardants</li>
+                                    <li>Made in USA</li>
+                                    <li>Rainforest Alliance Certified</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
                 <div class="product-col cypress text-center">
                     <div class="colorwrap">
                         <a href="{{cypress.url}}" class="col-header">
@@ -350,62 +407,7 @@
                 </div>
             </div>
             
-            <div class="item">
-                <div class="product-col hybrid text-center">
-                    <div class="colorwrap">
-                        <a href="{{hybrid.url}}" class="col-header">
-                            <h2>{{hybrid.title}}</h2>
-                            <h3>The Green Choice</h3>
-                        </a>
-                        <a href="{{ hybrid.url }}" class="product-grid-image" title="">
-                            <picture>
-                                <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/brentwood_hybrid_latex_mattress2.jpg?w=480&fit=crop&auto=format&q=75">
-                                <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/brentwood_hybrid_latex_mattress2.jpg?w=750&fit=crop&auto=format&q=40&dpr=2">
-                                <img src="https://brentwood-home-products.imgix.net/brentwood_hybrid_latex_mattress2.jpg?w=480&fit=crop&auto=format&q=75" alt="Hybrid Latex">
-                            </picture>
-                        </a>
-
-                        <br>
-                        <div class="paddingwrap">
-                            <div class="yotpo bottomLine"
-                                 data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
-                                 data-domain="{{ shop.permanent_domain | escape }}"
-                                 data-product-id="{{ hybrid.id }}"
-                                 data-product-models="{{ hybrid.id }}"
-                                 data-name="{{ hybrid.title | escape }}"
-                                 data-url="{{ shop.url }}{{ hybrid.url }}">
-                            </div>
-                            <p><a href="{{hybrid.url}}" class="cta2 solid text-center marg0">From $799</a></p>
-                            <div class="affirm">
-                                <p id="learn-more" class="affirm-as-low-as" data-promo-id="promo_set_brentwood_zero_percent" data-amount="79900"> <a class="affirm-site-modal" data-promo-id="promo_set_pdp_12_standard">Learn more</a></p>
-                            </div>
-                            <ul class="featList text-left">
-                                <li class="ico feel">12" Comfort</li>
-                                <li class="ico gel">Alternative materials</li>
-                                <li class="ico coils">Hybrid up 975 coils</li>
-                                <li class="ico">&nbsp;</li>
-                            </ul>
-                            <p class="description">
-                                The mattress, evolved. Made entirely from alternative, natural, & recycled materials. Provides extraordinary comfort and zoned support.
-                            </p>
-                            <div class="otherFeatures">
-                                <p><strong>Other Features</strong></p>
-                                <ul class="otherfeatures text-left">
-                                    <li>GREENGUARD&reg; Gold Certified Mattress</li>
-                                    <li>Alternative, recycled, breathable materials</li>
-                                    <li>Pressure Relief</li>
-                                    <li>Temperature Regulating</li>
-                                    <li>Motion Isolation</li>
-                                    <li>CertiPUR-US&reg; Certified Foam</li>
-                                    <li>No Chemical Flame Retardants</li>
-                                    <li>Made in USA</li>
-                                    <li>Rainforest Alliance Certified</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
 
             {% comment %}
            <div class="item">
