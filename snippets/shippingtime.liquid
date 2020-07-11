@@ -41,6 +41,23 @@
 
 {%comment%}
 ***********************
+MATTRESSES
+***********************
+{%endcomment%}
+    {% when 'oceano-mattress' %}
+        {% assign shipsfree = "5-6 business days" %}
+    {% when 'cedar-natural-luxe-mattress' %}
+        {% assign shipsfree = "3-5 business days" %}
+    {% when 'crystal-cove-mattress' %}
+        {% assign shipsfree = "8-10 business days" %}
+    {% when 'cypress-memory-foam-mattress' %}
+        {% assign shipsfree = "10=12 business days" %}
+    {% when 'hybrid-latex-mattress' %}
+        {% assign shipsfree = "5-7 business days" %}
+
+
+{%comment%}
+***********************
 FRAMES AND FOUNDATIONS
 ***********************
 {%endcomment%}
@@ -89,22 +106,6 @@ PILLOWS AND WEDGES
 
     {% when 'oceano-wedge-pillow' %}
         {% assign shipsfree = "2-3 business days" %}
-
-{%comment%}
-***********************
-MATTRESSES
-***********************
-{%endcomment%}
-    {% when 'oceano-mattress' %}
-        {% assign shipsfree = "5-6 business days" %}
-    {% when 'crystal-cove-mattress' %}
-        {% assign shipsfree = "13-15 business days" %}
-    {% when 'hybrid-latex-mattress' %}
-        {% assign shipsfree = "10-11 business days" %}
-    {% when 'cedar-natural-luxe-mattress' %}
-        {% assign shipsfree = "3-5 business days" %}
-    {% when 'cypress-memory-foam-mattress' %}
-        {% assign shipsfree = "10=12 business days" %}
 
 
 {%comment%}
