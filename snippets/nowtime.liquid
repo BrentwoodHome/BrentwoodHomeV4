@@ -14,57 +14,43 @@ Tobe used for banners/tickers ect...
 {% assign rightnow = 'now' | date: '%Y%m%d%H%M' %}
 {% assign rightnowint = rightnow | times: 1 %}
 
-{% assign currentPromoEnd = 202006160000 %}
-{% assign newPromoEnd = 202007070000 %}
-{% assign extensionStart = 202007070001 %}
+{% assign currentPromoEnd = 202007210000 %}
+{% assign newPromoEnd = 202008110000 %}
+{% assign extensionStart = 202008290000 %}
 
 <!-- EYEBROW -->
-{% assign eyebrowCurrent = "Sale! Save up to $175 on mattresses & more" %}
-{% assign eyebrowCurrentMobile = "Sale! Save up to $175 on mattresses & more" %}
-{% assign eyebrowNew = "Sale! Save up to $200 on mattresses & more" %}
+{% assign eyebrowCurrent = "Sale! Save up to $200 on mattresses & more" %}
+{% assign eyebrowCurrentMobile = "Sale! Save up to $200 on mattresses & more" %}
+{% assign eyebrowNew = "Sale! Save up to $175 on mattresses & more" %}
 {% assign eyebrowNewMobile = "Shop our mattress sale now" %}
-{% assign newdesign = "Fourth of July Sale" %}
+{% assign newdesign = "Summer Sale" %}
 
 
 <!-- SALE PAGE variable for extending promo. 'enddate' var displayed in mobile nav and sale page. -->
 {% if rightnowint > extensionStart %}
     {% comment %} Shows extended end sale date {% endcomment%}
-    {% assign enddate = "Ends July 20" %}
+    {% assign enddate = "Ends July 20, 11:59pm PDT" %}
     {% assign mobile_sale_name = "July 4th Sale Extended" %}
     {% assign newdesign = "Fourth of July Sale - Extended" %}
 {% elsif rightnowint < currentPromoEnd %}
     {% comment %} Shows the correct end date when still in current promo range (currentPromoEnd){% endcomment%}
-    {% assign enddate = "Ends June 15" %}
-    {% assign mobile_sale_name = "Sale" %}
+    {% assign enddate = "Ends July 20, 11:59pm PDT" %}
+    {% assign mobile_sale_name = "July 4th Sale Extended" %}
+    {% assign newdesign = "Fourth of July Sale - Extended" %}
 {% else %}
-    {% comment %} AFter current promoPromoEnd and before newPromoEnd. Shows end date for new promo (newPromoEnd){% endcomment%}
-    {% assign enddate = "Ends July 6" %}
-    {% assign mobile_sale_name = "Fourth of July Sale" %}
+    {% comment %} AFter current promoPromoEnd and before newPromoEnd ends. Shows end date for new promo (newPromoEnd){% endcomment%}
+    {% assign enddate = "Ends August 10, 11:59pm PDT" %}
+    {% assign mobile_sale_name = "Summer Sale" %}
+    {% assign newdesign = "Summer Sale" %}
 {% endif %}
 
-{% comment %} SALE BADGE {% endcomment %}
+{% comment %} SALE BADGE FOR PRODUCT PAGES{% endcomment %}
 {% assign sale = false %}
 
 {% if rightnowint < currentPromoEnd %}
   {% case product.handle %}
 
-        {% when 'oceano-mattress' %}
-          {% assign sale = "Sale! Save $175 with code <strong>WAVES175</strong><span>*enter code at checkout</span>" %}
-
-        {% when 'crystal-cove-mattress' %}
-          {% assign sale = "Sale! Save $175 with code <strong>WAVES175</strong><span>*enter code at checkout</span>" %}
-
-        {% when 'cedar-natural-luxe-mattress' %}
-          {% assign sale = "Sale! Save $175 with code <strong>WAVES175</strong><span>*enter code at checkout</span>" %}
-
-        {% when 'hybrid-latex-mattress' %}
-          {% assign sale = "SALE! SAVE $100 <span>no code needed</span>" %}
-          
-    {% endcase %}
-{% else %}
-    {% case product.handle %}
-
-        {% when 'oceano-mattress' %}
+      {% when 'oceano-mattress' %}
           {% assign sale = "Sale! Save $175 with code <strong>WAVES175</strong><span>*enter code at checkout</span>" %}
 
         {% when 'crystal-cove-mattress' %}
@@ -72,6 +58,25 @@ Tobe used for banners/tickers ect...
 
         {% when 'cedar-natural-luxe-mattress' %}
           {% assign sale = "Sale! Save $200 with code <strong>CEDAR200</strong><span>*enter code at checkout</span>" %}
+
+        {% when 'hybrid-latex-mattress' %}
+          {% assign sale = "SALE! SAVE $100 <span>no code needed</span>" %}
+
+        {% when 'cypress-memory-foam-mattress' %}
+          {% assign sale = "SAVE 10% with code <strong>CYPRESS10</strong><span>*enter code at checkout</span>" %}
+
+    {% endcase %}
+{% else %}
+    {% case product.handle %}
+
+        {% when 'oceano-mattress' %}
+          {% assign sale = "Sale! Save $175 with code <strong>BREEZE175</strong><span>*enter code at checkout</span>" %}
+
+        {% when 'crystal-cove-mattress' %}
+          {% assign sale = "Sale! Save $175 with code <strong>BREEZE175</strong><span>*enter code at checkout</span>" %}
+
+        {% when 'cedar-natural-luxe-mattress' %}
+          {% assign sale = "Sale! Save $175 with code <strong>BREEZE175</strong><span>*enter code at checkout</span>" %}
 
         {% when 'hybrid-latex-mattress' %}
           {% assign sale = "SALE! SAVE $100 <span>no code needed</span>" %}
