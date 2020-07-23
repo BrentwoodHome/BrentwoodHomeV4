@@ -43,7 +43,12 @@
         
         <!-- Favicon -->
         <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/x-icon" />
-
+<style>
+    .idme-shopify {
+  display: none;
+  margin: 10px 0;
+}
+</style>
     </head>
     <body id="checkout-{{ page_title | handle }}">
         {{ skip_to_content_link }}
@@ -113,3 +118,5 @@ If re-activating mixpanel, add this to https://brentwood-home.myshopify.com/admi
 </script>
 {% endif %}
 {%endcomment%}
+{{ 'idme-checkout-style.css' | asset_url | stylesheet_tag }}
+{{ 'idme-checkout-template.js' | asset_url | script_tag }}
