@@ -190,76 +190,7 @@
              sale: 0,
          }
      ];
-     {% when "oceano-mattress-test" %}
-     //Oceano blue color foundation
-     var variantFoundations = [
-         {//Twin
-             id: 19308085641278,
-             price: 22500,
-         },
-         {//Twin XL
-             id: 19308085772350,
-             price: 25000,
-         },
-         {//Full
-             id: 19308085805118,
-             price: 25000
-         },
-         {//Queen
-             id: 19308085837886,
-             price: 27500,
-         },
-         {//King
-             id: 19308085870654,
-             price: 35000,
-         },
-         {//CalKing
-             id: 19308085903422,
-             price: 35000
-         },
-         {//Split K
-             id: 19308085870654,
-             price: 35000
-         }
-     ];
-      //Oceano Pillow Bundle
-      var variantPillowBundle = [
-          {//Twin
-              id: 12210708742255,
-              price: 10900,
-              qt: 1
-          },
-          {//Twin XL
-              id: 12210708742255,
-              price: 10900,
-              qt: 1
-          },
-          {//Full
-              id: 12210708742255,
-              price: 10900,
-              qt: 1
-          },
-          {//Queen
-              id: 12210708775023,
-              price: 11900,
-              qt: 2
-          },
-          {//King
-              id: 12210708807791,
-              price: 12900,
-              qt: 2
-          },
-          {//CalKing
-              id: 12210708807791,
-              price: 12900,
-              qt: 2
-          },
-          {//Split K
-              id: 12210708807791,
-              price: 12900,
-              qt: 2
-          }
-      ];
+     
       {% when "crystal-cove-mattress" %}
       //Crystal cove mattress foundation
       var variantFoundations = [
@@ -511,6 +442,10 @@
               id: 19294522769470,
               price: 35000,
               sale: 0
+          },
+          {//Split K
+              id: 19294522572862,
+              price: 35000
           }
       ];
        var variantAdjustableBundle = [
@@ -541,6 +476,11 @@
            {//CAKing
                id: 0,
                price: 0
+           },
+           {//Split
+               id: 31123066585150,
+               price: 119800,
+               sale: 0,
            }
        ];
       {% else %}
@@ -709,7 +649,7 @@
               // Disable checkbox if foundation is sold out
               var foundation = variantFoundations[sizeIndex];
 
-console.log("foundation OOS1");
+//console.log("foundation OOS1");
 
               for (var i = 0; i < allFoundationVariants.length; i++) {
                 if (allFoundationVariants[i].id === foundation.id) {
@@ -1097,9 +1037,19 @@ console.log("foundation OOS1");
                        0,
                        31123066585150
                    ]
+
                 {% when "hybrid-latex-mattress" %}
                    //Twin, Twin XL, Full, Q, K, CK, SPLIT
-                   var variantFoundationIds = [19294522310718, 19294522441790, 19294522474558, 19294522540094, 19294522572862, 19294522769470]
+                   var variantFoundationIds = [
+                     19294522310718, 
+                     19294522441790, 
+                     19294522474558, 
+                     19294522540094, 
+                     19294522572862, 
+                     19294522769470, 
+                     19294522572862
+                   ]
+                   
                    //Adjustable base
                    var variantAdjustableIds = [
                        31082150559806,                
@@ -1107,7 +1057,8 @@ console.log("foundation OOS1");
                        0,
                        31082150625342, 
                        31123066585150, 
-                       0
+                       0,
+                       31123066585150
                    ]
                    
                 {% when "crystal-cove-mattress" %}
