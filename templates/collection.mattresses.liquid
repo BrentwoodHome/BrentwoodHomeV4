@@ -42,6 +42,8 @@
                  data-name="{{ mattress.title | escape }}"
                  data-url="{{ mattress.url }}">
             </div>
+            
+            <h3>{{metaf.feel}}</h3>
             <p>{{ metaf.shortdesc }}</p>
             <p class="text-center"><a href="{{mattress.url}}" class="cta2 solid text-center" style="display:block;">FROM {{ mattress.price | money_without_trailing_zeros }}</a></p>
             <div class="affirm">
