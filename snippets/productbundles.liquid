@@ -127,32 +127,51 @@
          {//Twin - Standard
              id: 12210708742255,
              price: 10900,
-             qt: 1
+             qt: 1,
+               sale: 8900,
+               size: "Standard"
          },
          {//Twin XL - Standard
              id: 12210708742255,
              price: 10900,
-             qt: 1
+             qt: 1,
+               sale: 8900,
+               size: "Standard"
          },
          {//Full - Standard
              id: 12210708742255,
              price: 10900,
-             qt: 1
+             qt: 2,
+               sale: 8900,
+               size: "Standard"
          },
          {//Queen
              id: 12210708775023,
              price: 11900,
-             qt: 2
+             qt: 2,
+               sale: 9900,
+               size: "Queen"
          },
          {//King
              id: 12210708807791,
              price: 12900,
-             qt: 2
+             qt: 2,
+               sale: 10900,
+               size: "King"
          },
          {//CA King
              id: 12210708807791,
              price: 12900,
-             qt: 2
+             qt: 2,
+               sale: 10900,
+               size: "King"
+         },
+         {//Split King
+             id: 12210708807791,
+             price: 12900,
+             qt: 2,
+               sale: 10900,
+               size: "King"
          }
      ];
      var variantAdjustableBundle = [
@@ -259,35 +278,54 @@
        ];
        //Crystal cove mattress Pillow Bundle
        var variantPillowBundle = [
-           {
+           {//Twin
                id: 8119702585455,
                price: 8900,
-               qt: 1
+               qt: 1,
+               sale: 6900,
+               size: "Standard"
            },
-           {
+           {//Twin XL
                id: 8119702585455,
                price: 8900,
-               qt: 1
+               qt: 1,
+               sale: 6900,
+               size: "Standard"
            },
-           {
+           {//Full
                id: 8119702585455,
                price: 8900,
-               qt: 1
+               qt: 2,
+               sale: 6900,
+               size: "Standard"
            },
-           {
+           {//Queen
                id: 8119702618223,
                price: 9900,
-               qt: 2
+               qt: 2,
+               sale: 7900,
+               size: "Queen"
            },
-           {
+           {//King
                id: 8119702650991,
                price: 10900,
-               qt: 2
+               qt: 2,
+               sale: 8900,
+               size: "King"
            },
-           {
+           {//CAKing
                id: 8119702650991,
                price: 10900,
-               qt: 2
+               qt: 2,
+               sale: 8900,
+               size: "King"
+           },
+           {//Split
+               id: 8119702650991,
+               price: 10900,
+               qt: 2,
+               sale: 8900,
+               size: "King"
            }
        ];
        {% when "cypress-memory-foam-mattress" %}
@@ -570,7 +608,7 @@
                // Pillow Bundle
                if( $('#pillow-bundle').length ){
                    if (jQuery('#pillow-bundle').prop('checked') && variantPillowBundle[sizeIndex]) {
-                       totalPrice += variantPillowBundle[sizeIndex].price
+                       totalPrice += variantPillowBundle[sizeIndex].price * variantPillowBundle[sizeIndex].qt
                   }
                }
                // Adjustable Bundle
@@ -653,7 +691,7 @@
 
               for (var i = 0; i < allFoundationVariants.length; i++) {
                 if (allFoundationVariants[i].id === foundation.id) {
-                  console.log("foundation OOS2");
+                  //console.log("foundation OOS2");
                   if (!allFoundationVariants[i].available) {
                     console.log("foundation OOS3");
                     jQuery("#foundation")
@@ -681,17 +719,31 @@
                   
 /*****************PILLOW BUNDLE PRICE UPDATE*************************/
             if ($('#pillow-bundle').length) {
-                // Update Foundation Pricing
+                // Update Pillow Pricing
                 if (variantPillowBundle[sizeIndex]) {
                     var pillows = variantPillowBundle[sizeIndex];
-                    {% raw %}
-                        jQuery("#pillow-bundle-price").text("+" + Shopify.formatMoney(pillows.price, "${{amount_no_decimals}}"));
-                    {% endraw %}
+
+                    if(saleFlag && pillows.sale){
+                      {% raw %}
+                          jQuery("#pillow-bundle-price").html("+" + Shopify.formatMoney(pillows.sale * pillows.qt, "${{amount_no_decimals}}") + "&nbsp;<span style='text-decoration: line-through'>" + Shopify.formatMoney(pillows.price * pillows.qt, "${{amount_no_decimals}}" + "</span>"));
+                          jQuery(".column P.qt").text("Includes "+ pillows.qt + " " + pillows.size + " size pillow(s)");
+                      {% endraw %}
+                    }else{
+                      {% raw %}
+                          jQuery("#pillow-bundle-price").text("+" + Shopify.formatMoney(pillows.price * pillows.qt, "${{amount_no_decimals}}"));
+                          jQuery(".column P.qt").text("Includes "+ pillows.qt + " " + pillows.size + " size pillow(s)");
+                      {% endraw %}
+                  }
                 }
 
                 if (jQuery('#pillow-bundle').prop('checked') && variantPillowBundle[sizeIndex]) {
-                    totalPrice += variantPillowBundle[sizeIndex].price;
-                    compareAtPrice += variantPillowBundle[sizeIndex].price;
+                    if(saleFlag && variantPillowBundle[sizeIndex].sale){
+                        totalPrice += variantPillowBundle[sizeIndex].sale * variantPillowBundle[sizeIndex].qt;
+                        compareAtPrice += variantPillowBundle[sizeIndex].price * variantPillowBundle[sizeIndex].qt;
+                    }else{
+                        totalPrice += variantPillowBundle[sizeIndex].price * variantPillowBundle[sizeIndex].qt;
+                        compareAtPrice += variantPillowBundle[sizeIndex].price * variantPillowBundle[sizeIndex].qt;
+                    }
                 }
             }
 /****************************************************************/
@@ -1023,10 +1075,10 @@
                   }];*/
 
                {% when "oceano-mattress" %}
-                   //Twin, Twin XL, Full, Q, K, CK
+                   //Twin, Twin XL, Full, Q, K, CK, SK
                    var variantFoundationIds = [19308085641278, 19308085772350, 19308085805118, 19308085837886, 19308085870654, 19308085903422, 19308085870654]
                    var variantPillowBundle = [12210708742255, 12210708742255, 12210708742255, 12210708775023, 12210708807791, 12210708807791, 12210708807791]
-                   var variantPillowBundleQt = [1, 1, 1, 2, 2, 2, 2]
+                   var variantPillowBundleQt = [1, 1, 2, 2, 2, 2, 2]
                    //Adjustable base
                    var variantAdjustableIds = [
                        31082150559806,                
@@ -1065,7 +1117,7 @@
                    //Twin, Twin XL, Full, Q, K, CK
                    var variantFoundationIds = [18582182297662, 18582182330430, 18582182363198, 18582182395966, 18582182428734, 18582182461502, 18582182428734]
                    var variantPillowBundle = [8119702585455, 8119702585455, 8119702585455, 8119702618223, 8119702650991, 8119702650991, 8119702650991]
-                   var variantPillowBundleQt = [1, 1, 1, 2, 2, 2, 2, 2]
+                   var variantPillowBundleQt = [1, 1, 2, 2, 2, 2, 2]
                    //Adjustable base
                    var variantAdjustableIds = [
                        31082150559806,                
@@ -1073,7 +1125,8 @@
                        0,
                        31082150625342, 
                        31123066585150, 
-                       0
+                       0,
+                       31123066585150
                    ]
                    
                 {% when "cypress-memory-foam-mattress" %}

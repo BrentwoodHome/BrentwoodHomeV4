@@ -48,36 +48,44 @@
 {% if product.tags contains "bundle-pillows" %}
     <label class="selectLabel bundle">Add matching pillow(s) & save</label>
     <div class="addonmodule clearfix">
-        <div class="column input">
-            <div class="squaredOne">
-                <input type="checkbox" value="none" id="pillow-bundle" name="pillow-bundle" />
-                <label for="pillow-bundle"></label>
+        <div class="leftblock">
+            <div class="column input">
+                <div class="squaredOne">
+                    <input type="checkbox" value="none" id="pillow-bundle" name="pillow-bundle" />
+                    <label for="pillow-bundle"></label>
+                </div>
+            </div>
+            <div class="column img">
+                {% case producthandle %}
+                    {% when "crystal-cove-mattress" %}
+                        <img data-src="https://brentwood-home-products.imgix.net/crystalC-pillow00002.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip&rect=249,458,1458,1458" class="lazy" src="https://brentwood-home-products.imgix.net/crystalC-pillow00002.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip&rect=249,458,1458,1458" alt="Add pillows and save">
+                    {% when "oceano-mattress" %}
+                        <img data-src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip&rect=249,458,1458,1458" class="lazy" src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip&rect=249,458,1458,1458" alt="Add pillows and save">
+                {% endcase %}
+            </div>
+            <div class="column copy">
+                {% case producthandle %}
+                    {% when "crystal-cove-mattress" %}
+                        <p class="text-left title"><a href="#" data-toggle="modal" data-target="#crystalpillowmodal">Activated Charcoal Pillow&nbsp;<em class="glyphicon glyphicon-question-sign"></em></a></p>
+                        <p class="text-left title qt"><strong></strong></p>
+                        <p class="text-left hidden-xs">
+                            Restorative support for a deeper night's sleep.
+                        </p>
+                    {% when "oceano-mattress" %}
+                        <p class="text-left title"><a href="#" data-toggle="modal" data-target="#oceanopillowmodal">Gel Memory Foam Pillow&nbsp;<em class="glyphicon glyphicon-question-sign"></em></a></p>
+                        <p class="text-left title qt"><strong></strong></p>
+                        <p class="text-left hidden-xs">
+                            Adjustable gel memory foam pillow, soft, supportive and built to last.
+                        </p>
+                {% endcase %}
+
+                
             </div>
         </div>
-        <div class="column img">
-            {% case producthandle %}
-                {% when "cedar-natural-luxe-mattress" %}
-                <img data-src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" class="lazy" src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Add pillow(s) and save">
-                {% when "cypress-bamboo-gel-mattress" %}
-                <img data-src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" class="lazy" src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Add pillow(s) and save">
-                {% when "oceano-mattress-test" %}
-                <img data-src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" class="lazy" src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Add pillow(s) and save">
-                {% when "ojai-mattress" %}
-                <img data-src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" class="lazy" src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Add pillow(s) and save">
-                {% when "crystal-cove-mattress" %}
-                <img data-src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" class="lazy" src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Add pillow(s) and save">
-                {% else %}
-                <img data-src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" class="lazy" src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?ch=Width,DPR&w=115&dpr=1&fit=clip" alt="Add pillow(s) and save">
-            {% endcase %}
-        </div>
-        <div class="column copy">
-            <p class="text-left hidden-xs">
-                Filled with a breathable Certi-PUR-US® gel memory foam and polyester blend to provide the ultimate in comfort and cooling sleep.
+        <div class="column addonprice">
+            <p class="text-right">
+                <strong id="pillow-bundle-price"></strong>
             </p>
-            <p class="text-left visible-xs-block">
-                Filled with a breathable Certi-PUR-US® gel memory foam and polyester blend to provide the ultimate in comfort and cooling sleep.
-            </p>
-            <p class="text-center"><strong id="pillow-bundle-price"></strong></p>
         </div>
     </div>
 {% endif %}
@@ -335,6 +343,79 @@
                     </div>
                     <div class="modal-bottom-cta">
                         <p class="text-center"><a href="/products/cedar-natural-luxe-topper" class="more">more info</a></p>
+                        <p class="text-center"><a type="button" class="cta2" data-dismiss="modal" aria-label="Close">CLOSE</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="oceanopillowmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel4">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Oceano Gel Memory Foam Pillow</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="img">
+                        <img data-src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?w=640" class="lazy" src="https://brentwood-home-products.imgix.net/OceanoPillow_0030_Crop_0001_OceanoPillow_0152.jpg?w=640&blur=500&q=10" alt="Oceano Gel Memory Foam Pillow">
+
+
+                    </div>
+                    <div class="copy">
+                        <p class="text-center sub">30-day trial | 1-year warranty</p>
+                        <p>
+                            Our Oceano Pillows were designed with the same comfort and eco-consciousness as our Oceano Mattress so you have peace of mind and restful nights.<br>
+                            <strong>Bundle: Twin & Twin XL mattresses come with 1 standard size pillow. Full size: 2 standard size pillows. Queen mattress: 2 queen size pillows. King, Cal King & Split King: 2 king size pillows.</strong>
+                        </p>
+                        <ul>
+                            <li>Tencel stretch-knit zippered cover with an inner white liner</li>
+                            <li>Zipper makes it easy to add or remove fill to adjust to the perfect size and firmness for your needs.</li>
+                            <li>Free of flame retardants, formaldehyde, mercury, lead, heavy metals, phthalates and ozone depleters.</li>
+                            <li>Handmade in the USA</li>
+                        </ul>
+                    </div>
+                    <div class="modal-bottom-cta">
+                        <p class="text-center"><a href="/products/oceano-pillow" class="more">more info</a></p>
+                        <p class="text-center"><a type="button" class="cta2" data-dismiss="modal" aria-label="Close">CLOSE</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="crystalpillowmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel5">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Crystal Cove Activated Charcoal Pillow</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="img">
+                        <img data-src="https://brentwood-home-products.imgix.net/crystalC-pillow00002.jpg?w=640" class="lazy" src="https://brentwood-home-products.imgix.net/crystalC-pillow00002.jpg?w=640&blur=500&q=10" alt="Oceano Gel Memory Foam Pillow">
+                    </div>
+                    <div class="copy">
+                        <p class="text-center sub">30-day trial | 1-year warranty</p>
+                        <p>
+                            Mindfully designed for the ultimate night of healing sleep, our Crystal Cove Pillows feature activated charcoal-infused memory foam for a luxury plush feel that is naturally cooling. Because no wool is used, it's completely vegan. GREENGUARD Gold Certified.<br>
+                            <strong>Bundle: Twin & Twin XL mattresses come with 1 standard size pillow. Full size: 2 standard size pillows. Queen mattress: 2 queen size pillows. King, Cal King & Split King: 2 king size pillows.</strong>
+                        </p>
+                        <ul>
+                            <li>Great for wellness-seekers of all ages, ideal for restorative sleep</li>
+                            <li>Cooling activated charcoal-infused memory foam fill</li>
+                            <li>Certi-PUR-US® certified memory foam is made without ozone depleters, PBDE flame retardants, mercury, lead, heavy metals, formaldehyde or phthalates</li>
+                            <li>GREENGUARD GOLD CERTIFIED for low emissions</li>
+                            <li>Handmade in the USA</li>
+                        </ul>
+                    </div>
+                    <div class="modal-bottom-cta">
+                        <p class="text-center"><a href="/products/crystal-cove-pillow" class="more">more info</a></p>
                         <p class="text-center"><a type="button" class="cta2" data-dismiss="modal" aria-label="Close">CLOSE</a></p>
                     </div>
                 </div>
