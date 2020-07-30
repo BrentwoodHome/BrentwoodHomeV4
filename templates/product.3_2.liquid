@@ -273,7 +273,10 @@
                 <div id="collapseZero" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingZero">
                     <div class="panel-body">
                         <div id="materialsspecs"></div>
-                        {% if product.type == "Mattress" %}{{ metaf.details_feel }}{% endif %}
+                        {% if product.type == "Mattress" %}
+                        <h3>Feel:</h3><p>{{ metaf.details_feel }}</p>
+                        {% endif %}
+                        <h3>Materials:</h3>
                         {{ metaf.details_materials }}
                     </div>
                 </div>
