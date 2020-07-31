@@ -45,7 +45,10 @@
 </div>
 {% else %}
 <div class="swatch clearfix" data-option-index="{{ option_index }}">
-    <label for="product-selectors" class="selectLabel">{{ swatch }}</label>
+    <label for="product-selectors" class="selectLabel">
+        {{swatch}}
+        {%comment%}{% if swatch == "Support" %}<span style="display: block;font-size: 12px;line-height: 15px;">While foam works perfectly for most sleepers, a hybrid mattress will provide more support and breathability.</span>{% endif %}{%endcomment%}
+    </label>
   {% assign values = '' %}
   {% for variant in product.variants %}
     {% assign value = variant.options[option_index] %}

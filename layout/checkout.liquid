@@ -43,12 +43,7 @@
         
         <!-- Favicon -->
         <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/x-icon" />
-<style>
-    .idme-shopify {
-  display: none;
-  margin: 10px 0;
-}
-</style>
+
     </head>
     <body id="checkout-{{ page_title | handle }}">
         {{ skip_to_content_link }}
@@ -92,6 +87,23 @@
                     {{ content_for_logo }}
                 </div>
                 <div class="sidebar__content">
+                    <style>
+                        .idme-shopify {
+                        display: none !important;
+                        padding: 0 20px;
+                        margin-bottom: 15px;
+                        }
+                        .idme-shopify .idme-btn-affinity{
+                        display: block;
+                        margin-bottom: 10px;
+                        color: black;
+                        }
+                        .idme-shopify .idme-btn-affinity{
+                        display: block;
+                        margin-bottom: 10px;
+                        color: black;
+                        }
+                    </style>
                     {{ content_for_order_summary }}
                 </div>
             </div>
