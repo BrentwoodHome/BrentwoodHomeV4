@@ -13,7 +13,7 @@
 {% assign hybrid = all_products['hybrid-latex-mattress'] %}
 {% assign crystalcove = all_products['crystal-cove-mattress'] %}
 {% assign cypress = all_products['cypress-memory-foam-mattress'] %}
-
+{% comment %}
 {% for variant in cedar.variants %}
 {% if variant.title == "Twin / No Pillows" %}
 {% assign cedarPrice = variant.price %}
@@ -26,7 +26,7 @@
 {% endif %}
 {% endfor %}
 
-{% comment %}
+
 {% for variant in ojai.variants %}
 {% if variant.title == "Twin / No Pillows" %}
 {% assign ojaiPrice = variant.price %}
@@ -81,7 +81,7 @@
                                 <p id="learn-more" class="affirm-as-low-as" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{cedar.price}}"> <a class="affirm-site-modal" data-promo-id="promo_set_pdp_12_standard">Learn more</a></p>
                             </div>
                             <ul class="featList text-left">
-                                <li class="ico feel">Medium Feel</li>
+                                <li class="ico feel">Medium-firm Feel</li>
                                 <li class="ico latex">Responsive Natural Latex</li>
                                 <li class="ico zone3">3-Zone Pressure Relief</li>
                                 <li class="ico zone5">5-Zone Support System</li>
@@ -141,12 +141,12 @@
                                  data-url="{{ shop.url }}{{ oceano.url }}">
                             </div>
                             
-                            <p><a href="{{oceano.url}}" class="cta2 solid text-center marg0">from {{ocenaoPrice | money }}</a></p>
+                            <p><a href="{{oceano.url}}" class="cta2 solid text-center marg0">from {{oceano.price | money }}</a></p>
                             <div class="affirm">
-                                <p id="learn-more" class="affirm-as-low-as" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{ocenaoPrice}}"> <a class="affirm-site-modal" data-promo-id="promo_set_pdp_12_standard">Learn more</a></p>
+                                <p id="learn-more" class="affirm-as-low-as" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{oceano.price}}"> <a class="affirm-site-modal" data-promo-id="promo_set_pdp_12_standard">Learn more</a></p>
                             </div>
                             <ul class="featList text-left">
-                                <li class="ico feel">Medium-Plush Feel</li>
+                                <li class="ico feel">Medium-Soft Feel</li>
                                 <li class="ico gel">Cooling Gel Memory Foam</li>
                                 <li class="ico coils">Responsive Microcoils</li>
                                 <li class="ico zone5">5-Zone Support System</li>
@@ -201,9 +201,9 @@
                                  data-url="{{ shop.url }}{{ crystalcove.url }}">
                             </div>
                             <!--<p class="price"><i>Starting at</i> <a href="{{ crystalcove.url }}" title="{{ crystalcove.title }}">{{crystalcovePrice | money }}</a></p>-->
-                            <p><a href="{{crystalcove.url}}" class="cta2 solid text-center marg0">From {{crystalcovePrice | money }}</a></p>
+                            <p><a href="{{crystalcove.url}}" class="cta2 solid text-center marg0">From {{crystalcove.price | money }}</a></p>
                             <div class="affirm">
-                                <p id="learn-more" class="affirm-as-low-as" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{crystalcovePrice}}"> <a class="affirm-site-modal" data-promo-id="promo_set_pdp_12_standard">Learn more</a></p>
+                                <p id="learn-more" class="affirm-as-low-as" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{crystalcove.price}}"> <a class="affirm-site-modal" data-promo-id="promo_set_pdp_12_standard">Learn more</a></p>
                             </div>
                             <ul class="featList text-left">
                                 <li class="ico feel">Dual Feel</li>
@@ -326,7 +326,7 @@
                                 <p id="learn-more" class="affirm-as-low-as" data-promo-id="promo_set_brentwood_zero_percent" data-amount="79900"> <a class="affirm-site-modal" data-promo-id="promo_set_pdp_12_standard">Learn more</a></p>
                             </div>
                             <ul class="featList text-left">
-                                <li class="ico feel">12" Comfort</li>
+                                <li class="ico feel">Medium Feel</li>
                                 <li class="ico gel">Alternative materials</li>
                                 <li class="ico coils">Hybrid up 975 coils</li>
                                 <li class="ico">&nbsp;</li>
