@@ -1,0 +1,138 @@
+
+<style>
+  #accordion H2{
+    text-align: left;
+    font-size: 21px;
+  }
+  .product-shop #add-to-cart-form #product-add-to-cart, .product-shop A.cta4amz{
+    line-height: 70px;
+    padding: 0;
+  }
+</style>
+
+<div class="container-fluid" id="product">
+  <div itemscope itemtype="http://schema.org/Product" class="product">
+    <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+    <meta itemprop="image" src="{{ product.featured_image.src | product_img_url: 'grande' }}" alt="{{ product.title | escape }}">
+    <meta itemprop="itemCondition" content="http://schema.org/NewCondition" />
+    <div class="row">
+      {% include 'product-flexslider' %}
+      {%comment%}
+      to remove the pull-left for single products
+      {%endcomment%}
+      {% assign multi_prd = true %}
+      {% if collection.products_count <= 1 %}
+        {% assign multi_prd = false %}
+      {% endif %}
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-0 col-lg-5 product-shop">
+          <div>
+            <header class="product-title">
+              <h1 {% if settings.display_prev_next_product and collection and multi_prd %}class="pull-left"{%endif%} itemprop="name">{{ product.title }}</h1>
+              {% if settings.display_prev_next_product and collection and multi_prd %}
+                <div class="product-step">
+                  {% if collection.previous_product %}
+                    <a class="prev-p" href="{{ collection.next_product }}" title="Prev"><span class="fa fa-angle-left"></span>Previous</a>
+                  {% endif %}
+                  {% if collection.next_product %}
+                    <a class="next-p" href="{{ collection.next_product }}" title="Next">Next<span class=" fa fa-angle-right"></span></a>
+                  {% endif %}
+                </div>
+              {%else%}
+                <div class="clearfix"></div>
+              {% endif %}
+            </header>
+          <h3 class="text-left">{{product.metafields.bhsite.feel}}</h3>
+          <p class="short-description">{{product.metafields.bhsite.shortdesc}}</p>
+          <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
+            <a href="{{product.metafields.bhsite.link}}" target="_blank" class="cta2" style="width: 100%;text-align: center;">Buy it at Costco.com</a>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+    </div><!-- End Row -->
+  </div><!-- product -->
+</div><!-- End Container for top part (img+buy) -->
+
+
+
+{% comment %}
+{% if product.metafields.bhsite.materials %}
+  <section class="overlays product-tabs overlays-tabs container">
+      <div id="exTab1" class="">
+          <h2 class="overlays-title">Product Description</h2>
+          <ul class="nav nav-pills">
+              <li class="active">
+                  <a href="#1a" data-toggle="tab">Description</a>
+              </li>
+              <li>
+                  <a href="#2a" data-toggle="tab">Materials</a>
+              </li>
+          </ul>
+          <div class="tab-content clearfix">
+              <div class="tab-pane active" id="1a">
+                  <div class="description text-left">
+                      {{ product.description }}
+                  </div>
+              </div>
+              <div class="tab-pane" id="2a">
+                  <div class="description text-left">
+                      {{ product.metafields.bhsite.materials }}
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+{% else %}
+  <div class="product-tabs container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <h2>Product Description</h2>
+        <div id="myTabContent" class="tab-content">
+          {% if settings.display_product_detail_description %}
+          <div id="collapse-tab1" class="tab-pane fade in active">
+            {{ product.description }}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% endcomment %}
+
+<div class="container section margTB120">
+    <h2 class="text-center">Product Specifications</h2>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingZero">
+                <h4 class="panel-title">
+                    <a role="button" class="icons prddescription" data-toggle="collapse" href="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
+                        Description
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseZero" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingZero">
+                <div class="panel-body">
+                    {{ product.description }}
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" class="icons certifications" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Materials
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    {{ product.metafields.bhsite.materials }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

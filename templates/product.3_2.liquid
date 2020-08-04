@@ -257,8 +257,6 @@
     
     
     
-    <div id="materialsspecs"></div>
-    
     <div class="container section margTB120">
         <h2 class="text-center">Product Specifications</h2>
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -266,30 +264,18 @@
                 <div class="panel-heading" role="tab" id="headingZero">
                     <h4 class="panel-title">
                         <a role="button" class="icons materials" data-toggle="collapse" href="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
-                            Materials {% if product.type == "Mattress" %} &amp; Feel {% endif %}
+                            {% if product.type == "Mattress" %}Feel {% endif %} &amp; Materials 
                         </a>
                     </h4>
                 </div>
                 <div id="collapseZero" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingZero">
                     <div class="panel-body">
                         <div id="materialsspecs"></div>
-                        <style>
-                          .feel p.feel{
-                            color: #38414f;
-                            letter-spacing: 0;
-                            font-size: 14px;
-                            text-align: center;
-                          }
-                          .feel h3{
-                            text-align: center !important;
-                            margin-bottom: 0 !important;
-                          }
-                        </style>
                         {% if product.type == "Mattress" %}
-                        <h3>Feel:</h3><p>{{ metaf.details_feel }}</p>
+                        <h5 class="specifications">Feel:</h3><p>{{ metaf.details_feel }}</p>
                         
                         {% endif %}
-                        <h3>Materials:</h3>
+                        <h5 class="specifications">Materials:</h3>
                         {{ metaf.details_materials }}
                     </div>
                 </div>

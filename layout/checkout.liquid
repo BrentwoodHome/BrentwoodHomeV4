@@ -89,7 +89,7 @@
                 <div class="sidebar__content">
                     <style>
                         .idme-shopify {
-                        display: none !important;
+                        /*display: none !important;*/
                         padding: 0 20px;
                         margin-bottom: 15px;
                         }
@@ -116,6 +116,9 @@
 
     </body>
 </html>
+<script>
+    $(function() {$(".idme-btn-affinity").append(" select mattresses.")});
+</script>
 {%comment%}
 If re-activating mixpanel, add this to https://brentwood-home.myshopify.com/admin/settings/checkout
 {% if first_time_accessed %}
