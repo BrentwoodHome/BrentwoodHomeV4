@@ -17,6 +17,19 @@
 
 {% include 'affirm-product' %}
 
+<style type="text/css">
+    p.feel{
+        text-align: left;
+        font-size: 17px;
+        text-transform: capitalize;
+        color: #4a4a4a;
+        font-weight: bold;
+        margin-top: 15px;
+    }
+    p.description{
+        margin-top: 10px;
+    }
+</style>
 
 {% for mattress in collection.products %}
     {% assign metaf = mattress.metafields.c_f %}
@@ -43,8 +56,8 @@
                  data-url="{{ mattress.url }}">
             </div>
             
-            <h3>{{metaf.feel}}</h3>
-            <p>{{ metaf.shortdesc }}</p>
+            <p class="feel">{{metaf.feel}}</p>
+            <p class="description">{{ metaf.shortdesc }}</p>
             <p class="text-center"><a href="{{mattress.url}}" class="cta2 solid text-center" style="display:block;">FROM {{ mattress.price | money_without_trailing_zeros }}</a></p>
             <div class="affirm">
                 <p id="learn-more" class="affirm-as-low-as" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{ mattress.price }}"> <a class="affirm-site-modal" data-promo-id="promo_set_pdp_12_standard">Learn more</a></p>
