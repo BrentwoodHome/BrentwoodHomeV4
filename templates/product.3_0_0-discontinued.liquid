@@ -675,34 +675,5 @@
     {% endif %}
 </div>
 {% include 'affirm-product' %}
-<span id="extole-zone-product_page"></span>
-<script type="text/javascript">
-    /*function swatchTrigger(e) {
-            if (e.target.parentNode) e.target.parentNode.classList.toggle('active');
-            if (e.target.id === 'swatch-1-firm') {
-                const btn = document.getElementById('swatch-1-medium');
-                if (btn && btn.parentNode) btn.parentNode.classList.remove('active');
-            } else {
-                const btn = document.getElementById('swatch-1-firm');
-                if (btn && btn.parentNode) btn.parentNode.classList.remove('active');
-            }
-        }
-        document.getElementById('swatch-1-firm').addEventListener('click', swatchTrigger);
-        document.getElementById('swatch-1-medium').addEventListener('click', swatchTrigger);*/
-
-    (function (c, b, f, k, a) {
-        c[b] = c[b] || {};
-        for (c[b].q = c[b].q || []; a < k.length;) f(k[a++], c[b])
-    })(window, "extole", function (c, b) {
-        b[c] = b[c] || function () {
-            b.q.push([c, arguments])
-        }
-    }, ["createZone"], 0);
-    extole.createZone({
-        name: "product_page",
-        element_id: "extole-zone-product_page",
-        parameters: {}
-    });
-</script>
 </div>
 
