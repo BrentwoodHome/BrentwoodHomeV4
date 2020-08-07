@@ -109,29 +109,13 @@
             </div>
         </div>
     </div>
-    <span id="extole-zone-confirmation"></span>
     {{ tracking_code }}
-
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script> 
-
     </body>
 </html>
 <script>
     $(function() {$(".idme-btn-affinity").append(" select mattresses.")});
 </script>
-{%comment%}
-If re-activating mixpanel, add this to https://brentwood-home.myshopify.com/admin/settings/checkout
-{% if first_time_accessed %}
-<!-- MIXPANEL CONVERSION-->
-<script type="text/javascript">
-    mixpanel.track("Order Completed",
-                   { "Order Total": "{{ total_price | money_without_currency }}",
-                    "Ordered Items":"{% for line_item in line_items %}{% if forloop.last == true %}{{ line_item.title }}{% else %}{{ line_item.title | append: ','}}{% endif %}{% endfor %}",
-                    "Discount": "{% for discount in checkout.discounts %}{{discount.code}} {%endfor%}"
-                   });                   
-    mixpanel.people.track_charge({{ checkout.total_price | money_without_currency }});
-</script>
-{% endif %}
-{%endcomment%}
+
 {{ 'idme-checkout-style.css' | asset_url | stylesheet_tag }}
 {{ 'idme-checkout-template.js' | asset_url | script_tag }}
