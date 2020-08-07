@@ -372,7 +372,7 @@ qt: 1<br>
             </div>
         </div>
         {% endif %}
-        {% if product.tags contains "yoga" and product.title != "Crystal Cove Square Meditation Pillow" %}
+        {% if product.tags contains "yoga" %}
         <div class="row flexVCenter" style="background-color: #4a4a4a;">
             <div class="col-xs-12 col-md-6 {% if product.metafields.bhsite.feature3 %}col-md-push-6{% endif %}" style="background-color: #fff;padding:0;">
                 <img class="lazy" data-src="https://s3-brentwoodhome.imgix.net/ccyoga/yogagirl-trio.jpg?rect=305,0,3972,3972&w=1024" src="https://s3-brentwoodhome.imgix.net/ccyoga/yogagirl-trio.jpg?rect=305,0,3972,3972&w=1024&blur=500&q=10" alt="{{product.title}} Vegan Certified">
@@ -450,37 +450,6 @@ qt: 1<br>
     </div>
     <br>
     
-
-    {%comment%}
-    <ul class="nav nav-tabs" id="myTab">
-        {% if settings.display_product_detail_description %}
-        <li class="active"><a data-toggle="tab" href="#collapse-tab1">{{ settings.product_description_title }}</a></li>
-        {% endif %}
-        {% if settings.display_product_reviews %}
-        <li><a data-toggle="tab" href="#collapse-tab2">{{ settings.product_review_title }}</a></li>
-        {% endif %}
-    </ul>
-
-    <div id="myTabContent" class="tab-content">
-        {% if settings.display_product_detail_description %}
-        <div id="collapse-tab1" class="tab-pane fade in active">
-            {{ product.description }}
-        </div>
-        {% endif %}
-
-
-
-        {% if settings.display_product_reviews %}
-        <div id="collapse-tab2" class="tab-pane fade">
-            {% comment %}
-            Add product review widget, must install Product Review App:
-            https://apps.shopify.com/product-reviews
-            {% endcomment %}
-            <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
-        </div>
-        {% endif %}
-    </div>
-    {%endcomment%}
 </div>
 
 <br><br>
