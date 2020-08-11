@@ -3,6 +3,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    window.performance.mark('parse_head_start');
+    function marks (name) {
+      return {
+        name,
+        get start () {
+          return `${this.name}_start`;
+        },
+        get end () {
+          return `${this.name}_end`;
+        }
+      };
+    }
+    window.markNames = {
+      head: marks('parse_head'),
+      body: marks('parse_body'),
+      bodyLayout: marks('parse_bodyLayout'),
+      bodyEndScripts: marks('parse_bodyEndScripts')
+    };
+  </script>
   {% if testing %}
     <!-- Start Visual Website Optimizer Asynchronous Code -->
     <script type='text/javascript'>
@@ -171,12 +191,16 @@
     </script>
   {% endif %}
 
+<script>window.performance.mark(window.markNames.head.end);</script>
 </head>
 {% comment %}
   Add the page template as a class for easy page or template specific styling.
 {% endcomment %}
     <body id="{{ page_title | handle }}" class=" {% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} {{template | handleize}}" >
         
+    <script>window.performance.mark(window.markNames.body.start);</script>
+    <script>window.performance.mark(window.markNames.bodyLayout.start);</script>
+
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NWLPSV"
                           height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -297,6 +321,9 @@
             
   {% include 'footer' %}
 
+<script>window.performance.mark(window.markNames.bodyLayout.end);</script>
+<script>window.performance.mark(window.markNames.bodyEndScripts.start);</script>
+
 
   {% include 'footer_scripts' %}
 {%comment%}{% include 'popup-newsletter' %}{% endcomment%}
@@ -337,7 +364,7 @@
 {% include 'sca-quick-view-template' %}
 {%endcomment%}
 
-<script>console.log("img: {{ 'favicon.ico' | asset_url }}");</script>
+<script>//console.log("img: {{ 'favicon.ico' | asset_url }}");</script>
 
 <!-- Intercom settings override for custom launcher -->
     <script>
@@ -347,5 +374,36 @@
         };
     </script>
     <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/gnkl0uyl';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
+
+<!-- Performance -->
+    <script>
+    window.addEventListener("load", function(){
+      Object.keys(window.markNames).forEach((name) => {
+        mark = window.markNames[name]
+        performance.measure(mark.name, mark.start, mark.end);
+      });
+      window.requestIdleCallback(() => {
+        var getShopifyResourceByType = (type) => {
+          return performance.getEntriesByType('resource').filter((resource) => {
+            return resource.name.indexOf('cdn.shopify.com') != -1 
+                   && resource.initiatorType === type;
+          })
+        };
+
+        // You can send this information to whatever analytics vendor
+        // For now, we are just outputting in console
+        /*console.log('############ PERFORMANCE METRICS ############');
+        console.log(performance.getEntriesByType('measure'));
+        console.log(performance.getEntriesByType('paint'));
+        console.log(performance.getEntriesByType('navigation'));
+        console.log(getShopifyResourceByType('script'));
+        console.log(getShopifyResourceByType('link'));
+        console.log(getShopifyResourceByType('css'));
+        console.log(getShopifyResourceByType('img'));*/
+      });
+    });
+    window.performance.mark(window.markNames.bodyEndScripts.end);
+    window.performance.mark(window.markNames.body.end);
+  </script>
 </body>
 </html>
