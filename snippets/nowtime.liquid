@@ -30,7 +30,7 @@ Tobe used for banners/tickers ect...
 {% if rightnowint > extensionStart %}
     {% comment %} Shows extended end sale date {% endcomment%}
     {% assign enddate = "Ends August 24, 11:59pm PDT" %}
-    {% assign mobile_sale_name = "August 24th Sale Extended" %}
+    {% assign mobile_sale_name = "Summer Sale Extended" %}
     {% assign newdesign = "Summer Sale - Extended" %}
 {% elsif rightnowint < currentPromoEnd %}
     {% comment %} Shows the correct end date when still in current promo range (currentPromoEnd){% endcomment%}
@@ -46,7 +46,6 @@ Tobe used for banners/tickers ect...
 
 {% comment %} SALE BADGE FOR PRODUCT PAGES{% endcomment %}
 {% assign sale = false %}
-
 {% if rightnowint < currentPromoEnd %}
   {% case product.handle %}
 
