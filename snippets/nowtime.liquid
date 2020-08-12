@@ -15,8 +15,8 @@ Tobe used for banners/tickers ect...
 {% assign rightnowint = rightnow | times: 1 %}
 
 {% assign currentPromoEnd = 202007210000 %}
-{% assign newPromoEnd = 202008110000 %}
-{% assign extensionStart = 202008290000 %}
+{% assign newPromoEnd = 202008102359 %}
+{% assign extensionStart = 202008110000 %}
 
 <!-- EYEBROW -->
 {% assign eyebrowCurrent = "Sale! Save up to $200 on mattresses & more" %}
@@ -29,9 +29,9 @@ Tobe used for banners/tickers ect...
 <!-- SALE PAGE variable for extending promo. 'enddate' var displayed in mobile nav and sale page. -->
 {% if rightnowint > extensionStart %}
     {% comment %} Shows extended end sale date {% endcomment%}
-    {% assign enddate = "Ends July 20, 11:59pm PDT" %}
-    {% assign mobile_sale_name = "July 4th Sale Extended" %}
-    {% assign newdesign = "Fourth of July Sale - Extended" %}
+    {% assign enddate = "Ends August 24, 11:59pm PDT" %}
+    {% assign mobile_sale_name = "Summer Sale Extended" %}
+    {% assign newdesign = "Summer Sale - Extended" %}
 {% elsif rightnowint < currentPromoEnd %}
     {% comment %} Shows the correct end date when still in current promo range (currentPromoEnd){% endcomment%}
     {% assign enddate = "Ends July 20, 11:59pm PDT" %}
@@ -46,7 +46,6 @@ Tobe used for banners/tickers ect...
 
 {% comment %} SALE BADGE FOR PRODUCT PAGES{% endcomment %}
 {% assign sale = false %}
-
 {% if rightnowint < currentPromoEnd %}
   {% case product.handle %}
 
