@@ -47,29 +47,3 @@
     <p class="text-center"><a href="/blog" title="Read more on our blog" class="cta solid text-center">Read more on our blog</a></p>
    </div>
 {% endif %}
-<script>
-    $(document).ready(function() {
-
-        $('#latest-blogs').owlCarousel({
-            loop:false,
-            margin:10,
-            responsiveClass:true,
-            responsive:{
-                0:{
-                    items:1,
-                    //nav:true
-                },
-                600:{
-                    items:2,
-                    //nav:true
-                },
-                800:{
-                    items:{{settings.blog_limit}},
-                    //nav:true
-                }
-            },
-            nav : false
-        });
-        
-    })
-</script>

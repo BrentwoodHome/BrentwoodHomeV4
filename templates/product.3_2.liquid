@@ -26,9 +26,9 @@
                         
                         <div id="flexPlaceholder">
                             <picture>
-                                <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=767&dpr=1&fit=clip">
-                                <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=830&dpr=1&fit=clip">
-                                <img class="lazy" src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&q=50" alt="{{product.title}}" loading="eager">
+                                <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=767&dpr=1&fit=clip&q=55&auto=compress,format">
+                                <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=830&dpr=1&fit=clip&q=55&auto=compress,format">
+                                <img class="lazy" src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&q=50&q=55&auto=compress,format" alt="{{product.title}}" loading="eager">
                             </picture>
                         </div>
                         <div class="flexslider">
@@ -36,9 +36,9 @@
                                 {% for image in product.images %}
                                 {% assign videotag = image.alt | escape %}
                                     {% assign imgName = image | remove: 'products/' | split:'?' | first %}
-                                <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=160&h=120&crop=focalpoint&dpr=1 1x,
-                                    https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&crop=focalpoint&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=160&h=120&fit=crop&dpr=2 2x,
-                                    https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&crop=focalpoint&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=160&h=120&fit=crop&dpr=3 3x">
+                                <li data-thumb="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=160&h=120&crop=focalpoint&dpr=1&q=55&auto=compress,format 1x,
+                                    https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&crop=focalpoint&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=160&h=120&fit=crop&dpr=2&q=55&auto=compress,format 2x,
+                                    https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&crop=focalpoint&fp-x=0.5&fp-y=0.5&fp-z=1&fp-debug=false&w=160&h=120&fit=crop&dpr=3&q=55&auto=compress,format 3x">
                                     {% if videotag contains 'vimeo' %}
                                         <div class='embed-container '>
                                             <!--https://player.vimeo.com/video/###-->
@@ -64,9 +64,9 @@
                                                                      media="(min-width: 320px) and (max-width: 479px)">
 
 
-                                                <img class="lazy" src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&blur=500&q=10" data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=830 1x,
-                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=1660&fit=max&q=40&dpr=2 2x,
-                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=2490&fit=max&q=20&dpr=3 3x"
+                                                <img class="lazy" src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&blur=500&q=10" data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?w=830&q=55&auto=compress,format 1x,
+                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=1660&fit=max&q=40&dpr=2&q=55&auto=compress,format 2x,
+                                        https://brentwood-home-products.imgix.net/{{ imgName }}?w=2490&fit=max&q=20&dpr=3&q=55&auto=compress,format 3x"
                                          alt="{{ product.title | escape }} View {{ forloop.index }}">
 
                                             </picture>
@@ -163,19 +163,6 @@
                                     {{ metaf.shortdesc_more }}
                                 </ul>
                             </div>
-                            <script>
-                                $(document).ready(function() {
-                                    $('#collapseDescription').collapse({
-                                        toggle: false
-                                    });
-                                    $('#collapseDescription').on('show.bs.collapse', function () {
-                                        $("a.productDetails").addClass("open").text("Less details -");
-                                    });
-                                    $('#collapseDescription').on('hide.bs.collapse', function () {
-                                        $("a.productDetails").removeClass("open").text("More details +");
-                                    });
-                                });
-                            </script>
                         {% endif %}
                         <div class="mob-dark">
                             <div id="buysection"></div>
@@ -671,35 +658,6 @@
     <i class="text-right">Price may not reflect any current promotions or discount. Last Updated: March 2020.</i>
     <p class="text-center"><a href="#buysection" class="sscroll cta2">buy</a></p>
 </div>
-<script>
-    $( ".compare ul" ).on( "click", "li", function() {
-        var pos = $(this).index()+2;
-        $("tr").find("td").hide();
-        $("tr").find("td:first").show();
-        $('td:nth-child('+pos+')').css('display','table-cell');
-        $('li').removeClass('active');
-        $(this).addClass('active');
-    });
-
-    // Initialize the media query
-    var mediaQuery = window.matchMedia('(min-width: 640px)');
-
-    // Add a listen event
-    mediaQuery.addListener(doSomething);
-
-    // Function to do something with the media query
-    function doSomething(mediaQuery) {    
-        if (mediaQuery.matches) {
-            $('.sep').attr('colspan',5);
-        } else {
-            $('.sep').attr('colspan',2);
-        }
-    }
-
-    // On load
-    doSomething(mediaQuery);
-</script>
-
 
 {% elsif product.handle == "hybrid-latex-mattress" %}
     <!-- https://codepen.io/adrianjacob/pen/KdVLXY -->
@@ -836,34 +794,6 @@
       <i class="text-left small">(4) Terms & Conditions apply.</i>
       <p class="text-center"><a href="#buysection" class="sscroll cta2">buy</a></p>
 </div>
-<script>
-    $( ".compare ul" ).on( "click", "li", function() {
-        var pos = $(this).index()+2;
-        $("tr").find("td").hide();
-        $("tr").find("td:first").show();
-        $('td:nth-child('+pos+')').css('display','table-cell');
-        $('li').removeClass('active');
-        $(this).addClass('active');
-    });
-
-    // Initialize the media query
-    var mediaQuery = window.matchMedia('(min-width: 640px)');
-
-    // Add a listen event
-    mediaQuery.addListener(doSomething);
-
-    // Function to do something with the media query
-    function doSomething(mediaQuery) {    
-        if (mediaQuery.matches) {
-            $('.sep').attr('colspan',6);
-        } else {
-            $('.sep').attr('colspan',2);
-        }
-    }
-
-    // On load
-    doSomething(mediaQuery);
-</script>
 
 {% else %}
     <p class="text-center margBLarge"><a href="#buysection" class="sscroll cta2">buy the mattress</a></p> 
@@ -957,43 +887,10 @@
             </div>
         {% endif %}
     {% endif %}
-    <script>
-        $(document).ready(function() {
-
-            $('#warranties').owlCarousel({
-                loop:false,
-                margin:10,
-                responsiveClass:true,
-                responsive:{
-                    0:{
-                        items:2,
-                        loop: true,
-                        stagePadding: 40,
-                    },
-                    480:{
-                        items:4,
-                        loop: true,
-                        stagePadding: 40,
-                    },
-                    768:{
-                        items:6,
-                        //nav:true
-                        stagePadding: 0,
-                        loop: false,
-                        mouseDrag: false,
-                        touchDrag: false
-                    }
-                },
-                nav : false,
-
-            });
-        });
-    </script>
-
     
-<div class="container">
-    {% include 'related-products' %}
-</div>
+    <div class="container">
+        {% include 'related-products' %}
+    </div>
 
     <div id="reviewsAnchor"></div>
     <div id="yotpoReviews" class="container margTB120">
@@ -1015,18 +912,6 @@
 
     <p class="text-center"><a href="#buysection" class="sscroll cta2">buy</a></p>
 
-    <script>
-        $(document).ready(function(){
-            $('A.sscroll').bind('click', function(event) {
-                var $anchor = $(this);
-                $('html, body').stop().animate({
-                    scrollTop: $($anchor.attr('href')).offset().top - 150
-                }, 1500, 'easeInOutExpo');
-                event.preventDefault();
-            });
-        });
-    </script>
 
-    {% include 'productbundles' %}
 
 </div>

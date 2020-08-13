@@ -39,9 +39,9 @@
             <h3 class="features {{ mattress.handle }} text-center">{{metaf.collectiontag}}</h3>
             <a href="{{mattress.url}}" class="product-grid-image" title="{{mattress.title}}">
                 <picture>
-                    <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=767&dpr=1&fit=clip">
-                    <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip">
-                    <img src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=1024&dpr=1&fit=clip" alt="{{mattress.title}}">
+                    <source media="(max-width: 767px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=767&dpr=1&fit=clip&q=55&auto=compress,format">
+                    <source media="(min-width: 768px)" data-srcset="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=750&dpr=1&fit=cli&q=55&auto=compress,formatp">
+                    <img class="lazy" src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=750&dpr=1&fit=clip&q=10&auto=compress,format&blur=500" data-src="https://brentwood-home-products.imgix.net/{{ imgName }}?ch=Width,DPR&w=750&dpr=1&fit=clip&q=55&auto=compress,format" alt="{{mattress.title}}">
                 </picture>
             </a>
         </div>

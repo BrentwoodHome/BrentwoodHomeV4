@@ -160,58 +160,6 @@
     </div>
     <p class="text-center"><a href="/pages/reviews-all" class="cta solid text-center">more reviews</a></p>
 </div>
-<script>
-    $(document).ready(function() {
-        
-        $('#home-reviews').owlCarousel({
-            loop:false,
-            margin:10,
-            responsiveClass:true,
-            responsive:{
-                0:{
-                    items:1,
-                    //nav:true
-                },
-                768:{
-                    items:2,
-                    //nav:true
-                },
-                1024:{
-                    items:3,
-                    //nav:true
-                }
-            },
-            nav : false
-        });
-        
-        /*$("#home-reviews").owlCarousel({
-            itemsCustom : [ 
-                [0, 1],
-                [450, 1],
-                [600, 2],
-                [700, 2],
-                [1000, 3],
-                [1200, 3],
-                [1400, 3],
-                [1600, 3]
-            ],
-            autoPlay : false,
-            stopOnHover : false,
-
-            lazyLoad : false,
-            lazyFollow : true,
-            lazyEffect : "fade",
-            pagination : true,
-            callbacks: false,
-            // Navigation
-            navigation : false,
-            navigationText : ['<i class="fa icon-left"></i>','<i class="fa icon-right"></i>'],
-            rewindNav : true,
-            scrollPerPage : false
-
-        });*/
-    });
-</script>
 
 <div class="container sectionMarg">
     {% comment %}Blog{% endcomment %}

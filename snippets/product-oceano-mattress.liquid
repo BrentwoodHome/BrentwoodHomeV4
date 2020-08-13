@@ -28,38 +28,6 @@
 
     </div>
 </div>
-<script>
-    $(document).ready(function() {
-
-        $('#awards').owlCarousel({
-            loop:false,
-            margin:10,
-            responsiveClass:true,
-            responsive:{
-                0:{
-                    items:2,
-                    loop: true,
-                    stagePadding: 40,
-                },
-                480:{
-                    items:4,
-                    loop: true,
-                    stagePadding: 40,
-                },
-                768:{
-                    items:6,
-                    //nav:true
-                    stagePadding: 0,
-                    loop: false,
-                    mouseDrag: false,
-                    touchDrag: false
-                }
-            },
-            nav : false,
-
-        });
-    });
-</script> 
 
 <div class="oceanomaterials">
     <section>
@@ -239,64 +207,9 @@
                 </div>
             </div>
         </div>
-
-        <script>
-            $(document).ready(function() {
-
-                $('#materials-desk').owlCarousel({
-                    loop:false,
-                    margin:10,
-                    responsiveClass:true,
-                    responsive:{
-                        991:{
-                            items:3,
-                            loop: true,
-                            stagePadding: 40,
-                        },
-                        1280:{
-                            items:4,
-                            stagePadding: 40,
-                        }
-                    },
-                    nav : false,
-                });
-
-                $('#materials').owlCarousel({
-                    loop:false,
-                    margin:10,
-                    responsiveClass:true,
-                    responsive:{
-                        0:{
-                            items:1,
-                            loop: true,
-                            stagePadding: 40,
-                        },
-                        480:{
-                            items:2,
-                            loop: true,
-                            stagePadding: 40,
-                        },
-                        991:{
-                            items:3,
-                            loop: true,
-                            stagePadding: 40,
-                        },
-                        1280:{
-                            items:4,
-                            loop: true,
-                            stagePadding: 40,
-                        }
-                    },
-                    nav : false,
-                });
-            });
-        </script>
         <p class="text-center"><a href="#materialsspecs" class="sscroll cta2">see full materials specs</a></p>
     </section>
 </div>
-
-
-{% include 'product-warranties' %}
 
 <div class="container section">
     <div class="row flex">
