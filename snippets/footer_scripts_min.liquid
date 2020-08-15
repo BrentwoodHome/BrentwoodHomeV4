@@ -1,0 +1,141 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script> 
+
+<script>
+    $(window).load(function(){$("div.visualNav").hover(function(){$(this).find("div.productDetail").addClass("visualNavHover")},function(){$(this).find("div.productDetail").removeClass("visualNavHover")}),$("A.sscroll").bind("click",function(e){var o=$(this);$("html, body").stop().animate({scrollTop:$(o.attr("href")).offset().top-150},1500,"easeInOutExpo"),e.preventDefault()})}),jQuery(window).scroll(function(){jQuery(window).scrollTop()>0?jQuery("#header-content .header").addClass("is-ticky"):jQuery("#header-content .header").removeClass("is-ticky")});
+    </script>
+
+
+<script async src="https://use.fontawesome.com/b04c5bfc50.js"></script>
+
+
+<!-- Footer scripts -->
+{{ 'bootstrap.min.js' | asset_url | script_tag }}
+{{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+{{ 'jquery-cookie.min.js' | asset_url | script_tag }}
+
+{% if template contains 'index'%}
+    {{ 'owl.carousel.min.234.js' | asset_url | script_tag }}
+    <script>
+	    $('.carousel').carousel({
+	        pause: "hover",
+	        interval: false
+	    });
+        $(document).ready(function(){$("#home-reviews").owlCarousel({loop:!1,margin:10,responsiveClass:!0,responsive:{0:{items:1},768:{items:2},1024:{items:3}},nav:!1}),$("#latest-blogs").owlCarousel({loop:!1,margin:10,responsiveClass:!0,responsive:{0:{items:1},600:{items:2},800:{items:3}},nav:!1})});
+    </script>
+{%endif%}
+
+{% if template contains 'product'%}
+
+    {{ 'modernizr.js' | asset_url | script_tag }}
+    {{ 'selectize.min.js' | asset_url | script_tag }}
+    {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+    {{ 'custom_option_selector.js' | asset_url | script_tag }}
+    {% include 'productbundles' %}
+    {{ 'owl.carousel.min.234.js' | asset_url | script_tag }}
+    <!-- FlexSlider -->
+    {{ 'jquery.flexslider.271.js' | asset_url | script_tag }}
+    <script type="text/javascript">
+        $(window).load(function(){window.innerWidth<768?$(".flexslider").flexslider({animation:"slide",start:function(t){$("DIV#flexPlaceholder").toggle()},slideshow:!1,directionNav:!0,controlsContainer:$(".custom-controls-container"),customDirectionNav:$(".custom-navigation a"),prevText:"",nextText:""}):$(".flexslider").flexslider({animation:"slide",controlNav:"thumbnails",thumbCaptions:!0,start:function(t){$("DIV#flexPlaceholder").toggle()},slideshow:!1,controlsContainer:$(".custom-controls-container"),customDirectionNav:$(".custom-navigation a"),prevText:"",nextText:""})});
+
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('A.sscroll').bind('click', function(event) {
+                var $anchor = $(this);
+                $('html, body').stop().animate({
+                    scrollTop: $($anchor.attr('href')).offset().top - 150
+                }, 1500, 'easeInOutExpo');
+                event.preventDefault();
+            });
+        });
+    </script>
+
+    {% if template contains '3_2'%}
+
+        {% if metaf.shortdesc_more %}
+            <script>
+                $(document).ready(function(){$("#collapseDescription").collapse({toggle:!1}),$("#collapseDescription").on("show.bs.collapse",function(){$("a.productDetails").addClass("open").text("Less details -")}),$("#collapseDescription").on("hide.bs.collapse",function(){$("a.productDetails").removeClass("open").text("More details +")})});
+            </script>
+        {% endif %}
+        
+        {% if product.handle contains 'oceano'%}
+            <script>
+                $(document).ready(function(){$("#awards").owlCarousel({loop:!1,margin:10,responsiveClass:!0,responsive:{0:{items:2,loop:!0,stagePadding:40},480:{items:4,loop:!0,stagePadding:40},768:{items:6,stagePadding:0,loop:!1,mouseDrag:!1,touchDrag:!1}},nav:!1}),$("#materials-desk").owlCarousel({loop:!1,margin:10,responsiveClass:!0,responsive:{991:{items:3,loop:!0,stagePadding:40},1280:{items:4,stagePadding:40}},nav:!1}),$("#materials").owlCarousel({loop:!1,margin:10,responsiveClass:!0,responsive:{0:{items:1,loop:!0,stagePadding:40},480:{items:2,loop:!0,stagePadding:40},991:{items:3,loop:!0,stagePadding:40},1280:{items:4,loop:!0,stagePadding:40}},nav:!1})});
+            </script>
+        {%endif%}<!-- END OCEANO -->
+        {% if product.handle contains 'cedar-natural-luxe'%}
+            <script>
+                $(document).ready(function(){$("#details").owlCarousel({loop:!1,margin:10,responsiveClass:!0,responsive:{0:{items:1,loop:!0,stagePadding:40},768:{items:2,loop:!0,stagePadding:40},1024:{items:3,stagePadding:0,loop:!1,mouseDrag:!1,touchDrag:!1}},nav:!1}),$("#materials").owlCarousel({loop:!1,margin:10,responsiveClass:!0,responsive:{0:{items:1,loop:!0,stagePadding:40}},nav:!1})});
+            </script>
+        {%endif%}<!-- END CEADR -->
+        {% if product.handle == "hybrid-latex-mattress" %}
+            <script>
+                $(".compare ul").on("click","li",function(){var i=$(this).index()+2;$("tr").find("td").hide(),$("tr").find("td:first").show(),$("td:nth-child("+i+")").css("display","table-cell"),$("li").removeClass("active"),$(this).addClass("active")});var mediaQuery=window.matchMedia("(min-width: 640px)");function doSomething(i){i.matches?$(".sep").attr("colspan",6):$(".sep").attr("colspan",2)}mediaQuery.addListener(doSomething),doSomething(mediaQuery);
+            </script>
+        {%endif%}<!-- END HYBRID -->
+        {% if product.handle == "cypress-memory-foam-mattress" %}
+            <script>
+                $(".compare ul").on("click","li",function(){var i=$(this).index()+2;$("tr").find("td").hide(),$("tr").find("td:first").show(),$("td:nth-child("+i+")").css("display","table-cell"),$("li").removeClass("active"),$(this).addClass("active")});var mediaQuery=window.matchMedia("(min-width: 640px)");function doSomething(i){i.matches?$(".sep").attr("colspan",5):$(".sep").attr("colspan",2)}mediaQuery.addListener(doSomething),doSomething(mediaQuery);
+            </script>
+        {%endif%}<!-- END CYPRESS -->
+        {% if product.type == "Bed Sheets" %}
+            <script>
+                $(document).ready(function(){$("#warranties").owlCarousel({loop:!1,margin:10,responsiveClass:!0,responsive:{0:{items:2,loop:!0,stagePadding:40},480:{items:3,loop:!0,stagePadding:40},768:{items:5,stagePadding:0,loop:!1,mouseDrag:!1,touchDrag:!1}},nav:!1})});
+            </script> 
+        {% endif %}
+        {% if product.type == "Pet Bed" %}
+            <script>
+                $(document).ready(function(){$("#home-reviews").owlCarousel({loop:!1,margin:10,responsiveClass:!0,responsive:{0:{items:1},768:{items:2},1024:{items:3}},nav:!1})});
+            </script>
+        {% endif %}
+        <script>
+            $(document).ready(function(){$("#warranties").owlCarousel({loop:!1,margin:10,responsiveClass:!0,responsive:{0:{items:2,loop:!0,stagePadding:40},480:{items:4,loop:!0,stagePadding:40},768:{items:6,stagePadding:0,loop:!1,mouseDrag:!1,touchDrag:!1}},nav:!1})});
+        </script>
+    {%endif%}<!-- END 3.2 -->
+
+    <script type="text/javascript">
+        adroll_custom_data = {"product_id":"{{product.id}}"}; 
+    </script>
+    <script>
+      jQuery(document).ready(function(){jQuery(".related-products .products-grid").owlCarousel({loop:!1,margin:10,responsiveClass:!0,responsive:{0:{items:1},768:{items:2},1024:{items:3}},nav:!1})});
+    </script>
+{%endif%}<!-- END PRODUCTS -->
+
+{% if template contains "cart" %}
+    <script>
+        var variants={18602823614526:18665794601022,18602823647294:18665794633790,18602823680062:18665794666558};$(document).ready(function(){$("#update-cart").click(function(){$(".item-quantity").each(function(a,t){var n=$(t).data("id"),r={};if(n){var i=parseInt($(t).val());r[n]=i,variants[n]&&(r[variants[n]]=i)}$.ajax({type:"POST",url:"/cart/update.js",data:{updates:r},dataType:"json",success:function(){location.href="/cart"},error:function(a){console.log("error",a)}})})}),$(".remove-item").click(function(){var a=$(this).data("id"),t=[{id:a,quantity:0}];variants[a]&&t.push({id:variants[a],quantity:0}),function a(){t.length?$.ajax({type:"POST",url:"/cart/change.js",data:t.shift(),dataType:"json",success:function(){a()},error:function(a){console.log("error",a)}}):location.href="/cart"}()})});
+    </script>
+{%endif%}<!-- END CART -->
+{% if template == "page.materials.all" %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
+    <script>
+        $(function() {
+            $('.blog-article').matchHeight(false);
+        });
+    </script>
+{%endif%}
+
+{%  include 'new-currency' %}
+{{ 'gosh-scrip.js' | asset_url | script_tag }}
+{{ 'classie.js' | asset_url | script_tag }}
+
+{% unless template contains 'collections' %}
+<!-- YOTPO -->
+<script type="text/javascript">
+    (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+</script>
+{%endunless%}
+
+<script>
+  jQuery('.header-top a.close').bind('click',function(){
+    jQuery('.header-top a.close').attr('href','javascript:void(0)');
+    jQuery('.header-top').toggle();
+  });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded",()=>{var t;if("IntersectionObserver"in window){t=document.querySelectorAll(".lazy");var e=new IntersectionObserver(function(t,r){t.forEach(function(t){if(t.isIntersecting){let r=t.target;r.getAttribute("data-background-image")&&(r.style.backgroundImage="url("+r.getAttribute("data-background-image")+")"),r.getAttribute("data-src")&&(r.src=r.getAttribute("data-src")),r.getAttribute("data-srcset")&&(r.srcset=r.getAttribute("data-srcset")),r.style.animation="fadeIn 1s",r.style.WebkitAnimation="fadeIn 1s",r.classList.remove("lazy"),e.unobserve(r)}})},{rootMargin:"100px 0px"});(t=[...t]).forEach(function(t){e.observe(t)})}});
+</script>
+{{ 'jquery.easing.min.js' | asset_url | script_tag }}
+<script>console.log("{{template}}")
+console.log("{{product.handle}}")</script>

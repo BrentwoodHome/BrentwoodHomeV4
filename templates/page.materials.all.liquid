@@ -4,8 +4,8 @@
                 <div class="col-xs-12" id="wrapper">
                     <h1>Materials We Use</h1>
                     <div id="map">
-                        <img src="{{'materials_map-tags.jpg'|asset_url}}" width="1600" height="853" alt="Our materials" usemap="#materialsmap" style="">
-                        <!-- <map name="materialsmap">
+                        <!--<img src="{{'materials_map-tags.jpg'|asset_url}}" width="1600" height="853" alt="Our materials" usemap="#materialsmap" style="">
+                         <map name="materialsmap">
                             <area alt="" title="" href="/pages/latex" shape="poly" coords="1265,377,1276,419,1300,387,1398,385,1397,329,1286,332" />
                             <area alt="" title="" href="/pages/kapok" shape="poly" coords="1300,445,1312,484,1330,452,1430,452,1426,396,1317,395" />
                             <area alt="" title="" href="/pages/wool" shape="poly" coords="1416,655,1418,711,1522,710,1539,741,1550,703,1529,654" />
@@ -27,7 +27,7 @@
             <div class="row">
                 <!-- Materials -->
                 <div class="col-xs-12 col-sm-6 col-lg-4 blog-article">
-                    <a href="/pages/kapok" title="Kapok"><img src="{{ 'materials_kapok.jpg' | asset_url }}" alt="Kapok"></a>
+                    <a href="/pages/kapok" title="Kapok"><img src="https://brentwood-home-2.imgix.net/materials_kapok.jpg?w=500&q=55&auto=compress,format }}" alt="Kapok"></a>
                     <div class="text-center"><p>Southeast Asia</p></div>
                     <div class="article-details clearfix">
                         <a href="/pages/kapok" title="Kapok"><h3><center>Kapok</center></h3></a>
@@ -37,7 +37,7 @@
     
     
                 <div class="col-xs-12 col-sm-6 col-lg-4 blog-article">
-                    <a href="/pages/wool" title=""><img src="{{ 'materials_wool.jpg' | asset_url }}" alt="GOTS Organic Certified Wool"></a>
+                    <a href="/pages/wool" title=""><img src="https://brentwood-home-2.imgix.net/materials_wool.jpg?w=500&q=55&auto=compress,format" alt="GOTS Organic Certified Wool"></a>
                     <div class="text-center"><p>India</p></div>
                     <div class="article-details clearfix">
                         <a href="/pages/wool" title=""><h3><center>GOTS Organic Certified Wool</center></h3></a>
@@ -47,7 +47,7 @@
                 </div>
     
                 <div class="col-xs-12 col-sm-6 col-lg-4 blog-article">
-                    <a href="/pages/buckwheat" title=""><img src="{{ 'materials_buckwheat.jpg' | asset_url }}" alt="buckwheat"></a>
+                    <a href="/pages/buckwheat" title=""><img src="https://brentwood-home-2.imgix.net/materials_buckwheat.jpg?w=500&q=55&auto=compress,format" alt="buckwheat"></a>
                     <div class="text-center"><p>North Dakota</p></div>
                     <div class="article-details clearfix">
                         <a href="/pages/buckwheat" title="buckwheat"><h3>
@@ -59,7 +59,7 @@
                 </div>
     
                 <div class="col-xs-12 col-sm-6 col-lg-4 blog-article">
-                    <a href="/pages/cotton" title=""><img src="{{ 'materials_cotton.jpg' | asset_url }}" alt="organic cotton"></a>
+                    <a href="/pages/cotton" title=""><img src="https://brentwood-home-2.imgix.net/materials_cotton.jpg?w=500&q=55&auto=compress,format" alt="organic cotton"></a>
                     <div class="text-center"><p>Texas</p></div>
                     <div class="article-details clearfix">
                         <a href="/pages/cotton" title="organic cotton"><h3>
@@ -70,7 +70,7 @@
                 </div>
     
                 <div class="col-xs-12 col-sm-6 col-lg-4 blog-article">
-                    <a href="/pages/coils" title="coils"><img src="{{ 'materials_coils.jpg' | asset_url }}" alt="coils"></a>
+                    <a href="/pages/coils" title="coils"><img src="https://brentwood-home-2.imgix.net/materials_coils.jpg?w=500&q=55&auto=compress,format" alt="coils"></a>
                     <div class="text-center"><p>South Gate, CA</p></div>
                     <div class="article-details clearfix">
                         <a href="/pages/coils" title="coils"><h3>
@@ -81,7 +81,7 @@
                 </div>
                 
                 <div class="col-xs-12 col-sm-6 col-lg-4 blog-article">
-                    <a href="/pages/latex" title="Natural Latex"><img src="{{ 'materials_latex.jpg' | asset_url }}" alt="GOLS Organic Certified Latex"></a>
+                    <a href="/pages/latex" title="Natural Latex"><img src="https://brentwood-home-2.imgix.net/materials_latex.jpg?w=500&q=55&auto=compress,format" alt="GOLS Organic Certified Latex"></a>
                     <div class="text-center"><p>India</p></div>
                     <div class="article-details clearfix">
                         <a href="/pages/latex" title="Natural Latex"><h3>
@@ -93,19 +93,4 @@
     
             </div> 
             <!-- End Materials -->
-          
-    
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
-    <script src="{{'jquery.rwdImageMaps.min.js'|asset_url}}"></script>
-    <script>
-        $(function() {
-            $('.blog-article').matchHeight(false);
-            $('img[usemap]').rwdImageMaps();
-        });
-    </script>
 </div>
-<script>
-    mixpanel.track("Materials Page", {
-        "name": "{{ page_title | handle }}"
-    });
-</script>

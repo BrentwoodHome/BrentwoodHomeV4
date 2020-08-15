@@ -80,13 +80,12 @@
     {% if variant.available %}
     <script>
       //jQuery('.swatch[data-option-index="{{ option_index }}"] .{{ value | handle }}').removeClass('soldout').addClass('available').find(':radio').removeAttr('disabled');
-      
       var elem = document.querySelector('.swatch[data-option-index="{{ option_index }}"] .{{ value | handle }}');
-elem.classList.remove('soldout');
-elem.classList.add('available');
-var elemRadio = elem.querySelector('swatch-{{ option_index }}-{{ value | handle }}');
-document.getElementById('swatch-{{ option_index }}-{{ value | handle }}').disabled = false;
-//elemRadio.disabled = false;
+      elem.classList.remove('soldout');
+      elem.classList.add('available');
+      //var elemRadio = elem.querySelector('swatch-{{ option_index }}-{{ value | handle }}');
+      document.getElementById('swatch-{{ option_index }}-{{ value | handle }}').disabled = false;
+      //elemRadio.disabled = false;
     </script>
     {% endif %}
   {% endfor %}

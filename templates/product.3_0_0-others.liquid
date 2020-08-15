@@ -180,19 +180,6 @@
                             {{ metaf.shortdesc_more }}
                         </ul>
                     </div>
-                    <script>
-                        $(document).ready(function() {
-                            $('#collapseDescription').collapse({
-                                toggle: false
-                            });
-                            $('#collapseDescription').on('show.bs.collapse', function () {
-                                $("a.productDetails").addClass("open").text("Less details -");
-                            });
-                            $('#collapseDescription').on('hide.bs.collapse', function () {
-                                $("a.productDetails").removeClass("open").text("More details +");
-                            });
-                        });
-                    </script>
                     {% endif %}
 
                     <div class="mob-dark">
@@ -624,30 +611,6 @@
                 </div>
             </div>
         </section>
-         <script>
-        $(document).ready(function() {
-            $("#home-reviews").owlCarousel({
-                loop:false,
-                margin:10,
-                responsiveClass:true,
-                responsive:{
-                    0:{
-                        items:1,
-                        //nav:true
-                    },
-                    768:{
-                        items:2,
-                        //nav:true
-                    },
-                    1024:{
-                        items:3,
-                        //nav:true
-                    }
-                },
-                nav : false
-            });
-        });
-    </script>
     {% endif %}
    
 
@@ -1014,21 +977,6 @@
 </div>
 
 <p class="text-center"><a href="#buysection" class="sscroll cta2">back to top</a></p>
-
-<script>
-    $(document).ready(function(){
-        $('A.sscroll').bind('click', function(event) {
-            var $anchor = $(this);
-            $('html, body').stop().animate({
-                scrollTop: $($anchor.attr('href')).offset().top - 150
-            }, 1500, 'easeInOutExpo');
-            event.preventDefault();
-        });
-    });
-</script>
-
-
-{% include 'productbundles' %}
 
 </div>
 

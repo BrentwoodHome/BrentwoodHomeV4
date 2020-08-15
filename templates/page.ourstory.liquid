@@ -121,14 +121,6 @@
 
 
 <script>
-    jQuery('.main-content').removeClass('container');
-</script>
-
-<script>
-    mixpanel.track("About Us");
-    $(document).ready(function(){
-        $("#aboutus-continue").click(function(){
-            mixpanel.track("Clicked Continue Shopping");
-        });
-    });
+    var elem = document.querySelector('.main-content');
+    elem.classList.remove('container');
 </script>

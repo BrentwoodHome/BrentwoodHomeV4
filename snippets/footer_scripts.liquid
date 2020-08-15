@@ -98,7 +98,7 @@
     {{ 'selectize.min.js' | asset_url | script_tag }}
     {{ 'option_selection.js' | shopify_asset_url | script_tag }}
     {{ 'custom_option_selector.js' | asset_url | script_tag }}
-
+    {% include 'productbundles' %}
     {{ 'owl.carousel.min.234.js' | asset_url | script_tag }}
     <!-- FlexSlider -->
     {{ 'jquery.flexslider.271.js' | asset_url | script_tag }}
@@ -136,38 +136,34 @@
         });
 
     </script>
-   
-    {% if template contains '3_2'%}
-
-        {% include 'productbundles' %}
-
-        {% if metaf.shortdesc_more %}
-            <script>
-                $(document).ready(function() {
-                    $('#collapseDescription').collapse({
-                        toggle: false
-                    });
-                    $('#collapseDescription').on('show.bs.collapse', function () {
-                        $("a.productDetails").addClass("open").text("Less details -");
-                    });
-                    $('#collapseDescription').on('hide.bs.collapse', function () {
-                        $("a.productDetails").removeClass("open").text("More details +");
-                    });
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('A.sscroll').bind('click', function(event) {
+                var $anchor = $(this);
+                $('html, body').stop().animate({
+                    scrollTop: $($anchor.attr('href')).offset().top - 150
+                }, 1500, 'easeInOutExpo');
+                event.preventDefault();
+            });
+        });
+    </script>
+    {% if metaf.shortdesc_more %}
+        <script>
+            $(document).ready(function() {
+                $('#collapseDescription').collapse({
+                    toggle: false
                 });
-            </script>
-        {% endif %}
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $('A.sscroll').bind('click', function(event) {
-                    var $anchor = $(this);
-                    $('html, body').stop().animate({
-                        scrollTop: $($anchor.attr('href')).offset().top - 150
-                    }, 1500, 'easeInOutExpo');
-                    event.preventDefault();
+                $('#collapseDescription').on('show.bs.collapse', function () {
+                    $("a.productDetails").addClass("open").text("Less details -");
+                });
+                $('#collapseDescription').on('hide.bs.collapse', function () {
+                    $("a.productDetails").removeClass("open").text("More details +");
                 });
             });
         </script>
-    
+    {% endif %}
+
+    {% if template contains '3_2'%}
 
         {% if product.handle contains 'oceano'%}
             <script>
@@ -357,6 +353,66 @@
                 doSomething(mediaQuery);
             </script>
         {%endif%}<!-- END CYPRESS -->
+        {% if product.type == "Bed Sheets" %}
+            <script>
+                $(document).ready(function() {
+
+                    $('#warranties').owlCarousel({
+                        loop:false,
+                        margin:10,
+                        responsiveClass:true,
+                        responsive:{
+                            0:{
+                                items:2,
+                                loop: true,
+                                stagePadding: 40,
+                            },
+                            480:{
+                                items:3,
+                                loop: true,
+                                stagePadding: 40,
+                            },
+                            768:{
+                                items:5,
+                                //nav:true
+                                stagePadding: 0,
+                                loop: false,
+                                mouseDrag: false,
+                                touchDrag: false
+                            }
+                        },
+                        nav : false,
+
+                    });
+                });
+            </script> 
+        {% endif %}
+        {% if product.type == "Pet Bed" %}
+            <script>
+                $(document).ready(function() {
+                    $("#home-reviews").owlCarousel({
+                        loop:false,
+                        margin:10,
+                        responsiveClass:true,
+                        responsive:{
+                            0:{
+                                items:1,
+                                //nav:true
+                            },
+                            768:{
+                                items:2,
+                                //nav:true
+                            },
+                            1024:{
+                                items:3,
+                                //nav:true
+                            }
+                        },
+                        nav : false
+                    });
+                });
+            </script>
+        {% endif %}
         <script>
             $(document).ready(function() {
                 $('#warranties').owlCarousel({
@@ -418,7 +474,93 @@
     </script>
 {%endif%}<!-- END PRODUCTS -->
 
+{% if template contains "cart" %}
+    <script>
+        var variants = {
+            18602823614526: 18665794601022,
+            18602823647294: 18665794633790,
+            18602823680062: 18665794666558
+        }
 
+        $(document).ready(function(){
+
+
+            $('#update-cart').click(function() {
+                $('.item-quantity').each(function(i, obj) {
+                    var id = $(obj).data('id')
+                    var updates = {}
+                    if (id) {
+                        var qty = parseInt($(obj).val());
+                        updates[id] = qty;
+
+                        if (variants[id]) {
+                            updates[variants[id]] = qty;
+                        }
+                    }
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/cart/update.js',
+                        data: {updates: updates},
+                        dataType: 'json',
+                        success: function() {
+                            location.href = '/cart'
+                        },
+                        error: function(error) {
+                            console.log('error', error);
+                        }
+                    });
+                })
+            })
+
+            $('.remove-item').click(function() {
+                var id = $(this).data('id');
+
+                var queue = [{
+                    id: id,
+                    quantity: 0
+                }]
+
+                if (variants[id]) {
+                    queue.push({
+                        id: variants[id],
+                        quantity: 0
+                    })
+                }
+
+                function moveAlong(){
+                    if (queue.length) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '/cart/change.js',
+                            data: queue.shift(),
+                            dataType: 'json',
+                            success: function() {
+                                moveAlong();
+                            },
+                            error: function(error) {
+                                console.log('error', error);
+                            }
+                        });
+                    } else {
+                        location.href = '/cart';
+                    }
+                };
+
+                moveAlong()
+            })
+        });
+    </script>
+{%endif%}<!-- END CART -->
+
+{% if template == "page.materials.all" %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
+    <script>
+        $(function() {
+            $('.blog-article').matchHeight(false);
+        });
+    </script>
+{%endif%}
 
 {%  include 'new-currency' %}
 {% comment %}{{ 'jquery.history.js' | asset_url | script_tag }}{% endcomment %}

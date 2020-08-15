@@ -57,7 +57,7 @@
     </div>
     {% endif %}
         <a href="{{ product.url }}" class="product-grid-image">
-        <img class="lazy" src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+        <img class="lazy" loading="lazy" src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
         {% comment %}
         {% if settings.product_image_hover %}
           <span class="product-image-hover" data-idproduct="{{ product.id }}">
