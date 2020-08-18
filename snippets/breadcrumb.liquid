@@ -21,7 +21,8 @@
   {% if collectionExist %}
   <span class="icon hidden-xs">/</span>
   {% for collection in product.collections %}
-    {{ collection.title | link_to: collection.url }}
+    <a href="{{collection.url}}" class="hidden-xs">{{ collection.title }}</a>
+    <a href="{{collection.url}}" class="visible-xs-inline">{{ collection.title | truncate: 25 }}</a>
     {% break %}
   {% endfor %}
   {% endif %}
@@ -46,7 +47,7 @@
         <span class="current-tag">{{ page.title }}</span>
   {% else %}
       <span class="icon">/</span>
-      <span class="current-tag">{{ collection.title }}</span>
+      <span class="current-tag">{{ collection.title  | truncate: 34 }}</span>
   {% endif %}
 
   {% elsif template == 'article' %}

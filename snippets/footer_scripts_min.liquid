@@ -83,15 +83,15 @@
                 $(document).ready(function(){$("#warranties").owlCarousel({loop:!1,margin:10,responsiveClass:!0,responsive:{0:{items:2,loop:!0,stagePadding:40},480:{items:3,loop:!0,stagePadding:40},768:{items:5,stagePadding:0,loop:!1,mouseDrag:!1,touchDrag:!1}},nav:!1})});
             </script> 
         {% endif %}
-        {% if product.type == "Pet Bed" %}
-            <script>
-                $(document).ready(function(){$("#home-reviews").owlCarousel({loop:!1,margin:10,responsiveClass:!0,responsive:{0:{items:1},768:{items:2},1024:{items:3}},nav:!1})});
-            </script>
-        {% endif %}
         <script>
             $(document).ready(function(){$("#warranties").owlCarousel({loop:!1,margin:10,responsiveClass:!0,responsive:{0:{items:2,loop:!0,stagePadding:40},480:{items:4,loop:!0,stagePadding:40},768:{items:6,stagePadding:0,loop:!1,mouseDrag:!1,touchDrag:!1}},nav:!1})});
         </script>
     {%endif%}<!-- END 3.2 -->
+    {% if product.type == "Pet Bed" %}
+        <script>
+            $(document).ready(function(){$("#home-reviews").owlCarousel({loop:!1,margin:10,responsiveClass:!0,responsive:{0:{items:1},768:{items:2},1024:{items:3}},nav:!1})});
+        </script>
+    {% endif %}<!-- END PETS -->
 
     <script type="text/javascript">
         adroll_custom_data = {"product_id":"{{product.id}}"}; 
@@ -100,7 +100,18 @@
       jQuery(document).ready(function(){jQuery(".related-products .products-grid").owlCarousel({loop:!1,margin:10,responsiveClass:!0,responsive:{0:{items:1},768:{items:2},1024:{items:3}},nav:!1})});
     </script>
 {%endif%}<!-- END PRODUCTS -->
-
+{% if template contains "mattresscompare" %}
+{{ 'owl.carousel.min.234.js' | asset_url | script_tag }}
+<script>
+    $(document).ready(function(){$("#compare-mattresses-wrap").owlCarousel({loop:!1,responsiveClass:!0,navText:['<i class="fa fa-chevron-left" aria-hidden="true"></i>','<i class="fa fa-chevron-right" aria-hidden="true"></i>'],responsive:{0:{items:1,nav:!0},768:{items:2,nav:!0},1024:{items:3,nav:!0},1480:{items:5,nav:!1}}})});
+</script>
+{%endif%}<!-- END COMPARE -->
+{% if template contains "pillowcompare" %}
+{{ 'owl.carousel.min.234.js' | asset_url | script_tag }}
+<script>
+    $(document).ready(function(){$("#compare-mattresses-wrap").owlCarousel({loop:!1,responsiveClass:!0,navText:['<i class="fa fa-chevron-left" aria-hidden="true"></i>','<i class="fa fa-chevron-right" aria-hidden="true"></i>'],responsive:{0:{items:1,nav:!0},768:{items:2,nav:!0},1024:{items:3,nav:!0},1480:{items:4,nav:!1}}})});
+</script>
+{%endif%}<!-- END COMPARE -->
 {% if template contains "cart" %}
     <script>
         var variants={18602823614526:18665794601022,18602823647294:18665794633790,18602823680062:18665794666558};$(document).ready(function(){$("#update-cart").click(function(){$(".item-quantity").each(function(a,t){var n=$(t).data("id"),r={};if(n){var i=parseInt($(t).val());r[n]=i,variants[n]&&(r[variants[n]]=i)}$.ajax({type:"POST",url:"/cart/update.js",data:{updates:r},dataType:"json",success:function(){location.href="/cart"},error:function(a){console.log("error",a)}})})}),$(".remove-item").click(function(){var a=$(this).data("id"),t=[{id:a,quantity:0}];variants[a]&&t.push({id:variants[a],quantity:0}),function a(){t.length?$.ajax({type:"POST",url:"/cart/change.js",data:t.shift(),dataType:"json",success:function(){a()},error:function(a){console.log("error",a)}}):location.href="/cart"}()})});

@@ -1,5 +1,6 @@
 {% assign producthandle = product.handle %}
 <script>
+  //window.performance.mark(window.markNames.bundleScriptParse.start);
   var allFoundationVariants = {{ all_products['foundation'].variants | json }};
   var allAdjustableVariants = {{ all_products['adjustable-bed-frame'].variants | json }};
   var variantTopperBundle = {{ all_products['cedar-natural-luxe-topper-standalone'].variants | json }};
@@ -1232,4 +1233,5 @@
             moveAlong();
       });
   });
+//window.performance.mark(window.markNames.bundleScriptParse.end);
 </script>
