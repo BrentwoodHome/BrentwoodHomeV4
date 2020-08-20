@@ -145,7 +145,13 @@
 </script>
 
 <script>
-    document.addEventListener("DOMContentLoaded",()=>{var t;if("IntersectionObserver"in window){t=document.querySelectorAll(".lazy");var e=new IntersectionObserver(function(t,r){t.forEach(function(t){if(t.isIntersecting){let r=t.target;r.getAttribute("data-background-image")&&(r.style.backgroundImage="url("+r.getAttribute("data-background-image")+")"),r.getAttribute("data-src")&&(r.src=r.getAttribute("data-src")),r.getAttribute("data-srcset")&&(r.srcset=r.getAttribute("data-srcset")),r.style.animation="fadeIn 1s",r.style.WebkitAnimation="fadeIn 1s",r.classList.remove("lazy"),e.unobserve(r)}})},{rootMargin:"100px 0px"});(t=[...t]).forEach(function(t){e.observe(t)})}});
+    /*document.addEventListener("DOMContentLoaded",()=>{var t;if("IntersectionObserver"in window){t=document.querySelectorAll(".lazy");var e=new IntersectionObserver(function(t,r){t.forEach(function(t){if(t.isIntersecting){let r=t.target;r.getAttribute("data-background-image")&&(r.style.backgroundImage="url("+r.getAttribute("data-background-image")+")"),r.getAttribute("data-src")&&(r.src=r.getAttribute("data-src")),r.getAttribute("data-srcset")&&(r.srcset=r.getAttribute("data-srcset")),r.style.animation="fadeIn 1s",r.style.WebkitAnimation="fadeIn 1s",r.classList.remove("lazy"),e.unobserve(r)}})},{rootMargin:"100px 0px"});(t=[...t]).forEach(function(t){e.observe(t)})}});*/
+</script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script type="text/javascript">
+	var lazyLoadInstance = new LazyLoad({
+  // Your custom settings go here
+});
 </script>
 {{ 'jquery.easing.min.js' | asset_url | script_tag }}
 <script>console.log("{{template}}")

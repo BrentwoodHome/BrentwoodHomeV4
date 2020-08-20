@@ -656,7 +656,7 @@
 </script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    /*document.addEventListener('DOMContentLoaded', () => {
         //Lazy loading for background images containing the class of lazy
         var lazyloadImages
 
@@ -700,7 +700,13 @@
                 imageObserver.observe(image)
             })
         }
-    })
+    })*/
+</script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script type="text/javascript">
+    var lazyLoadInstance = new LazyLoad({
+  // Your custom settings go here
+});
 </script>
 {{ 'jquery.easing.min.js' | asset_url | script_tag }}
 <script>console.log("TEMPLATE: {{template}}")
