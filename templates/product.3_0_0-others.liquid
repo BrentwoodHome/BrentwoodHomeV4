@@ -455,7 +455,7 @@
     </section>
     {% endif %}
 
-    {% if metaf.feature3_title != "" and metaf.feature3_title != "NA" %}
+    {% if metaf.feature3_title and metaf.feature3_title != "" and metaf.feature3_title != "NA" %}
     <section class="overlays overlays-6 container">
         <div class="row flex">
             <div class="col-xs-12 col-sm-6">
@@ -488,7 +488,7 @@
     </section>
     {% endif %}
 
-    {% if metaf.feature4_title != "" and metaf.feature4_title != "NA" %}
+    {% if metaf.feature4_title and metaf.feature4_title != "" and metaf.feature4_title != "NA" %}
     <section class="overlays overlays-5 container">
         <div class="row flex">
             <div class="col-xs-12 col-sm-6 col-sm-push-6">
@@ -871,12 +871,16 @@
                 <li class="active">
                     <a href="#1a" data-toggle="tab">Description</a>
                 </li>
+                {% if metaf.details_materials %}
                 <li>
                     <a href="#2a" data-toggle="tab">Materials</a>
                 </li>
+                {% endif %}
+                {% if metaf.details_sizes %}
                 <li>
                     <a href="#3a" data-toggle="tab">Sizes</a>
                 </li>
+                {% endif %}
                 <li>
                     <a href="#4a" data-toggle="tab">Shipping & Returns</a>
                 </li>
