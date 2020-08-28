@@ -415,7 +415,21 @@
             </div>
         </div>
     {% endif %}
-    <br>
+
+
+    {% if metaf.videoTop %}
+        <section class="overlays overlays-5 container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                    <!--<h2 class="overlays-title text-center" style="text-align: center;"></h2>-->
+                    <div class="embed-container ">
+                        <iframe src="https://player.vimeo.com/video/{{metaf.videoTop}}?muted=1&autoplay=1&loop=1&title=0&byline=0&autopause=0" width="640" height="360" id="video_1" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
     {% if metaf.feature1_title %}
     <section class="overlays overlays-5 container" style="margin-top: 30px;">
         <div class="row flex">
