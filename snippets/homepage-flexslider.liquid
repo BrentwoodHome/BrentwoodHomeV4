@@ -16,9 +16,10 @@
     .jumbtron H1{
         color: white;
         text-shadow: 1px 1px 1px rgba(128,128,128,0.9);
+        font-size: 60px;
     }
     BODY.template-index .cta{
-        padding: 15px 52px;
+        padding: 15px 35px;
     }
     BODY.template-index .cta.yogaOverride{
         background-color: white;
@@ -32,6 +33,25 @@
     }
     .copyContainer1{
         z-index: 50;
+        top: calc(50% - 150px);
+    }
+    @media (max-width: 480px){
+        .jumbtron H1{
+            font-size: 32px;
+        }
+        BODY.template-index .cta{
+            padding: 6px 22px;
+            font-size: 14px;
+        }
+        BODY.template-index .cta.yogaOverride{
+            margin-top: 0 !important;
+        }
+        .copyContainer1{
+            top: calc(50% - 100px);
+        }
+        DIV#mobileNavTab{
+            display: none;
+        }
     }
 </style>
 <div class="jumbtron crystalcoveVideo">
