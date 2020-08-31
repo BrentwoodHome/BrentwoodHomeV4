@@ -11,67 +11,54 @@
         </li>
     </ul>
 </div>
-
-
 {% include 'nowtime' %}
-<style>
-    ol.carousel-indicators, a.carousel-control{
-        display: none;
+<style type="text/css">
+    .jumbtron H1{
+        color: white;
+        text-shadow: 1px 1px 1px rgba(128,128,128,0.9);
+    }
+    BODY.template-index .cta{
+        padding: 15px 52px;
+    }
+    BODY.template-index .cta.yogaOverride{
+        background-color: white;
+        color: #38414f;
+        border-color: white;
+        margin-top: 10px;
+    }
+    BODY.template-index .cta.yogaOverride:HOVER{
+        background-color: transparent;
+        color: #fff;
+    }
+    .copyContainer1{
+        z-index: 50;
     }
 </style>
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-    </ol>
-    
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <a href="/collections/mattresses" id="collections">
-                <picture>
-                    <source media="(max-width: 767px)" data-srcset="https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam=10&rect=462,0,870,870&w=768">
-                    <source media="(min-width: 768px)" data-srcset="https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam=10&q=55&auto=compress,formatw=1280">
-                    <img class="lazy" data-src="https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam=10&q=55&auto=compress,format&w=1280" src="https://brentwood-home.imgix.net/hp-hero-luxury.jpg?blur=500&gam=10&q=55&auto=compress,format&w=1280" alt="Brentwood Home Affordable Luxury">
-                    {%comment%}
-                    <source media="(max-width: 767px)" sizes="100vw" srcset="https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&q=65&w=320&rect=462,0,870,870 320w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&rect=462,0,870,870&w=400 400w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&rect=462,0,870,870&w=500 500w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&rect=462,0,870,870&w=559 559w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&rect=462,0,870,870&w=600 600w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&&rect=462,0,870,870w=700 700w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=800 800w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&rect=462,0,870,870&w=839 839w">
-
-                    <source media="(min-width: 768px)" sizes="100vw" srcset="https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=768 768w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=800 800w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=900 900w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=1000 1000w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=1100 1100w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=1200 1200w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=1300 1300w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=1400 1400w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=1500 1500w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=1600 1600w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=1700 1700w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=1800 1800w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=1900 1900w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=2000 2000w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=2100 2100w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=2200 2200w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=2300 2300w, https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=2400 2400w">
-                    <img alt="Affordable Natural Luxury Mattresses &amp; Bedding" class="Hero__image___I1jio" src="https://brentwood-home.imgix.net/hp-hero-luxury.jpg?gam10&fm=webp&auto=compress&q=65&w=1600">
-                    {%endcomment%}
-                </picture>
-            </a>
-            <div class="carousel-caption">
-                <!--<h1 class="tk-aw-conqueror-didot">Affordable Luxury</h1>-->
-                <h1 class="">Affordable Natural Luxury<br>Mattresses &amp; Bedding</h1>
-                <p class="caption">Live healthy, sleep well</p>
-                <p><a href="/collections/mattresses" class="cta solid text-center">SHOP MATTRESSES</a></p>
+<div class="jumbtron crystalcoveVideo">
+    <div class="valueProps ">
+        <div class="copyContainer1" style="transition-delay:266ms">
+            <div class="tagline">
+                <h1>Affordable Natural Luxury<br>Mattresses, Bedding &amp; Pillows</h1>
+                <p><a href="/collections/crystal-cove-yoga" class="cta solid text-center yoga">SHOP YOGA PILLOWS</a></p>
+                <p><a href="/collections/mattresses" class="cta solid white text-center yogaOverride mattress">SHOP MATTRESSES</a></p>
             </div>
         </div>
-    </div>
-    <!-- Controls -->
-    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-        <span class="carousel-main left fa fa-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-        <span class="carousel-main right fa fa-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
+         <div class="videoVimeo" style="z-index: 2;">
+            <iframe src="https://player.vimeo.com/video/445626953?autoplay=1&loop=1&background=1&muted=1" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+        <a style="z-index: 1;position: absolute;width: 100%;top: 0; " href="/collections/crystal-cove-yoga" id="collections"><img alt="Affordable Natural Luxury Mattresses &amp; Bedding" loading="eager" src="https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=15&auto=compress,format&w=1600&blur=100"></a>
+        <!--<a href="/collections/crystal-cove-yoga" id="collections">
+            <picture>                
+                <source media="(max-width: 767px)" sizes="100vw" data-srcset="https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&rect=462,0,870,870&w=320 320w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&rect=462,0,870,870&w=400 400w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&rect=462,0,870,870&w=500 500w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&rect=462,0,870,870&w=559 559w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&rect=462,0,870,870&w=600 600w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&rect=462,0,870,870&w=700 700w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&rect=462,0,870,870&w=800 800w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&rect=462,0,870,870&w=839 839w">
 
-<script>
-    /* carousel image clicks 
-    $(function() {
-        $('.item').on('click', function() {
-            //console.log('clicked! going to: ' + $(this).find('a').attr('href'));
-            //window.location = $(this).find('a').attr('href');
-        });
-    });*/
-</script>
+                <source media="(min-width: 768px)" sizes="100vw" data-srcset="https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&w=768 768w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&w=800 800w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&w=900 900w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&w=1000 1000w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&w=1100 1100w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&w=1200 1200w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&w=1300 1300w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&w=1400 1400w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&w=1500 1500w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&w=1600 1600w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&w=1700 1700w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&w=1800 1800w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&w=1900 1900w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&w=2000 2000w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&w=2100 2100w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&w=2200 2200w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&w=2300 2300w, https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&w=2400 2400w">
+                <img alt="Affordable Natural Luxury Mattresses &amp; Bedding" class="lazy" data-src="https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=55&auto=compress,format&w=1600" src="https://s3-brentwoodhome.imgix.net/hero/crystalcoveyogahero-cover2.jpg?gam=10&q=15&auto=compress,format&w=1600&blur=100">
+            </picture>
+        </a>-->
+    </div>
+</div>
 <script type="text/javascript">
     window.VWO = window.VWO || [];
     window.VWO.push(['track.goalConversion',1]);
 </script>
+
