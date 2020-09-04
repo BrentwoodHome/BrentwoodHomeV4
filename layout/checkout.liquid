@@ -93,15 +93,15 @@
                         padding: 0 20px;
                         margin-bottom: 15px;
                         }
-                        .idme-shopify .idme-btn-affinity{
-                        display: block;
-                        margin-bottom: 10px;
-                        color: black;
+                        .idme-shopify .idme-btn-affinity A{
+                        text-decoration: underline;
                         }
                         .idme-shopify .idme-btn-affinity{
+                        font-size: 12px;
+                        line-height: 16px;
+                        color: black;
                         display: block;
                         margin-bottom: 10px;
-                        color: black;
                         }
                     </style>
                     {{ content_for_order_summary }}
@@ -114,7 +114,7 @@
     </body>
 </html>
 <script>
-    $(function() {$(".idme-btn-affinity").append(" select mattresses.")});
+    //$(function() {$(".idme-btn-affinity").append(" select mattresses.")});
 </script>
 
 {{ 'idme-checkout-style.css' | asset_url | stylesheet_tag }}
