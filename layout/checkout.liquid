@@ -113,8 +113,18 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script> 
     </body>
 </html>
+<style type="text/css">
+    p.disclaimer-shipping{
+            background-color: bisque;
+    padding: 10px 20px;
+    border-radius: 6px;
+    color: black;
+    font-weight: bold; font-size: 14px; margin-top: 10px;
+    }
+</style>
 <script>
     //$(function() {$(".idme-btn-affinity").append(" select mattresses.")});
+    $(function() {$("div.section--shipping-method h2#main-header").after("<p class='disclaimer-shipping'>Please note: All our products require production time <span style='text-decoration: underline;'>before</span> they can ship. Check product pages for accurate times or our <a href='https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3840166-when-can-i-expect-my-brentwood-home-products-to-arrive' style='text-decoration: underline;' target='_blank'>help center</a>.")});
 </script>
 
 {{ 'idme-checkout-style.css' | asset_url | stylesheet_tag }}
