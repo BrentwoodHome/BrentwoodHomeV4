@@ -1,0 +1,76 @@
+{{ 'plus-checkout-styles.css' | asset_url | stylesheet_tag }}
+{{ 'plus-checkout-scripts.js' | asset_url | script_tag }}
+
+{%- assign new_attribute = 'plus.checkout.custom_attributes.checkbox_attribute_name' | t -%}
+
+<div id="plus-custom-section-wrapper" class="plus-checkout-custom-fields__section-wrapper">
+  <div class="plus-checkout-custom-fields__section plus-custom-section-name">
+    <div class="plus-checkout-custom-fields__content">
+      <div class="plus-checkout-custom-fields">
+        <div class="plus-checkout-custom-field-wrapper plus-one-whole">
+          <div class="plus-checkout-custom-field">
+            <div class="plus-checkout-checkbox">
+              <input type="hidden" name="checkout[attributes][{{ new_attribute }}]" value="No">
+              <input
+                type="checkbox"
+                id="plus-custom-checkbox"
+                class="plus-checkout-custom-field__checkbox-input input-checkbox"
+                name="checkout[attributes][{{ new_attribute }}]"
+                {%- if settings.plus_checkout_checkbox_required -%}aria-required="true"{%- endif -%}
+                value="Yes"
+              />
+            </div>
+            
+            <label for="plus-custom-checkbox" class="plus-checkout-custom-field__checkbox-label">{{ 'plus.checkout.custom_attributes.checkbox_label_html' | t }}</label>
+          </div>
+
+          <p id="plus-checkbox-error" class="plus-checkout-custom-field__error">
+            {{ 'plus.checkout.custom_attributes.checkbox_error' | t }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if checkout.attributes != blank %}
+  <div id="plus-checkout-cart-attributes-wrapper" class="plus-checkout-custom-fields__section-wrapper">
+    <div class="plus-checkout-cart-attributes">
+      {%- for attribute in checkout.attributes -%}
+        {%- unless new_attribute == attribute.first -%}
+          <input type="hidden" name="checkout[attributes][{{ attribute.first }}]" value="{{ attribute.last }}" />
+        {%- endunless -%}
+      {%- endfor -%}
+    </div>
+  </div>
+{% endif %}
+
+<script>
+  Plus.checkout.settings = {
+    customFieldSelector: '.plus-checkout-custom-field',
+    errorFieldSelector: '.plus-checkout-custom-field__error',
+    errorClass: 'plus-field-error'
+  };
+  
+  Plus.checkout.sections = [
+    {
+      step: 'contact_information',
+      formSelector: '[data-step] form',
+      formSubmitSelector: '[data-step-footer] [type="submit"]',
+      targetType: 'before',
+      targetSelector: '[data-step-footer]',
+      contentDropSelector: '#plus-custom-section-wrapper',
+      contentSelector: 'form .plus-checkout-custom-fields__section.plus-custom-section-name',
+      fields: [
+      {
+          type: 'attribute',
+          selector: 'form #plus-custom-checkbox',
+          errorSelector: 'form #plus-checkbox-error',
+          required: {{ settings.plus_checkout_checkbox_required }},
+          currentValue: '{{ checkout.attributes[new_attribute] }}',
+          storage: 'plus_custom_checkbox'
+        }
+      ]
+    }
+  ];
+</script>

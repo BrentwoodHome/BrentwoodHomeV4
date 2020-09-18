@@ -1,0 +1,176 @@
+/* ======================== General ======================== */
+.plus-checkout-custom-fields__section-wrapper  {
+  display: none;
+}
+
+.plus-checkout-custom-fields__section {
+  padding-top: 0;
+}
+
+.plus-checkout-custom-fields__header {
+  margin-bottom: 1em;
+}
+
+.plus-one-whole {
+  width: 100%;
+}
+
+.plus-one-half {
+  width: 50%;
+}
+
+.plus-one-third {
+  width: 33.333%;
+}
+
+.plus-one-quarter {
+  width: 25%;
+}
+
+@media (min-width: 750px) {
+  .plus-checkout-custom-fields__section {
+    padding-top: 0;
+  }
+  
+  .plus-checkout-custom-fields__header {
+    margin-bottom: 1.5em;
+  }
+}
+
+@media (max-width: 749px) {
+  .plus-one-half,
+  .plus-one-third,
+  .plus-one-quarter {
+    width: 100%;
+  }
+}
+
+.plus-checkout-custom-fields {
+  margin: -0.42857em;
+  zoom: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.plus-checkout-custom-fields__content:before {
+  content: "";
+  display: table;
+}
+
+.plus-checkout-custom-fields__content:after {
+  content:"";
+  clear:both;
+  display:table;
+}
+
+.plus-checkout-custom-field-wrapper {
+  padding: 0.42857em;
+  float: left;
+  box-sizing: border-box;
+}
+
+/*.plus-checkout-custom-field {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+}*/
+
+@media (max-width: 425px) {
+  .plus-checkout-custom-field {
+    justify-content: center;
+  }
+}
+
+/* ======================== Inputs ======================== */
+.plus-checkout-custom-field.checkbox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.plus-checkout-checkbox {
+  padding-right: 0.75em;
+  float: left;
+}
+
+.plus-checkout-custom-field__checkbox-input {
+  width: 18px;
+  height: 18px;
+  -webkit-box-shadow: 0 0 0 0 {{ settings.checkout_accent_color }} inset;
+  box-shadow: 0 0 0 0 {{ settings.checkout_accent_color }} inset;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  cursor: pointer;
+  vertical-align: -4px;
+  border: 1px #d9d9d9 solid;
+  border-radius: 4px;
+}
+
+.plus-checkout-custom-field__checkbox-input:checked {
+  border: none;
+  -webkit-box-shadow: 0 0 0 10px {{ settings.checkout_accent_color }} inset;
+  box-shadow: 0 0 0 10px {{ settings.checkout_accent_color }} inset;
+}
+
+/*
+There is an app that is currently conrolling checkbox styles
+Uncomment this block if that app is ever removed.
+
+.plus-checkout-custom-field__checkbox-input:after {
+  width: 10px;
+  height: 8px;
+  margin-left: -5px;
+  margin-top: -4px;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: scale(0.2);
+  transform: scale(0.2);
+  -webkit-transition: all 0.2s ease-in-out 0.1s;
+  transition: all 0.2s ease-in-out 0.1s;
+  opacity: 0;
+  background-image: url({{ 'checkout-checkbox-tick.svg' | asset_url }});
+}
+*/
+
+.plus-checkout-custom-field__checkbox-input:checked:after {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* ======================== Errors ======================== */
+.plus-field-error .plus-checkout-custom-field__checkbox-input {
+  border-color: {{ settings.plus_checkout_error_color }};
+}
+
+.plus-checkout-custom-field__error {
+  display: none;
+  line-height: 1.3em;
+  margin: 10px 0 0 0;
+  color: red;
+  text-align: right;
+  float: right;
+  width: 60%;
+}
+
+@media (max-width: 425px) {
+  .plus-checkout-custom-field__error {
+    text-align: center;
+  }
+}
+
+.section--shipping-address .field label.checkbox__label{
+ padding-top: 0; 
+}
+
+label.plus-checkout-custom-field__checkbox-label{
+  float: none;
+  margin-left: 35px;
+  display: block;
+}

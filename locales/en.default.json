@@ -1,1 +1,11 @@
-{}
+{
+  "plus": {
+    "checkout": {
+      "custom_attributes": {
+        "checkbox_attribute_name": "Read return policy",
+        "checkbox_label_html": "I have read and agree to the terms of the Mattress Sleep Trial Policy. <span style='display: block;font-size: 13px;font-weight: normal;color: #666;'>Try your mattress for at least 30 days. You have 365 days to try it in your home. Sleep trial is limited to one of each applicable product type per household. <a href='https:\/\/www.brentwoodhome.com\/pages\/1-year-mattress-trial' target='_blank' style=\"text-decoration: underline;font-size: 13px;font-weight: normal;color: #666;\">Full details here.<\/a><\/span>",
+        "checkbox_error": "Sleep Trial Policy acceptance is required."
+      }
+    }
+  }
+}

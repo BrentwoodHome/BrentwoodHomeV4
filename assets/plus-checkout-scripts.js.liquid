@@ -1,0 +1,116 @@
+window.Plus = window.Plus || {};
+window.Plus.checkout = window.Plus.checkout || {};
+
+(function($) {
+  $(document).on('page:load page:change', function() {
+    var hasAttributes = false;
+
+    Plus.checkout.sections.forEach(function(section) {
+      if (section.type === 'attribute') {
+        hasAttributes = true;
+      }
+
+      Plus.checkout.customContentInit(section);
+    });
+
+    // If we have existing cart attributes, save them
+    {% if checkout.attributes != blank %}
+      if (hasAttributes && Shopify.Checkout.step == 'contact_information' && $('#plus-checkout-cart-attributes-wrapper .plus-checkout-cart-attributes input').length > 0) {
+        Plus.checkout.addContent('prepend', '[data-step="contact_information"] form', '#plus-checkout-cart-attributes-wrapper');
+      }
+    {% endif %}
+  });
+  
+  Plus.checkout.customContentInit = function(options) {
+    
+    if (Shopify.Checkout.step === options.step && $(options.contentSelector).length < 1) {
+      var settings = Plus.checkout.settings;
+      
+      // Add our custom content
+      Plus.checkout.addContent(options.targetType, options.targetSelector, options.contentDropSelector);
+      
+      options.fields.forEach(function(field) {
+        // If the field is required, prevent form submissions with no value
+        if (field.required) {
+          Plus.checkout.requiredField(options.formSelector, options.formSubmitSelector, field.selector, settings.customFieldSelector, field.errorSelector, settings.errorClass);
+        }
+        
+        // If we already have a value, put it in, and update the floating label
+        Plus.checkout.updateFieldValue(field.storage, field.currentValue, field.selector, settings.floatingLabelClass);
+      });
+      
+      // Intercept 'enter' for form submission
+      $(options.formSelector).on('keypress', function(e) {
+        if (e.keyCode === 13) {
+          e.preventDefault();
+          $(this).find(options.formSubmitSelector).trigger('click.plus');
+        }
+      });
+    } else if ($(options.contentSelector).length > 0) {
+      $(options.contentSelector).remove();
+      $(options.formSubmitSelector).off('.plus');
+    }
+  }
+  
+  Plus.checkout.addContent = function(targetType, targetSelector, content) {
+    switch(targetType) {
+      case 'before':
+        $(targetSelector).before($(content).html());
+        break;
+      case 'prepend':
+        $(targetSelector).prepend($(content).html());
+        break;
+      case 'append':
+        $(targetSelector).append($(content).html());
+        break;
+      case 'after':
+        $(targetSelector).after($(content).html());
+        break;
+    }
+  }
+  
+  Plus.checkout.requiredField = function(formSelector, formSubmitSelector, fieldSelector, customFieldSelector, errorSelector, errorClass) {
+    $(formSubmitSelector).on('click.plus', function(e) {
+      e.preventDefault();
+      
+      Plus.checkout.requiredFieldHandler(e, formSelector, formSubmitSelector, fieldSelector, customFieldSelector, errorSelector, errorClass);
+    });
+  }
+  
+  Plus.checkout.requiredFieldHandler = function(e, formSelector, formSubmitSelector, fieldSelector, customFieldSelector, errorSelector, errorClass) {
+    var showError = showError = !$(fieldSelector).prop('checked');
+    
+    if (showError) {
+      $(fieldSelector).closest(customFieldSelector).addClass(errorClass);
+      $(errorSelector).show();
+    } else {
+      $(e.target).closest(formSelector).submit();
+    }
+  }
+  
+  Plus.checkout.updateFieldValue = function(storage, currentValue, fieldSelector, floatingLabelClass) {
+    var value = localStorage.getItem(storage) === 'Yes' ? true : false;
+    $(fieldSelector).prop('checked', value);
+  }
+  
+  Plus.checkout.keyupField = function(fieldSelector, floatingLabelClass, required, customFieldSelector, errorClass, errorFieldSelector) {
+    $(fieldSelector).on('keyup', function() {
+      $(this).parent().addClass(floatingLabelClass);
+      
+      if (required) {
+        $(this).closest(customFieldSelector).removeClass(errorClass);
+        $(this).closest(customFieldSelector).siblings(errorFieldSelector).hide();
+      }
+    });
+  }
+  
+  Plus.checkout.blurField = function(fieldSelector, storage, floatingLabelClass) {
+    $(fieldSelector).on('blur', function() {
+      localStorage.setItem(storage, $(this).val());
+      
+      if ($(this).val().length < 1) {
+        $(this).parent().removeClass(floatingLabelClass);
+      }
+    });
+  }
+})(Checkout.$);

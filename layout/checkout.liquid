@@ -109,6 +109,37 @@
             </div>
         </div>
     </div>
+
+    {%- if settings.plus_checkout_checkbox_enable -%}
+      {%- if settings.plus_checkout_product_type != "" -%}
+        {%- assign product_found = false -%}
+        {%- assign types = settings.plus_checkout_product_type | split: ',' -%}
+        
+        {%- for item in checkout.line_items -%}
+          {%- assign check_type = item.product.type | downcase -%}
+
+          {%- for type in types -%}
+            {%- assign set_type = type | downcase | strip -%}
+            {%- if set_type == check_type -%}
+              {%- assign product_found = true -%}
+              {%- assign break_loop = true -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+
+          {%- if break_loop -%}
+            {%- break -%}
+          {% endif -%}
+        {%- endfor -%}
+        
+        {%- if product_found -%}
+          {%- render 'plus-checkout-checkbox' -%}
+        {%- endif -%}
+      {%- else -%}
+        {%- render 'plus-checkout-checkbox' -%}
+      {%-endif -%}
+    {%- endif -%}
+
     {{ tracking_code }}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script> 
     </body>
@@ -124,7 +155,7 @@
 </style>
 <script>
     //$(function() {$(".idme-btn-affinity").append(" select mattresses.")});
-    $(function() {$("div.section--shipping-method h2#main-header").after("<p class='disclaimer-shipping'>Please note: All our products require production time <span style='text-decoration: underline;'>before</span> they can ship. Check product pages for accurate times or our <a href='https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3840166-when-can-i-expect-my-brentwood-home-products-to-arrive' style='text-decoration: underline;' target='_blank'>help center</a>.")});
+  $(function() {$("div.section--shipping-method h2#main-header").after("<p class='disclaimer-shipping'>Please note: All our products require production time <span style='text-decoration: underline;'>before</span> they can ship. Check product pages for accurate times or our <a href='https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3840166-when-can-i-expect-my-brentwood-home-products-to-arrive' style='text-decoration: underline;' target='_blank'>help center</a>.")});
 </script>
 
 {{ 'idme-checkout-style.css' | asset_url | stylesheet_tag }}

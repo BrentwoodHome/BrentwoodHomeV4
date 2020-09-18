@@ -4003,5 +4003,38 @@
         "default": "Georgia"
       }
     ]
+  },
+  {
+    "name": "[Plus] Checkout",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Checkbox"
+      },
+      {
+        "type": "paragraph",
+        "content": "With this enabled, a custom checkbox can be added to the first step of the checkout."
+      },
+      {
+        "type": "checkbox",
+        "id": "plus_checkout_checkbox_enable",
+        "label": "Show section",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "plus_checkout_checkbox_required",
+        "label": "Make field 'required'",
+        "default": true
+      },
+      {
+        "type": "textarea",
+        "id": "plus_checkout_product_type",
+        "label": "Product types",
+        "info": "Add all product types that trigger the checkbox to appear, seperated by a comma (,). Leave blank for all products to trigger the checkbox.",
+        "default": "Mattress",
+        "placeholder": "Enter product types here. Leave blank for all products."
+      }
+    ]
   }
 ]

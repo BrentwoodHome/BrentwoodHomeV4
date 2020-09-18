@@ -59,7 +59,9 @@
     <div class="row">
         <div class="col-lg-12">
             <!--h1>Your cart</h1-->
-            <form action="/cart" method="post" id="cartform">
+            {% comment %} Plus FED - Checkout checkbox - Sept 2020 {% endcomment %}
+            {% comment %} Force going to first step of checkout if required checkbox is enabled {% endcomment %}
+            <form action="{% if settings.plus_checkout_checkbox_enable %}/cart?step=contact_information{% else %}/cart{% endif %}" method="post" id="cartform">
                 <table id="cart_list">
                     <thead>
                         <tr>
