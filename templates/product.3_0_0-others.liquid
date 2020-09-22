@@ -237,6 +237,17 @@
                                         {% endif %}
                                     </div>
                                     {% include 'affirm-product' %}
+                                    {% if product.selected_or_first_available_variant.price < 4999 %}
+                                        <style type="text/css">
+                                            .affirmWrap{display: none;}
+                                            DIV.product-shop .prices{
+                                                width: 100%;
+                                                text-align: center;
+                                                padding-top: 14px;
+                                                border-right: none;
+                                            }
+                                        </style>
+                                    {% endif %}
                                     <div class="affirmWrap">
                                         <div class="affirm" style="">
                                             <a id="learn-more" class="affirm-as-low-as" data-learnmore-show="true" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{product.selected_or_first_available_variant.price}}"></a>
@@ -351,6 +362,24 @@
     {% elsif product.handle == "organic-waterproof-mattress-protector" or product.handle == "organic-waterproof-crib-protector-pad" %}
     <div class="container section warranties">
         <h2 class="text-center">Easily Protect Your Mattress, Naturally</h2>
+        <div class="row">
+            <div class="col-xs-4 col-sm-2 col-sm-offset-3">
+                <img src="https://brentwood-home-2.imgix.net/iconv2-100nightguarantee.svg" alt="100-night sleep trial">
+                <p>100-Night<br>Sleep Trial</p>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <img src="https://brentwood-home-2.imgix.net/iconv2-freeshipping.svg" alt="Free shippinh & Returns">
+                <p>Free Shipping<br>Free Return</p>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <img src="https://brentwood-home-2.imgix.net/iconv2-1yearwarranty.svg" alt="1-year Warranty">
+                <p>1-year<br>Warranty</p>
+            </div>
+        </div>
+    </div>
+    {% elsif product.handle == "organic-toddler-pillowcase" %}
+    <div class="container section warranties">
+        <h2 class="text-center">Peace of mind guarantee</h2>
         <div class="row">
             <div class="col-xs-4 col-sm-2 col-sm-offset-3">
                 <img src="https://brentwood-home-2.imgix.net/iconv2-100nightguarantee.svg" alt="100-night sleep trial">
