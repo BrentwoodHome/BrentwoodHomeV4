@@ -152,7 +152,6 @@
                             <meta itemprop="ratingValue" content="{{ product.metafields.yotpo.reviews_average }}">
                             <meta itemprop="ratingCount" content="{{ product.metafields.yotpo.reviews_count }}">
                         </div>
-                        <!--{% include 'shippingtime' %}-->
                         <p class="short-description">
                             {{ metaf.shortdesc }}{% if metaf.feel %}<br>Rated as a {{ metaf.feel }}.{% endif %}
                         </p>
@@ -166,6 +165,8 @@
                         {% endif %}
                         <div class="mob-dark">
                             <div id="buysection"></div>
+                            {% include 'shippingtime' %}
+                            {% render 'product-shippingestimate', var_shipsfree: shipsfree, var_trial: trial  %}
                             <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
                                 <label for="product-selectors" class="selectLabel">Size</label>
                                 <div id="product-variants">
@@ -179,7 +180,7 @@
                                                 {% endfor %}
                                             </select>
                                             {% comment %}variables set in snippets/shippingtime.liquid{% endcomment %}
-                                            <p class="short-description shipping"><img src="https://brentwood-home-2.imgix.net/icon-shippingv4.svg" alt="Ships free, free returns">Ships free in {{ shipsfree }} | free returns {% if trial %}| {{trial}}{% endif %}</p>
+                                            
                                             
                                             {% if settings.use_color_swatch %}
                                                 {% for option in product.options %}
@@ -224,6 +225,7 @@
                                 {% assign current_variant = product.selected_or_first_available_variant %}
                             </form>
                             <button type="button" class="cta2" style="width: 100%;" id="product-add-to-cart">Add to Cart</button>
+                            {% include 'vtail-widget-link' %}
                         </div>
                     </div>                    
                 </div><!-- Right Col product-shop --> 
@@ -788,7 +790,7 @@
       }
     </style>
       <i class="text-left small" style="margin-top: 10px;">Price may not reflect any current promotions or discount. Last Updated: May 2020.</i>
-      <i class="text-left small">(1) Brentwood and Birch use natural wool as fire barrier instead of a flame retardant or firesock. Awara, DreamCloud and Clasper use silica. </i>
+      <i class="text-left small">(1) Brentwood and Birch use natural wool as fire barrier instead of a flame retardant or firesock. Awara, DreamCloud and Casper use silica. </i>
       <i class="text-left small">(2) Brentwood uses upcycled denim and recycled plastic bottles. Casper also uses recycled plastic bottles in their ticking. </i>
       <i class="text-left small">(3) Brentwood has been making mattresses in Los Angeles since 1987. Many other brands subcontract their manufacturing or import their finished products.</i>
       <i class="text-left small">(4) Terms & Conditions apply.</i>
@@ -911,7 +913,5 @@
     </div>
 
     <p class="text-center"><a href="#buysection" class="sscroll cta2">buy</a></p>
-
-
-
 </div>
+

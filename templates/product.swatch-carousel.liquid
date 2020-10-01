@@ -1,4 +1,4 @@
-{% include 'bold-product' with product, hide_action: 'break' %}{% if bold_hidden_product %}{% break %}{%endif %}
+
 <div class="container-fluid" id="product">
     <div itemscope itemtype="http://schema.org/Product" class="product">
         <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
@@ -99,7 +99,7 @@
                   <h3 class="text-left">{{product.metafields.bhsite.feel}}</h3>
                   <p class="short-description">{{product.metafields.bhsite.shortdesc}}</p>
                   {% include 'shippingtime' %}
-                  
+                  {% render 'product-shippingestimate', var_shipsfree: shipsfree, var_trial: trial  %}
 
                   <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
                       <div id="product-variants">
@@ -169,11 +169,8 @@
                       <input type="submit" name="add" class="btn" id="product-add-to-cart" disabled value="Unavailable">
                       {% endif %}
                   {% assign current_variant = product.selected_or_first_available_variant %}
-                  
+                  {% include 'vtail-widget-link' %}
                   </form>
-
-                  {% include 'wishlist-product' %}
-                  {% include 'product-share' %}
 
 
               </div>

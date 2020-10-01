@@ -14,6 +14,16 @@ $body-stack-bold: AvenirLTStd-Roman, 'Helvetica Neue', helvetica, sans-serif;
 $body-stack-oblique: AvenirLTStd-LightOblique, 'Helvetica Neue', helvetica, sans-serif;
 
 /*****BUY SECTION******/
+.yotpo .text-m {
+    font-size: 14px;
+    line-height: 21px;
+    padding-left: 6px;
+}
+div#product-image-main{
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 120px;
+}
 #product.container-fluid{
     max-width: 1480px;
 }
@@ -39,15 +49,20 @@ div.shortdesc.more{
     }
 }
 p.short-description.shipping{
-    font-size: 14px;
+    font-size: 12px;
     text-transform: uppercase;
     text-align: center;
     color: $blue;
-    letter-spacing: 0px;
+    letter-spacing: 1px;
     line-height: 18px;
     font-family: $body-stack-bold;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     margin-top: 0;
+
+    //padding: 10px;
+    //background-color: gainsboro;
+    //border-radius: 50px;
+    font-weight: bold;
     IMG{
         width: 26px;
         margin-right: 5px;
@@ -829,8 +844,10 @@ DIV.inside {
         padding: 10px;
         text-align: center;
     }
-    #product-image-main{
+    div#product-image-main{
         margin-bottom: 0px;
+        position: relative !important;
+        top: auto;
     }
     .product-shop .product-title h1{
         margin: 10px 0;

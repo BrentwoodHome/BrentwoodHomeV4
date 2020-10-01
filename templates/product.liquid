@@ -82,8 +82,9 @@
 
                   <h3 class="text-left">{{product.metafields.bhsite.feel}}</h3>
                   <p class="short-description">{{product.metafields.bhsite.shortdesc}}</p>
-                  
-                  
+                  <br>
+                                        {% include 'shippingtime' %}
+<p class="short-description shipping"><img src="https://brentwood-home-2.imgix.net/icon-shippingv4.svg" alt="Ships free, free returns">Ships free {{ shipsfree }} | free returns {% if trial %}| {{trial}}{% endif %}&nbsp;<a href="#" data-toggle="modal" data-target="#shipping-popup"><em class="glyphicon glyphicon-question-sign"></em></a></p>
 
                   <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
                       
@@ -113,6 +114,8 @@
                      
 
                       {% if product.available and product.id != 2028991807550 %}
+                      <!-- WIDGET BUNDLES (PILLOW + FOUNDATION )-->
+                            {% include 'productbundles-widget' %}
                       <div class="clearfix">
                           <div id="qt"><label for="Quantity" class="selectLabel">Qty: </label> <input type="text" id="quantity" name="quantity" value="1"></div>
                           <!-- PRICE -->
@@ -157,9 +160,9 @@
                           </p>
                       </div>
                     {%else%}
-                      <!--{% include 'shippingtime' %}-->
+
                       <input type="submit" name="add" class="cta2" id="product-add-to-cart" value="Add to Cart">
-                      <p id="add2cart_shipping"><img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Ships free in {{ shipsfree }}">Ships free in {{ shipsfree }}</p>
+                      
                       <div class="clearfix"></div>
                   
                     {% endif %}
@@ -177,7 +180,7 @@
                           {%else%}
                               <input type="submit" name="add" class="btn" id="product-add-to-cart" disabled value="Unavailable">
                           {% endif %}
-                     
+                     {% include 'vtail-widget-link' %}
                       
                       {% endif %}
                   {% assign current_variant = product.selected_or_first_available_variant %}

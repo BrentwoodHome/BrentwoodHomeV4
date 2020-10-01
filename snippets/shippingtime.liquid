@@ -11,32 +11,32 @@
 </style>
 
 {%comment%}Assign default trial and shipping time{%endcomment%}
-{% assign shipsfree = "2-3 business days" %}
-{% assign trial = "false" %}
+{% assign shipsfree = "in 2-3 business days" %}
+{% assign trial = false %}
 
 {% case product.type %}
 
     {% when 'Pillow' %}
         {% assign trial = "30-day trial" %}
-        {% assign shipsfree = "1-2 business days" %}
+        {% assign shipsfree = "in 1-2 business days" %}
 
     {% when 'Wedge Pillow' %}
         {% assign trial = "30-day trial" %}
-        {% assign shipsfree = "1-2 business days" %}
+        {% assign shipsfree = "in 1-2 business days" %}
 
     {% when 'Mattress' %}
         {% assign trial = "1-year trial" %}
 
     {% when 'Bed Frames' %}
         {% assign trial = "1-year trial" %}
-        {% assign shipsfree = "2-3 business days" %}
+        {% assign shipsfree = "in 2-3 business days" %}
 
     {% when 'Mattress Topper' %}
         {% assign trial = "1-year trial" %}
-        {% assign shipsfree = "2-7 business days" %}
+        {% assign shipsfree = "in 2-7 business days" %}
 
     {% when 'Crib Mattress' %}
-        {% assign shipsfree = "1-2 business days" %}
+        {% assign shipsfree = "in 1-2 business days" %}
 
 {% endcase %}
 
@@ -48,21 +48,21 @@ MATTRESSES
 ***********************
 {%endcomment%}
     {% when 'oceano-mattress' %}
-        {% assign shipsfree = "2-20 business days" %}
+        {% assign shipsfree = "within 4 weeks" %}
     {% when 'cedar-natural-luxe-mattress' %}
-        {% assign shipsfree = "2-15 business days" %}
+        {% assign shipsfree = "within 4 weeks" %}
     {% when 'crystal-cove-mattress' %}
-        {% assign shipsfree = "2-13 business days" %}
+        {% assign shipsfree = "within 3 weeks" %}
     {% when 'cypress-memory-foam-mattress' %}
-        {% assign shipsfree = "2-22 business days" %}
+        {% assign shipsfree = "within 5 weeks" %}
     {% when 'hybrid-latex-mattress' %}
-        {% assign shipsfree = "2-25 business days" %}
+        {% assign shipsfree = "within 6 weeks" %}
     
 
      {% when 'wildfern-crib-and-toddler-mattress' %}
-        {% assign shipsfree = "2-3 business days" %}
+        {% assign shipsfree = "in 2-3 business days" %}
     {% when 'juniper' %}
-        {% assign shipsfree = "2-8 business days" %}
+        {% assign shipsfree = "in 2-8 business days" %}
 
 {%comment%}
 ***********************
@@ -70,13 +70,13 @@ TOPPERS
 ***********************
 {%endcomment%}
     {% when 'cedar-natural-luxe-topper' %}
-        {% assign shipsfree = "2-20 business days" %}
+        {% assign shipsfree = "within 4 weeks" %}
     {% when 'cedar-natural-latex-mattress-topper' %}
-        {% assign shipsfree = "2-20 business days" %}
+        {% assign shipsfree = "within 4 weeks" %}
     {% when 'oceano-memory-foam-mattress-topper' %}
-        {% assign shipsfree = "2-10 business days" %}
+        {% assign shipsfree = "in 2-7 business days" %}
     {% when 'salton-2-soft-gel-topper' %}
-        {% assign shipsfree = "2-7 business days" %}
+        {% assign shipsfree = "in 2-7 business days" %}
 
 
 {%comment%}
@@ -85,13 +85,13 @@ FRAMES AND FOUNDATIONS
 ***********************
 {%endcomment%}
     {% when 'foundation' %}
-        {% assign shipsfree = "2-3 business days" %}
+        {% assign shipsfree = "in 2-3 business days" %}
         {% assign trial = "1-year trial" %}
     {% when 'adjustable-bed-frame' %}
-        {% assign shipsfree = "1-2 business days" %}
+        {% assign shipsfree = "in 1-2 business days" %}
         {% assign trial = "100-night trial" %}
     {% when 'metal-bed-frame' %}
-        {% assign shipsfree = "1-2 business days" %}
+        {% assign shipsfree = "in 1-2 business days" %}
         {% assign trial = "1-year trial" %}
         
 
@@ -101,9 +101,9 @@ PET BEDS
 ***********************
 {%endcomment%}
     {% when 'griffith-orthopedic-pet-bed' %}
-        {% assign shipsfree = "2-23 business days" %}
+        {% assign shipsfree = "within 5 weeks" %}
     {% when 'runyon-deluxe-orthopedic-pet-bed' %}
-        {% assign shipsfree = "2-23 business days" %}
+        {% assign shipsfree = "within 5 weeks" %}
         
 
 {%comment%}
@@ -112,33 +112,33 @@ PILLOWS AND WEDGES
 ***********************
 {%endcomment%}
     {% when 'lilypad-kids-pillow' %}
-        {% assign shipsfree = "1-2 business days" %}
+        {% assign shipsfree = "in 1-2 business days" %}
 
     {% when 'sleeping-willow-toddler-pillow' %}
-        {% assign shipsfree = "1-3 business days" %}
+        {% assign shipsfree = "in 1-3 business days" %}
 
     {% when 'crystal-cove-wedge-pillow' %}
-        {% assign shipsfree = "1-2 business days" %}
+        {% assign shipsfree = "in 1-2 business days" %}
 
     {% when 'eco-latex-charcoal-foam-seat-cushions' %}
-        {% assign shipsfree = "3-5 business days" %}
+        {% assign shipsfree = "in 3-5 business days" %}
 
     {% when 'therapeutic-foam-bed-wedge' %}
-        {% assign shipsfree = "1-2 business days" %}
+        {% assign shipsfree = "in 1-2 business days" %}
 
 {% comment %}
     {% when 'therapeutic-foam-bed-wedge' %}
         {% assign shipsfree = "2-3 business days" %}
 {% endcomment %}
     {% when 'whitney-gel-memory-foam-wedge-pillow' %}
-        {% assign shipsfree = "1-2 business days" %}
+        {% assign shipsfree = "in 1-2 business days" %}
 
 
     {% when 'oceano-wedge-pillow' %}
-        {% assign shipsfree = "1-2 business days" %}
+        {% assign shipsfree = "in 1-2 business days" %}
 
     {% when 'cypress-pillow' %}
-        {% assign shipsfree = "2-5 business days" %}
+        {% assign shipsfree = "in 2-5 business days" %}
 
 
 {%comment%}
@@ -147,17 +147,17 @@ YOGA
 ***********************
 {%endcomment%}
     {% when 'crystal-cove-yoga-bolster' %}
-        {% assign shipsfree = "1-2 business days" %}
+        {% assign shipsfree = "in 1-2 business days" %}
     {% when 'crystal-cove-meditation-pillow-square' %}
-        {% assign shipsfree = "1-2 business days" %}
+        {% assign shipsfree = "in 1-2 business days" %}
     {% when 'crystal-cove-pranayama-bolster' %}
-        {% assign shipsfree = "1-2 business days" %}
+        {% assign shipsfree = "in 1-2 business days" %}
     {% when 'crystal-cove-meditation-pillow' %}
-        {% assign shipsfree = "1-2 business days" %}
+        {% assign shipsfree = "in 1-2 business days" %}
     {% when 'crystal-cove-square-meditation-pillow' %}
-        {% assign shipsfree = "1-2 business days" %}
+        {% assign shipsfree = "in 1-2 business days" %}
     {% when 'crystal-cove-bundle' %}
-        {% assign shipsfree = "1-2 business days" %}
+        {% assign shipsfree = "in 1-2 business days" %}
 
 
 {%comment%}
@@ -166,16 +166,16 @@ MISC BEDDING
 ***********************
 {%endcomment%}
     {% when 'beachwood-linen-quilt' %}
-        {% assign shipsfree = "2-3 days" %}
+        {% assign shipsfree = "in 2-3 days" %}
 
     {% when 'luxury-organic-cotton-sheets' %}
-        {% assign shipsfree = "1-2 business days" %}
+        {% assign shipsfree = "in 1-2 business days" %}
         {% assign trial = "100-night trial" %}
 
     {% when 'organic-toddler-pillowcase' %}
-        {% assign shipsfree = "2-3 business days" %}
+        {% assign shipsfree = "in 2-3 business days" %}
         {% assign trial = "100-night trial" %}
         
      {% when 'organic-waterproof-crib-protector-pad' %}
-        {% assign shipsfree = "2-3 business days" %}
+        {% assign shipsfree = "in 2-3 business days" %}
 {% endcase %}
