@@ -87,7 +87,9 @@
 <p class="short-description shipping"><img src="https://brentwood-home-2.imgix.net/icon-shippingv4.svg" alt="Ships free, free returns">Ships free {{ shipsfree }} | free returns {% if trial %}| {{trial}}{% endif %}&nbsp;<a href="#" data-toggle="modal" data-target="#shipping-popup"><em class="glyphicon glyphicon-question-sign"></em></a></p>
 
                   <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
-                      
+                      <!-- WIDGET BUNDLES (PILLOW + FOUNDATION )-->
+                                    {% include 'productbundles-widget' %}
+
                       {% if product.id != 2028991807550 %}
                           <div id="product-variants">
                               {% assign variantCount = product.variants | size %}
@@ -114,8 +116,6 @@
                      
 
                       {% if product.available and product.id != 2028991807550 %}
-                      <!-- WIDGET BUNDLES (PILLOW + FOUNDATION )-->
-                            {% include 'productbundles-widget' %}
                       <div class="clearfix">
                           <div id="qt"><label for="Quantity" class="selectLabel">Qty: </label> <input type="text" id="quantity" name="quantity" value="1"></div>
                           <!-- PRICE -->
