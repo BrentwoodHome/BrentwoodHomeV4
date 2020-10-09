@@ -48,11 +48,11 @@ MATTRESSES
 ***********************
 {%endcomment%}
     {% when 'oceano-mattress' %}
-        {% assign shipsfree = "within 4 weeks" %}
+        {% assign shipsfree = "within 5 weeks" %}
     {% when 'cedar-natural-luxe-mattress' %}
         {% assign shipsfree = "within 5 weeks" %}
     {% when 'crystal-cove-mattress' %}
-        {% assign shipsfree = "within 4 weeks" %}
+        {% assign shipsfree = "within 3 weeks" %}
     {% when 'cypress-memory-foam-mattress' %}
         {% assign shipsfree = "within 5 weeks" %}
     {% when 'hybrid-latex-mattress' %}
@@ -72,9 +72,9 @@ TOPPERS
     {% when 'cedar-natural-luxe-topper' %}
         {% assign shipsfree = "within 5 weeks" %}
     {% when 'cedar-natural-latex-mattress-topper' %}
-        {% assign shipsfree = "in 2-7 business days" %}
-    {% when 'oceano-memory-foam-mattress-topper' %}
         {% assign shipsfree = "within 2 weeks" %}
+    {% when 'oceano-memory-foam-mattress-topper' %}
+        {% assign shipsfree = "within 3 weeks" %}
     {% when 'salton-2-soft-gel-topper' %}
         {% assign shipsfree = "in 2-7 business days" %}
 
@@ -139,6 +139,9 @@ PILLOWS AND WEDGES
 
     {% when 'cypress-pillow' %}
         {% assign shipsfree = "in 2-5 business days" %}
+
+    {% when 'organic-toddler-pillowcase' %}
+        {% assign shipsfree = "within 3 weeks" %}
 
 
 {%comment%}
