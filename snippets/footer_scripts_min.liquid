@@ -23,7 +23,6 @@
         $(document).ready(function(){$("#home-reviews").owlCarousel({loop:!1,margin:10,responsiveClass:!0,responsive:{0:{items:1},768:{items:2},1024:{items:3}},nav:!1}),$("#latest-blogs").owlCarousel({loop:!1,margin:10,responsiveClass:!0,responsive:{0:{items:1},600:{items:2},800:{items:3}},nav:!1})});
     </script>
 {%endif%}
-
 {% if template contains 'product'%}
 
     {{ 'modernizr.js' | asset_url | script_tag }}
