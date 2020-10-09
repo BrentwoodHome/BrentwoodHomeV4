@@ -37,6 +37,8 @@ For information on adding more fields, visit:
                 </div>
             </div>
             <div class="col-xs-12 col-md-6">
+                {% include 'vtail-widget-link' %}
+                <br>
                 {% form 'contact' %}
                     {% if form.posted_successfully? %}
                     <p class="note form-success">
