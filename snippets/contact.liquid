@@ -47,6 +47,11 @@
       Successful message
     {% endcomment %}
     {% if form.posted_successfully? %}
+    <style>
+      #contactFormWrapper{
+        display: none !important;
+      }
+    </style>
     <p class="note form-success">
       Thanks for contacting us! We'll get back to you as soon as possible.
     </p>
