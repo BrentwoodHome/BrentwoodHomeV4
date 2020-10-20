@@ -290,82 +290,46 @@
 {% endcomment %}
 
 <script>
-    /*
-  jQuery('.btn-menu-canvas').click(function(){
-  	if(jQuery('#offcanvas').hasClass('active')){
-		jQuery('body').removeClass('off-canvas-active');
-      	jQuery('#offcanvas').removeClass('active');
-      	jQuery('.wrapper-container').removeClass('offcanvas-push');
-      }else{
-        jQuery('body').addClass('off-canvas-active');
-        jQuery('#offcanvas').addClass('active');
-        jQuery('.wrapper-container').addClass('offcanvas-push');
-      }
-  });
-  jQuery('#off-canvas-button').click(function(){
-  		jQuery('#offcanvas').removeClass('active');
-      	jQuery('.wrapper-container').removeClass('offcanvas-push');
-  });
+    //NEW NAV
+    jQuery('.btn-menu-canvas').click(function(){
+        if(jQuery('#offcanvasb').hasClass('active')){
+            jQuery('body').removeClass('off-canvas-active');
+            jQuery('#offcanvasb').removeClass('active');
+            jQuery('.wrapper-container').removeClass('offcanvas-push');
+        }else{
+            jQuery('body').addClass('off-canvas-active');
+            jQuery('#offcanvasb').addClass('active');
+            jQuery('.wrapper-container').addClass('offcanvas-push');
+        }
+    });
+    jQuery('#off-canvas-buttonb').click(function(){
+        jQuery('#offcanvasb').removeClass('active');
+        jQuery('.wrapper-container').removeClass('offcanvas-push');
+    });
 
     jQuery(document).mouseup(function (e){
 
-     var container = jQuery("#offcanvas");
+        var container = jQuery("#offcanvasb");
 
-    if (!container.is(e.target) // if the target of the click isn't the container...
-        && container.has(e.target).length === 0) // ... nor a descendant of the container
-    {
-        jQuery('#offcanvas').removeClass('active');
-      	jQuery('.wrapper-container').removeClass('offcanvas-push');
-    }
-
-  });
-    
-    
-    
-
-  jQuery("#offcanvas .navbar-nav ul").hide();
-    jQuery("#offcanvas .navbar-nav li p.h3 i").addClass("accordion-show");
-
-    //var iconAccordion = jQuery("#offcanvas .navbar-nav li h3 i");
-
-    jQuery("#offcanvas .navbar-nav li p.h3 A").click(function(e){
-        e.preventDefault();
-        if(jQuery(this).parent().next().is(":visible")){
-            jQuery(this).parent().addClass("accordion-show");
-        }else{
-            jQuery(this).parent().removeClass("accordion-show");
+        if (!container.is(e.target) // if the target of the click isn't the container...
+            && container.has(e.target).length === 0) // ... nor a descendant of the container
+        {
+            jQuery('#offcanvasb').removeClass('active');
+            jQuery('.wrapper-container').removeClass('offcanvas-push');
         }
-        jQuery(this).parent().next().toggle(400);
-        if(jQuery(this).siblings().hasClass("icon_plus")){
-            jQuery(this).siblings().removeClass("icon_plus");
-            jQuery(this).siblings().addClass("icon_minus-06");
-        }else{
-            jQuery(this).siblings().removeClass("icon_minus-06");
-            jQuery(this).siblings().addClass("icon_plus");
-        }
+
     });
-    */
-</script>
-
-<script>
-    /*
-$(document).ready(function() {
-    function checkWidth() {
-        var windowSize = $(window).width();
-        if (windowSize < 991) {
-            $("p.h3 i:first-of-type").removeClass( "icon_plus" ).addClass( "icon_minus-06" );
-            $(".level-1 p.h3 i").addClass( "icon_plus" );
-            $("ul.level-1:first-of-type").css("display", "block");
-            $("ul.level-1 li.parent:first-of-type p.h3 i:first-of-type").removeClass( "icon_plus" ).addClass( "icon_minus-06" );
-            $("li.parent:first-of-type ul.level-2:first-of-type").css("display", "block");
-        }
-    }
-    // Execute on load
-    checkWidth();
-    // Bind event listener
-    $(window).resize(checkWidth);
-});
-*/
+    $(document).ready(function() {
+        $('#collapseLearn').collapse({
+            toggle: false
+        });
+        $('#collapseLearn').on('show.bs.collapse', function () {
+            $("a.learn").addClass("open");
+        });
+        $('#collapseLearn').on('hide.bs.collapse', function () {
+            $("a.learn").removeClass("open");
+        });
+    });
 </script>
 
 

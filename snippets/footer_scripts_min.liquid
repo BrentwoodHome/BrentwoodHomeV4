@@ -168,34 +168,3 @@
 <script>console.log("{{template}}")
 console.log("{{product.handle}}")</script>
 
-<script>
-    //NEW NAV
-    jQuery('.btn-menu-canvas').click(function(){
-        if(jQuery('#offcanvasb').hasClass('active')){
-            jQuery('body').removeClass('off-canvas-active');
-            jQuery('#offcanvasb').removeClass('active');
-            jQuery('.wrapper-container').removeClass('offcanvas-push');
-        }else{
-            jQuery('body').addClass('off-canvas-active');
-            jQuery('#offcanvasb').addClass('active');
-            jQuery('.wrapper-container').addClass('offcanvas-push');
-        }
-    });
-    jQuery('#off-canvas-buttonb').click(function(){
-        jQuery('#offcanvasb').removeClass('active');
-        jQuery('.wrapper-container').removeClass('offcanvas-push');
-    });
-
-    jQuery(document).mouseup(function (e){
-
-        var container = jQuery("#offcanvasb");
-
-        if (!container.is(e.target) // if the target of the click isn't the container...
-            && container.has(e.target).length === 0) // ... nor a descendant of the container
-        {
-            jQuery('#offcanvasb').removeClass('active');
-            jQuery('.wrapper-container').removeClass('offcanvas-push');
-        }
-
-    });
-</script>
