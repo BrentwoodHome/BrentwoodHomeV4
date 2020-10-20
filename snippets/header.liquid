@@ -128,7 +128,14 @@
                                         <a href="/cart" id="cartToggle">
                                             <span class="icon top-icon-cart"><i class="fa fa-shopping-cart"></i></span>
                                             {% if cart.item_count > 0 %}
-                                                <span id="cart-count">{{ cart.item_count }}</span>
+                                              {% assign count = cart.item_count %}
+                                              {% assign decr = 0 %}
+                                              {% for item in cart.items %}
+                                                {% if item.product.handle == "mattress-fee" %}
+                                                  {% assign decr = decr | plus: 1%}
+                                                {% endif %}
+                                              {% endfor %}
+                                               <span id="cart-count">{{cart.item_count | minus: decr}}</span>
                                             {% endif %}
                                         </a>
                                     </p>
@@ -448,7 +455,7 @@
                            <ul class="nav-links">
                               <!-- <li class=""><a class="open_intercom" href="mailto:gnkl0uyl@brentwood-home-d2962b2761e8.intercom-mail.com">Chat With a Human</a></li> -->
                               <li class=""><a href="https://help.brentwoodhome.com/" target="_blank">Self-Help Center</a></li>
-                              <li class=""><a href="/pages/contact-us">Contact Us</a></li>
+                              <li class=""><a href="https://help.brentwoodhome.com/contact/contact-us-rJMDHEUPv">Contact Us</a></li>
                               <li class=""><a href="/pages/our-team">Meet Our Support Team</a></li>
                            </ul>
                         </div>
