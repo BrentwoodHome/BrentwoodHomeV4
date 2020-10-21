@@ -166,3 +166,230 @@
 
 {{ 'idme-checkout-style.css' | asset_url | stylesheet_tag }}
 {{ 'idme-checkout-template.js' | asset_url | script_tag }}
+
+<script>
+
+$(document).on('page:load page:change', function() {
+
+  var feeName = "Mattress Fee";
+  
+  function getCartItems() {
+    return fetch("/cart.js").then(function(items) {
+      return items.json();
+    }).then(function(data) {
+      return {total: data.total_price, items: data.items};
+    }).catch(function(e) {
+      return [];
+    })
+  }
+  
+  if(Shopify.Checkout.step === "contact_information") {
+    var $state_select = $("#checkout_shipping_address_province");
+    
+    $state_select.on("change", state_changed);
+    $state_select.change();
+  
+    function getMattressFeeVariants() {
+      return fetch('/products/mattress-fee.js').then(function(res) {
+        return res.json();
+      }).then(function(product) {
+        var variants = {};
+        product.variants.forEach(v => {
+          variants[v.title] = {id: v.id}
+        });
+        return {id: product.id, variants: variants};
+      }).catch(function(e) {
+        return {};
+      });
+    }
+  
+    async function state_changed(e) {
+      var value = e.target.value;
+      await addFee(value);
+    }
+  
+    async function addFee(variant_name) {
+      var cart = await getCartItems();
+      var mattresses = cart.items.filter(function(m) { return m.product_type === "Mattress"; });
+
+      var cartHasMattresses = mattresses.length > 0;
+      var fee_items = cart.items.filter(function(m) { return m.product_title === feeName; });
+
+      if(cartHasMattresses) {
+        addFees(variant_name, mattresses, fee_items);
+      } else {
+        removeItems(fee_items);
+      }
+    }
+  
+    function removeItems(items = []) {
+      var update_items = {};
+      items.forEach(function(item) {
+        update_items[item.variant_id] = 0;
+      })
+      callUpdate({updates: update_items});
+    }
+
+    function updateItem(id, count) {
+      var items = {};
+      items[id] = count;
+      callUpdate({updates: items})
+    }
+  
+    function addItem(id, count) {
+      callAdd({items: [{id: id, quantity: count}]}).then(function(data){
+        return data;
+      });
+    }
+
+    function callUpdate(body) {
+      return api("/cart/update.js", body);
+    }
+
+    function callAdd(body) {
+      return api("/cart/add.js", body);
+    }
+
+    function api(url, body) {
+      return fetch(url, {
+        method: "POST",
+        headers: {
+          'Content-Type': "application/json"
+        },
+        body: JSON.stringify(body)
+      }).then(function(resp) {
+        return resp.json();
+      }).then(function(cart) {
+        fetch(window.location).then(function(e) {
+          updateOrderSummary(cart.items);
+        });
+        return cart;
+      })
+    }
+
+    async function addFees(state, mattresses = [], fee_items = []) {
+      var mattress_variants = await getMattressFeeVariants();
+      var count = 0;
+      mattresses.forEach(function(mattress) {
+        count += mattress.quantity;
+      });
+
+
+      var out_of_range = fee_items.filter(function(fee) {
+        return fee.variant_title !== state;
+      });
+    
+      var fee_in_cart = fee_items.filter(function(fee) {
+        return fee.variant_title === state;
+      });
+
+      if(out_of_range.length > 0) {
+        removeItems(out_of_range);
+      }
+    
+      if(fee_in_cart.length > 0) {
+        updateItem(fee_in_cart[0].variant_id, count);
+       } else {
+        if("variants" in mattress_variants && mattress_variants.variants[state]) {
+          var id = mattress_variants.variants[state].id;
+          addItem(id, count);
+        }
+      }
+    }
+  }
+  
+  function parseToCurrency(num) {
+    return (num/100).toFixed(2);
+  }
+
+ 
+    var $sidebar = $(".sidebar__content");
+    $sidebar.hide();
+  
+    function hideOnOrderSummary(id) {
+      $("[data-product-id="+ id +"]").hide();
+    }
+
+    function createOrderLine(name, name_content, price, price_content) {
+      return $(`
+          <tr class="total-line total-line--mattress-fee" style="vertical-align: top">
+          <th class="total-line__name" style="position: relative;" scope="row">${name}${name_content}</th>
+          <td class="total-line__price">
+          <span class="order-summary__emphasis" data-checkout-mattress-fee-price-target="${price}">${price_content}
+          </span>
+          </td>
+          </tr>`);
+    }
+    
+    function getMattressLine() {
+      return $(".total-line.total-line--mattress-fee");
+    }
+    function addToOrderSummary(name="", total_price=0, price=0, qty=0) {
+      var $list = $(".total-line-table__tbody");
+      var $subtotal_line = $(".total-line.total-line--subtotal").first();
+      var breakdown_message = "";
+      if(qty > 1 && price > 0) {
+        breakdown_message = `<span style="font-weight:300">(${qty} x $${parseToCurrency(price)})</span> `;
+      };
+      
+      var $content = createOrderLine(
+        name, 
+        `<div role="tooltip" class="field__icon has-tooltip" style="display: inline-block;top: 4px;width:25px;">
+           <span id="tooltip-for-phone" class="tooltip" style="font-weight: 300; line-height:14px; font-size:13px;">
+             CA, CT & RI state law requires us to collect a fee on every mattress to support the state's recycling programs.
+           </span>
+           <div class="field__icon-svg">
+             <svg class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-16 icon-svg--block" role="presentation" aria-hidden="true" focusable="false"> <use xlink:href="#question" /></svg>
+           </div>
+         </div>`,
+        total_price,
+        `${breakdown_message}$${parseToCurrency(total_price)}`
+      );
+      var $mattress_fee_line = getMattressLine();
+      if($mattress_fee_line.length > 0) {
+        $mattress_fee_line.replaceWith($content)
+      } else {
+        $content.insertAfter($subtotal_line);
+      }
+      var subtotal_data_attr = "checkout-subtotal-price-target";
+      var $subtotal = $(`[data-${subtotal_data_attr}]`);
+      var subtotal = parseInt($subtotal.data(subtotal_data_attr));
+      $subtotal.html(`$${parseToCurrency(subtotal - total_price)}`);
+    };
+  
+    function updateOrderSummary(items, updateTotal) {
+      var mattress_item = items.filter(function(item) {
+        return item.product_title === feeName;
+      });
+     
+      if(mattress_item.length > 0) {
+        var item = mattress_item[0];
+        hideOnOrderSummary(item.product_id);
+        addToOrderSummary("Mattress Recycling Fee", item.final_line_price, item.price, item.quantity);
+        price = item.final_line_price;
+        addFeeToTotal(price);
+      } else {
+        var $mattress_fee_line = getMattressLine();
+        $mattress_fee_line.remove();
+        removeFeeFromTotal();
+      }
+    }
+
+    $price = $(".payment-due__price");
+    function addFeeToTotal(price) {
+      var total = $price.data("checkout-payment-due-target");
+      $price.html(`$${parseToCurrency(total + price)}`);
+    } 
+    function removeFeeFromTotal() {
+      var total = $price.data("checkout-payment-due-target");
+      $price.html(`$${parseToCurrency(total)}`);
+    }
+    
+    getCartItems().then(function(cart) {
+      updateOrderSummary(cart.items);
+      $sidebar.show();
+    })
+  
+});
+
+</script>
