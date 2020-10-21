@@ -171,7 +171,7 @@ $(document).on('page:load page:change', function() {
     return fetch("/cart.js").then(function(items) {
       return items.json();
     }).then(function(data) {
-      return data.items;
+      return {total: data.total_price, items: data.items};
     }).catch(function(e) {
       return [];
     })
@@ -203,11 +203,11 @@ $(document).on('page:load page:change', function() {
     }
   
     async function addFee(variant_name) {
-      var cart_items = await getCartItems();
-      var mattresses = cart_items.filter(function(m) { return m.product_type === "Mattress"; });
+      var cart = await getCartItems();
+      var mattresses = cart.items.filter(function(m) { return m.product_type === "Mattress"; });
 
       var cartHasMattresses = mattresses.length > 0;
-      var fee_items = cart_items.filter(function(m) { return m.product_title === feeName; });
+      var fee_items = cart.items.filter(function(m) { return m.product_title === feeName; });
 
       if(cartHasMattresses) {
         addFees(variant_name, mattresses, fee_items);
@@ -232,7 +232,7 @@ $(document).on('page:load page:change', function() {
   
     function addItem(id, count) {
       callAdd({items: [{id: id, quantity: count}]}).then(function(data){
-        return data.json();
+        return data;
       });
     }
 
@@ -252,9 +252,12 @@ $(document).on('page:load page:change', function() {
         },
         body: JSON.stringify(body)
       }).then(function(resp) {
+        return resp.json();
+      }).then(function(cart) {
         fetch(window.location).then(function(e) {
+          updateOrderSummary(cart.items);
         });
-        return resp;
+        return cart;
       })
     }
 
@@ -300,6 +303,21 @@ $(document).on('page:load page:change', function() {
     function hideOnOrderSummary(id) {
       $("[data-product-id="+ id +"]").hide();
     }
+
+    function createOrderLine(name, name_content, price, price_content) {
+      return $(`
+          <tr class="total-line total-line--mattress-fee" style="vertical-align: top">
+          <th class="total-line__name" style="position: relative;" scope="row">${name}${name_content}</th>
+          <td class="total-line__price">
+          <span class="order-summary__emphasis" data-checkout-mattress-fee-price-target="${price}">${price_content}
+          </span>
+          </td>
+          </tr>`);
+    }
+    
+    function getMattressLine() {
+      return $(".total-line.total-line--mattress-fee");
+    }
     function addToOrderSummary(name="", total_price=0, price=0, qty=0) {
       var $list = $(".total-line-table__tbody");
       var $subtotal_line = $(".total-line.total-line--subtotal").first();
@@ -307,36 +325,65 @@ $(document).on('page:load page:change', function() {
       if(qty > 1 && price > 0) {
         breakdown_message = `<span style="font-weight:300">(${qty} x $${parseToCurrency(price)})</span> `;
       };
-      var $fee = $(`
-        <tr class="total-line total-line--mattress-fee" style="vertical-align: top">
-        <th class="total-line__name" scope="row">${name}<br><span style="font-weight: 300;">For mattresses shipping to CA, CT or RI, we are required by law to charge a recycling fee</span></th>
-        <td class="total-line__price">
-        <span class="order-summary__emphasis" data-checkout-mattress-fee-price-target="${total_price}">
-        ${breakdown_message}$${parseToCurrency(total_price)}
-        </span>
-        </td>
-        </tr>`);
-      $fee.insertAfter($subtotal_line);
+      
+      var $content = createOrderLine(
+        name, 
+        `<div role="tooltip" class="field__icon has-tooltip" style="display: inline-block;top: 4px;">
+           <span id="tooltip-for-phone" class="tooltip" style="font-weight: 300; line-height:14px; font-size:13px;">
+             CA, CT & RI state law requires us to collect a fee on every mattress to support the state's recycling programs.
+           </span>
+           <div class="field__icon-svg">
+             <svg class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-16 icon-svg--block" role="presentation" aria-hidden="true" focusable="false"> <use xlink:href="#question" /></svg>
+           </div>
+         </div>`,
+        total_price,
+        `${breakdown_message}$${parseToCurrency(total_price)}`
+      );
+      var $mattress_fee_line = getMattressLine();
+      if($mattress_fee_line.length > 0) {
+        $mattress_fee_line.replaceWith($content)
+      } else {
+        $content.insertAfter($subtotal_line);
+      }
       var subtotal_data_attr = "checkout-subtotal-price-target";
       var $subtotal = $(`[data-${subtotal_data_attr}]`);
       var subtotal = parseInt($subtotal.data(subtotal_data_attr));
-      $subtotal.data(subtotal_data_attr, subtotal)
       $subtotal.html(`$${parseToCurrency(subtotal - total_price)}`);
     };
-
-    getCartItems().then(function(items) {
+  
+    function updateOrderSummary(items, updateTotal) {
       var mattress_item = items.filter(function(item) {
         return item.product_title === feeName;
       });
+     
       if(mattress_item.length > 0) {
         var item = mattress_item[0];
         hideOnOrderSummary(item.product_id);
-        addToOrderSummary("Mattress Fee", item.final_line_price, item.price, item.quantity);
-      } 
+        addToOrderSummary("Mattress Recycling Fee", item.final_line_price, item.price, item.quantity);
+        price = item.final_line_price;
+        addFeeToTotal(price);
+      } else {
+        var $mattress_fee_line = getMattressLine();
+        $mattress_fee_line.remove();
+        removeFeeFromTotal();
+      }
+    }
+
+    $price = $(".payment-due__price");
+    function addFeeToTotal(price) {
+      var total = $price.data("checkout-payment-due-target");
+      $price.html(`$${parseToCurrency(total + price)}`);
+    } 
+    function removeFeeFromTotal() {
+      var total = $price.data("checkout-payment-due-target");
+      $price.html(`$${parseToCurrency(total)}`);
+    }
+    
+    getCartItems().then(function(cart) {
+      updateOrderSummary(cart.items);
       $sidebar.show();
     })
   
-
 });
 
 </script>
