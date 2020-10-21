@@ -258,9 +258,13 @@ $(document).on('page:load page:change', function() {
       })
     }
 
-    async function addFees(state, mattresses, fee_items = []) {
+    async function addFees(state, mattresses = [], fee_items = []) {
       var mattress_variants = await getMattressFeeVariants();
-      var count = mattresses.length;
+      var count = 0;
+      mattresses.forEach(function(mattress) {
+        count += mattress.quantity;
+      });
+
 
       var out_of_range = fee_items.filter(function(fee) {
         return fee.variant_title !== state;
@@ -296,22 +300,28 @@ $(document).on('page:load page:change', function() {
     function hideOnOrderSummary(id) {
       $("[data-product-id="+ id +"]").hide();
     }
-    function addToOrderSummary(name="", price=0) {
+    function addToOrderSummary(name="", total_price=0, price=0, qty=0) {
       var $list = $(".total-line-table__tbody");
-      $list.prepend(`
-        <tr class="total-line total-line--subtotal">
-        <th class="total-line__name" scope="row">${name}</th>
+      var $subtotal_line = $(".total-line.total-line--subtotal").first();
+      var breakdown_message = "";
+      if(qty > 1 && price > 0) {
+        breakdown_message = `<span style="font-weight:300">(${qty} x $${parseToCurrency(price)})</span> `;
+      };
+      var $fee = $(`
+        <tr class="total-line total-line--mattress-fee" style="vertical-align: top">
+        <th class="total-line__name" scope="row">${name}<br><span style="font-weight: 300;">For mattresses shipping to CA, CT or RI, we are required by law to charge a recycling fee</span></th>
         <td class="total-line__price">
-        <span class="order-summary__emphasis" data-checkout-mattress-fee-price-target="${price}">
-        $${parseToCurrency(price)}
+        <span class="order-summary__emphasis" data-checkout-mattress-fee-price-target="${total_price}">
+        ${breakdown_message}$${parseToCurrency(total_price)}
         </span>
         </td>
         </tr>`);
+      $fee.insertAfter($subtotal_line);
       var subtotal_data_attr = "checkout-subtotal-price-target";
       var $subtotal = $(`[data-${subtotal_data_attr}]`);
       var subtotal = parseInt($subtotal.data(subtotal_data_attr));
       $subtotal.data(subtotal_data_attr, subtotal)
-      $subtotal.html(`$${parseToCurrency(subtotal - price)}`);
+      $subtotal.html(`$${parseToCurrency(subtotal - total_price)}`);
     };
 
     getCartItems().then(function(items) {
@@ -319,8 +329,9 @@ $(document).on('page:load page:change', function() {
         return item.product_title === feeName;
       });
       if(mattress_item.length > 0) {
-        hideOnOrderSummary(mattress_item[0].product_id);
-        addToOrderSummary("Mattress Fee", mattress_item[0].final_line_price);
+        var item = mattress_item[0];
+        hideOnOrderSummary(item.product_id);
+        addToOrderSummary("Mattress Fee", item.final_line_price, item.price, item.quantity);
       } 
       $sidebar.show();
     })

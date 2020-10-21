@@ -1,5 +1,6 @@
 {% include 'nowtime' %}
 {% assign reliefbed = "false" %}
+{% assign total_price =  cart.total_price %}
 
 <style>
     label{
@@ -86,7 +87,9 @@
                         {% assign productType = "Mattress" %}
                         {% endif %}
                         <script>console.log("{{item.product.handle}}");</script>
-                        {% if item.product.handle != "mattress-fee" %}
+                        {% if item.product.handle == "mattress-fee" %}
+                          {% total_price | minus: item.line_price %}
+                        {% else %}
                         <tr>
                             <td class="image hidden-xs">
                                 <div class="product_image">
@@ -197,7 +200,7 @@
             <tr class="summary">
                 <td class="price">
                     <p class="copy">SUBTOTAL:</p>
-                    <span class="total"><span id="bk-cart-subtotal-price">{{ cart.total_price | money }}</span></span>
+                    <span class="total"><span id="bk-cart-subtotal-price">{{ total_price | money }}</span></span>
                     <p><a id="learn-more" style="visibility:hidden" href="#"></a></p>
 
                     <p class="affirm-as-low-as" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{ cart.total_price }}"></p>
