@@ -90,11 +90,12 @@
           <ul class="content">
             {% assign footerCol2 = settings.footer_column_2_title | handleize %}
             {% for link in linklists.[footerCol2].links %}
-              {% if link.type == "http_link" %}
+              {%comment%}{% if link.type == "http_link" %}
               <li><a href="{{link.url}}" target="_blank">{{link.title}}</a></li>
             {% else %}
                   <li>{{ link.title | link_to: link.url }}</li>
-              {%endif%}
+              {%endif%}{%endcomment%}
+              <li>{{ link.title | link_to: link.url }}</li>
             {% endfor %}
           </ul>
         </div>
