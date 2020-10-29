@@ -383,7 +383,9 @@
 // Add your API key here
 Kustomer.init('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNzY5NDE4YTQxMGViMDA5NTA0NzhkMCIsInVzZXIiOiI1Zjc2OTQxODM5NWMzZmEzMTM2MjNiZWUiLCJvcmciOiI1ZjM1OThhOWQ5MTEzZDAwMTJhNDhhNjAiLCJvcmdOYW1lIjoiYXZvY2Fkb2JyYW5kcyIsInVzZXJUeXBlIjoibWFjaGluZSIsInBvZCI6InByb2QxIiwicm9sZXMiOlsib3JnLnRyYWNraW5nIl0sImF1ZCI6InVybjpjb25zdW1lciIsImlzcyI6InVybjphcGkiLCJzdWIiOiI1Zjc2OTQxODM5NWMzZmEzMTM2MjNiZWUifQ.wpxg4o4E3hh1IPLcL7S0E1cJw8WZVLDqqlQ9AhupaMI');
 // Start the chat client
-Kustomer.start({ form: "5f769d308bd38d008e4495cb", schedule: "5f67d3f315361c001a9012cd" });
+Kustomer.start({ form: "5f769d308bd38d008e4495cb", schedule: "5f67d3f315361c001a9012cd" }, () => {
+    Kustomer.describe('conversation',{ custom: { chatUrlPathStr: window.location.href } });
+});
     </script>
 
 <!-- Performance -->
