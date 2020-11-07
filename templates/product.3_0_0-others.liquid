@@ -222,7 +222,8 @@
                             </div>
                             {% if product.available %}
                                 <div class="cta-module clearfix">
-                                    <div class="prices" itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="float: left;">
+                                    <div class="prices" itemprop="offers" itemscope itemtype="http://schema.org/Offer" 
+style="{% if product.id == 6048703512745 %}float:right;margin:0;width:49%;text-align:right;{%else%}float: left;{%endif%}">
                                         <meta itemprop="priceCurrency" content="{{ shop.currency }}">
                                         {% if product.compare_at_price > product.price %}
                                         <span class="compare-price">{{ product.compare_at_price_max | money_without_trailing_zeros}}</span>
@@ -253,7 +254,8 @@
                                             <a id="learn-more" class="affirm-as-low-as" data-learnmore-show="true" data-promo-id="promo_set_brentwood_zero_percent" data-amount="{{product.selected_or_first_available_variant.price}}"></a>
                                         </div>
                                     </div>
-                                    <div id="qt" style="display: none">QTY: <input type="text" id="quantity" name="quantity" value="1"></div>
+                                    {%comment%}Unless prduct is replacement wedge covers, hide qt field{%endcomment%}
+                                    <div id="qt" style="{% unless product.id == 6048703512745 %}display: none;{%endunless%}margin:0;float: left;">QTY: <input type="text" id="quantity" name="quantity" value="1"></div>
                                 </div>
                             {% else %}
                                 <button type="button" class="btn" id="product-add-to-cart" disabled>Unavailable</button>
@@ -413,6 +415,28 @@
                 <p>Made in<br>California</p>
             </div>
             <div class="col-xs-4 col-sm-3">
+                <img src="https://brentwood-home-2.imgix.net/iconv2-1yearwarranty.svg" alt="1-year Warranty">
+                <p>1 year<br>Warranty</p>
+            </div>
+        </div>
+    </div>
+    {% elsif product.type == "Pillow Cover" %}
+    <div class="container section warranties">
+        <h2 class="text-center">Peace of mind guarantee</h2>
+        <div class="row">
+            <div class="col-xs-4 col-sm-2 col-sm-offset-2">
+                <img src="https://brentwood-home.imgix.net/iconv2-freeshipping.svg" alt="Free shippinh & Returns">
+                <p>Free Shipping<br>Free Return</p>
+            </div>
+            <div class="col-xs-4 col-sm-2 hidden-xs">
+                <img src="https://brentwood-home.imgix.net/iconv2-madeincalifornia.svg" alt="Made in California">
+                <p>Made in<br>California</p>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <img src="https://brentwood-home-2.imgix.net/iconv2-30nightguarantee.svg" alt="30-night sleep trial">
+                <p>30-Day<br>Trial</p>
+            </div>
+            <div class="col-xs-4 col-sm-2">
                 <img src="https://brentwood-home-2.imgix.net/iconv2-1yearwarranty.svg" alt="1-year Warranty">
                 <p>1 year<br>Warranty</p>
             </div>
