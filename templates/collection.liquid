@@ -58,8 +58,9 @@ each other properly at each breakpoint.
             {% if collection.products.size > 0 %}
                 {% paginate collection.products by product_per_page %}
                     {% for product in collection.products %}
-                        {% include 'product-grid-item-category' %}
-                        {% include 'bold-product' with product, hide_action: 'skip' %}
+                        {% unless product.tags contains "nosearch" %}
+                            {% include 'product-grid-item-category' %}
+                        {% endunless %}
                     {% endfor %}
                 {% endpaginate %}
             {% else %}

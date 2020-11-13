@@ -30,14 +30,15 @@
     
     <div class="products-grid">
       {% if collection.products.size > 0 %}      
-      {% paginate collection.products by 50 %}  
-      {% for product in collection.products %}
-      {% include 'product-grid-item-category' %}
-      {% include 'bold-product' with product, hide_action: 'skip' %}
-      {% endfor %}
-      {% endpaginate %}
+        {% paginate collection.products by 50 %}  
+        {% for product in collection.products %}
+          {% unless product.tags contains "nosearch" %}
+            {% include 'product-grid-item-category' %}
+          {% endunless %}
+        {% endfor %}
+        {% endpaginate %}
       {% else %}
-      <p style="text-align: center;">There are no products in this collection.</p>
+          <p style="text-align: center;">There are no products in this collection.</p>
       {% endif %}
     </div>
     
