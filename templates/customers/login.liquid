@@ -14,7 +14,11 @@
 {% endcomment %}
 
 {% layout settings.customer_layout %}
-
+<style>
+  .cta2{
+    height: auto !important;
+  }
+</style>
 <div class="login-page">
   {% comment %}
     If a user has successfully requested a new password, the form.posted_successfully? variable
@@ -92,7 +96,7 @@
     <input type="email" value="" name="email" id="recover-email" placeholder="your-email@shopify.com" >
     
     <div class="action-btn">
-      <p><input type="submit" class="btn" value="Submit"></p>
+      <p><input type="submit" class="btn cta2" value="Submit"></p>
       or <a href="#" onclick="hideRecoverPasswordForm();return false;">Cancel</a>
     </div>
     {% endform %}
