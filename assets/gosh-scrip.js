@@ -156,7 +156,6 @@
       this.goDropDownCart();//add cart
       this.goAddToCart();
       this.goBox();
-      this.goProductAddToCart();
       this.goWishlist();
       this.goProductWishlist();
       this.goRemoveWishlist();
@@ -502,31 +501,6 @@
         }, 400);
         return false
       })
-    },
-    goProductAddToCart: function() {
-      if ($("#product-add-to-cart").length > 0) {
-        $("#product-add-to-cart").click(function(n) {
-          n.preventDefault();
-          if ($(this).attr("disabled") != "disabled") {
-            if (!window.ajax_cart) {
-              $(this).closest("form").submit()
-            } else {
-              var cart = $("#add-to-cart-form select[name=id]").val();
-              if (!cart) {
-                cart = $("#add-to-cart-form input[name=id]").val()
-              }
-              var i = $("#add-to-cart-form input[name=quantity]").val();
-              if (!i) {
-                i = 1
-              }
-
-              var o = $("#product-featured-image").attr("src");
-              mt.doAjaxAddToCart(cart, i, o)
-            }
-          }
-          return false
-        })
-      }
     },
     goAddToCart: function() {
       if ($(".add-to-cart-btn").length > 0) {
