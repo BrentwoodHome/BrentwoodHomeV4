@@ -84,7 +84,9 @@ Tobe used for banners/tickers ect...
     {% endcase %}
 
     {% case product.type %}
-      {% when 'pillow' %}
+      {% when 'Pillow' %}
+        {% assign sale = "Sale! Save 20% with code <strong>PILLOWS20</strong><span>*enter code at checkout</span>" %}
+      {% when 'Wedge Pillow' %}
         {% assign sale = "Sale! Save 20% with code <strong>PILLOWS20</strong><span>*enter code at checkout</span>" %}
     {% endcase%}
 {% endif %}
