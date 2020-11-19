@@ -139,6 +139,11 @@ body:not(.template-index) .main-content{
         padding: 18px 30px;
     }
 }
+button[disabled], html input[disabled],
+button[disabled]:HOVER, html input[disabled]:HOVER{
+    background-color: #666;
+    cursor: not-allowed;
+}
 @mixin chronicleHairline($size){
     font-family: "Chronicle Hairline A", "Chronicle Hairline B";
     font-style: italic;
