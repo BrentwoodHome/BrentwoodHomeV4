@@ -238,6 +238,18 @@
 
 
 <script>window.performance.mark(window.markNames.head.end);</script>
+{% if template contains 'cart' %}
+  {% include 'kart_discount' %}  
+{% endif %}
+<script id="sg-js-global-vars">
+    sgGlobalVars = {{ shop.metafields['sg-cc']['sg-metafield'] | json }};
+    if(sgGlobalVars) {
+        sgGlobalVars.cart = {{ cart | json }};
+        sgGlobalVars.currentProduct = {{ product | json }};
+        sgGlobalVars.isAdmin = {% if content_for_header contains 'adminBarInjector' or content_for_header contains 'previewBarInjector' %}true{% else %}false{% endif %};
+    }
+</script>
+
 </head>
 {% comment %}
   Add the page template as a class for easy page or template specific styling.
