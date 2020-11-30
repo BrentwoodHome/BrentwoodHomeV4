@@ -1,13 +1,71 @@
 {% assign producthandle = product.handle %}
 <script>
+
+  function variantSlugsToIds(slugs = []) {
+    var variantKeyById = {};
+    slugs.forEach(s => {
+      var data = variantMaps[s];
+      var key = data.id;
+      variantKeyById[key] = {
+        ...data,
+        slug: s
+      };
+    })
+    return variantKeyById;
+  }
+  function getProductVariants(product_slug, variant_slugs) {
+    var product, variant_ids = [];
+    if(product_slug === "wedge-pillow-cover") {
+      product = allWedgePillowCoverVariants;
+    }
+   variant_ids = variantSlugsToIds(variant_slugs);
+    var variants = [];
+    product.forEach(p => {
+      if(p.id in variant_ids) {
+        variants.push({...p, ...variant_ids[p.id]})
+      }
+    });
+    return variants
+  }
+
   //window.performance.mark(window.markNames.bundleScriptParse.start);
+  var allWedgePillowCoverVariants = {{all_products["replacement-wedge-pillow-covers"].variants | json}}
+  var variantMaps = {   
+    "zuma-7-inch":  {
+      id: 37366980608169,
+      price: 1500
+    },
+    "zuma-10-inch": {
+      id: 37366980640937,
+      price: 1800
+    },
+    "zuma-12-inch": {
+      id: 37366980673705,
+      price: 2300
+    },
+    "crystal-cove-10-inch": {
+      id: 37366980411561,
+      price: 1999
+     },
+    "oceano-10-inch": {
+      id: 37366980509865,
+      price: 1999
+    },
+    "whitney-10-inch": {
+      id: 37366980739241,
+      price: 1499
+    }
+  }
+
   var allFoundationVariants = {{ all_products['foundation'].variants | json }};
   var allAdjustableVariants = {{ all_products['adjustable-bed-frame'].variants | json }};
+  var allKidsPillowcaseVariants = {{all_products['organic-toddler-pillowcase'].variants | json}}
   var variantTopperBundle = {{ all_products['cedar-natural-luxe-topper-standalone'].variants | json }};
-  var variantPillowBundle = [];//create empty pillow array to prevent errors when a mattress doesn't offer pillow bundle
+ var variantPillowBundle = [];//create empty pillow array to prevent errors when a mattress doesn't offer pillow bundle
   var saleFlag = true; //Switch to true to activate sale price display (note that it will activate for all product listed with a sale price)
   /*TODO: ability to turn sale on and off for individual products*/
   // Easy Foundation Bundle
+
 {% case producthandle %}
   {% when "cedar-natural-luxe-mattress" %}
   //Cedar foundation
@@ -330,6 +388,14 @@
                size: "King"
            }
        ];
+       {% when "lilypad-kids-pillow" %}
+      //Toggle Pillow Case
+      var variantToddlerPillowCase = [
+          {
+              id: 4729802719294,
+              price: 1999,
+          }
+       ];
        {% when "cypress-memory-foam-mattress" %}
        //Gray foundation 
        var variantFoundations = [
@@ -523,7 +589,53 @@
                sale: 0,
            }
        ];
-      {% else %}
+      {% when "oceano-wedge-pillow" %}
+        var variants = getProductVariants("wedge-pillow-cover", ["oceano-10-inch"])
+        var addons = {
+          "wedge-pillow-cover": {
+            selector: $("#replacement-wedge-cover-bundle"), 
+            price_selector: $("#replacement-wedge-cover-price"),
+            variants
+          }
+        };
+        var inventoryTracked = false;
+      {% when "therapeutic-foam-bed-wedge"  %}
+        var variants = getProductVariants("wedge-pillow-cover", ["zuma-7-inch", "zuma-10-inch", "zuma-12-inch"])
+        var addons = {
+          "wedge-pillow-cover": {
+            selector: $("#replacement-wedge-cover-bundle"), 
+            price_selector: $("#replacement-wedge-cover-price"),
+            variants
+          }
+        };
+        var inventoryTracked = false;
+      {% when "crystal-cove-wedge-pillow" %}
+        var variants = getProductVariants("wedge-pillow-cover", ["crystal-cove-10-inch"])
+        var addons = {
+          "wedge-pillow-cover": {
+            selector: $("#replacement-wedge-cover-bundle"), 
+            price_selector: $("#replacement-wedge-cover-price"),
+            variants
+          }
+        };
+        var inventoryTracked = false;
+      {% when "whitney-gel-memory-foam-wedge-pillow" %}
+        var variants = getProductVariants("wedge-pillow-cover", ["whitney-10-inch"])
+        var addons = {
+          "wedge-pillow-cover": {
+            selector: $("#replacement-wedge-cover-bundle"), 
+            price_selector: $("#replacement-wedge-cover-price"),
+            variants
+          }
+        };
+        var inventoryTracked = false;
+    {% else %}
+      var variantToddlerPillowCase = [
+          {
+              id: 4729802719294,
+              price: 1999,
+          }
+       ];
       //Gray foundation for Ojai, Crystal Cove and everything else
       var variantFoundations = [
           {//Twin
@@ -579,26 +691,42 @@
            }
        ];
        {% endcase %}
-
        {% if settings.display_subtotal and product.available %}
        //update price when changing quantity
        function updatePricing() {
            //try pattern one before pattern 2
-           var regex = /([0-9]+[.|,][0-9]+[.|,][0-9]+)/g;
+           var regex = /\d+,?\d*\.?\d*/g;
            var unitPriceTextMatch = jQuery('.product .price').text().match(regex);
-
-           if (!unitPriceTextMatch) {
-               regex = /([0-9]+[.|,][0-9]+)/g;
-               unitPriceTextMatch = jQuery('.product .price').text().match(regex);
-           }
-
            if (unitPriceTextMatch) {
                var unitPriceText = unitPriceTextMatch[0];
                var unitPrice = unitPriceText.replace(/[.|,]/g, '');
                var quantity = parseInt(jQuery('#quantity').val());
                var totalPrice = unitPrice * quantity;
-
-               var sizeIndex = $('#product-selectors-option-0')[0].selectedIndex
+               var sizeIndex = null;
+               var $size = $("#product-selectors-option-0");
+               if($size.length) {
+                sizeIndex = $size[0].selectedIndex
+               }
+               // Kids PillowCase Bundle
+               var $kidsPillowcase = $('#kidspillowcase');
+               if($kidsPillowcase.length) {
+                if($kidsPillowcase.prop('checked')) {
+                  totalPrice += variantToddlerPillowCase[0].price;
+                }
+               }
+              
+              if(typeof addons !== "undefined") {
+                for(var addon in addons) { 
+                  var addon_product = addons[addon];
+                  var $selector = addon_product.selector;
+                  var variants = addon_product.variants;
+                  if($selector.length) {
+                    if($selector.prop("checked")) {
+                      totalPrice += variants[0].price;
+                    }
+                  }
+                }
+              }
 
                // Easy Foundation Bundle
                if( $('#foundation').length ){
@@ -627,14 +755,10 @@
                        totalPrice += variantTopperBundle[sizeIndex].price
                    }
                }
-
                var totalPriceText = Shopify.formatMoney(totalPrice, window.money_format);
-
                totalPriceText = totalPriceText.match(regex)[0];
-
                var regInput = new RegExp(unitPriceText, "g");
                var totalPriceHtml = jQuery('.product .price').html().replace(regInput, totalPriceText);
-
                jQuery('.product .total-price span').html(totalPriceHtml);
            }
        }
@@ -644,15 +768,13 @@
         {% endif %}
 
         var currentVariant = null;
-
+        
         /* START selectCallback */
         var selectCallback = function (variant, selector) {
           currentVariant = variant
-
           var addToCart = jQuery('#product-add-to-cart'),
             productPrice = jQuery('.product .price'),
             comparePrice = jQuery('.product .compare-price');
-
           // IF VARIANT
           if (variant) {
             if (variant.available) {
@@ -662,11 +784,12 @@
               // Variant is sold out, disable the submit button
               addToCart.val('Sold Out').addClass('disabled').attr('disabled', 'disabled');
             }
-
-            var sizeIndex = $('#product-selectors-option-0')[0].selectedIndex;
+            var $productSelector = $('#product-selectors-option-0');
+            if($productSelector.length > 0) {
+              var sizeIndex = $productSelector[0].selectedIndex;
+            }
             var totalPrice = variant.price;
-            var compareAtPrice = variant.compare_at_price
-            
+            var compareAtPrice = variant.compare_at_price;
 /*****************FOUNDATION BUNDLE PRICE UPDATE*************************/
             if ($('#foundation').length) {
               // Update Foundation Pricing
@@ -719,6 +842,128 @@
               }
             }
                   
+/*****************PRICE UPDATE*************************/
+if (typeof addons !== "undefined") {
+  for(var addon in addons) {
+
+var addon_product = addons[addon],
+    ad_variants = addon_product.variants;
+    $ad_selector = addon_product.selector,
+    $ad_price_selector = addon_product.price_selector;
+    // adjust variants pricing
+   var ad_variant = ad_variants[0];
+   if(typeof sizeIndex !== "undefined") {
+     ad_variant = ad_variants[sizeIndex];
+   }
+  if(ad_variant) {
+      if(ad_variant.available === true){ //check if product variant exist (see id array above), if 0, deactivate box
+        $ad_selector.prop("disabled", false).parent().removeClass("disabled");
+                          
+        if(saleFlag && ad_variant.sale){
+          {% raw %}
+           $ad_price_selector.html("+" + Shopify.formatMoney(ad_variant.sale, "${{amount_no_decimals}}") + "&nbsp;<span style='text-decoration: line-through'>" + Shopify.formatMoney(ad_variant.price, "${{amount_no_decimals}}" + "</span>"));
+          {% endraw %} 
+        }else{
+          {% raw %}
+            $ad_price_selector.text("+" + Shopify.formatMoney(ad_variant.price, "${{amount_no_decimals}}"));
+            {% endraw %}
+        }                  
+      }else{
+        $ad_selector
+          .prop("disabled", true)
+          .addClass("disabled")
+          .prop("checked", false).parent().addClass("disabled");
+        //jQuery(".squaredOne").addClass("disabled");
+        $ad_price_selector.html("Unavailable").addClass("soldout");
+      }
+    }
+    // Disable checkbox if sold out
+    for (var i = 0; i < ad_variants.length; i++) {
+      if (ad_variants[i].id === ad_variant.id) {
+        if (!ad_variants[i].available) {
+          $ad_selector
+            .prop("disabled", true)
+            .addClass("disabled")
+            .prop("checked", false).parent().addClass("disabled");
+          //jQuery(".squaredOne").addClass("disabled");
+          $ad_price_selector.text("Out of Stock").addClass("soldout");
+        } else {
+          $ad_selector.prop("disabled", false).parent().removeClass("disabled");
+        }
+      }
+    }
+
+    if ($ad_selector.prop('checked') && ad_variant) {
+      if(saleFlag && ad_variant.sale){
+        totalPrice += ad_variant.sale;
+        compareAtPrice += ad_variant.price;
+      }else{
+        totalPrice += ad_variant.price;
+        compareAtPrice += ad_variant.price;
+      }
+    }
+ 
+ }
+}
+
+
+/*****************KIDS PILLOWCASE BUNDLE PRICE UPDATE*************************/
+            if ($('#kidspillowcase').length) {
+
+                // Update Adjustable Pricing
+                if (variantToddlerPillowCase[0]) {
+                    var pillowcase = variantToddlerPillowCase[0];
+                    if(pillowcase.id != 0){ //check if product variant exist (see id array above), if 0, deactivate box
+                        jQuery("#kidspillowcase").prop("disabled", false).parent().removeClass("disabled");
+                        
+                        if(saleFlag && kidspillowcase.sale){
+                            {% raw %}
+                            jQuery("#kidspillowcase-bundle-price").html("+" + Shopify.formatMoney(pillowcase.sale, "${{amount_no_decimals}}") + "&nbsp;<span style='text-decoration: line-through'>" + Shopify.formatMoney(pillowcase.price, "${{amount_no_decimals}}" + "</span>"));
+                            {% endraw %} 
+                        }else{
+                            {% raw %}
+                            jQuery("#kidspillowcase-bundle-price").text("+" + Shopify.formatMoney(pillowcase.price, "${{amount_no_decimals}}"));
+                             {% endraw %}
+                        }
+                      
+                     }else{
+                         jQuery("#kidspillowcase")
+                             .prop("disabled", true)
+                             .addClass("disabled")
+                             .prop("checked", false).parent().addClass("disabled");
+                         //jQuery(".squaredOne").addClass("disabled");
+                         jQuery("#kidspillowcase-bundle-price").html("Unavailable").addClass("soldout");
+                     }
+                }
+
+                // Disable checkbox if sold out
+              for (var i = 0; i < allKidsPillowcaseVariants.length; i++) {
+                if (allKidsPillowcaseVariants[i].id === pillowcase.id) {
+                  if (!allKidsPillowcaseVariants[i].available) {
+                    jQuery("#kidspillowcase")
+                        .prop("disabled", true)
+                        .addClass("disabled")
+                        .prop("checked", false).parent().addClass("disabled");
+                    //jQuery(".squaredOne").addClass("disabled");
+                      jQuery("#kidspillowcase-bundle-price").text("Out of Stock").addClass("soldout");
+                  } else {
+                    jQuery("#kidspillowcase").prop("disabled", false).parent().removeClass("disabled");
+                  }
+                }
+              }
+
+                if (jQuery('#kidspillowcase').prop('checked') && variantToddlerPillowCase[0]) {
+                    if(saleFlag && variantToddlerPillowCase[0].sale){
+                        totalPrice += variantToddlerPillowCase[0].sale;
+                        compareAtPrice += variantToddlePillowCase[0].price;
+                    }else{
+                        totalPrice += variantToddlerPillowCase[0].price;
+                        compareAtPrice += variantToddlerPillowCase[0].price;
+                    }
+                }
+            }
+/****************************************************************/
+
 /*****************PILLOW BUNDLE PRICE UPDATE*************************/
             if ($('#pillow-bundle').length) {
                 // Update Pillow Pricing
@@ -885,7 +1130,6 @@
             }
             // END SWATCHES
             {% endif %}
-
             {% if settings.display_subtotal and product.available %}
             updatePricing();
             {% endif %}
@@ -911,7 +1155,7 @@
           // display message for sheets and quilts when out of stock
           if (variant && variant.available) {
             if (variant.inventory_management != null) {
-              if (variant.inventory_quantity < 1) {
+              if (variant.inventory_quantity < 1 && (typeof inventoryTracked !== "undefined" && inventoryTracked === true)) {
                 //jQuery(".out-of-stock").show();
                 //jQuery(".out-of-stock p").html("We’re currently making this item to order.<br> Please allow <b>up to 3 weeks</b> for crafting and shipping.");
                 addToCart.val('Out of Stock').addClass('disabled').attr('disabled', 'disabled').html("Out of Stock");
@@ -947,11 +1191,14 @@
 
           // updateAffirmAsLowAs(totalPrice);
           // Update affirm price
-          $('.affirm-as-low-as').attr('data-amount',totalPrice);
-
+          var $affirm = $('.affirm-as-low-as');
+          if($affirm.length > 0) {
+          $affirm.attr('data-amount',totalPrice);
+          
           affirm.ui.ready(function() {
             affirm.ui.refresh();
           });
+          }
         };
         /* END selectCallback */
 
@@ -968,7 +1215,7 @@
                     $('#adjustable-bundle').attr('checked', false);
                 }    
             });   */
-            
+          
             
           // Pillow Bundle
           if ($('#pillow-bundle').length) {
@@ -1004,13 +1251,33 @@
                 });
             }
 
+            // Kids Pillowcase Bundle
+            var $kidsPillowcase = $('#kidspillowcase');
+            if($kidsPillowcase.length) {
+              $kidsPillowcase.on('change', function() {
+                  selectCallback(currentVariant)
+              })
+            }
+            
+            if(typeof addons !== "undefined") {
+              for(var addon in addons) {
+                var $selector = addons[addon].selector;
+                if($selector.length) {
+                  $selector.on('change', function() {
+                    selectCallback(currentVariant)
+                  })
+                }
+              }
+            }
+          {% if (product.available and product.has_only_default_variant) or (product.variants.size == 1 and product.variants[0].available ) %} 
+           selectCallback({{product.variants[0] | json}});
+          {% endif %}
           {% if product.available and product.variants.size > 1 %}
             new Shopify.CustomOptionSelectors('product-selectors', {
               product: {{ product | json }},
               onVariantSelected: selectCallback,
               enableHistoryState: true
             });
-
             {% comment %}
             Use color swatch and linked options(copyright by @carolineschnapp)
             {% endcomment %}
@@ -1058,7 +1325,7 @@
       jQuery('#product-add-to-cart').click(function(e) {
           e.preventDefault();
           var toAdd = [];
-          var sizeIndex = -1; //for products that don't have a size selector like yoga pillows or candles
+          var sizeIndex = 0; //for products that don't have a size selector like yoga pillows or candles
           if ($('#product-selectors-option-0').length > 0){
             sizeIndex = $('#product-selectors-option-0')[0].selectedIndex;
           }
@@ -1070,6 +1337,7 @@
                   var variantCedarTopperIds = [31529554018366, 31529554051134, 31529554083902] //standalone topper
                   //Adjustable base
                   var variantAdjustableIds = [31082150625342,31123066585150,0]
+
                   //uncomment to include topper automatically
                   /*toAdd = [{
                       id: variantCedarTopperIds[sizeIndex],
@@ -1178,40 +1446,61 @@
                    //Adjustable base
                    //Twin, Twin XL, Full, Q, K, CK, SPLIT
                    var variantAdjustableIds = [31082150559806, 31082150559806, 0000, 31082150625342, 31123066585150, 0000, 31123066585150]
+                   var variantToddlerPillowcaseIds = [32465454825534];
            {% endcase %}
 
-          // Cedar Luxe Topper
-           if (jQuery('#luxetopper-bundle').prop('checked')) {
-               toAdd.push({
-                   id: variantCedarTopperIds[sizeIndex],
-                   quantity: 1
-               })
-           }
+            if(typeof addons !== "undefined") {
+              for(var addon in addons) {
+                var addon_product = addons[addon],
+                  $ad_selector = addon_product.selector,
+                  ad_variants = addon_product.variants;
+                if($ad_selector.prop("checked")) {
+                  toAdd.push({
+                    id: ad_variants[sizeIndex].id,
+                    quantity: parseInt($("#quantity").val()) || 1
+                  })
+                }
+              }
+            } else {
+            // Cedar Luxe Topper
+              if (jQuery('#luxetopper-bundle').prop('checked')) {
+                toAdd.push({
+                    id: variantCedarTopperIds[sizeIndex],
+                    quantity: 1
+                })
+              }
 
-           // Easy Foundation Bundle
-           if (jQuery('#foundation').prop('checked')) {
-               toAdd.push({
-                   id: variantFoundationIds[sizeIndex],
-                   quantity: 1
-               })
-           }
-
-            // Pillow Bundle
-            if (jQuery('#pillow-bundle').prop('checked')) {
+              // Easy Foundation Bundle
+              if (jQuery('#foundation').prop('checked')) {
+                toAdd.push({
+                    id: variantFoundationIds[sizeIndex],
+                    quantity: 1
+                })
+              }
+  
+                // Pillow Bundle
+              if (jQuery('#pillow-bundle').prop('checked')) {
                 toAdd.push({
                     id: variantPillowBundle[sizeIndex],
                     quantity: variantPillowBundleQt[sizeIndex]
                 })
-            }
-            
-            // Adjustable Bundle
-            if (jQuery('#adjustable-bundle').prop('checked')) {
+              }
+              
+              // Adjustable Bundle
+              if (jQuery('#adjustable-bundle').prop('checked')) {
                 toAdd.push({
                     id: variantAdjustableIds[sizeIndex],
                     quantity: 1
                 })
-            }
+              }
 
+              if($("#kidspillowcase").prop('checked')) {
+                toAdd.push({
+                  id: variantToddlerPillowcaseIds[0],
+                  quantity: parseInt($("#quantity").val()) || 1
+                })
+              }
+            }
             function moveAlong(){
                 if (toAdd.length) {
                     $.ajax({
