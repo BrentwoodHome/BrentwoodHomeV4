@@ -83,9 +83,10 @@
                   <h3 class="text-left">{{product.metafields.bhsite.feel}}</h3>
                   <p class="short-description">{{product.metafields.bhsite.shortdesc}}</p>
                   <br>
-                  {% include 'shippingtime' %}
-                  {% render 'product-shippingestimate', var_shipsfree: shipsfree, var_trial: trial  %}
-
+                  {% unless product.handle contains "gift-card" %}
+                    {% include 'shippingtime' %}
+                    {% render 'product-shippingestimate', var_shipsfree: shipsfree, var_trial: trial  %}
+                  {% endunless %}
                   <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
                       
                       {% if product.id != 2028991807550 %}
