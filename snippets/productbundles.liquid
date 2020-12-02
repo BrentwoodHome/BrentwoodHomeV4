@@ -1,6 +1,5 @@
 {% assign producthandle = product.handle %}
 <script>
-
   function variantSlugsToIds(slugs = []) {
     var variants = [];
     slugs.forEach(s => {
@@ -902,6 +901,14 @@
             }
                   
 /*****************PRICE UPDATE*************************/
+function parsePrice(price) {
+  var updated_price = price,
+  split_price = price.split(".");
+  if(parseInt(split_price[1]) === 0) {
+    updated_price = split_price[0];
+  }
+  return updated_price;
+}
 if (typeof addons !== "undefined") {
   for(var addon in addons) {
 
@@ -920,11 +927,13 @@ var addon_product = addons[addon],
                           
         if(saleFlag && ad_variant.sale){
           {% raw %}
-           $ad_price_selector.html("+" + Shopify.formatMoney(ad_variant.sale, "${{amount_no_decimals}}") + "&nbsp;<span style='text-decoration: line-through'>" + Shopify.formatMoney(ad_variant.price, "${{amount_no_decimals}}" + "</span>"));
+            var price = parsePrice(Shopify.formatMoney(ad_variant.sale, "${{amount_no_decimals}}"))
+           $ad_price_selector.html("+" + price + "&nbsp;<span style='text-decoration: line-through'>" + Shopify.formatMoney(ad_variant.price, "${{amount_no_decimals}}" + "</span>"));
           {% endraw %} 
         }else{
           {% raw %}
-            $ad_price_selector.text("+" + Shopify.formatMoney(ad_variant.price, "${{amount_no_decimals}}"));
+            var price = parsePrice(Shopify.formatMoney(ad_variant.price, "${{amount}}"));
+            $ad_price_selector.text("+" + price);
             {% endraw %}
         }                  
       }else{
@@ -1158,7 +1167,7 @@ var addon_product = addons[addon],
                     
             // Regardless of stock, update the product price
             {% raw %}
-            productPrice.html(Shopify.formatMoney(totalPrice, "${{amount_no_decimals}}"));
+            productPrice.html(parsePrice(Shopify.formatMoney(totalPrice, "${{amount}}")));
             {% endraw %}
 
             // Also update and show the product's compare price if necessary
