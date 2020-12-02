@@ -2,34 +2,37 @@
 <script>
 
   function variantSlugsToIds(slugs = []) {
-    var variantKeyById = {};
+    var variants = [];
     slugs.forEach(s => {
       var data = variantMaps[s];
       var key = data.id;
-      variantKeyById[key] = {
+      variants.push({
         ...data,
         slug: s
-      };
+      });
     })
-    return variantKeyById;
+    return variants;
   }
+
   function getProductVariants(product_slug, variant_slugs) {
     var product, variant_ids = [];
-    if(product_slug === "wedge-pillow-cover") {
-      product = allWedgePillowCoverVariants;
-    }
+   product = productVariants[product_slug];
    variant_ids = variantSlugsToIds(variant_slugs);
     var variants = [];
-    product.forEach(p => {
-      if(p.id in variant_ids) {
-        variants.push({...p, ...variant_ids[p.id]})
-      }
+    variant_ids.forEach(variant => {
+      var p = product.filter(p => p.id === variant.id)[0];
+       variants.push({...p, ...variant})
     });
     return variants
   }
 
   //window.performance.mark(window.markNames.bundleScriptParse.start);
   var allWedgePillowCoverVariants = {{all_products["replacement-wedge-pillow-covers"].variants | json}}
+  var allYogaPillowCoverVariants = {{all_products["crystal-cove-yoga-replacement-covers"].variants | json}}
+  var productVariants = {
+    "wedge-pillow-cover": allWedgePillowCoverVariants,
+    "yoga-pillow-cover": allYogaPillowCoverVariants
+  }
   var variantMaps = {   
     "zuma-7-inch":  {
       id: 37366980608169,
@@ -54,6 +57,22 @@
     "whitney-10-inch": {
       id: 37366980739241,
       price: 1499
+    },
+    "yoga-square-cover": {
+      id: 37635796664489,
+      price: 4599
+    },
+    "yoga-oval-cover": {
+      id: 37636240965801,
+      price: 2999
+    },
+    "yoga-pranayama-cover": {
+      id: 37636273143977,
+      price: 1999
+    },
+    "yoga-bolster-cover": {
+      id: 37636341727401,
+      price: 2499
     }
   }
 
@@ -625,6 +644,46 @@
           "wedge-pillow-cover": {
             selector: $("#replacement-wedge-cover-bundle"), 
             price_selector: $("#replacement-wedge-cover-price"),
+            variants
+          }
+        };
+        var inventoryTracked = false;
+      {% when "crystal-cove-meditation-pillow" %}
+        var variants = getProductVariants("yoga-pillow-cover", ["yoga-oval-cover"])
+        var addons = {
+          "yoga-pillow-cover": {
+            selector: $("#replacement-yoga-cover-bundle"), 
+            price_selector: $("#replacement-yoga-cover-price"),
+            variants
+          }
+        };
+        var inventoryTracked = false;
+      {% when "crystal-cove-yoga-bolster" %}
+        var variants = getProductVariants("yoga-pillow-cover", ["yoga-bolster-cover"])
+        var addons = {
+          "yoga-pillow-cover": {
+            selector: $("#replacement-yoga-cover-bundle"), 
+            price_selector: $("#replacement-yoga-cover-price"),
+            variants
+          }
+        };
+        var inventoryTracked = false;
+      {% when "crystal-cove-square-meditation-pillow" %}
+        var variants = getProductVariants("yoga-pillow-cover", ["yoga-square-cover", "yoga-square-cover"]);
+        var addons = {
+          "yoga-pillow-cover": {
+            selector: $("#replacement-yoga-cover-bundle"), 
+            price_selector: $("#replacement-yoga-cover-price"),
+            variants
+          }
+        };
+        var inventoryTracked = false;
+      {% when "crystal-cove-pranayama-bolster" %}
+        var variants = getProductVariants("yoga-pillow-cover", ["yoga-pranayama-cover"]);
+        var addons = {
+          "yoga-pillow-cover": {
+            selector: $("#replacement-yoga-cover-bundle"), 
+            price_selector: $("#replacement-yoga-cover-price"),
             variants
           }
         };
