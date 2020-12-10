@@ -127,14 +127,14 @@
 {% if template contains 'article' %}
     <meta property="og:type" content="article" />
     <meta property="og:title" content="{{ article.title }}" />
-    <meta property="og:description" content="{{ article.content | truncatewords: 64 | strip_html }}" />
+    <meta property="og:description" content="{{ article.content | truncatewords: 32 | strip_html }}" />
     <meta property="og:image" content="{{ article | img_url: '1024x1024' }}" />
     <meta property="og:image:width" content="1024" />
     <meta property="og:image:height" content="1024" />
 {% elsif template contains 'product' %}
     <meta property="og:type" content="product" />
     <meta property="og:title" content="{{ product.title }}" />
-    <meta property="og:description" content="{{ product.description | truncatewords: 64 | strip_html }}" />
+    <meta property="og:description" content="{{ product.description | truncatewords: 32 | strip_html }}" />
     <meta property="og:image" content="https:{{ product.featured_image.src | img_url: '1024x1024' }}" />
 {% elsif template contains 'page.365daytrial' %}
     <meta property="og:title" content="{{ page_title }}" />
