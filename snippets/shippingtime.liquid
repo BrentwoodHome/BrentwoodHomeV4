@@ -52,7 +52,7 @@ MATTRESSES
 ***********************
 {%endcomment%}
     {% when 'oceano-mattress' %}
-        {% assign shipsfree = "within 2 weeks" %}
+        {% assign shipsfree = "within 6 weeks" %}
     {% when 'cedar-natural-luxe-mattress' %}
         {% assign shipsfree = "within 5 weeks" %}
     {% when 'crystal-cove-mattress' %}
@@ -60,7 +60,7 @@ MATTRESSES
     {% when 'cypress-memory-foam-mattress' %}
         {% assign shipsfree = "within 3 weeks" %}
     {% when 'hybrid-latex-mattress' %}
-        {% assign shipsfree = "within 3 weeks" %}
+        {% assign shipsfree = "within 7 days" %}
     
 
      {% when 'wildfern-crib-and-toddler-mattress' %}
@@ -78,11 +78,11 @@ TOPPERS
     {% when 'cedar-natural-luxe-topper' %}
         {% assign shipsfree = "within 4 weeks" %}
     {% when 'cedar-natural-latex-mattress-topper' %}
-        {% assign shipsfree = "within 7 days" %}
+        {% assign shipsfree = "within 2 weeks" %}
     {% when 'oceano-memory-foam-mattress-topper' %}
         {% assign shipsfree = "within 1 week" %}
     {% when 'salton-2-soft-gel-topper' %}
-        {% assign shipsfree = "in 2-7 business days" %}
+        {% assign shipsfree = "within 1 week" %}
     {% when 'tulare-2-firm-foam-topper' %}
         {% assign shipsfree = "in 2-5 business days" %}
 
@@ -124,9 +124,6 @@ PILLOWS AND WEDGES
     {% when 'sleeping-willow-toddler-pillow' %}
         {% assign shipsfree = "in 2-7 business days" %}
 
-    {% when 'eco-latex-charcoal-foam-seat-cushions' %}
-        {% assign shipsfree = "in 2-7 business days" %}
-
     {% when 'oceano-pillow' %}
         {% assign shipsfree = "in 2-7 business days" %}
 
@@ -149,7 +146,7 @@ PILLOWS AND WEDGES
         {% assign shipsfree = "in 2-7 business days" %}
         
     {% when 'crystal-cove-wedge-pillow' %}
-        {% assign shipsfree = "in 2-7 business days" %}
+        {% assign shipsfree = "in 2-15 business days" %}
 
 {%comment%}
 ***********************
@@ -175,6 +172,9 @@ YOGA
 MISC BEDDING
 ***********************
 {%endcomment%}
+    {% when 'eco-latex-charcoal-foam-seat-cushions' %}
+        {% assign shipsfree = "in 2-14 business days" %}
+
     {% when 'beachwood-linen-quilt' %}
         {% assign shipsfree = "in 2-3 days" %}
 
