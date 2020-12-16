@@ -120,7 +120,7 @@
 {% if template contains "pillowcompare" %}
 {{ 'owl.carousel.min.234.js' | asset_url | script_tag }}
 <script>
-    $(document).ready(function(){$("#compare-mattresses-wrap").owlCarousel({loop:!1,responsiveClass:!0,navText:['<i class="fa fa-chevron-left" aria-hidden="true"></i>','<i class="fa fa-chevron-right" aria-hidden="true"></i>'],responsive:{0:{items:1,nav:!0},768:{items:2,nav:!0},1024:{items:3,nav:!0},1480:{items:4,nav:!1}}})});
+    $(document).ready(function(){$("#compare-mattresses-wrap").owlCarousel({loop:!1,responsiveClass:!0,navText:['<i class="fa fa-chevron-left" aria-hidden="true"></i>','<i class="fa fa-chevron-right" aria-hidden="true"></i>'],responsive:{0:{items:1,nav:!0},768:{items:2,nav:!0},1024:{items:3,nav:!0},1480:{items:3,nav:!1}}})});
 </script>
 {%endif%}<!-- END COMPARE -->
 {% if template contains "cart" %}

@@ -34,7 +34,7 @@
 
 
 
-<div class="container-fluid">
+<div class="container">
     <div class="row"><!--row-eq-height-->
         <div id="compare-mattresses-wrap" class=" owl-carousel owl-theme">
            
@@ -136,55 +136,7 @@
                 </div>
             </div>
 
-            <div class="item">
-                <div class="product-col ojai text-center">
-                    <div class="colorwrap">
-                        <a href="{{ojai.url}}" class="col-header">
-                            <h2>{{ojai.title}}</h2>
-                            <h3>Luxurious Feel</h3>
-                        </a>
-                        <a href="{{ ojai.url }}" class="product-grid-image" title="">
-                            {% assign imgName = ojai.featured_image | remove: 'products/' | split:'?' | first %}
-                            <picture>
-                                <source media="(min-width: 768px)" srcset="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=480">
-                                <source media="(max-width: 767px)" srcset="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=750">
-                                <img src="https://brentwood-home-products.imgix.net/{{imgName}}?ch=Width,DPR&w=750" alt="ojai pillow">
-                            </picture>
-                        </a>
-                    
-                        <div class="paddingwrap">
-                            <div class="yotpo bottomLine"
-                                 data-appkey="MoTNJx7IZaWhweNlLkQdd6AaJffubtZuHPH6w3aQ"
-                                 data-domain="{{ shop.permanent_domain | escape }}"
-                                 data-product-id="{{ ojai.id }}"
-                                 data-product-models="{{ ojai.id }}"
-                                 data-name="{{ ojai.title | escape }}"
-                                 data-url="{{ shop.url }}{{ ojai.url }}">
-                            </div>
-                            <!--<p class="price"><i>Starting at</i> <a href="{{ ojai.url }}" title="{{ ojai.title }}">{{ojaiPrice | money }}</a></p>-->
-                            <p><a href="{{ojai.url}}" class="cta2 solid text-center marg0">From {{ojaiPrice | money }}</a></p>
-
-                            <ul class="featList text-left">
-                                <li class="ico fabric">Tencel stretch-knit cover</li>
-                                <li class="ico gel">Gel Memory Foam + Polyester Blended Fill</li>
-                                <li class="ico zone5">Adjustable feel</li>
-                            </ul>
-                            <p class="description">
-                                Our Ojai Pillows pair perfectly with our Ojai Mattress for an affordable night of luxurious sleep. The Ojai Pillows are crafted with the same attention to detail and quality as all of our natural and non-toxic products.
-                            </p>
-                            <div class="otherFeatures">
-                                <p><strong>Other Features</strong></p>
-                                <ul class="otherfeatures text-left">
-                                    <li>Free of flame retardants</li>
-                                    <li>CertiPUR-US® Certified Foam</li>
-                                    <li>Zipper</li>
-                                    <li>Made in USA</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
             <div class="item">
                 <div class="product-col cypress text-center">
                     <div class="colorwrap">
