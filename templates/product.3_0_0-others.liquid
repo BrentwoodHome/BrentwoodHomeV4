@@ -1,5 +1,6 @@
 {% assign metaf = product.metafields.c_f %}
 {% include 'nowtime' %}
+{% include 'custom_fields.products.production_time' %}
 <style>
     .site-nav > li > a{
         padding: 21px 22px;
@@ -183,9 +184,12 @@
 
                     <div class="mob-dark">
                         <div id="buysection"></div>
-                        {% include 'shippingtime' %}
-                        {% render 'product-shippingestimate', var_shipsfree: shipsfree, var_trial: trial  %}
                         <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
+
+                            {%comment%}Displays production times per variant{%endcomment%}
+                            {% assign current_variant = product.selected_or_first_available_variant %}
+                            {% render 'product-shippingestimate', var_variant: current_variant %}
+
                             {% assign variantCount = product.variants | size %}
                             {% if variantCount > 1 %}
                                 <label for="product-selectors" class="selectLabel">
@@ -204,9 +208,6 @@
                                                     value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
                                             {% endfor %}
                                         </select>
-                                        {% comment %}variables set in snippets/shippingtime.liquid{% endcomment %}
-                                        
-
                                         {% if settings.use_color_swatch %}
                                             {% for option in product.options %}
                                                 {% include 'swatch' with option %}

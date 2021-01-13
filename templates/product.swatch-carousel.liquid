@@ -1,4 +1,4 @@
-
+{% include 'custom_fields.products.production_time' %}
 <div class="container-fluid" id="product">
     <div itemscope itemtype="http://schema.org/Product" class="product">
         <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
@@ -98,10 +98,14 @@
 
                   <h3 class="text-left">{{product.metafields.bhsite.feel}}</h3>
                   <p class="short-description">{{product.metafields.bhsite.shortdesc}}</p>
-                  {% include 'shippingtime' %}
-                  {% render 'product-shippingestimate', var_shipsfree: shipsfree, var_trial: trial  %}
 
                   <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
+
+                    {%comment%}Displays production times per variant{%endcomment%}
+                    {% assign current_variant = product.selected_or_first_available_variant %}
+                    {{current_variant}}
+                    {% render 'product-shippingestimate', var_variant: current_variant %}
+
                       <div id="product-variants">
                           {% assign variantCount = product.variants | size %}
                           {% if product.available %}
