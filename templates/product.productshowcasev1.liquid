@@ -86,10 +86,11 @@
                 <div class="mob-dark">
                     <div id="buysection"></div>
                     <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
-
+                        
                         {%comment%}Displays production times per variant{%endcomment%}
-                        {% assign current_variant = product.selected_or_first_available_variant %}
-                        {{product.metafields.custom_fields["production_time"]}}
+                        {% liquid 
+                            assign current_variant = product.selected_or_first_available_variant
+                        %}
                         {% render 'product-shippingestimate', var_variant: current_variant %}
 
                         {% if product.available %}
