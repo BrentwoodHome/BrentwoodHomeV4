@@ -466,18 +466,19 @@
                     <div class="panel-body">
                         
                             {% if product.type == "Bed Sheets" %}
-                                
-                                    <p><strong>Free Standard Shipping:</strong><br>
-                                        Our {{product.title}} ship quickly via FedEx. {% include 'shippingtime' %} Delivery times vary depending on your distance from our Los Angeles factory. Currently, they ship in <strong>{{shipsfree}}</strong>. Once your purchase ships, we’ll send you an email with tracking information so you can follow your shipment and plan for delivery.</p>
-                                    <p><strong>Returns:</strong><br>
-                                        We offer a 100-night sleep guarantee with our {{product.title}} and a 1 year warranty.  If you decide this product isn’t the right one for you, then we will provide a full refund. Visit our <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3377392-what-is-the-warranty-for-your-brentwood-home-sheets" target="_blank">Help center</a> for more information.
-                                    </p>
+                            <p class="text-center">{% render 'product-shippingestimate', var_variant: current_variant %}</p>
+                                <p><strong>Free Standard Shipping:</strong><br>
+                                    Our {{product.title}} ship quickly via FedEx. Delivery times vary depending on your distance from our Los Angeles factory. Once your purchase ships, we’ll send you an email with tracking information so you can follow your shipment and plan for delivery.</p>
+                                <p><strong>Returns:</strong><br>
+                                    We offer a 100-night sleep guarantee with our {{product.title}} and a 1 year warranty.  If you decide this product isn’t the right one for you, then we will provide a full refund. Visit our <a href="https://intercom.help/brentwood-home-b4d83ef0a14f/en/articles/3377392-what-is-the-warranty-for-your-brentwood-home-sheets" target="_blank">Help center</a> for more information.
+                                </p>
                                 
                             {% else %}
                         <div class="row">
                                 <div class="col-xs-12">
+                                    <p class="text-center">{% render 'product-shippingestimate', var_variant: current_variant %}</p>
                                     <p><strong>Free Standard Shipping:</strong><br>
-                                        The handcrafting process usually takes <strong>{{ shipsfree }}</strong> to complete. Delivery times vary depending on your distance from our Los Angeles factory. 
+                                        Delivery times vary depending on your distance from our Los Angeles factory. 
                                         {% if product.handle == "cedar-natural-luxe-mattress" %}
                                         Our {{product.title}} ships quickly via FedEx. It will ship in two boxes (your mattress in one box and the topper in the other box), which allows us to ship via FedEx and get your new bed to you as fast as we can!
                                         {% endif %}

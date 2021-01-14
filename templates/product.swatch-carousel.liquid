@@ -206,7 +206,7 @@
       <div id="myTabContent" class="tab-content">
         {% if settings.display_product_detail_description %}
         <div id="collapse-tab1" class="tab-pane fade in active">
-            {% include 'shippingtime' %}
+          <p class="text-center">{% render 'product-shippingestimate', var_variant: current_variant %}</p>
           {{ product.description }}
         </div>
         {% endif %}

@@ -112,7 +112,6 @@
                                                 value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
                                         {% endfor %}
                                     </select>
-                                    {% comment %}variables set in snippets/shippingtime.liquid{% endcomment %}
                                     
                                     {% if settings.use_color_swatch %}
                                         {% for option in product.options %}
@@ -448,7 +447,7 @@ qt: 1<br>
                <h2 style="text-align: center;">Description</h2>
            </div>
             <div class="col-md-offset-2 col-md-8">
-                <p class="short-description shipping">Ships free in {{ shipsfree }} | free returns {% if trial %}| {{trial}}{% endif %}</p>
+                <p class="text-center">{% render 'product-shippingestimate', var_variant: current_variant %}</p>
                 {{product.description}}
             </div>
         </div>
