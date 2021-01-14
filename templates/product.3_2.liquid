@@ -165,9 +165,12 @@
                         {% endif %}
                         <div class="mob-dark">
                             <div id="buysection"></div>
-                            {% include 'shippingtime' %}
-                            {% render 'product-shippingestimate', var_shipsfree: shipsfree, var_trial: trial  %}
                             <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
+
+                                {%comment%}Displays production times per variant{%endcomment%}
+                                {% assign current_variant = product.selected_or_first_available_variant %}
+                                {% render 'product-shippingestimate', var_variant: current_variant %}
+
                                 <label for="product-selectors" class="selectLabel">Size</label>
                                 <div id="product-variants">
                                     {% assign variantCount = product.variants | size %}
@@ -179,9 +182,6 @@
                                                     value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
                                                 {% endfor %}
                                             </select>
-                                            {% comment %}variables set in snippets/shippingtime.liquid{% endcomment %}
-                                            
-                                            
                                             {% if settings.use_color_swatch %}
                                                 {% for option in product.options %}
                                                     {% include 'swatch' with option %}
@@ -191,6 +191,7 @@
                                         {% else %}
                                             <input type="hidden" name="id" value="{{ product.variants[0].id }}"/>
                                         {% endif %}
+
                                     {% endif %}
                                     <!-- WIDGET BUNDLES (PILLOW + FOUNDATION )-->
                                     {% include 'productbundles-widget' %}
@@ -222,7 +223,7 @@
                                 {% else %}
                                     <button type="button" class="btn" id="product-add-to-cart" disabled>Unavailable</button>
                                 {% endif %}
-                                {% assign current_variant = product.selected_or_first_available_variant %}
+                                
                             </form>
                             <button type="button" class="cta2" style="width: 100%;" id="product-add-to-cart">Add to Cart</button>
                             {% include 'vtail-widget-link' %}

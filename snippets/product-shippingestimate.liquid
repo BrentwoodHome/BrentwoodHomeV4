@@ -8,10 +8,63 @@
         color: #38414F;
     }
 </style>
+{% assign trial = false %}
 
+{% case product.type %}
+    {% when 'Pillow' %}
+        {% assign trial = "30-day trial" %}
+
+    {% when 'Wedge Pillow' %}
+        {% assign trial = "30-day trial" %}
+
+    {% when 'Pillow Cover' %}
+        {% assign trial = "100-day trial" %}
+
+    {% when 'Mattress' %}
+        {% assign trial = "1-year trial" %}
+
+    {% when 'Bed Frames' %}
+        {% assign trial = "1-year trial" %}
+
+    {% when 'Mattress Topper' %}
+        {% assign trial = "1-year trial" %}
+
+    {% when 'Bed Frames, Bases & Foundations' %}
+        {% assign trial = "1-year trial" %}
+{% endcase %}
+{% if product.handle == "adjustable-bed-frame" %}
+    {% assign trial = "100-night trial" %}
+{% endif %}
+
+{%comment%}
+    Converts production days into weeks (rounded up) if prod time > 7 days otherwise display time in days
+{%endcomment%}
+{% liquid
+    assign weeks = false
+    assign variant_prod_time_field = product.metafields.custom_fields["production_time"]
+    assign variant_prod_time_int = variant_prod_time_field | times: 1
+    assign variant_prod_time_weeks = variant_prod_time_int | divided_by: 5.0
+    if variant_prod_time_weeks > 1.5
+        assign variant_prod_time = variant_prod_time_weeks | ceil
+        assign weeks = true
+    else
+        assign variant_prod_time = variant_prod_time_int
+    endif
+%}
 <p class="short-description shipping">
     <img src="https://brentwood-home-2.imgix.net/icon-shippingv4.svg" alt="Ships free, free returns">
-    <a href="#" data-toggle="modal" data-target="#shipping-popup" class="ship-estimate">Ships free {{ var_shipsfree }}</a> <a href="#" data-toggle="modal" data-target="#shipping-popup"><em class="glyphicon glyphicon-question-sign"></em></a> | free returns {% if var_trial %}| {{ var_trial }}{% endif %}
+    <a href="#" data-toggle="modal" data-target="#shipping-popup" class="ship-estimate">
+      <script>
+        var bwh = bwh || {};
+        bwh.product_variants = bwh.product_variants || {};
+      {%- for variant in product.variants -%}
+        bwh.product_variants[{{variant.id}}] = {
+          production_time: "{{variant.metafields.custom_fields["production_time"] | escape}}"
+        };
+      {% endfor %}
+      </script>
+
+    </a> <a href="#" data-toggle="modal" data-target="#shipping-popup"><span class="js-production-time" data-default="{{variant_prod_time_field}}">Ships Free</span> <em class="glyphicon glyphicon-question-sign"></em></a> | free returns {% if trial %}| {{ trial }}{% endif %}
 </p>
 
 <div class="modal fade" id="shipping-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3">
