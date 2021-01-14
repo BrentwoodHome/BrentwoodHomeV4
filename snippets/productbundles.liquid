@@ -832,6 +832,7 @@
         
         /* START selectCallback */
         var selectCallback = function (variant, selector) {
+          updateShippingTime(variant.id);
           currentVariant = variant
           var addToCart = jQuery('#product-add-to-cart'),
             productPrice = jQuery('.product .price'),
@@ -1593,50 +1594,48 @@ var addon_product = addons[addon],
 
             moveAlong();
       });
-
-      $("body").on("product.changed", function(ev, id) {
-        console.log(id, "id")
-        updateShippingTime(id);
-      });
-
-      function parseDays(days) {
-        days = parseFloat(days) || 0;
-        if(typeof days === "undefined" || days === 0) return "Ships free";
-
-        var parsed_to_weeks = days/5;
-        if(parsed_to_weeks > 1.5) {
-          prod_time = `Ships free within ${Math.ceil(parsed_to_weeks)} weeks`;
-        } else {
-          prod_time = `Ships free in ${days} days`;
-        }
-        return prod_time;
-      }
-
-      function updateShippingTime(id) {
-        var prod_time = parseDays(),
-          container = $(".js-production-time"),
-          defaultDays = container.data("default") || 0;
-          
-        if(defaultDays > 0) {
-          prod_time = parseDays(defaultDays);
-        }
-
-        if(id && bwh && "product_variants" in bwh) {
-          var days = bwh.product_variants[id];
-          if(days && "production_time" in days) {
-            prod_time = parseDays(days.production_time);
-          }
-
-        }
-        $(".js-production-time").text(prod_time);
-      
-      }
-
-      updateShippingTime(getVariantID());
   });
-      function getVariantID() {
-        var url = new URLSearchParams(window.location.search);
-        return url.get("variant");
+
+  $("body").on("product.changed", function(ev, id) {
+    updateShippingTime(id);
+  });
+
+  function parseDays(days) {
+    days = parseFloat(days) || 0;
+    if(typeof days === "undefined" || days === 0) return "Ships free";
+
+    var parsed_to_weeks = days/5;
+    if(parsed_to_weeks > 1.5) {
+      prod_time = `Ships free within ${Math.ceil(parsed_to_weeks)} weeks`;
+    } else {
+      prod_time = `Ships free in ${days} days`;
+    }
+    return prod_time;
+  }
+
+  function updateShippingTime(id) {
+    var prod_time = parseDays(),
+      container = $(".js-production-time"),
+      defaultDays = container.data("default") || 0;
+      
+    if(defaultDays > 0) {
+      prod_time = parseDays(defaultDays);
+    }
+
+    if(id && bwh && "product_variants" in bwh) {
+      var days = bwh.product_variants[id];
+      if(days && "production_time" in days) {
+        prod_time = parseDays(days.production_time);
       }
+
+    }
+    $(".js-production-time").text(prod_time);
+  
+  }
+
+  function getVariantID() {
+    var url = new URLSearchParams(window.location.search);
+    return url.get("variant");
+  }
 //window.performance.mark(window.markNames.bundleScriptParse.end);
 </script>
