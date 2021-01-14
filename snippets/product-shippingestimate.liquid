@@ -18,7 +18,7 @@
         {% assign trial = "30-day trial" %}
 
     {% when 'Pillow Cover' %}
-        {% assign trial = "30-day trial" %}
+        {% assign trial = "100-day trial" %}
 
     {% when 'Mattress' %}
         {% assign trial = "1-year trial" %}
@@ -28,7 +28,13 @@
 
     {% when 'Mattress Topper' %}
         {% assign trial = "1-year trial" %}
+
+    {% when 'Bed Frames, Bases & Foundations' %}
+        {% assign trial = "1-year trial" %}
 {% endcase %}
+{% if product.handle == "adjustable-bed-frame" %}
+    {% assign trial = "100-night trial" %}
+{% endif %}
 
 {%comment%}
     Converts production days into weeks (rounded up) if prod time > 7 days otherwise display time in days

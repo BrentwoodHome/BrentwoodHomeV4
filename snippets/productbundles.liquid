@@ -1602,13 +1602,13 @@ var addon_product = addons[addon],
 
   function parseDays(days) {
     days = parseFloat(days) || 0;
-    if(typeof days === "undefined" || days === 0) return "Ships free";
+    if(typeof days === "undefined" || days === 0) return "Free shipping";
 
     var parsed_to_weeks = days/5;
     if(parsed_to_weeks > 1.5) {
       prod_time = `Ships free within ${Math.ceil(parsed_to_weeks)} weeks`;
     } else {
-      prod_time = `Ships free in ${days} days`;
+      prod_time = `Ships free within ${days} business days`;
     }
     return prod_time;
   }
