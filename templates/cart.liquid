@@ -289,4 +289,10 @@
 
     adroll_custom_data = {cart_value: {{ cart.total_price }} }
 </script>
-
+<!-- Klaviyo -->
+<script type="text/javascript">
+    var _learnq = _learnq || [];
+    document.getElementById("AddToCart").addEventListener('click',function (){
+        _learnq.push(['track', 'Added to Cart', item]);
+    });
+</script>
