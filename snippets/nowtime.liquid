@@ -21,7 +21,7 @@ Tobe used for banners/tickers ect...
 <!-- EYEBROW -->
 {% assign eyebrowCurrent = "Holiday Sale! Save up to $175 on select mattresses & more" %}
 {% assign eyebrowCurrentMobile = "Holiday Sale!" %}
-{% assign eyebrowNew = "New Year Sale! Save up to $175 on select mattresses & more" %}
+{% assign eyebrowNew = "New Year Sale Extended! Save up to $175 on select mattresses & more" %}
 {% assign eyebrowNewMobile = "New Year Sale!" %}
 {% assign newdesign = "Holiday Sale!" %}
 
@@ -29,9 +29,9 @@ Tobe used for banners/tickers ect...
 <!-- SALE PAGE variable for extending promo. 'enddate' var displayed in mobile nav and sale page. -->
 {% if rightnowint > extensionStart %}
     {% comment %} Shows extended end sale date {% endcomment%}
-    {% assign enddate = "Ends January 25, 11:59pm PDT" %}
+    {% assign enddate = "Ends February 1, 11:59pm PDT" %}
     {% assign mobile_sale_name = "New Year Sale" %}
-    {% assign newdesign = "New Year Sale" %}
+    {% assign newdesign = "New Year Sale Extended" %}
 {% elsif rightnowint < currentPromoEnd %}
     {% comment %} Shows the correct end date when still in current promo range (currentPromoEnd){% endcomment%}
     {% assign enddate = "Ends January 4, 11:59pm PDT" %}
