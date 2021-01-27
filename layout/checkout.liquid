@@ -172,9 +172,15 @@
 $(document).on('page:load page:change', function() {
 
   var feeName = "Mattress Fee";
+  var $sidebar = $(".sidebar__content");
+  var $lineItemContent = $(".total-line-table")
+  
+  $price = $(".payment-due__price");
+  $sidebar.hide();
   
   function getCartItems() {
     return fetch("/cart.js").then(function(items) {
+      $sidebar.show();
       return items.json();
     }).then(function(data) {
       return {total: data.total_price, items: data.items};
@@ -188,7 +194,6 @@ $(document).on('page:load page:change', function() {
     
     $state_select.on("change", state_changed);
     $state_select.change();
-  
     function getMattressFeeVariants() {
       return fetch('/products/mattress-fee.js').then(function(res) {
         return res.json();
@@ -214,7 +219,7 @@ $(document).on('page:load page:change', function() {
 
       var cartHasMattresses = mattresses.length > 0;
       var fee_items = cart.items.filter(function(m) { return m.product_title === feeName; });
-
+      
       if(cartHasMattresses) {
         addFees(variant_name, mattresses, fee_items);
       } else {
@@ -260,9 +265,13 @@ $(document).on('page:load page:change', function() {
       }).then(function(resp) {
         return resp.json();
       }).then(function(cart) {
-        fetch(window.location).then(function(e) {
-          updateOrderSummary(cart.items);
-        });
+        fetch(window.location).then(resp => resp.text()).then(e => {
+          let $page = $(e);
+          let update_price = $page.find(".payment-due__price").first().data("checkout-payment-due-target");
+          $lineItemContent.html($page.find(".total-line-table"));
+          updateOrderSummary(cart.items, update_price);
+        })
+          
         return cart;
       })
     }
@@ -296,15 +305,20 @@ $(document).on('page:load page:change', function() {
         }
       }
     }
+  } else {
+    getCartItems().then(cart => {
+      updateOrderSummary(cart.items, $price.data("checkout-payment-due-target"));
+    }).then(() => {
+      $sidebar.show();
+    })
   }
   
+
   function parseToCurrency(num) {
     return (num/100).toFixed(2);
   }
 
- 
-    var $sidebar = $(".sidebar__content");
-    $sidebar.hide();
+      
   
     function hideOnOrderSummary(id) {
       $("[data-product-id="+ id +"]").hide();
@@ -357,7 +371,7 @@ $(document).on('page:load page:change', function() {
       $subtotal.html(`$${parseToCurrency(subtotal - total_price)}`);
     };
   
-    function updateOrderSummary(items, updateTotal) {
+    function updateOrderSummary(items, total) {
       var mattress_item = items.filter(function(item) {
         return item.product_title === feeName;
       });
@@ -366,29 +380,16 @@ $(document).on('page:load page:change', function() {
         var item = mattress_item[0];
         hideOnOrderSummary(item.product_id);
         addToOrderSummary("Mattress Recycling Fee", item.final_line_price, item.price, item.quantity);
-        price = item.final_line_price;
-        addFeeToTotal(price);
       } else {
         var $mattress_fee_line = getMattressLine();
         $mattress_fee_line.remove();
-        removeFeeFromTotal();
       }
+      updateTotal(total)
     }
 
-    $price = $(".payment-due__price");
-    function addFeeToTotal(price) {
-      var total = $price.data("checkout-payment-due-target");
-      $price.html(`$${parseToCurrency(total + price)}`);
-    } 
-    function removeFeeFromTotal() {
-      var total = $price.data("checkout-payment-due-target");
+    function updateTotal(total) {
       $price.html(`$${parseToCurrency(total)}`);
     }
-    
-    getCartItems().then(function(cart) {
-      updateOrderSummary(cart.items);
-      $sidebar.show();
-    })
   
 });
 
