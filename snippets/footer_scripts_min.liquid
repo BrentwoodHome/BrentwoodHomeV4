@@ -88,6 +88,13 @@
         }
       }]);
     </script>
+    <!-- Klaviyo -->
+    <script type="text/javascript">
+        var _learnq = _learnq || [];
+        document.getElementById("product-add-to-cart").addEventListener('click',function (){
+            _learnq.push(['track', 'Added to Cart', item]);
+        });
+    </script>
     {% if template contains '3_2'%}
 
         {% if metaf.shortdesc_more %}
