@@ -57,17 +57,17 @@
         <div class="col-xs-12">
             {% if rightnowint <= currentPromoEnd %}
                 <picture>
-                    <source media="(max-width: 414px)" srcset="https://s3-brentwoodhome.imgix.net/sale/winterhero.jpg?rect=376,0,1365,1365&bri=-8&txtalign=middle,center&txtfont=Didot,Italic&txt=Holiday%20Sale&txtclr=FFFFFF&txtsize=42&w=414">
-                    <source media="(min-width: 415px) and (max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/sale/winterhero.jpg?rect=0,290,2048,918&bri=-5&txtalign=middle,center&txtfont=Didot,Italic&txt=Holiday%20Sale&txtclr=FFFFFF&txtsize=48&w=768">
-                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/sale/winterhero.jpg?rect=0,290,2048,918&bri=-5&txtalign=middle,center&txtfont=Didot,Italic&txt=Holiday%20Sale&txtclr=FFFFFF&txtsize=75&w=1140">
-                    <img src="https://s3-brentwoodhome.imgix.net/sale/winterhero.jpg?rect=0,290,2048,918&bri=-5&txtalign=middle,center&txtfont=Didot,Italic&txt=Holiday%20Sale&txtclr=FFFFFF&txtsize=75&w=1140" alt="Holiday%20%Sale">
-                </picture>
-            {% elsif rightnowint > currentPromoEnd %}
-                <picture>
                     <source media="(max-width: 414px)" srcset="https://s3-brentwoodhome.imgix.net/sale/winterhero.jpg?rect=376,0,1365,1365&bri=-8&txtalign=middle,center&txtfont=Didot,Italic&txt=New%20Year%20Sale&txtclr=FFFFFF&txtsize=42&w=414">
                     <source media="(min-width: 415px) and (max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/sale/winterhero.jpg?rect=0,290,2048,918&bri=-5&txtalign=middle,center&txtfont=Didot,Italic&txt=New%20Year%20Sale&txtclr=FFFFFF&txtsize=48&w=768">
                     <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/sale/winterhero.jpg?rect=0,290,2048,918&bri=-5&txtalign=middle,center&txtfont=Didot,Italic&txt=New%20Year%20Sale&txtclr=FFFFFF&txtsize=75&w=1140">
                     <img src="https://s3-brentwoodhome.imgix.net/sale/winterhero.jpg?rect=0,290,2048,918&bri=-5&txtalign=middle,center&txtfont=Didot,Italic&txt=New%20Year%20Sale&txtclr=FFFFFF&txtsize=75&w=1140" alt="New%20Year%20%Sale">
+                </picture>
+            {% elsif rightnowint > currentPromoEnd %}
+                <picture>
+                    <source media="(max-width: 414px)" srcset="https://s3-brentwoodhome.imgix.net/sale/winterhero.jpg?rect=376,0,1365,1365&bri=-8&txtalign=middle,center&txtfont=Didot,Italic&txt=Presidents'%20Sale&txtclr=FFFFFF&txtsize=42&w=414">
+                    <source media="(min-width: 415px) and (max-width: 767px)" srcset="https://s3-brentwoodhome.imgix.net/sale/winterhero.jpg?rect=0,290,2048,918&bri=-5&txtalign=middle,center&txtfont=Didot,Italic&txt=Presidents'%20Sale&txtclr=FFFFFF&txtsize=48&w=768">
+                    <source media="(min-width: 768px)" srcset="https://s3-brentwoodhome.imgix.net/sale/winterhero.jpg?rect=0,290,2048,918&bri=-5&txtalign=middle,center&txtfont=Didot,Italic&txt=Presidents'%20Sale&txtclr=FFFFFF&txtsize=75&w=1140">
+                    <img src="https://s3-brentwoodhome.imgix.net/sale/winterhero.jpg?rect=0,290,2048,918&bri=-5&txtalign=middle,center&txtfont=Didot,Italic&txt=Presidents'%20Sale&txtclr=FFFFFF&txtsize=75&w=1140" alt="New%20Year%20%Sale">
                 </picture>
             {% endif %}
         </div>
@@ -76,7 +76,7 @@
     {% if rightnowint <= currentPromoEnd %} <!--  -->
     <div class="row sale">
             <div class="col-xs-12 col-sm-5 col-sm-offset-1">
-                <h2>$175 OFF SELECT MATTRESSES<br>USE CODE <strong>"LUXURY175"</strong></h2>
+                <h2>$175 OFF SELECT MATTRESSES<br>USE CODE <strong>"NEWYEAR"</strong></h2>
               <p>For a limited time, save <strong>$175 off</strong> our natural and organic <a href="/products/cedar-natural-luxe-mattress" title="Cedar Natural Luxe Mattress">Cedar Natural Luxe</a> hybrid mattress, our handcrafted, non-toxic & dual-sided <a href="/products/crystal-cove-mattress" title="Crystal Cove Hybrid Mattress">Crystal Cove hybrid mattress</a>, our best-selling luxurious <a href="/products/oceano-mattress" title="Oceano Hybrid Mattress">Oceano hybrid mattress</a>.</p>
                 <p><small>Offers cannot be combined. {{ enddate }}.</small></p> 
             </div>
@@ -142,7 +142,7 @@
     {% elsif rightnowint > currentPromoEnd %} 
         <div class="row sale">
             <div class="col-xs-12 col-sm-5 col-sm-offset-1">
-                <h2>$175 OFF SELECT MATTRESSES<br>USE CODE <strong>"NEWYEAR"</strong></h2>
+                <h2>$175 OFF SELECT MATTRESSES<br>USE CODE <strong>"POTUS"</strong></h2>
               <p>For a limited time, save <strong>$175 off</strong> our natural and organic <a href="/products/cedar-natural-luxe-mattress" title="Cedar Natural Luxe Mattress">Cedar Natural Luxe</a> hybrid mattress, our handcrafted, non-toxic & dual-sided <a href="/products/crystal-cove-mattress" title="Crystal Cove Hybrid Mattress">Crystal Cove hybrid mattress</a>, our best-selling luxurious <a href="/products/oceano-mattress" title="Oceano Hybrid Mattress">Oceano hybrid mattress</a>.</p>
                 <p><small>Offers cannot be combined. {{ enddate }}.</small></p> 
             </div>
