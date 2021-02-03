@@ -209,14 +209,6 @@
 
   <script type='text/javascript'>var jiltStorefrontParams = {{ shop.metafields.jilt_storefront | json }}; {% if customer %}jiltStorefrontParams.customerID = {{ customer.id }};{% endif %}</script>
 
-  {% if customer %}
-    <script>
-      tatari.identify('{{customer.id}}');
-    </script>
-  {% endif %}
-
-
-
 {% if testing %}
     <!-- Start Visual Website Optimizer Asynchronous Code -->
     <!-- Start VWO Async SmartCode -->
