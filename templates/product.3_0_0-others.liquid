@@ -639,9 +639,9 @@ style="{% if product.id == 6048703512745 %}float:right;margin:0;width:49%;text-a
     {% if metaf.ecommimage_tagline %}
         <section class="overlays overlays-7 only-desktop">
             {% if metaf.ecommimage contains "https://" %}
-                <img class="col-xs-12" src="{{ metaf.ecommimage }}" alt="{{ metaf.ecommimage_tagline }}" />
+                <img class="col-xs-12" src='{{ metaf.ecommimage }}' alt='{{ metaf.ecommimage_tagline }}' />
             {% else %}
-                <img class="col-xs-12" src="{{ metaf.ecommimage | asset_url }}" alt="{{ metaf.ecommimage_tagline }}" />
+                <img class="col-xs-12" src='{{ metaf.ecommimage | asset_url }}' alt='{{ metaf.ecommimage_tagline }}' />
             {% endif %}
             <p>
                 {{ metaf.ecommimage_tagline }}
