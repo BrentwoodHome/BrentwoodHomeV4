@@ -841,7 +841,7 @@
           if (variant) {
             if (variant.available) {
               // We have a valid product variant, so enable the submit button
-              addToCart.removeClass('disabled').removeAttr('disabled').val('Add to Cart');
+              addToCart.removeClass('disabled').removeAttr('disabled').val('Add to Cart').html("Add to Cart");
             } else {
               // Variant is sold out, disable the submit button
               addToCart.val('Sold Out').addClass('disabled').attr('disabled', 'disabled');
@@ -1227,7 +1227,7 @@ var addon_product = addons[addon],
           // display message for sheets and quilts when out of stock
           if (variant && variant.available) {
             if (variant.inventory_management != null) {
-              if (variant.inventory_quantity < 1 && (typeof inventoryTracked !== "undefined" && inventoryTracked === true)) {
+              if (variant.inventory_quantity < 1 || ( variant.inventory_quantity < 1 && typeof inventoryTracked !== "undefined" && inventoryTracked === true)) {
                 //jQuery(".out-of-stock").show();
                 //jQuery(".out-of-stock p").html("We’re currently making this item to order.<br> Please allow <b>up to 3 weeks</b> for crafting and shipping.");
                 addToCart.val('Out of Stock').addClass('disabled').attr('disabled', 'disabled').html("Out of Stock");
@@ -1237,6 +1237,7 @@ var addon_product = addons[addon],
               }
             }
           } else {
+
             //jQuery(".out-of-stock p").text("Out of stock");
             addToCart.val('Out of Stock').addClass('disabled').attr('disabled', 'disabled').html("Out of Stock");
           }
