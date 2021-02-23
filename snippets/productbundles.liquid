@@ -616,7 +616,6 @@
             variants
           }
         };
-        var inventoryTracked = false;
       {% when "therapeutic-foam-bed-wedge"  %}
         var variants = getProductVariants("wedge-pillow-cover", ["zuma-7-inch", "zuma-10-inch", "zuma-12-inch"])
         var addons = {
@@ -626,7 +625,6 @@
             variants
           }
         };
-        var inventoryTracked = false;
       {% when "crystal-cove-wedge-pillow" %}
         var variants = getProductVariants("wedge-pillow-cover", ["crystal-cove-10-inch"])
         var addons = {
@@ -636,7 +634,6 @@
             variants
           }
         };
-        var inventoryTracked = false;
       {% when "whitney-gel-memory-foam-wedge-pillow" %}
         var variants = getProductVariants("wedge-pillow-cover", ["whitney-10-inch"])
         var addons = {
@@ -646,7 +643,6 @@
             variants
           }
         };
-        var inventoryTracked = false;
       {% when "crystal-cove-meditation-pillow" %}
         var variants = getProductVariants("yoga-pillow-cover", ["yoga-oval-cover"])
         var addons = {
@@ -656,7 +652,6 @@
             variants
           }
         };
-        var inventoryTracked = false;
       {% when "crystal-cove-yoga-bolster" %}
         var variants = getProductVariants("yoga-pillow-cover", ["yoga-bolster-cover"])
         var addons = {
@@ -666,7 +661,6 @@
             variants
           }
         };
-        var inventoryTracked = false;
       {% when "crystal-cove-square-meditation-pillow" %}
         var variants = getProductVariants("yoga-pillow-cover", ["yoga-square-cover", "yoga-square-cover"]);
         var addons = {
@@ -676,7 +670,6 @@
             variants
           }
         };
-        var inventoryTracked = false;
       {% when "crystal-cove-pranayama-bolster" %}
         var variants = getProductVariants("yoga-pillow-cover", ["yoga-pranayama-cover"]);
         var addons = {
@@ -686,7 +679,6 @@
             variants
           }
         };
-        var inventoryTracked = false;
     {% else %}
       var variantToddlerPillowCase = [
           {
@@ -1226,8 +1218,9 @@ var addon_product = addons[addon],
 
           // display message for sheets and quilts when out of stock
           if (variant && variant.available) {
+          console.log(variant)
             if (variant.inventory_management != null) {
-              if (variant.inventory_quantity < 1 || ( variant.inventory_quantity < 1 && typeof inventoryTracked !== "undefined" && inventoryTracked === true)) {
+              if (variant.inventory_quantity < 1 && variant.inventory_policy !== "continue" ) {
                 //jQuery(".out-of-stock").show();
                 //jQuery(".out-of-stock p").html("We’re currently making this item to order.<br> Please allow <b>up to 3 weeks</b> for crafting and shipping.");
                 addToCart.val('Out of Stock').addClass('disabled').attr('disabled', 'disabled').html("Out of Stock");
