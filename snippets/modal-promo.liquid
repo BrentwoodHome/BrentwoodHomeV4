@@ -11,16 +11,16 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>                    
                         {% if rightnowint <= currentPromoEnd %}
-                            <p class="h2">New Year Sale Extended</p>
+                            <p class="h2">Presidents' Sale Extended</p>
                             <p class="h3">Up to $175 OFF SELECT MATTRESSES, 20% off yoga pillows and pet beds!</p>
                             <p><a href="/pages/sale" class="cta2">shop sale</a></p>
                         {% elsif rightnowint > currentPromoEnd and rightnowint <= newPromoEnd %}
-                            <p class="h2">Presidents' Sale</p>
-                            <p class="h3">Up to $175 OFF SELECT MATTRESSES, 20% off yoga pillows and pet beds!</p>
+                            <p class="h2">Sleep Week Sale</p>
+                            <p class="h3">Up to $150 OFF SELECT MATTRESSES, 20% off yoga pillows!</p>
                             <p><a href="/pages/sale" class="cta2">shop sale</a></p>
                         {% elsif rightnowint > extensionStart %}
-                            <p class="h2">Presidents' Sale Extended</p>
-                            <p class="h3">Up to $175 OFF SELECT MATTRESSES, 20% off yoga pillows and pet beds!</p>
+                            <p class="h2">Sleep Week Sale</p>
+                            <p class="h3">Up to $150 OFF SELECT MATTRESSES, 20% off yoga pillows!</p>
                             <p><a href="/pages/sale" class="cta2">shop sale</a></p>
                         {% endif %}
                     </div>
